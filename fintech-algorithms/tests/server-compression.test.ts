@@ -112,7 +112,7 @@ describe('static server transfer encoding', () => {
         fs.readFileSync(path.join(root, 'dist/visual-data', payload)),
       );
     }
-  });
+  }, 30000); // 192 sequential representation checks also run on smaller CI machines.
   it('compresses SVG assets but leaves binary Python wheels unchanged', async () => {
     const svg = await request('/favicon.svg', 'gzip');
     expect(svg.headers['content-type']).toBe('image/svg+xml');
