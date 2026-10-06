@@ -1,4 +1,15 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+
+async function expectSuccessfulRun(page: Page) {
+  const state = page.locator('[data-run-state]');
+  await expect(state).toHaveAttribute('data-run-state', /^(complete|failed|stopped)$/, {
+    timeout: 65000,
+  });
+  const diagnostic = (await page.getByRole('alert').allTextContents()).join('\n');
+  expect(await state.getAttribute('data-run-state'), diagnostic || await state.innerText()).toBe(
+    'complete',
+  );
+}
 
 test('real Python baseline and edited run retain comparison and edits after an error', async ({
   page,
@@ -14,9 +25,7 @@ test('real Python baseline and edited run retain comparison and edits after an e
   await expect(page.getByLabel('Python code for logistic-regression')).not.toBeVisible();
   const inputRows = await page.locator('.data-preview tbody').innerText();
   await page.getByRole('button', { name: 'Run baseline', exact: true }).click();
-  await expect(page.locator('[data-run-state]')).toHaveAttribute('data-run-state', 'complete', {
-    timeout: 65000,
-  });
+  await expectSuccessfulRun(page);
   expect(await page.locator('.data-preview tbody').innerText()).toBe(inputRows);
   const results = page.getByRole('region', { name: 'Lab results' });
   await expect(results).toContainText('ROC-AUC');
@@ -32,9 +41,7 @@ test('real Python baseline and edited run retain comparison and edits after an e
   const edited = `${original}\nprint("Guided comparison marker")\n`;
   await editor.fill(edited);
   await page.getByRole('button', { name: 'Run your changes', exact: true }).click();
-  await expect(page.locator('[data-run-state]')).toHaveAttribute('data-run-state', 'complete', {
-    timeout: 65000,
-  });
+  await expectSuccessfulRun(page);
   await expect(
     results.locator('.comparison-table tbody td:nth-child(3)').first(),
   ).not.toContainText('Run your changes');
