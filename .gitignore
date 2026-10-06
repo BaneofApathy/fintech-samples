@@ -23,3 +23,4 @@ fintech-algorithms/qa/*
 source/
 
 !fintech-algorithms/public/python/python_stdlib.zip
+!fintech-algorithms/public/python/libopenblas-0.3.26.zip

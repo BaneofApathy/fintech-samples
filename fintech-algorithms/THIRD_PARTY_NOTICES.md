@@ -14,6 +14,7 @@ The application bundles the following open-source components. Their licenses and
 | reveal.js | 6.0.2 | MIT |
 | pagefind | 1.5.2 | MIT |
 | Pyodide | 0.29.3 | MPL-2.0; bundled packages retain their own licenses |
+| OpenBLAS | 0.3.26 | BSD-3-Clause; see `public/licenses/openblas-LICENSE` |
 | JupyterLite core | 0.7.6 | BSD-3-Clause |
 | JupyterLite Pyodide kernel | 0.7.2 | BSD-3-Clause |
 

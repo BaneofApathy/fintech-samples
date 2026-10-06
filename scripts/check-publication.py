@@ -1,6 +1,6 @@
 """Check the proposed public inventory without storing private deny lists."""
 from pathlib import Path
-import argparse, re, subprocess, sys, zipfile
+import argparse, hashlib, json, re, subprocess, sys, zipfile
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
 parser.add_argument('--staged', action='store_true')
@@ -18,6 +18,26 @@ else:
 secrets = re.compile(r'(?<![A-Za-z0-9])(?:gh[pousr]_[A-Za-z0-9]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{30,}|AKIA[A-Z0-9]{16}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)')
 email = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b')
 failures = []
+# Scientific packages are deployable dependencies, including two required ZIPs.
+# Compare with the pinned lock inventory so broad archive ignore rules cannot
+# silently remove a library while a developer's local copy masks the omission.
+runtime_root = ROOT/'fintech-algorithms'/('dist' if args.dist else 'public')/'python'
+pins = json.loads((ROOT/'fintech-algorithms/metadata/PYTHON_PINS.json').read_text())['packages']
+lock = json.loads((ROOT/'fintech-algorithms/public/python/pyodide-lock.json').read_text())['packages']
+tracked = set(subprocess.check_output(['git', 'ls-files', '-z'], cwd=ROOT).decode().split('\0')) if not args.dist else set()
+required = ['python_stdlib.zip', 'pyodide.js', 'pyodide.asm.js', 'pyodide.asm.wasm', 'pyodide-lock.json']
+for name, version in pins.items():
+    entry = lock[name]
+    required.append(entry['file_name'])
+    if entry['version'] != version: failures.append(f'{name}: runtime pin differs from lock')
+    asset = runtime_root/entry['file_name']
+    if asset.exists() and hashlib.sha256(asset.read_bytes()).hexdigest() != entry['sha256']:
+        failures.append(f'{asset.relative_to(ROOT)}: runtime hash differs from lock')
+for name in required:
+    asset = runtime_root/name
+    rel = str(asset.relative_to(ROOT))
+    if not asset.is_file(): failures.append(f'{rel}: required runtime dependency missing')
+    elif not args.dist and rel not in tracked: failures.append(f'{rel}: required runtime dependency not staged or tracked')
 text_types = {'.py', '.js', '.mjs', '.cjs', '.ts', '.svelte', '.astro', '.md', '.json', '.yaml', '.yml', '.html', '.css', '.tex', '.txt', '.svg', '.ipynb'}
 for p in files:
     rel = p.relative_to(ROOT)
