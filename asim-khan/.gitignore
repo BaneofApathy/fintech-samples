@@ -1,0 +1,23 @@
+# Secrets
+.env
+*.env
+!.env.example
+client_secret*.json
+
+# Python environments / build output
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Local dev server runtime artifacts (not app output, just process bookkeeping)
+server.log
+server.pid
+.pytest_cache/
+
+# Claims database + uploaded evidence documents -- runtime state, not source.
+# Fictional demo data only, but still shouldn't live in git.
+data/

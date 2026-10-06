@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --ink: #16202a;
+  --ink-soft: #55636f;
+  --paper: #f4f6f8;
+  --card: #ffffff;
+  --line: #e1e6ea;
+  --accent: #0f62c9;
+  --accent-soft: #e8f0fc;
+  --good: #1c7a4b;
+  --good-soft: #e6f6ee;
+  --warn: #b5451c;
+  --warn-soft: #fbe9e2;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+header.app-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+header.app-header .brand {
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+header.app-header .brand span { color: var(--accent); }
+
+header.app-header nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.92rem;
+  margin-left: 1.2rem;
+}
+header.app-header nav a:hover { color: var(--accent); }
+
+h1 { font-size: 1.55rem; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
+.subtitle { color: var(--ink-soft); margin: 0 0 2rem; font-size: 0.98rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.field { margin-bottom: 1.3rem; }
+.field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
+}
+.field .hint { color: var(--ink-soft); font-size: 0.82rem; font-weight: 400; margin-left: 0.4rem; }
+
+input[type="text"], input[type="date"], textarea {
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--ink);
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+textarea { resize: vertical; min-height: 90px; }
+
+input[type="file"] {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: #fff;
+  color: var(--ink-soft);
+}
+
+ul.document-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+ul.document-list li { margin-bottom: 0.3rem; }
+ul.document-list a {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+}
+ul.document-list a:hover { text-decoration: underline; }
+
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+button.primary:hover { background: #0b4f9f; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.badge.ready { background: var(--good-soft); color: var(--good); }
+.badge.needs { background: var(--warn-soft); color: var(--warn); }
+
+.claim-id {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+ul.missing-list {
+  margin: 0.8rem 0 0;
+  padding-left: 1.2rem;
+}
+ul.missing-list li {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--warn);
+  margin-bottom: 0.3rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.6rem 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.92rem;
+}
+.detail-grid dt { color: var(--ink-soft); font-weight: 500; }
+.detail-grid dd { margin: 0; }
+
+.back-link {
+  display: inline-block;
+  margin-top: 1.6rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.back-link:hover { text-decoration: underline; }
+
+table.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+table.claims-table th, table.claims-table td {
+  text-align: left;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+table.claims-table th { color: var(--ink-soft); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+table.claims-table a { color: var(--accent); text-decoration: none; font-family: 'IBM Plex Mono', monospace; }
+
+.empty-state { color: var(--ink-soft); padding: 2rem 0; text-align: center; }
+
+.note {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  border-left: 3px solid var(--line);
+  padding-left: 0.9rem;
+}
+.note a { color: var(--accent); }
+
+.badge-count {
+  display: inline-block;
+  min-width: 1.3rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* .mock-card's cream background is fixed regardless of theme (it's meant to
+   stand out as "different" even inside the dark adjuster theme), so its text
+   colors are hardcoded too, rather than inheriting --ink -- on the adjuster
+   theme that variable is a near-white meant for a navy background, which
+   would be nearly invisible on this card's light one. */
+.mock-card { border-color: #e4c874; background: #fffaf0; color: #3a2f1a; }
+.mock-card h2 { color: #3a2f1a; }
+.mock-card p, .mock-card .hint { color: #6b5a35; }
+.mock-card table.facts-table th { color: #8a7645; }
+.mock-card table.facts-table td { color: #3a2f1a; }
+.mock-card table.facts-table th, .mock-card table.facts-table td { border-color: #e9dcb5; }
+.mock-tag {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  background: #fbe9c6;
+  color: #8a6515;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  vertical-align: middle;
+}
+
+table.facts-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.6rem; }
+table.facts-table th, table.facts-table td {
+  text-align: left;
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+table.facts-table th { color: var(--ink-soft); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.03em; }
+
+.notification-panel { border-color: var(--accent); }
+
+ul.notification-list { list-style: none; margin: 0; padding: 0; }
+li.notification {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+li.notification:last-child { border-bottom: none; }
+li.notification.unread { background: var(--accent-soft); border-radius: 8px; padding: 0.9rem 0.8rem; margin: 0 -0.8rem; }
+li.notification p { margin: 0.3rem 0; }
+li.notification a { color: var(--accent); text-decoration: none; font-family: 'IBM Plex Mono', monospace; margin-left: 0.5rem; }
+.channel-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.error-card { border-color: var(--warn); background: var(--warn-soft); }
+.error-card .missing-list li { color: var(--warn); }
+
+/* ---------------------------------------------------------------------
+   Adjuster theme -- a visually distinct, dark palette applied only to
+   body.adjuster-theme. Every existing component (.card, .badge, tables,
+   links) already reads these same custom properties, so redefining them
+   here is enough to re-skin the whole adjuster side without duplicating
+   any component CSS -- and it's a deliberate visual signal, on top of the
+   route-level access control in app.py, that this is a different surface
+   a claimant never sees.
+   ------------------------------------------------------------------- */
+body.adjuster-theme {
+  --ink: #e8edf5;
+  --ink-soft: #9fb0c6;
+  --paper: #0f1a2b;
+  --card: #16233a;
+  --line: #2a3b57;
+  --accent: #5b9bf2;
+  --accent-soft: #1e2f4d;
+  --good: #4fd19a;
+  --good-soft: #163428;
+  --warn: #ff8a65;
+  --warn-soft: #3a1f17;
+}
+body.adjuster-theme table.claims-table th { color: var(--ink-soft); }
+body.adjuster-theme input[type="text"],
+body.adjuster-theme input[type="password"],
+body.adjuster-theme input[type="date"],
+body.adjuster-theme textarea {
+  background: #0f1a2b;
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.role-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+button.adjuster-btn { background: var(--accent); }
+body.adjuster-theme button.adjuster-btn:hover { background: #4885db; }
+
+/* The adjuster login page is its own full-viewport layout, not the usual
+   .page column -- a different visual shape on top of the different color
+   palette, so it never gets mistaken for a claimant screen even at a
+   glance. */
+body.adjuster-login-body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adjuster-login-wrap { width: 100%; max-width: 380px; padding: 1.5rem; text-align: center; }
+.adjuster-login-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2.2rem 2rem;
+  text-align: left;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+}
+.adjuster-login-badge {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 0.6rem;
+  filter: grayscale(1) brightness(1.6);
+}
+.adjuster-login-error {
+  background: var(--warn-soft);
+  color: var(--warn);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.88rem;
+  margin: 0 0 1.2rem;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Adjuster sign-in -- HarborClaim</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="adjuster-theme adjuster-login-body">
+  <div class="adjuster-login-wrap">
+    <div class="adjuster-login-card">
+      <div class="adjuster-login-badge">🛡</div>
+      <div class="brand" style="justify-content:center;">Harbor<span>Claim</span></div>
+      <p class="role-tag" style="display:block; text-align:center; margin:0.4rem 0 1.4rem;">ADJUSTER PORTAL</p>
+
+      {% if error %}
+      <p class="adjuster-login-error">Incorrect username or password.</p>
+      {% endif %}
+
+      <form method="post" action="/adjuster/login">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" autofocus>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password">
+        </div>
+        <button type="submit" class="primary adjuster-btn" style="width:100%;">Sign in</button>
+      </form>
+
+      <p class="note" style="border-left-color:#3a4a63;">
+        No sign-up here, by design. Credentials are issued by hand, after a real license
+        check, never created by logging in &mdash; see the README's "Accounts and
+        privacy" section.
+      </p>
+    </div>
+    <a class="back-link" href="/" style="color:#9fb4d8;">&larr; claimant sign-in instead</a>
+  </div>
+</body>
+</html>
