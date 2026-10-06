@@ -1,0 +1,411 @@
+id: M27a
+title: When Does Another Segment Stop Helping?
+minutes: 8
+kind: measure
+parent: inertia-and-stability
+question: "Four customers have monthly savings of 1, 2, 8, and 9, in $ hundreds. Use\
+  \ this single feature\n without additional scaling.\n                          \
+  \             X\n                             Inertia =   (xi − assigned centroid)2\
+  \ .\n                                                            i\n\n Evaluate\
+  \ these candidate partitions:\n   k                                            \
+  \  Groups\n   1                                              {1, 2, 8, 9}\n   2\
+  \                                              {1, 2} and {8, 9}\n   3         \
+  \                                     {1, 2}, {8}, and {9}\n Calculate centroids,\
+  \ inertia, and the reduction from adding each extra cluster. Where is the\n apparent\
+  \ elbow? Would selecting the smallest inertia alone be sensible?"
+questionPages:
+- page: 434
+  title: Inertia
+  text: " Inertia\n\n   M27a | Class problem | 8 minutes — When Does Another Segment\
+    \ Stop Helping?\n\n Four customers have monthly savings of 1, 2, 8, and 9, in\
+    \ $ hundreds. Use this single feature\n without additional scaling.\n        \
+    \                               X\n                             Inertia =   (xi\
+    \ − assigned centroid)2 .\n                                                  \
+    \          i\n\n Evaluate these candidate partitions:\n   k                  \
+    \                            Groups\n   1                                    \
+    \          {1, 2, 8, 9}\n   2                                              {1,\
+    \ 2} and {8, 9}\n   3                                              {1, 2}, {8},\
+    \ and {9}\n Calculate centroids, inertia, and the reduction from adding each extra\
+    \ cluster. Where is the\n apparent elbow? Would selecting the smallest inertia\
+    \ alone be sensible?"
+  paragraphs:
+  - Inertia
+  - M27a | Class problem | 8 minutes — When Does Another Segment Stop Helping?
+  - Four customers have monthly savings of 1, 2, 8, and 9, in $ hundreds. Use this
+    single feature without additional scaling. X Inertia = (xi − assigned centroid)2
+    . i
+  - 'Evaluate these candidate partitions: k Groups 1 {1, 2, 8, 9} 2 {1, 2} and {8,
+    9} 3 {1, 2}, {8}, and {9} Calculate centroids, inertia, and the reduction from
+    adding each extra cluster. Where is the apparent elbow? Would selecting the smallest
+    inertia alone be sensible?'
+  source:
+    pages:
+    - 434
+    verbatim: true
+formulaPages:
+- page: 431
+  title: Inertia
+  text: " Inertia\n\n   M27a | Formula explained (1/1)\n\n Question: How tightly do\
+    \ the proposed groups fit their own centers?\n                               \
+    \                     K X\n                              P\n                 \
+    \               i∈Cj xi            X\n                        µj =           \
+    \ ,   IK =           (xi − µj )2 .\n                                |Cj |    \
+    \          j=1 i∈C   j\n\n\n Read it aloud: Calculate each group’s mean. For every\
+    \ customer, square the distance from\n that group’s mean. Add all squared distances.\n\
+    \ Compare the reduction in inertia when adding a cluster. An elbow is a point\
+    \ where further\n additions deliver much smaller reductions.\n Use the supplied\
+    \ partitions; students are not asked to search every possible clustering."
+  paragraphs:
+  - Inertia
+  - M27a | Formula explained (1/1)
+  - 'Question: How tightly do the proposed groups fit their own centers? K X P i∈Cj
+    xi X µj = , IK = (xi − µj )2 . |Cj | j=1 i∈C j'
+  - 'Read it aloud: Calculate each group’s mean. For every customer, square the distance
+    from that group’s mean. Add all squared distances. Compare the reduction in inertia
+    when adding a cluster. An elbow is a point where further additions deliver much
+    smaller reductions. Use the supplied partitions; students are not asked to search
+    every possible clustering.'
+  source:
+    pages:
+    - 431
+    verbatim: true
+symbolPages:
+- page: 432
+  title: Inertia
+  text: " Inertia\n\n   M27a | Symbols and terms (1/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   K or k             \
+    \                            Number of clusters in the evaluated partition, here\
+    \ 1, 2, or 3.\n   j                                              Cluster index;\
+    \ j = 1 refers to the first proposed group.\n   Cj                           \
+    \                  Set of customer indices assigned to cluster j.\n   |Cj |  \
+    \                                        Number of customers in that cluster;\
+    \ bars around a set denote its\n                                             \
+    \     size.\n   xi                                             Customer i’s monthly\
+    \ savings, measured in hundreds of dollars.\n   µj                           \
+    \                  Centroid of cluster j, the mean savings of its members."
+  paragraphs:
+  - Inertia
+  - M27a | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example K or k Number of clusters in the evaluated
+    partition, here 1, 2, or 3. j Cluster index; j = 1 refers to the first proposed
+    group. Cj Set of customer indices assigned to cluster j. |Cj | Number of customers
+    in that cluster; bars around a set denote its size. xi Customer i’s monthly savings,
+    measured in hundreds of dollars. µj Centroid of cluster j, the mean savings of
+    its members.
+  source: &id001
+    pages:
+    - 432
+    verbatim: true
+- page: 433
+  title: Inertia
+  text: " Inertia\n\n   M27a | Symbols and terms (2/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   IK                 \
+    \                            Inertia for K clusters: total within-cluster squared\
+    \ distance.\n   P\n       i∈Cj                                       Add the term\
+    \ for every customer belonging to cluster j.\n   Squared feature units       \
+    \                   Squaring hundreds-of-dollars values gives squared\n      \
+    \                                            hundreds-of-dollars, not a spend\
+    \ or profit total.\n   Elbow                                          Informal\
+    \ point of diminishing compactness improvement; not a proof\n                \
+    \                                  of the correct business segmentation."
+  paragraphs:
+  - Inertia
+  - M27a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example IK Inertia for K clusters: total within-cluster
+    squared distance. P i∈Cj Add the term for every customer belonging to cluster
+    j. Squared feature units Squaring hundreds-of-dollars values gives squared hundreds-of-dollars,
+    not a spend or profit total. Elbow Informal point of diminishing compactness improvement;
+    not a proof of the correct business segmentation.'
+  source: &id002
+    pages: &id003
+    - 433
+    verbatim: true
+solutionPages:
+- page: 435
+  title: Inertia
+  text: " Inertia\n\n   M27a | Worked solution — When Does Another Segment Stop Helping?\n\
+    \n1. One cluster: centroid = (1 + 2 + 8 + 9)/4 = 5.\n            I1 = (1 − 5)2\
+    \ + (2 − 5)2 + (8 − 5)2 + (9 − 5)2 = 16 + 9 + 9 + 16 = 50.\n2. Two clusters: centroids\
+    \ 1.5 and 8.5.\n                               I2 = 0.25 + 0.25 + 0.25 + 0.25\
+    \ = 1.\n3. Three clusters: centroids 1.5, 8, 9.\n                            \
+    \     I3 = 0.25 + 0.25 + 0 + 0 = 0.5.\n4. Reductions: 50 − 1 = 49, then 1 − 0.5\
+    \ = 0.5. The apparent elbow is k = 2."
+  paragraphs:
+  - Inertia
+  - M27a | Worked solution — When Does Another Segment Stop Helping?
+  - '1. One cluster: centroid = (1 + 2 + 8 + 9)/4 = 5. I1 = (1 − 5)2 + (2 − 5)2 +
+    (8 − 5)2 + (9 − 5)2 = 16 + 9 + 9 + 16 = 50. 2. Two clusters: centroids 1.5 and
+    8.5. I2 = 0.25 + 0.25 + 0.25 + 0.25 = 1. 3. Three clusters: centroids 1.5, 8,
+    9. I3 = 0.25 + 0.25 + 0 + 0 = 0.5. 4. Reductions: 50 − 1 = 49, then 1 − 0.5 =
+    0.5. The apparent elbow is k = 2.'
+  source:
+    pages:
+    - 435
+    verbatim: true
+interpretationPages:
+- page: 436
+  title: Inertia
+  text: " Inertia\n\n   M27a | Interpretation\n\n What the answer means\n Two groups\
+    \ explain most of the variation here: lower and higher savings. A third adds little\n\
+    \ compactness. Inertia uses squared feature units, not dollars of business value;\
+    \ it also cannot\n establish stability or usefulness. Giving every customer a\
+    \ separate cluster would produce zero\n inertia but no meaningful segmentation.\n\
+    \ Why these steps matter\n The squared distances quantify compactness on the chosen\
+    \ scale. Dividing a group into smaller\n groups can reduce the total even if no\
+    \ useful business distinction is added, so the minimum\n inertia alone is not\
+    \ a defensible stopping rule."
+  paragraphs:
+  - Inertia
+  - M27a | Interpretation
+  - 'What the answer means Two groups explain most of the variation here: lower and
+    higher savings. A third adds little compactness. Inertia uses squared feature
+    units, not dollars of business value; it also cannot establish stability or usefulness.
+    Giving every customer a separate cluster would produce zero inertia but no meaningful
+    segmentation. Why these steps matter The squared distances quantify compactness
+    on the chosen scale. Dividing a group into smaller groups can reduce the total
+    even if no useful business distinction is added, so the minimum inertia alone
+    is not a defensible stopping rule.'
+  source:
+    pages:
+    - 436
+    verbatim: true
+source:
+  pages:
+  - 431
+  - 432
+  - 433
+  - 434
+  - 435
+  - 436
+  verbatim: true
+readAloud:
+- Calculate each group’s mean. For every customer, square the distance from that group’s
+  mean. Add all squared distances. Compare the reduction in inertia when adding a
+  cluster. An elbow is a point where further additions deliver much smaller reductions.
+  Use the supplied partitions; students are not asked to search every possible clustering.
+siteAuthored: false
+givens:
+  values:
+  - 1
+  - 2
+  - 8
+  - 9
+labels: &id004
+  values: Customer savings in ascending order ($ hundreds)
+deckSolution:
+  c: 5
+  c1: 1.5
+  c2: 8.5
+  I1: 50
+  I2: 1
+  I3: 0.5
+  reduction12: 49
+  reduction23: 0.5
+latex:
+- I_K=\sum_{j=1}^K\sum_{i\in C_j}(x_i-\mu_j)^2
+- \mu_j=\frac{\sum_{i\in C_j}x_i}{|C_j|}
+symbols:
+- symbol: K or k
+  meaning: Number of clusters in the evaluated partition, here 1, 2, or 3.
+  source: *id001
+- symbol: j
+  meaning: Cluster index; j = 1 refers to the first proposed group.
+  source: *id001
+- symbol: Cj
+  meaning: Set of customer indices assigned to cluster j.
+  source: *id001
+- symbol: '|Cj |'
+  meaning: Number of customers in that cluster; bars around a set denote its size.
+  source: *id001
+- symbol: xi
+  meaning: Customer i’s monthly savings, measured in hundreds of dollars.
+  source: *id001
+- symbol: µj
+  meaning: Centroid of cluster j, the mean savings of its members.
+  source: *id001
+- symbol: IK
+  meaning: 'Inertia for K clusters: total within-cluster squared distance.'
+  source: *id002
+- symbol: Σ over i ∈ Cⱼ
+  meaning: Add the term for every customer belonging to cluster j.
+  source:
+    pages: *id003
+    verbatim: false
+- symbol: Squared feature units
+  meaning: Squaring hundreds-of-dollars values gives squared hundreds-of-dollars,
+    not a spend or profit total.
+  source: *id002
+- symbol: Elbow
+  meaning: Informal point of diminishing compactness improvement; not a proof of the
+    correct business segmentation.
+  source: *id002
+steps:
+- id: c
+  title: Centroid with one cluster
+  expects: number
+  unit: $ hundreds
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Average all four savings values.
+  mistakes:
+  - pattern: recompute
+    message: Average all four savings values.
+- id: c1
+  title: First centroid with two clusters
+  expects: number
+  unit: $ hundreds
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average the first two values.
+  mistakes:
+  - pattern: recompute
+    message: Average the first two values.
+- id: c2
+  title: Second centroid with two clusters
+  expects: number
+  unit: $ hundreds
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Average the last two values.
+  mistakes:
+  - pattern: recompute
+    message: Average the last two values.
+- id: I1
+  title: Inertia with one cluster
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Sum squared distances from the overall mean.
+  mistakes:
+  - pattern: recompute
+    message: Sum squared distances from the overall mean.
+- id: I2
+  title: Inertia with two clusters
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Sum squared distances from each customer’s two-cluster centroid.
+  mistakes:
+  - pattern: recompute
+    message: Sum squared distances from each customer’s two-cluster centroid.
+- id: I3
+  title: Inertia with three clusters
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Only the first pair contributes nonzero distances; singleton clusters contribute
+    zero.
+  mistakes:
+  - pattern: recompute
+    message: Only the first pair contributes nonzero distances; singleton clusters
+      contribute zero.
+- id: reduction12
+  title: Inertia reduction from one to two clusters
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Subtract two-cluster inertia from one-cluster inertia.
+  mistakes:
+  - pattern: recompute
+    message: Subtract two-cluster inertia from one-cluster inertia.
+- id: reduction23
+  title: Inertia reduction from two to three clusters
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id012
+  - Subtract three-cluster inertia from two-cluster inertia.
+  mistakes:
+  - pattern: recompute
+    message: Subtract three-cluster inertia from two-cluster inertia.
+learning:
+  title: When Does Another Segment Stop Helping?
+  scenario: 'Four customers have monthly savings listed in ascending order, in $ hundreds.
+    Compare three supplied partitions: all four together; first two and last two;
+    first two together with each remaining customer alone.'
+  task: Calculate centroids and total squared distances within clusters for k = 1,
+    2 and 3. Compare the reductions from adding each cluster.
+  interpretation: Inertia measures compactness on the chosen scale. More clusters
+    can reduce it even without adding a useful business distinction. Look for a substantial
+    change in improvement and check stability and usefulness separately.
+  summary: 'Inertias for k = 1, 2, 3: {I1}, {I2}, {I3}. Reductions: {reduction12},
+    {reduction23}.'
+  labels: *id004
+  steps:
+    c:
+      title: Centroid with one cluster
+      hints: *id005
+      unit: $ hundreds
+    c1:
+      title: First centroid with two clusters
+      hints: *id006
+      unit: $ hundreds
+    c2:
+      title: Second centroid with two clusters
+      hints: *id007
+      unit: $ hundreds
+    I1:
+      title: Inertia with one cluster
+      hints: *id008
+      unit: ''
+    I2:
+      title: Inertia with two clusters
+      hints: *id009
+      unit: ''
+    I3:
+      title: Inertia with three clusters
+      hints: *id010
+      unit: ''
+    reduction12:
+      title: Inertia reduction from one to two clusters
+      hints: *id011
+      unit: ''
+    reduction23:
+      title: Inertia reduction from two to three clusters
+      hints: *id012
+      unit: ''
+  readAloud:
+  - Calculate each group’s mean. For every customer, square the distance from that
+    group’s mean. Add all squared distances. Compare the reduction in inertia when
+    adding a cluster. An elbow is a point where further additions deliver much smaller
+    reductions. Use the supplied partitions; students are not asked to search every
+    possible clustering.
+  workedExplanation:
+  - 'Two groups explain most of the variation here: lower and higher savings. A third
+    adds little compactness. Inertia uses squared feature units, not dollars of business
+    value; it also cannot establish stability or usefulness. Giving every customer
+    a separate cluster would produce zero inertia but no meaningful segmentation. '
+  - The squared distances quantify compactness on the chosen scale. Dividing a group
+    into smaller groups can reduce the total even if no useful business distinction
+    is added, so the minimum inertia alone is not a defensible stopping rule.
+  workedArithmetic:
+  - One-cluster center = (1 + 2 + 8 + 9) / 4 = 5. Inertia = (1 − 5)² + (2 − 5)² +
+    (8 − 5)² + (9 − 5)² = 16 + 9 + 9 + 16 = 50.
+  - Two-cluster centers are 1.5 and 8.5. Inertia = 0.25 + 0.25 + 0.25 + 0.25 = 1.
+  - Three-cluster centers are 1.5, 8 and 9. Inertia = 0.25 + 0.25 + 0 + 0 = 0.5.
+  - Reductions are 50 − 1 = 49, then 1 − 0.5 = 0.5. The apparent elbow is k = 2.
+formulaSource:
+  pages:
+  - 431
+  verbatim: false
+  reviewed: true

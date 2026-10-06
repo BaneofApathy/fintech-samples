@@ -1,0 +1,332 @@
+id: M06
+title: Count Customer Interruptions
+minutes: 6
+kind: measure
+parent: specificity-and-false-positive-rate
+question: "Among 980 legitimate transactions, a fraud detector incorrectly flags 35\
+  \ and correctly passes\n 945.\n                                    TN          \
+  \               FP\n                    Specificity =           ,     FPR =    \
+  \            .\n                                  TN + FP                  TN +\
+  \ FP\n1. Calculate specificity and false-positive rate.\n2. Verify that they sum\
+  \ to 100%.\n3. At 1 million legitimate transactions, how many false alerts would\
+  \ the same false-positive\n   rate produce? Assume the rate remains unchanged.\n\
+  4. Why is the FPR denominator legitimate transactions rather than all alerts?"
+questionPages:
+- page: 244
+  title: Specificity and FPR
+  text: " Specificity and FPR\n\n   M06 | Class problem | 6 minutes — Count Customer\
+    \ Interruptions\n\n Among 980 legitimate transactions, a fraud detector incorrectly\
+    \ flags 35 and correctly passes\n 945.\n                                    TN\
+    \                         FP\n                    Specificity =           ,  \
+    \   FPR =                .\n                                  TN + FP        \
+    \          TN + FP\n1. Calculate specificity and false-positive rate.\n2. Verify\
+    \ that they sum to 100%.\n3. At 1 million legitimate transactions, how many false\
+    \ alerts would the same false-positive\n   rate produce? Assume the rate remains\
+    \ unchanged.\n4. Why is the FPR denominator legitimate transactions rather than\
+    \ all alerts?"
+  paragraphs:
+  - Specificity and FPR
+  - M06 | Class problem | 6 minutes — Count Customer Interruptions
+  - Among 980 legitimate transactions, a fraud detector incorrectly flags 35 and correctly
+    passes 945. TN FP Specificity = , FPR = . TN + FP TN + FP 1. Calculate specificity
+    and false-positive rate. 2. Verify that they sum to 100%. 3. At 1 million legitimate
+    transactions, how many false alerts would the same false-positive rate produce?
+    Assume the rate remains unchanged. 4. Why is the FPR denominator legitimate transactions
+    rather than all alerts?
+  source:
+    pages:
+    - 244
+    verbatim: true
+formulaPages:
+- page: 240
+  title: Specificity and FPR
+  text: " Specificity and FPR\n\n   M06 | Formula explained (1/1)\n\n Question: How\
+    \ often does the model let legitimate activity pass, and how often does it\n interrupt\
+    \ it?\n                                      TN                          FP\n\
+    \                    Specif icity =             ,    FPR =               ,\n \
+    \                                  TN + FP                    TN + FP\n      \
+    \                           Specif icity + F P R = 1,\n                      \
+    \                            Expected f alse alerts = Nlegit × F P R.\n Read it\
+    \ aloud: Among legitimate transactions, divide the passed count or the flagged\
+    \ count by\n the same legitimate total. Multiply the false-positive fraction by\
+    \ future legitimate volume to\n estimate interruptions.\n The production-volume\
+    \ calculation assumes the false-positive rate remains unchanged."
+  paragraphs:
+  - Specificity and FPR
+  - M06 | Formula explained (1/1)
+  - 'Question: How often does the model let legitimate activity pass, and how often
+    does it interrupt it? TN FP Specif icity = , FPR = , TN + FP TN + FP Specif icity
+    + F P R = 1, Expected f alse alerts = Nlegit × F P R. Read it aloud: Among legitimate
+    transactions, divide the passed count or the flagged count by the same legitimate
+    total. Multiply the false-positive fraction by future legitimate volume to estimate
+    interruptions. The production-volume calculation assumes the false-positive rate
+    remains unchanged.'
+  source:
+    pages:
+    - 240
+    verbatim: true
+symbolPages:
+- page: 241
+  title: Specificity and FPR
+  text: " Specificity and FPR\n\n   M06 | Symbols and terms (1/3)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   TN        \
+    \                                     Legitimate transactions correctly passed:\
+    \ 945 in the validation\n                                                  sample.\n\
+    \   FP                                             Legitimate transactions wrongly\
+    \ flagged: 35 in the validation sample.\n   TN + FP                          \
+    \              All actual legitimate transactions: 980 in the sample.\n   Specificity;\
+    \ TNR                               True-negative rate: fraction of legitimate\
+    \ activity correctly passed."
+  paragraphs:
+  - Specificity and FPR
+  - M06 | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example TN Legitimate transactions correctly passed:
+    945 in the validation sample. FP Legitimate transactions wrongly flagged: 35 in
+    the validation sample. TN + FP All actual legitimate transactions: 980 in the
+    sample. Specificity; TNR True-negative rate: fraction of legitimate activity correctly
+    passed.'
+  source: &id001
+    pages:
+    - 241
+    verbatim: true
+- page: 242
+  title: Specificity and FPR
+  text: " Specificity and FPR\n\n   M06 | Symbols and terms (2/3)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   FPR       \
+    \                                     False-positive rate: fraction of legitimate\
+    \ activity incorrectly flagged.\n   Nlegit                                   \
+    \      Future legitimate transaction count, set to 1,000,000 for the volume\n\
+    \                                                  calculation."
+  paragraphs:
+  - Specificity and FPR
+  - M06 | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example FPR False-positive rate: fraction of legitimate
+    activity incorrectly flagged. Nlegit Future legitimate transaction count, set
+    to 1,000,000 for the volume calculation.'
+  source: &id002
+    pages:
+    - 242
+    verbatim: true
+- page: 243
+  title: Specificity and FPR
+  text: " Specificity and FPR\n\n   M06 | Symbols and terms (3/3)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   1 in Specif\
+    \ icity+F P R = 1 The whole legitimate population; the equivalent percentage is\
+    \ 100%.\n   Interruption                                   A flag, review, or\
+    \ additional check imposed on an otherwise\n                                 \
+    \                 legitimate transaction in this classroom scenario."
+  paragraphs:
+  - Specificity and FPR
+  - M06 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example 1 in Specif icity+F P R = 1 The whole legitimate
+    population; the equivalent percentage is 100%. Interruption A flag, review, or
+    additional check imposed on an otherwise legitimate transaction in this classroom
+    scenario.
+  source: &id003
+    pages:
+    - 243
+    verbatim: true
+solutionPages:
+- page: 245
+  title: Specificity and FPR
+  text: " Specificity and FPR\n\n   M06 | Worked solution — Count Customer Interruptions\n\
+    \n1. Specificity: 945/980 = 0.964286 = 96.43%.\n2. False-positive rate: 35/980\
+    \ = 0.035714 = 3.57%.\n3. Check: 96.43% + 3.57% = 100% after rounding.\n4. Scale\
+    \ to production:\n                                                  1,000,000(35/980)\
+    \ ≈ 35,714 false alerts.\n5. Use the correct denominator: FPR asks what fraction\
+    \ of legitimate activity was\n   disturbed. A denominator of all alerts would\
+    \ answer a different question about queue quality."
+  paragraphs:
+  - Specificity and FPR
+  - M06 | Worked solution — Count Customer Interruptions
+  - '1. Specificity: 945/980 = 0.964286 = 96.43%. 2. False-positive rate: 35/980 =
+    0.035714 = 3.57%. 3. Check: 96.43% + 3.57% = 100% after rounding. 4. Scale to
+    production: 1,000,000(35/980) ≈ 35,714 false alerts. 5. Use the correct denominator:
+    FPR asks what fraction of legitimate activity was disturbed. A denominator of
+    all alerts would answer a different question about queue quality.'
+  source:
+    pages:
+    - 245
+    verbatim: true
+interpretationPages:
+- page: 246
+  title: Specificity and FPR
+  text: " Specificity and FPR\n\n   M06 | Interpretation\n\n What the answer means\n\
+    \ A false-positive rate of about 3.57% would create roughly 35,714 interruptions\
+    \ per million\n legitimate transactions, under the unchanged-rate assumption.\
+    \ A small-looking rate can\n create a large operational burden.\n Why these steps\
+    \ matter\n FPR divides false alerts by legitimate transactions. One minus precision\
+    \ instead divides false\n alerts by all alerts. The same numerator can appear\
+    \ in two metrics with very different business\n meanings because their denominators\
+    \ differ."
+  paragraphs:
+  - Specificity and FPR
+  - M06 | Interpretation
+  - What the answer means A false-positive rate of about 3.57% would create roughly
+    35,714 interruptions per million legitimate transactions, under the unchanged-rate
+    assumption. A small-looking rate can create a large operational burden. Why these
+    steps matter FPR divides false alerts by legitimate transactions. One minus precision
+    instead divides false alerts by all alerts. The same numerator can appear in two
+    metrics with very different business meanings because their denominators differ.
+  source:
+    pages:
+    - 246
+    verbatim: true
+source:
+  pages:
+  - 240
+  - 241
+  - 242
+  - 243
+  - 244
+  - 245
+  - 246
+  verbatim: true
+readAloud:
+- Among legitimate transactions, divide the passed count or the flagged count by the
+  same legitimate total. Multiply the false-positive fraction by future legitimate
+  volume to estimate interruptions. The production-volume calculation assumes the
+  false-positive rate remains unchanged.
+siteAuthored: false
+givens:
+  TN: 945
+  FP: 35
+  volume: 1000000
+labels: &id004
+  TN: Legitimate transactions correctly passed
+  FP: Legitimate transactions incorrectly flagged
+  volume: Future legitimate-transaction volume
+deckSolution:
+  specificity: 0.9642857
+  FPR: 0.0357143
+  total: 1
+  falseAlerts: 35714.2857
+latex:
+- Specificity=\frac{TN}{TN+FP},\quad FPR=\frac{FP}{TN+FP}
+- \operatorname{Specificity}+FPR=1,\quad\operatorname{Expected\ false\ alerts}=N_{legit}FPR
+symbols:
+- symbol: TN
+  meaning: 'Legitimate transactions correctly passed: 945 in the validation sample.'
+  source: *id001
+- symbol: FP
+  meaning: 'Legitimate transactions wrongly flagged: 35 in the validation sample.'
+  source: *id001
+- symbol: TN + FP
+  meaning: 'All actual legitimate transactions: 980 in the sample.'
+  source: *id001
+- symbol: Specificity; TNR
+  meaning: 'True-negative rate: fraction of legitimate activity correctly passed.'
+  source: *id001
+- symbol: FPR
+  meaning: 'False-positive rate: fraction of legitimate activity incorrectly flagged.'
+  source: *id002
+- symbol: Nlegit
+  meaning: Future legitimate transaction count, set to 1,000,000 for the volume calculation.
+  source: *id002
+- symbol: 1 in Specif icity+F P R = 1 The whole legitimat
+  meaning: e population; the equivalent percentage is 100%.
+  source: *id003
+- symbol: Interruption
+  meaning: A flag, review, or additional check imposed on an otherwise legitimate
+    transaction in this classroom scenario.
+  source: *id003
+steps:
+- id: specificity
+  title: Specificity
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide correctly passed legitimate transactions by TN + FP.
+  mistakes:
+  - pattern: recompute
+    message: Divide correctly passed legitimate transactions by TN + FP.
+- id: FPR
+  title: False-positive rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide incorrectly flagged legitimate transactions by TN + FP.
+  mistakes:
+  - pattern: recompute
+    message: Divide incorrectly flagged legitimate transactions by TN + FP.
+- id: total
+  title: Specificity plus false-positive rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Both rates partition the same legitimate-transaction population.
+  mistakes:
+  - pattern: recompute
+    message: Both rates partition the same legitimate-transaction population.
+- id: falseAlerts
+  title: Expected future false alerts
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply future legitimate volume by the false-positive rate.
+  mistakes:
+  - pattern: recompute
+    message: Multiply future legitimate volume by the false-positive rate.
+learning:
+  title: Count Customer Interruptions
+  scenario: A detector passes some legitimate transactions and flags others incorrectly.
+    You will project those rates onto a larger legitimate-transaction volume.
+  task: Calculate specificity and false-positive rate, check their sum, then estimate
+    false alerts at the supplied future volume. Assume the rate stays unchanged.
+  interpretation: False-positive rate divides false alerts by actual legitimate transactions.
+    One minus precision uses all alerts instead. The same numerator can answer a different
+    question when the denominator changes.
+  summary: 'Specificity: {specificity}; false-positive rate: {FPR}. Expected false
+    alerts at the larger volume: {falseAlerts}.'
+  labels: *id004
+  steps:
+    specificity:
+      title: Specificity
+      hints: *id005
+      unit: proportion
+    FPR:
+      title: False-positive rate
+      hints: *id006
+      unit: proportion
+    total:
+      title: Specificity plus false-positive rate
+      hints: *id007
+      unit: proportion
+    falseAlerts:
+      title: Expected future false alerts
+      hints: *id008
+      unit: ''
+  readAloud:
+  - Among legitimate transactions, divide the passed count or the flagged count by
+    the same legitimate total. Multiply the false-positive fraction by future legitimate
+    volume to estimate interruptions. The production-volume calculation assumes the
+    false-positive rate remains unchanged.
+  workedExplanation:
+  - 'A false-positive rate of about 3.57% would create roughly 35,714 interruptions
+    per million legitimate transactions, under the unchanged-rate assumption. A small-looking
+    rate can create a large operational burden. '
+  - FPR divides false alerts by legitimate transactions. One minus precision instead
+    divides false alerts by all alerts. The same numerator can appear in two metrics
+    with very different business meanings because their denominators differ.
+  workedArithmetic:
+  - Specificity = 945/980 ≈ 96.43%; FPR = 35/980 ≈ 3.57%. Their unrounded fractions
+    sum to 1.
+  - At the same FPR, 1,000,000 × (35/980) ≈ 35,714 legitimate transactions would be
+    flagged.
+formulaSource:
+  pages:
+  - 240
+  verbatim: false
+  reviewed: true

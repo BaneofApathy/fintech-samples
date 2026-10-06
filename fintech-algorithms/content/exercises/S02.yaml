@@ -1,0 +1,387 @@
+id: S02
+title: Did It Answer the Whole Question?
+minutes: 7
+kind: skill
+parent: rag
+question: "An instructor’s answer key divides four financial questions into required\
+  \ components. Every\n supplied component is correct; there are no extra unsupported\
+  \ claims in this exercise.\n   Question                                 Required\
+  \ components             Correct components supplied\n   Q1                    \
+  \                                     2                                       2\n\
+  \   Q2                                                         3               \
+  \                        2\n   Q3                                              \
+  \           1                                       0\n   Q4                   \
+  \                                      4                                       4\n\
+  \ Define answer exactness as the share of questions with every required component\
+  \ correct,\n using the rubric rather than literal wording. Define component completeness\
+  \ as correctly\n supplied components / all required components.\n Calculate both.\
+  \ Which questions are incomplete?"
+questionPages:
+- page: 137
+  title: Answer Exactness and Completeness
+  text: " Answer Exactness and Completeness\n\n   S02 | Class problem | 7 minutes\
+    \ — Did It Answer the Whole Question?\n\n An instructor’s answer key divides four\
+    \ financial questions into required components. Every\n supplied component is\
+    \ correct; there are no extra unsupported claims in this exercise.\n   Question\
+    \                                 Required components             Correct components\
+    \ supplied\n   Q1                                                         2  \
+    \                                     2\n   Q2                               \
+    \                          3                                       2\n   Q3  \
+    \                                                       1                    \
+    \                   0\n   Q4                                                 \
+    \        4                                       4\n Define answer exactness as\
+    \ the share of questions with every required component correct,\n using the rubric\
+    \ rather than literal wording. Define component completeness as correctly\n supplied\
+    \ components / all required components.\n Calculate both. Which questions are\
+    \ incomplete?"
+  paragraphs:
+  - Answer Exactness and Completeness
+  - S02 | Class problem | 7 minutes — Did It Answer the Whole Question?
+  - An instructor’s answer key divides four financial questions into required components.
+    Every supplied component is correct; there are no extra unsupported claims in
+    this exercise. Question Required components Correct components supplied Q1 2 2
+    Q2 3 2 Q3 1 0 Q4 4 4 Define answer exactness as the share of questions with every
+    required component correct, using the rubric rather than literal wording. Define
+    component completeness as correctly supplied components / all required components.
+    Calculate both. Which questions are incomplete?
+  source:
+    pages:
+    - 137
+    verbatim: true
+formulaPages:
+- page: 133
+  title: Answer Exactness and Completeness
+  text: " Answer Exactness and Completeness\n\n   S02 | Formula explained (1/1)\n\n\
+    \ Question: Did the system supply every required answer component, or only some\
+    \ of them?\n                                             PQ\n                \
+    \                               q=1 1[kq = mq ]\n                            \
+    \  Exactness =                      ,\n                                      \
+    \              Q\n                                                         PQ\n\
+    \                                                           q=1 kq\n         \
+    \                 Component completeness = PQ             .\n                \
+    \                                          q=1 mq\n\n Read it aloud: For exactness,\
+    \ count questions with all required components correct and divide\n by questions.\
+    \ For completeness, add all correctly supplied components and divide by all required\n\
+    \ components.\n The source specifies that every supplied component is correct\
+    \ and there are no extra\n unsupported claims. Exactness is judged against the\
+    \ answer rubric, not literal wording."
+  paragraphs:
+  - Answer Exactness and Completeness
+  - S02 | Formula explained (1/1)
+  - 'Question: Did the system supply every required answer component, or only some
+    of them? PQ q=1 1[kq = mq ] Exactness = , Q PQ q=1 kq Component completeness =
+    PQ . q=1 mq'
+  - 'Read it aloud: For exactness, count questions with all required components correct
+    and divide by questions. For completeness, add all correctly supplied components
+    and divide by all required components. The source specifies that every supplied
+    component is correct and there are no extra unsupported claims. Exactness is judged
+    against the answer rubric, not literal wording.'
+  source:
+    pages:
+    - 133
+    verbatim: true
+symbolPages:
+- page: 134
+  title: Answer Exactness and Completeness
+  text: " Answer Exactness and Completeness\n\n   S02 | Symbols and terms (1/3)\n\n\
+    \n   Symbol or term                           Meaning in this example\n   Q, q\
+    \                                     Total question count and one question’s\
+    \ index; four questions are\n                                            evaluated.\n\
+    \   mq                                       Number of components required to\
+    \ answer question q fully.\n   kq                                       Number\
+    \ of required components correctly supplied for that question.\n   1[kq = mq ]\
+    \                              Equals 1 if all required components are supplied\
+    \ correctly; otherwise\n                                            0."
+  paragraphs:
+  - Answer Exactness and Completeness
+  - S02 | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example Q, q Total question count and one question’s
+    index; four questions are evaluated. mq Number of components required to answer
+    question q fully. kq Number of required components correctly supplied for that
+    question. 1[kq = mq ] Equals 1 if all required components are supplied correctly;
+    otherwise 0.
+  source: &id001
+    pages:
+    - 134
+    verbatim: true
+- page: 135
+  title: Answer Exactness and Completeness
+  text: " Answer Exactness and Completeness\n\n   S02 | Symbols and terms (2/3)\n\n\
+    \n   Symbol or term                           Meaning in this example\n   Component\
+    \                                One required fact, calculation, or explanation\
+    \ specified in the answer\n                                            key.\n\
+    \   Rubric                                   The explicit criteria used to determine\
+    \ whether an answer contains\n                                            the\
+    \ required correct content."
+  paragraphs:
+  - Answer Exactness and Completeness
+  - S02 | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Component One required fact, calculation,
+    or explanation specified in the answer key. Rubric The explicit criteria used
+    to determine whether an answer contains the required correct content.
+  source: &id002
+    pages:
+    - 135
+    verbatim: true
+- page: 136
+  title: Answer Exactness and Completeness
+  text: " Answer Exactness and Completeness\n\n   S02 | Symbols and terms (3/3)\n\n\
+    \n   Symbol or term                           Meaning in this example\n   Exactness\
+    \                                Whole-question success rate under this rubric;\
+    \ not exact character\n                                            matching.\n\
+    \   Component completeness                   Correctly supplied required content\
+    \ as a share of all required content,\n                                      \
+    \      pooled across questions.\n   Pooled                                   Counts\
+    \ are added before division; a question requiring four\n                     \
+    \                       components contributes four to the component denominator."
+  paragraphs:
+  - Answer Exactness and Completeness
+  - S02 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Exactness Whole-question success rate under
+    this rubric; not exact character matching. Component completeness Correctly supplied
+    required content as a share of all required content, pooled across questions.
+    Pooled Counts are added before division; a question requiring four components
+    contributes four to the component denominator.
+  source: &id003
+    pages:
+    - 136
+    verbatim: true
+solutionPages:
+- page: 138
+  title: Answer Exactness and Completeness
+  text: " Answer Exactness and Completeness\n\n   S02 | Worked solution — Did It Answer\
+    \ the Whole Question?\n\n1. Entirely correct answers: Q1 supplies 2/2 and Q4 supplies\
+    \ 4/4. Q2 and Q3 are incomplete.\n2. Answer exactness: 2/4 = 50%.\n3. Total required\
+    \ components: 2 + 3 + 1 + 4 = 10.\n4. Correctly supplied components: 2 + 2 + 0\
+    \ + 4 = 8.\n5. Component completeness: 8/10 = 80%."
+  paragraphs:
+  - Answer Exactness and Completeness
+  - S02 | Worked solution — Did It Answer the Whole Question?
+  - '1. Entirely correct answers: Q1 supplies 2/2 and Q4 supplies 4/4. Q2 and Q3 are
+    incomplete. 2. Answer exactness: 2/4 = 50%. 3. Total required components: 2 +
+    3 + 1 + 4 = 10. 4. Correctly supplied components: 2 + 2 + 0 + 4 = 8. 5. Component
+    completeness: 8/10 = 80%.'
+  source:
+    pages:
+    - 138
+    verbatim: true
+interpretationPages:
+- page: 139
+  title: Answer Exactness and Completeness
+  text: " Answer Exactness and Completeness\n\n   S02 | Interpretation\n\n What the\
+    \ answer means\n The system supplied most required facts but fully answered only\
+    \ half the questions. Reporting\n 80% alone would hide the incomplete answers.\
+    \ Components are equally weighted in this\n exercise; missing a critical covenant\
+    \ or denominator may matter more than missing a minor\n descriptive detail.\n\
+    \ Why these steps matter\n Exactness gives every question one vote. Pooled completeness\
+    \ gives every required component\n one vote. A partly answered three-component\
+    \ question can contribute two correct components\n but zero fully correct questions.\
+    \ Neither measure alone establishes whether a missing\n component is financially\
+    \ critical."
+  paragraphs:
+  - Answer Exactness and Completeness
+  - S02 | Interpretation
+  - What the answer means The system supplied most required facts but fully answered
+    only half the questions. Reporting 80% alone would hide the incomplete answers.
+    Components are equally weighted in this exercise; missing a critical covenant
+    or denominator may matter more than missing a minor descriptive detail. Why these
+    steps matter Exactness gives every question one vote. Pooled completeness gives
+    every required component one vote. A partly answered three-component question
+    can contribute two correct components but zero fully correct questions. Neither
+    measure alone establishes whether a missing component is financially critical.
+  source:
+    pages:
+    - 139
+    verbatim: true
+source:
+  pages:
+  - 133
+  - 134
+  - 135
+  - 136
+  - 137
+  - 138
+  - 139
+  verbatim: true
+readAloud:
+- For exactness, count questions with all required components correct and divide by
+  questions. For completeness, add all correctly supplied components and divide by
+  all required components. The source specifies that every supplied component is correct
+  and there are no extra unsupported claims. Exactness is judged against the answer
+  rubric, not literal wording.
+siteAuthored: false
+givens:
+  required:
+  - 2
+  - 3
+  - 1
+  - 4
+  correct:
+  - 2
+  - 2
+  - 0
+  - 4
+labels: &id004
+  required: Required components for each question
+  correct: Correct supplied components for each question
+deckSolution:
+  complete: 2
+  exactness: 0.5
+  required: 10
+  correct: 8
+  completeness: 0.8
+latex:
+- \operatorname{exactness}=\frac{N_{complete}}{N_{questions}},\quad \operatorname{completeness}=\frac{N_{correct\
+  components}}{N_{required\ components}}
+symbols:
+- symbol: Q, q
+  meaning: Total question count and one question’s index; four questions are evaluated.
+  source: *id001
+- symbol: mq
+  meaning: Number of components required to answer question q fully.
+  source: *id001
+- symbol: kq
+  meaning: Number of required components correctly supplied for that question.
+  source: *id001
+- symbol: 1[kq = mq ]
+  meaning: Equals 1 if all required components are supplied correctly; otherwise 0.
+  source: *id001
+- symbol: Component
+  meaning: One required fact, calculation, or explanation specified in the answer
+    key.
+  source: *id002
+- symbol: Rubric
+  meaning: The explicit criteria used to determine whether an answer contains the
+    required correct content.
+  source: *id002
+- symbol: Exactness
+  meaning: Whole-question success rate under this rubric; not exact character matching.
+  source: *id003
+- symbol: Component completeness
+  meaning: Correctly supplied required content as a share of all required content,
+    pooled across questions.
+  source: *id003
+- symbol: Pooled
+  meaning: Counts are added before division; a question requiring four components
+    contributes four to the component denominator.
+  source: *id003
+steps:
+- id: complete
+  title: Fully answered questions
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Count positions where supplied and required component counts are equal.
+  mistakes:
+  - pattern: recompute
+    message: Count positions where supplied and required component counts are equal.
+- id: exactness
+  title: Answer exactness
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide fully answered questions by the number of questions.
+  mistakes:
+  - pattern: recompute
+    message: Divide fully answered questions by the number of questions.
+- id: required
+  title: Total required components
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Add the required component counts.
+  mistakes:
+  - pattern: recompute
+    message: Add the required component counts.
+- id: correct
+  title: Total correct components supplied
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Add the correct supplied component counts.
+  mistakes:
+  - pattern: recompute
+    message: Add the correct supplied component counts.
+- id: completeness
+  title: Component completeness
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Divide total correct supplied components by total required components.
+  mistakes:
+  - pattern: recompute
+    message: Divide total correct supplied components by total required components.
+learning:
+  title: Did It Answer the Whole Question?
+  scenario: An answer rubric lists required components for each question. All supplied
+    components are correct; no extra unsupported claims are present.
+  task: Count questions with every required component, then calculate question-level
+    exactness and pooled component completeness.
+  interpretation: Exactness gives each question equal weight. Pooled completeness
+    gives each required component equal weight. Missing a critical fact may matter
+    more than the aggregate score suggests.
+  summary: 'Fully answered questions: {complete}. Exactness: {exactness}. Component
+    completeness: {completeness}.'
+  labels: *id004
+  steps:
+    complete:
+      title: Fully answered questions
+      hints: *id005
+      unit: ''
+    exactness:
+      title: Answer exactness
+      hints: *id006
+      unit: proportion
+    required:
+      title: Total required components
+      hints: *id007
+      unit: ''
+    correct:
+      title: Total correct components supplied
+      hints: *id008
+      unit: ''
+    completeness:
+      title: Component completeness
+      hints: *id009
+      unit: proportion
+  readAloud:
+  - For exactness, count questions with all required components correct and divide
+    by questions. For completeness, add all correctly supplied components and divide
+    by all required components. This example assumes that every supplied component
+    is correct and there are no extra unsupported claims. Exactness is judged against
+    the answer rubric, not literal wording.
+  workedExplanation:
+  - 'The system supplied most required facts but fully answered only half the questions.
+    Reporting 80% alone would hide the incomplete answers. Components are equally
+    weighted in this exercise; missing a critical covenant or denominator may matter
+    more than missing a minor descriptive detail. '
+  - Exactness gives every question one vote. Pooled completeness gives every required
+    component one vote. A partly answered three-component question can contribute
+    two correct components but zero fully correct questions. Neither measure alone
+    establishes whether a missing component is financially critical.
+  workedArithmetic:
+  - Q1 supplies 2/2 components and Q4 supplies 4/4; both are complete. Q2 supplies
+    2/3 and Q3 supplies 0/1, so both are incomplete.
+  - Exactness = 2 fully answered questions / 4 questions = 50%.
+  - Required components = 2 + 3 + 1 + 4 = 10. Correct supplied components = 2 + 2
+    + 0 + 4 = 8. Completeness = 8/10 = 80%.
+formulaSource:
+  pages:
+  - 133
+  verbatim: false
+  reviewed: true

@@ -1,0 +1,226 @@
+slug: mean-absolute-error
+number: 20
+title: Mean Absolute Error
+question: forecast
+financialInterpretation: Mean absolute error is the average size of the forecast miss
+  in the original financial unit. Every dollar of error receives equal weight.
+workingExample: ': daily settlement outflow in $ millions Actual values: [100, 120,
+  80, 150]; forecasts: [90, 130, 100, 140]. Absolute errors = [10, 10, 20, 10] 10
+  + 10 + 20 + 10 M AE = = $12.5 million 4 Treasury is off by $12.5 million per day
+  on average.'
+whatItMisses: MAE treats a $20 million miss as exactly twice a $10 million miss. It
+  does not emphasize extreme errors or direction.
+exercises:
+- M20
+widget: forecast-eval
+usedBy:
+- time-series
+slides:
+- page: 368
+  title: EVALUATION MEASURE 20 OF 39
+  text: "    EVALUATION MEASURE 20 OF 39\n\n\n\n\n       Mean Absolute Error (MAE)\n\
+    \    The average size of a forecast error in the same units as the\n         \
+    \                 financial target."
+  paragraphs:
+  - EVALUATION MEASURE 20 OF 39
+  - Mean Absolute Error (MAE) The average size of a forecast error in the same units
+    as the financial target.
+  source:
+    pages:
+    - 368
+    verbatim: true
+- page: 369
+  title: MAE – on average, how far was the forecast from reality?
+  text: " MAE – on average, how far was the forecast from reality?\n\n Financial interpretation\n\
+    \ Mean absolute error is the average size of the forecast miss in the original\
+    \ financial unit. Every dollar of\n error receives equal weight.\n\n Working example:\
+    \ daily settlement outflow in $ millions\n Actual values: [100, 120, 80, 150];\
+    \ forecasts: [90, 130, 100, 140].\n\n                                        \
+    \              Absolute errors = [10, 10, 20, 10]\n                          \
+    \                 10 + 10 + 20 + 10\n                                        \
+    \          M AE =     = $12.5 million\n                                      \
+    \              4\n Treasury is off by $12.5 million per day on average.\n\n What\
+    \ it misses\n MAE treats a $20 million miss as exactly twice a $10 million miss.\
+    \ It does not emphasize extreme errors or\n direction."
+  paragraphs:
+  - MAE – on average, how far was the forecast from reality?
+  - Financial interpretation Mean absolute error is the average size of the forecast
+    miss in the original financial unit. Every dollar of error receives equal weight.
+  - 'Working example: daily settlement outflow in $ millions Actual values: [100,
+    120, 80, 150]; forecasts: [90, 130, 100, 140].'
+  - Absolute errors = [10, 10, 20, 10] 10 + 10 + 20 + 10 M AE = = $12.5 million 4
+    Treasury is off by $12.5 million per day on average.
+  - What it misses MAE treats a $20 million miss as exactly twice a $10 million miss.
+    It does not emphasize extreme errors or direction.
+  source:
+    pages:
+    - 369
+    verbatim: true
+- page: 370
+  title: MAE
+  text: " MAE\n\n   M20 | Formula explained (1/1)\n\n Question: How large is the average\
+    \ forecast miss in dollars?\n                                                n\n\
+    \                                             1X\n                           \
+    \        M AE =          |yi − ŷi |,\n                                      \
+    \       n i=1\n                                                              \
+    \  M AEbaseline − M AEmodel\n                                                \
+    \  Reduction =                            .\n                                \
+    \                                     M AEbaseline\n Read it aloud: Find each\
+    \ actual-minus-forecast difference, remove its sign, add those\n magnitudes, and\
+    \ divide by the number of days. To measure improvement, divide the reduction\n\
+    \ by the baseline’s error.\n The raw table uses thousands of dollars. A final\
+    \ MAE of one table unit means US$1,000. The\n reduction is a fraction; convert\
+    \ it to a percentage at the end."
+  paragraphs:
+  - MAE
+  - M20 | Formula explained (1/1)
+  - 'Question: How large is the average forecast miss in dollars? n 1X M AE = |yi
+    − ŷi |, n i=1 M AEbaseline − M AEmodel Reduction = . M AEbaseline Read it aloud:
+    Find each actual-minus-forecast difference, remove its sign, add those magnitudes,
+    and divide by the number of days. To measure improvement, divide the reduction
+    by the baseline’s error. The raw table uses thousands of dollars. A final MAE
+    of one table unit means US$1,000. The reduction is a fraction; convert it to a
+    percentage at the end.'
+  source:
+    pages:
+    - 370
+    verbatim: true
+- page: 371
+  title: MAE
+  text: " MAE\n\n   M20 | Symbols and terms (1/2)\n\n\n   Symbol or term         \
+    \                        Meaning in this example\n   MAE                     \
+    \                       Mean absolute error: arithmetic average of the magnitudes\
+    \ of the\n                                                  forecast errors.\n\
+    \   n, i                                           Number of evaluated days, here\
+    \ 4, and a day index.\n   yi                                             Actual\
+    \ settlement outflow for day i, in thousands of dollars.\n   ŷi             \
+    \                               Forecast made for day i; the hat means predicted\
+    \ rather than\n                                                  observed.\n \
+    \  |yi − ŷi |                                    Absolute error: the distance\
+    \ between actual and forecast with its\n                                     \
+    \             sign removed.\n   Pn\n         i=1                             \
+    \         Add the absolute-error term for every evaluated day."
+  paragraphs:
+  - MAE
+  - M20 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example MAE Mean absolute error: arithmetic average
+    of the magnitudes of the forecast errors. n, i Number of evaluated days, here
+    4, and a day index. yi Actual settlement outflow for day i, in thousands of dollars.
+    ŷi Forecast made for day i; the hat means predicted rather than observed. |yi
+    − ŷi | Absolute error: the distance between actual and forecast with its sign
+    removed. Pn i=1 Add the absolute-error term for every evaluated day.'
+  source:
+    pages:
+    - 371
+    verbatim: true
+- page: 372
+  title: MAE
+  text: " MAE\n\n   M20 | Symbols and terms (2/2)\n\n\n   Symbol or term         \
+    \                        Meaning in this example\n   M AEbaseline , M AEmodel\
+    \                       Mean errors from the simple comparison forecast and the\
+    \ proposed\n                                                  model on the same\
+    \ days.\n   Reduction                                      Relative decrease in\
+    \ error using the baseline as denominator, not a\n                           \
+    \                       direct estimate of funding-cost savings.\n   Baseline\
+    \ forecast                              The supplied constant 100-thousand-dollar\
+    \ prediction, not the\n                                                  test-set\
+    \ mean."
+  paragraphs:
+  - MAE
+  - M20 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example M AEbaseline , M AEmodel Mean errors from
+    the simple comparison forecast and the proposed model on the same days. Reduction
+    Relative decrease in error using the baseline as denominator, not a direct estimate
+    of funding-cost savings. Baseline forecast The supplied constant 100-thousand-dollar
+    prediction, not the test-set mean.
+  source:
+    pages:
+    - 372
+    verbatim: true
+- page: 373
+  title: MAE
+  text: " MAE\n\n   M20 | Class problem | 6 minutes — How Many Dollars Was the Forecast\
+    \ Off?\n\n Treasury forecasts four daily settlement outflows. All values are in\
+    \ $ thousands.\n   Day                                               Actual  \
+    \   Model forecast               Simple baseline forecast\n   1              \
+    \                                     100                     90             \
+    \                   100\n   2                                                \
+    \   120                   130                                 100\n   3      \
+    \                                                 80                100      \
+    \                           100\n   4                                        \
+    \           150                   140                                 100\n  \
+    \                                                      P\n                   \
+    \                           |actual − f orecast|\n                           \
+    \                       M AE =           .\n                                 \
+    \                      n\n Calculate each forecast’s MAE and the model’s percentage\
+    \ reduction in MAE relative to the\n baseline. Explain the answer in dollars,\
+    \ not just as a score."
+  paragraphs:
+  - MAE
+  - M20 | Class problem | 6 minutes — How Many Dollars Was the Forecast Off?
+  - Treasury forecasts four daily settlement outflows. All values are in $ thousands.
+    Day Actual Model forecast Simple baseline forecast 1 100 90 100 2 120 130 100
+    3 80 100 100 4 150 140 100 P |actual − f orecast| M AE = . n Calculate each forecast’s
+    MAE and the model’s percentage reduction in MAE relative to the baseline. Explain
+    the answer in dollars, not just as a score.
+  source:
+    pages:
+    - 373
+    verbatim: true
+- page: 374
+  title: MAE
+  text: " MAE\n\n   M20 | Worked solution — How Many Dollars Was the Forecast Off?\n\
+    \n1. Model absolute errors: |100 − 90| = 10, |120 − 130| = 10, |80 − 100| = 20,\n\
+    \   |150 − 140| = 10.\n2. Model MAE: (10 + 10 + 20 + 10)/4 = 12.5 thousand dollars.\n\
+    3. Baseline absolute errors: 0, 20, 20, 50.\n4. Baseline MAE: (0 + 20 + 20 + 50)/4\
+    \ = 22.5 thousand dollars.\n5. Improvement: 22.5 − 12.5 = 10 thousand dollars;\
+    \ relative reduction = 10/22.5 = 44.44%."
+  paragraphs:
+  - MAE
+  - M20 | Worked solution — How Many Dollars Was the Forecast Off?
+  - '1. Model absolute errors: |100 − 90| = 10, |120 − 130| = 10, |80 − 100| = 20,
+    |150 − 140| = 10. 2. Model MAE: (10 + 10 + 20 + 10)/4 = 12.5 thousand dollars.
+    3. Baseline absolute errors: 0, 20, 20, 50. 4. Baseline MAE: (0 + 20 + 20 + 50)/4
+    = 22.5 thousand dollars. 5. Improvement: 22.5 − 12.5 = 10 thousand dollars; relative
+    reduction = 10/22.5 = 44.44%.'
+  source:
+    pages:
+    - 374
+    verbatim: true
+- page: 375
+  title: MAE
+  text: " MAE\n\n   M20 | Interpretation\n\n What the answer means\n The model misses\
+    \ actual settlement outflow by $12,500 per day on average, versus $22,500\n for\
+    \ the baseline in this sample. The smaller miss is not automatically an equal\
+    \ dollar saving:\n MAE measures forecast error, not funding cost. It also does\
+    \ not show whether the forecast was\n too high or too low.\n Why these steps matter\n\
+    \ Using absolute differences stops overforecasts and underforecasts from cancelling\
+    \ each other.\n The mean remains in the financial target’s units, which makes\
+    \ it interpretable. It does not\n distinguish the funding consequences of a shortage\
+    \ from those of excess cash."
+  paragraphs:
+  - MAE
+  - M20 | Interpretation
+  - 'What the answer means The model misses actual settlement outflow by $12,500 per
+    day on average, versus $22,500 for the baseline in this sample. The smaller miss
+    is not automatically an equal dollar saving: MAE measures forecast error, not
+    funding cost. It also does not show whether the forecast was too high or too low.
+    Why these steps matter Using absolute differences stops overforecasts and underforecasts
+    from cancelling each other. The mean remains in the financial target’s units,
+    which makes it interpretable. It does not distinguish the funding consequences
+    of a shortage from those of excess cash.'
+  source:
+    pages:
+    - 375
+    verbatim: true
+source:
+  pages:
+  - 368
+  - 369
+  - 370
+  - 371
+  - 372
+  - 373
+  - 374
+  - 375
+  verbatim: true

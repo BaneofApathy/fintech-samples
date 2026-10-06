@@ -1,0 +1,376 @@
+slug: expected-cost
+number: 17
+title: Expected Cost
+question: act
+financialInterpretation: Expected cost converts model errors into dollars. It is often
+  the clearest way to choose an operating threshold.
+workingExample: Assume each missed fraud costs $500 and each false alert costs $4.
+  Threshold TP FP FN Error cost A 60 140 40 40(500) + 140(4) = $20,560 Threshold B
+  has lower precision, but it B 75 500 25 25(500) + 500(4) = $14,500 creates lower
+  modeled loss because missed fraud is expensive.
+whatItMisses: Cost estimates can be wrong, review capacity may cap volume, and customer
+  harm may not be fully monetized. Stress the assumptions.
+exercises:
+- M17a
+- M17b
+widget: threshold-explorer
+usedBy:
+- logistic-regression
+- trees-and-forests
+- gradient-boosting
+slides:
+- page: 336
+  title: EVALUATION MEASURE 17 OF 39
+  text: "    EVALUATION MEASURE 17 OF 39\n\n\n\n\n                     Expected Cost\n\
+    \      Converts false positives and false negatives into dollars to\n        \
+    \            choose an operating threshold."
+  paragraphs:
+  - EVALUATION MEASURE 17 OF 39
+  - Expected Cost Converts false positives and false negatives into dollars to choose
+    an operating threshold.
+  source:
+    pages:
+    - 336
+    verbatim: true
+- page: 337
+  title: Expected cost – which threshold creates the lower financial loss?
+  text: " Expected cost – which threshold creates the lower financial loss?\n\n Financial\
+    \ interpretation\n Expected cost converts model errors into dollars. It is often\
+    \ the clearest way to choose an operating\n threshold.\n\n Working example\n Assume\
+    \ each missed fraud costs $500 and each false alert costs $4.\n    Threshold \
+    \             TP          FP         FN                   Error cost\n    A  \
+    \                     60        140         40   40(500) + 140(4) = $20,560  \
+    \ Threshold B has lower precision, but it\n    B                       75    \
+    \    500         25   25(500) + 500(4) = $14,500\n\n creates lower modeled loss\
+    \ because missed fraud is expensive.\n\n What it misses\n Cost estimates can be\
+    \ wrong, review capacity may cap volume, and customer harm may not be fully\n\
+    \ monetized. Stress the assumptions."
+  paragraphs:
+  - Expected cost – which threshold creates the lower financial loss?
+  - Financial interpretation Expected cost converts model errors into dollars. It
+    is often the clearest way to choose an operating threshold.
+  - Working example Assume each missed fraud costs $500 and each false alert costs
+    $4. Threshold TP FP FN Error cost A 60 140 40 40(500) + 140(4) = $20,560 Threshold
+    B has lower precision, but it B 75 500 25 25(500) + 500(4) = $14,500
+  - creates lower modeled loss because missed fraud is expensive.
+  - What it misses Cost estimates can be wrong, review capacity may cap volume, and
+    customer harm may not be fully monetized. Stress the assumptions.
+  source:
+    pages:
+    - 337
+    verbatim: true
+- page: 338
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Formula explained (1/1)\n\n Question: Which threshold\
+    \ has lower modeled error cost and can actually be operated?\n               \
+    \                       C = cF N F N + cF P F P,   V = T P + F P,            V\
+    \ ≤ H.\n Read it aloud: Add the dollar cost of missed frauds and false alerts.\
+    \ Separately count all alerts\n and require that count to fit daily review capacity.\n\
+    \ The example prices only false-negative and false-positive errors. Correct decisions\
+    \ have zero\n incremental cost in this particular loss table.\n This is distinct\
+    \ from pricing every review. Preserve the stated cost convention when comparing\n\
+    \ the two thresholds."
+  paragraphs:
+  - Expected Cost
+  - M17a | Formula explained (1/1)
+  - 'Question: Which threshold has lower modeled error cost and can actually be operated?
+    C = cF N F N + cF P F P, V = T P + F P, V ≤ H. Read it aloud: Add the dollar cost
+    of missed frauds and false alerts. Separately count all alerts and require that
+    count to fit daily review capacity. The example prices only false-negative and
+    false-positive errors. Correct decisions have zero incremental cost in this particular
+    loss table. This is distinct from pricing every review. Preserve the stated cost
+    convention when comparing the two thresholds.'
+  source:
+    pages:
+    - 338
+    verbatim: true
+- page: 339
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   TP             \
+    \                                Fraud correctly flagged and sent to review.\n\
+    \   FP                                             Legitimate transactions incorrectly\
+    \ flagged.\n   FN                                             Actual frauds not\
+    \ flagged.\n   cF N                                           Assumed cost per\
+    \ missed fraud, US$500.\n   cF P                                           Assumed\
+    \ cost per false alert, US$4.\n   C                                          \
+    \    Total modeled error cost for the sample, in dollars."
+  paragraphs:
+  - Expected Cost
+  - M17a | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example TP Fraud correctly flagged and sent to
+    review. FP Legitimate transactions incorrectly flagged. FN Actual frauds not flagged.
+    cF N Assumed cost per missed fraud, US$500. cF P Assumed cost per false alert,
+    US$4. C Total modeled error cost for the sample, in dollars.
+  source:
+    pages:
+    - 339
+    verbatim: true
+- page: 340
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   V              \
+    \                                Number of alerts requiring review under a threshold:\
+    \ caught fraud\n                                                  plus false alerts.\n\
+    \   H                                              Human review capacity, 75 alerts\
+    \ per day.\n   V ≤H                                           Feasibility condition:\
+    \ alert volume cannot exceed available capacity.\n   Incremental cost        \
+    \                       Extra expense or loss attributed to an outcome in the\
+    \ stated model;\n                                                  zero for the\
+    \ other outcomes here."
+  paragraphs:
+  - Expected Cost
+  - M17a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example V Number of alerts requiring review under
+    a threshold: caught fraud plus false alerts. H Human review capacity, 75 alerts
+    per day. V ≤H Feasibility condition: alert volume cannot exceed available capacity.
+    Incremental cost Extra expense or loss attributed to an outcome in the stated
+    model; zero for the other outcomes here.'
+  source:
+    pages:
+    - 340
+    verbatim: true
+- page: 341
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Class problem | 8 minutes — Check Economics and\
+    \ Capacity\n\n Two thresholds are evaluated on the same 20 frauds:\n   Threshold\
+    \                                                  TP                        \
+    \    FP          FN\n   A                                                    \
+    \       15                            35           5\n   B                   \
+    \                                        18                            82    \
+    \       2\n\n Each missed fraud costs $500. Each false alert costs $4. For this\
+    \ simplified cost model, other\n outcomes have zero incremental cost.\n      \
+    \                                            Error cost = 500(F N ) + 4(F P ).\n\
+    \ The team can review 75 alerts per day; every flag requires review.\n Calculate\
+    \ each threshold’s cost and review volume. Which has the lower modeled cost? Which\n\
+    \ is feasible with the existing team? State what must change before selecting\
+    \ the other operating\n point."
+  paragraphs:
+  - Expected Cost
+  - M17a | Class problem | 8 minutes — Check Economics and Capacity
+  - 'Two thresholds are evaluated on the same 20 frauds: Threshold TP FP FN A 15 35
+    5 B 18 82 2'
+  - Each missed fraud costs $500. Each false alert costs $4. For this simplified cost
+    model, other outcomes have zero incremental cost. Error cost = 500(F N ) + 4(F
+    P ). The team can review 75 alerts per day; every flag requires review. Calculate
+    each threshold’s cost and review volume. Which has the lower modeled cost? Which
+    is feasible with the existing team? State what must change before selecting the
+    other operating point.
+  source:
+    pages:
+    - 341
+    verbatim: true
+- page: 342
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Worked solution — Check Economics and Capacity\n\
+    \n1. Threshold A:\n                                                  5(500) +\
+    \ 35(4) = 2,500 + 140 = $2,640.\n2. Threshold B:\n                           \
+    \                       2(500) + 82(4) = 1,000 + 328 = $1,328.\n3. Modeled savings\
+    \ from B: 2,640 − 1,328 = $1,312.\n4. Review volumes: A produces 15 + 35 = 50\
+    \ alerts; B produces 18 + 82 = 100.\n5. Apply the capacity limit: A fits within\
+    \ 75; B exceeds capacity by 25 alerts."
+  paragraphs:
+  - Expected Cost
+  - M17a | Worked solution — Check Economics and Capacity
+  - '1. Threshold A: 5(500) + 35(4) = 2,500 + 140 = $2,640. 2. Threshold B: 2(500)
+    + 82(4) = 1,000 + 328 = $1,328. 3. Modeled savings from B: 2,640 − 1,328 = $1,312.
+    4. Review volumes: A produces 15 + 35 = 50 alerts; B produces 18 + 82 = 100. 5.
+    Apply the capacity limit: A fits within 75; B exceeds capacity by 25 alerts.'
+  source:
+    pages:
+    - 342
+    verbatim: true
+- page: 343
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Interpretation\n\n What the answer means\n B\
+    \ has lower modeled error cost but is not feasible under the stated review policy.\
+    \ A is the\n feasible choice among these two today. B requires additional capacity\
+    \ or a separately tested\n workflow—not an assumption that unreviewed alerts still\
+    \ prevent fraud.\n Why these steps matter\n A lower computed cost assumes the\
+    \ required interventions can be delivered. Once the review\n queue exceeds capacity,\
+    \ the loss calculation is no longer enough to justify that operating point.\n\
+    \ Unreviewed alerts must not be credited as prevented fraud."
+  paragraphs:
+  - Expected Cost
+  - M17a | Interpretation
+  - What the answer means B has lower modeled error cost but is not feasible under
+    the stated review policy. A is the feasible choice among these two today. B requires
+    additional capacity or a separately tested workflow—not an assumption that unreviewed
+    alerts still prevent fraud. Why these steps matter A lower computed cost assumes
+    the required interventions can be delivered. Once the review queue exceeds capacity,
+    the loss calculation is no longer enough to justify that operating point. Unreviewed
+    alerts must not be credited as prevented fraud.
+  source:
+    pages:
+    - 343
+    verbatim: true
+- page: 344
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Formula explained (1/1)\n\n Question: At\
+    \ what fraud probability do the two actions have equal expected cost?\n      \
+    \                                                Cpass = cF N p,        Cf lag\
+    \ = cF P (1 − p).\n Read it aloud: Passing incurs the missed-fraud loss only when\
+    \ the transaction is fraud.\n Flagging incurs the false-alert cost only when it\
+    \ is legitimate, under the supplied assumptions.\n Set the costs equal and solve:\n\
+    \                                                                            \
+    \                  cF P\n                                                  cF\
+    \ N p∗ = cF P (1 − p∗ )    ⇒    p∗ =               .\n                       \
+    \                                                                   cF N + cF\
+    \ P\n Below the crossing choose pass; above it choose flag. At exact equality\
+    \ the actions have the\n same modeled cost."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Formula explained (1/1)
+  - 'Question: At what fraud probability do the two actions have equal expected cost?
+    Cpass = cF N p, Cf lag = cF P (1 − p). Read it aloud: Passing incurs the missed-fraud
+    loss only when the transaction is fraud. Flagging incurs the false-alert cost
+    only when it is legitimate, under the supplied assumptions. Set the costs equal
+    and solve: cF P cF N p∗ = cF P (1 − p∗ ) ⇒ p∗ = . cF N + cF P Below the crossing
+    choose pass; above it choose flag. At exact equality the actions have the same
+    modeled cost.'
+  source:
+    pages:
+    - 344
+    verbatim: true
+- page: 345
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   p      \
+    \                                        Calibrated probability that the transaction\
+    \ is fraud, entered as a\n                                                  decimal.\n\
+    \   1−p                                            Probability that it is legitimate;\
+    \ the complementary binary outcome.\n   cF N                                 \
+    \          Loss from passing a fraud, US$500.\n   cF P                       \
+    \                    Cost from flagging a legitimate case, US$4.\n   Cpass , Cf\
+    \ lag                                 Expected dollar costs per transaction of\
+    \ the two possible actions.\n       ∗\n   p                                  \
+    \            Break-even probability where expected costs match; the star marks\
+    \ a\n                                                  solution, not multiplication."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example p Calibrated probability that the transaction
+    is fraud, entered as a decimal. 1−p Probability that it is legitimate; the complementary
+    binary outcome. cF N Loss from passing a fraud, US$500. cF P Cost from flagging
+    a legitimate case, US$4. Cpass , Cf lag Expected dollar costs per transaction
+    of the two possible actions. ∗ p Break-even probability where expected costs match;
+    the star marks a solution, not multiplication.
+  source:
+    pages:
+    - 345
+    verbatim: true
+- page: 346
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Calibrated\
+    \ probability                         A probability estimate whose stated event\
+    \ rates agree with observed\n                                                \
+    \  rates in relevant groups.\n   Perfect intervention                        \
+    \   Flagging avoids the fraud loss completely in this toy cost model; no\n   assumption\
+    \                                     separate true-alert fee is charged.\n  \
+    \ Break-even threshold                           Cost crossing for these two actions\
+    \ only; additional costs or capacity\n                                       \
+    \           limits can move the appropriate policy cutoff."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Calibrated probability A probability estimate
+    whose stated event rates agree with observed rates in relevant groups. Perfect
+    intervention Flagging avoids the fraud loss completely in this toy cost model;
+    no assumption separate true-alert fee is charged. Break-even threshold Cost crossing
+    for these two actions only; additional costs or capacity limits can move the appropriate
+    policy cutoff.
+  source:
+    pages:
+    - 346
+    verbatim: true
+- page: 347
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Class problem | 8 minutes — Why the Cutoff\
+    \ Need Not Be 50%\n\n Use a simplified two-action fraud decision with calibrated\
+    \ fraud probability p:\n▶ Pass a fraud: loss $500.\n▶ Flag a legitimate transaction:\
+    \ cost $4.\n▶ Correct actions: zero incremental cost.\n Assume flagging prevents\
+    \ the fraud loss. Ignore capacity constraints and other costs for this\n exercise.\n\
+    \                                                  Cpass = 500p,   Cf lag = 4(1\
+    \ − p).\n\n1. Solve for the probability where the actions have equal expected\
+    \ cost.\n2. Choose the lower-cost action for p = 0.5%, 1%, and 10%.\n3. Why would\
+    \ using a 50% threshold be inconsistent with these assumptions?"
+  paragraphs:
+  - Threshold Economics
+  - M17b | Class problem | 8 minutes — Why the Cutoff Need Not Be 50%
+  - 'Use a simplified two-action fraud decision with calibrated fraud probability
+    p: ▶ Pass a fraud: loss $500. ▶ Flag a legitimate transaction: cost $4. ▶ Correct
+    actions: zero incremental cost. Assume flagging prevents the fraud loss. Ignore
+    capacity constraints and other costs for this exercise. Cpass = 500p, Cf lag =
+    4(1 − p).'
+  - 1. Solve for the probability where the actions have equal expected cost. 2. Choose
+    the lower-cost action for p = 0.5%, 1%, and 10%. 3. Why would using a 50% threshold
+    be inconsistent with these assumptions?
+  source:
+    pages:
+    - 347
+    verbatim: true
+- page: 348
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Worked solution — Why the Cutoff Need Not\
+    \ Be 50%\n\n1. Set costs equal: 500p = 4(1 − p) = 4 − 4p.\n2. Solve: 504p = 4,\
+    \ so\n                                                   p∗ = 4/504 = 0.0079365\
+    \ = 0.79365%.\n3. Calculate each action’s cost.\n   Fraud probability        \
+    \                              Pass cost             Flag cost Lower-cost action\n\
+    \   0.5%                                           500(0.005) = $2.50   4(0.995)\
+    \ = $3.98 Pass\n   1%                                             500(0.01) =\
+    \ $5.00     4(0.99) = $3.96 Flag\n   10%                                     \
+    \       500(0.10) = $50.00    4(0.90) = $3.60 Flag"
+  paragraphs:
+  - Threshold Economics
+  - M17b | Worked solution — Why the Cutoff Need Not Be 50%
+  - '1. Set costs equal: 500p = 4(1 − p) = 4 − 4p. 2. Solve: 504p = 4, so p∗ = 4/504
+    = 0.0079365 = 0.79365%. 3. Calculate each action’s cost. Fraud probability Pass
+    cost Flag cost Lower-cost action 0.5% 500(0.005) = $2.50 4(0.995) = $3.98 Pass
+    1% 500(0.01) = $5.00 4(0.99) = $3.96 Flag 10% 500(0.10) = $50.00 4(0.90) = $3.60
+    Flag'
+  source:
+    pages:
+    - 348
+    verbatim: true
+- page: 349
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Interpretation\n\n What the answer means\n\
+    \ Under this loss table, flagging becomes preferable above about 0.79%, not 50%.\
+    \ This is a\n classroom optimum for the stated assumptions; adding review costs,\
+    \ imperfect intervention,\n customer harm, or capacity constraints changes the\
+    \ decision.\n Why these steps matter\n A cost-based threshold can be far below\
+    \ 50% because the penalties are unequal. The calculation\n depends on calibrated\
+    \ probabilities and the assumed effectiveness of flagging. It does not\n establish\
+    \ a universal threshold for fraud detection."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Interpretation
+  - What the answer means Under this loss table, flagging becomes preferable above
+    about 0.79%, not 50%. This is a classroom optimum for the stated assumptions;
+    adding review costs, imperfect intervention, customer harm, or capacity constraints
+    changes the decision. Why these steps matter A cost-based threshold can be far
+    below 50% because the penalties are unequal. The calculation depends on calibrated
+    probabilities and the assumed effectiveness of flagging. It does not establish
+    a universal threshold for fraud detection.
+  source:
+    pages:
+    - 349
+    verbatim: true
+source:
+  pages:
+  - 336
+  - 337
+  - 338
+  - 339
+  - 340
+  - 341
+  - 342
+  - 343
+  - 344
+  - 345
+  - 346
+  - 347
+  - 348
+  - 349
+  verbatim: true

@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph roles[Six Python child processes]
+    direction LR
+    P[Payer] --> M[Merchant / POS]
+    M --> G[Gateway / Processor]
+    G --> A[Acquirer]
+    A --> N[Simulated Visa / Mastercard]
+    N --> I[Issuer]
+    I -. decision .-> N
+    N -. decision .-> A
+    A -. decision .-> G
+    G -. decision .-> M
+    M -. receipt .-> P
+  end
+  S[Supervisor: inbox queues, stepping, health, observed events]
+  B[Browser dashboard: live diagram, balances, trace]
+  S <--> roles
+  B <-->|local JSON API| S
+  M --- C[Merchant owns full capture and batches]
+  I --- F[Issuer owns account balance, holds, obligations]
+  A --- L[Acquirer records merchant proceeds and illustrative fee buckets]
+  classDef actor fill:#EDF5F5,stroke:#007D82,color:#15384A
+  class P,M,G,A,N,I actor

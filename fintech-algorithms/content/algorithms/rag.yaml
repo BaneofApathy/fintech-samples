@@ -1,0 +1,417 @@
+slug: rag
+number: 9
+title: Embeddings and RAG
+group: Understand language
+oneLine: Retrieve filing evidence, calculate carefully, and cite the supporting passages.
+baseline: Keyword search plus manual reading.
+primerSlides:
+- page: 115
+  title: 'Primer 9A: Embeddings and RAG – definition and intuition'
+  text: " Primer 9A: Embeddings and RAG – definition and intuition\n\n\n   Financial\
+    \ problem: How can an analyst or compliance professional ask natural-language\
+    \ questions and receive\n   answers grounded in the institution’s own current\
+    \ documents?\n\n\n\n Definition                                              \
+    \                                               Plain-English intuition\n Embeddings\
+    \ convert text into vectors that preserve semantic                           \
+    \                 Search first, answer second. Retrieval determines\n similarity.\
+    \ Retrieval-augmented generation retrieves relevant                          \
+    \                what evidence is visible; generation should synthesize\n passages\
+    \ and gives them to a language model so the answer                           \
+    \                   only what that evidence supports.\n can be grounded in evidence.\n\
+    \                                                                            \
+    \                            Anchor idea\n Input → output                    \
+    \                                                                           Query\
+    \ → embedding → top-k retrieval →\n Input: A curated corpus, chunking strategy,\
+    \ embedding model, query,                                                rerank\
+    \ → grounded answer.\n retrieval and reranking configuration, and an answer-generation\
+    \ policy.\n Output: Ranked evidence plus a cited answer, or an explicit refusal\n\
+    \ when adequate evidence is not retrieved.\n What it learns: Semantic proximity\
+    \ and language synthesis. It does not guarantee that the right passage was indexed,\
+    \ retrieved, or interpreted correctly."
+  paragraphs:
+  - 'Primer 9A: Embeddings and RAG – definition and intuition'
+  - 'Financial problem: How can an analyst or compliance professional ask natural-language
+    questions and receive answers grounded in the institution’s own current documents?'
+  - 'Definition Plain-English intuition Embeddings convert text into vectors that
+    preserve semantic Search first, answer second. Retrieval determines similarity.
+    Retrieval-augmented generation retrieves relevant what evidence is visible; generation
+    should synthesize passages and gives them to a language model so the answer only
+    what that evidence supports. can be grounded in evidence. Anchor idea Input →
+    output Query → embedding → top-k retrieval → Input: A curated corpus, chunking
+    strategy, embedding model, query, rerank → grounded answer. retrieval and reranking
+    configuration, and an answer-generation policy. Output: Ranked evidence plus a
+    cited answer, or an explicit refusal when adequate evidence is not retrieved.
+    What it learns: Semantic proximity and language synthesis. It does not guarantee
+    that the right passage was indexed, retrieved, or interpreted correctly.'
+  source:
+    pages:
+    - 115
+    verbatim: true
+- page: 116
+  title: 'Primer 9B: Embeddings and RAG – worked fintech example'
+  text: " Primer 9B: Embeddings and RAG – worked fintech example\n\n\n Citation-grounded\
+    \ 10-K analyst\n An analyst asks what drove the issuer’s increase in capital expenditures\
+    \ and where that information is\n disclosed.\n\n\n From data to action       \
+    \                                                  Comparison point\n1. Parse\
+    \ the filing while preserving tables, headings, and page /            Baseline:\
+    \ Keyword search and an LLM\n                                                \
+    \                             answer without retrieval.\n   section metadata.\n\
+    2. Retrieve and rerank passages for the question; display the                Control\
+    \ to teach\n   evidence before the answer.\n                                 \
+    \                                            Watch for: Broken tables, poor chunks,\
+    \ low\n3. Generate a concise response with exact citations and no            \
+    \       retrieval recall, stale documents, prompt\n                          \
+    \                                                   injection, and citations that\
+    \ do not support\n   unsupported number.                                     \
+    \                  the claim.\n4. Remove the relevant passage as a failure test;\
+    \ the system should\n   refuse or state that evidence is insufficient."
+  paragraphs:
+  - 'Primer 9B: Embeddings and RAG – worked fintech example'
+  - Citation-grounded 10-K analyst An analyst asks what drove the issuer’s increase
+    in capital expenditures and where that information is disclosed.
+  - 'From data to action Comparison point 1. Parse the filing while preserving tables,
+    headings, and page / Baseline: Keyword search and an LLM answer without retrieval.
+    section metadata. 2. Retrieve and rerank passages for the question; display the
+    Control to teach evidence before the answer. Watch for: Broken tables, poor chunks,
+    low 3. Generate a concise response with exact citations and no retrieval recall,
+    stale documents, prompt injection, and citations that do not support unsupported
+    number. the claim. 4. Remove the relevant passage as a failure test; the system
+    should refuse or state that evidence is insufficient.'
+  source:
+    pages:
+    - 116
+    verbatim: true
+- page: 117
+  title: 'Primer 9C: Embeddings and RAG – when to use it, and when not to'
+  text: " Primer 9C: Embeddings and RAG – when to use it, and when not to\n\n\n Use\
+    \ it when                                                          Do not use\
+    \ it when\n▶ The knowledge lives in changing or private                      \
+    \    ▶ An exact SQL query or deterministic API is the\n  documents.          \
+    \                                                  right tool.\n▶ Users need provenance\
+    \ and inspectable evidence.                     ▶ The corpus is incomplete, untrusted,\
+    \ or badly\n▶ Questions are semantic rather than exact key                   \
+    \       permissioned.\n  lookups.                                            \
+    \                ▶ The task requires reliable arithmetic across many\n▶ The corpus\
+    \ can be curated, permissioned, and                          rows.\n  evaluated.\
+    \                                                          ▶ The answer will directly\
+    \ execute a payment or\n▶ The system can abstain when retrieval is weak.     \
+    \                   approval.\n                                              \
+    \                        ▶ No gold questions or retrieval evaluation can be\n\
+    \                                                                        created.\n\
+    \n Better fit in those cases\n Use database queries for structured facts, deterministic\
+    \ search for exact terms, calculators for finance math, and agent tools only after\n\
+    \ retrieval is reliable."
+  paragraphs:
+  - 'Primer 9C: Embeddings and RAG – when to use it, and when not to'
+  - Use it when Do not use it when ▶ The knowledge lives in changing or private ▶
+    An exact SQL query or deterministic API is the documents. right tool. ▶ Users
+    need provenance and inspectable evidence. ▶ The corpus is incomplete, untrusted,
+    or badly ▶ Questions are semantic rather than exact key permissioned. lookups.
+    ▶ The task requires reliable arithmetic across many ▶ The corpus can be curated,
+    permissioned, and rows. evaluated. ▶ The answer will directly execute a payment
+    or ▶ The system can abstain when retrieval is weak. approval. ▶ No gold questions
+    or retrieval evaluation can be created.
+  - Better fit in those cases Use database queries for structured facts, deterministic
+    search for exact terms, calculators for finance math, and agent tools only after
+    retrieval is reliable.
+  source:
+    pages:
+    - 117
+    verbatim: true
+- page: 118
+  title: 'Primer 9D: Embeddings and RAG – fintech problem map'
+  text: " Primer 9D: Embeddings and RAG – fintech problem map\n\n\n\n Common fintech\
+    \ problems                                                     Operational profile\n\
+    ▶ Equity and credit research                ▶ Loan / claim file review       ▶\
+    \ Latency: medium\n  assistants                                ▶ Internal procedure\
+    \ copilots    ▶ Explainability: evidence-based\n▶ Policy and regulatory Q&A  ▶\
+    \ Contract and covenant                         ▶ Data need: curated corpus +\
+    \ test\n▶ Customer-service knowledge   research                              \
+    \          questions\n  search                     ▶ Governance evidence     \
+    \                      ▶ Monitor: retrieval recall, citation\n▶ Due diligence\
+    \ and audit                      retrieval                       support, abstention\n\
+    \  support\n\n\n   Student defense question: Can the student separately prove\
+    \ that the right evidence was\n   retrieved and that the answer faithfully used\
+    \ it?"
+  paragraphs:
+  - 'Primer 9D: Embeddings and RAG – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Equity and credit research ▶ Loan
+    / claim file review ▶ Latency: medium assistants ▶ Internal procedure copilots
+    ▶ Explainability: evidence-based ▶ Policy and regulatory Q&A ▶ Contract and covenant
+    ▶ Data need: curated corpus + test ▶ Customer-service knowledge research questions
+    search ▶ Governance evidence ▶ Monitor: retrieval recall, citation ▶ Due diligence
+    and audit retrieval support, abstention support'
+  - 'Student defense question: Can the student separately prove that the right evidence
+    was retrieved and that the answer faithfully used it?'
+  source:
+    pages:
+    - 118
+    verbatim: true
+definition: Embeddings convert text into vectors that preserve semantic similarity.
+  Retrieval-augmented generation retrieves relevant passages and gives them to a language
+  model so the answer can be grounded in evidence.
+intuition: Search first, answer second. Retrieval determines what evidence is visible;
+  generation should synthesize only what that evidence supports.  Anchor idea
+useWhen:
+- The knowledge lives in changing or private documents.
+- Users need provenance and inspectable evidence.
+- Questions are semantic rather than exact key lookups.
+- The corpus can be curated, permissioned, and evaluated.
+- The system can abstain when retrieval is weak.
+avoidWhen:
+- An exact SQL query or deterministic API is the right tool.
+- The corpus is incomplete, untrusted, or badly permissioned.
+- The task requires reliable arithmetic across many rows.
+- The answer will directly execute a payment or approval.
+- No gold questions or retrieval evaluation can be created.
+deepDive:
+  problem:
+  - page: 655
+    title: 'Financial problem: answer a 10-K question with evidence'
+    text: " Financial problem: answer a 10-K question with evidence\n\n\n\n    Financial\
+      \ problem\n    An analyst asks, “What does the issuer say about customer concentration\
+      \ risk?” The answer\n    must come from the correct filing, quote no invented\
+      \ figures, and cite the supporting passage.\n\n\n Why a plain LLM is insufficient\n\
+      \ The model may not know the filing, may use stale information, and may produce\
+      \ a fluent answer\n without the right evidence.\n\n   Decision to make: Retrieve\
+      \ the relevant passages first, then generate only from that context\n   and\
+      \ attach citations."
+    paragraphs:
+    - 'Financial problem: answer a 10-K question with evidence'
+    - Financial problem An analyst asks, “What does the issuer say about customer
+      concentration risk?” The answer must come from the correct filing, quote no
+      invented figures, and cite the supporting passage.
+    - Why a plain LLM is insufficient The model may not know the filing, may use stale
+      information, and may produce a fluent answer without the right evidence.
+    - 'Decision to make: Retrieve the relevant passages first, then generate only
+      from that context and attach citations.'
+    source:
+      pages:
+      - 655
+      verbatim: true
+  economics:
+  - page: 656
+    title: RAG is a system, not one algorithm
+    text: " RAG is a system, not one algorithm\n\n\n\n\n      Filings / policies \
+      \          Parse and chunk    Embed chunks     Vector index\n\n\n\n\n      \
+      \                               User question   Embed query     Retrieve + rerank\
+      \       Generate from context   Answer + citations\n\n\n\n▶ Embeddings place\
+      \ semantically related text near each other.\n▶ Retrieval chooses evidence;\
+      \ the generator turns evidence into an answer.\n▶ Retrieval and generation must\
+      \ be evaluated separately."
+    paragraphs:
+    - RAG is a system, not one algorithm
+    - Filings / policies Parse and chunk Embed chunks Vector index
+    - User question Embed query Retrieve + rerank Generate from context Answer + citations
+    - ▶ Embeddings place semantically related text near each other. ▶ Retrieval chooses
+      evidence; the generator turns evidence into an answer. ▶ Retrieval and generation
+      must be evaluated separately.
+    source:
+      pages:
+      - 656
+      verbatim: true
+  - page: 657
+    title: 'Similarity and chunking: the two design levers'
+    text: " Similarity and chunking: the two design levers\n\n Cosine similarity compares\
+      \ directions in embedding space:\n                                         \
+      \                   q·d\n                                                cos(θ)\
+      \ =\n                                                           ∥q∥∥d∥\n\n\n\
+      \ Chunk too small                                           Chunk too large\n\
+      \ The relevant sentence is retrieved without                The retriever returns\
+      \ noisy context, consumes\n definitions, table headers, or surrounding     \
+      \           tokens, and buries the answer.\n conditions.\n\n Financial-document\
+      \ rule\n Preserve section boundaries and table semantics. Never split a row\
+      \ from its header or separate a\n footnote from the number it qualifies.\n Baseline:\
+      \ Keyword search plus manual reading."
+    paragraphs:
+    - 'Similarity and chunking: the two design levers'
+    - 'Cosine similarity compares directions in embedding space: q·d cos(θ) = ∥q∥∥d∥'
+    - Chunk too small Chunk too large The relevant sentence is retrieved without The
+      retriever returns noisy context, consumes definitions, table headers, or surrounding
+      tokens, and buries the answer. conditions.
+    - 'Financial-document rule Preserve section boundaries and table semantics. Never
+      split a row from its header or separate a footnote from the number it qualifies.
+      Baseline: Keyword search plus manual reading.'
+    source:
+      pages:
+      - 657
+      verbatim: true
+  - page: 659
+    title: Evaluate the retriever and generator separately
+    text: " Evaluate the retriever and generator separately\n\n   Layer          \
+      \                              Question                                  Measures\n\
+      \   Parsing                                      Did we preserve usable content?\
+      \           Table integrity, section coverage, ex-\n                       \
+      \                                                                   traction\
+      \ errors\n   Retrieval                                    Did the evidence enter\
+      \ the context?       Recall@k, MRR, context precision, hu-\n               \
+      \                                                                          \
+      \ man relevance\n   Generation                                   Did the answer\
+      \ stay faithful to evi-      Faithfulness, citation correctness, nu-\n     \
+      \                                           dence?                         \
+      \           merical accuracy\n   End-to-end                                \
+      \   Did the system answer the business        Exactness, completeness, abstention\n\
+      \                                                question?                 \
+      \                behavior, latency, cost\n\n\n Critical failure test\n Remove\
+      \ the passage containing the answer. The correct behavior is to state that the\
+      \ provided evidence is\n insufficient, not to improvise.\n\n Required artifact:\
+      \ Evaluation table plus one documented retrieval failure and one generation\
+      \ failure."
+    paragraphs:
+    - Evaluate the retriever and generator separately
+    - Layer Question Measures Parsing Did we preserve usable content? Table integrity,
+      section coverage, ex- traction errors Retrieval Did the evidence enter the context?
+      Recall@k, MRR, context precision, hu- man relevance Generation Did the answer
+      stay faithful to evi- Faithfulness, citation correctness, nu- dence? merical
+      accuracy End-to-end Did the system answer the business Exactness, completeness,
+      abstention question? behavior, latency, cost
+    - Critical failure test Remove the passage containing the answer. The correct
+      behavior is to state that the provided evidence is insufficient, not to improvise.
+    - 'Required artifact: Evaluation table plus one documented retrieval failure and
+      one generation failure.'
+    source:
+      pages:
+      - 659
+      verbatim: true
+  code:
+  - page: 658
+    title: 'Working example: semantic retrieval'
+    text: " Working example: semantic retrieval\n\n\n\n\n  # Colab: pip install -q\
+      \ sentence-transformers\n  from sentence_transformers import SentenceTransformer\n\
+      \  from sklearn.metrics.pairwise import cosine_similarity\n                \
+      \                                                                          \
+      \    Then generate\n  chunks = [                                           \
+      \                                       Pass only retrieved passages\n   \"\
+      No customer accounted for more than 10 percent of revenue.\",\n   \"Interest\
+      \ expense increased because average debt was higher.\",                    \
+      \         to the approved model with\n   \"A small number of distributors represent\
+      \ a material share of sales.\",\n   \"The company maintains a revolving credit\
+      \ facility.\"                                       instructions to:\n  ]\n\
+      \  question = \"What customer concentration risk does the company disclose?\"\
+      \                   ▶ cite each claim,\n  encoder = SentenceTransformer(\"all-MiniLM-L6-v2\"\
+      )\n  D = encoder.encode(chunks, normalize_embeddings=True)                 \
+      \                     ▶ preserve figures,\n  q = encoder.encode([question],\
+      \ normalize_embeddings=True)\n  scores = cosine_similarity(q, D)[0]\n  for i\
+      \ in scores.argsort()[::-1][:2]:\n                                         \
+      \                                                    ▶ say when evidence is\n\
+      \      print(round(scores[i], 3), chunks[i])                               \
+      \                     absent."
+    paragraphs:
+    - 'Working example: semantic retrieval'
+    - '# Colab: pip install -q sentence-transformers from sentence_transformers import
+      SentenceTransformer from sklearn.metrics.pairwise import cosine_similarity Then
+      generate chunks = [ Pass only retrieved passages "No customer accounted for
+      more than 10 percent of revenue.", "Interest expense increased because average
+      debt was higher.", to the approved model with "A small number of distributors
+      represent a material share of sales.", "The company maintains a revolving credit
+      facility." instructions to: ] question = "What customer concentration risk does
+      the company disclose?" ▶ cite each claim, encoder = SentenceTransformer("all-MiniLM-L6-v2")
+      D = encoder.encode(chunks, normalize_embeddings=True) ▶ preserve figures, q
+      = encoder.encode([question], normalize_embeddings=True) scores = cosine_similarity(q,
+      D)[0] for i in scores.argsort()[::-1][:2]: ▶ say when evidence is print(round(scores[i],
+      3), chunks[i]) absent.'
+    source:
+      pages:
+      - 658
+      verbatim: true
+  choice:
+  - page: 660
+    title: When RAG fits
+    text: " When RAG fits\n\n\n\n Use it when                                    \
+      \    Avoid or constrain it when\n▶ Answers must use private or current     \
+      \          ▶ Exact calculation should use structured data\n  documents.    \
+      \                                      or code.\n▶ Evidence and citations matter.\
+      \                    ▶ Documents are poorly parsed or unauthorized.\n▶ The corpus\
+      \ is searchable and governable.          ▶ Retrieval quality cannot be measured.\n\
+      ▶ Questions are grounded in source content.         ▶ Prompt injection can reach\
+      \ consequential\n                                                      tools.\n\
+      \n\n   Student defense question: If the correct passage is retrieved but the\
+      \ answer still invents a\n   number, which layer failed and how should the test\
+      \ isolate it?"
+    paragraphs:
+    - When RAG fits
+    - Use it when Avoid or constrain it when ▶ Answers must use private or current
+      ▶ Exact calculation should use structured data documents. or code. ▶ Evidence
+      and citations matter. ▶ Documents are poorly parsed or unauthorized. ▶ The corpus
+      is searchable and governable. ▶ Retrieval quality cannot be measured. ▶ Questions
+      are grounded in source content. ▶ Prompt injection can reach consequential tools.
+    - 'Student defense question: If the correct passage is retrieved but the answer
+      still invents a number, which layer failed and how should the test isolate it?'
+    source:
+      pages:
+      - 660
+      verbatim: true
+financialProblem: 'An analyst asks, “What does the issuer say about customer concentration
+  risk?” The answer must come from the correct filing, quote no invented figures,
+  and cite the supporting passage. Why a plain LLM is insufficient The model may not
+  know the filing, may use stale information, and may produce a fluent answer without
+  the right evidence. Decision to make: Retrieve the relevant passages first, then
+  generate only from that context and attach citations.'
+defenseQuestions:
+- text: Can the student separately prove that the right evidence was retrieved and
+    that the answer faithfully used it?
+  source:
+    pages:
+    - 118
+    verbatim: true
+- text: If the correct passage is retrieved but the answer still invents a number,
+    which layer failed and how should the test isolate it?
+  source:
+    pages:
+    - 660
+    verbatim: true
+exercises:
+- A09
+- S01
+- S02
+measures:
+- retrieval-recall-k-and-context-precision
+- mrr-and-ndcg
+- faithfulness-citation-correctness-numerical-accuracy
+- latency-throughput-review-load-cost
+widgets:
+- retrieval-rank
+lab:
+  dataset: Frozen miniature financial filing corpus
+  task: Answer with citations and abstain on misses
+  requiredComparison: Keyword search / no retrieval
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 114
+  - 115
+  - 116
+  - 117
+  - 118
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  - 126
+  - 127
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+  - 133
+  - 134
+  - 135
+  - 136
+  - 137
+  - 138
+  - 139
+  - 654
+  - 655
+  - 656
+  - 657
+  - 658
+  - 659
+  - 660
+  verbatim: true

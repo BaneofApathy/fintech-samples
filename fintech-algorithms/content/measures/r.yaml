@@ -1,0 +1,235 @@
+slug: r
+number: 23
+title: R²
+question: forecast
+financialInterpretation: R2 compares a regression model with a simple baseline that
+  predicts the sample mean for everyone. It is not a percentage-accuracy score.
+workingExample: For the settlement example, the model’s squared-error sum is 700.
+  Predicting the mean produces a squared-error sum of 2,675. 700 R2 = 1 − = 0.738
+  2,675 The model removes about 73.8% of the squared error relative to the mean baseline
+  on this sample.
+whatItMisses: R2 can be negative out of sample and can look high on trending time
+  series. Use time-aware baselines and report error in financial units.
+exercises:
+- M23
+widget: forecast-eval
+usedBy:
+- time-series
+slides:
+- page: 394
+  title: EVALUATION MEASURE 23 OF 39
+  text: "    EVALUATION MEASURE 23 OF 39\n\n\n\n\n                               \
+    \ R2\n          Measures how much squared error the model removes\n          \
+    \    compared with always predicting the mean."
+  paragraphs:
+  - EVALUATION MEASURE 23 OF 39
+  - R2 Measures how much squared error the model removes compared with always predicting
+    the mean.
+  source:
+    pages:
+    - 394
+    verbatim: true
+- page: 395
+  title: R2 – how much squared error did the model remove versus predicting the mean?
+  text: " R2 – how much squared error did the model remove versus predicting\n the\
+    \ mean?\n\n Financial interpretation\n R2 compares a regression model with a simple\
+    \ baseline that predicts the sample mean for everyone. It is not\n a percentage-accuracy\
+    \ score.\n\n Working example\n For the settlement example, the model’s squared-error\
+    \ sum is 700. Predicting the mean produces a\n squared-error sum of 2,675.\n \
+    \                                                    700\n                   \
+    \                       R2 = 1 −        = 0.738\n                            \
+    \                        2,675\n The model removes about 73.8% of the squared\
+    \ error relative to the mean baseline on this sample.\n\n What it misses\n R2\
+    \ can be negative out of sample and can look high on trending time series. Use\
+    \ time-aware baselines and\n report error in financial units."
+  paragraphs:
+  - R2 – how much squared error did the model remove versus predicting the mean?
+  - Financial interpretation R2 compares a regression model with a simple baseline
+    that predicts the sample mean for everyone. It is not a percentage-accuracy score.
+  - Working example For the settlement example, the model’s squared-error sum is 700.
+    Predicting the mean produces a squared-error sum of 2,675. 700 R2 = 1 − = 0.738
+    2,675 The model removes about 73.8% of the squared error relative to the mean
+    baseline on this sample.
+  - What it misses R2 can be negative out of sample and can look high on trending
+    time series. Use time-aware baselines and report error in financial units.
+  source:
+    pages:
+    - 395
+    verbatim: true
+- page: 396
+  title: R2
+  text: " R2\n\n   M23 | Formula explained (1/1)\n\n Question: How much squared error\
+    \ does the forecast remove relative to the sample-mean\n reference?\n        \
+    \                      1X                    X\n                         ȳ =\
+    \      yi ,    SSE =       (yi − ŷi )2 ,\n                              n i \
+    \                   i\n                                                      \
+    \    X                          SSE\n                                        \
+    \          SST =    (yi − ȳ)2 ,   R2 = 1 −       .\n                        \
+    \                                   i\n                                      \
+    \                                               SST\n Read it aloud: Calculate\
+    \ total model squared error and total squared deviation from the actual\n sample\
+    \ mean. Divide the first by the second, then subtract from one.\n The reference\
+    \ uses the evaluated sample’s mean as a comparison for scoring. It is not a forecast\n\
+    \ available before those future actuals occurred."
+  paragraphs:
+  - R2
+  - M23 | Formula explained (1/1)
+  - 'Question: How much squared error does the forecast remove relative to the sample-mean
+    reference? 1X X ȳ = yi , SSE = (yi − ŷi )2 , n i i X SSE SST = (yi − ȳ)2 ,
+    R2 = 1 − . i SST Read it aloud: Calculate total model squared error and total
+    squared deviation from the actual sample mean. Divide the first by the second,
+    then subtract from one. The reference uses the evaluated sample’s mean as a comparison
+    for scoring. It is not a forecast available before those future actuals occurred.'
+  source:
+    pages:
+    - 396
+    verbatim: true
+- page: 397
+  title: R2
+  text: " R2\n\n   M23 | Symbols and terms (1/3)\n\n\n   Symbol or term          \
+    \                       Meaning in this example\n   yi , ŷi                 \
+    \                      Actual and forecast settlement outflow for observation\
+    \ i, in\n                                                  thousands of dollars.\n\
+    \   n, i                                           Number of evaluated observations,\
+    \ here 4, and an observation index.\n   ȳ                                   \
+    \          Arithmetic mean of the actual evaluated values; the bar indicates an\n\
+    \                                                  average.\n   SSE          \
+    \                                  Sum of squared errors from the model’s predictions."
+  paragraphs:
+  - R2
+  - M23 | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example yi , ŷi Actual and forecast settlement
+    outflow for observation i, in thousands of dollars. n, i Number of evaluated observations,
+    here 4, and an observation index. ȳ Arithmetic mean of the actual evaluated values;
+    the bar indicates an average. SSE Sum of squared errors from the model’s predictions.
+  source:
+    pages:
+    - 397
+    verbatim: true
+- page: 398
+  title: R2
+  text: " R2\n\n   M23 | Symbols and terms (2/3)\n\n\n   Symbol or term          \
+    \                       Meaning in this example\n   SST                      \
+    \                      Total sum of squares: squared deviations of actuals from\
+    \ their\n                                                  sample mean.\n   R2\
+    \                                             R-squared, also called coefficient\
+    \ of determination, under this stated\n                                      \
+    \            squared-error definition."
+  paragraphs:
+  - R2
+  - M23 | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example SST Total sum of squares: squared deviations
+    of actuals from their sample mean. R2 R-squared, also called coefficient of determination,
+    under this stated squared-error definition.'
+  source:
+    pages:
+    - 398
+    verbatim: true
+- page: 399
+  title: R2
+  text: " R2\n\n   M23 | Symbols and terms (3/3)\n\n\n   Symbol or term          \
+    \                       Meaning in this example\n   1 − SSE/SST              \
+    \                      Fraction of reference squared error removed; the ratio\
+    \ cancels\n                                                  squared dollar units.\n\
+    \   Negative R-squared                             Model squared error exceeds\
+    \ the sample-mean reference’s squared\n                                      \
+    \            error.\n   Constant actuals                               A case\
+    \ in which all actual values match and SST = 0; the displayed\n              \
+    \                                    ratio then requires a separate convention."
+  paragraphs:
+  - R2
+  - M23 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example 1 − SSE/SST Fraction of reference squared
+    error removed; the ratio cancels squared dollar units. Negative R-squared Model
+    squared error exceeds the sample-mean reference’s squared error. Constant actuals
+    A case in which all actual values match and SST = 0; the displayed ratio then
+    requires a separate convention.
+  source:
+    pages:
+    - 399
+    verbatim: true
+- page: 400
+  title: R2
+  text: " R2\n\n   M23 | Class problem | 8 minutes — Improvement Over Predicting the\
+    \ Mean\n\n A settlement forecast uses these values in $ thousands:\n   Day   \
+    \                                                           Actual y         \
+    \              Forecast ŷ\n   1                                             \
+    \                        100                               90\n   2          \
+    \                                                           120              \
+    \                130\n   3                                                   \
+    \                      80                           100\n   4                \
+    \                                                     150                    \
+    \          140\n\n                                                           \
+    \ (yi − ŷi )2\n                                                           P\n\
+    \                                                  R2 = 1 − P             .\n\
+    \                                                             (yi − ȳ)2\n Calculate\
+    \ the actual mean, both squared-error sums, and R2 . Does the result mean that\
+    \ this\n percentage of individual forecasts was correct?"
+  paragraphs:
+  - R2
+  - M23 | Class problem | 8 minutes — Improvement Over Predicting the Mean
+  - 'A settlement forecast uses these values in $ thousands: Day Actual y Forecast
+    ŷ 1 100 90 2 120 130 3 80 100 4 150 140'
+  - (yi − ŷi )2 P R2 = 1 − P . (yi − ȳ)2 Calculate the actual mean, both squared-error
+    sums, and R2 . Does the result mean that this percentage of individual forecasts
+    was correct?
+  source:
+    pages:
+    - 400
+    verbatim: true
+- page: 401
+  title: R2
+  text: " R2\n\n   M23 | Worked solution — Improvement Over Predicting the Mean\n\n\
+    1. Actual mean: ȳ = (100 + 120 + 80 + 150)/4 = 112.5.\n2. Model squared errors:\
+    \ 100, 100, 400, 100; total SSE = 700.\n3. Mean-baseline squared errors:\n   \
+    \                 (100 − 112.5)2 = 156.25,                            (120 − 112.5)2\
+    \ = 56.25,\n                                           (80 − 112.5)2 = 1,056.25,\
+    \   (150 − 112.5)2 = 1,406.25.\n4. Total baseline error: SST = 156.25 + 56.25\
+    \ + 1,056.25 + 1,406.25 = 2,675.\n5. Score: R2 = 1 − 700/2,675 = 0.7383."
+  paragraphs:
+  - R2
+  - M23 | Worked solution — Improvement Over Predicting the Mean
+  - '1. Actual mean: ȳ = (100 + 120 + 80 + 150)/4 = 112.5. 2. Model squared errors:
+    100, 100, 400, 100; total SSE = 700. 3. Mean-baseline squared errors: (100 − 112.5)2
+    = 156.25, (120 − 112.5)2 = 56.25, (80 − 112.5)2 = 1,056.25, (150 − 112.5)2 = 1,406.25.
+    4. Total baseline error: SST = 156.25 + 56.25 + 1,056.25 + 1,406.25 = 2,675. 5.
+    Score: R2 = 1 − 700/2,675 = 0.7383.'
+  source:
+    pages:
+    - 401
+    verbatim: true
+- page: 402
+  title: R2
+  text: " R2\n\n   M23 | Interpretation\n\n What the answer means\n The model removes\
+    \ 73.83% of squared error relative to the sample-mean reference. It does\n not\
+    \ mean 73.83% of forecasts are correct. The test-set mean is an evaluation reference—not\
+    \ a\n forecast treasury could know before those outcomes occurred.\n Why these\
+    \ steps matter\n The 73.83% interpretation refers to a reduction in squared-error\
+    \ total, not a share of exactly\n correct forecasts. A forecast can receive a\
+    \ positive R-squared without matching any daily actual\n exactly."
+  paragraphs:
+  - R2
+  - M23 | Interpretation
+  - What the answer means The model removes 73.83% of squared error relative to the
+    sample-mean reference. It does not mean 73.83% of forecasts are correct. The test-set
+    mean is an evaluation reference—not a forecast treasury could know before those
+    outcomes occurred. Why these steps matter The 73.83% interpretation refers to
+    a reduction in squared-error total, not a share of exactly correct forecasts.
+    A forecast can receive a positive R-squared without matching any daily actual
+    exactly.
+  source:
+    pages:
+    - 402
+    verbatim: true
+source:
+  pages:
+  - 394
+  - 395
+  - 396
+  - 397
+  - 398
+  - 399
+  - 400
+  - 401
+  - 402
+  verbatim: true

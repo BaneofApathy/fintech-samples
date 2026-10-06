@@ -1,0 +1,155 @@
+---
+import type { TeachingTopic, TeachingStage } from '../../data/teaching-types';
+import LessonContent from '../content/LessonContent.astro';
+import ConceptPractice from '../exercise/ConceptPractice.svelte';
+import { toPracticeTopic } from '../../engine/assessment';
+import { topicHref } from '../../data/teaching-manifest';
+interface Props {
+  topic: TeachingTopic;
+  stage?: TeachingStage;
+}
+const { topic, stage } = Astro.props;
+const lessons = topic.lessons.filter((lesson) => !stage || lesson.section === stage);
+const practiceTopic = toPracticeTopic(topic);
+---
+
+{lessons.length > 0 && (
+  <div class="teaching-sequence">
+    <nav class="lesson-outline" aria-label="Lessons in this section">
+      <p class="eyebrow">Lessons</p>
+      <ol>
+        {lessons.map((lesson) => (
+          <li>
+            <a href={`#${lesson.id}`}>{lesson.title}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+    {lessons.map((lesson) => {
+      const objective = topic.objectives.find((o) => o.id === lesson.objectiveId);
+      const question =
+        topic.questions.find((q) => q.lessonId === lesson.id && q.role === 'guided') ??
+        topic.questions.find((q) => q.objectiveId === lesson.objectiveId && q.role === 'guided');
+      const globalIndex = topic.lessons.findIndex((l) => l.id === lesson.id);
+      const previous = topic.lessons[globalIndex - 1];
+      const next = topic.lessons[globalIndex + 1];
+      return (
+        <section
+          class="teaching-lesson"
+          id={lesson.id}
+          data-learning-id={topic.id + ':' + lesson.id}
+          data-learning-title={`${topic.title} · ${lesson.title}`}
+          data-learning-href={topicHref(topic, lesson.section, lesson.id)}
+        >
+          <div class="mini-lesson-heading">
+            <span class="lesson-position">
+              Lesson {globalIndex + 1} of {topic.lessons.length}
+            </span>
+            <span>{objective?.title}</span>
+          </div>
+          <LessonContent sections={[{ title: lesson.title, blocks: lesson.blocks }]} />
+          {lesson.advanced?.length && (
+            <details class="deeper-explanation">
+              <summary>Derivation and implementation details</summary>
+              <LessonContent sections={lesson.advanced} level={3} />
+            </details>
+          )}
+          {question && (
+            <ConceptPractice
+              topic={practiceTopic}
+              questions={[question]}
+              sessionId={`${topic.id}:lesson:${lesson.id}`}
+              title="Check this idea"
+              lessonHref={topicHref(topic, lesson.section, lesson.id)}
+              base={import.meta.env.BASE_URL}
+              client:visible
+            />
+          )}
+          <nav class="mini-lesson-navigation" aria-label={`Navigation for ${lesson.title}`}>
+            {previous ? (
+              <a href={topicHref(topic, previous.section, previous.id)}>← {previous.title}</a>
+            ) : (
+              <span>Start of this topic</span>
+            )}
+            {next ? (
+              <a href={topicHref(topic, next.section, next.id)}>Next: {next.title} →</a>
+            ) : (
+              <a
+                href={topicHref(
+                  topic,
+                  topic.kind === 'algorithm' ? 'practice' : undefined,
+                  'concept-practice',
+                )}
+              >
+                Practice this topic →
+              </a>
+            )}
+          </nav>
+        </section>
+      );
+    })}
+  </div>
+)}
+<script>
+  import { recordActivity } from '../../engine/progress';
+  const cards = [...document.querySelectorAll<HTMLElement>('.teaching-lesson')];
+  const remember = (card: HTMLElement) => {
+    if (!card.dataset.learningId || !card.dataset.learningHref || !card.dataset.learningTitle)
+      return;
+    const destination = new URL(card.dataset.learningHref, location.origin);
+    if (destination.pathname === location.pathname) destination.search = location.search;
+    recordActivity({
+      id: card.dataset.learningId,
+      href: destination.pathname + destination.search + destination.hash,
+      title: card.dataset.learningTitle,
+    });
+  };
+  const activeId = decodeURIComponent(window.location.hash.slice(1));
+  const active = cards.find((card) => card.id === activeId);
+  if (active) remember(active);
+  document
+    .querySelectorAll<HTMLAnchorElement>('.lesson-outline a, .mini-lesson-navigation a')
+    .forEach((link) =>
+      link.addEventListener('click', () => {
+        const anchor = new URL(link.href).hash.slice(1);
+        const card = cards.find((item) => item.id === decodeURIComponent(anchor));
+        if (card) remember(card);
+      }),
+    );
+  // Read position uses viewport height. IntersectionObserver percentage margins
+  // use width, which can collapse the reading region on wide screens.
+  let frame = 0;
+  const onScroll = () => {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      const readingLine = Math.max(120, innerHeight * 0.3);
+      const practiceVisible = [
+        ...document.querySelectorAll<HTMLElement>('.concept-practice, .exercise-card, .code-cell'),
+      ].some((activity) => {
+        if (activity.closest('.teaching-lesson')) return false;
+        const bounds = activity.getBoundingClientRect();
+        return bounds.height > 0 && bounds.top < innerHeight && bounds.bottom > 100;
+      });
+      if (practiceVisible) return;
+      const current = cards.find((card) => {
+        const bounds = card.getBoundingClientRect();
+        return bounds.top <= readingLine && bounds.bottom > readingLine;
+      });
+      if (current) remember(current);
+    });
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('hashchange', () => {
+    const card = cards.find((item) => item.id === decodeURIComponent(location.hash.slice(1)));
+    if (card) remember(card);
+  });
+  window.addEventListener(
+    'pagehide',
+    () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(frame);
+    },
+    { once: true },
+  );
+</script>

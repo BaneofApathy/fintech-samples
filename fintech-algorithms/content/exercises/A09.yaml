@@ -1,0 +1,394 @@
+id: A09
+title: Retrieve, Then Calculate
+minutes: 8
+kind: algorithm
+parent: rag
+question: "An analyst asks: “How much did revenue grow from 2024 to 2025?”\n Use the\
+  \ supplied toy query vector q = (1, 0) and document vectors:\n                 \
+  \                                                       q·d\n                  \
+  \                               Cosine similarity =          .\n               \
+  \                                                        ∥q∥∥d∥\n   Chunk      \
+  \                Vector        Evidence                   1. Calculate the three\
+  \ similarities and\n                                                           \
+  \               retrieve the top two chunks.\n   A                          (3,\
+  \ 4)        2024 revenue was $100\n                                            \
+  \                           2. Calculate revenue growth from the\n             \
+  \                               million.\n                                     \
+  \                                     retrieved evidence.\n   B                \
+  \          (4, 3)        2025 revenue was $120\n                               \
+  \             million.                   3. Write one answer identifying its\n \
+  \  C                          (0, 5)        The company operates          supporting\
+  \ chunks. Could either\n                                            12 branches.\
+  \                  revenue chunk alone establish the\n                         \
+  \                                                 growth rate?"
+questionPages:
+- page: 123
+  title: Embeddings and RAG
+  text: " Embeddings and RAG\n\n   A09 | Class problem | 8 minutes — Retrieve, Then\
+    \ Calculate\n\n An analyst asks: “How much did revenue grow from 2024 to 2025?”\n\
+    \ Use the supplied toy query vector q = (1, 0) and document vectors:\n       \
+    \                                                                 q·d\n      \
+    \                                           Cosine similarity =          .\n \
+    \                                                                      ∥q∥∥d∥\n\
+    \   Chunk                      Vector        Evidence                   1. Calculate\
+    \ the three similarities and\n                                               \
+    \                           retrieve the top two chunks.\n   A               \
+    \           (3, 4)        2024 revenue was $100\n                            \
+    \                                           2. Calculate revenue growth from the\n\
+    \                                            million.\n                      \
+    \                                                    retrieved evidence.\n   B\
+    \                          (4, 3)        2025 revenue was $120\n             \
+    \                               million.                   3. Write one answer\
+    \ identifying its\n   C                          (0, 5)        The company operates\
+    \          supporting chunks. Could either\n                                 \
+    \           12 branches.                  revenue chunk alone establish the\n\
+    \                                                                          growth\
+    \ rate?"
+  paragraphs:
+  - Embeddings and RAG
+  - A09 | Class problem | 8 minutes — Retrieve, Then Calculate
+  - 'An analyst asks: “How much did revenue grow from 2024 to 2025?” Use the supplied
+    toy query vector q = (1, 0) and document vectors: q·d Cosine similarity = . ∥q∥∥d∥
+    Chunk Vector Evidence 1. Calculate the three similarities and retrieve the top
+    two chunks. A (3, 4) 2024 revenue was $100 2. Calculate revenue growth from the
+    million. retrieved evidence. B (4, 3) 2025 revenue was $120 million. 3. Write
+    one answer identifying its C (0, 5) The company operates supporting chunks. Could
+    either 12 branches. revenue chunk alone establish the growth rate?'
+  source:
+    pages:
+    - 123
+    verbatim: true
+formulaPages:
+- page: 119
+  title: Embeddings and RAG
+  text: " Embeddings and RAG\n\n   A09 | Formula explained (1/2)\n\n Question: Which\
+    \ passages point in the same direction as the query vector?\n                \
+    \                                  q·d\n                                     sim(q,\
+    \ d) =        ,\n                                                 ∥q∥∥d∥\n   \
+    \                                                       q\n                  \
+    \       q · d = q1 d1 + q2 d2 ,  ∥d∥ = d21 + d22 .\n Read it aloud: Multiply matching\
+    \ coordinates and add; divide by both vector lengths. A higher\n cosine similarity\
+    \ ranks a passage closer to the question in this example.\n Retrieve the two highest-scoring\
+    \ chunks. The calculation uses artificial two-coordinate\n embeddings so it can\
+    \ be done by hand."
+  paragraphs:
+  - Embeddings and RAG
+  - A09 | Formula explained (1/2)
+  - 'Question: Which passages point in the same direction as the query vector? q·d
+    sim(q, d) = , ∥q∥∥d∥ q q · d = q1 d1 + q2 d2 , ∥d∥ = d21 + d22 . Read it aloud:
+    Multiply matching coordinates and add; divide by both vector lengths. A higher
+    cosine similarity ranks a passage closer to the question in this example. Retrieve
+    the two highest-scoring chunks. The calculation uses artificial two-coordinate
+    embeddings so it can be done by hand.'
+  source:
+    pages:
+    - 119
+    verbatim: true
+- page: 120
+  title: Embeddings and RAG
+  text: " Embeddings and RAG\n\n   A09 | Formula explained (2/2)\n\n Question: What\
+    \ financial answer follows from the retrieved figures?\n                     \
+    \            R2025 − R2024\n                             g=                 ,\
+    \     g% = 100g.\n                                      R2024\n Read it aloud:\
+    \ New revenue minus old revenue, divided by old revenue; multiply by 100 to\n\
+    \ express the fractional change as a percentage number.\n Both inputs must use\
+    \ the same currency, unit, period definition, and revenue basis. One year\n alone\
+    \ is not enough to calculate year-over-year growth.\n Retrieval supplies evidence.\
+    \ Arithmetic calculates growth. A grounded answer identifies both\n supporting\
+    \ chunks."
+  paragraphs:
+  - Embeddings and RAG
+  - A09 | Formula explained (2/2)
+  - 'Question: What financial answer follows from the retrieved figures? R2025 − R2024
+    g= , g% = 100g. R2024 Read it aloud: New revenue minus old revenue, divided by
+    old revenue; multiply by 100 to express the fractional change as a percentage
+    number. Both inputs must use the same currency, unit, period definition, and revenue
+    basis. One year alone is not enough to calculate year-over-year growth. Retrieval
+    supplies evidence. Arithmetic calculates growth. A grounded answer identifies
+    both supporting chunks.'
+  source:
+    pages:
+    - 120
+    verbatim: true
+symbolPages:
+- page: 121
+  title: Embeddings and RAG
+  text: " Embeddings and RAG\n\n   A09 | Symbols and terms (1/2)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   Embedding       \
+    \                         A numerical vector representing text for a similarity\
+    \ comparison; the\n                                            vectors here are\
+    \ supplied toy values.\n   q, d                                     Query vector\
+    \ and a document-chunk vector, respectively.\n   q1 , q2 , d1 , d2           \
+    \             First and second coordinates of the corresponding vectors; subscripts\n\
+    \                                            label dimensions.\n   q·d       \
+    \                               Dot product: sum of products of corresponding\
+    \ coordinates.\n   ∥q∥, ∥d∥                                 Euclidean vector lengths,\
+    \ or norms; double bars indicate length, not\n                               \
+    \             a confidence score.\n   sim(q, d)                              \
+    \  Cosine similarity; a unitless directional similarity score, not an\n      \
+    \                                      answer-correctness probability."
+  paragraphs:
+  - Embeddings and RAG
+  - A09 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example Embedding A numerical vector representing
+    text for a similarity comparison; the vectors here are supplied toy values. q,
+    d Query vector and a document-chunk vector, respectively. q1 , q2 , d1 , d2 First
+    and second coordinates of the corresponding vectors; subscripts label dimensions.
+    q·d Dot product: sum of products of corresponding coordinates. ∥q∥, ∥d∥ Euclidean
+    vector lengths, or norms; double bars indicate length, not a confidence score.
+    sim(q, d) Cosine similarity; a unitless directional similarity score, not an answer-correctness
+    probability.'
+  source: &id001
+    pages:
+    - 121
+    verbatim: true
+- page: 122
+  title: Embeddings and RAG
+  text: " Embeddings and RAG\n\n   A09 | Symbols and terms (2/2)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   Chunk; top two  \
+    \                         A separately indexed passage; the two passages with\
+    \ the highest\n                                            similarity scores.\n\
+    \   RAG                                      Retrieval-augmented generation: retrieve\
+    \ source material, then use it\n                                            to\
+    \ support an answer.\n   R2024 , R2025                            Revenue in the\
+    \ two named years, both in millions of dollars here; R\n                     \
+    \                       does not mean recall in this exercise.\n   g, g%     \
+    \                               Fractional growth and its percentage-number form;\
+    \ report g% with a\n                                            percent sign.\n\
+    \   Grounded answer                          An answer whose factual claims can\
+    \ be traced to the supplied\n                                            evidence\
+    \ or a checked calculation from it."
+  paragraphs:
+  - Embeddings and RAG
+  - A09 | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example Chunk; top two A separately indexed passage;
+    the two passages with the highest similarity scores. RAG Retrieval-augmented generation:
+    retrieve source material, then use it to support an answer. R2024 , R2025 Revenue
+    in the two named years, both in millions of dollars here; R does not mean recall
+    in this exercise. g, g% Fractional growth and its percentage-number form; report
+    g% with a percent sign. Grounded answer An answer whose factual claims can be
+    traced to the supplied evidence or a checked calculation from it.'
+  source: &id002
+    pages:
+    - 122
+    verbatim: true
+solutionPages:
+- page: 124
+  title: Embeddings and RAG
+  text: " Embeddings and RAG\n\n   A09 | Worked solution — Retrieve, Then Calculate\n\
+    \                                                                            √\n\
+    \   Calculate vector lengths: ∥q∥ = 1; each document length is\n1. √         \
+    \                                                                   32 + 42 =\
+    \ 5 or\n     02 + 52 = 5.\n2. Calculate similarities:\n              sim(A) =\
+    \ 3/5 = 0.60,                sim(B) = 4/5 = 0.80,      sim(C) = 0/5 = 0.\n3. Retrieve\
+    \ B, then A. Together they supply both years’ revenue.\n4. Calculate the change:\n\
+    \                                         120 − 100\n                        \
+    \                           × 100 = 20%.\n                                   \
+    \         Growth =\n                                            100\n5. Answer:\
+    \ “Revenue grew 20%, from $100 million in 2024 to $120 million in 2025.\n   Supporting\
+    \ evidence: chunks A and B.”"
+  paragraphs:
+  - Embeddings and RAG
+  - 'A09 | Worked solution — Retrieve, Then Calculate √ Calculate vector lengths:
+    ∥q∥ = 1; each document length is 1. √ 32 + 42 = 5 or 02 + 52 = 5. 2. Calculate
+    similarities: sim(A) = 3/5 = 0.60, sim(B) = 4/5 = 0.80, sim(C) = 0/5 = 0. 3. Retrieve
+    B, then A. Together they supply both years’ revenue. 4. Calculate the change:
+    120 − 100 × 100 = 20%. Growth = 100 5. Answer: “Revenue grew 20%, from $100 million
+    in 2024 to $120 million in 2025. Supporting evidence: chunks A and B.”'
+  source:
+    pages:
+    - 124
+    verbatim: true
+interpretationPages:
+- page: 125
+  title: Embeddings and RAG
+  text: " Embeddings and RAG\n\n   A09 | Interpretation\n\n What the answer means\n\
+    \ The 0.80 retrieval score indicates vector similarity, not an 80% probability\
+    \ that the answer is\n correct. Both revenue figures are needed; retrieval finds\
+    \ the evidence and arithmetic establishes\n the growth rate.\n Why these steps\
+    \ matter\n Dividing by the previous year’s revenue expresses the increase relative\
+    \ to the starting amount,\n rather than relative to the new total. Similarity\
+    \ ranking does not perform that arithmetic or\n verify the financial definitions."
+  paragraphs:
+  - Embeddings and RAG
+  - A09 | Interpretation
+  - What the answer means The 0.80 retrieval score indicates vector similarity, not
+    an 80% probability that the answer is correct. Both revenue figures are needed;
+    retrieval finds the evidence and arithmetic establishes the growth rate. Why these
+    steps matter Dividing by the previous year’s revenue expresses the increase relative
+    to the starting amount, rather than relative to the new total. Similarity ranking
+    does not perform that arithmetic or verify the financial definitions.
+  source:
+    pages:
+    - 125
+    verbatim: true
+source:
+  pages:
+  - 119
+  - 120
+  - 121
+  - 122
+  - 123
+  - 124
+  - 125
+  verbatim: true
+readAloud:
+- Multiply matching coordinates and add; divide by both vector lengths. A higher cosine
+  similarity ranks a passage closer to the question in this example. Retrieve the
+  two highest-scoring chunks. The calculation uses artificial two-coordinate embeddings
+  so it can be done by hand.
+- New revenue minus old revenue, divided by old revenue; multiply by 100 to express
+  the fractional change as a percentage number. Both inputs must use the same currency,
+  unit, period definition, and revenue basis. One year alone is not enough to calculate
+  year-over-year growth. Retrieval supplies evidence. Arithmetic calculates growth.
+  A grounded answer identifies both supporting chunks.
+siteAuthored: false
+givens:
+  q:
+  - 1
+  - 0
+  docs:
+  - 3
+  - 4
+  - 4
+  - 3
+  - 0
+  - 5
+  oldRevenue: 100
+  newRevenue: 120
+labels: &id003
+  q: Query vector
+  docs: Document coordinates (A then B then C)
+  oldRevenue: Old-period revenue ($ millions)
+  newRevenue: New-period revenue ($ millions)
+deckSolution:
+  similarities:
+  - 0.6
+  - 0.8
+  - 0
+  growth: 0.2
+latex:
+- \operatorname{sim}(q,d)=\frac{q\cdot d}{\|q\|\|d\|},\quad \operatorname{growth}=\frac{R_{new}-R_{old}}{R_{old}}
+- q\cdot d=q_1d_1+q_2d_2,\quad \|d\|=\sqrt{d_1^2+d_2^2}
+- g\%=100g
+symbols:
+- symbol: Embedding
+  meaning: A numerical vector representing text for a similarity comparison; the vectors
+    here are supplied toy values.
+  source: *id001
+- symbol: q, d
+  meaning: Query vector and a document-chunk vector, respectively.
+  source: *id001
+- symbol: q1 , q2 , d1 , d2
+  meaning: First and second coordinates of the corresponding vectors; subscripts label
+    dimensions.
+  source: *id001
+- symbol: q·d
+  meaning: 'Dot product: sum of products of corresponding coordinates.'
+  source: *id001
+- symbol: ∥q∥, ∥d∥
+  meaning: Euclidean vector lengths, or norms; double bars indicate length, not a
+    confidence score.
+  source: *id001
+- symbol: sim(q, d)
+  meaning: Cosine similarity; a unitless directional similarity score, not an answer-correctness
+    probability.
+  source: *id001
+- symbol: Chunk; top two
+  meaning: A separately indexed passage; the two passages with the highest similarity
+    scores.
+  source: *id002
+- symbol: RAG
+  meaning: 'Retrieval-augmented generation: retrieve source material, then use it
+    to support an answer.'
+  source: *id002
+- symbol: R2024 , R2025
+  meaning: Revenue in the two named years, both in millions of dollars here; R does
+    not mean recall in this exercise.
+  source: *id002
+- symbol: g, g%
+  meaning: Fractional growth and its percentage-number form; report g% with a percent
+    sign.
+  source: *id002
+- symbol: Grounded answer
+  meaning: An answer whose factual claims can be traced to the supplied evidence or
+    a checked calculation from it.
+  source: *id002
+steps:
+- id: similarities
+  title: Cosine similarities for A, B and C
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide the dot product of the query and each document by the product of their
+    lengths.
+  mistakes:
+  - pattern: recompute
+    message: Divide the dot product of the query and each document by the product
+      of their lengths.
+- id: growth
+  title: Revenue growth
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Subtract old revenue from new revenue, then divide by old revenue.
+  mistakes:
+  - pattern: recompute
+    message: Subtract old revenue from new revenue, then divide by old revenue.
+learning:
+  title: Retrieve, Then Calculate
+  scenario: A query and three document chunks have toy two-dimensional vectors. Chunk
+    A gives old-period revenue, B gives new-period revenue, and C describes branch
+    locations. Revenue figures use the same units and accounting basis.
+  task: Calculate cosine similarity for A, B and C, select the two highest-scoring
+    chunks, and calculate revenue growth as (new − old) / old.
+  interpretation: Cosine similarity ranks passages; it is not a probability of correctness.
+    Growth needs both revenue figures. A supported answer identifies both chunks and
+    checks the arithmetic.
+  summary: 'Chunk similarities (A, B, C): {similarities}. Revenue growth: {growth}.'
+  labels: *id003
+  steps:
+    similarities:
+      title: Cosine similarities for A, B and C
+      hints: *id004
+      unit: ''
+    growth:
+      title: Revenue growth
+      hints: *id005
+      unit: proportion
+  readAloud:
+  - Multiply matching coordinates and add; divide by both vector lengths. A higher
+    cosine similarity ranks a passage closer to the question in this example. Retrieve
+    the two highest-scoring chunks. The calculation uses artificial two-coordinate
+    embeddings so it can be done by hand.
+  - New revenue minus old revenue, divided by old revenue; multiply by 100 to express
+    the fractional change as a percentage number. Both inputs must use the same currency,
+    unit, period definition, and revenue basis. One year alone is not enough to calculate
+    year-over-year growth. Retrieval supplies evidence. Arithmetic calculates growth.
+    A grounded answer identifies both supporting chunks.
+  workedExplanation:
+  - 'The 0.80 retrieval score indicates vector similarity, not an 80% probability
+    that the answer is correct. Both revenue figures are needed; retrieval finds the
+    evidence and arithmetic establishes the growth rate. '
+  - Dividing by the previous year’s revenue expresses the increase relative to the
+    starting amount, rather than relative to the new total. Similarity ranking does
+    not perform that arithmetic or verify the financial definitions.
+  workedArithmetic:
+  - 'The query has length 1. Each document vector has length 5: √(3² + 4²) = √(4²
+    + 3²) = √(0² + 5²) = 5.'
+  - Cosine similarities are A = 3/5 = 0.60, B = 4/5 = 0.80, C = 0/5 = 0. Retrieve
+    B, then A.
+  - Revenue growth = (120 − 100) / 100 = 0.20 = 20%. Both revenue chunks are needed
+    to support this comparison.
+formulaSource:
+  pages:
+  - 119
+  - 120
+  verbatim: false
+  reviewed: true

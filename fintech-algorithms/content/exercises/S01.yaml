@@ -1,0 +1,373 @@
+id: S01
+title: Check the Evidence Before Retrieval
+minutes: 7
+kind: skill
+parent: rag
+question: "A filing parser is audited before the financial Q&A system is evaluated:\n\
+  ▶ Eight tables are checked; seven retain every required header, row, and unit label.\n\
+  ▶ Ten required sections are checked; nine appear in the parsed output.\n▶ Two hundred\
+  \ numeric cells are checked; six contain a wrong number or unit.\n For this exercise\
+  \ define table integrity rate as intact tables / audited tables, section coverage\n\
+  \ as present required sections / required sections, and numeric extraction error\
+  \ rate as incorrect\n cells / audited cells.\n Calculate all three. Can high section\
+  \ coverage compensate for a wrongly parsed debt figure?"
+questionPages:
+- page: 130
+  title: Parsing Quality
+  text: " Parsing Quality\n\n   S01 | Class problem | 7 minutes — Check the Evidence\
+    \ Before Retrieval\n\n A filing parser is audited before the financial Q&A system\
+    \ is evaluated:\n▶ Eight tables are checked; seven retain every required header,\
+    \ row, and unit label.\n▶ Ten required sections are checked; nine appear in the\
+    \ parsed output.\n▶ Two hundred numeric cells are checked; six contain a wrong\
+    \ number or unit.\n For this exercise define table integrity rate as intact tables\
+    \ / audited tables, section coverage\n as present required sections / required\
+    \ sections, and numeric extraction error rate as incorrect\n cells / audited cells.\n\
+    \ Calculate all three. Can high section coverage compensate for a wrongly parsed\
+    \ debt figure?"
+  paragraphs:
+  - Parsing Quality
+  - S01 | Class problem | 7 minutes — Check the Evidence Before Retrieval
+  - 'A filing parser is audited before the financial Q&A system is evaluated: ▶ Eight
+    tables are checked; seven retain every required header, row, and unit label. ▶
+    Ten required sections are checked; nine appear in the parsed output. ▶ Two hundred
+    numeric cells are checked; six contain a wrong number or unit. For this exercise
+    define table integrity rate as intact tables / audited tables, section coverage
+    as present required sections / required sections, and numeric extraction error
+    rate as incorrect cells / audited cells. Calculate all three. Can high section
+    coverage compensate for a wrongly parsed debt figure?'
+  source:
+    pages:
+    - 130
+    verbatim: true
+formulaPages:
+- page: 126
+  title: Parsing Quality
+  text: " Parsing Quality\n\n   S01 | Formula explained (1/1)\n\n Question: Did the\
+    \ parser preserve the tables, required sections, and numeric cells needed for\n\
+    \ financial answers?\n                                    Nintact            \
+    \                Npresent\n                 T able integrity =         ,    Section\
+    \ coverage =              ,\n                                    Ntables     \
+    \                       Nrequired\n                                          \
+    \                                   Nwrong\n                                 \
+    \               N umeric extraction error =          ,\n                     \
+    \                                                         Ncells\n           \
+    \                                                                       Nwrong\n\
+    \                                            N umeric extraction correctness =\
+    \ 1 −         .\n                                                            \
+    \                       Ncells\n Read it aloud: Divide each verified count by\
+    \ the corresponding audit total. Keep tables,\n sections, and cells as different\
+    \ units of evaluation.\n These are the exercise’s explicit audit definitions.\
+    \ A section’s presence does not establish that\n every figure inside it was extracted\
+    \ correctly."
+  paragraphs:
+  - Parsing Quality
+  - S01 | Formula explained (1/1)
+  - 'Question: Did the parser preserve the tables, required sections, and numeric
+    cells needed for financial answers? Nintact Npresent T able integrity = , Section
+    coverage = , Ntables Nrequired Nwrong N umeric extraction error = , Ncells Nwrong
+    N umeric extraction correctness = 1 − . Ncells Read it aloud: Divide each verified
+    count by the corresponding audit total. Keep tables, sections, and cells as different
+    units of evaluation. These are the exercise’s explicit audit definitions. A section’s
+    presence does not establish that every figure inside it was extracted correctly.'
+  source:
+    pages:
+    - 126
+    verbatim: true
+symbolPages:
+- page: 127
+  title: Parsing Quality
+  text: " Parsing Quality\n\n   S01 | Symbols and terms (1/3)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   Parser               \
+    \                    Software that converts a filing into machine-readable text,\
+    \ tables,\n                                            and structure.\n   Ntables\
+    \ , Nintact                        Number of audited tables and tables retaining\
+    \ every required header,\n                                            row, and\
+    \ unit label; eight and seven.\n   Nrequired , Npresent                     Number\
+    \ of required sections and those appearing in the parsed\n                   \
+    \                         output; ten and nine.\n   Ncells , Nwrong          \
+    \                Audited numeric cells and cells with an incorrect number or unit;\
+    \ 200\n                                            and six."
+  paragraphs:
+  - Parsing Quality
+  - S01 | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example Parser Software that converts a filing
+    into machine-readable text, tables, and structure. Ntables , Nintact Number of
+    audited tables and tables retaining every required header, row, and unit label;
+    eight and seven. Nrequired , Npresent Number of required sections and those appearing
+    in the parsed output; ten and nine. Ncells , Nwrong Audited numeric cells and
+    cells with an incorrect number or unit; 200 and six.
+  source: &id001
+    pages:
+    - 127
+    verbatim: true
+- page: 128
+  title: Parsing Quality
+  text: " Parsing Quality\n\n   S01 | Symbols and terms (2/3)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   Cell                 \
+    \                    One location at the intersection of a table row and column.\n\
+    \   Header                                   A label explaining what a row or\
+    \ column represents, such as revenue,\n                                      \
+    \      2025, or USD millions."
+  paragraphs:
+  - Parsing Quality
+  - S01 | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Cell One location at the intersection of
+    a table row and column. Header A label explaining what a row or column represents,
+    such as revenue, 2025, or USD millions.
+  source: &id002
+    pages:
+    - 128
+    verbatim: true
+- page: 129
+  title: Parsing Quality
+  text: " Parsing Quality\n\n   S01 | Symbols and terms (3/3)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   Unit label           \
+    \                    Information specifying the figure’s measurement scale, currency,\
+    \ or\n                                            other unit; losing it can change\
+    \ the meaning of a correct-looking\n                                         \
+    \   numeral.\n   Integrity                                Complete preservation\
+    \ of the specified table elements under this\n                               \
+    \             audit rubric, not a general security certification.\n   Coverage\
+    \                                 Presence of required sections here; a different\
+    \ meaning from\n                                            automatic-answer coverage\
+    \ or interval coverage."
+  paragraphs:
+  - Parsing Quality
+  - S01 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Unit label Information specifying the figure’s
+    measurement scale, currency, or other unit; losing it can change the meaning of
+    a correct-looking numeral. Integrity Complete preservation of the specified table
+    elements under this audit rubric, not a general security certification. Coverage
+    Presence of required sections here; a different meaning from automatic-answer
+    coverage or interval coverage.
+  source: &id003
+    pages:
+    - 129
+    verbatim: true
+solutionPages:
+- page: 131
+  title: Parsing Quality
+  text: " Parsing Quality\n\n   S01 | Worked solution — Check the Evidence Before\
+    \ Retrieval\n\n1. Table integrity: 7/8 = 87.5%.\n2. Section coverage: 9/10 = 90%.\n\
+    3. Numeric extraction error rate: 6/200 = 3%; numeric extraction correctness is\n\
+    \   194/200 = 97%.\n4. Identify the unchecked consequence: the six incorrect cells\
+    \ could include financially\n   material figures; the counts do not reveal their\
+    \ importance."
+  paragraphs:
+  - Parsing Quality
+  - S01 | Worked solution — Check the Evidence Before Retrieval
+  - '1. Table integrity: 7/8 = 87.5%. 2. Section coverage: 9/10 = 90%. 3. Numeric
+    extraction error rate: 6/200 = 3%; numeric extraction correctness is 194/200 =
+    97%. 4. Identify the unchecked consequence: the six incorrect cells could include
+    financially material figures; the counts do not reveal their importance.'
+  source:
+    pages:
+    - 131
+    verbatim: true
+interpretationPages:
+- page: 132
+  title: Parsing Quality
+  text: " Parsing Quality\n\n   S01 | Interpretation\n\n What the answer means\n The\
+    \ retriever cannot reliably recover information that parsing omitted or corrupted.\
+    \ A filing can\n have most sections present and still support a materially wrong\
+    \ answer. These are separate\n audit measures with explicit classroom definitions,\
+    \ not an invitation to average table, section,\n and cell percentages into one\
+    \ score.\n Why these steps matter\n An intact table is a whole-table success,\
+    \ whereas a numeric error is counted cell by cell. A single\n table can therefore\
+    \ contain multiple erroneous cells, and the three scores need not move\n together.\
+    \ Their averages cannot establish whether a critical debt or covenant value is\
+    \ usable."
+  paragraphs:
+  - Parsing Quality
+  - S01 | Interpretation
+  - What the answer means The retriever cannot reliably recover information that parsing
+    omitted or corrupted. A filing can have most sections present and still support
+    a materially wrong answer. These are separate audit measures with explicit classroom
+    definitions, not an invitation to average table, section, and cell percentages
+    into one score. Why these steps matter An intact table is a whole-table success,
+    whereas a numeric error is counted cell by cell. A single table can therefore
+    contain multiple erroneous cells, and the three scores need not move together.
+    Their averages cannot establish whether a critical debt or covenant value is usable.
+  source:
+    pages:
+    - 132
+    verbatim: true
+source:
+  pages:
+  - 126
+  - 127
+  - 128
+  - 129
+  - 130
+  - 131
+  - 132
+  verbatim: true
+readAloud:
+- Divide each verified count by the corresponding audit total. Keep tables, sections,
+  and cells as different units of evaluation. These are the exercise’s explicit audit
+  definitions. A section’s presence does not establish that every figure inside it
+  was extracted correctly.
+siteAuthored: false
+givens:
+  tables: 8
+  intact: 7
+  sections: 10
+  present: 9
+  cells: 200
+  wrong: 6
+labels: &id004
+  tables: Tables audited
+  intact: Tables with every required element intact
+  sections: Required sections audited
+  present: Required sections present
+  cells: Numeric cells audited
+  wrong: Cells with a wrong number or unit
+deckSolution:
+  integrity: 0.875
+  coverage: 0.9
+  error: 0.03
+  correct: 0.97
+latex:
+- \operatorname{Table\ integrity}=\frac{N_{intact}}{N_{tables}},\quad \operatorname{Section\
+  coverage}=\frac{N_{present}}{N_{required}}
+- \operatorname{Numeric\ extraction\ error}=\frac{N_{wrong}}{N_{cells}},\quad \operatorname{Correctness}=1-\frac{N_{wrong}}{N_{cells}}
+symbols:
+- symbol: Parser
+  meaning: Software that converts a filing into machine-readable text, tables, and
+    structure.
+  source: *id001
+- symbol: Ntables , Nintact
+  meaning: Number of audited tables and tables retaining every required header, row,
+    and unit label; eight and seven.
+  source: *id001
+- symbol: Nrequired , Npresent
+  meaning: Number of required sections and those appearing in the parsed output; ten
+    and nine.
+  source: *id001
+- symbol: Ncells , Nwrong
+  meaning: Audited numeric cells and cells with an incorrect number or unit; 200 and
+    six.
+  source: *id001
+- symbol: Cell
+  meaning: One location at the intersection of a table row and column.
+  source: *id002
+- symbol: Header
+  meaning: A label explaining what a row or column represents, such as revenue, 2025,
+    or USD millions.
+  source: *id002
+- symbol: Unit label
+  meaning: Information specifying the figure’s measurement scale, currency, or other
+    unit; losing it can change the meaning of a correct-looking numeral.
+  source: *id003
+- symbol: Integrity
+  meaning: Complete preservation of the specified table elements under this audit
+    rubric, not a general security certification.
+  source: *id003
+- symbol: Coverage
+  meaning: Presence of required sections here; a different meaning from automatic-answer
+    coverage or interval coverage.
+  source: *id003
+steps:
+- id: integrity
+  title: Table integrity rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide intact tables by audited tables.
+  mistakes:
+  - pattern: recompute
+    message: Divide intact tables by audited tables.
+- id: coverage
+  title: Section coverage
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide required sections present by required sections audited.
+  mistakes:
+  - pattern: recompute
+    message: Divide required sections present by required sections audited.
+- id: error
+  title: Numeric extraction error rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide wrong numeric cells by audited numeric cells.
+  mistakes:
+  - pattern: recompute
+    message: Divide wrong numeric cells by audited numeric cells.
+- id: correct
+  title: Numeric correctness rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Subtract the numeric error rate from 1.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the numeric error rate from 1.
+learning:
+  title: Check the Evidence Before Retrieval
+  scenario: A filing parser is checked before retrieval is evaluated. Table integrity
+    counts tables retaining all required headers, rows and units. Section coverage
+    counts required sections present. Numeric error counts wrong numbers or units
+    in audited cells.
+  task: Calculate table integrity, section coverage, numeric error rate and numeric
+    correctness using the audit counts.
+  interpretation: Tables, sections and cells are separate units of evaluation. High
+    section coverage cannot compensate for an incorrectly extracted debt figure.
+  summary: 'Table integrity: {integrity}; section coverage: {coverage}; numeric error:
+    {error}; numeric correctness: {correct}.'
+  labels: *id004
+  steps:
+    integrity:
+      title: Table integrity rate
+      hints: *id005
+      unit: proportion
+    coverage:
+      title: Section coverage
+      hints: *id006
+      unit: proportion
+    error:
+      title: Numeric extraction error rate
+      hints: *id007
+      unit: proportion
+    correct:
+      title: Numeric correctness rate
+      hints: *id008
+      unit: proportion
+  readAloud:
+  - Divide each verified count by the corresponding audit total. Keep tables, sections,
+    and cells as different units of evaluation. These are the exercise’s explicit
+    audit definitions. A section’s presence does not establish that every figure inside
+    it was extracted correctly.
+  workedExplanation:
+  - 'The retriever cannot reliably recover information that parsing omitted or corrupted.
+    A filing can have most sections present and still support a materially wrong answer.
+    These are separate audit measures with explicit classroom definitions, not an
+    invitation to average table, section, and cell percentages into one score. '
+  - An intact table is a whole-table success, whereas a numeric error is counted cell
+    by cell. A single table can therefore contain multiple erroneous cells, and the
+    three scores need not move together. Their averages cannot establish whether a
+    critical debt or covenant value is usable.
+  workedArithmetic:
+  - Table integrity = 7/8 = 87.5%. Section coverage = 9/10 = 90%.
+  - Numeric extraction error = 6/200 = 3%. Numeric correctness = (200 − 6) / 200 =
+    97%.
+  - The counts do not reveal whether the six incorrect cells contain financially material
+    figures.
+formulaSource:
+  pages:
+  - 126
+  verbatim: false
+  reviewed: true

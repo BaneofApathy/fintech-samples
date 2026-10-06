@@ -1,0 +1,384 @@
+id: M29b
+title: Put the Best Evidence First
+minutes: 9
+kind: measure
+parent: mrr-and-ndcg
+question: "An analyst grades the top three retrieved passages by relevance:\n   Rank\
+  \                                                           1                  \
+  \           2           3\n   Relevance grade                                  \
+  \              1                             3           0\n Grade 3 is highly relevant,\
+  \ 1 is partly relevant, and 0 is irrelevant. These are the corpus’s three\n candidate\
+  \ passages.\n                                                   3\n            \
+  \                                      X    2reli − 1                       DCG@3\n\
+  \                                       DCG@3 =                     ,   nDCG@3 =\
+  \              .\n                                                  i=1\n      \
+  \                                                log2 (i + 1)                  \
+  \  IDCG@3\n IDCG is the score for ideal relevance order. Calculate the actual score,\
+  \ ideal score, and\n normalized result. Use log2 2 = 1, log2 3 ≈ 1.585, and log2\
+  \ 4 = 2."
+questionPages:
+- page: 467
+  title: nDCG
+  text: " nDCG\n\n   M29b | Class problem | 9 minutes — Put the Best Evidence First\n\
+    \n An analyst grades the top three retrieved passages by relevance:\n   Rank \
+    \                                                          1                 \
+    \            2           3\n   Relevance grade                               \
+    \                 1                             3           0\n Grade 3 is highly\
+    \ relevant, 1 is partly relevant, and 0 is irrelevant. These are the corpus’s\
+    \ three\n candidate passages.\n                                              \
+    \     3\n                                                  X    2reli − 1    \
+    \                   DCG@3\n                                       DCG@3 =    \
+    \                 ,   nDCG@3 =              .\n                              \
+    \                    i=1\n                                                   \
+    \   log2 (i + 1)                    IDCG@3\n IDCG is the score for ideal relevance\
+    \ order. Calculate the actual score, ideal score, and\n normalized result. Use\
+    \ log2 2 = 1, log2 3 ≈ 1.585, and log2 4 = 2."
+  paragraphs:
+  - nDCG
+  - M29b | Class problem | 9 minutes — Put the Best Evidence First
+  - 'An analyst grades the top three retrieved passages by relevance: Rank 1 2 3 Relevance
+    grade 1 3 0 Grade 3 is highly relevant, 1 is partly relevant, and 0 is irrelevant.
+    These are the corpus’s three candidate passages. 3 X 2reli − 1 DCG@3 DCG@3 = ,
+    nDCG@3 = . i=1 log2 (i + 1) IDCG@3 IDCG is the score for ideal relevance order.
+    Calculate the actual score, ideal score, and normalized result. Use log2 2 = 1,
+    log2 3 ≈ 1.585, and log2 4 = 2.'
+  source:
+    pages:
+    - 467
+    verbatim: true
+formulaPages:
+- page: 462
+  title: nDCG
+  text: " nDCG\n\n   M29b | Formula explained (1/2)\n\n Question: How much useful\
+    \ evidence is delivered near the top of the ranking?\n                       \
+    \                                                     K\n                    \
+    \                                                        X      gaini\n      \
+    \                                       gaini = 2reli − 1,   DCG@K =         \
+    \            .\n                                                             \
+    \               i=1\n                                                        \
+    \                        log 2 (i + 1)\n\n Read it aloud: Turn each relevance\
+    \ grade into a gain, then reduce its contribution according to\n its rank. Add\
+    \ the discounted gains across the top K results.\n This exercise explicitly uses\
+    \ exponential gain. Higher grades are rewarded disproportionately.\n Rank 1 has\
+    \ divisor 1, so its gain is undiscounted."
+  paragraphs:
+  - nDCG
+  - M29b | Formula explained (1/2)
+  - 'Question: How much useful evidence is delivered near the top of the ranking?
+    K X gaini gaini = 2reli − 1, DCG@K = . i=1 log 2 (i + 1)'
+  - 'Read it aloud: Turn each relevance grade into a gain, then reduce its contribution
+    according to its rank. Add the discounted gains across the top K results. This
+    exercise explicitly uses exponential gain. Higher grades are rewarded disproportionately.
+    Rank 1 has divisor 1, so its gain is undiscounted.'
+  source:
+    pages:
+    - 462
+    verbatim: true
+- page: 463
+  title: nDCG
+  text: " nDCG\n\n   M29b | Formula explained (2/2)\n\n Question: How close is the\
+    \ ordering to the best possible ordering of this candidate set?\n            \
+    \                                      DCG@K\n                               \
+    \    nDCG@K =                  .\n                                           \
+    \      IDCG@K\n Read it aloud: Divide the observed discounted gain by the gain\
+    \ obtained by putting the same\n candidates in descending relevance order.\n The\
+    \ ideal order uses the same cutoff, gain function, and discount rule. A score\
+    \ of 1 indicates\n the ideal score has been reached, not that the generated answer\
+    \ is correct.\n Calculation convention: The reported detailed totals use the unrounded\
+    \ value of log2 (3). The\n supplied 1.585 approximation can change the last printed\
+    \ decimal."
+  paragraphs:
+  - nDCG
+  - M29b | Formula explained (2/2)
+  - 'Question: How close is the ordering to the best possible ordering of this candidate
+    set? DCG@K nDCG@K = . IDCG@K Read it aloud: Divide the observed discounted gain
+    by the gain obtained by putting the same candidates in descending relevance order.
+    The ideal order uses the same cutoff, gain function, and discount rule. A score
+    of 1 indicates the ideal score has been reached, not that the generated answer
+    is correct. Calculation convention: The reported detailed totals use the unrounded
+    value of log2 (3). The supplied 1.585 approximation can change the last printed
+    decimal.'
+  source:
+    pages:
+    - 463
+    verbatim: true
+symbolPages:
+- page: 464
+  title: nDCG
+  text: " nDCG\n\n   M29b | Symbols and terms (1/3)\n\n\n   Symbol or term       \
+    \                          Meaning in this example\n   i, K                  \
+    \                         Rank position, starting at 1, and evaluated ranking\
+    \ length, here 3.\n   reli                                           Relevance\
+    \ grade of the passage at rank i: 3 highly relevant, 1 partly\n              \
+    \                                    relevant, 0 irrelevant.\n   gaini       \
+    \                                   Numeric reward from relevance, explicitly\
+    \ 2reli − 1 in this exercise.\n   log2                                       \
+    \    Base-2 logarithm: the exponent to which 2 must be raised to obtain\n    \
+    \                                              its argument."
+  paragraphs:
+  - nDCG
+  - M29b | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example i, K Rank position, starting at 1, and
+    evaluated ranking length, here 3. reli Relevance grade of the passage at rank
+    i: 3 highly relevant, 1 partly relevant, 0 irrelevant. gaini Numeric reward from
+    relevance, explicitly 2reli − 1 in this exercise. log2 Base-2 logarithm: the exponent
+    to which 2 must be raised to obtain its argument.'
+  source: &id001
+    pages:
+    - 464
+    verbatim: true
+- page: 465
+  title: nDCG
+  text: " nDCG\n\n   M29b | Symbols and terms (2/3)\n\n\n   Symbol or term       \
+    \                          Meaning in this example\n   log2 (i + 1)          \
+    \                         Rank discount divisor; adding 1 makes the rank-1 divisor\
+    \ equal to 1\n                                                  rather than 0.\n\
+    \   DCG                                            Discounted cumulative gain:\
+    \ sum of rank-discounted relevance gains."
+  paragraphs:
+  - nDCG
+  - M29b | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example log2 (i + 1) Rank discount divisor; adding
+    1 makes the rank-1 divisor equal to 1 rather than 0. DCG Discounted cumulative
+    gain: sum of rank-discounted relevance gains.'
+  source: &id002
+    pages:
+    - 465
+    verbatim: true
+- page: 466
+  title: nDCG
+  text: " nDCG\n\n   M29b | Symbols and terms (3/3)\n\n\n   Symbol or term       \
+    \                          Meaning in this example\n   IDCG                  \
+    \                         Ideal DCG: the same calculation after sorting candidate\
+    \ passages\n                                                  from highest to\
+    \ lowest relevance.\n   nDCG                                           Normalized\
+    \ DCG: observed gain divided by ideal gain; lower-case n\n                   \
+    \                               means normalized.\n   Discount               \
+    \                        Reduced credit for evidence appearing later in the result\
+    \ list; not a\n                                                  financial present-value\
+    \ discount rate.\n   Gain convention                                This exercise\
+    \ uses exponential gains; software defaults must not be\n                    \
+    \                              assumed to use the identical transformation."
+  paragraphs:
+  - nDCG
+  - M29b | Symbols and terms (3/3)
+  - 'Symbol or term Meaning in this example IDCG Ideal DCG: the same calculation after
+    sorting candidate passages from highest to lowest relevance. nDCG Normalized DCG:
+    observed gain divided by ideal gain; lower-case n means normalized. Discount Reduced
+    credit for evidence appearing later in the result list; not a financial present-value
+    discount rate. Gain convention This exercise uses exponential gains; software
+    defaults must not be assumed to use the identical transformation.'
+  source: &id003
+    pages:
+    - 466
+    verbatim: true
+solutionPages:
+- page: 468
+  title: nDCG
+  text: " nDCG\n\n   M29b | Worked solution — Put the Best Evidence First\n\n1. Convert\
+    \ relevance to gain: 21 − 1 = 1, 23 − 1 = 7, 20 − 1 = 0.\n2. Actual order:\n \
+    \                                                 DCG = 1/1 + 7/1.585 + 0/2 ≈\
+    \ 5.4165.\n3. Ideal order: grades [3, 1, 0], gains [7, 1, 0].\n              \
+    \               IDCG = 7/1 + 1/1.585 + 0/2 ≈ 7.6309.\n4. Normalize:\n        \
+    \                                          nDCG@3 = 5.4165/7.6309 ≈ 0.7098."
+  paragraphs:
+  - nDCG
+  - M29b | Worked solution — Put the Best Evidence First
+  - '1. Convert relevance to gain: 21 − 1 = 1, 23 − 1 = 7, 20 − 1 = 0. 2. Actual order:
+    DCG = 1/1 + 7/1.585 + 0/2 ≈ 5.4165. 3. Ideal order: grades [3, 1, 0], gains [7,
+    1, 0]. IDCG = 7/1 + 1/1.585 + 0/2 ≈ 7.6309. 4. Normalize: nDCG@3 = 5.4165/7.6309
+    ≈ 0.7098.'
+  source:
+    pages:
+    - 468
+    verbatim: true
+interpretationPages:
+- page: 469
+  title: nDCG
+  text: " nDCG\n\n   M29b | Interpretation\n\n What the answer means\n The retriever\
+    \ found the strongest passage but put it behind weaker evidence. Its discounted\n\
+    \ relevance score is about 71% of the ideal ordering’s score. Moving the grade-3\
+    \ passage first\n gives nDCG of 1 here. Neither score establishes that the generated\
+    \ answer uses the passage\n correctly.\n Why these steps matter\n The normalized\
+    \ result is a fraction of ideal discounted relevance, not the fraction of sources\n\
+    \ that are relevant. Ranking the strongest source second loses more credit under\
+    \ exponential gain\n than a simple relevant-versus-irrelevant count would reveal."
+  paragraphs:
+  - nDCG
+  - M29b | Interpretation
+  - What the answer means The retriever found the strongest passage but put it behind
+    weaker evidence. Its discounted relevance score is about 71% of the ideal ordering’s
+    score. Moving the grade-3 passage first gives nDCG of 1 here. Neither score establishes
+    that the generated answer uses the passage correctly. Why these steps matter The
+    normalized result is a fraction of ideal discounted relevance, not the fraction
+    of sources that are relevant. Ranking the strongest source second loses more credit
+    under exponential gain than a simple relevant-versus-irrelevant count would reveal.
+  source:
+    pages:
+    - 469
+    verbatim: true
+source:
+  pages:
+  - 462
+  - 463
+  - 464
+  - 465
+  - 466
+  - 467
+  - 468
+  - 469
+  verbatim: true
+readAloud:
+- Turn each relevance grade into a gain, then reduce its contribution according to
+  its rank. Add the discounted gains across the top K results. This exercise explicitly
+  uses exponential gain. Higher grades are rewarded disproportionately. Rank 1 has
+  divisor 1, so its gain is undiscounted.
+- 'Divide the observed discounted gain by the gain obtained by putting the same candidates
+  in descending relevance order. The ideal order uses the same cutoff, gain function,
+  and discount rule. A score of 1 indicates the ideal score has been reached, not
+  that the generated answer is correct. Calculation convention: The reported detailed
+  totals use the unrounded value of log2 (3). The supplied 1.585 approximation can
+  change the last printed decimal.'
+siteAuthored: false
+givens:
+  grades:
+  - 1
+  - 3
+  - 0
+labels: &id004
+  grades: Relevance grades in retrieved order
+deckSolution:
+  DCG: 5.4165
+  IDCG: 7.6309
+  nDCG: 0.7098
+latex:
+- DCG@K=\sum_{i=1}^K\frac{2^{rel_i}-1}{\log_2(i+1)},\quad nDCG@K=\frac{DCG@K}{IDCG@K}
+symbols:
+- symbol: i, K
+  meaning: Rank position, starting at 1, and evaluated ranking length, here 3.
+  source: *id001
+- symbol: reli
+  meaning: 'Relevance grade of the passage at rank i: 3 highly relevant, 1 partly
+    relevant, 0 irrelevant.'
+  source: *id001
+- symbol: gaini
+  meaning: Numeric reward from relevance, explicitly 2reli − 1 in this exercise.
+  source: *id001
+- symbol: log2
+  meaning: 'Base-2 logarithm: the exponent to which 2 must be raised to obtain its
+    argument.'
+  source: *id001
+- symbol: log2 (i + 1)
+  meaning: Rank discount divisor; adding 1 makes the rank-1 divisor equal to 1 rather
+    than 0.
+  source: *id002
+- symbol: DCG
+  meaning: 'Discounted cumulative gain: sum of rank-discounted relevance gains.'
+  source: *id002
+- symbol: IDCG
+  meaning: 'Ideal DCG: the same calculation after sorting candidate passages from
+    highest to lowest relevance.'
+  source: *id003
+- symbol: nDCG
+  meaning: 'Normalized DCG: observed gain divided by ideal gain; lower-case n means
+    normalized.'
+  source: *id003
+- symbol: Discount
+  meaning: Reduced credit for evidence appearing later in the result list; not a financial
+    present-value discount rate.
+  source: *id003
+- symbol: Gain convention
+  meaning: This exercise uses exponential gains; software defaults must not be assumed
+    to use the identical transformation.
+  source: *id003
+steps:
+- id: DCG
+  title: Discounted cumulative gain
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - For each rank, divide 2^grade − 1 by log2(rank + 1), then add.
+  mistakes:
+  - pattern: recompute
+    message: For each rank, divide 2^grade − 1 by log2(rank + 1), then add.
+- id: IDCG
+  title: Ideal discounted cumulative gain
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Sort the grades highest first and repeat the same discounted-gain calculation.
+  mistakes:
+  - pattern: recompute
+    message: Sort the grades highest first and repeat the same discounted-gain calculation.
+- id: nDCG
+  title: Normalized discounted cumulative gain
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide actual DCG by ideal DCG.
+  mistakes:
+  - pattern: recompute
+    message: Divide actual DCG by ideal DCG.
+learning:
+  title: Put the Best Evidence First
+  scenario: Retrieved passages have graded relevance in their current order. Use gain
+    2^grade − 1 and rank discount log2(rank + 1), with ranks starting at 1.
+  task: Calculate actual DCG, ideal DCG after sorting the same grades highest first,
+    and normalized DCG. Use full precision in logarithms.
+  interpretation: nDCG is a fraction of the ideal discounted-relevance score under
+    the same gain and cutoff. It is not the fraction of relevant passages or the probability
+    that an answer is correct.
+  summary: 'DCG: {DCG}; ideal DCG: {IDCG}; nDCG: {nDCG}.'
+  labels: *id004
+  steps:
+    DCG:
+      title: Discounted cumulative gain
+      hints: *id005
+      unit: ''
+    IDCG:
+      title: Ideal discounted cumulative gain
+      hints: *id006
+      unit: ''
+    nDCG:
+      title: Normalized discounted cumulative gain
+      hints: *id007
+      unit: ''
+  readAloud:
+  - Turn each relevance grade into a gain, then reduce its contribution according
+    to its rank. Add the discounted gains across the top K results. This exercise
+    explicitly uses exponential gain. Higher grades are rewarded disproportionately.
+    Rank 1 has divisor 1, so its gain is undiscounted.
+  - 'Divide the observed discounted gain by the gain obtained by putting the same
+    candidates in descending relevance order. The ideal order uses the same cutoff,
+    gain function, and discount rule. A score of 1 indicates the ideal score has been
+    reached, not that the generated answer is correct. Calculation convention: The
+    reported detailed totals use the unrounded value of log2 (3). The supplied 1.585
+    approximation can change the last printed decimal.'
+  workedExplanation:
+  - 'The retriever found the strongest passage but put it behind weaker evidence.
+    Its discounted relevance score is about 71% of the ideal ordering’s score. Moving
+    the grade-3 passage first gives nDCG of 1 here. Neither score establishes that
+    the generated answer uses the passage correctly. '
+  - The normalized result is a fraction of ideal discounted relevance, not the fraction
+    of sources that are relevant. Ranking the strongest source second loses more credit
+    under exponential gain than a simple relevant-versus-irrelevant count would reveal.
+  workedArithmetic:
+  - Gains for grades [1, 3, 0] are [2¹ − 1, 2³ − 1, 2⁰ − 1] = [1, 7, 0].
+  - DCG = 1/log2(2) + 7/log2(3) + 0/log2(4) ≈ 5.4165.
+  - Ideal grades [3, 1, 0] give IDCG = 7/log2(2) + 1/log2(3) + 0/log2(4) ≈ 7.6309.
+  - nDCG ≈ 5.4165/7.6309 ≈ 0.7098. These totals use the unrounded logarithms.
+formulaSource:
+  pages:
+  - 462
+  - 463
+  verbatim: false
+  reviewed: true

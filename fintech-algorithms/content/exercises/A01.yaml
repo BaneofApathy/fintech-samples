@@ -1,0 +1,504 @@
+id: A01
+title: Loan Review
+minutes: 7
+kind: algorithm
+parent: logistic-regression
+question: "A lender uses this fitted model to estimate one-year default probability:\n\
+  \                                                                         1\n  \
+  \                    z = −3 + 0.04(DTI) + 1.2D − 0.03I,        p=           .\n\
+  \                                                                     1 + e−z\n\
+  \ DTI is entered in percentage points, D = 1 for a prior delinquency and 0 otherwise,\
+  \ and I is\n annual income in thousands of dollars.\n An applicant has DTI = 35,\
+  \ D = 1, and I = 60. The requested loan is $10,000, with a 40%\n loss if default\
+  \ occurs. Send applications to review when p ≥ 8%.\n1. Calculate z and the default\
+  \ probability. Use e2.2 = 9.025.\n2. Calculate expected credit loss: p × loan amount\
+  \ × loss fraction.\n3. Apply the review rule. Does the result mean the applicant\
+  \ will default?"
+questionPages:
+- page: 27
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Class problem | 7 minutes — Loan Review\n\
+    \n A lender uses this fitted model to estimate one-year default probability:\n\
+    \                                                                         1\n\
+    \                      z = −3 + 0.04(DTI) + 1.2D − 0.03I,        p=          \
+    \ .\n                                                                     1 +\
+    \ e−z\n DTI is entered in percentage points, D = 1 for a prior delinquency and\
+    \ 0 otherwise, and I is\n annual income in thousands of dollars.\n An applicant\
+    \ has DTI = 35, D = 1, and I = 60. The requested loan is $10,000, with a 40%\n\
+    \ loss if default occurs. Send applications to review when p ≥ 8%.\n1. Calculate\
+    \ z and the default probability. Use e2.2 = 9.025.\n2. Calculate expected credit\
+    \ loss: p × loan amount × loss fraction.\n3. Apply the review rule. Does the result\
+    \ mean the applicant will default?"
+  paragraphs:
+  - Logistic Regression
+  - A01 | Class problem | 7 minutes — Loan Review
+  - 'A lender uses this fitted model to estimate one-year default probability: 1 z
+    = −3 + 0.04(DTI) + 1.2D − 0.03I, p= . 1 + e−z DTI is entered in percentage points,
+    D = 1 for a prior delinquency and 0 otherwise, and I is annual income in thousands
+    of dollars. An applicant has DTI = 35, D = 1, and I = 60. The requested loan is
+    $10,000, with a 40% loss if default occurs. Send applications to review when p
+    ≥ 8%. 1. Calculate z and the default probability. Use e2.2 = 9.025. 2. Calculate
+    expected credit loss: p × loan amount × loss fraction. 3. Apply the review rule.
+    Does the result mean the applicant will default?'
+  source:
+    pages:
+    - 27
+    verbatim: true
+formulaPages:
+- page: 20
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Formula explained (1/2)\n\n Question: What\
+    \ is the estimated chance of default, and how much credit loss does that imply\n\
+    \ on average?\n                             z = −3 + 0.04(DTI) + 1.2D − 0.03I,\n\
+    \                                                1\n                         \
+    \               p=          .\n                                            1 +\
+    \ e−z\n Read the first formula: Start at −3, add the debt-burden and delinquency\
+    \ contributions, then\n subtract the income contribution.\n Read the second: Turn\
+    \ the unrestricted score into a number between 0 and 1. This conversion\n is called\
+    \ the logistic or sigmoid function.\n These are supplied, fitted coefficients.\
+    \ The exercise calculates a prediction; it does not estimate\n the coefficients\
+    \ from data."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Formula explained (1/2)
+  - 'Question: What is the estimated chance of default, and how much credit loss does
+    that imply on average? z = −3 + 0.04(DTI) + 1.2D − 0.03I, 1 p= . 1 + e−z Read
+    the first formula: Start at −3, add the debt-burden and delinquency contributions,
+    then subtract the income contribution. Read the second: Turn the unrestricted
+    score into a number between 0 and 1. This conversion is called the logistic or
+    sigmoid function. These are supplied, fitted coefficients. The exercise calculates
+    a prediction; it does not estimate the coefficients from data.'
+  source:
+    pages:
+    - 20
+    verbatim: true
+- page: 21
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Formula explained (2/2)\n\n Question: How\
+    \ does default probability translate into expected credit loss?\n            \
+    \                                EL = P D × EAD × LGD.\n Read it aloud: Probability\
+    \ of default × dollars exposed when default occurs × fraction of those\n dollars\
+    \ lost after recovery.\n First compute EAD × LGD, the loss conditional on default.\
+    \ Then multiply by P D to obtain\n the probability-weighted average loss.\n The\
+    \ classroom policy sends an application to review when p ≥ 0.08. This is an assumed\
+    \ routing\n rule, not a rule learned by the sigmoid."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Formula explained (2/2)
+  - 'Question: How does default probability translate into expected credit loss? EL
+    = P D × EAD × LGD. Read it aloud: Probability of default × dollars exposed when
+    default occurs × fraction of those dollars lost after recovery. First compute
+    EAD × LGD, the loss conditional on default. Then multiply by P D to obtain the
+    probability-weighted average loss. The classroom policy sends an application to
+    review when p ≥ 0.08. This is an assumed routing rule, not a rule learned by the
+    sigmoid.'
+  source:
+    pages:
+    - 21
+    verbatim: true
+symbolPages:
+- page: 22
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Symbols and terms (1/5)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   z               \
+    \                         Combined model score, measured in log-odds rather than\
+    \ dollars or\n                                            percentage points.\n\
+    \   p or P D                                 Estimated probability of default\
+    \ within one year; enter it as a\n                                           \
+    \ decimal.\n   DTI                                      Debt-to-income ratio:\
+    \ debt-payment burden relative to income on a\n                              \
+    \              consistent time basis. The supplied 35% is entered as 35, not 0.35.\n\
+    \   D                                        Delinquency indicator: 1 means the\
+    \ specified prior late-payment\n                                            condition\
+    \ occurred; 0 means it did not."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Symbols and terms (1/5)
+  - 'Symbol or term Meaning in this example z Combined model score, measured in log-odds
+    rather than dollars or percentage points. p or P D Estimated probability of default
+    within one year; enter it as a decimal. DTI Debt-to-income ratio: debt-payment
+    burden relative to income on a consistent time basis. The supplied 35% is entered
+    as 35, not 0.35. D Delinquency indicator: 1 means the specified prior late-payment
+    condition occurred; 0 means it did not.'
+  source: &id001
+    pages:
+    - 22
+    verbatim: true
+- page: 23
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Symbols and terms (2/5)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   I               \
+    \                         Annual income in thousands of dollars; I = 60 means\
+    \ US$60,000,\n                                            not US$60.\n   −3  \
+    \                                     Intercept: the starting score before feature\
+    \ contributions are added."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Symbols and terms (2/5)
+  - 'Symbol or term Meaning in this example I Annual income in thousands of dollars;
+    I = 60 means US$60,000, not US$60. −3 Intercept: the starting score before feature
+    contributions are added.'
+  source: &id002
+    pages:
+    - 23
+    verbatim: true
+- page: 24
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Symbols and terms (3/5)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   0.04, 1.2, −0.03\
+    \                         Fitted coefficients: score change for a one-unit increase\
+    \ in the\n                                            corresponding input, holding\
+    \ others fixed.\n   e, e−z                                   Euler’s number, about\
+    \ 2.71828, raised to the negative score. Here e\n                            \
+    \                is not a forecast error.\n   Odds; log-odds                 \
+    \          Odds are p/(1 − p); log-odds are the natural logarithm of the odds.\n\
+    \                                            The score z is on this scale.\n \
+    \  EAD                                      Exposure at default: dollars outstanding\
+    \ when default occurs.\n                                            Assume the\
+    \ full US$10,000 is exposed."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Symbols and terms (3/5)
+  - 'Symbol or term Meaning in this example 0.04, 1.2, −0.03 Fitted coefficients:
+    score change for a one-unit increase in the corresponding input, holding others
+    fixed. e, e−z Euler’s number, about 2.71828, raised to the negative score. Here
+    e is not a forecast error. Odds; log-odds Odds are p/(1 − p); log-odds are the
+    natural logarithm of the odds. The score z is on this scale. EAD Exposure at default:
+    dollars outstanding when default occurs. Assume the full US$10,000 is exposed.'
+  source: &id003
+    pages:
+    - 24
+    verbatim: true
+- page: 25
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Symbols and terms (4/5)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   LGD             \
+    \                         Loss given default: the fraction of exposure not recovered;\
+    \ 40%\n                                            becomes 0.40.\n   EL      \
+    \                                 Expected loss: the model’s average loss across\
+    \ comparable loans, in\n                                            dollars over\
+    \ the stated horizon."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Symbols and terms (4/5)
+  - 'Symbol or term Meaning in this example LGD Loss given default: the fraction of
+    exposure not recovered; 40% becomes 0.40. EL Expected loss: the model’s average
+    loss across comparable loans, in dollars over the stated horizon.'
+  source: &id004
+    pages:
+    - 25
+    verbatim: true
+- page: 26
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Symbols and terms (5/5)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   ≥; review threshold\
+    \                      Greater than or equal to; the minimum estimated risk that\
+    \ triggers\n                                            human review here.\n \
+    \  Calibration                              Agreement between predicted probabilities\
+    \ and observed event rates\n                                            across\
+    \ comparable cases.\n   Default                                  Failure to meet\
+    \ the repayment condition specified by the lender; the\n                     \
+    \                       model predicts whether that event occurs within one year.\n\
+    \   Feature; fitted coefficient              A supplied input describing an applicant;\
+    \ a numeric weight learned\n                                            earlier\
+    \ from training examples and held fixed during this prediction."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Symbols and terms (5/5)
+  - Symbol or term Meaning in this example ≥; review threshold Greater than or equal
+    to; the minimum estimated risk that triggers human review here. Calibration Agreement
+    between predicted probabilities and observed event rates across comparable cases.
+    Default Failure to meet the repayment condition specified by the lender; the model
+    predicts whether that event occurs within one year. Feature; fitted coefficient
+    A supplied input describing an applicant; a numeric weight learned earlier from
+    training examples and held fixed during this prediction.
+  source: &id005
+    pages:
+    - 26
+    verbatim: true
+solutionPages:
+- page: 28
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Worked solution — Loan Review\n\n1. Combine\
+    \ the features.\n             z = −3 + 0.04(35) + 1.2 − 0.03(60) = −3 + 1.4 +\
+    \ 1.2 − 1.8 = −2.2.\n2. Convert the score into a probability.\n              \
+    \                         1\n                               p=             = 0.09975\
+    \ ≈ 9.98%.\n                                   1 + 9.025\n3. Calculate the loss\
+    \ if default occurs, then weight it by probability.\n                        \
+    \    Loss on default = 10,000(0.40) = $4,000.\n                              \
+    \              Expected loss = 0.09975(4,000) ≈ $399.\n4. Apply the policy. 9.98%\
+    \ ≥ 8%, so send the application to review."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Worked solution — Loan Review
+  - 1. Combine the features. z = −3 + 0.04(35) + 1.2 − 0.03(60) = −3 + 1.4 + 1.2 −
+    1.8 = −2.2. 2. Convert the score into a probability. 1 p= = 0.09975 ≈ 9.98%. 1
+    + 9.025 3. Calculate the loss if default occurs, then weight it by probability.
+    Loss on default = 10,000(0.40) = $4,000. Expected loss = 0.09975(4,000) ≈ $399.
+    4. Apply the policy. 9.98% ≥ 8%, so send the application to review.
+  source:
+    pages:
+    - 28
+    verbatim: true
+interpretationPages:
+- page: 29
+  title: Logistic Regression
+  text: " Logistic Regression\n\n   A01 | Interpretation\n\n What the answer means\n\
+    \ The estimated average credit loss is about $399 per comparable loan under these\n\
+    \ assumptions. It is not a guaranteed loss on this loan, and review is not the\
+    \ same as rejection.\n Whether the probability is reliable requires calibration\
+    \ evidence.\n Why these steps matter\n The multiplication by 0.40 does not describe\
+    \ how often default occurs; it describes how much\n is lost when default occurs.\
+    \ The multiplication by p supplies the frequency weighting.\n Keeping those two\
+    \ roles separate prevents confusing probability with severity."
+  paragraphs:
+  - Logistic Regression
+  - A01 | Interpretation
+  - What the answer means The estimated average credit loss is about $399 per comparable
+    loan under these assumptions. It is not a guaranteed loss on this loan, and review
+    is not the same as rejection. Whether the probability is reliable requires calibration
+    evidence. Why these steps matter The multiplication by 0.40 does not describe
+    how often default occurs; it describes how much is lost when default occurs. The
+    multiplication by p supplies the frequency weighting. Keeping those two roles
+    separate prevents confusing probability with severity.
+  source:
+    pages:
+    - 29
+    verbatim: true
+source:
+  pages:
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  verbatim: true
+readAloud:
+- 'Start at −3, add the debt-burden and delinquency contributions, then subtract the
+  income contribution. Read the second: Turn the unrestricted score into a number
+  between 0 and 1. This conversion is called the logistic or sigmoid function. These
+  are supplied, fitted coefficients. The exercise calculates a prediction; it does
+  not estimate the coefficients from data.'
+- Probability of default × dollars exposed when default occurs × fraction of those
+  dollars lost after recovery. First compute EAD × LGD, the loss conditional on default.
+  Then multiply by P D to obtain the probability-weighted average loss. The classroom
+  policy sends an application to review when p ≥ 0.08. This is an assumed routing
+  rule, not a rule learned by the sigmoid.
+siteAuthored: false
+givens:
+  DTI: 35
+  D: 1
+  I: 60
+  loan: 10000
+  LGD: 0.4
+  threshold: 0.08
+labels: &id006
+  DTI: Debt-to-income ratio (percentage points)
+  D: Prior delinquency (0 or 1)
+  I: Annual income ($ thousands)
+  loan: Loan exposure ($)
+  LGD: Loss fraction if default occurs
+  threshold: Review threshold (proportion)
+deckSolution:
+  z: -2.2
+  p: 0.09975
+  lossOnDefault: 4000
+  EL: 399
+  decision: true
+latex:
+- z=-3+0.04\,DTI+1.2D-0.03I
+- p=\frac{1}{1+e^{-z}}
+- EL=p\times EAD\times LGD
+symbols:
+- symbol: z
+  meaning: Combined model score, measured in log-odds rather than dollars or percentage
+    points.
+  source: *id001
+- symbol: p or P D
+  meaning: Estimated probability of default within one year; enter it as a decimal.
+  source: *id001
+- symbol: DTI
+  meaning: 'Debt-to-income ratio: debt-payment burden relative to income on a consistent
+    time basis. The supplied 35% is entered as 35, not 0.35.'
+  source: *id001
+- symbol: D
+  meaning: 'Delinquency indicator: 1 means the specified prior late-payment condition
+    occurred; 0 means it did not.'
+  source: *id001
+- symbol: I
+  meaning: Annual income in thousands of dollars; I = 60 means US$60,000, not US$60.
+  source: *id002
+- symbol: −3
+  meaning: 'Intercept: the starting score before feature contributions are added.'
+  source: *id002
+- symbol: 0.04, 1.2, −0.03
+  meaning: 'Fitted coefficients: score change for a one-unit increase in the corresponding
+    input, holding others fixed.'
+  source: *id003
+- symbol: e, e−z
+  meaning: Euler’s number, about 2.71828, raised to the negative score. Here e is
+    not a forecast error.
+  source: *id003
+- symbol: Odds; log-odds
+  meaning: Odds are p/(1 − p); log-odds are the natural logarithm of the odds. The
+    score z is on this scale.
+  source: *id003
+- symbol: EAD
+  meaning: 'Exposure at default: dollars outstanding when default occurs. Assume the
+    full US$10,000 is exposed.'
+  source: *id003
+- symbol: LGD
+  meaning: 'Loss given default: the fraction of exposure not recovered; 40% becomes
+    0.40.'
+  source: *id004
+- symbol: EL
+  meaning: 'Expected loss: the model’s average loss across comparable loans, in dollars
+    over the stated horizon.'
+  source: *id004
+- symbol: ≥; review threshold
+  meaning: Greater than or equal to; the minimum estimated risk that triggers human
+    review here.
+  source: *id005
+- symbol: Calibration
+  meaning: Agreement between predicted probabilities and observed event rates across
+    comparable cases.
+  source: *id005
+- symbol: Default
+  meaning: Failure to meet the repayment condition specified by the lender; the model
+    predicts whether that event occurs within one year.
+  source: *id005
+- symbol: Feature; fitted coefficient
+  meaning: A supplied input describing an applicant; a numeric weight learned earlier
+    from training examples and held fixed during this prediction.
+  source: *id005
+steps:
+- id: z
+  title: Combined score z (log-odds)
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Start at −3, add 0.04 × DTI and 1.2 × D, then subtract 0.03 × I.
+  mistakes:
+  - pattern: recompute
+    message: Start at −3, add 0.04 × DTI and 1.2 × D, then subtract 0.03 × I.
+- id: p
+  title: Estimated default probability
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Calculate 1 / (1 + exp(−z)) using your score.
+  mistakes:
+  - pattern: recompute
+    message: Calculate 1 / (1 + exp(−z)) using your score.
+- id: lossOnDefault
+  title: Loss if default occurs
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Multiply the loan exposure by the loss fraction.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the loan exposure by the loss fraction.
+- id: EL
+  title: Expected credit loss
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Multiply the default probability by the loss if default occurs.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the default probability by the loss if default occurs.
+- id: decision
+  title: Send to review?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Compare the probability with the threshold. Equality triggers review.
+  mistakes:
+  - pattern: recompute
+    message: Compare the probability with the threshold. Equality triggers review.
+learning:
+  title: Loan Review
+  scenario: A lender estimates one-year default probability with z = −3 + 0.04 × DTI
+    + 1.2 × D − 0.03 × I, then p = 1 / (1 + exp(−z)). D is 1 for prior delinquency
+    and 0 otherwise.
+  task: Use the applicant values below. Calculate the score, probability and expected
+    loss. Send the application to review when its probability reaches the review threshold.
+  interpretation: Expected loss averages the possible credit loss over comparable
+    loans. It does not predict a certain loss on this applicant. The review threshold
+    is a policy choice; calibration is needed to assess whether the probabilities
+    are reliable.
+  summary: 'Default probability: {p}. Expected loss: {EL}. Send to review: {decision}.'
+  labels: *id006
+  steps:
+    z:
+      title: Combined score z (log-odds)
+      hints: *id007
+      unit: ''
+    p:
+      title: Estimated default probability
+      hints: *id008
+      unit: proportion
+    lossOnDefault:
+      title: Loss if default occurs
+      hints: *id009
+      unit: $
+    EL:
+      title: Expected credit loss
+      hints: *id010
+      unit: $
+    decision:
+      title: Send to review?
+      hints: *id011
+      unit: ''
+  readAloud:
+  - Start at −3, add the debt-burden and delinquency contributions, then subtract
+    the income contribution. Turn the unrestricted score into a number between 0 and
+    1. This conversion is called the logistic or sigmoid function. These are supplied,
+    fitted coefficients. The exercise calculates a prediction; it does not estimate
+    the coefficients from data.
+  - Probability of default × dollars exposed when default occurs × fraction of those
+    dollars lost after recovery. First compute EAD × LGD, the loss conditional on
+    default. Then multiply by PD to obtain the probability-weighted average loss.
+    The classroom policy sends an application to review when p ≥ 0.08. This is an
+    assumed routing rule, not a rule learned by the sigmoid.
+  workedExplanation:
+  - 'The estimated average credit loss is about $399 per comparable loan under these
+    assumptions. It is not a guaranteed loss on this loan, and review is not the same
+    as rejection. Whether the probability is reliable requires calibration evidence. '
+  - The multiplication by 0.40 does not describe how often default occurs; it describes
+    how much is lost when default occurs. The multiplication by p supplies the frequency
+    weighting. Keeping those two roles separate prevents confusing probability with
+    severity.
+  workedArithmetic:
+  - z = −3 + 0.04 × 35 + 1.2 × 1 − 0.03 × 60 = −3 + 1.4 + 1.2 − 1.8 = −2.2.
+  - p = 1 / (1 + exp(2.2)) ≈ 1 / (1 + 9.025) ≈ 0.09975 = 9.975%.
+  - Loss on default = $10,000 × 0.40 = $4,000. Expected loss ≈ 0.09975 × $4,000 =
+    $399.
+  - 9.975% ≥ 8%, so this application goes to review.
+formulaSource:
+  pages:
+  - 20
+  - 21
+  verbatim: false
+  reviewed: true

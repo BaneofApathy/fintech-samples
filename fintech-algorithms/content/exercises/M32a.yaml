@@ -1,0 +1,368 @@
+id: M32a
+title: The Loss Hidden by a Good Ending
+minutes: 8
+kind: measure
+parent: maximum-drawdown-turnover-tracking-error
+question: "An investment account’s value follows this sequence, in $ thousands:\n\
+  \   Observation                                     1           2           3  \
+  \                 4     5      6\n   Value                                     \
+  \     100       120           90                110     80    125\n At each observation:\n\
+  \                                                        highest value reached so\
+  \ far − valuet\n                                          Drawdownt =          \
+  \                               .\n                                            \
+  \                highest value reached so far\n Calculate the running peak, each\
+  \ drawdown, maximum drawdown, and final return relative to\n the initial value.\
+  \ Can a profitable period still contain a large drawdown?"
+questionPages:
+- page: 497
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Class problem | 8 minutes — The Loss Hidden\
+    \ by a Good Ending\n\n An investment account’s value follows this sequence, in\
+    \ $ thousands:\n   Observation                                     1         \
+    \  2           3                   4     5      6\n   Value                  \
+    \                        100       120           90                110     80\
+    \    125\n At each observation:\n                                            \
+    \            highest value reached so far − valuet\n                         \
+    \                 Drawdownt =                                         .\n    \
+    \                                                        highest value reached\
+    \ so far\n Calculate the running peak, each drawdown, maximum drawdown, and final\
+    \ return relative to\n the initial value. Can a profitable period still contain\
+    \ a large drawdown?"
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Class problem | 8 minutes — The Loss Hidden by a Good Ending
+  - 'An investment account’s value follows this sequence, in $ thousands: Observation
+    1 2 3 4 5 6 Value 100 120 90 110 80 125 At each observation: highest value reached
+    so far − valuet Drawdownt = . highest value reached so far Calculate the running
+    peak, each drawdown, maximum drawdown, and final return relative to the initial
+    value. Can a profitable period still contain a large drawdown?'
+  source:
+    pages:
+    - 497
+    verbatim: true
+formulaPages:
+- page: 494
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Formula explained (1/1)\n\n Question: How\
+    \ far below its previous high did the account fall during the observed path?\n\
+    \                                            Ht − Vt\n               Ht = max\
+    \ Vu ,        DDt =           ,    M DD = max DDt .\n                      u≤t\
+    \                      Ht                     t\n\n For the entire period:\n \
+    \                                                            Vf inal − Vinitial\n\
+    \                                                  Return =                  \
+    \    .\n                                                                  Vinitial\n\
+    \ Read it aloud: At each observation, find the highest value seen so far. Divide\
+    \ the fall from that\n peak by the peak. The largest of those fractions is maximum\
+    \ drawdown.\n Drawdown is reported as a positive loss magnitude here. The final-return\
+    \ calculation treats the\n supplied values as a no-external-cash-flow path, or\
+    \ an equivalently cash-flow-adjusted series."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Formula explained (1/1)
+  - 'Question: How far below its previous high did the account fall during the observed
+    path? Ht − Vt Ht = max Vu , DDt = , M DD = max DDt . u≤t Ht t'
+  - 'For the entire period: Vf inal − Vinitial Return = . Vinitial Read it aloud:
+    At each observation, find the highest value seen so far. Divide the fall from
+    that peak by the peak. The largest of those fractions is maximum drawdown. Drawdown
+    is reported as a positive loss magnitude here. The final-return calculation treats
+    the supplied values as a no-external-cash-flow path, or an equivalently cash-flow-adjusted
+    series.'
+  source:
+    pages:
+    - 494
+    verbatim: true
+symbolPages:
+- page: 495
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Symbols and terms (1/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   t         \
+    \                                     Current observation in the time-ordered\
+    \ account-value series.\n   u≤t                                            An\
+    \ observation no later than the current one; future observations are\n       \
+    \                                           excluded from the running peak.\n\
+    \   Vt                                             Account value at observation\
+    \ t, in thousands of dollars in this\n                                       \
+    \           exercise.\n   Ht                                             Running\
+    \ peak, or high-water mark: the greatest account value\n                     \
+    \                             observed up through time t.\n   max            \
+    \                                Select the largest value from the stated set\
+    \ of observations.\n   DDt                                            Drawdown\
+    \ at one observation: fraction below the running peak."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example t Current observation in the time-ordered
+    account-value series. u≤t An observation no later than the current one; future
+    observations are excluded from the running peak. Vt Account value at observation
+    t, in thousands of dollars in this exercise. Ht Running peak, or high-water mark:
+    the greatest account value observed up through time t. max Select the largest
+    value from the stated set of observations. DDt Drawdown at one observation: fraction
+    below the running peak.'
+  source: &id001
+    pages:
+    - 495
+    verbatim: true
+- page: 496
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Symbols and terms (2/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   M DD      \
+    \                                     Maximum drawdown: the greatest peak-relative\
+    \ decline in the\n                                                  observed series.\n\
+    \   Vinitial , Vf inal                             First and last observed account\
+    \ values; these determine the\n                                              \
+    \    full-period return, not the worst intermediate decline.\n   Trough      \
+    \                                   A low point following a peak; the relevant\
+    \ observed trough here is 80\n                                               \
+    \   after a peak of 120.\n   Cash-flow-adjusted                             Adjusted\
+    \ so deposits or withdrawals are not mistakenly treated as\n                 \
+    \                                 investment gains or losses."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example M DD Maximum drawdown: the greatest peak-relative
+    decline in the observed series. Vinitial , Vf inal First and last observed account
+    values; these determine the full-period return, not the worst intermediate decline.
+    Trough A low point following a peak; the relevant observed trough here is 80 after
+    a peak of 120. Cash-flow-adjusted Adjusted so deposits or withdrawals are not
+    mistakenly treated as investment gains or losses.'
+  source: &id002
+    pages:
+    - 496
+    verbatim: true
+solutionPages:
+- page: 498
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Worked solution — The Loss Hidden by a Good\
+    \ Ending\n\n1. Track the peak before calculating the decline.\n   Observation\
+    \                                    Value        Running peak               \
+    \   Drawdown\n   1                                                100        \
+    \               100                 0%\n   2                                 \
+    \               120                       120                 0%\n   3       \
+    \                                          90                       120     30/120\
+    \ = 25%\n   4                                                110             \
+    \          120    10/120 = 8.33%\n   5                                       \
+    \          80                       120    40/120 = 33.33%\n   6             \
+    \                                   125                       125            \
+    \     0%\n\n2. Maximum drawdown: 33.33%, from 120 down to 80.\n3. Final return:\
+    \ (125 − 100)/100 = 25%."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Worked solution — The Loss Hidden by a Good Ending
+  - 1. Track the peak before calculating the decline. Observation Value Running peak
+    Drawdown 1 100 100 0% 2 120 120 0% 3 90 120 30/120 = 25% 4 110 120 10/120 = 8.33%
+    5 80 120 40/120 = 33.33% 6 125 125 0%
+  - '2. Maximum drawdown: 33.33%, from 120 down to 80. 3. Final return: (125 − 100)/100
+    = 25%.'
+  source:
+    pages:
+    - 498
+    verbatim: true
+interpretationPages:
+- page: 499
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Interpretation\n\n What the answer means\n\
+    \ An investor ended up 25% but first endured a one-third decline from the account’s\
+    \ earlier peak.\n Final return hides that path. The later value of 125 cannot\
+    \ be used as the peak for the earlier\n decline to 80.\n Why these steps matter\n\
+    \ The denominator is the earlier peak of 120, not the starting value of 100 or\
+    \ the later value of\n 125. The numerator measures the investor’s decline from\
+    \ that peak. A strong final return\n cannot remove the funding or behavioral strain\
+    \ experienced during the earlier drawdown."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Interpretation
+  - What the answer means An investor ended up 25% but first endured a one-third decline
+    from the account’s earlier peak. Final return hides that path. The later value
+    of 125 cannot be used as the peak for the earlier decline to 80. Why these steps
+    matter The denominator is the earlier peak of 120, not the starting value of 100
+    or the later value of 125. The numerator measures the investor’s decline from
+    that peak. A strong final return cannot remove the funding or behavioral strain
+    experienced during the earlier drawdown.
+  source:
+    pages:
+    - 499
+    verbatim: true
+source:
+  pages:
+  - 494
+  - 495
+  - 496
+  - 497
+  - 498
+  - 499
+  verbatim: true
+readAloud:
+- At each observation, find the highest value seen so far. Divide the fall from that
+  peak by the peak. The largest of those fractions is maximum drawdown. Drawdown is
+  reported as a positive loss magnitude here. The final-return calculation treats
+  the supplied values as a no-external-cash-flow path, or an equivalently cash-flow-adjusted
+  series.
+siteAuthored: false
+givens:
+  values:
+  - 100
+  - 120
+  - 90
+  - 110
+  - 80
+  - 125
+labels: &id003
+  values: Account value path ($ thousands)
+deckSolution:
+  peaks:
+  - 100
+  - 120
+  - 120
+  - 120
+  - 120
+  - 125
+  drawdowns:
+  - 0
+  - 0
+  - 0.25
+  - 0.08333333333333333
+  - 0.3333333333333333
+  - 0
+  MDD: 0.3333333333333333
+  finalReturn: 0.25
+latex:
+- H_t=\max_{u\le t}V_u,\quad DD_t=\frac{H_t-V_t}{H_t},\quad MDD=\max_t DD_t
+- \operatorname{Return}=\frac{V_{final}-V_{initial}}{V_{initial}}
+symbols:
+- symbol: t
+  meaning: Current observation in the time-ordered account-value series.
+  source: *id001
+- symbol: u≤t
+  meaning: An observation no later than the current one; future observations are excluded
+    from the running peak.
+  source: *id001
+- symbol: Vt
+  meaning: Account value at observation t, in thousands of dollars in this exercise.
+  source: *id001
+- symbol: Ht
+  meaning: 'Running peak, or high-water mark: the greatest account value observed
+    up through time t.'
+  source: *id001
+- symbol: max
+  meaning: Select the largest value from the stated set of observations.
+  source: *id001
+- symbol: DDt
+  meaning: 'Drawdown at one observation: fraction below the running peak.'
+  source: *id001
+- symbol: M DD
+  meaning: 'Maximum drawdown: the greatest peak-relative decline in the observed series.'
+  source: *id002
+- symbol: Vinitial , Vf inal
+  meaning: First and last observed account values; these determine the full-period
+    return, not the worst intermediate decline.
+  source: *id002
+- symbol: Trough
+  meaning: A low point following a peak; the relevant observed trough here is 80 after
+    a peak of 120.
+  source: *id002
+- symbol: Cash-flow-adjusted
+  meaning: Adjusted so deposits or withdrawals are not mistakenly treated as investment
+    gains or losses.
+  source: *id002
+steps:
+- id: peaks
+  title: Running peaks
+  expects: cells
+  unit: $ thousands
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - At each observation take the largest value seen so far.
+  mistakes:
+  - pattern: recompute
+    message: At each observation take the largest value seen so far.
+- id: drawdowns
+  title: Drawdowns from the running peaks
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide running peak minus current value by running peak.
+  mistakes:
+  - pattern: recompute
+    message: Divide running peak minus current value by running peak.
+- id: MDD
+  title: Maximum drawdown
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Take the largest drawdown along the path.
+  mistakes:
+  - pattern: recompute
+    message: Take the largest drawdown along the path.
+- id: finalReturn
+  title: Final return
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide final value minus initial value by initial value.
+  mistakes:
+  - pattern: recompute
+    message: Divide final value minus initial value by initial value.
+learning:
+  title: The Loss Hidden by a Good Ending
+  scenario: An account follows the supplied value path in $ thousands, with no external
+    cash flows. Report drawdown as a positive loss magnitude.
+  task: Find the running peak at each observation, drawdown from that peak, maximum
+    drawdown and final return from the initial value.
+  interpretation: Only peaks reached by that time belong in a drawdown calculation.
+    A profitable ending can follow a severe decline; final return does not describe
+    the funding or behavioral strain along the path.
+  summary: 'Maximum drawdown: {MDD}. Final return: {finalReturn}.'
+  labels: *id003
+  steps:
+    peaks:
+      title: Running peaks
+      hints: *id004
+      unit: $ thousands
+    drawdowns:
+      title: Drawdowns from the running peaks
+      hints: *id005
+      unit: proportion
+    MDD:
+      title: Maximum drawdown
+      hints: *id006
+      unit: proportion
+    finalReturn:
+      title: Final return
+      hints: *id007
+      unit: proportion
+  readAloud:
+  - At each observation, find the highest value seen so far. Divide the fall from
+    that peak by the peak. The largest of those fractions is maximum drawdown. Drawdown
+    is reported as a positive loss magnitude here. The final-return calculation treats
+    the supplied values as a no-external-cash-flow path, or an equivalently cash-flow-adjusted
+    series.
+  workedExplanation:
+  - 'An investor ended up 25% but first endured a one-third decline from the account’s
+    earlier peak. Final return hides that path. The later value of 125 cannot be used
+    as the peak for the earlier decline to 80. '
+  - The denominator is the earlier peak of 120, not the starting value of 100 or the
+    later value of 125. The numerator measures the investor’s decline from that peak.
+    A strong final return cannot remove the funding or behavioral strain experienced
+    during the earlier drawdown.
+  workedArithmetic:
+  - Running peaks for [100, 120, 90, 110, 80, 125] are [100, 120, 120, 120, 120, 125].
+  - Drawdowns are [0, 0, 30/120, 10/120, 40/120, 0] = [0%, 0%, 25%, 8.33%, 33.33%,
+    0%].
+  - Maximum drawdown = (120 − 80) / 120 = 33.33%. Final return = (125 − 100) / 100
+    = 25%.
+formulaSource:
+  pages:
+  - 494
+  verbatim: false
+  reviewed: true

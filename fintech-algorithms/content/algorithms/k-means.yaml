@@ -1,0 +1,382 @@
+slug: k-means
+number: 4
+title: Clustering / K-Means
+group: Discover structure
+oneLine: Group customers by observed behavior and test segment stability.
+baseline: ''
+primerSlides:
+- page: 54
+  title: 'Primer 4A: Clustering – definition and intuition'
+  text: " Primer 4A: Clustering – definition and intuition\n\n\n   Financial problem:\
+    \ How can a fintech understand distinct customer or merchant behavior when no\
+    \ reliable\n   segment labels already exist?\n\n\n\n Definition              \
+    \                                                                            \
+    \   Plain-English intuition\n Clustering is unsupervised learning that groups\
+    \ observations                                           Clustering organizes\
+    \ the data so analysts can\n by similarity. K-means forms centroid-based groups;\
+    \                                                    discover patterns. The algorithm\
+    \ creates\n DBSCAN finds dense regions and can leave isolated points         \
+    \                                      mathematical groups; people must determine\n\
+    \ unassigned as noise.                                                       \
+    \                            whether the groups are stable and useful.\n\n Input\
+    \ → output                                                                   \
+    \                      Anchor idea\n Input: Behavioral features such as balances,\
+    \ transaction frequency,                                          K-means minimizes\n\
+    \ channel usage, or merchant mix; features must be scaled and selected       \
+    \                                                  Pwithin-cluster    squared\n\
+    \ deliberately.\n                                                            \
+    \                                                        distance:   i\n     \
+    \                                                                            \
+    \                                                 ∥xi − µci ∥2 .\n Output: A cluster\
+    \ assignment, distance to a cluster, or noise label –\n not a predicted business\
+    \ outcome.\n What it learns: Structure in feature space, not causality, customer\
+    \ intent, or a guaranteed natural segmentation."
+  paragraphs:
+  - 'Primer 4A: Clustering – definition and intuition'
+  - 'Financial problem: How can a fintech understand distinct customer or merchant
+    behavior when no reliable segment labels already exist?'
+  - Definition Plain-English intuition Clustering is unsupervised learning that groups
+    observations Clustering organizes the data so analysts can by similarity. K-means
+    forms centroid-based groups; discover patterns. The algorithm creates DBSCAN finds
+    dense regions and can leave isolated points mathematical groups; people must determine
+    unassigned as noise. whether the groups are stable and useful.
+  - 'Input → output Anchor idea Input: Behavioral features such as balances, transaction
+    frequency, K-means minimizes channel usage, or merchant mix; features must be
+    scaled and selected Pwithin-cluster squared deliberately. distance: i ∥xi − µci
+    ∥2 . Output: A cluster assignment, distance to a cluster, or noise label – not
+    a predicted business outcome. What it learns: Structure in feature space, not
+    causality, customer intent, or a guaranteed natural segmentation.'
+  source:
+    pages:
+    - 54
+    verbatim: true
+- page: 55
+  title: 'Primer 4B: Clustering – worked fintech example'
+  text: " Primer 4B: Clustering – worked fintech example\n\n\n Behavioral customer\
+    \ segmentation\n A digital bank wants to understand account behavior using monthly\
+    \ inflows, savings rate, card usage, cash\n withdrawals, and mobile engagement.\n\
+    \n\n From data to action                                                     \
+    \   Comparison point\n1. Standardize features and remove variables that merely\
+    \ encode             Baseline: Existing rule-based segments such\n           \
+    \                                                                 as balance bands\
+    \ or product ownership.\n   account size twice.\n2. Compare several values of\
+    \ k and a density-based alternative;\n   inspect stability over resamples.\n \
+    \                                                                           Control\
+    \ to teach\n                                                                 \
+    \           Watch for: Arbitrary k, unscaled features,\n3. Profile each cluster\
+    \ in business language, such as high inflow with      unstable clusters, and post-hoc\
+    \ labels that\n   low retained balance.                                      \
+    \              sound more certain than the data.\n\n4. Run a controlled campaign\
+    \ test. Do not convert the cluster\n   directly into a credit decision."
+  paragraphs:
+  - 'Primer 4B: Clustering – worked fintech example'
+  - Behavioral customer segmentation A digital bank wants to understand account behavior
+    using monthly inflows, savings rate, card usage, cash withdrawals, and mobile
+    engagement.
+  - 'From data to action Comparison point 1. Standardize features and remove variables
+    that merely encode Baseline: Existing rule-based segments such as balance bands
+    or product ownership. account size twice. 2. Compare several values of k and a
+    density-based alternative; inspect stability over resamples. Control to teach
+    Watch for: Arbitrary k, unscaled features, 3. Profile each cluster in business
+    language, such as high inflow with unstable clusters, and post-hoc labels that
+    low retained balance. sound more certain than the data.'
+  - 4. Run a controlled campaign test. Do not convert the cluster directly into a
+    credit decision.
+  source:
+    pages:
+    - 55
+    verbatim: true
+- page: 56
+  title: 'Primer 4C: Clustering – when to use it, and when not to'
+  text: " Primer 4C: Clustering – when to use it, and when not to\n\n\n Use it when\
+    \                                                           Do not use it when\n\
+    ▶ Labels are absent but behavioral structure may be ▶ A known target already defines\
+    \ the prediction\n  useful.                                             problem.\n\
+    ▶ The goal is exploration, cohorting, or product                      ▶ The result\
+    \ will directly approve, decline, or accuse\n  discovery.                    \
+    \                                        a customer.\n▶ Features have a meaningful\
+    \ distance or density                      ▶ Feature scales or missingness make\
+    \ distance\n  interpretation.                                                \
+    \       meaningless.\n▶ The team can validate stability and business         \
+    \               ▶ The population is so dynamic that clusters do not\n  usefulness.\
+    \                                                           persist.\n▶ Segments\
+    \ will be tested rather than treated as                      ▶ The real question\
+    \ is causal impact or next-best\n  facts.                                    \
+    \                            action.\n\n Better fit in those cases\n Use supervised\
+    \ classification when labels exist, uplift modeling for treatment effects, or\
+    \ anomaly detection when the objective is rare\n unusual behavior."
+  paragraphs:
+  - 'Primer 4C: Clustering – when to use it, and when not to'
+  - Use it when Do not use it when ▶ Labels are absent but behavioral structure may
+    be ▶ A known target already defines the prediction useful. problem. ▶ The goal
+    is exploration, cohorting, or product ▶ The result will directly approve, decline,
+    or accuse discovery. a customer. ▶ Features have a meaningful distance or density
+    ▶ Feature scales or missingness make distance interpretation. meaningless. ▶ The
+    team can validate stability and business ▶ The population is so dynamic that clusters
+    do not usefulness. persist. ▶ Segments will be tested rather than treated as ▶
+    The real question is causal impact or next-best facts. action.
+  - Better fit in those cases Use supervised classification when labels exist, uplift
+    modeling for treatment effects, or anomaly detection when the objective is rare
+    unusual behavior.
+  source:
+    pages:
+    - 56
+    verbatim: true
+- page: 57
+  title: 'Primer 4D: Clustering – fintech problem map'
+  text: " Primer 4D: Clustering – fintech problem map\n\n\n\n Common fintech problems\
+    \                                                     Operational profile\n▶ Customer\
+    \ behavior                         ▶ Branch / channel behavior      ▶ Latency:\
+    \ batch oriented\n  segmentation                              ▶ Cash-flow profiles\
+    \             ▶ Explainability: medium\n▶ Merchant archetypes                \
+    \       ▶ Preliminary AML typology       ▶ Data need: medium\n▶ Portfolio cohorting\
+    \                         discovery                      ▶ Monitor: cluster stability,\
+    \ size,\n▶ Product usage patterns                    ▶ Peer-group construction\
+    \ for      centroid drift\n                                              monitoring\n\
+    \n\n\n   Student defense question: Can the student prove the segments are stable\
+    \ and useful without\n   claiming they are natural truths?"
+  paragraphs:
+  - 'Primer 4D: Clustering – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Customer behavior ▶ Branch / channel
+    behavior ▶ Latency: batch oriented segmentation ▶ Cash-flow profiles ▶ Explainability:
+    medium ▶ Merchant archetypes ▶ Preliminary AML typology ▶ Data need: medium ▶
+    Portfolio cohorting discovery ▶ Monitor: cluster stability, size, ▶ Product usage
+    patterns ▶ Peer-group construction for centroid drift monitoring'
+  - 'Student defense question: Can the student prove the segments are stable and useful
+    without claiming they are natural truths?'
+  source:
+    pages:
+    - 57
+    verbatim: true
+definition: Clustering is unsupervised learning that groups observations by similarity.
+  K-means forms centroid-based groups; DBSCAN finds dense regions and can leave isolated
+  points unassigned as noise.
+intuition: Clustering organizes the data so analysts can discover patterns. The algorithm
+  creates mathematical groups; people must determine whether the groups are stable
+  and useful.
+useWhen:
+- Labels are absent but behavioral structure may be
+- A known target al useful. problem.
+- The goal is exploration, cohorting, or product
+- discovery.
+- Features have a meaningful distance or density
+- interpretation.
+- The team can validate stability and business
+- usefulness.
+- Segments will be tested rather than treated as
+- facts.
+avoidWhen: []
+deepDive:
+  problem:
+  - page: 622
+    title: 'Financial problem: how should we segment customers without labels?'
+    text: " Financial problem: how should we segment customers without labels?\n\n\
+      \n    Financial problem\n    A digital bank has transaction histories for 250,000\
+      \ customers but no reliable labels such as\n    “high value,” “cash-flow stressed,”\
+      \ or “travel heavy.” It wants useful behavioral segments.\n\n\n\n Candidate\
+      \ features                                   The trap\n Monthly inflow, spend\
+      \ volatility, savings rate,      A clean mathematical cluster is not\n cash\
+      \ withdrawals, merchant diversity, overdraft      automatically a useful business\
+      \ segment. Labels\n frequency, and recurring-payment share.              must\
+      \ be interpreted after clustering, not\n                                   \
+      \                   invented beforehand.\n\n   Decision to make: Discover recurring\
+      \ behavioral patterns, then test whether they support a\n   concrete product\
+      \ or risk decision."
+    paragraphs:
+    - 'Financial problem: how should we segment customers without labels?'
+    - Financial problem A digital bank has transaction histories for 250,000 customers
+      but no reliable labels such as “high value,” “cash-flow stressed,” or “travel
+      heavy.” It wants useful behavioral segments.
+    - Candidate features The trap Monthly inflow, spend volatility, savings rate,
+      A clean mathematical cluster is not cash withdrawals, merchant diversity, overdraft
+      automatically a useful business segment. Labels frequency, and recurring-payment
+      share. must be interpreted after clustering, not invented beforehand.
+    - 'Decision to make: Discover recurring behavioral patterns, then test whether
+      they support a concrete product or risk decision.'
+    source:
+      pages:
+      - 622
+      verbatim: true
+  method:
+  - page: 623
+    title: 'Method: K-means and DBSCAN answer different questions'
+    text: " Method: K-means and DBSCAN answer different questions\n\n\n\n K-means\
+      \                                                           DBSCAN\n Minimizes\
+      \ within-cluster squared distance:                        Groups points in dense\
+      \ neighborhoods.\n                                        k\n              \
+      \                                                     ▶ Does not require k.\n\
+      \                                        X X\n                         min \
+      \                        ∥xi − µj ∥2   ▶ Can find irregularly shaped groups.\n\
+      \                     C1 ,...,Ck\n                                        j=1\
+      \ xi ∈Cj                 ▶ Can mark points as noise.\n                     \
+      \                                              ▶ Sensitive to distance scale\
+      \ and density\n▶ Requires k in advance.                                    \
+      \         settings.\n▶ Prefers compact, roughly spherical groups.\n▶ Assigns\
+      \ every point to a cluster.\nWatch for: Scale features first. A dollar variable\
+      \ measured in thousands can dominate a ratio\nmeasured between 0 and 1."
+    paragraphs:
+    - 'Method: K-means and DBSCAN answer different questions'
+    - 'K-means DBSCAN Minimizes within-cluster squared distance: Groups points in
+      dense neighborhoods. k ▶ Does not require k. X X min ∥xi − µj ∥2 ▶ Can find
+      irregularly shaped groups. C1 ,...,Ck j=1 xi ∈Cj ▶ Can mark points as noise.
+      ▶ Sensitive to distance scale and density ▶ Requires k in advance. settings.
+      ▶ Prefers compact, roughly spherical groups. ▶ Assigns every point to a cluster.
+      Watch for: Scale features first. A dollar variable measured in thousands can
+      dominate a ratio measured between 0 and 1.'
+    source:
+      pages:
+      - 623
+      verbatim: true
+  code:
+  - page: 624
+    title: 'Working example: behavioral customer segments'
+    text: " Working example: behavioral customer segments\n\n\n  from sklearn.datasets\
+      \ import make_blobs\n  from sklearn.preprocessing import StandardScaler\n  from\
+      \ sklearn.cluster import KMeans\n                                          \
+      \                                         Next step\n  from sklearn.metrics\
+      \ import silhouette_score\n                                                \
+      \                                   Profile each cluster using the\n  # Four\
+      \ synthetic behavior profiles\n  X, _ = make_blobs(n_samples=1200, centers=4,\
+      \                                     original units:\n      n_features=5, cluster_std=[.7,\
+      \ 1.0, .8, 1.2], random_state=9)\n  Z = StandardScaler().fit_transform(X)  \
+      \                                          ▶ Median inflow\n  for k in range(2,\
+      \ 7):\n      km = KMeans(n_clusters=k, n_init=20, random_state=9)          \
+      \               ▶ Savings rate\n      labels = km.fit_predict(Z)\n      print(k,\
+      \ round(silhouette_score(Z, labels), 3))                              ▶ Volatility\n\
+      \  final = KMeans(n_clusters=4, n_init=20, random_state=9)\n  segment = final.fit_predict(Z)\
+      \                                                   ▶ Overdrafts\n  print(\"\
+      Segment counts:\", __import__(’numpy’).bincount(segment))\n                \
+      \                                                                   ▶ Merchant\
+      \ mix\n                                                                    \
+      \               Primary metric: Stability\n                                \
+      \                                                   plus business usefulness,\
+      \ not\n                                                                    \
+      \               silhouette alone."
+    paragraphs:
+    - 'Working example: behavioral customer segments'
+    - 'from sklearn.datasets import make_blobs from sklearn.preprocessing import StandardScaler
+      from sklearn.cluster import KMeans Next step from sklearn.metrics import silhouette_score
+      Profile each cluster using the # Four synthetic behavior profiles X, _ = make_blobs(n_samples=1200,
+      centers=4, original units: n_features=5, cluster_std=[.7, 1.0, .8, 1.2], random_state=9)
+      Z = StandardScaler().fit_transform(X) ▶ Median inflow for k in range(2, 7):
+      km = KMeans(n_clusters=k, n_init=20, random_state=9) ▶ Savings rate labels =
+      km.fit_predict(Z) print(k, round(silhouette_score(Z, labels), 3)) ▶ Volatility
+      final = KMeans(n_clusters=4, n_init=20, random_state=9) segment = final.fit_predict(Z)
+      ▶ Overdrafts print("Segment counts:", __import__(’numpy’).bincount(segment))
+      ▶ Merchant mix Primary metric: Stability plus business usefulness, not silhouette
+      alone.'
+    source:
+      pages:
+      - 624
+      verbatim: true
+  economics:
+  - page: 625
+    title: How to evaluate clustering when there is no target label
+    text: " How to evaluate clustering when there is no target label\n\n\n\n1. Internal\
+      \ quality: silhouette, within-cluster dispersion, separation.\n2. Stability:\
+      \ rerun with new samples, seeds, and time windows. Do the same segments reappear?\n\
+      3. Interpretability: can analysts describe each group with observed behavior\
+      \ rather than\n   stereotypes?\n4. Actionability: does the segment support a\
+      \ different offer, service path, or risk treatment?\n5. Outcome validation:\
+      \ after deployment, do interventions produce different measurable results by\n\
+      \   segment?\n\n A common failure\n Teams select k from a chart, name clusters\
+      \ with marketing language, and never test whether the\n segments improve a decision."
+    paragraphs:
+    - How to evaluate clustering when there is no target label
+    - '1. Internal quality: silhouette, within-cluster dispersion, separation. 2.
+      Stability: rerun with new samples, seeds, and time windows. Do the same segments
+      reappear? 3. Interpretability: can analysts describe each group with observed
+      behavior rather than stereotypes? 4. Actionability: does the segment support
+      a different offer, service path, or risk treatment? 5. Outcome validation: after
+      deployment, do interventions produce different measurable results by segment?'
+    - A common failure Teams select k from a chart, name clusters with marketing language,
+      and never test whether the segments improve a decision.
+    source:
+      pages:
+      - 625
+      verbatim: true
+  choice:
+  - page: 626
+    title: When clustering fits
+    text: " When clustering fits\n\n\n\n Use it when                             \
+      \           Avoid or reconsider when\n▶ Reliable labels do not exist.      \
+      \               ▶ You already have a clear supervised target.\n▶ Exploration\
+      \ and segmentation are the goal.        ▶ Distance has no meaningful interpretation.\n\
+      ▶ Features represent comparable behavior.           ▶ Groups are unstable across\
+      \ time or seeds.\n▶ A downstream action can test usefulness.            ▶ Clusters\
+      \ may be treated as immutable\n                                            \
+      \             identities.\n Required artifact: Cluster profiles, stability table,\
+      \ and one proposed intervention with a measurable\n outcome.\n\n\n   Student\
+      \ defense question: If a segment is mathematically distinct but no product,\
+      \ service, or\n   risk action should differ, is it useful?"
+    paragraphs:
+    - When clustering fits
+    - 'Use it when Avoid or reconsider when ▶ Reliable labels do not exist. ▶ You
+      already have a clear supervised target. ▶ Exploration and segmentation are the
+      goal. ▶ Distance has no meaningful interpretation. ▶ Features represent comparable
+      behavior. ▶ Groups are unstable across time or seeds. ▶ A downstream action
+      can test usefulness. ▶ Clusters may be treated as immutable identities. Required
+      artifact: Cluster profiles, stability table, and one proposed intervention with
+      a measurable outcome.'
+    - 'Student defense question: If a segment is mathematically distinct but no product,
+      service, or risk action should differ, is it useful?'
+    source:
+      pages:
+      - 626
+      verbatim: true
+financialProblem: 'A digital bank has transaction histories for 250,000 customers
+  but no reliable labels such as “high value,” “cash-flow stressed,” or “travel heavy.”
+  It wants useful behavioral segments. Candidate features The trap Monthly inflow,
+  spend volatility, savings rate, A clean mathematical cluster is not cash withdrawals,
+  merchant diversity, overdraft automatically a useful business segment. Labels frequency,
+  and recurring-payment share. must be interpreted after clustering, not invented
+  beforehand. Decision to make: Discover recurring behavioral patterns, then test
+  whether they support a concrete product or risk decision.'
+defenseQuestions:
+- text: Can the student prove the segments are stable and useful without claiming
+    they are natural truths?
+  source:
+    pages:
+    - 57
+    verbatim: true
+- text: If a segment is mathematically distinct but no product, service, or risk action
+    should differ, is it useful?
+  source:
+    pages:
+    - 626
+    verbatim: true
+exercises:
+- A04
+measures:
+- silhouette-score
+- inertia-and-stability
+widgets:
+- kmeans-anim
+lab:
+  dataset: Synthetic transaction aggregates
+  task: Build and profile segments
+  requiredComparison: k and seed stability
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 53
+  - 54
+  - 55
+  - 56
+  - 57
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  - 621
+  - 622
+  - 623
+  - 624
+  - 625
+  - 626
+  verbatim: true

@@ -1,0 +1,536 @@
+{
+  "A01": {
+    "pages": [
+      20,
+      21
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A02": {
+    "pages": [
+      35,
+      36
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A03": {
+    "pages": [
+      47
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A04": {
+    "pages": [
+      58
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A05": {
+    "pages": [
+      69
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A06": {
+    "pages": [
+      80
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A07": {
+    "pages": [
+      93
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A08": {
+    "pages": [
+      104,
+      105
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A09": {
+    "pages": [
+      119,
+      120
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "S01": {
+    "pages": [
+      126
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "S02": {
+    "pages": [
+      133
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A10": {
+    "pages": [
+      145,
+      146
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A11": {
+    "pages": [
+      159
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "S03": {
+    "pages": [
+      165,
+      166
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "S04": {
+    "pages": [
+      174
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "A12": {
+    "pages": [
+      185,
+      186
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M01": {
+    "pages": [
+      200
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M02": {
+    "pages": [
+      208
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M03": {
+    "pages": [
+      216
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M04": {
+    "pages": [
+      224
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M05": {
+    "pages": [
+      232
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M06": {
+    "pages": [
+      240
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M07": {
+    "pages": [
+      249
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M08": {
+    "pages": [
+      257
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M09": {
+    "pages": [
+      265
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M10": {
+    "pages": [
+      273
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M11a": {
+    "pages": [
+      281
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M11b": {
+    "pages": [
+      287,
+      288
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M12": {
+    "pages": [
+      297
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M13": {
+    "pages": [
+      305
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M14": {
+    "pages": [
+      313
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M15": {
+    "pages": [
+      321
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M16": {
+    "pages": [
+      329,
+      330
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M17a": {
+    "pages": [
+      338
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M17b": {
+    "pages": [
+      344
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M18": {
+    "pages": [
+      352,
+      353
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M19": {
+    "pages": [
+      361,
+      362
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M20": {
+    "pages": [
+      370
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M21": {
+    "pages": [
+      378
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M22": {
+    "pages": [
+      386,
+      387
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M23": {
+    "pages": [
+      396
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M24": {
+    "pages": [
+      405
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M25": {
+    "pages": [
+      413
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M26": {
+    "pages": [
+      422
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M27a": {
+    "pages": [
+      431
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M27b": {
+    "pages": [
+      437,
+      438
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M28": {
+    "pages": [
+      447
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M29a": {
+    "pages": [
+      455
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M29b": {
+    "pages": [
+      462,
+      463
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M30": {
+    "pages": [
+      472
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M31": {
+    "pages": [
+      482,
+      483,
+      484
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M32a": {
+    "pages": [
+      494
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M32b": {
+    "pages": [
+      500,
+      501
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M32c": {
+    "pages": [
+      508
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M33": {
+    "pages": [
+      516,
+      517
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M34": {
+    "pages": [
+      525
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M35": {
+    "pages": [
+      534
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M36": {
+    "pages": [
+      542,
+      543
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M37": {
+    "pages": [
+      551
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M38": {
+    "pages": [
+      560
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M39a": {
+    "pages": [
+      568,
+      569
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M39b": {
+    "pages": [
+      575,
+      576
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M39c": {
+    "pages": [
+      583,
+      584
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  },
+  "M39d": {
+    "pages": [
+      591
+    ],
+    "reviewed": true,
+    "method": "Rasterized source equations and golden numerical checks",
+    "date": "2026-10-01"
+  }
+}

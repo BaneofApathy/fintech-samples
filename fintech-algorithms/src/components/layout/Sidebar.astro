@@ -1,0 +1,111 @@
+---
+import { algorithms, shortTitles, sections, href } from '../../data';
+const current = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '');
+const algorithm = algorithms.find((a) => current.startsWith(`/algorithms/${a.slug}/`));
+const active = algorithm ? current.split('/')[3] || 'problem' : '';
+---
+
+<nav class="course-sidebar guided-sidebar" id="course-navigation" aria-label="Course navigation">
+  <div class="mobile-primary-navigation">
+    <a class="nav-link" href={href('/')}>
+      Learn
+    </a>
+    <a class="nav-link" href={href('/library/')}>
+      Library
+    </a>
+    <a class="nav-link" href={href('/progress/')}>
+      My progress
+    </a>
+  </div>
+  {algorithm ? (
+    <>
+      <a href={href('/')} class="all-units">
+        ← All units
+      </a>
+      <label class="sidebar-select-label" for="unit-switcher">
+        Current unit
+      </label>
+      <select id="unit-switcher" class="unit-switcher" aria-label="Switch unit">
+        {algorithms.map((a, i) => (
+          <option value={href(`/algorithms/${a.slug}/`)} selected={a.slug === algorithm.slug}>
+            {String(i + 1).padStart(2, '0')} · {shortTitles[i]}
+          </option>
+        ))}
+      </select>
+      <ol class="unit-outline">
+        {sections.map(([key, label], i) => (
+          <li>
+            <a
+              href={href(`/algorithms/${algorithm.slug}/${key === 'problem' ? '' : key + '/'}`)}
+              aria-current={active === key ? 'page' : undefined}
+              data-outline-section={`${algorithm.slug}:${key}`}
+            >
+              <span class="outline-number">{i + 1}</span>
+              <span>{label}</span>
+              <span class="outline-complete" aria-label="Read"></span>
+            </a>
+          </li>
+        ))}
+      </ol>
+      <a class="sidebar-progress-link" href={href('/progress/')}>
+        View my progress →
+      </a>
+    </>
+  ) : (
+    <>
+      <p class="nav-section-label">Course</p>
+      <a class:list={['nav-link', { active: current === '/' }]} href={href('/')}>
+        Course outline
+      </a>
+      <a
+        class:list={['nav-link', { active: current.startsWith('/foundations/') }]}
+        href={href('/foundations/')}
+      >
+        Foundations
+      </a>
+      <a
+        class:list={['nav-link', { active: current.startsWith('/library/') }]}
+        href={href('/library/')}
+      >
+        Resource library
+      </a>
+      <a class:list={['nav-link', { active: current.startsWith('/financial-problems/') }]} href={href('/financial-problems/')}>
+        Financial problems
+      </a>
+      <a
+        class:list={['nav-link', { active: current.startsWith('/progress/') }]}
+        href={href('/progress/')}
+      >
+        My progress
+      </a>
+      <a
+        class:list={['nav-link', { active: current.startsWith('/synthesis/') }]}
+        href={href('/synthesis/')}
+      >
+        Synthesis & capstone
+      </a>
+    </>
+  )}
+  <div class="sidebar-footer">
+    <a href={href('/progress/')}>Save a copy of your work</a>
+  </div>
+</nav>
+<script>
+  import { read } from '../../engine/progress';
+  document
+    .querySelector<HTMLSelectElement>('#unit-switcher')
+    ?.addEventListener('change', (event) => {
+      location.assign((event.currentTarget as HTMLSelectElement).value);
+    });
+  function updateOutline() {
+    const p = read();
+    document.querySelectorAll<HTMLElement>('[data-outline-section]').forEach((el) => {
+      const done = p.sections[el.dataset.outlineSection!];
+      const indicator = el.querySelector<HTMLElement>('.outline-complete')!;
+      indicator.textContent = done ? '✓' : '';
+      indicator.hidden = !done;
+    });
+  }
+  updateOutline();
+  window.addEventListener('course-progress', updateOutline);
+</script>

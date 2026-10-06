@@ -1,0 +1,55 @@
+---
+import Formula from '../math/Formula.astro';
+import type { LessonSection } from '../../data/lesson-types';
+import VisualBlock from '../visuals/VisualBlock.astro';
+interface Props {
+  sections: LessonSection[];
+  level?: 2 | 3;
+}
+const { sections, level = 2 } = Astro.props;
+const Heading = level === 2 ? 'h2' : 'h3';
+---
+
+{sections.map((section) => (
+  <section class="lesson-section">
+    <Heading>{section.title}</Heading>
+    {section.blocks.map((block) =>
+      block.kind === 'code' ? (
+        <pre class="teaching-code"><code>{block.code}</code></pre>
+      ) : block.kind === 'paragraph' ? (
+        <p>{block.text}</p>
+      ) : block.kind === 'list' ? (
+        <ul>
+          {block.items.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      ) : block.kind === 'visual' ? (
+        <VisualBlock category={block.category} visualId={block.visualId} exampleId={block.exampleId} focus={block.focus}/>
+      ) : block.kind === 'math' ? (
+        <Formula latex={block.latex} readAloud={block.readAloud} symbols={block.symbols} />
+      ) : (
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                {block.headers.map((header) => (
+                  <th scope="col">{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row) => (
+                <tr>
+                  {row.map((cell) => (
+                    <td>{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ),
+    )}
+  </section>
+))}

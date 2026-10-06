@@ -1,0 +1,357 @@
+id: M13
+title: Compare With Random Review
+minutes: 6
+kind: measure
+parent: lift-and-cumulative-gain
+question: "A batch contains 1,000 transactions and 20 frauds. The top 50 model-ranked\
+  \ transactions\n contain 15 frauds.\n Calculate:\n1. Fraud prevalence and precision@50.\n\
+  2. Lift@50: precision@50 divided by fraud prevalence.\n3. Cumulative gain: the share\
+  \ of all frauds found in the top 50.\n4. The expected number of frauds in a randomly\
+  \ selected set of 50 transactions.\n What percentage of the transaction population\
+  \ is reviewed? Explain what “15 times better”\n would mean here—and what it would\
+  \ not mean."
+questionPages:
+- page: 308
+  title: Lift and Gain
+  text: " Lift and Gain\n\n   M13 | Class problem | 6 minutes — Compare With Random\
+    \ Review\n\n A batch contains 1,000 transactions and 20 frauds. The top 50 model-ranked\
+    \ transactions\n contain 15 frauds.\n Calculate:\n1. Fraud prevalence and precision@50.\n\
+    2. Lift@50: precision@50 divided by fraud prevalence.\n3. Cumulative gain: the\
+    \ share of all frauds found in the top 50.\n4. The expected number of frauds in\
+    \ a randomly selected set of 50 transactions.\n What percentage of the transaction\
+    \ population is reviewed? Explain what “15 times better”\n would mean here—and\
+    \ what it would not mean."
+  paragraphs:
+  - Lift and Gain
+  - M13 | Class problem | 6 minutes — Compare With Random Review
+  - 'A batch contains 1,000 transactions and 20 frauds. The top 50 model-ranked transactions
+    contain 15 frauds. Calculate: 1. Fraud prevalence and precision@50. 2. Lift@50:
+    precision@50 divided by fraud prevalence. 3. Cumulative gain: the share of all
+    frauds found in the top 50. 4. The expected number of frauds in a randomly selected
+    set of 50 transactions. What percentage of the transaction population is reviewed?
+    Explain what “15 times better” would mean here—and what it would not mean.'
+  source:
+    pages:
+    - 308
+    verbatim: true
+formulaPages:
+- page: 305
+  title: Lift and Gain
+  text: " Lift and Gain\n\n   M13 | Formula explained (1/1)\n\n Question: How concentrated\
+    \ is fraud in the selected queue compared with random selection?\n           \
+    \            F                       CK                 P recision@K\n       \
+    \          π = , P recision@K =              , Lif t@K =                  ,\n\
+    \                       N                        K                        π\n\
+    \                              CK                         K\n                Gain@K\
+    \ =          , Reviewed share = , E[Crandom ] = Kπ.\n                        \
+    \       F                         N\n Read it aloud: Compare queue fraud frequency\
+    \ with population fraud frequency for lift. Divide\n caught frauds by all frauds\
+    \ for gain. Multiply random-review size by population frequency for\n expected\
+    \ random discoveries.\n Lift is a multiple, gain is a coverage fraction, and the\
+    \ expectation is a count."
+  paragraphs:
+  - Lift and Gain
+  - M13 | Formula explained (1/1)
+  - 'Question: How concentrated is fraud in the selected queue compared with random
+    selection? F CK P recision@K π = , P recision@K = , Lif t@K = , N K π CK K Gain@K
+    = , Reviewed share = , E[Crandom ] = Kπ. F N Read it aloud: Compare queue fraud
+    frequency with population fraud frequency for lift. Divide caught frauds by all
+    frauds for gain. Multiply random-review size by population frequency for expected
+    random discoveries. Lift is a multiple, gain is a coverage fraction, and the expectation
+    is a count.'
+  source:
+    pages:
+    - 305
+    verbatim: true
+symbolPages:
+- page: 306
+  title: Lift and Gain
+  text: " Lift and Gain\n\n   M13 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   N              \
+    \                                Total transactions in the population: 1,000.\n\
+    \   F                                              Total actual frauds: 20.\n\
+    \   K                                              Selected queue size: 50.\n\
+    \   CK                                             Frauds in the selected top\
+    \ K: 15.\n   π (pi)                                         Fraud prevalence,\
+    \ or population fraction that is fraud. This pi is not\n                     \
+    \                             the circle constant.\n   Lift@K                \
+    \                         Ratio of selected-queue fraud prevalence to population\
+    \ prevalence;\n                                                  report it as\
+    \ a multiple such as “times.”"
+  paragraphs:
+  - Lift and Gain
+  - M13 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example N Total transactions in the population:
+    1,000. F Total actual frauds: 20. K Selected queue size: 50. CK Frauds in the
+    selected top K: 15. π (pi) Fraud prevalence, or population fraction that is fraud.
+    This pi is not the circle constant. Lift@K Ratio of selected-queue fraud prevalence
+    to population prevalence; report it as a multiple such as “times.”'
+  source: &id001
+    pages:
+    - 306
+    verbatim: true
+- page: 307
+  title: Lift and Gain
+  text: " Lift and Gain\n\n   M13 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Gain@K         \
+    \                                Cumulative share of fraud captured up to K; equal\
+    \ to recall at that\n                                                  K in this\
+    \ event-count setting.\n   E[Crandom ]                                    Expected\
+    \ number of frauds in a random K-record sample; E means\n                    \
+    \                              mathematical expectation, not an observed guarantee.\n\
+    \   Reviewed share                                 Fraction of the full transaction\
+    \ population that enters the selected\n                                      \
+    \            queue."
+  paragraphs:
+  - Lift and Gain
+  - M13 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Gain@K Cumulative share of fraud captured
+    up to K; equal to recall at that K in this event-count setting. E[Crandom ] Expected
+    number of frauds in a random K-record sample; E means mathematical expectation,
+    not an observed guarantee. Reviewed share Fraction of the full transaction population
+    that enters the selected queue.
+  source: &id002
+    pages:
+    - 307
+    verbatim: true
+solutionPages:
+- page: 309
+  title: Lift and Gain
+  text: " Lift and Gain\n\n   M13 | Worked solution — Compare With Random Review\n\
+    \n1. Prevalence: 20/1,000 = 2%.\n2. Precision@50: 15/50 = 30%.\n3. Lift: 30%/2%\
+    \ = 15.\n4. Cumulative gain: 15/20 = 75% of all frauds.\n5. Random-review expectation:\
+    \ 50(0.02) = 1 fraud, compared with the model’s 15 in this\n   sample.\n6. Population\
+    \ reviewed: 50/1,000 = 5%."
+  paragraphs:
+  - Lift and Gain
+  - M13 | Worked solution — Compare With Random Review
+  - '1. Prevalence: 20/1,000 = 2%. 2. Precision@50: 15/50 = 30%. 3. Lift: 30%/2% =
+    15. 4. Cumulative gain: 15/20 = 75% of all frauds. 5. Random-review expectation:
+    50(0.02) = 1 fraud, compared with the model’s 15 in this sample. 6. Population
+    reviewed: 50/1,000 = 5%.'
+  source:
+    pages:
+    - 309
+    verbatim: true
+interpretationPages:
+- page: 310
+  title: Lift and Gain
+  text: " Lift and Gain\n\n   M13 | Interpretation\n\n What the answer means\n Reviewing\
+    \ the top 5% captures 75% of frauds, with 15 times the fraud concentration of\n\
+    \ random review. This is not a 15-fold profit increase; fraud value, review cost,\
+    \ and the ability to\n prevent or recover losses remain separate questions.\n\
+    \ Why these steps matter\n A random sample will not necessarily contain exactly\
+    \ the expected fraud count. The lift\n comparison uses its expected concentration,\
+    \ not a claim that every random sample produces\n the same result."
+  paragraphs:
+  - Lift and Gain
+  - M13 | Interpretation
+  - What the answer means Reviewing the top 5% captures 75% of frauds, with 15 times
+    the fraud concentration of random review. This is not a 15-fold profit increase;
+    fraud value, review cost, and the ability to prevent or recover losses remain
+    separate questions. Why these steps matter A random sample will not necessarily
+    contain exactly the expected fraud count. The lift comparison uses its expected
+    concentration, not a claim that every random sample produces the same result.
+  source:
+    pages:
+    - 310
+    verbatim: true
+source:
+  pages:
+  - 305
+  - 306
+  - 307
+  - 308
+  - 309
+  - 310
+  verbatim: true
+readAloud:
+- Compare queue fraud frequency with population fraud frequency for lift. Divide caught
+  frauds by all frauds for gain. Multiply random-review size by population frequency
+  for expected random discoveries. Lift is a multiple, gain is a coverage fraction,
+  and the expectation is a count.
+siteAuthored: false
+givens:
+  N: 1000
+  fraud: 20
+  K: 50
+  caught: 15
+labels: &id003
+  N: Transactions in the population
+  fraud: Actual frauds in the population
+  K: Reviewed queue size
+  caught: Frauds in the reviewed queue
+deckSolution:
+  prevalence: 0.02
+  precision: 0.3
+  lift: 15
+  gain: 0.75
+  random: 1
+  reviewShare: 0.05
+latex:
+- Lift@K=\frac{Precision@K}{F/N},\quad Gain@K=\frac{TP_K}{F}
+- \pi=\frac FN,\quad\operatorname{Reviewed\ share}=\frac KN,\quad E[C_{random}]=K\pi
+symbols:
+- symbol: N
+  meaning: 'Total transactions in the population: 1,000.'
+  source: *id001
+- symbol: F
+  meaning: 'Total actual frauds: 20.'
+  source: *id001
+- symbol: K
+  meaning: 'Selected queue size: 50.'
+  source: *id001
+- symbol: CK
+  meaning: 'Frauds in the selected top K: 15.'
+  source: *id001
+- symbol: π (pi)
+  meaning: Fraud prevalence, or population fraction that is fraud. This pi is not
+    the circle constant.
+  source: *id001
+- symbol: Lift@K
+  meaning: Ratio of selected-queue fraud prevalence to population prevalence; report
+    it as a multiple such as “times.”
+  source: *id001
+- symbol: Gain@K
+  meaning: Cumulative share of fraud captured up to K; equal to recall at that K in
+    this event-count setting.
+  source: *id002
+- symbol: E[Crandom ]
+  meaning: Expected number of frauds in a random K-record sample; E means mathematical
+    expectation, not an observed guarantee.
+  source: *id002
+- symbol: Reviewed share
+  meaning: Fraction of the full transaction population that enters the selected queue.
+  source: *id002
+steps:
+- id: prevalence
+  title: Population fraud prevalence
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide actual frauds by population transactions.
+  mistakes:
+  - pattern: recompute
+    message: Divide actual frauds by population transactions.
+- id: precision
+  title: Queue precision
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide frauds in the queue by queue size.
+  mistakes:
+  - pattern: recompute
+    message: Divide frauds in the queue by queue size.
+- id: lift
+  title: Lift over random review
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide queue precision by population fraud prevalence.
+  mistakes:
+  - pattern: recompute
+    message: Divide queue precision by population fraud prevalence.
+- id: gain
+  title: Cumulative gain
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide frauds found in the queue by all actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Divide frauds found in the queue by all actual frauds.
+- id: random
+  title: Expected frauds in a random queue
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply queue size by population fraud prevalence.
+  mistakes:
+  - pattern: recompute
+    message: Multiply queue size by population fraud prevalence.
+- id: reviewShare
+  title: Share of the population reviewed
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Divide queue size by population transactions.
+  mistakes:
+  - pattern: recompute
+    message: Divide queue size by population transactions.
+learning:
+  title: Compare With Random Review
+  scenario: A team reviews the top-ranked transactions in a batch. Compare that queue
+    with a uniformly random set of the same size.
+  task: Calculate fraud prevalence, queue precision, lift, cumulative gain, expected
+    random discoveries and the share of the population reviewed.
+  interpretation: Lift compares fraud concentration with random review. It is not
+    a profit multiplier. A random sample need not contain exactly its expected fraud
+    count.
+  summary: 'Lift: {lift}. Cumulative gain: {gain}. Expected frauds in a random queue:
+    {random}.'
+  labels: *id003
+  steps:
+    prevalence:
+      title: Population fraud prevalence
+      hints: *id004
+      unit: proportion
+    precision:
+      title: Queue precision
+      hints: *id005
+      unit: proportion
+    lift:
+      title: Lift over random review
+      hints: *id006
+      unit: ''
+    gain:
+      title: Cumulative gain
+      hints: *id007
+      unit: proportion
+    random:
+      title: Expected frauds in a random queue
+      hints: *id008
+      unit: ''
+    reviewShare:
+      title: Share of the population reviewed
+      hints: *id009
+      unit: proportion
+  readAloud:
+  - Compare queue fraud frequency with population fraud frequency for lift. Divide
+    caught frauds by all frauds for gain. Multiply random-review size by population
+    frequency for expected random discoveries. Lift is a multiple, gain is a coverage
+    fraction, and the expectation is a count.
+  workedExplanation:
+  - 'Reviewing the top 5% captures 75% of frauds, with 15 times the fraud concentration
+    of random review. This is not a 15-fold profit increase; fraud value, review cost,
+    and the ability to prevent or recover losses remain separate questions. '
+  - A random sample will not necessarily contain exactly the expected fraud count.
+    The lift comparison uses its expected concentration, not a claim that every random
+    sample produces the same result.
+  workedArithmetic:
+  - Prevalence = 20/1,000 = 2%; precision@50 = 15/50 = 30%.
+  - Lift = 0.30/0.02 = 15. Cumulative gain = 15/20 = 75%.
+  - Expected frauds in a random queue = 50 × 0.02 = 1. Population reviewed = 50/1,000
+    = 5%.
+formulaSource:
+  pages:
+  - 305
+  verbatim: false
+  reviewed: true

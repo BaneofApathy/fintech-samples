@@ -1,0 +1,21 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import { widgets } from '../../components/widgets/catalog';
+import { href } from '../../data';
+---
+
+<Shell title="Interactive explorers">
+  <p class="page-subtitle">
+    Recompute an example, move an operating threshold, and examine what the result means.
+  </p>
+  <div class="measure-list">
+    {widgets.map((w) => (
+      <a class="measure-link" href={href(`/explorers/${w.id}/`)}>
+        <span>
+          <strong>{w.title}</strong>
+          <small>{w.exercise}</small>
+        </span>
+      </a>
+    ))}
+  </div>
+</Shell>

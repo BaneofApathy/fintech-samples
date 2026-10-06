@@ -1,0 +1,368 @@
+id: M39d
+title: Translate the Percentage into Minutes
+minutes: 6
+kind: measure
+parent: latency-throughput-review-load-cost
+question: "A payment-scoring service is expected to operate continuously for a 30-day\
+  \ month. It is\n completely unavailable for 90 minutes. Use time-based availability,\
+  \ not request-weighted\n success.\n                                      scheduled\
+  \ minutes − unavailable minutes\n                    Availability =            \
+  \                                .\n                                           \
+  \     scheduled minutes\n The classroom service objective is 99.9% monthly availability.\
+  \ Calculate total scheduled\n minutes, achieved availability, allowed downtime,\
+  \ and downtime beyond the allowance. Does a\n percentage above 99% necessarily meet\
+  \ the objective?"
+questionPages:
+- page: 595
+  title: Uptime
+  text: " Uptime\n\n   M39d | Class problem | 6 minutes — Translate the Percentage\
+    \ into Minutes\n\n A payment-scoring service is expected to operate continuously\
+    \ for a 30-day month. It is\n completely unavailable for 90 minutes. Use time-based\
+    \ availability, not request-weighted\n success.\n                            \
+    \          scheduled minutes − unavailable minutes\n                    Availability\
+    \ =                                            .\n                           \
+    \                     scheduled minutes\n The classroom service objective is 99.9%\
+    \ monthly availability. Calculate total scheduled\n minutes, achieved availability,\
+    \ allowed downtime, and downtime beyond the allowance. Does a\n percentage above\
+    \ 99% necessarily meet the objective?"
+  paragraphs:
+  - Uptime
+  - M39d | Class problem | 6 minutes — Translate the Percentage into Minutes
+  - A payment-scoring service is expected to operate continuously for a 30-day month.
+    It is completely unavailable for 90 minutes. Use time-based availability, not
+    request-weighted success. scheduled minutes − unavailable minutes Availability
+    = . scheduled minutes The classroom service objective is 99.9% monthly availability.
+    Calculate total scheduled minutes, achieved availability, allowed downtime, and
+    downtime beyond the allowance. Does a percentage above 99% necessarily meet the
+    objective?
+  source:
+    pages:
+    - 595
+    verbatim: true
+formulaPages:
+- page: 591
+  title: Uptime
+  text: " Uptime\n\n   M39d | Formula explained (1/1)\n\n Question: How much scheduled\
+    \ service time was actually available?\n                                     \
+    \                          T −D\n                    T = Days × 24 × 60,     \
+    \  Availability =        ,\n                                                 \
+    \                 T\n                            Allowed downtime = T (1 − a∗\
+    \ ),\n                                                  Excess downtime = max{D\
+    \ − T (1 − a∗ ), 0}.\n Read it aloud: Convert scheduled operation into minutes.\
+    \ Subtract unavailable minutes and\n divide by scheduled minutes. The permitted\
+    \ downtime is the scheduled time multiplied by one\n minus the availability target.\n\
+    \ This is a time-based, continuously scheduled 30-day service. It does not weight\
+    \ downtime by\n how many requests arrived during each minute."
+  paragraphs:
+  - Uptime
+  - M39d | Formula explained (1/1)
+  - 'Question: How much scheduled service time was actually available? T −D T = Days
+    × 24 × 60, Availability = , T Allowed downtime = T (1 − a∗ ), Excess downtime
+    = max{D − T (1 − a∗ ), 0}. Read it aloud: Convert scheduled operation into minutes.
+    Subtract unavailable minutes and divide by scheduled minutes. The permitted downtime
+    is the scheduled time multiplied by one minus the availability target. This is
+    a time-based, continuously scheduled 30-day service. It does not weight downtime
+    by how many requests arrived during each minute.'
+  source:
+    pages:
+    - 591
+    verbatim: true
+symbolPages:
+- page: 592
+  title: Uptime
+  text: " Uptime\n\n   M39d | Symbols and terms (1/3)\n\n\n   Symbol or term     \
+    \                            Meaning in this example\n   T                   \
+    \                           Total scheduled operating minutes in the month; the\
+    \ service is\n                                                  expected to operate\
+    \ 24 hours per day.\n   D                                              Minutes\
+    \ when the service is completely unavailable, 90; D is\n                     \
+    \                             downtime here, not a loan delinquency indicator.\n\
+    \   T −D                                           Available minutes during the\
+    \ scheduled window.\n   a∗                                             Target\
+    \ availability as a fraction, 0.999; the star marks a specified\n            \
+    \                                      target rather than multiplication."
+  paragraphs:
+  - Uptime
+  - M39d | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example T Total scheduled operating minutes in
+    the month; the service is expected to operate 24 hours per day. D Minutes when
+    the service is completely unavailable, 90; D is downtime here, not a loan delinquency
+    indicator. T −D Available minutes during the scheduled window. a∗ Target availability
+    as a fraction, 0.999; the star marks a specified target rather than multiplication.
+  source: &id001
+    pages:
+    - 592
+    verbatim: true
+- page: 593
+  title: Uptime
+  text: " Uptime\n\n   M39d | Symbols and terms (2/3)\n\n\n   Symbol or term     \
+    \                            Meaning in this example\n   Availability; uptime\
+    \                           Fraction of scheduled time the service is available\
+    \ under the\n                                                  problem’s binary\
+    \ up/down definition.\n   Allowed downtime                               Minutes\
+    \ of unavailability consistent with meeting the stated\n                     \
+    \                             availability target."
+  paragraphs:
+  - Uptime
+  - M39d | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Availability; uptime Fraction of scheduled
+    time the service is available under the problem’s binary up/down definition. Allowed
+    downtime Minutes of unavailability consistent with meeting the stated availability
+    target.
+  source: &id002
+    pages:
+    - 593
+    verbatim: true
+- page: 594
+  title: Uptime
+  text: " Uptime\n\n   M39d | Symbols and terms (3/3)\n\n\n   Symbol or term     \
+    \                            Meaning in this example\n   Excess downtime     \
+    \                           Actual unavailable minutes beyond that allowance,\
+    \ with zero when\n                                                  the target\
+    \ is met.\n   Time-based                                     Every scheduled minute\
+    \ receives equal weight, even when request\n                                 \
+    \                 volumes differ."
+  paragraphs:
+  - Uptime
+  - M39d | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Excess downtime Actual unavailable minutes
+    beyond that allowance, with zero when the target is met. Time-based Every scheduled
+    minute receives equal weight, even when request volumes differ.
+  source: &id003
+    pages:
+    - 594
+    verbatim: true
+solutionPages:
+- page: 596
+  title: Uptime
+  text: " Uptime\n\n   M39d | Worked solution — Translate the Percentage into Minutes\n\
+    \n1. Scheduled time: 30 × 24 × 60 = 43, 200 minutes.\n2. Available time: 43,200\
+    \ − 90 = 43,110 minutes.\n3. Achieved availability:\n                        \
+    \                          43,110/43,200 × 100% = 99.7917%.\n4. Allowed unavailability:\
+    \ 43,200(1 − 0.999) = 43.2 minutes.\n5. Excess downtime: 90 − 43.2 = 46.8 minutes."
+  paragraphs:
+  - Uptime
+  - M39d | Worked solution — Translate the Percentage into Minutes
+  - '1. Scheduled time: 30 × 24 × 60 = 43, 200 minutes. 2. Available time: 43,200
+    − 90 = 43,110 minutes. 3. Achieved availability: 43,110/43,200 × 100% = 99.7917%.
+    4. Allowed unavailability: 43,200(1 − 0.999) = 43.2 minutes. 5. Excess downtime:
+    90 − 43.2 = 46.8 minutes.'
+  source:
+    pages:
+    - 596
+    verbatim: true
+interpretationPages:
+- page: 597
+  title: Uptime
+  text: " Uptime\n\n   M39d | Interpretation\n\n What the answer means\n “Over 99%\
+    \ available” is not enough for the specified 99.9% objective. The service was\n\
+    \ unavailable for more than twice its allotted downtime. Time-based availability\
+    \ also does not\n reveal how many payment requests were affected or whether the\
+    \ outage coincided with peak\n demand.\n Why these steps matter\n A target of\
+    \ 99.9% leaves 0.1% of scheduled time for unavailability, not 0.9%. Multiplying\
+    \ that\n small fraction by the full month’s minutes makes the allowance concrete.\
+    \ The same outage\n length can affect very different payment volumes depending\
+    \ on when it occurs."
+  paragraphs:
+  - Uptime
+  - M39d | Interpretation
+  - What the answer means “Over 99% available” is not enough for the specified 99.9%
+    objective. The service was unavailable for more than twice its allotted downtime.
+    Time-based availability also does not reveal how many payment requests were affected
+    or whether the outage coincided with peak demand. Why these steps matter A target
+    of 99.9% leaves 0.1% of scheduled time for unavailability, not 0.9%. Multiplying
+    that small fraction by the full month’s minutes makes the allowance concrete.
+    The same outage length can affect very different payment volumes depending on
+    when it occurs.
+  source:
+    pages:
+    - 597
+    verbatim: true
+source:
+  pages:
+  - 591
+  - 592
+  - 593
+  - 594
+  - 595
+  - 596
+  - 597
+  verbatim: true
+readAloud:
+- Convert scheduled operation into minutes. Subtract unavailable minutes and divide
+  by scheduled minutes. The permitted downtime is the scheduled time multiplied by
+  one minus the availability target. This is a time-based, continuously scheduled
+  30-day service. It does not weight downtime by how many requests arrived during
+  each minute.
+siteAuthored: false
+givens:
+  days: 30
+  downtime: 90
+  objective: 0.999
+labels: &id004
+  days: Continuously scheduled days
+  downtime: Unavailable minutes
+  objective: Availability objective (proportion)
+deckSolution:
+  scheduled: 43200
+  available: 43110
+  availability: 0.9979167
+  allowed: 43.2
+  excess: 46.8
+latex:
+- Availability=\frac{ScheduledTime-Downtime}{ScheduledTime},\quad Allowance=ScheduledTime(1-SLO)
+- T=\operatorname{Days}\times24\times60,\quad\operatorname{Excess\ downtime}=\max(D-T(1-a^*),0)
+symbols:
+- symbol: T
+  meaning: Total scheduled operating minutes in the month; the service is expected
+    to operate 24 hours per day.
+  source: *id001
+- symbol: D
+  meaning: Minutes when the service is completely unavailable, 90; D is downtime here,
+    not a loan delinquency indicator.
+  source: *id001
+- symbol: T −D
+  meaning: Available minutes during the scheduled window.
+  source: *id001
+- symbol: a∗
+  meaning: Target availability as a fraction, 0.999; the star marks a specified target
+    rather than multiplication.
+  source: *id001
+- symbol: Availability; uptime
+  meaning: Fraction of scheduled time the service is available under the problem’s
+    binary up/down definition.
+  source: *id002
+- symbol: Allowed downtime
+  meaning: Minutes of unavailability consistent with meeting the stated availability
+    target.
+  source: *id002
+- symbol: Excess downtime
+  meaning: Actual unavailable minutes beyond that allowance, with zero when the target
+    is met.
+  source: *id003
+- symbol: Time-based
+  meaning: Every scheduled minute receives equal weight, even when request volumes
+    differ.
+  source: *id003
+steps:
+- id: scheduled
+  title: Scheduled service minutes
+  expects: number
+  unit: minutes
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Multiply scheduled days by 24 × 60.
+  mistakes:
+  - pattern: recompute
+    message: Multiply scheduled days by 24 × 60.
+- id: available
+  title: Available service minutes
+  expects: number
+  unit: minutes
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Subtract unavailable minutes from scheduled minutes.
+  mistakes:
+  - pattern: recompute
+    message: Subtract unavailable minutes from scheduled minutes.
+- id: availability
+  title: Time-based availability
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide available minutes by scheduled minutes.
+  mistakes:
+  - pattern: recompute
+    message: Divide available minutes by scheduled minutes.
+- id: allowed
+  title: Downtime allowed by the objective
+  expects: number
+  unit: minutes
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply scheduled minutes by 1 − objective.
+  mistakes:
+  - pattern: recompute
+    message: Multiply scheduled minutes by 1 − objective.
+- id: excess
+  title: Downtime beyond the allowance
+  expects: number
+  unit: minutes
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract allowed downtime from actual downtime; use zero when the objective is
+    met.
+  mistakes:
+  - pattern: recompute
+    message: Subtract allowed downtime from actual downtime; use zero when the objective
+      is met.
+learning:
+  title: Translate the Percentage into Minutes
+  scenario: A service is scheduled continuously for the supplied number of days. Use
+    time-based availability, not request-weighted success.
+  task: Convert the scheduled period to minutes, calculate available minutes and availability,
+    then compute downtime allowed by the objective and downtime beyond that allowance.
+  interpretation: An availability percentage must be compared with its exact target.
+    Time-based availability also does not reveal how many requests were affected or
+    whether downtime coincided with peak demand.
+  summary: 'Achieved availability: {availability}. Allowed downtime: {allowed}; downtime
+    beyond allowance: {excess}.'
+  labels: *id004
+  steps:
+    scheduled:
+      title: Scheduled service minutes
+      hints: *id005
+      unit: minutes
+    available:
+      title: Available service minutes
+      hints: *id006
+      unit: minutes
+    availability:
+      title: Time-based availability
+      hints: *id007
+      unit: proportion
+    allowed:
+      title: Downtime allowed by the objective
+      hints: *id008
+      unit: minutes
+    excess:
+      title: Downtime beyond the allowance
+      hints: *id009
+      unit: minutes
+  readAloud:
+  - Convert scheduled operation into minutes. Subtract unavailable minutes and divide
+    by scheduled minutes. The permitted downtime is the scheduled time multiplied
+    by one minus the availability target. This is a time-based, continuously scheduled
+    30-day service. It does not weight downtime by how many requests arrived during
+    each minute.
+  workedExplanation:
+  - '“Over 99% available” is not enough for the specified 99.9% objective. The service
+    was unavailable for more than twice its allotted downtime. Time-based availability
+    also does not reveal how many payment requests were affected or whether the outage
+    coincided with peak demand. '
+  - A target of 99.9% leaves 0.1% of scheduled time for unavailability, not 0.9%.
+    Multiplying that small fraction by the full month’s minutes makes the allowance
+    concrete. The same outage length can affect very different payment volumes depending
+    on when it occurs.
+  workedArithmetic:
+  - Scheduled time = 30 × 24 × 60 = 43,200 minutes. Available time = 43,200 − 90 =
+    43,110 minutes.
+  - Availability = 43,110/43,200 ≈ 99.7917%.
+  - Allowed downtime = 43,200 × (1 − 0.999) = 43.2 minutes. Excess downtime = 90 −
+    43.2 = 46.8 minutes.
+formulaSource:
+  pages:
+  - 591
+  verbatim: false
+  reviewed: true

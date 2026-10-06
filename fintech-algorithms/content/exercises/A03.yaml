@@ -1,0 +1,412 @@
+id: A03
+title: Update a Credit Score
+minutes: 7
+kind: algorithm
+parent: gradient-boosting
+question: "A binary credit model starts with a log-odds score of F0 = −2.0. Two fitted\
+  \ trees contribute\n h1 = 0.8 and h2 = 0.4 for one applicant.\n                \
+  \                                             1\n                             Fm\
+  \ = Fm−1 + ηhm ,       p=           .\n                                        \
+  \                 1 + e−Fm\n The learning rate is η = 0.5. Applications with p ≥\
+  \ 18% go to review.\n1. Calculate the score after each tree and the final probability.\n\
+  2. Repeat with η = 0.25, holding the supplied tree outputs fixed.\n3. Does the learning\
+  \ rate change the review decision?\n Calculator values: e1.4 = 4.055 and e1.7 =\
+  \ 5.474."
+questionPages:
+- page: 50
+  title: Gradient Boosting
+  text: " Gradient Boosting\n\n   A03 | Class problem | 7 minutes — Update a Credit\
+    \ Score\n\n A binary credit model starts with a log-odds score of F0 = −2.0. Two\
+    \ fitted trees contribute\n h1 = 0.8 and h2 = 0.4 for one applicant.\n       \
+    \                                                      1\n                   \
+    \          Fm = Fm−1 + ηhm ,       p=           .\n                          \
+    \                               1 + e−Fm\n The learning rate is η = 0.5. Applications\
+    \ with p ≥ 18% go to review.\n1. Calculate the score after each tree and the final\
+    \ probability.\n2. Repeat with η = 0.25, holding the supplied tree outputs fixed.\n\
+    3. Does the learning rate change the review decision?\n Calculator values: e1.4\
+    \ = 4.055 and e1.7 = 5.474."
+  paragraphs:
+  - Gradient Boosting
+  - A03 | Class problem | 7 minutes — Update a Credit Score
+  - 'A binary credit model starts with a log-odds score of F0 = −2.0. Two fitted trees
+    contribute h1 = 0.8 and h2 = 0.4 for one applicant. 1 Fm = Fm−1 + ηhm , p= . 1
+    + e−Fm The learning rate is η = 0.5. Applications with p ≥ 18% go to review. 1.
+    Calculate the score after each tree and the final probability. 2. Repeat with
+    η = 0.25, holding the supplied tree outputs fixed. 3. Does the learning rate change
+    the review decision? Calculator values: e1.4 = 4.055 and e1.7 = 5.474.'
+  source:
+    pages:
+    - 50
+    verbatim: true
+formulaPages:
+- page: 47
+  title: Gradient Boosting
+  text: " Gradient Boosting\n\n   A03 | Formula explained (1/1)\n\n Question: How\
+    \ do successive tree corrections change a default score?\n                   \
+    \                                               1\n                          \
+    \    Fm = Fm−1 + ηhm ,          p=           .\n                             \
+    \                                1 + e−Fm\n Read it aloud: New score = previous\
+    \ score + learning rate × this tree’s correction. Convert\n the final score to\
+    \ a probability only after adding the corrections.\n The tree outputs here are\
+    \ already fitted and supplied. Changing the learning rate scales these\n fixed\
+    \ contributions for the hand calculation; a newly trained model may learn different\
+    \ trees.\n Review if the resulting probability reaches 18%, or 0.18."
+  paragraphs:
+  - Gradient Boosting
+  - A03 | Formula explained (1/1)
+  - 'Question: How do successive tree corrections change a default score? 1 Fm = Fm−1
+    + ηhm , p= . 1 + e−Fm Read it aloud: New score = previous score + learning rate
+    × this tree’s correction. Convert the final score to a probability only after
+    adding the corrections. The tree outputs here are already fitted and supplied.
+    Changing the learning rate scales these fixed contributions for the hand calculation;
+    a newly trained model may learn different trees. Review if the resulting probability
+    reaches 18%, or 0.18.'
+  source:
+    pages:
+    - 47
+    verbatim: true
+symbolPages:
+- page: 48
+  title: Gradient Boosting
+  text: " Gradient Boosting\n\n   A03 | Symbols and terms (1/2)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   F0              \
+    \                         Initial combined score, −2.0, before the two supplied\
+    \ trees\n                                            contribute.\n   m       \
+    \                                 Tree or boosting-step number; m = 1 for the\
+    \ first tree and m = 2\n                                            for the second.\n\
+    \   Fm−1 , Fm                                Combined log-odds scores before and\
+    \ after adding tree m.\n   hm                                       Correction\
+    \ supplied by tree m for this applicant; the values are 0.8\n                \
+    \                            and 0.4.\n   η (eta)                            \
+    \      Learning rate: fraction of each tree’s correction applied; compare 0.5\n\
+    \                                            with 0.25.\n   p                \
+    \                        Predicted default probability after the final tree, on\
+    \ a 0–1 scale."
+  paragraphs:
+  - Gradient Boosting
+  - A03 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example F0 Initial combined score, −2.0, before
+    the two supplied trees contribute. m Tree or boosting-step number; m = 1 for the
+    first tree and m = 2 for the second. Fm−1 , Fm Combined log-odds scores before
+    and after adding tree m. hm Correction supplied by tree m for this applicant;
+    the values are 0.8 and 0.4. η (eta) Learning rate: fraction of each tree’s correction
+    applied; compare 0.5 with 0.25. p Predicted default probability after the final
+    tree, on a 0–1 scale.'
+  source: &id001
+    pages:
+    - 48
+    verbatim: true
+- page: 49
+  title: Gradient Boosting
+  text: " Gradient Boosting\n\n   A03 | Symbols and terms (2/2)\n\n\n   Symbol or\
+    \ term                           Meaning in this example\n   e−Fm            \
+    \                         Exponential of the negative final score; e ≈ 2.71828.\n\
+    \   Log-odds                                 Natural logarithm of probability\
+    \ divided by one minus probability; not\n                                    \
+    \        the probability itself.\n   Boosting                                \
+    \ Adding models sequentially to improve the current prediction under a\n     \
+    \                                       specified loss function."
+  paragraphs:
+  - Gradient Boosting
+  - A03 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example e−Fm Exponential of the negative final
+    score; e ≈ 2.71828. Log-odds Natural logarithm of probability divided by one minus
+    probability; not the probability itself. Boosting Adding models sequentially to
+    improve the current prediction under a specified loss function.
+  source: &id002
+    pages:
+    - 49
+    verbatim: true
+solutionPages:
+- page: 51
+  title: Gradient Boosting
+  text: " Gradient Boosting\n\n   A03 | Worked solution — Update a Credit Score\n\n\
+    1. First correction: F1 = −2.0 + 0.5(0.8) = −1.6.\n2. Second correction: F2 =\
+    \ −1.6 + 0.5(0.4) = −1.4.\n3. Convert to probability:\n                      \
+    \                     1\n                                            p=   = 0.1978\
+    \ = 19.78%.\n                                       1 + 4.055\n      This exceeds\
+    \ 18%, so the application goes to review.\n4. Use the smaller learning rate:\n\
+    \                 F1 = −2 + 0.25(0.8) = −1.8, F2 = −1.8 + 0.25(0.4) = −1.7.\n\
+    \                                        1\n                                p=\
+    \            = 0.1545 = 15.45%.\n                                    1 + 5.474\n\
+    \   This does not reach the review threshold."
+  paragraphs:
+  - Gradient Boosting
+  - A03 | Worked solution — Update a Credit Score
+  - '1. First correction: F1 = −2.0 + 0.5(0.8) = −1.6. 2. Second correction: F2 =
+    −1.6 + 0.5(0.4) = −1.4. 3. Convert to probability: 1 p= = 0.1978 = 19.78%. 1 +
+    4.055 This exceeds 18%, so the application goes to review. 4. Use the smaller
+    learning rate: F1 = −2 + 0.25(0.8) = −1.8, F2 = −1.8 + 0.25(0.4) = −1.7. 1 p=
+    = 0.1545 = 15.45%. 1 + 5.474 This does not reach the review threshold.'
+  source:
+    pages:
+    - 51
+    verbatim: true
+interpretationPages:
+- page: 52
+  title: Gradient Boosting
+  text: " Gradient Boosting\n\n   A03 | Interpretation\n\n What the answer means\n\
+    \ Smaller corrections leave the applicant below the review cutoff in this example.\
+    \ The corrections\n are log-odds increments, not probability percentage points.\
+    \ In a full retraining, changing\n the learning rate can also change the later\
+    \ fitted trees.\n Why these steps matter\n The learning rate changes the amount\
+    \ of correction, not the definition of probability. Adding 0.4\n to a log-odds\
+    \ score is not adding 40 percentage points to default risk. The same score\n increment\
+    \ produces different probability changes at different starting scores."
+  paragraphs:
+  - Gradient Boosting
+  - A03 | Interpretation
+  - What the answer means Smaller corrections leave the applicant below the review
+    cutoff in this example. The corrections are log-odds increments, not probability
+    percentage points. In a full retraining, changing the learning rate can also change
+    the later fitted trees. Why these steps matter The learning rate changes the amount
+    of correction, not the definition of probability. Adding 0.4 to a log-odds score
+    is not adding 40 percentage points to default risk. The same score increment produces
+    different probability changes at different starting scores.
+  source:
+    pages:
+    - 52
+    verbatim: true
+source:
+  pages:
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  verbatim: true
+readAloud:
+- New score = previous score + learning rate × this tree’s correction. Convert the
+  final score to a probability only after adding the corrections. The tree outputs
+  here are already fitted and supplied. Changing the learning rate scales these fixed
+  contributions for the hand calculation; a newly trained model may learn different
+  trees. Review if the resulting probability reaches 18%, or 0.18.
+siteAuthored: false
+givens:
+  F0: -2
+  eta: 0.5
+  h1: 0.8
+  h2: 0.4
+  eta2: 0.25
+  threshold: 0.18
+labels: &id003
+  F0: Starting log-odds score
+  eta: First learning rate
+  h1: First tree output
+  h2: Second tree output
+  eta2: Comparison learning rate
+  threshold: Review threshold (proportion)
+deckSolution:
+  F1: -1.6
+  F2: -1.4
+  p: 0.1978
+  smallF1: -1.8
+  smallF2: -1.7
+  smallP: 0.1545
+  decision: true
+  smallDecision: false
+latex:
+- F_m=F_{m-1}+\eta h_m,\quad p=\frac{1}{1+e^{-F_m}}
+symbols:
+- symbol: F0
+  meaning: Initial combined score, −2.0, before the two supplied trees contribute.
+  source: *id001
+- symbol: m
+  meaning: Tree or boosting-step number; m = 1 for the first tree and m = 2 for the
+    second.
+  source: *id001
+- symbol: Fm−1 , Fm
+  meaning: Combined log-odds scores before and after adding tree m.
+  source: *id001
+- symbol: hm
+  meaning: Correction supplied by tree m for this applicant; the values are 0.8 and
+    0.4.
+  source: *id001
+- symbol: η (eta)
+  meaning: 'Learning rate: fraction of each tree’s correction applied; compare 0.5
+    with 0.25.'
+  source: *id001
+- symbol: p
+  meaning: Predicted default probability after the final tree, on a 0–1 scale.
+  source: *id001
+- symbol: e−Fm
+  meaning: Exponential of the negative final score; e ≈ 2.71828.
+  source: *id002
+- symbol: Log-odds
+  meaning: Natural logarithm of probability divided by one minus probability; not
+    the probability itself.
+  source: *id002
+- symbol: Boosting
+  meaning: Adding models sequentially to improve the current prediction under a specified
+    loss function.
+  source: *id002
+steps:
+- id: F1
+  title: Score after tree 1
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Add first learning rate × first tree output to the starting score.
+  mistakes:
+  - pattern: recompute
+    message: Add first learning rate × first tree output to the starting score.
+- id: F2
+  title: Score after tree 2
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Add first learning rate × second tree output to the preceding score.
+  mistakes:
+  - pattern: recompute
+    message: Add first learning rate × second tree output to the preceding score.
+- id: p
+  title: Probability with the first learning rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Apply 1 / (1 + exp(−score)) to the score after both trees.
+  mistakes:
+  - pattern: recompute
+    message: Apply 1 / (1 + exp(−score)) to the score after both trees.
+- id: smallF1
+  title: Comparison score after tree 1
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Restart from the original score and use the comparison learning rate.
+  mistakes:
+  - pattern: recompute
+    message: Restart from the original score and use the comparison learning rate.
+- id: smallF2
+  title: Comparison score after tree 2
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Add comparison learning rate × second tree output.
+  mistakes:
+  - pattern: recompute
+    message: Add comparison learning rate × second tree output.
+- id: smallP
+  title: Probability with the comparison rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Apply the logistic function to the comparison score after both trees.
+  mistakes:
+  - pattern: recompute
+    message: Apply the logistic function to the comparison score after both trees.
+- id: decision
+  title: Review with the first learning rate?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Compare the first probability with the review threshold.
+  mistakes:
+  - pattern: recompute
+    message: Compare the first probability with the review threshold.
+- id: smallDecision
+  title: Review with the comparison rate?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Compare the comparison probability with the same threshold.
+  mistakes:
+  - pattern: recompute
+    message: Compare the comparison probability with the same threshold.
+learning:
+  title: Update a Credit Score
+  scenario: A credit model starts with a log-odds score. Each fitted tree adds its
+    output multiplied by a learning rate. The supplied tree outputs stay fixed in
+    this calculation.
+  task: Calculate the scores and probability after two trees using each of the two
+    learning rates. Review an application when its probability reaches the threshold.
+  interpretation: Tree outputs change log-odds, not probability percentage points.
+    In a newly trained model, changing the learning rate may also change the trees
+    that are fitted.
+  summary: 'Probability with the first learning rate: {p}; with the comparison rate:
+    {smallP}. Review decisions: {decision}, {smallDecision}.'
+  labels: *id003
+  steps:
+    F1:
+      title: Score after tree 1
+      hints: *id004
+      unit: ''
+    F2:
+      title: Score after tree 2
+      hints: *id005
+      unit: ''
+    p:
+      title: Probability with the first learning rate
+      hints: *id006
+      unit: proportion
+    smallF1:
+      title: Comparison score after tree 1
+      hints: *id007
+      unit: ''
+    smallF2:
+      title: Comparison score after tree 2
+      hints: *id008
+      unit: ''
+    smallP:
+      title: Probability with the comparison rate
+      hints: *id009
+      unit: proportion
+    decision:
+      title: Review with the first learning rate?
+      hints: *id010
+      unit: ''
+    smallDecision:
+      title: Review with the comparison rate?
+      hints: *id011
+      unit: ''
+  readAloud:
+  - New score = previous score + learning rate × this tree’s correction. Convert the
+    final score to a probability only after adding the corrections. The tree outputs
+    here are already fitted and supplied. Changing the learning rate scales these
+    fixed contributions for the hand calculation; a newly trained model may learn
+    different trees. Review if the resulting probability reaches 18%, or 0.18.
+  workedExplanation:
+  - 'Smaller corrections leave the applicant below the review cutoff in this example.
+    The corrections are log-odds increments, not probability percentage points. In
+    a full retraining, changing the learning rate can also change the later fitted
+    trees. '
+  - The learning rate changes the amount of correction, not the definition of probability.
+    Adding 0.4 to a log-odds score is not adding 40 percentage points to default risk.
+    The same score increment produces different probability changes at different starting
+    scores.
+  workedArithmetic:
+  - 'With learning rate 0.5: F1 = −2 + 0.5 × 0.8 = −1.6; F2 = −1.6 + 0.5 × 0.4 = −1.4.'
+  - p = 1 / (1 + exp(1.4)) ≈ 0.1978 = 19.78%, which exceeds the 18% review threshold.
+  - 'With learning rate 0.25: F1 = −2 + 0.25 × 0.8 = −1.8; F2 = −1.8 + 0.25 × 0.4
+    = −1.7.'
+  - p = 1 / (1 + exp(1.7)) ≈ 0.1545 = 15.45%, below the same threshold.
+formulaSource:
+  pages:
+  - 47
+  verbatim: false
+  reviewed: true

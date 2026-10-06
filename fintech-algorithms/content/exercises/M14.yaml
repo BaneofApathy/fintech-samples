@@ -1,0 +1,446 @@
+id: M14
+title: Do the Probabilities Match Outcomes?
+minutes: 8
+kind: measure
+parent: calibration-curve
+question: "A lender groups loans into three score bands. The table gives the mean\
+  \ predicted probability\n within each band:\n   Band                           \
+  \                Loans          Mean predicted             Actual defaults\n   \
+  \                                                            default probability\n\
+  \   Low                                              100                       \
+  \        5%                  3\n   Medium                                      \
+  \     100                               10%               10\n   High          \
+  \                                   100                               20%      \
+  \         30\n\n1. Calculate expected defaults and observed default rates for each\
+  \ band.\n2. Identify which band understated risk most in this sample.\n3. Assume\
+  \ a fixed $4,000 loss per default. Compare the total probability-based expected-loss\n\
+  \   estimate with realized loss.\n4. Which calibration-curve points would you plot?"
+questionPages:
+- page: 316
+  title: Calibration
+  text: " Calibration\n\n   M14 | Class problem | 8 minutes — Do the Probabilities\
+    \ Match Outcomes?\n\n A lender groups loans into three score bands. The table\
+    \ gives the mean predicted probability\n within each band:\n   Band          \
+    \                                 Loans          Mean predicted             Actual\
+    \ defaults\n                                                               default\
+    \ probability\n   Low                                              100       \
+    \                        5%                  3\n   Medium                    \
+    \                       100                               10%               10\n\
+    \   High                                             100                     \
+    \          20%               30\n\n1. Calculate expected defaults and observed\
+    \ default rates for each band.\n2. Identify which band understated risk most in\
+    \ this sample.\n3. Assume a fixed $4,000 loss per default. Compare the total probability-based\
+    \ expected-loss\n   estimate with realized loss.\n4. Which calibration-curve points\
+    \ would you plot?"
+  paragraphs:
+  - Calibration
+  - M14 | Class problem | 8 minutes — Do the Probabilities Match Outcomes?
+  - 'A lender groups loans into three score bands. The table gives the mean predicted
+    probability within each band: Band Loans Mean predicted Actual defaults default
+    probability Low 100 5% 3 Medium 100 10% 10 High 100 20% 30'
+  - 1. Calculate expected defaults and observed default rates for each band. 2. Identify
+    which band understated risk most in this sample. 3. Assume a fixed $4,000 loss
+    per default. Compare the total probability-based expected-loss estimate with realized
+    loss. 4. Which calibration-curve points would you plot?
+  source:
+    pages:
+    - 316
+    verbatim: true
+formulaPages:
+- page: 313
+  title: Calibration
+  text: " Calibration\n\n   M14 | Formula explained (1/1)\n\n Question: Do groups\
+    \ assigned a probability experience roughly that event frequency?\n          \
+    \                                               db\n                         \
+    \        Eb = nb p̄b ,     Ob =     ,\n                                      \
+    \                   nb\n                                   X                 \
+    \        X\n                           EL = c     Eb ,      Lactual = c     db\
+    \ .\n                                                  b              b\n\n Read\
+    \ it aloud: For each band, multiply loan count by mean predicted probability for\
+    \ expected\n defaults. Divide observed defaults by loan count for observed default\
+    \ rate. Multiply total default\n counts by the fixed loss amount to compare losses.\n\
+    \ Plot mean predicted probability on the horizontal axis and observed frequency\
+    \ on the vertical\n axis. Perfect sample agreement would lie on the diagonal where\
+    \ the two are equal."
+  paragraphs:
+  - Calibration
+  - M14 | Formula explained (1/1)
+  - 'Question: Do groups assigned a probability experience roughly that event frequency?
+    db Eb = nb p̄b , Ob = , nb X X EL = c Eb , Lactual = c db . b b'
+  - 'Read it aloud: For each band, multiply loan count by mean predicted probability
+    for expected defaults. Divide observed defaults by loan count for observed default
+    rate. Multiply total default counts by the fixed loss amount to compare losses.
+    Plot mean predicted probability on the horizontal axis and observed frequency
+    on the vertical axis. Perfect sample agreement would lie on the diagonal where
+    the two are equal.'
+  source:
+    pages:
+    - 313
+    verbatim: true
+symbolPages:
+- page: 314
+  title: Calibration
+  text: " Calibration\n\n   M14 | Symbols and terms (1/2)\n\n\n   Symbol or term \
+    \                                Meaning in this example\n   b               \
+    \                               Index of a score band: low, medium, or high.\n\
+    \   nb                                             Number of loans in band b,\
+    \ 100 in each band here.\n   p̄b                                            Mean\
+    \ predicted default probability in the band; the bar means\n                 \
+    \                                 average across its loans.\n   Eb           \
+    \                                  Expected default count in band b, not its observed\
+    \ count.\n   db , Ob                                        Observed default count\
+    \ and observed default rate in band b.\n   c                                 \
+    \             Fixed loss per actual default, US$4,000."
+  paragraphs:
+  - Calibration
+  - M14 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example b Index of a score band: low, medium,
+    or high. nb Number of loans in band b, 100 in each band here. p̄b Mean predicted
+    default probability in the band; the bar means average across its loans. Eb Expected
+    default count in band b, not its observed count. db , Ob Observed default count
+    and observed default rate in band b. c Fixed loss per actual default, US$4,000.'
+  source: &id002
+    pages: &id001
+    - 314
+    verbatim: true
+- page: 315
+  title: Calibration
+  text: " Calibration\n\n   M14 | Symbols and terms (2/2)\n\n\n   Symbol or term \
+    \                                Meaning in this example\n   P\n       b     \
+    \                                     Add the quantity across the three bands.\n\
+    \   EL, Lactual                                    Probability-based expected\
+    \ loss and realized sample loss, in dollars.\n   Calibration curve           \
+    \                   Plot comparing predicted probabilities with observed event\n\
+    \                                                  frequencies for defined groups\
+    \ of predictions.\n   Calibration gap                                Observed\
+    \ rate minus predicted probability in a band, usually\n                      \
+    \                            expressed in percentage points."
+  paragraphs:
+  - Calibration
+  - M14 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example P b Add the quantity across the three bands.
+    EL, Lactual Probability-based expected loss and realized sample loss, in dollars.
+    Calibration curve Plot comparing predicted probabilities with observed event frequencies
+    for defined groups of predictions. Calibration gap Observed rate minus predicted
+    probability in a band, usually expressed in percentage points.
+  source: &id004
+    pages: &id003
+    - 315
+    verbatim: true
+solutionPages:
+- page: 317
+  title: Calibration
+  text: " Calibration\n\n   M14 | Worked solution — Do the Probabilities Match Outcomes?\n\
+    \n1. Expected defaults: 100(0.05) = 5; 100(0.10) = 10; 100(0.20) = 20. Total 35.\n\
+    2. Observed rates: 3/100 = 3%, 10/100 = 10%, and 30/100 = 30%. Total actual defaults\
+    \ 43.\n3. Largest understatement: The high band predicts 20% but observes 30%:\
+    \ 10 percentage\n   points, or 10 additional defaults.\n4. Loss comparison:\n\
+    \                                                  Expected loss = 35(4,000) =\
+    \ $140,000.\n                                                  Realized loss =\
+    \ 43(4,000) = $172,000.\n      Difference: $32,000.\n5. Plot (predicted, observed):\
+    \ (5%, 3%), (10%, 10%), (20%, 30%)."
+  paragraphs:
+  - Calibration
+  - M14 | Worked solution — Do the Probabilities Match Outcomes?
+  - '1. Expected defaults: 100(0.05) = 5; 100(0.10) = 10; 100(0.20) = 20. Total 35.
+    2. Observed rates: 3/100 = 3%, 10/100 = 10%, and 30/100 = 30%. Total actual defaults
+    43. 3. Largest understatement: The high band predicts 20% but observes 30%: 10
+    percentage points, or 10 additional defaults. 4. Loss comparison: Expected loss
+    = 35(4,000) = $140,000. Realized loss = 43(4,000) = $172,000. Difference: $32,000.
+    5. Plot (predicted, observed): (5%, 3%), (10%, 10%), (20%, 30%).'
+  source:
+    pages:
+    - 317
+    verbatim: true
+interpretationPages:
+- page: 318
+  title: Calibration
+  text: " Calibration\n\n   M14 | Interpretation\n\n What the answer means\n The highest\
+    \ band understates observed risk in this sample, affecting the expected-loss\n\
+    \ calculation. The sample does not establish a permanent calibration error; uncertainty,\
+    \ time\n stability, and larger validation samples still matter.\n Why these steps\
+    \ matter\n Mean probability times group size equals the sum of individual probabilities,\
+    \ so it is appropriate\n for the expected count. Individual loans still default\
+    \ or do not default; a probability is evaluated\n by frequencies across cases,\
+    \ not by demanding that every single outcome match it exactly."
+  paragraphs:
+  - Calibration
+  - M14 | Interpretation
+  - What the answer means The highest band understates observed risk in this sample,
+    affecting the expected-loss calculation. The sample does not establish a permanent
+    calibration error; uncertainty, time stability, and larger validation samples
+    still matter. Why these steps matter Mean probability times group size equals
+    the sum of individual probabilities, so it is appropriate for the expected count.
+    Individual loans still default or do not default; a probability is evaluated by
+    frequencies across cases, not by demanding that every single outcome match it
+    exactly.
+  source:
+    pages:
+    - 318
+    verbatim: true
+source:
+  pages:
+  - 313
+  - 314
+  - 315
+  - 316
+  - 317
+  - 318
+  verbatim: true
+readAloud:
+- For each band, multiply loan count by mean predicted probability for expected defaults.
+  Divide observed defaults by loan count for observed default rate. Multiply total
+  default counts by the fixed loss amount to compare losses. Plot mean predicted probability
+  on the horizontal axis and observed frequency on the vertical axis. Perfect sample
+  agreement would lie on the diagonal where the two are equal.
+siteAuthored: false
+givens:
+  counts:
+  - 100
+  - 100
+  - 100
+  predicted:
+  - 0.05
+  - 0.1
+  - 0.2
+  defaults:
+  - 3
+  - 10
+  - 30
+  loss: 4000
+labels: &id005
+  counts: Loans in each band
+  predicted: Mean predicted default probabilities
+  defaults: Observed defaults in each band
+  loss: Loss per default ($)
+deckSolution:
+  expected:
+  - 5
+  - 10
+  - 20
+  observed:
+  - 0.03
+  - 0.1
+  - 0.3
+  gaps:
+  - -0.02
+  - 0
+  - 0.1
+  expectedTotal: 35
+  actualTotal: 43
+  EL: 140000
+  realized: 172000
+  difference: 32000
+latex:
+- ExpectedDefaults_b=n_b\bar p_b,\quad ObservedRate_b=\frac{d_b}{n_b}
+- EL=L\sum_bE_b,\quad L_{actual}=L\sum_bd_b
+symbols:
+- symbol: Σ over bands
+  meaning: 'Index of a score band: low, medium, or high.'
+  source:
+    pages: *id001
+    verbatim: false
+- symbol: nb
+  meaning: Number of loans in band b, 100 in each band here.
+  source: *id002
+- symbol: p̄b
+  meaning: Mean predicted default probability in the band; the bar means average across
+    its loans.
+  source: *id002
+- symbol: Eb
+  meaning: Expected default count in band b, not its observed count.
+  source: *id002
+- symbol: db , Ob
+  meaning: Observed default count and observed default rate in band b.
+  source: *id002
+- symbol: c
+  meaning: Fixed loss per actual default, US$4,000.
+  source: *id002
+- symbol: Σ over bands
+  meaning: Add the quantity across the three bands.
+  source:
+    pages: *id003
+    verbatim: false
+- symbol: EL, Lactual
+  meaning: Probability-based expected loss and realized sample loss, in dollars.
+  source: *id004
+- symbol: Calibration curve
+  meaning: Plot comparing predicted probabilities with observed event frequencies
+    for defined groups of predictions.
+  source: *id004
+- symbol: Calibration gap
+  meaning: Observed rate minus predicted probability in a band, usually expressed
+    in percentage points.
+  source: *id004
+steps:
+- id: expected
+  title: Expected defaults in each band
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Multiply each band’s count by its mean predicted probability.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each band’s count by its mean predicted probability.
+- id: observed
+  title: Observed default rates
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide observed defaults by loan count within each band.
+  mistakes:
+  - pattern: recompute
+    message: Divide observed defaults by loan count within each band.
+- id: gaps
+  title: Observed minus predicted default rates
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Subtract the predicted probability from each observed rate.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the predicted probability from each observed rate.
+- id: expectedTotal
+  title: Total expected defaults
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Add expected counts across bands.
+  mistakes:
+  - pattern: recompute
+    message: Add expected counts across bands.
+- id: actualTotal
+  title: Total actual defaults
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Add observed default counts.
+  mistakes:
+  - pattern: recompute
+    message: Add observed default counts.
+- id: EL
+  title: Probability-based expected loss
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Multiply total expected defaults by loss per default.
+  mistakes:
+  - pattern: recompute
+    message: Multiply total expected defaults by loss per default.
+- id: realized
+  title: Realized default loss
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id012
+  - Multiply actual defaults by loss per default.
+  mistakes:
+  - pattern: recompute
+    message: Multiply actual defaults by loss per default.
+- id: difference
+  title: Realized minus expected loss
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id013
+  - Subtract expected loss from realized loss.
+  mistakes:
+  - pattern: recompute
+    message: Subtract expected loss from realized loss.
+learning:
+  title: Do the Probabilities Match Outcomes?
+  scenario: Loans are grouped into risk bands. Each band has a loan count, mean predicted
+    default probability and observed defaults. All loans share the supplied loss per
+    default.
+  task: Calculate expected defaults and observed rates by band, observed-minus-predicted
+    gaps, totals and expected versus realized loss. Plot predicted probability against
+    observed rate.
+  interpretation: Mean probability × group size equals the sum of its individual probabilities.
+    A single loan’s binary outcome cannot establish calibration; assess frequencies,
+    uncertainty and stability across cases.
+  summary: 'Expected loss: {EL}; realized loss: {realized}. Realized minus expected
+    loss: {difference}.'
+  labels: *id005
+  steps:
+    expected:
+      title: Expected defaults in each band
+      hints: *id006
+      unit: ''
+    observed:
+      title: Observed default rates
+      hints: *id007
+      unit: proportion
+    gaps:
+      title: Observed minus predicted default rates
+      hints: *id008
+      unit: proportion
+    expectedTotal:
+      title: Total expected defaults
+      hints: *id009
+      unit: ''
+    actualTotal:
+      title: Total actual defaults
+      hints: *id010
+      unit: ''
+    EL:
+      title: Probability-based expected loss
+      hints: *id011
+      unit: $
+    realized:
+      title: Realized default loss
+      hints: *id012
+      unit: $
+    difference:
+      title: Realized minus expected loss
+      hints: *id013
+      unit: $
+  readAloud:
+  - For each band, multiply loan count by mean predicted probability for expected
+    defaults. Divide observed defaults by loan count for observed default rate. Multiply
+    total default counts by the fixed loss amount to compare losses. Plot mean predicted
+    probability on the horizontal axis and observed frequency on the vertical axis.
+    Perfect sample agreement would lie on the diagonal where the two are equal.
+  workedExplanation:
+  - 'The highest band understates observed risk in this sample, affecting the expected-loss
+    calculation. The sample does not establish a permanent calibration error; uncertainty,
+    time stability, and larger validation samples still matter. '
+  - Mean probability times group size equals the sum of individual probabilities,
+    so it is appropriate for the expected count. Individual loans still default or
+    do not default; a probability is evaluated by frequencies across cases, not by
+    demanding that every single outcome match it exactly.
+  workedArithmetic:
+  - Expected defaults = [100 × 0.05, 100 × 0.10, 100 × 0.20] = [5, 10, 20]; total
+    = 35.
+  - Observed rates = [3/100, 10/100, 30/100] = [3%, 10%, 30%]; actual defaults = 3
+    + 10 + 30 = 43.
+  - Observed-minus-predicted gaps are [−2, 0, 10] percentage points. Calibration points
+    are (5%, 3%), (10%, 10%), (20%, 30%).
+  - Expected loss = 35 × $4,000 = $140,000; realized loss = 43 × $4,000 = $172,000;
+    difference = $32,000.
+formulaSource:
+  pages:
+  - 313
+  verbatim: false
+  reviewed: true

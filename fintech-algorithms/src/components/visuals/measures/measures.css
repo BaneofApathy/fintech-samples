@@ -1,0 +1,439 @@
+.vm-measure {
+  --vm-ink: var(--ink);
+  --vm-accent: var(--green);
+  --vm-tint: color-mix(in srgb, var(--vm-accent) 13%, transparent);
+  color: inherit;
+  max-width: 100%;
+  min-width: 0;
+}
+.vm-measure p {
+  line-height: 1.65;
+}
+.vm-measure button,
+.vm-measure select,
+.vm-measure input,
+.vm-measure textarea {
+  font: inherit;
+}
+.vm-measure button {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  border-radius: 0.45rem;
+  background: var(--paper);
+  color: inherit;
+  cursor: pointer;
+}
+.vm-measure button[aria-pressed='true'] {
+  background: var(--vm-tint);
+  border: 2px solid var(--vm-accent);
+}
+.vm-measure input[type='range'] {
+  width: 100%;
+  min-width: 80px;
+  accent-color: var(--vm-accent);
+  min-height: 44px;
+}
+.vm-measure select {
+  max-width: 100%;
+  min-height: 44px;
+  padding: 0.4rem;
+  border: 1px solid currentColor;
+  background: var(--paper);
+  color: inherit;
+  border-radius: 0.35rem;
+}
+.vm-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.vm-control {
+  display: grid;
+  gap: 0.35rem;
+  margin: 1rem 0;
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+}
+.vm-control output {
+  font-variant-numeric: tabular-nums;
+  font-weight: 400;
+}
+.vm-check {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0;
+  min-height: 44px;
+}
+.vm-check input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.vm-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+.vm-matrix > div,
+.vm-node {
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  border-radius: 0.6rem;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  overflow-wrap: anywhere;
+}
+.vm-node strong,
+.vm-matrix strong {
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+}
+.vm-tray {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.vm-tray > .vm-node {
+  flex: 1;
+  min-width: 120px;
+}
+.vm-tray > span {
+  font-weight: 600;
+}
+.vm-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.7rem;
+  margin: 1rem 0;
+}
+.vm-card-grid svg {
+  width: 100%;
+  max-width: 130px;
+  align-self: center;
+}
+.vm-highlight {
+  background: var(--vm-tint) !important;
+  outline: 1px solid var(--vm-accent);
+}
+.vm-equation {
+  font-size: 1.05rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  padding: 0.8rem;
+  border-left: 4px solid var(--vm-accent);
+  background: var(--vm-tint);
+  overflow-wrap: anywhere;
+}
+.vm-track {
+  height: 36px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 0.35rem;
+  display: flex;
+  overflow: hidden;
+}
+.vm-track > span {
+  display: block;
+  background: var(--vm-accent);
+  color: var(--paper);
+  padding: 0.4rem 0.2rem;
+  white-space: nowrap;
+  min-width: 2px;
+  font-size: 0.9rem;
+}
+.vm-track b {
+  padding: 0.4rem;
+  color: inherit;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.vm-wide {
+  height: auto;
+  min-height: 40px;
+}
+.vm-bar-row {
+  margin: 1rem 0;
+  display: grid;
+  gap: 0.35rem;
+}
+.vm-plot {
+  width: 100%;
+  height: auto;
+  max-height: 320px;
+  overflow: visible;
+  margin: 0.6rem 0;
+}
+.vm-plot text {
+  fill: currentColor;
+  font-size: 12px;
+  font-family: inherit;
+}
+.vm-axis {
+  stroke: currentColor;
+  stroke-width: 1.3;
+  fill: none;
+  opacity: 0.55;
+}
+.vm-line {
+  fill: none;
+  stroke: var(--vm-accent);
+  stroke-width: 3;
+}
+.vm-secondary {
+  stroke: currentColor;
+  stroke-dasharray: 6 4;
+}
+.vm-dash {
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-dasharray: 4 4;
+  fill: none;
+  opacity: 0.65;
+}
+.vm-gap {
+  stroke: var(--vm-accent);
+  stroke-width: 7;
+  opacity: 0.6;
+}
+.vm-dot {
+  fill: var(--vm-accent);
+  stroke: var(--paper);
+  stroke-width: 1.5;
+}
+.vm-square {
+  fill: currentColor;
+}
+.vm-area {
+  fill: var(--vm-accent);
+  opacity: 0.3;
+  stroke: var(--vm-accent);
+}
+.vm-outline {
+  fill: none;
+  stroke: currentColor;
+  stroke-dasharray: 3 3;
+  opacity: 0.3;
+}
+.vm-interval {
+  stroke: var(--vm-accent);
+  stroke-width: 4;
+  opacity: 0.5;
+}
+.vm-miss {
+  fill: var(--paper);
+  stroke: currentColor;
+  stroke-width: 2;
+}
+.vm-population,
+.vm-days {
+  display: grid;
+  grid-template-columns: repeat(25, minmax(0, 1fr));
+  gap: 3px;
+  margin: 1rem 0;
+}
+.vm-population span,
+.vm-days span {
+  display: grid;
+  place-items: center;
+  background: var(--vm-tint);
+  min-height: 15px;
+  font-size: 0.7rem;
+  border: 1px solid transparent;
+}
+.vm-bad {
+  border: 1px solid currentColor !important;
+  background: color-mix(in srgb, #cb7139 20%, transparent) !important;
+  font-weight: bold;
+}
+.vm-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.vm-table-wrap table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+}
+.vm-table-wrap td,
+.vm-table-wrap th {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+}
+.vm-table-wrap caption {
+  text-align: left;
+  padding: 0.5rem 0;
+  line-height: 1.5;
+}
+.vm-audit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.vm-audit button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+.vm-audit strong {
+  font-size: 0.9rem;
+}
+.vm-bin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 0.5rem;
+}
+.vm-pairbars {
+  height: 110px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 1rem;
+}
+.vm-pairbars > div {
+  min-height: 2px;
+  width: 45%;
+  background: var(--vm-tint);
+  border: 1px solid var(--vm-accent);
+  position: relative;
+}
+.vm-pairbars > div + div {
+  background: var(--vm-accent);
+}
+.vm-pairbars span {
+  position: absolute;
+  top: -22px;
+  left: 0;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+.vm-month {
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+}
+.vm-month span {
+  min-height: 24px;
+}
+.vm-muted {
+  opacity: 0.5;
+}
+.vm-reset {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin: 1.25rem 0;
+  font-size: 0.8rem;
+}
+.vm-description {
+  max-width: 76ch;
+  margin: 1rem 0;
+  line-height: 1.55;
+}
+.vm-understanding label {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.vm-understanding textarea {
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  background: var(--paper);
+  color: inherit;
+  border: 1px solid currentColor;
+  border-radius: 0.4rem;
+}
+.vm-measure details {
+  margin-top: 0.9rem;
+}
+.vm-measure summary {
+  cursor: pointer;
+  min-height: 35px;
+  font-weight: 600;
+}
+.vm-measure dd {
+  margin: 0 0 0.5rem;
+  overflow-wrap: anywhere;
+}
+.vm-measure dt {
+  font-weight: 650;
+}
+.vm-measure :focus-visible {
+  outline: 3px solid var(--vm-accent);
+  outline-offset: 3px;
+}
+.vm-measure .visual-tabs {
+  flex-wrap: wrap;
+}
+.vm-measure .visual-readouts {
+  flex-wrap: wrap;
+}
+.vm-measure .visual-readouts > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .vm-tray {
+    align-items: stretch;
+  }
+  .vm-tray > .vm-node {
+    min-width: 100px;
+  }
+  .vm-matrix > div,
+  .vm-node {
+    padding: 0.6rem;
+  }
+  .vm-table-wrap table {
+    font-size: 0.8rem;
+  }
+  .vm-measure .visual-readouts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  }
+  .vm-population,
+  .vm-days {
+    gap: 2px;
+  }
+  .vm-plot text {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vm-measure * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media print {
+  .vm-measure button,
+  .vm-measure input,
+  .vm-measure select,
+  .vm-measure textarea,
+  .vm-reset,
+  .vm-understanding {
+    display: none !important;
+  }
+  .vm-measure details {
+    display: block;
+  }
+  .vm-plot {
+    max-height: 220px;
+  }
+  .vm-measure {
+    break-inside: avoid;
+  }
+  .vm-measure .visual-tabs button[aria-pressed='true'] {
+    display: block !important;
+  }
+}

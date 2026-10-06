@@ -1,0 +1,332 @@
+id: M17b
+title: Why the Cutoff Need Not Be 50%
+minutes: 8
+kind: measure
+parent: expected-cost
+question: "Use a simplified two-action fraud decision with calibrated fraud probability\
+  \ p:\n▶ Pass a fraud: loss $500.\n▶ Flag a legitimate transaction: cost $4.\n▶ Correct\
+  \ actions: zero incremental cost.\n Assume flagging prevents the fraud loss. Ignore\
+  \ capacity constraints and other costs for this\n exercise.\n                  \
+  \                                Cpass = 500p,   Cf lag = 4(1 − p).\n\n1. Solve\
+  \ for the probability where the actions have equal expected cost.\n2. Choose the\
+  \ lower-cost action for p = 0.5%, 1%, and 10%.\n3. Why would using a 50% threshold\
+  \ be inconsistent with these assumptions?"
+questionPages:
+- page: 347
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Class problem | 8 minutes — Why the Cutoff\
+    \ Need Not Be 50%\n\n Use a simplified two-action fraud decision with calibrated\
+    \ fraud probability p:\n▶ Pass a fraud: loss $500.\n▶ Flag a legitimate transaction:\
+    \ cost $4.\n▶ Correct actions: zero incremental cost.\n Assume flagging prevents\
+    \ the fraud loss. Ignore capacity constraints and other costs for this\n exercise.\n\
+    \                                                  Cpass = 500p,   Cf lag = 4(1\
+    \ − p).\n\n1. Solve for the probability where the actions have equal expected\
+    \ cost.\n2. Choose the lower-cost action for p = 0.5%, 1%, and 10%.\n3. Why would\
+    \ using a 50% threshold be inconsistent with these assumptions?"
+  paragraphs:
+  - Threshold Economics
+  - M17b | Class problem | 8 minutes — Why the Cutoff Need Not Be 50%
+  - 'Use a simplified two-action fraud decision with calibrated fraud probability
+    p: ▶ Pass a fraud: loss $500. ▶ Flag a legitimate transaction: cost $4. ▶ Correct
+    actions: zero incremental cost. Assume flagging prevents the fraud loss. Ignore
+    capacity constraints and other costs for this exercise. Cpass = 500p, Cf lag =
+    4(1 − p).'
+  - 1. Solve for the probability where the actions have equal expected cost. 2. Choose
+    the lower-cost action for p = 0.5%, 1%, and 10%. 3. Why would using a 50% threshold
+    be inconsistent with these assumptions?
+  source:
+    pages:
+    - 347
+    verbatim: true
+formulaPages:
+- page: 344
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Formula explained (1/1)\n\n Question: At\
+    \ what fraud probability do the two actions have equal expected cost?\n      \
+    \                                                Cpass = cF N p,        Cf lag\
+    \ = cF P (1 − p).\n Read it aloud: Passing incurs the missed-fraud loss only when\
+    \ the transaction is fraud.\n Flagging incurs the false-alert cost only when it\
+    \ is legitimate, under the supplied assumptions.\n Set the costs equal and solve:\n\
+    \                                                                            \
+    \                  cF P\n                                                  cF\
+    \ N p∗ = cF P (1 − p∗ )    ⇒    p∗ =               .\n                       \
+    \                                                                   cF N + cF\
+    \ P\n Below the crossing choose pass; above it choose flag. At exact equality\
+    \ the actions have the\n same modeled cost."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Formula explained (1/1)
+  - 'Question: At what fraud probability do the two actions have equal expected cost?
+    Cpass = cF N p, Cf lag = cF P (1 − p). Read it aloud: Passing incurs the missed-fraud
+    loss only when the transaction is fraud. Flagging incurs the false-alert cost
+    only when it is legitimate, under the supplied assumptions. Set the costs equal
+    and solve: cF P cF N p∗ = cF P (1 − p∗ ) ⇒ p∗ = . cF N + cF P Below the crossing
+    choose pass; above it choose flag. At exact equality the actions have the same
+    modeled cost.'
+  source:
+    pages:
+    - 344
+    verbatim: true
+symbolPages:
+- page: 345
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   p      \
+    \                                        Calibrated probability that the transaction\
+    \ is fraud, entered as a\n                                                  decimal.\n\
+    \   1−p                                            Probability that it is legitimate;\
+    \ the complementary binary outcome.\n   cF N                                 \
+    \          Loss from passing a fraud, US$500.\n   cF P                       \
+    \                    Cost from flagging a legitimate case, US$4.\n   Cpass , Cf\
+    \ lag                                 Expected dollar costs per transaction of\
+    \ the two possible actions.\n       ∗\n   p                                  \
+    \            Break-even probability where expected costs match; the star marks\
+    \ a\n                                                  solution, not multiplication."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example p Calibrated probability that the transaction
+    is fraud, entered as a decimal. 1−p Probability that it is legitimate; the complementary
+    binary outcome. cF N Loss from passing a fraud, US$500. cF P Cost from flagging
+    a legitimate case, US$4. Cpass , Cf lag Expected dollar costs per transaction
+    of the two possible actions. ∗ p Break-even probability where expected costs match;
+    the star marks a solution, not multiplication.
+  source: &id001
+    pages: &id002
+    - 345
+    verbatim: true
+- page: 346
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Calibrated\
+    \ probability                         A probability estimate whose stated event\
+    \ rates agree with observed\n                                                \
+    \  rates in relevant groups.\n   Perfect intervention                        \
+    \   Flagging avoids the fraud loss completely in this toy cost model; no\n   assumption\
+    \                                     separate true-alert fee is charged.\n  \
+    \ Break-even threshold                           Cost crossing for these two actions\
+    \ only; additional costs or capacity\n                                       \
+    \           limits can move the appropriate policy cutoff."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Calibrated probability A probability estimate
+    whose stated event rates agree with observed rates in relevant groups. Perfect
+    intervention Flagging avoids the fraud loss completely in this toy cost model;
+    no assumption separate true-alert fee is charged. Break-even threshold Cost crossing
+    for these two actions only; additional costs or capacity limits can move the appropriate
+    policy cutoff.
+  source: &id003
+    pages: &id004
+    - 346
+    verbatim: true
+solutionPages:
+- page: 348
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Worked solution — Why the Cutoff Need Not\
+    \ Be 50%\n\n1. Set costs equal: 500p = 4(1 − p) = 4 − 4p.\n2. Solve: 504p = 4,\
+    \ so\n                                                   p∗ = 4/504 = 0.0079365\
+    \ = 0.79365%.\n3. Calculate each action’s cost.\n   Fraud probability        \
+    \                              Pass cost             Flag cost Lower-cost action\n\
+    \   0.5%                                           500(0.005) = $2.50   4(0.995)\
+    \ = $3.98 Pass\n   1%                                             500(0.01) =\
+    \ $5.00     4(0.99) = $3.96 Flag\n   10%                                     \
+    \       500(0.10) = $50.00    4(0.90) = $3.60 Flag"
+  paragraphs:
+  - Threshold Economics
+  - M17b | Worked solution — Why the Cutoff Need Not Be 50%
+  - '1. Set costs equal: 500p = 4(1 − p) = 4 − 4p. 2. Solve: 504p = 4, so p∗ = 4/504
+    = 0.0079365 = 0.79365%. 3. Calculate each action’s cost. Fraud probability Pass
+    cost Flag cost Lower-cost action 0.5% 500(0.005) = $2.50 4(0.995) = $3.98 Pass
+    1% 500(0.01) = $5.00 4(0.99) = $3.96 Flag 10% 500(0.10) = $50.00 4(0.90) = $3.60
+    Flag'
+  source:
+    pages:
+    - 348
+    verbatim: true
+interpretationPages:
+- page: 349
+  title: Threshold Economics
+  text: " Threshold Economics\n\n   M17b | Interpretation\n\n What the answer means\n\
+    \ Under this loss table, flagging becomes preferable above about 0.79%, not 50%.\
+    \ This is a\n classroom optimum for the stated assumptions; adding review costs,\
+    \ imperfect intervention,\n customer harm, or capacity constraints changes the\
+    \ decision.\n Why these steps matter\n A cost-based threshold can be far below\
+    \ 50% because the penalties are unequal. The calculation\n depends on calibrated\
+    \ probabilities and the assumed effectiveness of flagging. It does not\n establish\
+    \ a universal threshold for fraud detection."
+  paragraphs:
+  - Threshold Economics
+  - M17b | Interpretation
+  - What the answer means Under this loss table, flagging becomes preferable above
+    about 0.79%, not 50%. This is a classroom optimum for the stated assumptions;
+    adding review costs, imperfect intervention, customer harm, or capacity constraints
+    changes the decision. Why these steps matter A cost-based threshold can be far
+    below 50% because the penalties are unequal. The calculation depends on calibrated
+    probabilities and the assumed effectiveness of flagging. It does not establish
+    a universal threshold for fraud detection.
+  source:
+    pages:
+    - 349
+    verbatim: true
+source:
+  pages:
+  - 344
+  - 345
+  - 346
+  - 347
+  - 348
+  - 349
+  verbatim: true
+readAloud:
+- 'Passing incurs the missed-fraud loss only when the transaction is fraud. Flagging
+  incurs the false-alert cost only when it is legitimate, under the supplied assumptions.
+  Set the costs equal and solve: cF P cF N p∗ = cF P (1 − p∗ ) ⇒ p∗ = . cF N + cF
+  P Below the crossing choose pass; above it choose flag. At exact equality the actions
+  have the same modeled cost.'
+siteAuthored: false
+givens:
+  cFN: 500
+  cFP: 4
+  probs:
+  - 0.005
+  - 0.01
+  - 0.1
+labels: &id005
+  cFN: Loss from passing a fraud ($)
+  cFP: Cost of flagging a legitimate transaction ($)
+  probs: Fraud probabilities to evaluate
+deckSolution:
+  threshold: 0.0079365
+  pass:
+  - 2.5
+  - 5
+  - 50
+  review:
+  - 3.98
+  - 3.96
+  - 3.6
+latex:
+- C_{pass}=500p,\quad C_{review}=4(1-p),\quad p^*=\frac{4}{504}
+symbols:
+- symbol: p
+  meaning: Calibrated probability that the transaction is fraud, entered as a decimal.
+  source: *id001
+- symbol: 1−p
+  meaning: Probability that it is legitimate; the complementary binary outcome.
+  source: *id001
+- symbol: cF N
+  meaning: Loss from passing a fraud, US$500.
+  source: *id001
+- symbol: cF P
+  meaning: Cost from flagging a legitimate case, US$4.
+  source: *id001
+- symbol: Cpass , Cf lag
+  meaning: Expected dollar costs per transaction of the two possible actions.
+  source: *id001
+- symbol: p*
+  meaning: Break-even probability where expected costs match; the star marks a solution,
+    not multiplication.
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: Calibrated probability
+  meaning: A probability estimate whose stated event rates agree with observed rates
+    in relevant groups.
+  source: *id003
+- symbol: Perfect intervention assumption
+  meaning: Flagging avoids the fraud loss completely in this toy cost model; no separate
+    true-alert fee is charged.
+  source:
+    pages: *id004
+    verbatim: false
+- symbol: Break-even threshold
+  meaning: Cost crossing for these two actions only; additional costs or capacity
+    limits can move the appropriate policy cutoff.
+  source: *id003
+steps:
+- id: threshold
+  title: Break-even fraud probability
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Set cFN × p = cFP × (1 − p), giving p = cFP / (cFN + cFP).
+  mistakes:
+  - pattern: recompute
+    message: Set cFN × p = cFP × (1 − p), giving p = cFP / (cFN + cFP).
+- id: pass
+  title: Expected passing costs
+  expects: cells
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Multiply each fraud probability by the missed-fraud loss.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each fraud probability by the missed-fraud loss.
+- id: review
+  title: Expected flagging costs
+  expects: cells
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply each probability of legitimacy, 1 − p, by the false-alert cost.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each probability of legitimacy, 1 − p, by the false-alert cost.
+learning:
+  title: Why the Cutoff Need Not Be 50%
+  scenario: Choose between passing and flagging a transaction with calibrated fraud
+    probability p. Passing fraud incurs a loss; flagging a legitimate transaction
+    incurs a cost. Correct actions have zero incremental cost, and flagging fully
+    prevents fraud loss.
+  task: Find the probability where the two expected costs are equal. Calculate pass
+    and flag costs for each listed probability. Ignore capacity and other costs for
+    this exercise.
+  interpretation: The break-even threshold follows from the supplied loss table and
+    effective intervention assumption. Review costs, imperfect prevention or capacity
+    constraints would change the decision.
+  summary: 'Break-even probability: {threshold}. Pass costs: {pass}. Flag costs: {review}.'
+  labels: *id005
+  steps:
+    threshold:
+      title: Break-even fraud probability
+      hints: *id006
+      unit: proportion
+    pass:
+      title: Expected passing costs
+      hints: *id007
+      unit: $
+    review:
+      title: Expected flagging costs
+      hints: *id008
+      unit: $
+  readAloud:
+  - Passing costs cFN × p in expectation. Flagging costs cFP × (1 − p). Equating them
+    gives the threshold cFP / (cFN + cFP). Below the threshold passing is cheaper;
+    above it flagging is cheaper. The two actions have equal modeled cost at the threshold.
+  workedExplanation:
+  - 'Under this loss table, flagging becomes preferable above about 0.79%, not 50%.
+    This is a classroom optimum for the stated assumptions; adding review costs, imperfect
+    intervention, customer harm, or capacity constraints changes the decision. '
+  - A cost-based threshold can be far below 50% because the penalties are unequal.
+    The calculation depends on calibrated probabilities and the assumed effectiveness
+    of flagging. It does not establish a universal threshold for fraud detection.
+  workedArithmetic:
+  - Set 500p = 4(1 − p). Then 504p = 4 and p = 4/504 ≈ 0.0079365 = 0.79365%.
+  - 'At p = 0.005: pass cost = 500 × 0.005 = $2.50; flag cost = 4 × 0.995 = $3.98.
+    Passing is cheaper.'
+  - 'At p = 0.01: pass cost = $5; flag cost = $3.96. At p = 0.10: pass cost = $50;
+    flag cost = $3.60. Flagging is cheaper in both cases.'
+formulaSource:
+  pages:
+  - 344
+  verbatim: false
+  reviewed: true

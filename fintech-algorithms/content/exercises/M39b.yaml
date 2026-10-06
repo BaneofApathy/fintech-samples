@@ -1,0 +1,449 @@
+id: M39b
+title: Calculate Both Bottlenecks
+minutes: 9
+kind: measure
+parent: latency-throughput-review-load-cost
+question: "A load test establishes a service’s maximum sustained capacity at 12,000\
+  \ requests per\n minute. New requests arrive at 250 per second for ten minutes.\
+  \ Start with an empty queue;\n assume no dropped requests or extra capacity.\n Separately,\
+  \ the model generates 500 investigation alerts per day. There are 15 analysts,\n\
+  \ each able to finish 20 cases per day. Start with no alert backlog.\n Calculate\
+  \ API capacity per second and the ten-minute request backlog. Then calculate daily\n\
+  \ human capacity, the three-day alert backlog, and required cases per analyst per\
+  \ day to keep up."
+questionPages:
+- page: 580
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Class problem | 9 minutes — Calculate\
+    \ Both Bottlenecks\n\n A load test establishes a service’s maximum sustained capacity\
+    \ at 12,000 requests per\n minute. New requests arrive at 250 per second for ten\
+    \ minutes. Start with an empty queue;\n assume no dropped requests or extra capacity.\n\
+    \ Separately, the model generates 500 investigation alerts per day. There are\
+    \ 15 analysts,\n each able to finish 20 cases per day. Start with no alert backlog.\n\
+    \ Calculate API capacity per second and the ten-minute request backlog. Then calculate\
+    \ daily\n human capacity, the three-day alert backlog, and required cases per\
+    \ analyst per day to keep up."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Class problem | 9 minutes — Calculate Both Bottlenecks
+  - A load test establishes a service’s maximum sustained capacity at 12,000 requests
+    per minute. New requests arrive at 250 per second for ten minutes. Start with
+    an empty queue; assume no dropped requests or extra capacity. Separately, the
+    model generates 500 investigation alerts per day. There are 15 analysts, each
+    able to finish 20 cases per day. Start with no alert backlog. Calculate API capacity
+    per second and the ten-minute request backlog. Then calculate daily human capacity,
+    the three-day alert backlog, and required cases per analyst per day to keep up.
+  source:
+    pages:
+    - 580
+    verbatim: true
+formulaPages:
+- page: 575
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Formula explained (1/2)\n\n Question:\
+    \ Can incoming requests be processed as quickly as they arrive?\n            \
+    \                         Capacity per minute\n                              \
+    \  µ=                          ,\n                                           \
+    \   60\n                              Backlog(T ) = max(λ − µ, 0)T.\n Read it\
+    \ aloud: Convert processing capacity into the arrival rate’s time unit. Multiply\
+    \ any\n excess arrival rate by elapsed time.\n This simplified queue calculation\
+    \ starts empty, uses constant rates, and assumes no drops or\n added capacity.\
+    \ Capacity here is the maximum sustainable processing rate established by the\n\
+    \ load test, not a guarantee of low latency at every load."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Formula explained (1/2)
+  - 'Question: Can incoming requests be processed as quickly as they arrive? Capacity
+    per minute µ= , 60 Backlog(T ) = max(λ − µ, 0)T. Read it aloud: Convert processing
+    capacity into the arrival rate’s time unit. Multiply any excess arrival rate by
+    elapsed time. This simplified queue calculation starts empty, uses constant rates,
+    and assumes no drops or added capacity. Capacity here is the maximum sustainable
+    processing rate established by the load test, not a guarantee of low latency at
+    every load.'
+  source:
+    pages:
+    - 575
+    verbatim: true
+- page: 576
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Formula explained (2/2)\n\n Question:\
+    \ Can the investigators finish the daily alert queue?\n                      \
+    \                                    Human capacity = na ca ,\n              \
+    \                                     Alert backlog(D) = max(A − na ca , 0)D,\n\
+    \                                                                            \
+    \                 A\n                                                  Required\
+    \ cases per analyst per day =          .\n                                   \
+    \                                                          na\n Read it aloud:\
+    \ Multiply analyst count by each analyst’s daily completion capacity. Subtract\n\
+    \ that from daily arrivals to find the day’s extra backlog. Divide incoming alerts\
+    \ by analyst count\n to see the pace required to keep up.\n This is a separate\
+    \ queue from the scoring service. Faster scoring does not increase investigator\n\
+    \ capacity."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Formula explained (2/2)
+  - 'Question: Can the investigators finish the daily alert queue? Human capacity
+    = na ca , Alert backlog(D) = max(A − na ca , 0)D, A Required cases per analyst
+    per day = . na Read it aloud: Multiply analyst count by each analyst’s daily completion
+    capacity. Subtract that from daily arrivals to find the day’s extra backlog. Divide
+    incoming alerts by analyst count to see the pace required to keep up. This is
+    a separate queue from the scoring service. Faster scoring does not increase investigator
+    capacity.'
+  source:
+    pages:
+    - 576
+    verbatim: true
+symbolPages:
+- page: 577
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Symbols and terms (1/3)\n\n\n  \
+    \ Symbol or term                                 Meaning in this example\n   API\
+    \                                            Application programming interface:\
+    \ the service endpoint through\n                                             \
+    \     which callers request fraud scores.\n   Throughput                     \
+    \                Completed requests per unit time. The load-test figure here supplies\n\
+    \                                                  maximum sustained service capacity.\n\
+    \   λ                                              Arrival rate, 250 requests\
+    \ per second; Greek lambda is a label for\n                                  \
+    \                incoming traffic.\n   µ                                     \
+    \         Processing capacity in requests per second; Greek mu is not a\n    \
+    \                                              portfolio expected return in this\
+    \ exercise."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example API Application programming interface:
+    the service endpoint through which callers request fraud scores. Throughput Completed
+    requests per unit time. The load-test figure here supplies maximum sustained service
+    capacity. λ Arrival rate, 250 requests per second; Greek lambda is a label for
+    incoming traffic. µ Processing capacity in requests per second; Greek mu is not
+    a portfolio expected return in this exercise.'
+  source: &id001
+    pages:
+    - 577
+    verbatim: true
+- page: 578
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Symbols and terms (2/3)\n\n\n  \
+    \ Symbol or term                                 Meaning in this example\n   T\
+    \                                              Elapsed queue-building time in\
+    \ seconds; ten minutes equals 600\n                                          \
+    \        seconds.\n   max(x, 0)                                      Use the excess\
+    \ if positive; otherwise zero, given the empty-queue and\n                   \
+    \                               constant-rate assumptions."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example T Elapsed queue-building time in seconds;
+    ten minutes equals 600 seconds. max(x, 0) Use the excess if positive; otherwise
+    zero, given the empty-queue and constant-rate assumptions.
+  source: &id002
+    pages:
+    - 578
+    verbatim: true
+- page: 579
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Symbols and terms (3/3)\n\n\n  \
+    \ Symbol or term                                 Meaning in this example\n   Backlog\
+    \                                        Requests or cases waiting to be completed,\
+    \ not a percentage error or\n                                                \
+    \  a latency value.\n   na , ca                                        Number\
+    \ of analysts and each analyst’s daily case-completion\n                     \
+    \                             capacity; 15 and 20.\n   A                     \
+    \                         Incoming investigation alerts per day; 500 here.\n \
+    \  D                                              Number of days over which the\
+    \ alert backlog accumulates; three\n                                         \
+    \         here."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Backlog Requests or cases waiting to be
+    completed, not a percentage error or a latency value. na , ca Number of analysts
+    and each analyst’s daily case-completion capacity; 15 and 20. A Incoming investigation
+    alerts per day; 500 here. D Number of days over which the alert backlog accumulates;
+    three here.
+  source: &id003
+    pages:
+    - 579
+    verbatim: true
+solutionPages:
+- page: 581
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Worked solution — Calculate Both\
+    \ Bottlenecks\n\n1. API capacity: 12,000/60 = 200 requests/second.\n2. API backlog\
+    \ growth: 250 − 200 = 50 requests/second.\n3. Ten-minute backlog: 50 × 10 × 60\
+    \ = 30, 000 requests.\n4. Daily human capacity: 15 × 20 = 300 cases.\n5. Daily\
+    \ unworked alerts: 500 − 300 = 200. After three days: 200(3) = 600 alerts.\n6.\
+    \ Required analyst pace: 500/15 = 33.33 cases/day, versus the available 20."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Worked solution — Calculate Both Bottlenecks
+  - '1. API capacity: 12,000/60 = 200 requests/second. 2. API backlog growth: 250
+    − 200 = 50 requests/second. 3. Ten-minute backlog: 50 × 10 × 60 = 30, 000 requests.
+    4. Daily human capacity: 15 × 20 = 300 cases. 5. Daily unworked alerts: 500 −
+    300 = 200. After three days: 200(3) = 600 alerts. 6. Required analyst pace: 500/15
+    = 33.33 cases/day, versus the available 20.'
+  source:
+    pages:
+    - 581
+    verbatim: true
+interpretationPages:
+- page: 582
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Interpretation\n\n What the answer\
+    \ means\n There are two separate capacity failures: scoring cannot keep up with\
+    \ incoming payments, and\n investigators cannot work the generated queue. Increasing\
+    \ API capacity would not fix the review\n backlog. A threshold or staffing change\
+    \ must account for the fraud that would remain\n unreviewed.\n Why these steps\
+    \ matter\n A rate difference has units of requests per second or alerts per day.\
+    \ Multiplying by matching\n elapsed time produces a count. Keeping the units explicit\
+    \ prevents confusing 12,000 requests\n per minute with 12,000 per second, or interpreting\
+    \ a queue count as a response time."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Interpretation
+  - 'What the answer means There are two separate capacity failures: scoring cannot
+    keep up with incoming payments, and investigators cannot work the generated queue.
+    Increasing API capacity would not fix the review backlog. A threshold or staffing
+    change must account for the fraud that would remain unreviewed. Why these steps
+    matter A rate difference has units of requests per second or alerts per day. Multiplying
+    by matching elapsed time produces a count. Keeping the units explicit prevents
+    confusing 12,000 requests per minute with 12,000 per second, or interpreting a
+    queue count as a response time.'
+  source:
+    pages:
+    - 582
+    verbatim: true
+source:
+  pages:
+  - 575
+  - 576
+  - 577
+  - 578
+  - 579
+  - 580
+  - 581
+  - 582
+  verbatim: true
+readAloud:
+- Convert processing capacity into the arrival rate’s time unit. Multiply any excess
+  arrival rate by elapsed time. This simplified queue calculation starts empty, uses
+  constant rates, and assumes no drops or added capacity. Capacity here is the maximum
+  sustainable processing rate established by the load test, not a guarantee of low
+  latency at every load.
+- Multiply analyst count by each analyst’s daily completion capacity. Subtract that
+  from daily arrivals to find the day’s extra backlog. Divide incoming alerts by analyst
+  count to see the pace required to keep up. This is a separate queue from the scoring
+  service. Faster scoring does not increase investigator capacity.
+siteAuthored: false
+givens:
+  perMinute: 12000
+  arrival: 250
+  minutes: 10
+  alerts: 500
+  analysts: 15
+  pace: 20
+  days: 3
+labels: &id004
+  perMinute: API capacity (requests per minute)
+  arrival: Incoming requests per second
+  minutes: API evaluation duration (minutes)
+  alerts: New investigation alerts per day
+  analysts: Number of analysts
+  pace: Cases completed per analyst per day
+  days: Human-queue evaluation duration (days)
+deckSolution:
+  capacity: 200
+  requestBacklog: 30000
+  human: 300
+  dailyBacklog: 200
+  alertBacklog: 600
+  requiredPace: 33.333333333333336
+latex:
+- Backlog_{API}=(ArrivalRate-Capacity)T,\quad HumanCapacity=N_{analysts}CasesPerAnalyst
+- \mu=\frac{\operatorname{Capacity\ per\ minute}}{60},\quad\operatorname{Backlog}(T)=\max(\lambda-\mu,0)T
+- \operatorname{Alert\ backlog}(D)=\max(A-n_ac_a,0)D,\quad\operatorname{Required\
+  cases\ per\ analyst}=\frac A{n_a}
+symbols:
+- symbol: API
+  meaning: 'Application programming interface: the service endpoint through which
+    callers request fraud scores.'
+  source: *id001
+- symbol: Throughput
+  meaning: Completed requests per unit time. The load-test figure here supplies maximum
+    sustained service capacity.
+  source: *id001
+- symbol: λ
+  meaning: Arrival rate, 250 requests per second; Greek lambda is a label for incoming
+    traffic.
+  source: *id001
+- symbol: µ
+  meaning: Processing capacity in requests per second; Greek mu is not a portfolio
+    expected return in this exercise.
+  source: *id001
+- symbol: T
+  meaning: Elapsed queue-building time in seconds; ten minutes equals 600 seconds.
+  source: *id002
+- symbol: max(x, 0)
+  meaning: Use the excess if positive; otherwise zero, given the empty-queue and constant-rate
+    assumptions.
+  source: *id002
+- symbol: Backlog
+  meaning: Requests or cases waiting to be completed, not a percentage error or a
+    latency value.
+  source: *id003
+- symbol: na , ca
+  meaning: Number of analysts and each analyst’s daily case-completion capacity; 15
+    and 20.
+  source: *id003
+- symbol: A
+  meaning: Incoming investigation alerts per day; 500 here.
+  source: *id003
+- symbol: D
+  meaning: Number of days over which the alert backlog accumulates; three here.
+  source: *id003
+steps:
+- id: capacity
+  title: API capacity per second
+  expects: number
+  unit: requests/second
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide requests-per-minute capacity by 60.
+  mistakes:
+  - pattern: recompute
+    message: Divide requests-per-minute capacity by 60.
+- id: requestBacklog
+  title: API request backlog
+  expects: number
+  unit: requests
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Multiply positive arrival-minus-capacity gap by elapsed seconds.
+  mistakes:
+  - pattern: recompute
+    message: Multiply positive arrival-minus-capacity gap by elapsed seconds.
+- id: human
+  title: Daily human review capacity
+  expects: number
+  unit: cases/day
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Multiply analyst count by cases per analyst per day.
+  mistakes:
+  - pattern: recompute
+    message: Multiply analyst count by cases per analyst per day.
+- id: dailyBacklog
+  title: Daily added alert backlog
+  expects: number
+  unit: alerts/day
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Subtract daily human capacity from new daily alerts; use zero if capacity is sufficient.
+  mistakes:
+  - pattern: recompute
+    message: Subtract daily human capacity from new daily alerts; use zero if capacity
+      is sufficient.
+- id: alertBacklog
+  title: Alert backlog after the supplied days
+  expects: number
+  unit: alerts
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Multiply daily added backlog by elapsed days.
+  mistakes:
+  - pattern: recompute
+    message: Multiply daily added backlog by elapsed days.
+- id: requiredPace
+  title: Required cases per analyst per day
+  expects: number
+  unit: cases/analyst/day
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Divide incoming daily alerts by analyst count.
+  mistakes:
+  - pattern: recompute
+    message: Divide incoming daily alerts by analyst count.
+learning:
+  title: Calculate Both Bottlenecks
+  scenario: A scoring API and a human investigation team have separate queues. Both
+    start empty, arrivals and completion rates stay constant, and no items are dropped.
+  task: Convert API capacity to requests per second and calculate its backlog after
+    the supplied minutes. Separately calculate human daily capacity, daily excess,
+    multi-day backlog and per-analyst pace needed to keep up.
+  interpretation: Increasing API speed does not increase human review capacity. Multiply
+    a rate gap by matching elapsed time to obtain a backlog count; do not confuse
+    that count with latency.
+  summary: 'API backlog: {requestBacklog} requests. Human backlog: {alertBacklog}
+    alerts. Required analyst pace: {requiredPace}.'
+  labels: *id004
+  steps:
+    capacity:
+      title: API capacity per second
+      hints: *id005
+      unit: requests/second
+    requestBacklog:
+      title: API request backlog
+      hints: *id006
+      unit: requests
+    human:
+      title: Daily human review capacity
+      hints: *id007
+      unit: cases/day
+    dailyBacklog:
+      title: Daily added alert backlog
+      hints: *id008
+      unit: alerts/day
+    alertBacklog:
+      title: Alert backlog after the supplied days
+      hints: *id009
+      unit: alerts
+    requiredPace:
+      title: Required cases per analyst per day
+      hints: *id010
+      unit: cases/analyst/day
+  readAloud:
+  - Convert processing capacity into the arrival rate’s time unit. Multiply any excess
+    arrival rate by elapsed time. This simplified queue calculation starts empty,
+    uses constant rates, and assumes no drops or added capacity. Capacity here is
+    the maximum sustainable processing rate established by the load test, not a guarantee
+    of low latency at every load.
+  - Multiply analyst count by each analyst’s daily completion capacity. Subtract that
+    from daily arrivals to find the day’s extra backlog. Divide incoming alerts by
+    analyst count to see the pace required to keep up. This is a separate queue from
+    the scoring service. Faster scoring does not increase investigator capacity.
+  workedExplanation:
+  - 'There are two separate capacity failures: scoring cannot keep up with incoming
+    payments, and investigators cannot work the generated queue. Increasing API capacity
+    would not fix the review backlog. A threshold or staffing change must account
+    for the fraud that would remain unreviewed. '
+  - A rate difference has units of requests per second or alerts per day. Multiplying
+    by matching elapsed time produces a count. Keeping the units explicit prevents
+    confusing 12,000 requests per minute with 12,000 per second, or interpreting a
+    queue count as a response time.
+  workedArithmetic:
+  - API capacity = 12,000/60 = 200 requests/second. Arrival excess = 250 − 200 = 50
+    requests/second.
+  - Ten-minute API backlog = 50 × 10 × 60 = 30,000 requests.
+  - Human capacity = 15 × 20 = 300 cases/day. Daily backlog growth = 500 − 300 = 200
+    alerts; three-day backlog = 200 × 3 = 600.
+  - Required analyst pace = 500/15 ≈ 33.33 cases/day, compared with the supplied capacity
+    of 20.
+formulaSource:
+  pages:
+  - 575
+  - 576
+  verbatim: false
+  reviewed: true

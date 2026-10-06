@@ -1,0 +1,311 @@
+id: M07
+title: Balance Capture and Queue Quality
+minutes: 6
+kind: measure
+parent: f1-and-f-beta
+question: "A detector has 30% precision and 75% recall.\n Use:\n                 \
+  \                                         2P R            (1 + β 2 )P R\n      \
+  \                                            F1 =         ,   Fβ =             \
+  \    .\n                                                         P +R          \
+  \    β2P + R\n1. Calculate F1 .\n2. Calculate F2 , which gives greater weight to\
+  \ recall.\n3. Calculate the ordinary arithmetic average of precision and recall.\
+  \ Why is that different from\n   F1 ?\n4. Does a higher F2 establish that the model\
+  \ makes more money?"
+questionPages:
+- page: 252
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Class problem | 6 minutes — Balance Capture and\
+    \ Queue Quality\n\n A detector has 30% precision and 75% recall.\n Use:\n    \
+    \                                                      2P R            (1 + β\
+    \ 2 )P R\n                                                  F1 =         ,   Fβ\
+    \ =                 .\n                                                      \
+    \   P +R              β2P + R\n1. Calculate F1 .\n2. Calculate F2 , which gives\
+    \ greater weight to recall.\n3. Calculate the ordinary arithmetic average of precision\
+    \ and recall. Why is that different from\n   F1 ?\n4. Does a higher F2 establish\
+    \ that the model makes more money?"
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Class problem | 6 minutes — Balance Capture and Queue Quality
+  - 'A detector has 30% precision and 75% recall. Use: 2P R (1 + β 2 )P R F1 = , Fβ
+    = . P +R β2P + R 1. Calculate F1 . 2. Calculate F2 , which gives greater weight
+    to recall. 3. Calculate the ordinary arithmetic average of precision and recall.
+    Why is that different from F1 ? 4. Does a higher F2 establish that the model makes
+    more money?'
+  source:
+    pages:
+    - 252
+    verbatim: true
+formulaPages:
+- page: 249
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Formula explained (1/1)\n\n Question: How can\
+    \ precision and recall be summarized in one score?\n                         \
+    \                                 2P R            (1 + β 2 )P R\n            \
+    \                                      F1 =         ,   Fβ =                 .\n\
+    \                                                         P +R              β2P\
+    \ + R\n Read it aloud: F1 is twice the product divided by the sum: the harmonic\
+    \ mean of precision and\n recall. F-beta changes the weighting of that combination.\n\
+    \ For F2, set beta to 2 and beta-squared to 4. This places more emphasis on recall\
+    \ than F1 does.\n It does not encode a particular dollar-cost ratio.\n Compare\
+    \ with the arithmetic mean, (P + R)/2, which is an ordinary equal-weight average."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Formula explained (1/1)
+  - 'Question: How can precision and recall be summarized in one score? 2P R (1 +
+    β 2 )P R F1 = , Fβ = . P +R β2P + R Read it aloud: F1 is twice the product divided
+    by the sum: the harmonic mean of precision and recall. F-beta changes the weighting
+    of that combination. For F2, set beta to 2 and beta-squared to 4. This places
+    more emphasis on recall than F1 does. It does not encode a particular dollar-cost
+    ratio. Compare with the arithmetic mean, (P + R)/2, which is an ordinary equal-weight
+    average.'
+  source:
+    pages:
+    - 249
+    verbatim: true
+symbolPages:
+- page: 250
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   P              \
+    \                                Precision: the fraction of alerts that are genuine\
+    \ fraud; use 0.30\n                                                  here.\n \
+    \  R                                              Recall: the fraction of actual\
+    \ frauds caught; use 0.75 here.\n   PR                                       \
+    \      Product P × R, not a separate variable and not the PR curve.\n   F1   \
+    \                                          Harmonic-mean score using equal precision–recall\
+    \ weighting.\n   β (beta)                                       Positive weighting\
+    \ parameter; above 1 emphasizes recall, below 1\n                            \
+    \                      emphasizes precision.\n   β2                          \
+    \                   Beta multiplied by itself; for beta 2 this is 4, not 2."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example P Precision: the fraction of alerts that
+    are genuine fraud; use 0.30 here. R Recall: the fraction of actual frauds caught;
+    use 0.75 here. PR Product P × R, not a separate variable and not the PR curve.
+    F1 Harmonic-mean score using equal precision–recall weighting. β (beta) Positive
+    weighting parameter; above 1 emphasizes recall, below 1 emphasizes precision.
+    β2 Beta multiplied by itself; for beta 2 this is 4, not 2.'
+  source: &id001
+    pages:
+    - 250
+    verbatim: true
+- page: 251
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   F2             \
+    \                                F-beta evaluated with beta 2; the model has not\
+    \ changed, only the\n                                                  summary\
+    \ weighting.\n   Harmonic mean                                  For two positive\
+    \ values, twice their product divided by their sum; it is\n                  \
+    \                                pulled toward the smaller value.\n   Arithmetic\
+    \ mean                                Add values and divide by how many there\
+    \ are; here add precision and\n                                              \
+    \    recall, then divide by 2."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example F2 F-beta evaluated with beta 2; the model
+    has not changed, only the summary weighting. Harmonic mean For two positive values,
+    twice their product divided by their sum; it is pulled toward the smaller value.
+    Arithmetic mean Add values and divide by how many there are; here add precision
+    and recall, then divide by 2.
+  source: &id002
+    pages:
+    - 251
+    verbatim: true
+solutionPages:
+- page: 253
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Worked solution — Balance Capture and Queue Quality\n\
+    \n1. Use proportions: P = 0.30, R = 0.75, and P R = 0.225.\n2. F1:\n         \
+    \                                                  2(0.225)     0.45\n       \
+    \                                            F1 =               =      = 0.4286.\n\
+    \                                                          0.30 + 0.75   1.05\n\
+    3. F2:\n                                                            5(0.225) \
+    \     1.125\n                                                  F2 =          \
+    \        =       = 0.5769.\n                                                 \
+    \        4(0.30) + 0.75   1.95\n4. Arithmetic average: (0.30 + 0.75)/2 = 0.525.\
+    \ F1 uses the harmonic mean, which is pulled\n   more strongly toward the smaller\
+    \ component."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Worked solution — Balance Capture and Queue Quality
+  - '1. Use proportions: P = 0.30, R = 0.75, and P R = 0.225. 2. F1: 2(0.225) 0.45
+    F1 = = = 0.4286. 0.30 + 0.75 1.05 3. F2: 5(0.225) 1.125 F2 = = = 0.5769. 4(0.30)
+    + 0.75 1.95 4. Arithmetic average: (0.30 + 0.75)/2 = 0.525. F1 uses the harmonic
+    mean, which is pulled more strongly toward the smaller component.'
+  source:
+    pages:
+    - 253
+    verbatim: true
+interpretationPages:
+- page: 254
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Interpretation\n\n What the answer means\n F1\
+    \ = 0.429 summarizes the tradeoff; F2 = 0.577 places more emphasis on the stronger\
+    \ recall.\n These are differently weighted scores, not two competing models. Neither\
+    \ score contains dollar\n loss, investigator capacity, or probability calibration.\n\
+    \ Why these steps matter\n F1 and F2 are two summaries of the same operating point.\
+    \ A larger F2 does not mean the\n detector has improved. It means the selected\
+    \ weighting gives more credit to the detector’s\n relatively high recall."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Interpretation
+  - What the answer means F1 = 0.429 summarizes the tradeoff; F2 = 0.577 places more
+    emphasis on the stronger recall. These are differently weighted scores, not two
+    competing models. Neither score contains dollar loss, investigator capacity, or
+    probability calibration. Why these steps matter F1 and F2 are two summaries of
+    the same operating point. A larger F2 does not mean the detector has improved.
+    It means the selected weighting gives more credit to the detector’s relatively
+    high recall.
+  source:
+    pages:
+    - 254
+    verbatim: true
+source:
+  pages:
+  - 249
+  - 250
+  - 251
+  - 252
+  - 253
+  - 254
+  verbatim: true
+readAloud:
+- 'F1 is twice the product divided by the sum: the harmonic mean of precision and
+  recall. F-beta changes the weighting of that combination. For F2, set beta to 2
+  and beta-squared to 4. This places more emphasis on recall than F1 does. It does
+  not encode a particular dollar-cost ratio. Compare with the arithmetic mean, (P
+  + R)/2, which is an ordinary equal-weight average.'
+siteAuthored: false
+givens:
+  precision: 0.3
+  recall: 0.75
+  beta: 2
+labels: &id003
+  precision: Precision (proportion)
+  recall: Recall (proportion)
+  beta: Recall-weighting parameter beta
+deckSolution:
+  F1: 0.4285714
+  F2: 0.5769231
+  arithmetic: 0.525
+latex:
+- F_1=\frac{2PR}{P+R},\quad F_\beta=\frac{(1+\beta^2)PR}{\beta^2P+R}
+- \operatorname{Arithmetic\ mean}=\frac{P+R}{2}
+symbols:
+- symbol: P
+  meaning: 'Precision: the fraction of alerts that are genuine fraud; use 0.30 here.'
+  source: *id001
+- symbol: R
+  meaning: 'Recall: the fraction of actual frauds caught; use 0.75 here.'
+  source: *id001
+- symbol: PR
+  meaning: Product P × R, not a separate variable and not the PR curve.
+  source: *id001
+- symbol: F1
+  meaning: Harmonic-mean score using equal precision–recall weighting.
+  source: *id001
+- symbol: β (beta)
+  meaning: Positive weighting parameter; above 1 emphasizes recall, below 1 emphasizes
+    precision.
+  source: *id001
+- symbol: β2
+  meaning: Beta multiplied by itself; for beta 2 this is 4, not 2.
+  source: *id001
+- symbol: F2
+  meaning: F-beta evaluated with beta 2; the model has not changed, only the summary
+    weighting.
+  source: *id002
+- symbol: Harmonic mean
+  meaning: For two positive values, twice their product divided by their sum; it is
+    pulled toward the smaller value.
+  source: *id002
+- symbol: Arithmetic mean
+  meaning: Add values and divide by how many there are; here add precision and recall,
+    then divide by 2.
+  source: *id002
+steps:
+- id: F1
+  title: F1 score
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Calculate 2 × precision × recall / (precision + recall).
+  mistakes:
+  - pattern: recompute
+    message: Calculate 2 × precision × recall / (precision + recall).
+- id: F2
+  title: F-beta score
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Use (1 + beta²) × precision × recall / (beta² × precision + recall).
+  mistakes:
+  - pattern: recompute
+    message: Use (1 + beta²) × precision × recall / (beta² × precision + recall).
+- id: arithmetic
+  title: Arithmetic mean of precision and recall
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Add precision and recall, then divide by 2.
+  mistakes:
+  - pattern: recompute
+    message: Add precision and recall, then divide by 2.
+learning:
+  title: Balance Capture and Queue Quality
+  scenario: A detector has the supplied precision and recall at one operating point.
+    F1 is their harmonic mean; F-beta changes their relative weight.
+  task: Calculate F1, F-beta with the supplied beta, and the ordinary arithmetic mean
+    of precision and recall.
+  interpretation: Changing beta changes the summary score, not the detector. These
+    scores do not include financial loss, review capacity or probability calibration.
+  summary: 'F1: {F1}; F-beta: {F2}; arithmetic mean: {arithmetic}.'
+  labels: *id003
+  steps:
+    F1:
+      title: F1 score
+      hints: *id004
+      unit: ''
+    F2:
+      title: F-beta score
+      hints: *id005
+      unit: ''
+    arithmetic:
+      title: Arithmetic mean of precision and recall
+      hints: *id006
+      unit: ''
+  readAloud:
+  - 'F1 is twice the product divided by the sum: the harmonic mean of precision and
+    recall. F-beta changes the weighting of that combination. For F2, set beta to
+    2 and beta-squared to 4. This places more emphasis on recall than F1 does. It
+    does not encode a particular dollar-cost ratio. Compare with the arithmetic mean,
+    (P + R)/2, which is an ordinary equal-weight average.'
+  workedExplanation:
+  - 'F1 = 0.429 summarizes the tradeoff; F2 = 0.577 places more emphasis on the stronger
+    recall. These are differently weighted scores, not two competing models. Neither
+    score contains dollar loss, investigator capacity, or probability calibration. '
+  - F1 and F2 are two summaries of the same operating point. A larger F2 does not
+    mean the detector has improved. It means the selected weighting gives more credit
+    to the detector’s relatively high recall.
+  workedArithmetic:
+  - With P = 0.30 and R = 0.75, PR = 0.225.
+  - F1 = (2 × 0.225) / (0.30 + 0.75) = 0.45/1.05 ≈ 0.4286.
+  - For beta = 2, F2 = (5 × 0.225) / (4 × 0.30 + 0.75) = 1.125/1.95 ≈ 0.5769.
+  - Arithmetic mean = (0.30 + 0.75) / 2 = 0.525.
+formulaSource:
+  pages:
+  - 249
+  verbatim: false
+  reviewed: true

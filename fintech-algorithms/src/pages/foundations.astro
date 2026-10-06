@@ -1,0 +1,148 @@
+---
+import Shell from '../components/layout/Shell.astro';
+import Formula from '../components/math/Formula.astro';
+import StartQuiz from '../components/exercise/StartQuiz.svelte';
+import LessonContent from '../components/content/LessonContent.astro';
+import { notationLessons } from '../data/overview-lessons';
+import { href } from '../data';
+import FoundationVisual from '../components/visuals/FoundationVisual.svelte';
+import { foundationTopics } from '../data/foundation-course';
+---
+
+<Shell
+  title="Foundations"
+  description="A short introduction to features, labels, training, evaluation, probability, and financial decisions."
+>
+  <p class="page-subtitle">
+    Review the mathematics and vocabulary used in the algorithm lessons.
+  </p>
+  <div class="foundation-catalog">
+    {foundationTopics.map((topic, index) => (
+      <a class="foundation-card" href={href(`/foundations/${topic.slug}/`)}>
+        <span class="eyebrow">Foundation {index + 1} · 4 lessons</span>
+        <h2>{topic.title}</h2>
+        <p>{topic.definition}</p>
+        <span>Open lessons →</span>
+      </a>
+    ))}
+  </div>
+  <details class="optional-exploration">
+    <summary>Loan example: inputs, probability, and expected loss</summary>
+    <div class="foundations-reading">
+      <section>
+        <span class="eyebrow">1 · Frame the question</span>
+        <h2>What can we know before approving a loan?</h2>
+        <FoundationVisual id="features" client:visible />
+        <p>
+          <strong>Features</strong> are the inputs available at decision time, such as a borrower’s
+          debt-to-income ratio and recent missed payments. A <strong>label</strong> is the outcome
+          observed later: whether a comparable past borrower defaulted.
+        </p>
+        <p>
+          Information that only becomes available after the decision cannot be an input. Including
+          it would make the model look better in a test than it can perform in use.
+        </p>
+      </section>
+      <section>
+        <span class="eyebrow">2 · Learn, then predict</span>
+        <h2>A model learns from examples</h2>
+        <FoundationVisual id="training" client:visible />
+        <p>
+          <strong>Training</strong> estimates a relationship between past features and labels.{' '}
+          <strong>Prediction</strong> applies that learned relationship to a new applicant. During a
+          prediction, the applicant’s eventual outcome is still unknown.
+        </p>
+        <p>
+          A baseline gives you a useful starting comparison, such as assigning everyone the
+          historical default rate. A more complex model needs evidence that it improves the
+          decision.
+        </p>
+      </section>
+      <section>
+        <span class="eyebrow">3 · Compare fairly</span>
+        <h2>Keep an honest final test</h2>
+        <FoundationVisual id="splits" client:visible />
+        <div class="foundation-splits">
+          <div>
+            <strong>Training</strong>
+            <span>Learn model parameters.</span>
+          </div>
+          <div>
+            <strong>Validation</strong>
+            <span>Choose settings and thresholds.</span>
+          </div>
+          <div>
+            <strong>Test</strong>
+            <span>Evaluate the final choice once.</span>
+          </div>
+        </div>
+        <p>
+          Repeatedly choosing settings using the test result turns the test into part of
+          development. For time-dependent decisions, train on the past and evaluate on later
+          observations.
+        </p>
+      </section>
+      <section>
+        <span class="eyebrow">4 · Separate risk from action</span>
+        <h2>A probability is an estimate; a threshold is a policy</h2>
+        <FoundationVisual id="probability" client:visible />
+        <p>
+          Suppose an applicant’s estimated default probability is 10%. A policy that reviews loans
+          at or above 8% sends this applicant to review. A threshold of 12% does not. The estimated
+          risk stays at 10% in both cases.
+        </p>
+        <p>
+          A review threshold reflects error costs and available capacity. It does not transform a
+          probability into certainty, and review does not automatically mean rejection.
+        </p>
+      </section>
+      <section>
+        <span class="eyebrow">5 · Connect probability to money</span>
+        <h2>Expected loss is an average, not a guaranteed outcome</h2>
+        <FoundationVisual id="expected-loss" client:visible />
+        <p>
+          For a $10,000 loan with a 10% default probability and 50% loss if default occurs, expected
+          loss is 0.10 × 0.50 × $10,000 = <strong>$500</strong>. An individual loan can produce a
+          very different realized loss.
+        </p>
+      </section>
+      <section>
+        <h2>Read a formula in plain language</h2>
+        <FoundationVisual id="formula" client:visible />
+        <p>
+          A symbol is a label. Read its definition, check the units, and then substitute values.
+        </p>
+        <Formula
+          latex={String.raw`p=\frac{1}{1+e^{-z}}`}
+          symbols={[
+            { symbol: 'p', meaning: 'Estimated probability of default for this applicant.' },
+            {
+              symbol: 'z',
+              meaning:
+                'Weighted sum of this applicant’s features; a log-odds score. Zero maps to a 50% chance; a negative score maps below 50%.',
+            },
+            {
+              symbol: 'e',
+              meaning: 'The mathematical constant used by the exponential function in the sigmoid.',
+            },
+          ]}
+          readAloud="The score z can be negative or positive, but a probability stays between 0 and 1. The sigmoid converts the score to that range. A score of zero gives 0.50, or a 50% estimated chance; a negative score gives less than 50%. This is an estimate, not a lending decision."
+        />
+        <StartQuiz client:visible />
+        <details class="source-slide">
+          <summary>More notation and symbol examples</summary>
+          <FoundationVisual id="counts" notation client:visible />
+          <LessonContent sections={notationLessons} level={3} />
+        </details>
+      </section>
+    </div>
+  </details>
+  <div class="completion-row">
+    <a class="completion-previous" href={href('/')}>
+      ← Course outline
+    </a>
+    <a class="button" href={href('/algorithms/logistic-regression/')}>
+      Start loan review →
+    </a>
+  </div>
+</Shell>

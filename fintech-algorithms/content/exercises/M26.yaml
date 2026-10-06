@@ -1,0 +1,321 @@
+id: M26
+title: Does the Customer Belong in This Segment?
+minutes: 6
+kind: measure
+parent: silhouette-score
+question: "A bank evaluates three customers’ segment assignments using a fixed, scaled\
+  \ feature space.\n Here, a is average distance to other customers in the assigned\
+  \ cluster. b is the smallest\n average distance to any other cluster.\n   Customer\
+  \                                                               a              \
+  \         b\n   A                                                              \
+  \        2                       5\n   B                                       \
+  \                               4                       4\n   C                \
+  \                                                      6                       3\n\
+  \n                                                        b−a\n                \
+  \                                  s=             .\n                          \
+  \                             max(a, b)\n Calculate each silhouette score and their\
+  \ mean. Which assignment deserves inspection? Does a\n good score prove that a segment\
+  \ will respond to a marketing offer?"
+questionPages:
+- page: 426
+  title: Silhouette
+  text: " Silhouette\n\n   M26 | Class problem | 6 minutes — Does the Customer Belong\
+    \ in This Segment?\n\n A bank evaluates three customers’ segment assignments using\
+    \ a fixed, scaled feature space.\n Here, a is average distance to other customers\
+    \ in the assigned cluster. b is the smallest\n average distance to any other cluster.\n\
+    \   Customer                                                               a \
+    \                      b\n   A                                               \
+    \                       2                       5\n   B                      \
+    \                                                4                       4\n \
+    \  C                                                                      6  \
+    \                     3\n\n                                                  \
+    \      b−a\n                                                  s=             .\n\
+    \                                                       max(a, b)\n Calculate\
+    \ each silhouette score and their mean. Which assignment deserves inspection?\
+    \ Does a\n good score prove that a segment will respond to a marketing offer?"
+  paragraphs:
+  - Silhouette
+  - M26 | Class problem | 6 minutes — Does the Customer Belong in This Segment?
+  - A bank evaluates three customers’ segment assignments using a fixed, scaled feature
+    space. Here, a is average distance to other customers in the assigned cluster.
+    b is the smallest average distance to any other cluster. Customer a b A 2 5 B
+    4 4 C 6 3
+  - b−a s= . max(a, b) Calculate each silhouette score and their mean. Which assignment
+    deserves inspection? Does a good score prove that a segment will respond to a
+    marketing offer?
+  source:
+    pages:
+    - 426
+    verbatim: true
+formulaPages:
+- page: 422
+  title: Silhouette
+  text: " Silhouette\n\n   M26 | Formula explained (1/1)\n\n Question: Is a customer\
+    \ closer to its assigned segment than to an alternative segment?\n           \
+    \                            bi − a i           1X\n                         \
+    \     si =                ,  s̄ =      si .\n                                \
+    \    max(ai , bi )         n i\n Read it aloud: Subtract average distance to the\
+    \ assigned cluster from average distance to the\n closest alternative cluster;\
+    \ divide by the larger distance. Average the customer scores for a\n sample summary.\n\
+    \ “Closest alternative cluster” means the smallest average distance to that cluster’s\
+    \ members,\n not the distance to the single nearest other customer.\n Distances\
+    \ use one fixed scaled feature space throughout."
+  paragraphs:
+  - Silhouette
+  - M26 | Formula explained (1/1)
+  - 'Question: Is a customer closer to its assigned segment than to an alternative
+    segment? bi − a i 1X si = , s̄ = si . max(ai , bi ) n i Read it aloud: Subtract
+    average distance to the assigned cluster from average distance to the closest
+    alternative cluster; divide by the larger distance. Average the customer scores
+    for a sample summary. “Closest alternative cluster” means the smallest average
+    distance to that cluster’s members, not the distance to the single nearest other
+    customer. Distances use one fixed scaled feature space throughout.'
+  source:
+    pages:
+    - 422
+    verbatim: true
+symbolPages:
+- page: 423
+  title: Silhouette
+  text: " Silhouette\n\n   M26 | Symbols and terms (1/3)\n\n\n   Symbol or term  \
+    \                               Meaning in this example\n   i, n             \
+    \                              Selected customer and number of customers whose\
+    \ scores are\n                                                  averaged, here\
+    \ 3.\n   ai                                             Mean distance from customer\
+    \ i to other customers in its assigned\n                                     \
+    \             cluster; exclude the customer itself.\n   bi                   \
+    \                          Smallest mean distance from customer i to the members\
+    \ of any\n                                                  other cluster.\n \
+    \  si                                             Customer-level silhouette score,\
+    \ normally between −1 and 1 for valid\n                                      \
+    \            distances."
+  paragraphs:
+  - Silhouette
+  - M26 | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example i, n Selected customer and number of customers
+    whose scores are averaged, here 3. ai Mean distance from customer i to other customers
+    in its assigned cluster; exclude the customer itself. bi Smallest mean distance
+    from customer i to the members of any other cluster. si Customer-level silhouette
+    score, normally between −1 and 1 for valid distances.
+  source: &id001
+    pages:
+    - 423
+    verbatim: true
+- page: 424
+  title: Silhouette
+  text: " Silhouette\n\n   M26 | Symbols and terms (2/3)\n\n\n   Symbol or term  \
+    \                               Meaning in this example\n   max(ai , bi )    \
+    \                              The larger of the two distances, used to scale\
+    \ the difference.\n   s̄                                             Arithmetic\
+    \ mean of the three supplied customer scores, not\n                          \
+    \                        necessarily the full population silhouette score."
+  paragraphs:
+  - Silhouette
+  - M26 | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example max(ai , bi ) The larger of the two distances,
+    used to scale the difference. s̄ Arithmetic mean of the three supplied customer
+    scores, not necessarily the full population silhouette score.
+  source: &id002
+    pages:
+    - 424
+    verbatim: true
+- page: 425
+  title: Silhouette
+  text: " Silhouette\n\n   M26 | Symbols and terms (3/3)\n\n\n   Symbol or term  \
+    \                               Meaning in this example\n   Scaled feature space\
+    \                           Input variables have been transformed to comparable\
+    \ numerical\n                                                  scales before distance\
+    \ is measured.\n   Boundary; negative score                       Similar closeness\
+    \ to the two clusters; closer on average to another\n                        \
+    \                          cluster than to the assigned one."
+  paragraphs:
+  - Silhouette
+  - M26 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Scaled feature space Input variables have
+    been transformed to comparable numerical scales before distance is measured. Boundary;
+    negative score Similar closeness to the two clusters; closer on average to another
+    cluster than to the assigned one.
+  source: &id003
+    pages:
+    - 425
+    verbatim: true
+solutionPages:
+- page: 427
+  title: Silhouette
+  text: " Silhouette\n\n   M26 | Worked solution — Does the Customer Belong in This\
+    \ Segment?\n\n1. Customer A: (5 − 2)/5 = 0.60.\n2. Customer B: (4 − 4)/4 = 0.\n\
+    3. Customer C: (3 − 6)/6 = −0.50.\n4. Mean over these three customers: (0.60 +\
+    \ 0 − 0.50)/3 = 0.0333."
+  paragraphs:
+  - Silhouette
+  - M26 | Worked solution — Does the Customer Belong in This Segment?
+  - '1. Customer A: (5 − 2)/5 = 0.60. 2. Customer B: (4 − 4)/4 = 0. 3. Customer C:
+    (3 − 6)/6 = −0.50. 4. Mean over these three customers: (0.60 + 0 − 0.50)/3 = 0.0333.'
+  source:
+    pages:
+    - 427
+    verbatim: true
+interpretationPages:
+- page: 428
+  title: Silhouette
+  text: " Silhouette\n\n   M26 | Interpretation\n\n What the answer means\n A is closer\
+    \ to its own segment. B lies near a segment boundary. C is, on average, closer\
+    \ to\n another segment than to its assigned one, so its assignment needs inspection.\
+    \ The near-zero\n mean suggests weak separation for these customers. None of these\
+    \ values demonstrates that the\n segments improve marketing response, retention,\
+    \ or profitability.\n Why these steps matter\n Positive, zero, and negative values\
+    \ indicate different geometric relationships. Those signs do not\n mean profitable,\
+    \ neutral, and unprofitable customers. Geometry is only one part of validating\n\
+    \ whether a segmentation is useful."
+  paragraphs:
+  - Silhouette
+  - M26 | Interpretation
+  - What the answer means A is closer to its own segment. B lies near a segment boundary.
+    C is, on average, closer to another segment than to its assigned one, so its assignment
+    needs inspection. The near-zero mean suggests weak separation for these customers.
+    None of these values demonstrates that the segments improve marketing response,
+    retention, or profitability. Why these steps matter Positive, zero, and negative
+    values indicate different geometric relationships. Those signs do not mean profitable,
+    neutral, and unprofitable customers. Geometry is only one part of validating whether
+    a segmentation is useful.
+  source:
+    pages:
+    - 428
+    verbatim: true
+source:
+  pages:
+  - 422
+  - 423
+  - 424
+  - 425
+  - 426
+  - 427
+  - 428
+  verbatim: true
+readAloud:
+- Subtract average distance to the assigned cluster from average distance to the closest
+  alternative cluster; divide by the larger distance. Average the customer scores
+  for a sample summary. “Closest alternative cluster” means the smallest average distance
+  to that cluster’s members, not the distance to the single nearest other customer.
+  Distances use one fixed scaled feature space throughout.
+siteAuthored: false
+givens:
+  a:
+  - 2
+  - 4
+  - 6
+  b:
+  - 5
+  - 4
+  - 3
+labels: &id004
+  a: Average distances within assigned clusters
+  b: Smallest average distances to alternative clusters
+deckSolution:
+  scores:
+  - 0.6
+  - 0
+  - -0.5
+  mean: 0.0333333
+latex:
+- s_i=\frac{b_i-a_i}{\max(a_i,b_i)}
+- \bar s=\frac1n\sum_is_i
+symbols:
+- symbol: i, n
+  meaning: Selected customer and number of customers whose scores are averaged, here
+    3.
+  source: *id001
+- symbol: ai
+  meaning: Mean distance from customer i to other customers in its assigned cluster;
+    exclude the customer itself.
+  source: *id001
+- symbol: bi
+  meaning: Smallest mean distance from customer i to the members of any other cluster.
+  source: *id001
+- symbol: si
+  meaning: Customer-level silhouette score, normally between −1 and 1 for valid distances.
+  source: *id001
+- symbol: max(ai , bi )
+  meaning: The larger of the two distances, used to scale the difference.
+  source: *id002
+- symbol: s̄
+  meaning: Arithmetic mean of the three supplied customer scores, not necessarily
+    the full population silhouette score.
+  source: *id002
+- symbol: Scaled feature space
+  meaning: Input variables have been transformed to comparable numerical scales before
+    distance is measured.
+  source: *id003
+- symbol: Boundary; negative score
+  meaning: Similar closeness to the two clusters; closer on average to another cluster
+    than to the assigned one.
+  source: *id003
+steps:
+- id: scores
+  title: Silhouette score for each customer
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Subtract a from b and divide by the larger of a and b.
+  mistakes:
+  - pattern: recompute
+    message: Subtract a from b and divide by the larger of a and b.
+- id: mean
+  title: Mean silhouette score
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average the customer scores.
+  mistakes:
+  - pattern: recompute
+    message: Average the customer scores.
+learning:
+  title: Does the Customer Belong in This Segment?
+  scenario: Customers have distances measured in one fixed, scaled feature space.
+    For each customer, a is average distance to its assigned cluster and b is the
+    smallest average distance to another cluster.
+  task: Calculate each silhouette score as (b − a) / max(a, b), then their mean.
+  interpretation: Positive scores mean the assigned cluster is closer on average.
+    Negative scores suggest inspecting another cluster assignment. These geometric
+    relationships do not establish profitability or response to an offer.
+  summary: 'Customer silhouette scores: {scores}; mean: {mean}.'
+  labels: *id004
+  steps:
+    scores:
+      title: Silhouette score for each customer
+      hints: *id005
+      unit: ''
+    mean:
+      title: Mean silhouette score
+      hints: *id006
+      unit: ''
+  readAloud:
+  - Subtract average distance to the assigned cluster from average distance to the
+    closest alternative cluster; divide by the larger distance. Average the customer
+    scores for a sample summary. “Closest alternative cluster” means the smallest
+    average distance to that cluster’s members, not the distance to the single nearest
+    other customer. Distances use one fixed scaled feature space throughout.
+  workedExplanation:
+  - 'A is closer to its own segment. B lies near a segment boundary. C is, on average,
+    closer to another segment than to its assigned one, so its assignment needs inspection.
+    The near-zero mean suggests weak separation for these customers. None of these
+    values demonstrates that the segments improve marketing response, retention, or
+    profitability. '
+  - Positive, zero, and negative values indicate different geometric relationships.
+    Those signs do not mean profitable, neutral, and unprofitable customers. Geometry
+    is only one part of validating whether a segmentation is useful.
+  workedArithmetic:
+  - A’s silhouette = (5 − 2) / max(2, 5) = 3/5 = 0.60.
+  - B’s silhouette = (4 − 4) / 4 = 0. C’s silhouette = (3 − 6) / 6 = −0.50.
+  - Mean = (0.60 + 0 − 0.50) / 3 ≈ 0.0333.
+formulaSource:
+  pages:
+  - 422
+  verbatim: false
+  reviewed: true

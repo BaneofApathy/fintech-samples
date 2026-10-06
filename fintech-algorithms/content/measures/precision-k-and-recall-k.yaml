@@ -1,0 +1,211 @@
+slug: precision-k-and-recall-k
+number: 12
+title: Precision@K and Recall@K
+question: rare
+financialInterpretation: These measures evaluate the ranked queue the business can
+  actually work. K is the number of cases investigators can review.
+workingExample: The team can review only the top 100 transactions. Forty-five of those
+  are fraud, and there are 100 frauds in the full population. 45 45 Precision@100
+  = = 45%, Recall@100 = = 45% 100 100 The queue finds 45 frauds with 55 unnecessary
+  reviews and leaves 55 frauds outside the queue.
+whatItMisses: Always state K, the time window, and prevalence. Precision@100 from
+  one day is not comparable with precision@1,000 from one month.
+exercises:
+- M12
+widget: threshold-explorer
+usedBy:
+- trees-and-forests
+- isolation-forest
+- graph-methods
+slides:
+- page: 295
+  title: EVALUATION MEASURE 12 OF 39
+  text: "    EVALUATION MEASURE 12 OF 39\n\n\n\n\n           Precision@K and Recall@K\n\
+    \       Measures alert quality and risk coverage within the exact\n          \
+    \     number of cases the team can review."
+  paragraphs:
+  - EVALUATION MEASURE 12 OF 39
+  - Precision@K and Recall@K Measures alert quality and risk coverage within the exact
+    number of cases the team can review.
+  source:
+    pages:
+    - 295
+    verbatim: true
+- page: 296
+  title: Precision@K and Recall@K – what happens at the actual review capacity?
+  text: " Precision@K and Recall@K – what happens at the actual review\n capacity?\n\
+    \n Financial interpretation\n These measures evaluate the ranked queue the business\
+    \ can actually work. K is the number of cases\n investigators can review.\n\n\
+    \ Working example\n The team can review only the top 100 transactions. Forty-five\
+    \ of those are fraud, and there are 100 frauds\n in the full population.\n   \
+    \                                                           45               \
+    \            45\n                                           Precision@100 =  \
+    \     = 45%,   Recall@100 =        = 45%\n                                   \
+    \                          100                          100\n The queue finds\
+    \ 45 frauds with 55 unnecessary reviews and leaves 55 frauds outside the queue.\n\
+    \n What it misses\n Always state K, the time window, and prevalence. Precision@100\
+    \ from one day is not comparable with\n precision@1,000 from one month."
+  paragraphs:
+  - Precision@K and Recall@K – what happens at the actual review capacity?
+  - Financial interpretation These measures evaluate the ranked queue the business
+    can actually work. K is the number of cases investigators can review.
+  - Working example The team can review only the top 100 transactions. Forty-five
+    of those are fraud, and there are 100 frauds in the full population. 45 45 Precision@100
+    = = 45%, Recall@100 = = 45% 100 100 The queue finds 45 frauds with 55 unnecessary
+    reviews and leaves 55 frauds outside the queue.
+  - What it misses Always state K, the time window, and prevalence. Precision@100
+    from one day is not comparable with precision@1,000 from one month.
+  source:
+    pages:
+    - 296
+    verbatim: true
+- page: 297
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Formula explained (1/1)\n\n Question:\
+    \ How useful is the queue at the number of reviews the team can actually perform?\n\
+    \                                          CK                     CK\n       \
+    \                 P recision@K =       ,    Recall@K =         ,\n           \
+    \                               K                       F\n                  \
+    \                                       c(K2 − K1 )\n                        Extra\
+    \ cost per extra f raud =                .\n                                 \
+    \                        C K2 − C K1\n Read it aloud: Fraud count divided by queue\
+    \ size gives queue quality; fraud count divided by\n all frauds gives coverage.\
+    \ To price an expansion, divide additional review spending by additional\n discoveries.\n\
+    \ Use the two queue sizes from the same ranked population. A discovered fraud\
+    \ is not\n automatically a prevented or recovered loss."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Formula explained (1/1)
+  - 'Question: How useful is the queue at the number of reviews the team can actually
+    perform? CK CK P recision@K = , Recall@K = , K F c(K2 − K1 ) Extra cost per extra
+    f raud = . C K2 − C K1 Read it aloud: Fraud count divided by queue size gives
+    queue quality; fraud count divided by all frauds gives coverage. To price an expansion,
+    divide additional review spending by additional discoveries. Use the two queue
+    sizes from the same ranked population. A discovered fraud is not automatically
+    a prevented or recovered loss.'
+  source:
+    pages:
+    - 297
+    verbatim: true
+- page: 298
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   K      \
+    \                                        Review capacity, or number of highest-ranked\
+    \ cases reviewed.\n   K1 , K2                                        Original\
+    \ and expanded queue sizes: 5 and 10.\n   CK                                 \
+    \            Actual frauds among the top K transactions: 3 at K=5 and 5 at\n \
+    \                                                 K=10.\n   F                \
+    \                              All actual frauds in the batch, including those\
+    \ never reviewed: 8.\n   c                                              Review\
+    \ cost per transaction, US$2.\n   K2 − K1                                    \
+    \    Number of additional reviews when the queue expands."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example K Review capacity, or number of highest-ranked
+    cases reviewed. K1 , K2 Original and expanded queue sizes: 5 and 10. CK Actual
+    frauds among the top K transactions: 3 at K=5 and 5 at K=10. F All actual frauds
+    in the batch, including those never reviewed: 8. c Review cost per transaction,
+    US$2. K2 − K1 Number of additional reviews when the queue expands.'
+  source:
+    pages:
+    - 298
+    verbatim: true
+- page: 299
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   CK 2 − CK\
+    \ 1                                    Additional frauds found, not total frauds\
+    \ in the expanded queue.\n   Incremental cost                               Cost\
+    \ of the additional work only; here every added review is priced\n           \
+    \                                       identically."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example CK 2 − CK 1 Additional frauds found, not
+    total frauds in the expanded queue. Incremental cost Cost of the additional work
+    only; here every added review is priced identically.
+  source:
+    pages:
+    - 299
+    verbatim: true
+- page: 300
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Class problem | 6 minutes — Match Review\
+    \ Capacity\n\n A batch contains 100 transactions and 8 actual frauds.\n The top\
+    \ 5 model-ranked transactions contain 3 frauds. The top 10 contain 5 frauds.\n\
+    1. Calculate precision@5 and recall@5.\n2. Calculate precision@10 and recall@10.\n\
+    3. How many extra reviews and extra frauds result from increasing capacity from\
+    \ 5 to 10?\n4. Each review costs $2. What is the additional review cost per additional\
+    \ fraud found?\n Assume all reviewed cases receive correct investigation outcomes.\
+    \ Do not assume investigation\n automatically prevents the loss."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Class problem | 6 minutes — Match Review Capacity
+  - A batch contains 100 transactions and 8 actual frauds. The top 5 model-ranked
+    transactions contain 3 frauds. The top 10 contain 5 frauds. 1. Calculate precision@5
+    and recall@5. 2. Calculate precision@10 and recall@10. 3. How many extra reviews
+    and extra frauds result from increasing capacity from 5 to 10? 4. Each review
+    costs $2. What is the additional review cost per additional fraud found? Assume
+    all reviewed cases receive correct investigation outcomes. Do not assume investigation
+    automatically prevents the loss.
+  source:
+    pages:
+    - 300
+    verbatim: true
+- page: 301
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Worked solution — Match Review Capacity\n\
+    \n1. At K = 5:\n                                                   P @5 = 3/5\
+    \ = 60%,    R@5 = 3/8 = 37.5%.\n2. At K = 10:\n                              \
+    \                    P @10 = 5/10 = 50%,   R@10 = 5/8 = 62.5%.\n3. Incremental\
+    \ work and capture: 10 − 5 = 5 additional reviews find 5 − 3 = 2 additional\n\
+    \   frauds.\n4. Incremental cost: 5($2) = $10, or $10/2 = $5 per additional fraud\
+    \ found."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Worked solution — Match Review Capacity
+  - '1. At K = 5: P @5 = 3/5 = 60%, R@5 = 3/8 = 37.5%. 2. At K = 10: P @10 = 5/10
+    = 50%, R@10 = 5/8 = 62.5%. 3. Incremental work and capture: 10 − 5 = 5 additional
+    reviews find 5 − 3 = 2 additional frauds. 4. Incremental cost: 5($2) = $10, or
+    $10/2 = $5 per additional fraud found.'
+  source:
+    pages:
+    - 301
+    verbatim: true
+- page: 302
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Interpretation\n\n What the answer\
+    \ means\n Expanding the queue lowers precision from 60% to 50% but increases fraud\
+    \ coverage from\n 37.5% to 62.5%. The extra cases may be worth reviewing, but\
+    \ the institution must have\n capacity and a useful intervention. Higher precision\
+    \ alone is not the objective.\n Why these steps matter\n Use the difference in\
+    \ fraud discoveries to assess the added five reviews. Dividing incremental\n spending\
+    \ by all five frauds in the expanded queue would over-credit discoveries already\
+    \ made by\n the smaller queue."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Interpretation
+  - What the answer means Expanding the queue lowers precision from 60% to 50% but
+    increases fraud coverage from 37.5% to 62.5%. The extra cases may be worth reviewing,
+    but the institution must have capacity and a useful intervention. Higher precision
+    alone is not the objective. Why these steps matter Use the difference in fraud
+    discoveries to assess the added five reviews. Dividing incremental spending by
+    all five frauds in the expanded queue would over-credit discoveries already made
+    by the smaller queue.
+  source:
+    pages:
+    - 302
+    verbatim: true
+source:
+  pages:
+  - 295
+  - 296
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 302
+  verbatim: true

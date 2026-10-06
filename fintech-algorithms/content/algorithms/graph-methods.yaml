@@ -1,0 +1,415 @@
+slug: graph-methods
+number: 7
+title: Graph Algorithms and Graph ML
+group: Model time and relations
+oneLine: Trace shared accounts, devices, and merchants at the decision cutoff.
+baseline: Transaction-level classifier with no network context.
+primerSlides:
+- page: 89
+  title: 'Primer 7A: Graph algorithms and Graph ML – definition and intuition'
+  text: " Primer 7A: Graph algorithms and Graph ML – definition and intuition\n\n\n\
+    \   Financial problem: Are apparently separate accounts, devices, cards, merchants,\
+    \ or beneficiaries part of the\n   same coordinated risk network?\n\n\n\n Definition\
+    \                                                                            \
+    \                    Plain-English intuition\n Graph methods represent entities\
+    \ as nodes and relationships                                               A transaction\
+    \ can look normal in isolation but\n as edges. Classical methods use components,\
+    \ centrality,                                                   suspicious in\
+    \ context. The network exposes shared\n paths, and communities; graph neural networks\
+    \ learn node                                                  infrastructure and\
+    \ coordinated behavior.\n representations by aggregating information from neighbors.\n\
+    \                                                                            \
+    \                               Anchor idea\n Input → output                 \
+    \                                                                            \
+    \        h′v = f (hv , AGG{hu : u ∈ N (v)}) for\n Input: A resolved entity graph:\
+    \ who paid whom, which device                                                \
+    \               neighbor-based learning.\n accessed which account, which card\
+    \ funded which wallet, and when\n each edge occurred.\n Output: Communities, suspicious\
+    \ subgraphs, node / edge scores, or\n learned graph embeddings.\n What it learns:\
+    \ Relational patterns – but only as reliably as entity resolution, edge definitions,\
+    \ and graph freshness allow."
+  paragraphs:
+  - 'Primer 7A: Graph algorithms and Graph ML – definition and intuition'
+  - 'Financial problem: Are apparently separate accounts, devices, cards, merchants,
+    or beneficiaries part of the same coordinated risk network?'
+  - 'Definition Plain-English intuition Graph methods represent entities as nodes
+    and relationships A transaction can look normal in isolation but as edges. Classical
+    methods use components, centrality, suspicious in context. The network exposes
+    shared paths, and communities; graph neural networks learn node infrastructure
+    and coordinated behavior. representations by aggregating information from neighbors.
+    Anchor idea Input → output h′v = f (hv , AGG{hu : u ∈ N (v)}) for Input: A resolved
+    entity graph: who paid whom, which device neighbor-based learning. accessed which
+    account, which card funded which wallet, and when each edge occurred. Output:
+    Communities, suspicious subgraphs, node / edge scores, or learned graph embeddings.
+    What it learns: Relational patterns – but only as reliably as entity resolution,
+    edge definitions, and graph freshness allow.'
+  source:
+    pages:
+    - 89
+    verbatim: true
+- page: 90
+  title: 'Primer 7B: Graph algorithms and Graph ML – worked fintech example'
+  text: " Primer 7B: Graph algorithms and Graph ML – worked fintech example\n\n\n\
+    \ Synthetic-identity and mule-ring detection\n Eight accounts use two devices,\
+    \ share three funding cards, and transfer to the same beneficiary within short\n\
+    \ time windows.\n\n\n From data to action                                    \
+    \                    Comparison point\n1. Create typed nodes for accounts, devices,\
+    \ cards, merchants, and          Baseline: Row-level fraud model with no\n   \
+    \                                                                         relationship\
+    \ features.\n   beneficiaries.\n2. Add time-stamped edges and compute shared-neighbor,\n\
+    \   component, velocity, and centrality features.\n                          \
+    \                                                  Control to teach\n        \
+    \                                                                    Watch for:\
+    \ Bad entity resolution,\n3. Rank the connected subgraph for investigation or\
+    \ combine graph           high-degree hubs, stale edges, leakage\n   features\
+    \ with a tabular classifier.                                      across time,\
+    \ and guilt-by-association\n                                                 \
+    \                           reasoning.\n4. Preserve the path that supports the\
+    \ alert; a connection is evidence\n   to inspect, not proof."
+  paragraphs:
+  - 'Primer 7B: Graph algorithms and Graph ML – worked fintech example'
+  - Synthetic-identity and mule-ring detection Eight accounts use two devices, share
+    three funding cards, and transfer to the same beneficiary within short time windows.
+  - 'From data to action Comparison point 1. Create typed nodes for accounts, devices,
+    cards, merchants, and Baseline: Row-level fraud model with no relationship features.
+    beneficiaries. 2. Add time-stamped edges and compute shared-neighbor, component,
+    velocity, and centrality features. Control to teach Watch for: Bad entity resolution,
+    3. Rank the connected subgraph for investigation or combine graph high-degree
+    hubs, stale edges, leakage features with a tabular classifier. across time, and
+    guilt-by-association reasoning. 4. Preserve the path that supports the alert;
+    a connection is evidence to inspect, not proof.'
+  source:
+    pages:
+    - 90
+    verbatim: true
+- page: 91
+  title: 'Primer 7C: Graph algorithms and Graph ML – when to use it, and when not
+    to'
+  text: " Primer 7C: Graph algorithms and Graph ML – when to use it, and when\n not\
+    \ to\n\n\n Use it when                                                       \
+    \ Do not use it when\n ▶ Risk emerges from relationships or coordinated      \
+    \             ▶ Edges are sparse, noisy, or defined only after the\n   behavior.\
+    \                                                          outcome.\n ▶ Entity\
+    \ links can be resolved with defensible confidence.         ▶ Entity resolution\
+    \ creates many false links.\n ▶ Investigators need paths and subgraphs, not only\
+    \                 ▶ A row-level model already captures the needed signal.\n  \
+    \ scores.                                                          ▶ Latency or\
+    \ infrastructure cannot support graph\n ▶ Tabular features plateau because they\
+    \ ignore shared                queries.\n   infrastructure.                  \
+    \                                ▶ The score will be treated as legal proof rather\
+    \ than\n ▶ The organization can maintain a time-aware graph.                 \
+    \ investigative evidence.\n\n Better fit in those cases\n Use tabular boosting\
+    \ for independent rows, sequence models for ordered behavior, or deterministic\
+    \ network rules when the patterns are\n already known."
+  paragraphs:
+  - 'Primer 7C: Graph algorithms and Graph ML – when to use it, and when not to'
+  - Use it when Do not use it when ▶ Risk emerges from relationships or coordinated
+    ▶ Edges are sparse, noisy, or defined only after the behavior. outcome. ▶ Entity
+    links can be resolved with defensible confidence. ▶ Entity resolution creates
+    many false links. ▶ Investigators need paths and subgraphs, not only ▶ A row-level
+    model already captures the needed signal. scores. ▶ Latency or infrastructure
+    cannot support graph ▶ Tabular features plateau because they ignore shared queries.
+    infrastructure. ▶ The score will be treated as legal proof rather than ▶ The organization
+    can maintain a time-aware graph. investigative evidence.
+  - Better fit in those cases Use tabular boosting for independent rows, sequence
+    models for ordered behavior, or deterministic network rules when the patterns
+    are already known.
+  source:
+    pages:
+    - 91
+    verbatim: true
+- page: 92
+  title: 'Primer 7D: Graph algorithms and Graph ML – fintech problem map'
+  text: " Primer 7D: Graph algorithms and Graph ML – fintech problem map\n\n\n\n Common\
+    \ fintech problems                                                    Operational\
+    \ profile\n▶ Fraud rings and mule                      ▶ Merchant collusion  \
+    \          ▶ Latency: medium to high\n  networks                             \
+    \     ▶ Counterparty concentration    ▶ Explainability: path-based\n▶ Synthetic\
+    \ identity detection                risk                          ▶ Data need:\
+    \ relational and time-aware\n▶ AML network investigation                 ▶ Payment\
+    \ routing               ▶ Monitor: graph freshness, link quality,\n▶ Account takeover\
+    \                            relationships                   component drift\n\
+    \  infrastructure                            ▶ Entity resolution and link\n  \
+    \                                            prediction\n\n\n   Student defense\
+    \ question: Can the student show which relationship added signal and avoid\n \
+    \  treating connectedness as guilt?"
+  paragraphs:
+  - 'Primer 7D: Graph algorithms and Graph ML – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Fraud rings and mule ▶ Merchant
+    collusion ▶ Latency: medium to high networks ▶ Counterparty concentration ▶ Explainability:
+    path-based ▶ Synthetic identity detection risk ▶ Data need: relational and time-aware
+    ▶ AML network investigation ▶ Payment routing ▶ Monitor: graph freshness, link
+    quality, ▶ Account takeover relationships component drift infrastructure ▶ Entity
+    resolution and link prediction'
+  - 'Student defense question: Can the student show which relationship added signal
+    and avoid treating connectedness as guilt?'
+  source:
+    pages:
+    - 92
+    verbatim: true
+definition: Graph methods represent entities as nodes and relationships as edges.
+  Classical methods use components, centrality, paths, and communities; graph neural
+  networks learn node representations by aggregating information from neighbors.
+intuition: A transaction can look normal in isolation but suspicious in context. The
+  network exposes shared infrastructure and coordinated behavior.  Anchor idea
+useWhen:
+- Risk emerges from relationships or coordinated behavior.
+- Entity links can be resolved with defensible confidence.
+- Investigators need paths and subgraphs, not only scores.
+- Tabular features plateau because they ignore shared infrastructure.
+- The organization can maintain a time-aware graph.
+avoidWhen:
+- Edges are sparse, noisy, or defined only after the outcome.
+- Entity resolution creates many false links.
+- A row-level model already captures the needed signal.
+- Latency or infrastructure cannot support graph queries.
+- The score will be treated as legal proof rather than investigative evidence.
+deepDive:
+  problem:
+  - page: 641
+    title: 'Financial problem: can we detect a coordinated fraud ring?'
+    text: " Financial problem: can we detect a coordinated fraud ring?\n\n\n\n   \
+      \ Financial problem\n    Each transaction looks only mildly suspicious, but\
+      \ several accounts share devices, addresses,\n    merchants, and counterparties.\
+      \ The risk exists in the relationships, not in any one row.\n\n\n Relational\
+      \ question\n Which accounts belong to the same connected structure, which entities\
+      \ act as hubs, and which new\n links change the risk picture?\n\n   Decision\
+      \ to make: Represent entities as nodes and interactions as edges, then score\
+      \ patterns\n   across the network."
+    paragraphs:
+    - 'Financial problem: can we detect a coordinated fraud ring?'
+    - Financial problem Each transaction looks only mildly suspicious, but several
+      accounts share devices, addresses, merchants, and counterparties. The risk exists
+      in the relationships, not in any one row.
+    - Relational question Which accounts belong to the same connected structure, which
+      entities act as hubs, and which new links change the risk picture?
+    - 'Decision to make: Represent entities as nodes and interactions as edges, then
+      score patterns across the network.'
+    source:
+      pages:
+      - 641
+      verbatim: true
+  economics:
+  - page: 642
+    title: 'Graph representation: choose nodes and edges deliberately'
+    text: " Graph representation: choose nodes and edges deliberately\n\n\n      \
+      \                                                             Device 7     \
+      \                      Acct C\n                                            \
+      \                                              transfer\n                  \
+      \                                         uses                uses\n       \
+      \                                                                          \
+      \                          registered\n\n                                  \
+      \                   Acct A                     Acct B\n                    \
+      \                                                                     registered\
+      \ Address\n                                                           paid \
+      \               paid\n\n\n                                                 \
+      \                 Merchant X\n\n\n\n\n▶ Nodes can be accounts, devices, cards,\
+      \ IPs, merchants, or persons.\n▶ Edges can encode transactions, shared attributes,\
+      \ ownership, or temporal proximity.\n▶ Direction, amount, time, and confidence\
+      \ can be edge attributes.\nWatch for: Poor entity resolution creates false links;\
+      \ missing links hide real rings."
+    paragraphs:
+    - 'Graph representation: choose nodes and edges deliberately'
+    - Device 7 Acct C transfer uses uses registered
+    - Acct A Acct B registered Address paid paid
+    - Merchant X
+    - '▶ Nodes can be accounts, devices, cards, IPs, merchants, or persons. ▶ Edges
+      can encode transactions, shared attributes, ownership, or temporal proximity.
+      ▶ Direction, amount, time, and confidence can be edge attributes. Watch for:
+      Poor entity resolution creates false links; missing links hide real rings.'
+    source:
+      pages:
+      - 642
+      verbatim: true
+  - page: 643
+    title: Start with classical graph features before a GNN
+    text: " Start with classical graph features before a GNN\n\n\n   Technique   \
+      \                                   Question                               \
+      \    Fintech use\n   Connected     compo-                           Which nodes\
+      \ are linked at all?             Identify rings sharing devices or ad-\n   nents\
+      \                                                                          \
+      \           dresses\n   Degree / weighted de-                          Which\
+      \ nodes have many or high-value        Surface mule hubs or unusual counter-\n\
+      \   gree                                           links?                  \
+      \                   parties\n   Community detection                        \
+      \    Which dense subgroups exist?               Find coordinated merchant or\
+      \ account\n                                                                \
+      \                             clusters\n   Shortest paths                  \
+      \               How close is an account to confirmed       Generate relational\
+      \ risk features\n                                                  fraud?\n\
+      \   PageRank-like central-                         Which nodes receive importance\
+      \ from        Prioritize influential entities for review\n   ity           \
+      \                                 important neighbors?\n   Temporal motifs \
+      \                               What short sequences repeat?               Detect\
+      \ layering, fan-in/fan-out, rapid\n                                        \
+      \                                                     pass-through\n Baseline:\
+      \ Transaction-level classifier with no network context."
+    paragraphs:
+    - Start with classical graph features before a GNN
+    - 'Technique Question Fintech use Connected compo- Which nodes are linked at all?
+      Identify rings sharing devices or ad- nents dresses Degree / weighted de- Which
+      nodes have many or high-value Surface mule hubs or unusual counter- gree links?
+      parties Community detection Which dense subgroups exist? Find coordinated merchant
+      or account clusters Shortest paths How close is an account to confirmed Generate
+      relational risk features fraud? PageRank-like central- Which nodes receive importance
+      from Prioritize influential entities for review ity important neighbors? Temporal
+      motifs What short sequences repeat? Detect layering, fan-in/fan-out, rapid pass-through
+      Baseline: Transaction-level classifier with no network context.'
+    source:
+      pages:
+      - 643
+      verbatim: true
+  - page: 645
+    title: 'Graph neural networks: the extension, not the starting point'
+    text: " Graph neural networks: the extension, not the starting point\n\n\n\n A\
+      \ message-passing layer updates each node from its neighbors:\n            \
+      \                       \x10                              \x11\n           \
+      \             h(k+1)\n                          v    = σ W1 h(k)           \
+      \     (k)\n                                        v + W2 AGG{hu : u ∈ N (v)}\n\
+      \n\n\n\n Potential value                                           Added burden\n\
+      \ Learns combinations of node attributes and      Sampling, graph refresh, temporal\
+      \ leakage,\n neighborhood structure that manual graph        explainability,\
+      \ transductive assumptions, and\n features may miss.                       \
+      \       more complex monitoring.\n Watch for: Do not use future edges when scoring\
+      \ a historical transaction. Time-aware graph\n construction is mandatory."
+    paragraphs:
+    - 'Graph neural networks: the extension, not the starting point'
+    - "A message-passing layer updates each node from its neighbors: \x10 \x11 h(k+1)\
+      \ v = σ W1 h(k) (k) v + W2 AGG{hu : u ∈ N (v)}"
+    - 'Potential value Added burden Learns combinations of node attributes and Sampling,
+      graph refresh, temporal leakage, neighborhood structure that manual graph explainability,
+      transductive assumptions, and features may miss. more complex monitoring. Watch
+      for: Do not use future edges when scoring a historical transaction. Time-aware
+      graph construction is mandatory.'
+    source:
+      pages:
+      - 645
+      verbatim: true
+  code:
+  - page: 644
+    title: 'Working example: shared-device components'
+    text: " Working example: shared-device components\n\n\n\n  import networkx as\
+      \ nx\n\n  G = nx.Graph()\n                                                 \
+      \                                         Extend it\n  edges = [\n    (\"acct_A\"\
+      , \"device_7\"), (\"acct_B\", \"device_7\"),                               \
+      \        ▶ Add edge timestamps.\n    (\"acct_A\", \"merchant_X\"), (\"acct_B\"\
+      , \"merchant_X\"),\n    (\"acct_B\", \"address_4\"), (\"acct_C\", \"address_4\"\
+      ),\n    (\"acct_D\", \"device_99\")\n                                      \
+      \                                                    ▶ Weight transfers by\n\
+      \  ]\n  G.add_edges_from(edges)\n                                          \
+      \                                                  amount.\n  components = sorted(nx.connected_components(G),\
+      \ key=len, reverse=True)                  ▶ Remove stale edges.\n  print(\"\
+      Largest component:\", components[0])\n  print(\"Degrees:\", sorted(G.degree,\
+      \ key=lambda x: x[1], reverse=True))                   ▶ Compare known-fraud\n\
+      \  # Add graph features back to a tabular model\n  shared_neighbors = len(list(nx.common_neighbors(G,\
+      \ \"acct_A\", \"acct_B\")))\n                                              \
+      \                                              proximity.\n  print(\"A/B common\
+      \ neighbors:\", shared_neighbors)\n                                        \
+      \                                                  Primary metric: Precision@k\n\
+      \                                                                          \
+      \                at the entity or component\n                              \
+      \                                                            level."
+    paragraphs:
+    - 'Working example: shared-device components'
+    - import networkx as nx
+    - 'G = nx.Graph() Extend it edges = [ ("acct_A", "device_7"), ("acct_B", "device_7"),
+      ▶ Add edge timestamps. ("acct_A", "merchant_X"), ("acct_B", "merchant_X"), ("acct_B",
+      "address_4"), ("acct_C", "address_4"), ("acct_D", "device_99") ▶ Weight transfers
+      by ] G.add_edges_from(edges) amount. components = sorted(nx.connected_components(G),
+      key=len, reverse=True) ▶ Remove stale edges. print("Largest component:", components[0])
+      print("Degrees:", sorted(G.degree, key=lambda x: x[1], reverse=True)) ▶ Compare
+      known-fraud # Add graph features back to a tabular model shared_neighbors =
+      len(list(nx.common_neighbors(G, "acct_A", "acct_B"))) proximity. print("A/B
+      common neighbors:", shared_neighbors) Primary metric: Precision@k at the entity
+      or component level.'
+    source:
+      pages:
+      - 644
+      verbatim: true
+  choice:
+  - page: 646
+    title: When graph methods fit
+    text: " When graph methods fit\n\n\n\n Use them when                         \
+      \                    Avoid or constrain them when\n▶ Relationships carry predictive\
+      \ signal.                   ▶ Links are sparse, stale, or ambiguous.\n▶ Coordinated\
+      \ behavior matters.                            ▶ Guilt by association could\
+      \ drive decisions.\n▶ Entity resolution is sufficiently reliable.          \
+      \    ▶ Historical graphs leak future relationships.\n▶ Graph features can be\
+      \ refreshed in time.       ▶ A tabular baseline already solves the problem.\n\
+      Required artifact: Graph schema, entity-resolution assumptions, temporal split,\
+      \ and\ncomponent-level error analysis.\n\n\n   Student defense question: How\
+      \ would you explain a high risk score caused mainly by shared\n   neighbors\
+      \ without claiming that association proves wrongdoing?"
+    paragraphs:
+    - When graph methods fit
+    - 'Use them when Avoid or constrain them when ▶ Relationships carry predictive
+      signal. ▶ Links are sparse, stale, or ambiguous. ▶ Coordinated behavior matters.
+      ▶ Guilt by association could drive decisions. ▶ Entity resolution is sufficiently
+      reliable. ▶ Historical graphs leak future relationships. ▶ Graph features can
+      be refreshed in time. ▶ A tabular baseline already solves the problem. Required
+      artifact: Graph schema, entity-resolution assumptions, temporal split, and component-level
+      error analysis.'
+    - 'Student defense question: How would you explain a high risk score caused mainly
+      by shared neighbors without claiming that association proves wrongdoing?'
+    source:
+      pages:
+      - 646
+      verbatim: true
+financialProblem: 'Each transaction looks only mildly suspicious, but several accounts
+  share devices, addresses, merchants, and counterparties. The risk exists in the
+  relationships, not in any one row. Relational question Which accounts belong to
+  the same connected structure, which entities act as hubs, and which new links change
+  the risk picture? Decision to make: Represent entities as nodes and interactions
+  as edges, then score patterns across the network.'
+defenseQuestions:
+- text: Can the student show which relationship added signal and avoid treating connectedness
+    as guilt?
+  source:
+    pages:
+    - 92
+    verbatim: true
+- text: How would you explain a high risk score caused mainly by shared neighbors
+    without claiming that association proves wrongdoing?
+  source:
+    pages:
+    - 646
+    verbatim: true
+exercises:
+- A07
+measures:
+- precision
+- recall
+- precision-recall-curve-and-pr-auc
+- precision-k-and-recall-k
+- fairness-measures
+widgets:
+- entity-graph
+lab:
+  dataset: Synthetic entity network
+  task: Detect connected rings
+  requiredComparison: Tabular-only model
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 88
+  - 89
+  - 90
+  - 91
+  - 92
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  - 640
+  - 641
+  - 642
+  - 643
+  - 644
+  - 645
+  - 646
+  verbatim: true

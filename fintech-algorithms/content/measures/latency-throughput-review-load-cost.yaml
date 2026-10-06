@@ -1,0 +1,949 @@
+slug: latency-throughput-review-load-cost
+number: 39
+title: Latency, Throughput, Review Load, Cost
+question: operate
+financialInterpretation: Production quality includes speed, capacity, unit economics,
+  and human workload. A statistically strong model can still fail operationally.
+workingExample: 'A fraud API has mean latency of 40 ms but p95 latency of 180 ms against
+  a 100 ms authorization target. It creates 25,000 alerts per day while investigators
+  can review 8,000. Inference costs $0.003 per transaction at 50 million transactions
+  per month: $150,000 monthly.'
+whatItMisses: Averages hide tail latency and peak load. Report p95/p99, timeout rate,
+  queue size, abstention rate, uptime, and cost at expected volume.
+exercises:
+- M39a
+- M39b
+- M39c
+- M39d
+widget: ops-budget
+usedBy:
+- isolation-forest
+- transformers
+- rag
+- reinforcement-learning
+slides:
+- page: 566
+  title: EVALUATION MEASURE 39 OF 39
+  text: "    EVALUATION MEASURE 39 OF 39\n\n\n\n\n      Latency, Throughput, Review\n\
+    \            Load, and Cost\n      Tests whether the system is fast, scalable,\
+    \ affordable, and\n                 compatible with human capacity."
+  paragraphs:
+  - EVALUATION MEASURE 39 OF 39
+  - Latency, Throughput, Review Load, and Cost Tests whether the system is fast, scalable,
+    affordable, and compatible with human capacity.
+  source:
+    pages:
+    - 566
+    verbatim: true
+- page: 567
+  title: Latency, throughput, review load, and cost – can the system operate at financial
+    scale?
+  text: " Latency, throughput, review load, and cost – can the system operate at\n\
+    \ financial scale?\n\n\n Financial interpretation\n Production quality includes\
+    \ speed, capacity, unit economics, and human workload. A statistically strong\n\
+    \ model can still fail operationally.\n\n Working example\n A fraud API has mean\
+    \ latency of 40 ms but p95 latency of 180 ms against a 100 ms authorization target.\
+    \ It\n creates 25,000 alerts per day while investigators can review 8,000. Inference\
+    \ costs $0.003 per transaction at\n 50 million transactions per month: $150,000\
+    \ monthly.\n\n What it misses\n Averages hide tail latency and peak load. Report\
+    \ p95/p99, timeout rate, queue size, abstention rate,\n uptime, and cost at expected\
+    \ volume."
+  paragraphs:
+  - Latency, throughput, review load, and cost – can the system operate at financial
+    scale?
+  - Financial interpretation Production quality includes speed, capacity, unit economics,
+    and human workload. A statistically strong model can still fail operationally.
+  - 'Working example A fraud API has mean latency of 40 ms but p95 latency of 180
+    ms against a 100 ms authorization target. It creates 25,000 alerts per day while
+    investigators can review 8,000. Inference costs $0.003 per transaction at 50 million
+    transactions per month: $150,000 monthly.'
+  - What it misses Averages hide tail latency and peak load. Report p95/p99, timeout
+    rate, queue size, abstention rate, uptime, and cost at expected volume.
+  source:
+    pages:
+    - 567
+    verbatim: true
+- page: 568
+  title: Latency
+  text: " Latency\n\n   M39a | Formula explained (1/2)\n\n Question: What do a typical\
+    \ average and a high-percentile response time report?\n For grouped request times:\n\
+    \                                                                     P\n    \
+    \                                                                 g ng ℓ g\n \
+    \                                                             ℓ̄ =           \
+    \   .\n                                                   N\n For individual times\
+    \ sorted from fastest to slowest:\n                                          \
+    \        rankp = ⌈pN ⌉,     Latencyp = ℓ(rankp ) .\n Read it aloud: Multiply each\
+    \ response time by the number of requests with that time, add the\n totals, and\
+    \ divide by all requests. For a percentile, use the observation at the specified\n\
+    \ nearest-rank position.\n The supplied durations are eventual response times,\
+    \ including results that arrive after the\n caller’s deadline."
+  paragraphs:
+  - Latency
+  - M39a | Formula explained (1/2)
+  - 'Question: What do a typical average and a high-percentile response time report?
+    For grouped request times: P g ng ℓ g ℓ̄ = . N For individual times sorted from
+    fastest to slowest: rankp = ⌈pN ⌉, Latencyp = ℓ(rankp ) . Read it aloud: Multiply
+    each response time by the number of requests with that time, add the totals, and
+    divide by all requests. For a percentile, use the observation at the specified
+    nearest-rank position. The supplied durations are eventual response times, including
+    results that arrive after the caller’s deadline.'
+  source:
+    pages:
+    - 568
+    verbatim: true
+- page: 569
+  title: Latency
+  text: " Latency\n\n   M39a | Formula explained (2/2)\n\n Question: How many payment\
+    \ decisions miss the deadline?\n                                         Nlate\
+    \                      N − Nlate\n              Deadline f ailure rate =     \
+    \    ,    On-time rate =             .\n                                     \
+    \     N                             N\n Read it aloud: Count requests taking longer\
+    \ than the permitted time and divide by all\n requests. Compare the complementary\
+    \ on-time share with the service objective.\n Here a response at exactly 100 ms\
+    \ is within the deadline; a later response fails it. The target is\n 99% within\
+    \ 100 ms, not merely an average below 100 ms."
+  paragraphs:
+  - Latency
+  - M39a | Formula explained (2/2)
+  - 'Question: How many payment decisions miss the deadline? Nlate N − Nlate Deadline
+    f ailure rate = , On-time rate = . N N Read it aloud: Count requests taking longer
+    than the permitted time and divide by all requests. Compare the complementary
+    on-time share with the service objective. Here a response at exactly 100 ms is
+    within the deadline; a later response fails it. The target is 99% within 100 ms,
+    not merely an average below 100 ms.'
+  source:
+    pages:
+    - 569
+    verbatim: true
+- page: 570
+  title: Latency
+  text: " Latency\n\n   M39a | Symbols and terms (1/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   Latency            \
+    \                            Elapsed time between sending a request and receiving\
+    \ its response;\n                                                  not the number\
+    \ of requests processed per second.\n   ms                                   \
+    \          Milliseconds; 1,000 ms equals one second.\n   g, ng , ℓg          \
+    \                           Latency group, number of requests in that group, and\
+    \ their common\n                                                  response time.\n\
+    \   N                                              Total number of requests, 100.\n\
+    \   ℓ̄                                             Mean latency, weighted by request\
+    \ count rather than giving each\n                                            \
+    \      latency group equal weight.\n   p                                     \
+    \         Percentile fraction: 0.95 for p95 and 0.99 for p99."
+  paragraphs:
+  - Latency
+  - M39a | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example Latency Elapsed time between sending a
+    request and receiving its response; not the number of requests processed per second.
+    ms Milliseconds; 1,000 ms equals one second. g, ng , ℓg Latency group, number
+    of requests in that group, and their common response time. N Total number of requests,
+    100. ℓ̄ Mean latency, weighted by request count rather than giving each latency
+    group equal weight. p Percentile fraction: 0.95 for p95 and 0.99 for p99.'
+  source:
+    pages:
+    - 570
+    verbatim: true
+- page: 571
+  title: Latency
+  text: " Latency\n\n   M39a | Symbols and terms (2/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   ⌈pN ⌉              \
+    \                            Nearest-rank position: round the product upward to\
+    \ an integer.\n   ℓ(j)                                           The jth smallest\
+    \ observed latency after sorting.\n   Nlate                                  \
+    \        Number of requests with eventual responses after the 100 ms\n       \
+    \                                           deadline.\n   Service objective  \
+    \                            Specified performance target; here at least 99% of\
+    \ requests must\n                                                  arrive within\
+    \ the deadline."
+  paragraphs:
+  - Latency
+  - M39a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example ⌈pN ⌉ Nearest-rank position: round the
+    product upward to an integer. ℓ(j) The jth smallest observed latency after sorting.
+    Nlate Number of requests with eventual responses after the 100 ms deadline. Service
+    objective Specified performance target; here at least 99% of requests must arrive
+    within the deadline.'
+  source:
+    pages:
+    - 571
+    verbatim: true
+- page: 572
+  title: Latency
+  text: " Latency\n\n   M39a | Class problem | 9 minutes — The Average Can Pass While\
+    \ the Service Fails\n\n A fraud-scoring service handles 100 requests, with eventual\
+    \ response times:\n   Requests                                            Latency\
+    \ each\n   95                                                  40 ms\n   4   \
+    \                                                180 ms\n   1                \
+    \                                   1,000 ms\n\n Calculate mean latency, p95,\
+    \ and p99. Use the nearest-rank percentile: rank ⌈pN ⌉ in ascending\n order.\n\
+    \ The caller treats any response after 100 ms as a deadline failure, even if a\
+    \ result later arrives.\n Calculate this timeout/deadline-failure rate. The service\
+    \ objective requires 99% of requests\n within 100 ms. Does this sample meet it?"
+  paragraphs:
+  - Latency
+  - M39a | Class problem | 9 minutes — The Average Can Pass While the Service Fails
+  - 'A fraud-scoring service handles 100 requests, with eventual response times: Requests
+    Latency each 95 40 ms 4 180 ms 1 1,000 ms'
+  - 'Calculate mean latency, p95, and p99. Use the nearest-rank percentile: rank ⌈pN
+    ⌉ in ascending order. The caller treats any response after 100 ms as a deadline
+    failure, even if a result later arrives. Calculate this timeout/deadline-failure
+    rate. The service objective requires 99% of requests within 100 ms. Does this
+    sample meet it?'
+  source:
+    pages:
+    - 572
+    verbatim: true
+- page: 573
+  title: Latency
+  text: " Latency\n\n   M39a | Worked solution — The Average Can Pass While the Service\
+    \ Fails\n\n1. Total latency: 95(40) + 4(180) + 1(1,000) = 3,800 + 720 + 1,000\
+    \ = 5,520 ms.\n2. Mean: 5,520/100 = 55.2 ms.\n3. p95: rank ⌈0.95(100)⌉ = 95; latency\
+    \ = 40 ms.\n4. p99: rank 99 lies among the four 180 ms requests; p99 = 180 ms.\n\
+    5. Deadline failures: 4 + 1 = 5 requests; 5/100 = 5%. Only 95% finish within 100\
+    \ ms."
+  paragraphs:
+  - Latency
+  - M39a | Worked solution — The Average Can Pass While the Service Fails
+  - '1. Total latency: 95(40) + 4(180) + 1(1,000) = 3,800 + 720 + 1,000 = 5,520 ms.
+    2. Mean: 5,520/100 = 55.2 ms. 3. p95: rank ⌈0.95(100)⌉ = 95; latency = 40 ms.
+    4. p99: rank 99 lies among the four 180 ms requests; p99 = 180 ms. 5. Deadline
+    failures: 4 + 1 = 5 requests; 5/100 = 5%. Only 95% finish within 100 ms.'
+  source:
+    pages:
+    - 573
+    verbatim: true
+- page: 574
+  title: Latency
+  text: " Latency\n\n   M39a | Interpretation\n\n What the answer means\n The mean\
+    \ and p95 look fast, but the 99%-within-100-ms objective is missed. Five payment\n\
+    \ decisions arrive too late for the caller. The percentile convention and treatment\
+    \ of late\n responses are stated explicitly so the result can be reproduced.\n\
+    \ Why these steps matter\n The 95 fast requests dominate the average and determine\
+    \ p95. The next four requests\n determine p99 and create deadline failures along\
+    \ with the slowest request. Averaging the three\n latency values without their\
+    \ request counts would give each group the wrong weight."
+  paragraphs:
+  - Latency
+  - M39a | Interpretation
+  - What the answer means The mean and p95 look fast, but the 99%-within-100-ms objective
+    is missed. Five payment decisions arrive too late for the caller. The percentile
+    convention and treatment of late responses are stated explicitly so the result
+    can be reproduced. Why these steps matter The 95 fast requests dominate the average
+    and determine p95. The next four requests determine p99 and create deadline failures
+    along with the slowest request. Averaging the three latency values without their
+    request counts would give each group the wrong weight.
+  source:
+    pages:
+    - 574
+    verbatim: true
+- page: 575
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Formula explained (1/2)\n\n Question:\
+    \ Can incoming requests be processed as quickly as they arrive?\n            \
+    \                         Capacity per minute\n                              \
+    \  µ=                          ,\n                                           \
+    \   60\n                              Backlog(T ) = max(λ − µ, 0)T.\n Read it\
+    \ aloud: Convert processing capacity into the arrival rate’s time unit. Multiply\
+    \ any\n excess arrival rate by elapsed time.\n This simplified queue calculation\
+    \ starts empty, uses constant rates, and assumes no drops or\n added capacity.\
+    \ Capacity here is the maximum sustainable processing rate established by the\n\
+    \ load test, not a guarantee of low latency at every load."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Formula explained (1/2)
+  - 'Question: Can incoming requests be processed as quickly as they arrive? Capacity
+    per minute µ= , 60 Backlog(T ) = max(λ − µ, 0)T. Read it aloud: Convert processing
+    capacity into the arrival rate’s time unit. Multiply any excess arrival rate by
+    elapsed time. This simplified queue calculation starts empty, uses constant rates,
+    and assumes no drops or added capacity. Capacity here is the maximum sustainable
+    processing rate established by the load test, not a guarantee of low latency at
+    every load.'
+  source:
+    pages:
+    - 575
+    verbatim: true
+- page: 576
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Formula explained (2/2)\n\n Question:\
+    \ Can the investigators finish the daily alert queue?\n                      \
+    \                                    Human capacity = na ca ,\n              \
+    \                                     Alert backlog(D) = max(A − na ca , 0)D,\n\
+    \                                                                            \
+    \                 A\n                                                  Required\
+    \ cases per analyst per day =          .\n                                   \
+    \                                                          na\n Read it aloud:\
+    \ Multiply analyst count by each analyst’s daily completion capacity. Subtract\n\
+    \ that from daily arrivals to find the day’s extra backlog. Divide incoming alerts\
+    \ by analyst count\n to see the pace required to keep up.\n This is a separate\
+    \ queue from the scoring service. Faster scoring does not increase investigator\n\
+    \ capacity."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Formula explained (2/2)
+  - 'Question: Can the investigators finish the daily alert queue? Human capacity
+    = na ca , Alert backlog(D) = max(A − na ca , 0)D, A Required cases per analyst
+    per day = . na Read it aloud: Multiply analyst count by each analyst’s daily completion
+    capacity. Subtract that from daily arrivals to find the day’s extra backlog. Divide
+    incoming alerts by analyst count to see the pace required to keep up. This is
+    a separate queue from the scoring service. Faster scoring does not increase investigator
+    capacity.'
+  source:
+    pages:
+    - 576
+    verbatim: true
+- page: 577
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Symbols and terms (1/3)\n\n\n  \
+    \ Symbol or term                                 Meaning in this example\n   API\
+    \                                            Application programming interface:\
+    \ the service endpoint through\n                                             \
+    \     which callers request fraud scores.\n   Throughput                     \
+    \                Completed requests per unit time. The load-test figure here supplies\n\
+    \                                                  maximum sustained service capacity.\n\
+    \   λ                                              Arrival rate, 250 requests\
+    \ per second; Greek lambda is a label for\n                                  \
+    \                incoming traffic.\n   µ                                     \
+    \         Processing capacity in requests per second; Greek mu is not a\n    \
+    \                                              portfolio expected return in this\
+    \ exercise."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example API Application programming interface:
+    the service endpoint through which callers request fraud scores. Throughput Completed
+    requests per unit time. The load-test figure here supplies maximum sustained service
+    capacity. λ Arrival rate, 250 requests per second; Greek lambda is a label for
+    incoming traffic. µ Processing capacity in requests per second; Greek mu is not
+    a portfolio expected return in this exercise.'
+  source:
+    pages:
+    - 577
+    verbatim: true
+- page: 578
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Symbols and terms (2/3)\n\n\n  \
+    \ Symbol or term                                 Meaning in this example\n   T\
+    \                                              Elapsed queue-building time in\
+    \ seconds; ten minutes equals 600\n                                          \
+    \        seconds.\n   max(x, 0)                                      Use the excess\
+    \ if positive; otherwise zero, given the empty-queue and\n                   \
+    \                               constant-rate assumptions."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example T Elapsed queue-building time in seconds;
+    ten minutes equals 600 seconds. max(x, 0) Use the excess if positive; otherwise
+    zero, given the empty-queue and constant-rate assumptions.
+  source:
+    pages:
+    - 578
+    verbatim: true
+- page: 579
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Symbols and terms (3/3)\n\n\n  \
+    \ Symbol or term                                 Meaning in this example\n   Backlog\
+    \                                        Requests or cases waiting to be completed,\
+    \ not a percentage error or\n                                                \
+    \  a latency value.\n   na , ca                                        Number\
+    \ of analysts and each analyst’s daily case-completion\n                     \
+    \                             capacity; 15 and 20.\n   A                     \
+    \                         Incoming investigation alerts per day; 500 here.\n \
+    \  D                                              Number of days over which the\
+    \ alert backlog accumulates; three\n                                         \
+    \         here."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Backlog Requests or cases waiting to be
+    completed, not a percentage error or a latency value. na , ca Number of analysts
+    and each analyst’s daily case-completion capacity; 15 and 20. A Incoming investigation
+    alerts per day; 500 here. D Number of days over which the alert backlog accumulates;
+    three here.
+  source:
+    pages:
+    - 579
+    verbatim: true
+- page: 580
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Class problem | 9 minutes — Calculate\
+    \ Both Bottlenecks\n\n A load test establishes a service’s maximum sustained capacity\
+    \ at 12,000 requests per\n minute. New requests arrive at 250 per second for ten\
+    \ minutes. Start with an empty queue;\n assume no dropped requests or extra capacity.\n\
+    \ Separately, the model generates 500 investigation alerts per day. There are\
+    \ 15 analysts,\n each able to finish 20 cases per day. Start with no alert backlog.\n\
+    \ Calculate API capacity per second and the ten-minute request backlog. Then calculate\
+    \ daily\n human capacity, the three-day alert backlog, and required cases per\
+    \ analyst per day to keep up."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Class problem | 9 minutes — Calculate Both Bottlenecks
+  - A load test establishes a service’s maximum sustained capacity at 12,000 requests
+    per minute. New requests arrive at 250 per second for ten minutes. Start with
+    an empty queue; assume no dropped requests or extra capacity. Separately, the
+    model generates 500 investigation alerts per day. There are 15 analysts, each
+    able to finish 20 cases per day. Start with no alert backlog. Calculate API capacity
+    per second and the ten-minute request backlog. Then calculate daily human capacity,
+    the three-day alert backlog, and required cases per analyst per day to keep up.
+  source:
+    pages:
+    - 580
+    verbatim: true
+- page: 581
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Worked solution — Calculate Both\
+    \ Bottlenecks\n\n1. API capacity: 12,000/60 = 200 requests/second.\n2. API backlog\
+    \ growth: 250 − 200 = 50 requests/second.\n3. Ten-minute backlog: 50 × 10 × 60\
+    \ = 30, 000 requests.\n4. Daily human capacity: 15 × 20 = 300 cases.\n5. Daily\
+    \ unworked alerts: 500 − 300 = 200. After three days: 200(3) = 600 alerts.\n6.\
+    \ Required analyst pace: 500/15 = 33.33 cases/day, versus the available 20."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Worked solution — Calculate Both Bottlenecks
+  - '1. API capacity: 12,000/60 = 200 requests/second. 2. API backlog growth: 250
+    − 200 = 50 requests/second. 3. Ten-minute backlog: 50 × 10 × 60 = 30, 000 requests.
+    4. Daily human capacity: 15 × 20 = 300 cases. 5. Daily unworked alerts: 500 −
+    300 = 200. After three days: 200(3) = 600 alerts. 6. Required analyst pace: 500/15
+    = 33.33 cases/day, versus the available 20.'
+  source:
+    pages:
+    - 581
+    verbatim: true
+- page: 582
+  title: Throughput and Review Load
+  text: " Throughput and Review Load\n\n   M39b | Interpretation\n\n What the answer\
+    \ means\n There are two separate capacity failures: scoring cannot keep up with\
+    \ incoming payments, and\n investigators cannot work the generated queue. Increasing\
+    \ API capacity would not fix the review\n backlog. A threshold or staffing change\
+    \ must account for the fraud that would remain\n unreviewed.\n Why these steps\
+    \ matter\n A rate difference has units of requests per second or alerts per day.\
+    \ Multiplying by matching\n elapsed time produces a count. Keeping the units explicit\
+    \ prevents confusing 12,000 requests\n per minute with 12,000 per second, or interpreting\
+    \ a queue count as a response time."
+  paragraphs:
+  - Throughput and Review Load
+  - M39b | Interpretation
+  - 'What the answer means There are two separate capacity failures: scoring cannot
+    keep up with incoming payments, and investigators cannot work the generated queue.
+    Increasing API capacity would not fix the review backlog. A threshold or staffing
+    change must account for the fraud that would remain unreviewed. Why these steps
+    matter A rate difference has units of requests per second or alerts per day. Multiplying
+    by matching elapsed time produces a count. Keeping the units explicit prevents
+    confusing 12,000 requests per minute with 12,000 per second, or interpreting a
+    queue count as a response time.'
+  source:
+    pages:
+    - 582
+    verbatim: true
+- page: 583
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Formula explained (1/2)\n\n Question: What\
+    \ fraction of requests are answered automatically, and how accurate are those\n\
+    \ automatic answers?\n                               Nabstain                \
+    \               Nauto\n                 Abstention =            ,    Automatic\
+    \ coverage =          ,\n                                  N                 \
+    \                    N\n                                                    Nauto,correct\n\
+    \                            Automatic accuracy =                  .\n       \
+    \                                                Nauto\n Read it aloud: Divide\
+    \ abstentions and automatic answers by incoming requests. Evaluate\n accuracy\
+    \ only among the requests actually answered automatically.\n Here every request\
+    \ takes exactly one of those routes, so N = Nabstain + Nauto . A decision to\n\
+    \ abstain is not automatically a wrong answer; it routes the case to the stated\
+    \ human process."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Formula explained (1/2)
+  - 'Question: What fraction of requests are answered automatically, and how accurate
+    are those automatic answers? Nabstain Nauto Abstention = , Automatic coverage
+    = , N N Nauto,correct Automatic accuracy = . Nauto Read it aloud: Divide abstentions
+    and automatic answers by incoming requests. Evaluate accuracy only among the requests
+    actually answered automatically. Here every request takes exactly one of those
+    routes, so N = Nabstain + Nauto . A decision to abstain is not automatically a
+    wrong answer; it routes the case to the stated human process.'
+  source:
+    pages:
+    - 583
+    verbatim: true
+- page: 584
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Formula explained (2/2)\n\n Question: What\
+    \ does the entire workflow cost per request and per correct resolution?\n    \
+    \                                          Ctotal = Cmodel + Nabstain chuman ,\n\
+    \                                                                      Ctotal\n\
+    \                                                  Cost per request =        \
+    \ ,\n                                                                        N\n\
+    \                                                                            Ctotal\n\
+    \                                 Cost per correct resolution =              \
+    \                  .\n                                                       \
+    \        Nauto,correct + Nhuman,correct\n Read it aloud: Add all model-and-retrieval\
+    \ spending to all required human review spending.\n Divide that same total either\
+    \ by incoming volume or by the number correctly resolved.\n Failed automatic answers\
+    \ remain in the spending numerator. All manually reviewed requests are\n correctly\
+    \ resolved under the supplied assumption. Downstream financial harm is explicitly\n\
+    \ excluded."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Formula explained (2/2)
+  - 'Question: What does the entire workflow cost per request and per correct resolution?
+    Ctotal = Cmodel + Nabstain chuman , Ctotal Cost per request = , N Ctotal Cost
+    per correct resolution = . Nauto,correct + Nhuman,correct Read it aloud: Add all
+    model-and-retrieval spending to all required human review spending. Divide that
+    same total either by incoming volume or by the number correctly resolved. Failed
+    automatic answers remain in the spending numerator. All manually reviewed requests
+    are correctly resolved under the supplied assumption. Downstream financial harm
+    is explicitly excluded.'
+  source:
+    pages:
+    - 584
+    verbatim: true
+- page: 585
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Symbols and terms (1/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   N      \
+    \                                        Incoming request count, 1,000; includes\
+    \ automatic answers and\n                                                  abstentions.\n\
+    \   Nabstain , Nauto                               Requests deferred to manual\
+    \ review and requests answered\n                                             \
+    \     automatically; 100 and 900.\n   Nauto,correct                          \
+    \        Correct automatic answers, 800; the other 100 automatic answers\n   \
+    \                                               are wrong.\n   Nhuman,correct\
+    \                                 Correct manual resolutions, 100 under the stipulated\
+    \ perfect-review\n                                                  assumption."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example N Incoming request count, 1,000; includes
+    automatic answers and abstentions. Nabstain , Nauto Requests deferred to manual
+    review and requests answered automatically; 100 and 900. Nauto,correct Correct
+    automatic answers, 800; the other 100 automatic answers are wrong. Nhuman,correct
+    Correct manual resolutions, 100 under the stipulated perfect-review assumption.
+  source:
+    pages:
+    - 585
+    verbatim: true
+- page: 586
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Symbols and terms (2/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Cmodel \
+    \                                        All model and retrieval spending, $500,\
+    \ including calls that lead to\n                                             \
+    \     abstention.\n   chuman                                         Manual review\
+    \ cost per abstained request, $3."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Cmodel All model and retrieval spending,
+    $500, including calls that lead to abstention. chuman Manual review cost per abstained
+    request, $3.
+  source:
+    pages:
+    - 586
+    verbatim: true
+- page: 587
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Symbols and terms (3/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Ctotal \
+    \                                        Total operating spending included in\
+    \ this exercise; excludes financial\n                                        \
+    \          harm from wrong answers.\n   Abstention                           \
+    \          The system declines to supply an automatic answer and takes the\n \
+    \                                                 specified escalation route.\n\
+    \   Automatic coverage                             Share of incoming requests\
+    \ receiving an automatic answer; not\n                                       \
+    \           prediction-interval coverage or evidence recall.\n   Conditional accuracy\
+    \                           Accuracy within a specified subset, here the automatically\
+    \ answered\n                                                  requests rather\
+    \ than all incoming requests."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Ctotal Total operating spending included
+    in this exercise; excludes financial harm from wrong answers. Abstention The system
+    declines to supply an automatic answer and takes the specified escalation route.
+    Automatic coverage Share of incoming requests receiving an automatic answer; not
+    prediction-interval coverage or evidence recall. Conditional accuracy Accuracy
+    within a specified subset, here the automatically answered requests rather than
+    all incoming requests.
+  source:
+    pages:
+    - 587
+    verbatim: true
+- page: 588
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Class problem | 9 minutes — Price the Entire\
+    \ Workflow\n\n A financial assistant handles 1,000 requests:\n▶ Total model and\
+    \ retrieval spend is $500, including calls that abstain.\n▶ It abstains on 100\
+    \ requests. Each goes to manual review at $3 and is answered correctly.\n▶ Of\
+    \ the 900 automatically answered requests, 800 are correct and 100 are wrong.\n\
+    \ Calculate abstention rate, automated-answer coverage, total operating cost,\
+    \ cost per incoming\n request, and cost per correctly resolved request. Also calculate\
+    \ accuracy among automatic\n answers. Include all spending in the cost numerator;\
+    \ exclude downstream financial harm for this\n exercise."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Class problem | 9 minutes — Price the Entire Workflow
+  - 'A financial assistant handles 1,000 requests: ▶ Total model and retrieval spend
+    is $500, including calls that abstain. ▶ It abstains on 100 requests. Each goes
+    to manual review at $3 and is answered correctly. ▶ Of the 900 automatically answered
+    requests, 800 are correct and 100 are wrong. Calculate abstention rate, automated-answer
+    coverage, total operating cost, cost per incoming request, and cost per correctly
+    resolved request. Also calculate accuracy among automatic answers. Include all
+    spending in the cost numerator; exclude downstream financial harm for this exercise.'
+  source:
+    pages:
+    - 588
+    verbatim: true
+- page: 589
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Worked solution — Price the Entire Workflow\n\
+    \n1. Abstention rate: 100/1,000 = 10%. Automated-answer coverage = 900/1,000 =\
+    \ 90%.\n2. Human review cost: 100($3) = $300.\n3. Total operating cost: $500 +\
+    \ $300 = $800.\n4. Cost per incoming request: 800/1,000 = $0.80.\n5. Correctly\
+    \ resolved requests: 800 + 100 = 900.\n                      All-in cost per correct\
+    \ resolution = 800/900 ≈ $0.89.\n6. Automatic-answer accuracy: 800/900 = 88.89%."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Worked solution — Price the Entire Workflow
+  - '1. Abstention rate: 100/1,000 = 10%. Automated-answer coverage = 900/1,000 =
+    90%. 2. Human review cost: 100($3) = $300. 3. Total operating cost: $500 + $300
+    = $800. 4. Cost per incoming request: 800/1,000 = $0.80. 5. Correctly resolved
+    requests: 800 + 100 = 900. All-in cost per correct resolution = 800/900 ≈ $0.89.
+    6. Automatic-answer accuracy: 800/900 = 88.89%.'
+  source:
+    pages:
+    - 589
+    verbatim: true
+- page: 590
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Interpretation\n\n What the answer means\n\
+    \ Abstention adds review expense and routes those cases to correct manual resolution\
+    \ under the\n exercise’s assumptions. Model spend alone understates operating\
+    \ cost. Even the all-in $0.80 per\n request excludes the consequences of the 100\
+    \ wrong answers; it is not a complete economic loss\n measure.\n Why these steps\
+    \ matter\n The same numerical fraction can represent different concepts: 800/900\
+    \ is automatic-answer\n accuracy, while $800 divided by 900 correct resolutions\
+    \ is a cost in dollars. The numerator’s\n units and the denominator’s population\
+    \ determine the meaning. The scenario does not establish\n what automatic answers\
+    \ would have been produced on the abstained cases."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Interpretation
+  - 'What the answer means Abstention adds review expense and routes those cases to
+    correct manual resolution under the exercise’s assumptions. Model spend alone
+    understates operating cost. Even the all-in $0.80 per request excludes the consequences
+    of the 100 wrong answers; it is not a complete economic loss measure. Why these
+    steps matter The same numerical fraction can represent different concepts: 800/900
+    is automatic-answer accuracy, while $800 divided by 900 correct resolutions is
+    a cost in dollars. The numerator’s units and the denominator’s population determine
+    the meaning. The scenario does not establish what automatic answers would have
+    been produced on the abstained cases.'
+  source:
+    pages:
+    - 590
+    verbatim: true
+- page: 591
+  title: Uptime
+  text: " Uptime\n\n   M39d | Formula explained (1/1)\n\n Question: How much scheduled\
+    \ service time was actually available?\n                                     \
+    \                          T −D\n                    T = Days × 24 × 60,     \
+    \  Availability =        ,\n                                                 \
+    \                 T\n                            Allowed downtime = T (1 − a∗\
+    \ ),\n                                                  Excess downtime = max{D\
+    \ − T (1 − a∗ ), 0}.\n Read it aloud: Convert scheduled operation into minutes.\
+    \ Subtract unavailable minutes and\n divide by scheduled minutes. The permitted\
+    \ downtime is the scheduled time multiplied by one\n minus the availability target.\n\
+    \ This is a time-based, continuously scheduled 30-day service. It does not weight\
+    \ downtime by\n how many requests arrived during each minute."
+  paragraphs:
+  - Uptime
+  - M39d | Formula explained (1/1)
+  - 'Question: How much scheduled service time was actually available? T −D T = Days
+    × 24 × 60, Availability = , T Allowed downtime = T (1 − a∗ ), Excess downtime
+    = max{D − T (1 − a∗ ), 0}. Read it aloud: Convert scheduled operation into minutes.
+    Subtract unavailable minutes and divide by scheduled minutes. The permitted downtime
+    is the scheduled time multiplied by one minus the availability target. This is
+    a time-based, continuously scheduled 30-day service. It does not weight downtime
+    by how many requests arrived during each minute.'
+  source:
+    pages:
+    - 591
+    verbatim: true
+- page: 592
+  title: Uptime
+  text: " Uptime\n\n   M39d | Symbols and terms (1/3)\n\n\n   Symbol or term     \
+    \                            Meaning in this example\n   T                   \
+    \                           Total scheduled operating minutes in the month; the\
+    \ service is\n                                                  expected to operate\
+    \ 24 hours per day.\n   D                                              Minutes\
+    \ when the service is completely unavailable, 90; D is\n                     \
+    \                             downtime here, not a loan delinquency indicator.\n\
+    \   T −D                                           Available minutes during the\
+    \ scheduled window.\n   a∗                                             Target\
+    \ availability as a fraction, 0.999; the star marks a specified\n            \
+    \                                      target rather than multiplication."
+  paragraphs:
+  - Uptime
+  - M39d | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example T Total scheduled operating minutes in
+    the month; the service is expected to operate 24 hours per day. D Minutes when
+    the service is completely unavailable, 90; D is downtime here, not a loan delinquency
+    indicator. T −D Available minutes during the scheduled window. a∗ Target availability
+    as a fraction, 0.999; the star marks a specified target rather than multiplication.
+  source:
+    pages:
+    - 592
+    verbatim: true
+- page: 593
+  title: Uptime
+  text: " Uptime\n\n   M39d | Symbols and terms (2/3)\n\n\n   Symbol or term     \
+    \                            Meaning in this example\n   Availability; uptime\
+    \                           Fraction of scheduled time the service is available\
+    \ under the\n                                                  problem’s binary\
+    \ up/down definition.\n   Allowed downtime                               Minutes\
+    \ of unavailability consistent with meeting the stated\n                     \
+    \                             availability target."
+  paragraphs:
+  - Uptime
+  - M39d | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Availability; uptime Fraction of scheduled
+    time the service is available under the problem’s binary up/down definition. Allowed
+    downtime Minutes of unavailability consistent with meeting the stated availability
+    target.
+  source:
+    pages:
+    - 593
+    verbatim: true
+- page: 594
+  title: Uptime
+  text: " Uptime\n\n   M39d | Symbols and terms (3/3)\n\n\n   Symbol or term     \
+    \                            Meaning in this example\n   Excess downtime     \
+    \                           Actual unavailable minutes beyond that allowance,\
+    \ with zero when\n                                                  the target\
+    \ is met.\n   Time-based                                     Every scheduled minute\
+    \ receives equal weight, even when request\n                                 \
+    \                 volumes differ."
+  paragraphs:
+  - Uptime
+  - M39d | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Excess downtime Actual unavailable minutes
+    beyond that allowance, with zero when the target is met. Time-based Every scheduled
+    minute receives equal weight, even when request volumes differ.
+  source:
+    pages:
+    - 594
+    verbatim: true
+- page: 595
+  title: Uptime
+  text: " Uptime\n\n   M39d | Class problem | 6 minutes — Translate the Percentage\
+    \ into Minutes\n\n A payment-scoring service is expected to operate continuously\
+    \ for a 30-day month. It is\n completely unavailable for 90 minutes. Use time-based\
+    \ availability, not request-weighted\n success.\n                            \
+    \          scheduled minutes − unavailable minutes\n                    Availability\
+    \ =                                            .\n                           \
+    \                     scheduled minutes\n The classroom service objective is 99.9%\
+    \ monthly availability. Calculate total scheduled\n minutes, achieved availability,\
+    \ allowed downtime, and downtime beyond the allowance. Does a\n percentage above\
+    \ 99% necessarily meet the objective?"
+  paragraphs:
+  - Uptime
+  - M39d | Class problem | 6 minutes — Translate the Percentage into Minutes
+  - A payment-scoring service is expected to operate continuously for a 30-day month.
+    It is completely unavailable for 90 minutes. Use time-based availability, not
+    request-weighted success. scheduled minutes − unavailable minutes Availability
+    = . scheduled minutes The classroom service objective is 99.9% monthly availability.
+    Calculate total scheduled minutes, achieved availability, allowed downtime, and
+    downtime beyond the allowance. Does a percentage above 99% necessarily meet the
+    objective?
+  source:
+    pages:
+    - 595
+    verbatim: true
+- page: 596
+  title: Uptime
+  text: " Uptime\n\n   M39d | Worked solution — Translate the Percentage into Minutes\n\
+    \n1. Scheduled time: 30 × 24 × 60 = 43, 200 minutes.\n2. Available time: 43,200\
+    \ − 90 = 43,110 minutes.\n3. Achieved availability:\n                        \
+    \                          43,110/43,200 × 100% = 99.7917%.\n4. Allowed unavailability:\
+    \ 43,200(1 − 0.999) = 43.2 minutes.\n5. Excess downtime: 90 − 43.2 = 46.8 minutes."
+  paragraphs:
+  - Uptime
+  - M39d | Worked solution — Translate the Percentage into Minutes
+  - '1. Scheduled time: 30 × 24 × 60 = 43, 200 minutes. 2. Available time: 43,200
+    − 90 = 43,110 minutes. 3. Achieved availability: 43,110/43,200 × 100% = 99.7917%.
+    4. Allowed unavailability: 43,200(1 − 0.999) = 43.2 minutes. 5. Excess downtime:
+    90 − 43.2 = 46.8 minutes.'
+  source:
+    pages:
+    - 596
+    verbatim: true
+- page: 597
+  title: Uptime
+  text: " Uptime\n\n   M39d | Interpretation\n\n What the answer means\n “Over 99%\
+    \ available” is not enough for the specified 99.9% objective. The service was\n\
+    \ unavailable for more than twice its allotted downtime. Time-based availability\
+    \ also does not\n reveal how many payment requests were affected or whether the\
+    \ outage coincided with peak\n demand.\n Why these steps matter\n A target of\
+    \ 99.9% leaves 0.1% of scheduled time for unavailability, not 0.9%. Multiplying\
+    \ that\n small fraction by the full month’s minutes makes the allowance concrete.\
+    \ The same outage\n length can affect very different payment volumes depending\
+    \ on when it occurs."
+  paragraphs:
+  - Uptime
+  - M39d | Interpretation
+  - What the answer means “Over 99% available” is not enough for the specified 99.9%
+    objective. The service was unavailable for more than twice its allotted downtime.
+    Time-based availability also does not reveal how many payment requests were affected
+    or whether the outage coincided with peak demand. Why these steps matter A target
+    of 99.9% leaves 0.1% of scheduled time for unavailability, not 0.9%. Multiplying
+    that small fraction by the full month’s minutes makes the allowance concrete.
+    The same outage length can affect very different payment volumes depending on
+    when it occurs.
+  source:
+    pages:
+    - 597
+    verbatim: true
+- page: 598
+  title: 'Working code: calculate core classification measures'
+  text: " Working code: calculate core classification measures\n\n\n  import numpy\
+    \ as np\n  from sklearn.metrics import (\n      confusion_matrix, precision_score,\
+    \ recall_score,\n      f1_score, roc_auc_score, average_precision_score,\n   \
+    \   brier_score_loss, log_loss\n  )\n\n  y_true = np.array([0,0,1,0,1,0,0,1,0,1])\n\
+    \  y_score = np.array([.05,.20,.90,.30,.70,.40,.10,.60,.80,.55])\n  y_pred = (y_score\
+    \ >= .50).astype(int)\n\n  print(\"confusion matrix\\n\", confusion_matrix(y_true,\
+    \ y_pred))\n  print(\"precision\", precision_score(y_true, y_pred))\n  print(\"\
+    recall\", recall_score(y_true, y_pred))\n  print(\"F1\", f1_score(y_true, y_pred))\n\
+    \  print(\"ROC-AUC\", roc_auc_score(y_true, y_score))\n  print(\"PR-AUC\", average_precision_score(y_true,\
+    \ y_score))\n  print(\"Brier\", brier_score_loss(y_true, y_score))\n  print(\"\
+    log loss\", log_loss(y_true, y_score))\n\n Change the threshold from 0.50 to 0.70.\
+    \ Which measures move, which do not, and which operating decision\n changes?"
+  paragraphs:
+  - 'Working code: calculate core classification measures'
+  - import numpy as np from sklearn.metrics import ( confusion_matrix, precision_score,
+    recall_score, f1_score, roc_auc_score, average_precision_score, brier_score_loss,
+    log_loss )
+  - y_true = np.array([0,0,1,0,1,0,0,1,0,1]) y_score = np.array([.05,.20,.90,.30,.70,.40,.10,.60,.80,.55])
+    y_pred = (y_score >= .50).astype(int)
+  - print("confusion matrix\n", confusion_matrix(y_true, y_pred)) print("precision",
+    precision_score(y_true, y_pred)) print("recall", recall_score(y_true, y_pred))
+    print("F1", f1_score(y_true, y_pred)) print("ROC-AUC", roc_auc_score(y_true, y_score))
+    print("PR-AUC", average_precision_score(y_true, y_score)) print("Brier", brier_score_loss(y_true,
+    y_score)) print("log loss", log_loss(y_true, y_score))
+  - Change the threshold from 0.50 to 0.70. Which measures move, which do not, and
+    which operating decision changes?
+  source:
+    pages:
+    - 598
+    verbatim: true
+- page: 599
+  title: 'Working code: calculate forecast and ranking measures'
+  text: " Working code: calculate forecast and ranking measures\n\n\n\n  import numpy\
+    \ as np\n  from sklearn.metrics import mean_absolute_error, mean_squared_error,\
+    \ r2_score\n\n  actual   = np.array([100, 120, 80, 150], dtype=float)\n  forecast\
+    \ = np.array([ 90, 130,100, 140], dtype=float)\n\n  mae = mean_absolute_error(actual,\
+    \ forecast)\n  rmse = mean_squared_error(actual, forecast) ** 0.5\n  mape = np.mean(np.abs((actual\
+    \ - forecast) / actual))\n  wape = np.abs(actual - forecast).sum() / np.abs(actual).sum()\n\
+    \  r2   = r2_score(actual, forecast)\n  print(mae, rmse, mape, wape, r2)\n\n \
+    \ # Precision@K for a ranked fraud queue\n  labels = np.array([1,0,1,1,0,0,1,0,0,0])\n\
+    \  k = 5\n  print(\"precision@k\", labels[:k].mean())\n  print(\"recall@k\", labels[:k].sum()\
+    \ / labels.sum())\n\n Ask students to explain every output in financial language\
+    \ before they tune a model."
+  paragraphs:
+  - 'Working code: calculate forecast and ranking measures'
+  - import numpy as np from sklearn.metrics import mean_absolute_error, mean_squared_error,
+    r2_score
+  - actual = np.array([100, 120, 80, 150], dtype=float) forecast = np.array([ 90,
+    130,100, 140], dtype=float)
+  - mae = mean_absolute_error(actual, forecast) rmse = mean_squared_error(actual,
+    forecast) ** 0.5 mape = np.mean(np.abs((actual - forecast) / actual)) wape = np.abs(actual
+    - forecast).sum() / np.abs(actual).sum() r2 = r2_score(actual, forecast) print(mae,
+    rmse, mape, wape, r2)
+  - '# Precision@K for a ranked fraud queue labels = np.array([1,0,1,1,0,0,1,0,0,0])
+    k = 5 print("precision@k", labels[:k].mean()) print("recall@k", labels[:k].sum()
+    / labels.sum())'
+  - Ask students to explain every output in financial language before they tune a
+    model.
+  source:
+    pages:
+    - 599
+    verbatim: true
+- page: 600
+  title: Which measures belong to which financial question?
+  text: " Which measures belong to which financial question?\n\n    Financial question\
+    \                       Start with                                        Always\
+    \ add\n\n    Can it rank rare risk?                   PR-AUC, precision@K, recall@K,\
+    \ lift               Prevalence, capacity, expected cost\n    Can it rank general\
+    \ bi-                  ROC-AUC, KS                                       Calibration,\
+    \ threshold metrics, slice results\n    nary risk?\n    Are probabilities usable?\
+    \                Calibration curve, Brier, log loss                Expected loss,\
+    \ score-band stability\n    Is the forecast useful?                  MAE / RMSE,\
+    \ MASE                                  Interval coverage, stress-period errors\n\
+    \    Are clusters meaningful?                 Silhouette, inertia            \
+    \                   Stability, business actionability, fairness\n    Did RAG find\
+    \ evidence?                   Recall@K, context precision, MRR / nDCG        \
+    \   Faithfulness, citation and numeric checks\n    Is the portfolio accept-  \
+    \               Return, volatility, Sharpe / Sortino              Drawdown, turnover,\
+    \ costs, constraints\n    able?\n    Is tail risk controlled?                \
+    \ VaR, Expected Shortfall, shortfall probability    Backtests, stress tests, sensitivity\n\
+    \    Does the agent work                      Task success, verification pass\
+    \ rate              Unsafe attempts, cost, p95 latency, traces\n    safely?\n\n\
+    \n Minimum reporting standard\n One ranking or error measure, one operating-point\
+    \ measure, one financial-cost measure, one slice or stress\n result, and one production-control\
+    \ measure."
+  paragraphs:
+  - Which measures belong to which financial question?
+  - Financial question Start with Always add
+  - Can it rank rare risk? PR-AUC, precision@K, recall@K, lift Prevalence, capacity,
+    expected cost Can it rank general bi- ROC-AUC, KS Calibration, threshold metrics,
+    slice results nary risk? Are probabilities usable? Calibration curve, Brier, log
+    loss Expected loss, score-band stability Is the forecast useful? MAE / RMSE, MASE
+    Interval coverage, stress-period errors Are clusters meaningful? Silhouette, inertia
+    Stability, business actionability, fairness Did RAG find evidence? Recall@K, context
+    precision, MRR / nDCG Faithfulness, citation and numeric checks Is the portfolio
+    accept- Return, volatility, Sharpe / Sortino Drawdown, turnover, costs, constraints
+    able? Is tail risk controlled? VaR, Expected Shortfall, shortfall probability
+    Backtests, stress tests, sensitivity Does the agent work Task success, verification
+    pass rate Unsafe attempts, cost, p95 latency, traces safely?
+  - Minimum reporting standard One ranking or error measure, one operating-point measure,
+    one financial-cost measure, one slice or stress result, and one production-control
+    measure.
+  source:
+    pages:
+    - 600
+    verbatim: true
+source:
+  pages:
+  - 566
+  - 567
+  - 568
+  - 569
+  - 570
+  - 571
+  - 572
+  - 573
+  - 574
+  - 575
+  - 576
+  - 577
+  - 578
+  - 579
+  - 580
+  - 581
+  - 582
+  - 583
+  - 584
+  - 585
+  - 586
+  - 587
+  - 588
+  - 589
+  - 590
+  - 591
+  - 592
+  - 593
+  - 594
+  - 595
+  - 596
+  - 597
+  - 598
+  - 599
+  - 600
+  verbatim: true

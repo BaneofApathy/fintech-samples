@@ -1,0 +1,435 @@
+slug: mrr-and-ndcg
+number: 29
+title: MRR and nDCG
+question: retrieve
+financialInterpretation: Mean reciprocal rank rewards finding the first useful source
+  early. nDCG rewards placing highly relevant sources above partially relevant ones.
+workingExample: 'First relevant passages for four questions appear at ranks [1, 2,
+  5, not found]: 1 + 1/2 + 1/5 + 0 M RR = = 0.425 4 For graded relevance, ranking
+  [1, 3, 0] instead of the ideal [3, 1, 0] gives approximately nDCG@3 = 0.71 because
+  the most useful source was placed second.'
+whatItMisses: MRR focuses on the first relevant item. nDCG requires trustworthy relevance
+  grades. Neither measures answer faithfulness.
+exercises:
+- M29a
+- M29b
+widget: retrieval-rank
+usedBy:
+- rag
+slides:
+- page: 453
+  title: EVALUATION MEASURE 29 OF 39
+  text: "    EVALUATION MEASURE 29 OF 39\n\n\n\n\n                     MRR and nDCG\n\
+    \      Rewards retrieval systems for placing useful evidence early\n         \
+    \   and ordering multiple relevant sources well."
+  paragraphs:
+  - EVALUATION MEASURE 29 OF 39
+  - MRR and nDCG Rewards retrieval systems for placing useful evidence early and ordering
+    multiple relevant sources well.
+  source:
+    pages:
+    - 453
+    verbatim: true
+- page: 454
+  title: MRR and nDCG – how early and how well ordered are the useful sources?
+  text: " MRR and nDCG – how early and how well ordered are the useful sources?\n\n\
+    \ Financial interpretation\n Mean reciprocal rank rewards finding the first useful\
+    \ source early. nDCG rewards placing highly relevant\n sources above partially\
+    \ relevant ones.\n\n Working example\n First relevant passages for four questions\
+    \ appear at ranks [1, 2, 5, not found]:\n\n                                  \
+    \                         1 + 1/2 + 1/5 + 0\n                                \
+    \                  M RR =                     = 0.425\n                      \
+    \                                             4\n For graded relevance, ranking\
+    \ [1, 3, 0] instead of the ideal [3, 1, 0] gives approximately nDCG@3 = 0.71\n\
+    \ because the most useful source was placed second.\n\n What it misses\n MRR focuses\
+    \ on the first relevant item. nDCG requires trustworthy relevance grades. Neither\
+    \ measures\n answer faithfulness."
+  paragraphs:
+  - MRR and nDCG – how early and how well ordered are the useful sources?
+  - Financial interpretation Mean reciprocal rank rewards finding the first useful
+    source early. nDCG rewards placing highly relevant sources above partially relevant
+    ones.
+  - 'Working example First relevant passages for four questions appear at ranks [1,
+    2, 5, not found]:'
+  - 1 + 1/2 + 1/5 + 0 M RR = = 0.425 4 For graded relevance, ranking [1, 3, 0] instead
+    of the ideal [3, 1, 0] gives approximately nDCG@3 = 0.71 because the most useful
+    source was placed second.
+  - What it misses MRR focuses on the first relevant item. nDCG requires trustworthy
+    relevance grades. Neither measures answer faithfulness.
+  source:
+    pages:
+    - 454
+    verbatim: true
+- page: 455
+  title: MRR
+  text: " MRR\n\n   M29a | Formula explained (1/1)\n\n Question: How high in the results\
+    \ is the first relevant passage?\n                               (\n         \
+    \                         1/rankq , a relevant result is found,\n            \
+    \           RRq =\n                                  0,           none is found,\n\
+    \                                                             Q\n            \
+    \                                             1 X\n                          \
+    \                        M RR =       RRq .\n                                \
+    \                         Q q=1\n\n Read it aloud: Take one divided by the position\
+    \ of the first relevant result. Give zero to a\n query with none in the evaluated\
+    \ results. Average across all questions, including the zero cases.\n Ranks start\
+    \ at 1, not zero. Bringing a source from rank 4 to rank 2 raises its contribution\
+    \ from\n one-quarter to one-half."
+  paragraphs:
+  - MRR
+  - M29a | Formula explained (1/1)
+  - 'Question: How high in the results is the first relevant passage? ( 1/rankq ,
+    a relevant result is found, RRq = 0, none is found, Q 1 X M RR = RRq . Q q=1'
+  - 'Read it aloud: Take one divided by the position of the first relevant result.
+    Give zero to a query with none in the evaluated results. Average across all questions,
+    including the zero cases. Ranks start at 1, not zero. Bringing a source from rank
+    4 to rank 2 raises its contribution from one-quarter to one-half.'
+  source:
+    pages:
+    - 455
+    verbatim: true
+- page: 456
+  title: MRR
+  text: " MRR\n\n   M29a | Symbols and terms (1/3)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   Q, q                   \
+    \                        Total number of evaluated questions, here 4, and a question\
+    \ index.\n   rankq                                          Position of the first\
+    \ relevant passage for question q in the evaluated\n                         \
+    \                         result list.\n   RRq                               \
+    \             Reciprocal rank for one query; 1 means the first result is relevant.\n\
+    \   MRR                                            Mean reciprocal rank: average\
+    \ of all question-level reciprocal ranks."
+  paragraphs:
+  - MRR
+  - M29a | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example Q, q Total number of evaluated questions,
+    here 4, and a question index. rankq Position of the first relevant passage for
+    question q in the evaluated result list. RRq Reciprocal rank for one query; 1
+    means the first result is relevant. MRR Mean reciprocal rank: average of all question-level
+    reciprocal ranks.'
+  source:
+    pages:
+    - 456
+    verbatim: true
+- page: 457
+  title: MRR
+  text: " MRR\n\n   M29a | Symbols and terms (2/3)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   Reciprocal             \
+    \                        One divided by a value; a smaller positive rank produces\
+    \ a larger\n                                                  reciprocal.\n  \
+    \ Not found                                      No relevant item within the evaluated\
+    \ results; assign zero without\n                                             \
+    \     attempting division by an undefined rank."
+  paragraphs:
+  - MRR
+  - M29a | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Reciprocal One divided by a value; a smaller
+    positive rank produces a larger reciprocal. Not found No relevant item within
+    the evaluated results; assign zero without attempting division by an undefined
+    rank.
+  source:
+    pages:
+    - 457
+    verbatim: true
+- page: 458
+  title: MRR
+  text: " MRR\n\n   M29a | Symbols and terms (3/3)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   PQ\n       q=1         \
+    \                               Include every evaluated query, even those with\
+    \ no relevant result.\n   Score-unit improvement                         New MRR\
+    \ minus old MRR; not automatically a percentage-point\n                      \
+    \                            change in answer accuracy."
+  paragraphs:
+  - MRR
+  - M29a | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example PQ q=1 Include every evaluated query, even
+    those with no relevant result. Score-unit improvement New MRR minus old MRR; not
+    automatically a percentage-point change in answer accuracy.
+  source:
+    pages:
+    - 458
+    verbatim: true
+- page: 459
+  title: MRR
+  text: " MRR\n\n   M29a | Class problem | 6 minutes — How Soon Does the First Useful\
+    \ Source Appear?\n\n Four analyst questions produce their first relevant filing\
+    \ passage at these ranks:\n   Question                                       First\
+    \ relevant rank\n   Q1                                             1\n   Q2  \
+    \                                           2\n   Q3                         \
+    \                    4\n   Q4                                             Not\
+    \ found in the evaluated results\n\n                                         \
+    \                         1 X 1\n                                            \
+    \           M RR =               .\n                                         \
+    \                         Q q rankq\n Use zero for a question with no relevant\
+    \ result. Calculate MRR. Then assume a revised retriever\n brings Q4’s first relevant\
+    \ passage to rank 2, with the other ranks unchanged. Calculate the new\n MRR and\
+    \ improvement."
+  paragraphs:
+  - MRR
+  - M29a | Class problem | 6 minutes — How Soon Does the First Useful Source Appear?
+  - 'Four analyst questions produce their first relevant filing passage at these ranks:
+    Question First relevant rank Q1 1 Q2 2 Q3 4 Q4 Not found in the evaluated results'
+  - 1 X 1 M RR = . Q q rankq Use zero for a question with no relevant result. Calculate
+    MRR. Then assume a revised retriever brings Q4’s first relevant passage to rank
+    2, with the other ranks unchanged. Calculate the new MRR and improvement.
+  source:
+    pages:
+    - 459
+    verbatim: true
+- page: 460
+  title: MRR
+  text: " MRR\n\n   M29a | Worked solution — How Soon Does the First Useful Source\
+    \ Appear?\n\n1. Reciprocal ranks: Q1 = 1; Q2 = 1/2 = 0.5; Q3 = 1/4 = 0.25; Q4\
+    \ = 0.\n2. Original MRR:\n                                                  (1\
+    \ + 0.5 + 0.25 + 0)/4 = 1.75/4 = 0.4375.\n3. Updated Q4 contribution: 1/2 = 0.5.\n\
+    4. Updated MRR:\n                                                  (1 + 0.5 +\
+    \ 0.25 + 0.5)/4 = 2.25/4 = 0.5625.\n5. Improvement: 0.5625 − 0.4375 = 0.125 score\
+    \ units."
+  paragraphs:
+  - MRR
+  - M29a | Worked solution — How Soon Does the First Useful Source Appear?
+  - '1. Reciprocal ranks: Q1 = 1; Q2 = 1/2 = 0.5; Q3 = 1/4 = 0.25; Q4 = 0. 2. Original
+    MRR: (1 + 0.5 + 0.25 + 0)/4 = 1.75/4 = 0.4375. 3. Updated Q4 contribution: 1/2
+    = 0.5. 4. Updated MRR: (1 + 0.5 + 0.25 + 0.5)/4 = 2.25/4 = 0.5625. 5. Improvement:
+    0.5625 − 0.4375 = 0.125 score units.'
+  source:
+    pages:
+    - 460
+    verbatim: true
+- page: 461
+  title: MRR
+  text: " MRR\n\n   M29a | Interpretation\n\n What the answer means\n The first useful\
+    \ passage now appears earlier for more questions, reducing how far an analyst\
+    \ or\n downstream system must search. MRR is not the percentage of correct answers\
+    \ and ignores\n the ordering of additional relevant passages after the first.\n\
+    \ Why these steps matter\n The unresolved question belongs in the denominator\
+    \ of the original MRR. Dropping it would\n inflate the reported retrieval quality\
+    \ by evaluating only successful searches."
+  paragraphs:
+  - MRR
+  - M29a | Interpretation
+  - What the answer means The first useful passage now appears earlier for more questions,
+    reducing how far an analyst or downstream system must search. MRR is not the percentage
+    of correct answers and ignores the ordering of additional relevant passages after
+    the first. Why these steps matter The unresolved question belongs in the denominator
+    of the original MRR. Dropping it would inflate the reported retrieval quality
+    by evaluating only successful searches.
+  source:
+    pages:
+    - 461
+    verbatim: true
+- page: 462
+  title: nDCG
+  text: " nDCG\n\n   M29b | Formula explained (1/2)\n\n Question: How much useful\
+    \ evidence is delivered near the top of the ranking?\n                       \
+    \                                                     K\n                    \
+    \                                                        X      gaini\n      \
+    \                                       gaini = 2reli − 1,   DCG@K =         \
+    \            .\n                                                             \
+    \               i=1\n                                                        \
+    \                        log 2 (i + 1)\n\n Read it aloud: Turn each relevance\
+    \ grade into a gain, then reduce its contribution according to\n its rank. Add\
+    \ the discounted gains across the top K results.\n This exercise explicitly uses\
+    \ exponential gain. Higher grades are rewarded disproportionately.\n Rank 1 has\
+    \ divisor 1, so its gain is undiscounted."
+  paragraphs:
+  - nDCG
+  - M29b | Formula explained (1/2)
+  - 'Question: How much useful evidence is delivered near the top of the ranking?
+    K X gaini gaini = 2reli − 1, DCG@K = . i=1 log 2 (i + 1)'
+  - 'Read it aloud: Turn each relevance grade into a gain, then reduce its contribution
+    according to its rank. Add the discounted gains across the top K results. This
+    exercise explicitly uses exponential gain. Higher grades are rewarded disproportionately.
+    Rank 1 has divisor 1, so its gain is undiscounted.'
+  source:
+    pages:
+    - 462
+    verbatim: true
+- page: 463
+  title: nDCG
+  text: " nDCG\n\n   M29b | Formula explained (2/2)\n\n Question: How close is the\
+    \ ordering to the best possible ordering of this candidate set?\n            \
+    \                                      DCG@K\n                               \
+    \    nDCG@K =                  .\n                                           \
+    \      IDCG@K\n Read it aloud: Divide the observed discounted gain by the gain\
+    \ obtained by putting the same\n candidates in descending relevance order.\n The\
+    \ ideal order uses the same cutoff, gain function, and discount rule. A score\
+    \ of 1 indicates\n the ideal score has been reached, not that the generated answer\
+    \ is correct.\n Calculation convention: The reported detailed totals use the unrounded\
+    \ value of log2 (3). The\n supplied 1.585 approximation can change the last printed\
+    \ decimal."
+  paragraphs:
+  - nDCG
+  - M29b | Formula explained (2/2)
+  - 'Question: How close is the ordering to the best possible ordering of this candidate
+    set? DCG@K nDCG@K = . IDCG@K Read it aloud: Divide the observed discounted gain
+    by the gain obtained by putting the same candidates in descending relevance order.
+    The ideal order uses the same cutoff, gain function, and discount rule. A score
+    of 1 indicates the ideal score has been reached, not that the generated answer
+    is correct. Calculation convention: The reported detailed totals use the unrounded
+    value of log2 (3). The supplied 1.585 approximation can change the last printed
+    decimal.'
+  source:
+    pages:
+    - 463
+    verbatim: true
+- page: 464
+  title: nDCG
+  text: " nDCG\n\n   M29b | Symbols and terms (1/3)\n\n\n   Symbol or term       \
+    \                          Meaning in this example\n   i, K                  \
+    \                         Rank position, starting at 1, and evaluated ranking\
+    \ length, here 3.\n   reli                                           Relevance\
+    \ grade of the passage at rank i: 3 highly relevant, 1 partly\n              \
+    \                                    relevant, 0 irrelevant.\n   gaini       \
+    \                                   Numeric reward from relevance, explicitly\
+    \ 2reli − 1 in this exercise.\n   log2                                       \
+    \    Base-2 logarithm: the exponent to which 2 must be raised to obtain\n    \
+    \                                              its argument."
+  paragraphs:
+  - nDCG
+  - M29b | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example i, K Rank position, starting at 1, and
+    evaluated ranking length, here 3. reli Relevance grade of the passage at rank
+    i: 3 highly relevant, 1 partly relevant, 0 irrelevant. gaini Numeric reward from
+    relevance, explicitly 2reli − 1 in this exercise. log2 Base-2 logarithm: the exponent
+    to which 2 must be raised to obtain its argument.'
+  source:
+    pages:
+    - 464
+    verbatim: true
+- page: 465
+  title: nDCG
+  text: " nDCG\n\n   M29b | Symbols and terms (2/3)\n\n\n   Symbol or term       \
+    \                          Meaning in this example\n   log2 (i + 1)          \
+    \                         Rank discount divisor; adding 1 makes the rank-1 divisor\
+    \ equal to 1\n                                                  rather than 0.\n\
+    \   DCG                                            Discounted cumulative gain:\
+    \ sum of rank-discounted relevance gains."
+  paragraphs:
+  - nDCG
+  - M29b | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example log2 (i + 1) Rank discount divisor; adding
+    1 makes the rank-1 divisor equal to 1 rather than 0. DCG Discounted cumulative
+    gain: sum of rank-discounted relevance gains.'
+  source:
+    pages:
+    - 465
+    verbatim: true
+- page: 466
+  title: nDCG
+  text: " nDCG\n\n   M29b | Symbols and terms (3/3)\n\n\n   Symbol or term       \
+    \                          Meaning in this example\n   IDCG                  \
+    \                         Ideal DCG: the same calculation after sorting candidate\
+    \ passages\n                                                  from highest to\
+    \ lowest relevance.\n   nDCG                                           Normalized\
+    \ DCG: observed gain divided by ideal gain; lower-case n\n                   \
+    \                               means normalized.\n   Discount               \
+    \                        Reduced credit for evidence appearing later in the result\
+    \ list; not a\n                                                  financial present-value\
+    \ discount rate.\n   Gain convention                                This exercise\
+    \ uses exponential gains; software defaults must not be\n                    \
+    \                              assumed to use the identical transformation."
+  paragraphs:
+  - nDCG
+  - M29b | Symbols and terms (3/3)
+  - 'Symbol or term Meaning in this example IDCG Ideal DCG: the same calculation after
+    sorting candidate passages from highest to lowest relevance. nDCG Normalized DCG:
+    observed gain divided by ideal gain; lower-case n means normalized. Discount Reduced
+    credit for evidence appearing later in the result list; not a financial present-value
+    discount rate. Gain convention This exercise uses exponential gains; software
+    defaults must not be assumed to use the identical transformation.'
+  source:
+    pages:
+    - 466
+    verbatim: true
+- page: 467
+  title: nDCG
+  text: " nDCG\n\n   M29b | Class problem | 9 minutes — Put the Best Evidence First\n\
+    \n An analyst grades the top three retrieved passages by relevance:\n   Rank \
+    \                                                          1                 \
+    \            2           3\n   Relevance grade                               \
+    \                 1                             3           0\n Grade 3 is highly\
+    \ relevant, 1 is partly relevant, and 0 is irrelevant. These are the corpus’s\
+    \ three\n candidate passages.\n                                              \
+    \     3\n                                                  X    2reli − 1    \
+    \                   DCG@3\n                                       DCG@3 =    \
+    \                 ,   nDCG@3 =              .\n                              \
+    \                    i=1\n                                                   \
+    \   log2 (i + 1)                    IDCG@3\n IDCG is the score for ideal relevance\
+    \ order. Calculate the actual score, ideal score, and\n normalized result. Use\
+    \ log2 2 = 1, log2 3 ≈ 1.585, and log2 4 = 2."
+  paragraphs:
+  - nDCG
+  - M29b | Class problem | 9 minutes — Put the Best Evidence First
+  - 'An analyst grades the top three retrieved passages by relevance: Rank 1 2 3 Relevance
+    grade 1 3 0 Grade 3 is highly relevant, 1 is partly relevant, and 0 is irrelevant.
+    These are the corpus’s three candidate passages. 3 X 2reli − 1 DCG@3 DCG@3 = ,
+    nDCG@3 = . i=1 log2 (i + 1) IDCG@3 IDCG is the score for ideal relevance order.
+    Calculate the actual score, ideal score, and normalized result. Use log2 2 = 1,
+    log2 3 ≈ 1.585, and log2 4 = 2.'
+  source:
+    pages:
+    - 467
+    verbatim: true
+- page: 468
+  title: nDCG
+  text: " nDCG\n\n   M29b | Worked solution — Put the Best Evidence First\n\n1. Convert\
+    \ relevance to gain: 21 − 1 = 1, 23 − 1 = 7, 20 − 1 = 0.\n2. Actual order:\n \
+    \                                                 DCG = 1/1 + 7/1.585 + 0/2 ≈\
+    \ 5.4165.\n3. Ideal order: grades [3, 1, 0], gains [7, 1, 0].\n              \
+    \               IDCG = 7/1 + 1/1.585 + 0/2 ≈ 7.6309.\n4. Normalize:\n        \
+    \                                          nDCG@3 = 5.4165/7.6309 ≈ 0.7098."
+  paragraphs:
+  - nDCG
+  - M29b | Worked solution — Put the Best Evidence First
+  - '1. Convert relevance to gain: 21 − 1 = 1, 23 − 1 = 7, 20 − 1 = 0. 2. Actual order:
+    DCG = 1/1 + 7/1.585 + 0/2 ≈ 5.4165. 3. Ideal order: grades [3, 1, 0], gains [7,
+    1, 0]. IDCG = 7/1 + 1/1.585 + 0/2 ≈ 7.6309. 4. Normalize: nDCG@3 = 5.4165/7.6309
+    ≈ 0.7098.'
+  source:
+    pages:
+    - 468
+    verbatim: true
+- page: 469
+  title: nDCG
+  text: " nDCG\n\n   M29b | Interpretation\n\n What the answer means\n The retriever\
+    \ found the strongest passage but put it behind weaker evidence. Its discounted\n\
+    \ relevance score is about 71% of the ideal ordering’s score. Moving the grade-3\
+    \ passage first\n gives nDCG of 1 here. Neither score establishes that the generated\
+    \ answer uses the passage\n correctly.\n Why these steps matter\n The normalized\
+    \ result is a fraction of ideal discounted relevance, not the fraction of sources\n\
+    \ that are relevant. Ranking the strongest source second loses more credit under\
+    \ exponential gain\n than a simple relevant-versus-irrelevant count would reveal."
+  paragraphs:
+  - nDCG
+  - M29b | Interpretation
+  - What the answer means The retriever found the strongest passage but put it behind
+    weaker evidence. Its discounted relevance score is about 71% of the ideal ordering’s
+    score. Moving the grade-3 passage first gives nDCG of 1 here. Neither score establishes
+    that the generated answer uses the passage correctly. Why these steps matter The
+    normalized result is a fraction of ideal discounted relevance, not the fraction
+    of sources that are relevant. Ranking the strongest source second loses more credit
+    under exponential gain than a simple relevant-versus-irrelevant count would reveal.
+  source:
+    pages:
+    - 469
+    verbatim: true
+source:
+  pages:
+  - 453
+  - 454
+  - 455
+  - 456
+  - 457
+  - 458
+  - 459
+  - 460
+  - 461
+  - 462
+  - 463
+  - 464
+  - 465
+  - 466
+  - 467
+  - 468
+  - 469
+  verbatim: true

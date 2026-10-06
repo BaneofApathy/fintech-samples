@@ -1,0 +1,414 @@
+id: M39a
+title: The Average Can Pass While the Service Fails
+minutes: 9
+kind: measure
+parent: latency-throughput-review-load-cost
+question: "A fraud-scoring service handles 100 requests, with eventual response times:\n\
+  \   Requests                                            Latency each\n   95    \
+  \                                              40 ms\n   4                     \
+  \                              180 ms\n   1                                    \
+  \               1,000 ms\n\n Calculate mean latency, p95, and p99. Use the nearest-rank\
+  \ percentile: rank ⌈pN ⌉ in ascending\n order.\n The caller treats any response\
+  \ after 100 ms as a deadline failure, even if a result later arrives.\n Calculate\
+  \ this timeout/deadline-failure rate. The service objective requires 99% of requests\n\
+  \ within 100 ms. Does this sample meet it?"
+questionPages:
+- page: 572
+  title: Latency
+  text: " Latency\n\n   M39a | Class problem | 9 minutes — The Average Can Pass While\
+    \ the Service Fails\n\n A fraud-scoring service handles 100 requests, with eventual\
+    \ response times:\n   Requests                                            Latency\
+    \ each\n   95                                                  40 ms\n   4   \
+    \                                                180 ms\n   1                \
+    \                                   1,000 ms\n\n Calculate mean latency, p95,\
+    \ and p99. Use the nearest-rank percentile: rank ⌈pN ⌉ in ascending\n order.\n\
+    \ The caller treats any response after 100 ms as a deadline failure, even if a\
+    \ result later arrives.\n Calculate this timeout/deadline-failure rate. The service\
+    \ objective requires 99% of requests\n within 100 ms. Does this sample meet it?"
+  paragraphs:
+  - Latency
+  - M39a | Class problem | 9 minutes — The Average Can Pass While the Service Fails
+  - 'A fraud-scoring service handles 100 requests, with eventual response times: Requests
+    Latency each 95 40 ms 4 180 ms 1 1,000 ms'
+  - 'Calculate mean latency, p95, and p99. Use the nearest-rank percentile: rank ⌈pN
+    ⌉ in ascending order. The caller treats any response after 100 ms as a deadline
+    failure, even if a result later arrives. Calculate this timeout/deadline-failure
+    rate. The service objective requires 99% of requests within 100 ms. Does this
+    sample meet it?'
+  source:
+    pages:
+    - 572
+    verbatim: true
+formulaPages:
+- page: 568
+  title: Latency
+  text: " Latency\n\n   M39a | Formula explained (1/2)\n\n Question: What do a typical\
+    \ average and a high-percentile response time report?\n For grouped request times:\n\
+    \                                                                     P\n    \
+    \                                                                 g ng ℓ g\n \
+    \                                                             ℓ̄ =           \
+    \   .\n                                                   N\n For individual times\
+    \ sorted from fastest to slowest:\n                                          \
+    \        rankp = ⌈pN ⌉,     Latencyp = ℓ(rankp ) .\n Read it aloud: Multiply each\
+    \ response time by the number of requests with that time, add the\n totals, and\
+    \ divide by all requests. For a percentile, use the observation at the specified\n\
+    \ nearest-rank position.\n The supplied durations are eventual response times,\
+    \ including results that arrive after the\n caller’s deadline."
+  paragraphs:
+  - Latency
+  - M39a | Formula explained (1/2)
+  - 'Question: What do a typical average and a high-percentile response time report?
+    For grouped request times: P g ng ℓ g ℓ̄ = . N For individual times sorted from
+    fastest to slowest: rankp = ⌈pN ⌉, Latencyp = ℓ(rankp ) . Read it aloud: Multiply
+    each response time by the number of requests with that time, add the totals, and
+    divide by all requests. For a percentile, use the observation at the specified
+    nearest-rank position. The supplied durations are eventual response times, including
+    results that arrive after the caller’s deadline.'
+  source:
+    pages:
+    - 568
+    verbatim: true
+- page: 569
+  title: Latency
+  text: " Latency\n\n   M39a | Formula explained (2/2)\n\n Question: How many payment\
+    \ decisions miss the deadline?\n                                         Nlate\
+    \                      N − Nlate\n              Deadline f ailure rate =     \
+    \    ,    On-time rate =             .\n                                     \
+    \     N                             N\n Read it aloud: Count requests taking longer\
+    \ than the permitted time and divide by all\n requests. Compare the complementary\
+    \ on-time share with the service objective.\n Here a response at exactly 100 ms\
+    \ is within the deadline; a later response fails it. The target is\n 99% within\
+    \ 100 ms, not merely an average below 100 ms."
+  paragraphs:
+  - Latency
+  - M39a | Formula explained (2/2)
+  - 'Question: How many payment decisions miss the deadline? Nlate N − Nlate Deadline
+    f ailure rate = , On-time rate = . N N Read it aloud: Count requests taking longer
+    than the permitted time and divide by all requests. Compare the complementary
+    on-time share with the service objective. Here a response at exactly 100 ms is
+    within the deadline; a later response fails it. The target is 99% within 100 ms,
+    not merely an average below 100 ms.'
+  source:
+    pages:
+    - 569
+    verbatim: true
+symbolPages:
+- page: 570
+  title: Latency
+  text: " Latency\n\n   M39a | Symbols and terms (1/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   Latency            \
+    \                            Elapsed time between sending a request and receiving\
+    \ its response;\n                                                  not the number\
+    \ of requests processed per second.\n   ms                                   \
+    \          Milliseconds; 1,000 ms equals one second.\n   g, ng , ℓg          \
+    \                           Latency group, number of requests in that group, and\
+    \ their common\n                                                  response time.\n\
+    \   N                                              Total number of requests, 100.\n\
+    \   ℓ̄                                             Mean latency, weighted by request\
+    \ count rather than giving each\n                                            \
+    \      latency group equal weight.\n   p                                     \
+    \         Percentile fraction: 0.95 for p95 and 0.99 for p99."
+  paragraphs:
+  - Latency
+  - M39a | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example Latency Elapsed time between sending a
+    request and receiving its response; not the number of requests processed per second.
+    ms Milliseconds; 1,000 ms equals one second. g, ng , ℓg Latency group, number
+    of requests in that group, and their common response time. N Total number of requests,
+    100. ℓ̄ Mean latency, weighted by request count rather than giving each latency
+    group equal weight. p Percentile fraction: 0.95 for p95 and 0.99 for p99.'
+  source: &id001
+    pages:
+    - 570
+    verbatim: true
+- page: 571
+  title: Latency
+  text: " Latency\n\n   M39a | Symbols and terms (2/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   ⌈pN ⌉              \
+    \                            Nearest-rank position: round the product upward to\
+    \ an integer.\n   ℓ(j)                                           The jth smallest\
+    \ observed latency after sorting.\n   Nlate                                  \
+    \        Number of requests with eventual responses after the 100 ms\n       \
+    \                                           deadline.\n   Service objective  \
+    \                            Specified performance target; here at least 99% of\
+    \ requests must\n                                                  arrive within\
+    \ the deadline."
+  paragraphs:
+  - Latency
+  - M39a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example ⌈pN ⌉ Nearest-rank position: round the
+    product upward to an integer. ℓ(j) The jth smallest observed latency after sorting.
+    Nlate Number of requests with eventual responses after the 100 ms deadline. Service
+    objective Specified performance target; here at least 99% of requests must arrive
+    within the deadline.'
+  source: &id002
+    pages:
+    - 571
+    verbatim: true
+solutionPages:
+- page: 573
+  title: Latency
+  text: " Latency\n\n   M39a | Worked solution — The Average Can Pass While the Service\
+    \ Fails\n\n1. Total latency: 95(40) + 4(180) + 1(1,000) = 3,800 + 720 + 1,000\
+    \ = 5,520 ms.\n2. Mean: 5,520/100 = 55.2 ms.\n3. p95: rank ⌈0.95(100)⌉ = 95; latency\
+    \ = 40 ms.\n4. p99: rank 99 lies among the four 180 ms requests; p99 = 180 ms.\n\
+    5. Deadline failures: 4 + 1 = 5 requests; 5/100 = 5%. Only 95% finish within 100\
+    \ ms."
+  paragraphs:
+  - Latency
+  - M39a | Worked solution — The Average Can Pass While the Service Fails
+  - '1. Total latency: 95(40) + 4(180) + 1(1,000) = 3,800 + 720 + 1,000 = 5,520 ms.
+    2. Mean: 5,520/100 = 55.2 ms. 3. p95: rank ⌈0.95(100)⌉ = 95; latency = 40 ms.
+    4. p99: rank 99 lies among the four 180 ms requests; p99 = 180 ms. 5. Deadline
+    failures: 4 + 1 = 5 requests; 5/100 = 5%. Only 95% finish within 100 ms.'
+  source:
+    pages:
+    - 573
+    verbatim: true
+interpretationPages:
+- page: 574
+  title: Latency
+  text: " Latency\n\n   M39a | Interpretation\n\n What the answer means\n The mean\
+    \ and p95 look fast, but the 99%-within-100-ms objective is missed. Five payment\n\
+    \ decisions arrive too late for the caller. The percentile convention and treatment\
+    \ of late\n responses are stated explicitly so the result can be reproduced.\n\
+    \ Why these steps matter\n The 95 fast requests dominate the average and determine\
+    \ p95. The next four requests\n determine p99 and create deadline failures along\
+    \ with the slowest request. Averaging the three\n latency values without their\
+    \ request counts would give each group the wrong weight."
+  paragraphs:
+  - Latency
+  - M39a | Interpretation
+  - What the answer means The mean and p95 look fast, but the 99%-within-100-ms objective
+    is missed. Five payment decisions arrive too late for the caller. The percentile
+    convention and treatment of late responses are stated explicitly so the result
+    can be reproduced. Why these steps matter The 95 fast requests dominate the average
+    and determine p95. The next four requests determine p99 and create deadline failures
+    along with the slowest request. Averaging the three latency values without their
+    request counts would give each group the wrong weight.
+  source:
+    pages:
+    - 574
+    verbatim: true
+source:
+  pages:
+  - 568
+  - 569
+  - 570
+  - 571
+  - 572
+  - 573
+  - 574
+  verbatim: true
+readAloud:
+- Multiply each response time by the number of requests with that time, add the totals,
+  and divide by all requests. For a percentile, use the observation at the specified
+  nearest-rank position. The supplied durations are eventual response times, including
+  results that arrive after the caller’s deadline.
+- Count requests taking longer than the permitted time and divide by all requests.
+  Compare the complementary on-time share with the service objective. Here a response
+  at exactly 100 ms is within the deadline; a later response fails it. The target
+  is 99% within 100 ms, not merely an average below 100 ms.
+siteAuthored: false
+givens:
+  counts:
+  - 95
+  - 4
+  - 1
+  times:
+  - 40
+  - 180
+  - 1000
+  deadline: 100
+labels: &id003
+  counts: Requests in each latency group
+  times: Response times for those groups (ms)
+  deadline: Caller deadline (ms)
+deckSolution:
+  total: 5520
+  mean: 55.2
+  p95: 40
+  p99: 180
+  late: 0.05
+  onTime: 0.95
+latex:
+- \bar\ell=\frac{\sum_g n_g\ell_g}{N},\quad \ell_p=\ell_{(\lceil pN\rceil)}
+- \operatorname{Deadline\ failure\ rate}=\frac{N_{late}}N,\quad\operatorname{On-time\
+  rate}=\frac{N-N_{late}}N
+symbols:
+- symbol: Latency
+  meaning: Elapsed time between sending a request and receiving its response; not
+    the number of requests processed per second.
+  source: *id001
+- symbol: ms
+  meaning: Milliseconds; 1,000 ms equals one second.
+  source: *id001
+- symbol: g, ng , ℓg
+  meaning: Latency group, number of requests in that group, and their common response
+    time.
+  source: *id001
+- symbol: N
+  meaning: Total number of requests, 100.
+  source: *id001
+- symbol: ℓ̄
+  meaning: Mean latency, weighted by request count rather than giving each latency
+    group equal weight.
+  source: *id001
+- symbol: p
+  meaning: 'Percentile fraction: 0.95 for p95 and 0.99 for p99.'
+  source: *id001
+- symbol: ⌈pN ⌉
+  meaning: 'Nearest-rank position: round the product upward to an integer.'
+  source: *id002
+- symbol: ℓ(j)
+  meaning: The jth smallest observed latency after sorting.
+  source: *id002
+- symbol: Nlate
+  meaning: Number of requests with eventual responses after the 100 ms deadline.
+  source: *id002
+- symbol: Service objective
+  meaning: Specified performance target; here at least 99% of requests must arrive
+    within the deadline.
+  source: *id002
+steps:
+- id: total
+  title: Sum of request response times
+  expects: number
+  unit: ms
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Multiply each group’s count by its duration, then add.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each group’s count by its duration, then add.
+- id: mean
+  title: Mean request latency
+  expects: number
+  unit: ms
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide total response-time sum by total requests.
+  mistakes:
+  - pattern: recompute
+    message: Divide total response-time sum by total requests.
+- id: p95
+  title: 95th-percentile latency
+  expects: number
+  unit: ms
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Select rank ceiling(0.95 × request count) in the expanded sorted request list.
+  mistakes:
+  - pattern: recompute
+    message: Select rank ceiling(0.95 × request count) in the expanded sorted request
+      list.
+- id: p99
+  title: 99th-percentile latency
+  expects: number
+  unit: ms
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Select rank ceiling(0.99 × request count) in the expanded sorted request list.
+  mistakes:
+  - pattern: recompute
+    message: Select rank ceiling(0.99 × request count) in the expanded sorted request
+      list.
+- id: late
+  title: Deadline-failure rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Count requests with duration strictly above the deadline and divide by all requests.
+  mistakes:
+  - pattern: recompute
+    message: Count requests with duration strictly above the deadline and divide by
+      all requests.
+- id: onTime
+  title: On-time rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract the deadline-failure rate from 1.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the deadline-failure rate from 1.
+learning:
+  title: The Average Can Pass While the Service Fails
+  scenario: Requests are grouped by eventual response time. A response after the caller’s
+    deadline is a failure even if it eventually arrives; a response at the deadline
+    is on time.
+  task: Calculate total response-time sum, mean, nearest-rank p95 and p99, late fraction
+    and on-time fraction. The service objective is 99% on time.
+  interpretation: Weight each duration by its request count. The mean and one percentile
+    can look good while the deadline objective fails. Use the stated percentile and
+    timeout conventions when comparing services.
+  summary: 'Mean latency: {mean}; p95: {p95}; p99: {p99}. On-time share: {onTime}.'
+  labels: *id003
+  steps:
+    total:
+      title: Sum of request response times
+      hints: *id004
+      unit: ms
+    mean:
+      title: Mean request latency
+      hints: *id005
+      unit: ms
+    p95:
+      title: 95th-percentile latency
+      hints: *id006
+      unit: ms
+    p99:
+      title: 99th-percentile latency
+      hints: *id007
+      unit: ms
+    late:
+      title: Deadline-failure rate
+      hints: *id008
+      unit: proportion
+    onTime:
+      title: On-time rate
+      hints: *id009
+      unit: proportion
+  readAloud:
+  - Multiply each response time by the number of requests with that time, add the
+    totals, and divide by all requests. For a percentile, use the observation at the
+    specified nearest-rank position. The supplied durations are eventual response
+    times, including results that arrive after the caller’s deadline.
+  - Count requests taking longer than the permitted time and divide by all requests.
+    Compare the complementary on-time share with the service objective. Here a response
+    at exactly 100 ms is within the deadline; a later response fails it. The target
+    is 99% within 100 ms, not merely an average below 100 ms.
+  workedExplanation:
+  - 'The mean and p95 look fast, but the 99%-within-100-ms objective is missed. Five
+    payment decisions arrive too late for the caller. The percentile convention and
+    treatment of late responses are stated explicitly so the result can be reproduced. '
+  - The 95 fast requests dominate the average and determine p95. The next four requests
+    determine p99 and create deadline failures along with the slowest request. Averaging
+    the three latency values without their request counts would give each group the
+    wrong weight.
+  workedArithmetic:
+  - Response-time sum = 95 × 40 + 4 × 180 + 1 × 1,000 = 5,520 ms. Mean = 5,520/100
+    = 55.2 ms.
+  - p95 is request rank 95, at 40 ms. p99 is rank 99, among the 180 ms requests.
+  - Late requests = 4 + 1 = 5. Deadline-failure rate = 5/100 = 5%; on-time rate =
+    95%, below the 99% objective.
+formulaSource:
+  pages:
+  - 568
+  - 569
+  verbatim: false
+  reviewed: true

@@ -1,0 +1,405 @@
+id: A11
+title: Update an Execution Decision
+minutes: 7
+kind: algorithm
+parent: reinforcement-learning
+question: "A trading simulator records negative costs as rewards: less negative is\
+  \ better.\n For the action “buy now,” Q(s, a) = −5. The action produces immediate\
+  \ reward r = −2. At\n the next state, the available action values are −4 and −1.\n\
+  \ Use learning rate α = 0.5 and discount factor γ = 0.9:\n                     \
+  \                      h                       i\n                         Qnew\
+  \ = Qold + α r + γ max Q(s′ , a) − Qold .\n                                    \
+  \                     a\n\n The alternative action “wait” currently has value −4.2.\n\
+  1. Calculate the update target, update error, and new “buy now” value.\n2. Which\
+  \ action does a greedy policy now select?\n3. What would the update target be if\
+  \ the transition ended the episode?"
+questionPages:
+- page: 162
+  title: Q-Learning
+  text: " Q-Learning\n\n   A11 | Class problem | 7 minutes — Update an Execution Decision\n\
+    \n A trading simulator records negative costs as rewards: less negative is better.\n\
+    \ For the action “buy now,” Q(s, a) = −5. The action produces immediate reward\
+    \ r = −2. At\n the next state, the available action values are −4 and −1.\n Use\
+    \ learning rate α = 0.5 and discount factor γ = 0.9:\n                       \
+    \                    h                       i\n                         Qnew\
+    \ = Qold + α r + γ max Q(s′ , a) − Qold .\n                                  \
+    \                       a\n\n The alternative action “wait” currently has value\
+    \ −4.2.\n1. Calculate the update target, update error, and new “buy now” value.\n\
+    2. Which action does a greedy policy now select?\n3. What would the update target\
+    \ be if the transition ended the episode?"
+  paragraphs:
+  - Q-Learning
+  - A11 | Class problem | 7 minutes — Update an Execution Decision
+  - 'A trading simulator records negative costs as rewards: less negative is better.
+    For the action “buy now,” Q(s, a) = −5. The action produces immediate reward r
+    = −2. At the next state, the available action values are −4 and −1. Use learning
+    rate α = 0.5 and discount factor γ = 0.9: h i Qnew = Qold + α r + γ max Q(s′ ,
+    a) − Qold . a'
+  - The alternative action “wait” currently has value −4.2. 1. Calculate the update
+    target, update error, and new “buy now” value. 2. Which action does a greedy policy
+    now select? 3. What would the update target be if the transition ended the episode?
+  source:
+    pages:
+    - 162
+    verbatim: true
+formulaPages:
+- page: 159
+  title: Q-Learning
+  text: " Q-Learning\n\n   A11 | Formula explained (1/1)\n\n Question: How should\
+    \ one observation update the estimated value of “buy now”?\n                 \
+    \                           T = r + γ max Q(s′ , a),   δ = T − Qold ,\n      \
+    \                                                  a\n                       \
+    \                                Qnew = Qold + αδ.\n Read it aloud: Target = immediate\
+    \ reward + discounted best next-state value. Update error\n = target minus old\
+    \ estimate. Move the old estimate a fraction of the way toward the target.\n These\
+    \ three steps are the original Q-learning update written separately. If the transition\
+    \ ends\n the episode, the future-value term is zero.\n The greedy choice selects\
+    \ the largest current action value. With negative costs as rewards, less\n negative\
+    \ is better."
+  paragraphs:
+  - Q-Learning
+  - A11 | Formula explained (1/1)
+  - 'Question: How should one observation update the estimated value of “buy now”?
+    T = r + γ max Q(s′ , a), δ = T − Qold , a Qnew = Qold + αδ. Read it aloud: Target
+    = immediate reward + discounted best next-state value. Update error = target minus
+    old estimate. Move the old estimate a fraction of the way toward the target. These
+    three steps are the original Q-learning update written separately. If the transition
+    ends the episode, the future-value term is zero. The greedy choice selects the
+    largest current action value. With negative costs as rewards, less negative is
+    better.'
+  source:
+    pages:
+    - 159
+    verbatim: true
+symbolPages:
+- page: 160
+  title: Q-Learning
+  text: " Q-Learning\n\n   A11 | Symbols and terms (1/2)\n\n\n   Symbol or term  \
+    \                         Meaning in this example\n   s, s′                  \
+    \                  Current state and next state; the prime marks the state after\
+    \ the\n                                            action, not a derivative.\n\
+    \   a                                        An available action, such as buying\
+    \ now or waiting.\n   Q(s, a)                                  Estimated discounted\
+    \ cumulative reward from taking action a in\n                                \
+    \            state s and continuing thereafter.\n   Qold , Qnew              \
+    \                Stored value before and after this learning update.\n   r   \
+    \                                     Immediate reward from the observed action;\
+    \ here negative cost in\n                                            simulator\
+    \ reward units.\n   γ (gamma)                                Discount factor,\
+    \ 0.9: weight placed on reward one step further into\n                       \
+    \                     the future."
+  paragraphs:
+  - Q-Learning
+  - A11 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example s, s′ Current state and next state; the
+    prime marks the state after the action, not a derivative. a An available action,
+    such as buying now or waiting. Q(s, a) Estimated discounted cumulative reward
+    from taking action a in state s and continuing thereafter. Qold , Qnew Stored
+    value before and after this learning update. r Immediate reward from the observed
+    action; here negative cost in simulator reward units. γ (gamma) Discount factor,
+    0.9: weight placed on reward one step further into the future.'
+  source: &id001
+    pages:
+    - 160
+    verbatim: true
+- page: 161
+  title: Q-Learning
+  text: " Q-Learning\n\n   A11 | Symbols and terms (2/2)\n\n\n   Symbol or term  \
+    \                         Meaning in this example\n   maxa Q(s′ , a)         \
+    \                  Largest estimated value among valid actions in the next state.\n\
+    \   T                                        Update target; a newly introduced\
+    \ label for immediate plus\n                                            discounted\
+    \ future reward.\n   δ (delta)                                Temporal-difference\
+    \ error: target minus the old action value.\n   α (alpha)                    \
+    \            Learning rate, 0.5: how much of the error is applied to the old\n\
+    \                                            estimate.\n   Greedy policy     \
+    \                       Chooses the action with highest current estimated value;\
+    \ it does not\n                                            deliberately explore\
+    \ alternatives.\n   Episode; terminal                        One complete simulated\
+    \ execution task; terminal means that task\n                                 \
+    \           has ended and no future reward remains."
+  paragraphs:
+  - Q-Learning
+  - A11 | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example maxa Q(s′ , a) Largest estimated value
+    among valid actions in the next state. T Update target; a newly introduced label
+    for immediate plus discounted future reward. δ (delta) Temporal-difference error:
+    target minus the old action value. α (alpha) Learning rate, 0.5: how much of the
+    error is applied to the old estimate. Greedy policy Chooses the action with highest
+    current estimated value; it does not deliberately explore alternatives. Episode;
+    terminal One complete simulated execution task; terminal means that task has ended
+    and no future reward remains.'
+  source: &id002
+    pages:
+    - 161
+    verbatim: true
+solutionPages:
+- page: 163
+  title: Q-Learning
+  text: " Q-Learning\n\n   A11 | Worked solution — Update an Execution Decision\n\n\
+    1. Choose the best next-state value: max(−4, −1) = −1.\n2. Calculate the target:\
+    \ −2 + 0.9(−1) = −2.9.\n3. Calculate the update error: −2.9 − (−5) = 2.1.\n4.\
+    \ Apply the learning rate:\n                                            Qnew =\
+    \ −5 + 0.5(2.1) = −3.95.\n5. Compare current actions: Buy now has −3.95 versus\
+    \ waiting at −4.2. A greedy policy\n   chooses buy now because −3.95 is higher.\n\
+    6. Terminal case: No future reward remains, so the target is the immediate reward\
+    \ −2."
+  paragraphs:
+  - Q-Learning
+  - A11 | Worked solution — Update an Execution Decision
+  - '1. Choose the best next-state value: max(−4, −1) = −1. 2. Calculate the target:
+    −2 + 0.9(−1) = −2.9. 3. Calculate the update error: −2.9 − (−5) = 2.1. 4. Apply
+    the learning rate: Qnew = −5 + 0.5(2.1) = −3.95. 5. Compare current actions: Buy
+    now has −3.95 versus waiting at −4.2. A greedy policy chooses buy now because
+    −3.95 is higher. 6. Terminal case: No future reward remains, so the target is
+    the immediate reward −2.'
+  source:
+    pages:
+    - 163
+    verbatim: true
+interpretationPages:
+- page: 164
+  title: Q-Learning
+  text: " Q-Learning\n\n   A11 | Interpretation\n\n What the answer means\n The observation\
+    \ made “buy now” look less costly than previously estimated. The Q-value\n estimates\
+    \ discounted future reward in the simulator; it is not a guaranteed trading outcome\
+    \ or a\n probability.\n Why these steps matter\n Subtracting an old negative value\
+    \ means adding its magnitude when calculating the update\n error. A positive update\
+    \ error raises the Q-value, meaning this observation makes the action\n look better.\
+    \ Neither the target nor the updated value is a probability."
+  paragraphs:
+  - Q-Learning
+  - A11 | Interpretation
+  - What the answer means The observation made “buy now” look less costly than previously
+    estimated. The Q-value estimates discounted future reward in the simulator; it
+    is not a guaranteed trading outcome or a probability. Why these steps matter Subtracting
+    an old negative value means adding its magnitude when calculating the update error.
+    A positive update error raises the Q-value, meaning this observation makes the
+    action look better. Neither the target nor the updated value is a probability.
+  source:
+    pages:
+    - 164
+    verbatim: true
+source:
+  pages:
+  - 159
+  - 160
+  - 161
+  - 162
+  - 163
+  - 164
+  verbatim: true
+readAloud:
+- Target = immediate reward + discounted best next-state value. Update error = target
+  minus old estimate. Move the old estimate a fraction of the way toward the target.
+  These three steps are the original Q-learning update written separately. If the
+  transition ends the episode, the future-value term is zero. The greedy choice selects
+  the largest current action value. With negative costs as rewards, less negative
+  is better.
+siteAuthored: false
+givens:
+  old: -5
+  reward: -2
+  next:
+  - -4
+  - -1
+  alpha: 0.5
+  gamma: 0.9
+  wait: -4.2
+labels: &id003
+  old: Old buy-now Q-value
+  reward: Immediate reward
+  next: Next-state action values
+  alpha: Learning rate
+  gamma: Discount factor
+  wait: Current wait Q-value
+deckSolution:
+  best: -1
+  target: -2.9
+  error: 2.1
+  updated: -3.95
+  decision: true
+  terminal: -2
+latex:
+- Q_{new}=Q_{old}+\alpha\left[r+\gamma\max_a Q(s^{\prime},a)-Q_{old}\right]
+- T=r+\gamma\max_a Q(s^{\prime},a),\quad\delta=T-Q_{old}
+symbols:
+- symbol: s, s′
+  meaning: Current state and next state; the prime marks the state after the action,
+    not a derivative.
+  source: *id001
+- symbol: a
+  meaning: An available action, such as buying now or waiting.
+  source: *id001
+- symbol: Q(s, a)
+  meaning: Estimated discounted cumulative reward from taking action a in state s
+    and continuing thereafter.
+  source: *id001
+- symbol: Qold , Qnew
+  meaning: Stored value before and after this learning update.
+  source: *id001
+- symbol: r
+  meaning: Immediate reward from the observed action; here negative cost in simulator
+    reward units.
+  source: *id001
+- symbol: γ (gamma)
+  meaning: 'Discount factor, 0.9: weight placed on reward one step further into the
+    future.'
+  source: *id001
+- symbol: maxa Q(s′ , a)
+  meaning: Largest estimated value among valid actions in the next state.
+  source: *id002
+- symbol: T
+  meaning: Update target; a newly introduced label for immediate plus discounted future
+    reward.
+  source: *id002
+- symbol: δ (delta)
+  meaning: 'Temporal-difference error: target minus the old action value.'
+  source: *id002
+- symbol: α (alpha)
+  meaning: 'Learning rate, 0.5: how much of the error is applied to the old estimate.'
+  source: *id002
+- symbol: Greedy policy
+  meaning: Chooses the action with highest current estimated value; it does not deliberately
+    explore alternatives.
+  source: *id002
+- symbol: Episode; terminal
+  meaning: One complete simulated execution task; terminal means that task has ended
+    and no future reward remains.
+  source: *id002
+steps:
+- id: best
+  title: Best next-state action value
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Choose the largest next-state value; less negative is larger.
+  mistakes:
+  - pattern: recompute
+    message: Choose the largest next-state value; less negative is larger.
+- id: target
+  title: Q-learning update target
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Add immediate reward to discount factor × best next-state value.
+  mistakes:
+  - pattern: recompute
+    message: Add immediate reward to discount factor × best next-state value.
+- id: error
+  title: Target minus old Q-value
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Subtract the old Q-value from the target. Subtracting a negative adds its magnitude.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the old Q-value from the target. Subtracting a negative adds
+      its magnitude.
+- id: updated
+  title: Updated buy-now Q-value
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Add learning rate × update error to the old Q-value.
+  mistakes:
+  - pattern: recompute
+    message: Add learning rate × update error to the old Q-value.
+- id: decision
+  title: Does the greedy policy choose buy now?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Choose buy now when its updated Q-value is at least the wait value.
+  mistakes:
+  - pattern: recompute
+    message: Choose buy now when its updated Q-value is at least the wait value.
+- id: terminal
+  title: Target if the episode ends
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - With no next state to act in, the target is the immediate reward.
+  mistakes:
+  - pattern: recompute
+    message: With no next state to act in, the target is the immediate reward.
+learning:
+  title: Update an Execution Decision
+  scenario: An execution simulator treats costs as negative rewards. You are updating
+    the Q-value of “buy now”; the competing “wait” value is supplied.
+  task: Find the best next-state action value, form the discounted target, and move
+    the old Q-value toward it using the learning rate. Compare the updated value with
+    waiting. Also find the target for a terminal transition.
+  interpretation: Larger Q-values are preferred, including when both are negative.
+    A terminal transition has no future-value term. These are estimated simulator
+    rewards, not guaranteed trading outcomes.
+  summary: 'Updated buy-now value: {updated}. Greedy policy chooses buy now: {decision}.
+    Terminal target: {terminal}.'
+  labels: *id003
+  steps:
+    best:
+      title: Best next-state action value
+      hints: *id004
+      unit: ''
+    target:
+      title: Q-learning update target
+      hints: *id005
+      unit: ''
+    error:
+      title: Target minus old Q-value
+      hints: *id006
+      unit: ''
+    updated:
+      title: Updated buy-now Q-value
+      hints: *id007
+      unit: ''
+    decision:
+      title: Does the greedy policy choose buy now?
+      hints: *id008
+      unit: ''
+    terminal:
+      title: Target if the episode ends
+      hints: *id009
+      unit: ''
+  readAloud:
+  - Target = immediate reward + discounted best next-state value. Update error = target
+    minus old estimate. Move the old estimate a fraction of the way toward the target.
+    These three steps are the Q-learning update written separately. If the transition
+    ends the episode, the future-value term is zero. The greedy choice selects the
+    largest current action value. With negative costs as rewards, less negative is
+    better.
+  workedExplanation:
+  - 'The observation made “buy now” look less costly than previously estimated. The
+    Q-value estimates discounted future reward in the simulator; it is not a guaranteed
+    trading outcome or a probability. '
+  - Subtracting an old negative value means adding its magnitude when calculating
+    the update error. A positive update error raises the Q-value, meaning this observation
+    makes the action look better. Neither the target nor the updated value is a probability.
+  workedArithmetic:
+  - Best next-state value = max(−4, −1) = −1. Target = −2 + 0.9 × (−1) = −2.9.
+  - Update error = −2.9 − (−5) = 2.1. New Q = −5 + 0.5 × 2.1 = −3.95.
+  - −3.95 > −4.2, so the greedy policy chooses buy now. If this transition were terminal,
+    its target would be the immediate reward −2.
+formulaSource:
+  pages:
+  - 159
+  verbatim: false
+  reviewed: true

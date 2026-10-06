@@ -1,0 +1,214 @@
+slug: f1-and-f-beta
+number: 7
+title: F1 and F-beta
+question: rare
+financialInterpretation: F1 is useful when both alert quality and risk capture matter.
+  F-beta lets the business state which matters more.
+workingExample: 'With precision P = 0.30 and recall R = 0.60: PR PR F1 = 2 = 0.40,
+  F2 = (1 + 22 ) 2 = 0.50 P +R 2 P +R F2 is higher because it gives more weight to
+  recall when missed fraud is especially expensive.'
+whatItMisses: F-scores do not use dollar costs, calibration, or review capacity. A
+  higher F1 is not an automatic deployment decision.
+exercises:
+- M07
+widget: confusion-builder
+usedBy:
+- logistic-regression
+slides:
+- page: 247
+  title: EVALUATION MEASURE 7 OF 39
+  text: "    EVALUATION MEASURE 7 OF 39\n\n\n\n\n                     F1 and F-beta\n\
+    \       Combines precision and recall into one score, with F-beta\n          \
+    \     letting you emphasize the costlier side."
+  paragraphs:
+  - EVALUATION MEASURE 7 OF 39
+  - F1 and F-beta Combines precision and recall into one score, with F-beta letting
+    you emphasize the costlier side.
+  source:
+    pages:
+    - 247
+    verbatim: true
+- page: 248
+  title: F1 and F-beta – one score that balances precision and recall
+  text: " F1 and F-beta – one score that balances precision and recall\n\n\n\n Financial\
+    \ interpretation\n F1 is useful when both alert quality and risk capture matter.\
+    \ F-beta lets the business state which matters more.\n\n\n Working example\n With\
+    \ precision P = 0.30 and recall R = 0.60:\n                                  \
+    \                          PR                             PR\n               \
+    \                                   F1 = 2        = 0.40,   F2 = (1 + 22 ) 2 \
+    \    = 0.50\n                                                           P +R \
+    \                        2 P +R\n F2 is higher because it gives more weight to\
+    \ recall when missed fraud is especially expensive.\n\n\n What it misses\n F-scores\
+    \ do not use dollar costs, calibration, or review capacity. A higher F1 is not\
+    \ an automatic deployment decision."
+  paragraphs:
+  - F1 and F-beta – one score that balances precision and recall
+  - Financial interpretation F1 is useful when both alert quality and risk capture
+    matter. F-beta lets the business state which matters more.
+  - 'Working example With precision P = 0.30 and recall R = 0.60: PR PR F1 = 2 = 0.40,
+    F2 = (1 + 22 ) 2 = 0.50 P +R 2 P +R F2 is higher because it gives more weight
+    to recall when missed fraud is especially expensive.'
+  - What it misses F-scores do not use dollar costs, calibration, or review capacity.
+    A higher F1 is not an automatic deployment decision.
+  source:
+    pages:
+    - 248
+    verbatim: true
+- page: 249
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Formula explained (1/1)\n\n Question: How can\
+    \ precision and recall be summarized in one score?\n                         \
+    \                                 2P R            (1 + β 2 )P R\n            \
+    \                                      F1 =         ,   Fβ =                 .\n\
+    \                                                         P +R              β2P\
+    \ + R\n Read it aloud: F1 is twice the product divided by the sum: the harmonic\
+    \ mean of precision and\n recall. F-beta changes the weighting of that combination.\n\
+    \ For F2, set beta to 2 and beta-squared to 4. This places more emphasis on recall\
+    \ than F1 does.\n It does not encode a particular dollar-cost ratio.\n Compare\
+    \ with the arithmetic mean, (P + R)/2, which is an ordinary equal-weight average."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Formula explained (1/1)
+  - 'Question: How can precision and recall be summarized in one score? 2P R (1 +
+    β 2 )P R F1 = , Fβ = . P +R β2P + R Read it aloud: F1 is twice the product divided
+    by the sum: the harmonic mean of precision and recall. F-beta changes the weighting
+    of that combination. For F2, set beta to 2 and beta-squared to 4. This places
+    more emphasis on recall than F1 does. It does not encode a particular dollar-cost
+    ratio. Compare with the arithmetic mean, (P + R)/2, which is an ordinary equal-weight
+    average.'
+  source:
+    pages:
+    - 249
+    verbatim: true
+- page: 250
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   P              \
+    \                                Precision: the fraction of alerts that are genuine\
+    \ fraud; use 0.30\n                                                  here.\n \
+    \  R                                              Recall: the fraction of actual\
+    \ frauds caught; use 0.75 here.\n   PR                                       \
+    \      Product P × R, not a separate variable and not the PR curve.\n   F1   \
+    \                                          Harmonic-mean score using equal precision–recall\
+    \ weighting.\n   β (beta)                                       Positive weighting\
+    \ parameter; above 1 emphasizes recall, below 1\n                            \
+    \                      emphasizes precision.\n   β2                          \
+    \                   Beta multiplied by itself; for beta 2 this is 4, not 2."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example P Precision: the fraction of alerts that
+    are genuine fraud; use 0.30 here. R Recall: the fraction of actual frauds caught;
+    use 0.75 here. PR Product P × R, not a separate variable and not the PR curve.
+    F1 Harmonic-mean score using equal precision–recall weighting. β (beta) Positive
+    weighting parameter; above 1 emphasizes recall, below 1 emphasizes precision.
+    β2 Beta multiplied by itself; for beta 2 this is 4, not 2.'
+  source:
+    pages:
+    - 250
+    verbatim: true
+- page: 251
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   F2             \
+    \                                F-beta evaluated with beta 2; the model has not\
+    \ changed, only the\n                                                  summary\
+    \ weighting.\n   Harmonic mean                                  For two positive\
+    \ values, twice their product divided by their sum; it is\n                  \
+    \                                pulled toward the smaller value.\n   Arithmetic\
+    \ mean                                Add values and divide by how many there\
+    \ are; here add precision and\n                                              \
+    \    recall, then divide by 2."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example F2 F-beta evaluated with beta 2; the model
+    has not changed, only the summary weighting. Harmonic mean For two positive values,
+    twice their product divided by their sum; it is pulled toward the smaller value.
+    Arithmetic mean Add values and divide by how many there are; here add precision
+    and recall, then divide by 2.
+  source:
+    pages:
+    - 251
+    verbatim: true
+- page: 252
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Class problem | 6 minutes — Balance Capture and\
+    \ Queue Quality\n\n A detector has 30% precision and 75% recall.\n Use:\n    \
+    \                                                      2P R            (1 + β\
+    \ 2 )P R\n                                                  F1 =         ,   Fβ\
+    \ =                 .\n                                                      \
+    \   P +R              β2P + R\n1. Calculate F1 .\n2. Calculate F2 , which gives\
+    \ greater weight to recall.\n3. Calculate the ordinary arithmetic average of precision\
+    \ and recall. Why is that different from\n   F1 ?\n4. Does a higher F2 establish\
+    \ that the model makes more money?"
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Class problem | 6 minutes — Balance Capture and Queue Quality
+  - 'A detector has 30% precision and 75% recall. Use: 2P R (1 + β 2 )P R F1 = , Fβ
+    = . P +R β2P + R 1. Calculate F1 . 2. Calculate F2 , which gives greater weight
+    to recall. 3. Calculate the ordinary arithmetic average of precision and recall.
+    Why is that different from F1 ? 4. Does a higher F2 establish that the model makes
+    more money?'
+  source:
+    pages:
+    - 252
+    verbatim: true
+- page: 253
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Worked solution — Balance Capture and Queue Quality\n\
+    \n1. Use proportions: P = 0.30, R = 0.75, and P R = 0.225.\n2. F1:\n         \
+    \                                                  2(0.225)     0.45\n       \
+    \                                            F1 =               =      = 0.4286.\n\
+    \                                                          0.30 + 0.75   1.05\n\
+    3. F2:\n                                                            5(0.225) \
+    \     1.125\n                                                  F2 =          \
+    \        =       = 0.5769.\n                                                 \
+    \        4(0.30) + 0.75   1.95\n4. Arithmetic average: (0.30 + 0.75)/2 = 0.525.\
+    \ F1 uses the harmonic mean, which is pulled\n   more strongly toward the smaller\
+    \ component."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Worked solution — Balance Capture and Queue Quality
+  - '1. Use proportions: P = 0.30, R = 0.75, and P R = 0.225. 2. F1: 2(0.225) 0.45
+    F1 = = = 0.4286. 0.30 + 0.75 1.05 3. F2: 5(0.225) 1.125 F2 = = = 0.5769. 4(0.30)
+    + 0.75 1.95 4. Arithmetic average: (0.30 + 0.75)/2 = 0.525. F1 uses the harmonic
+    mean, which is pulled more strongly toward the smaller component.'
+  source:
+    pages:
+    - 253
+    verbatim: true
+- page: 254
+  title: F1 and F-beta
+  text: " F1 and F-beta\n\n   M07 | Interpretation\n\n What the answer means\n F1\
+    \ = 0.429 summarizes the tradeoff; F2 = 0.577 places more emphasis on the stronger\
+    \ recall.\n These are differently weighted scores, not two competing models. Neither\
+    \ score contains dollar\n loss, investigator capacity, or probability calibration.\n\
+    \ Why these steps matter\n F1 and F2 are two summaries of the same operating point.\
+    \ A larger F2 does not mean the\n detector has improved. It means the selected\
+    \ weighting gives more credit to the detector’s\n relatively high recall."
+  paragraphs:
+  - F1 and F-beta
+  - M07 | Interpretation
+  - What the answer means F1 = 0.429 summarizes the tradeoff; F2 = 0.577 places more
+    emphasis on the stronger recall. These are differently weighted scores, not two
+    competing models. Neither score contains dollar loss, investigator capacity, or
+    probability calibration. Why these steps matter F1 and F2 are two summaries of
+    the same operating point. A larger F2 does not mean the detector has improved.
+    It means the selected weighting gives more credit to the detector’s relatively
+    high recall.
+  source:
+    pages:
+    - 254
+    verbatim: true
+source:
+  pages:
+  - 247
+  - 248
+  - 249
+  - 250
+  - 251
+  - 252
+  - 253
+  - 254
+  verbatim: true

@@ -1,0 +1,88 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import Defense from '../../components/exercise/Defense.svelte';
+import Recommendation from '../../components/exercise/Recommendation.svelte';
+import { algorithms, href } from '../../data';
+import { measures } from '../../data';
+import { financialCases, financialCaseHref } from '../../data/financial-cases';
+import SynthesisVisual from '../../components/visuals/SynthesisVisual.svelte';
+const items = [
+  'Describe the financial decision, who makes it, and the consequences of an error. For example: a lender decides which applications need review, and a missed high-risk loan can create a credit loss.',
+  'List the inputs, target, unit of analysis, when each input becomes available, and fields excluded to prevent leakage. For a loan, one row might be one application; income at application is an input, while a later repayment outcome is the target.',
+  'Compare a rule or simpler method on the same evaluation split. A useful comparison might be a historical default rate, a fixed review rule, or an equal-weight portfolio.',
+  'Provide a runnable notebook with the dataset, random seed, dependencies, and instructions needed to reproduce the results.',
+  'Report measures tied to the cost of error, capacity, or risk. A queue limited to 100 reviews needs a top-100 yield measure, not accuracy across every transaction.',
+  'Explain a failure case and the people, products, periods, or scenarios it affects. Name what went wrong and why the result could change a decision.',
+  'Specify a control such as a threshold, abstention, human review, allocation constraint, or fallback. Explain what happens when the control is triggered.',
+  'Recommend deployment, a pilot, revision, or rejection, and state the situations in which that recommendation applies. A result on a small synthetic sample is evidence for that experiment, not proof of production value.',
+];
+const questions = [
+  'What financial decision does the system support?',
+  'What was known at decision time?',
+  'Why is this algorithm more appropriate than the baseline?',
+  'Which metric matches the cost of error?',
+  'Where does the model fail by customer, product, time, or scenario?',
+  'What control prevents a wrong result from becoming a harmful action?',
+  'What will be monitored after deployment?',
+  'Under what condition will the model be paused, rolled back, or replaced?',
+].map((text) => ({ text }));
+---
+
+<Shell title="Synthesis & capstone">
+  <p class="page-subtitle">
+    Use your results to recommend a course of action, explain its limits, and specify how it will be
+    monitored.
+  </p>
+  <SynthesisVisual
+    initialCase={financialCases[0]}
+    methods={algorithms.map((a) => ({
+      slug: a.slug,
+      title: a.title,
+      question: a.oneLine,
+      baseline: a.baseline,
+      measures: measures
+        .filter((m) => a.measures.includes(m.slug))
+        .map((m) => ({ slug: m.slug, title: m.title })),
+    }))}
+    cases={financialCases.map((c) => ({
+      title: c.title,
+      href: financialCaseHref(c, '/'),
+      algorithmSlug: c.algorithmSlug,
+      question: c.question,
+      visualId: c.visualId,
+    }))}
+    questions={questions.map((q) => q.text)}
+    client:visible
+  />
+  <h2>The project deliverable</h2>
+  <ol>
+    {items.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ol>
+  <h2>Choose a starting lab</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Method</th>
+          <th scope="col">Provided task</th>
+          <th scope="col">Comparison</th>
+        </tr>
+      </thead>
+      <tbody>
+        {algorithms.map((a) => (
+          <tr>
+            <td>
+              <a href={href(`/algorithms/${a.slug}/`)}>{a.title}</a>
+            </td>
+            <td>{a.lab.task}</td>
+            <td>{a.lab.requiredComparison}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <Defense unit="capstone" questions={questions} capstone client:visible />
+  <Recommendation client:visible />
+</Shell>

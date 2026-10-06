@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-01T03:35:11.499076Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-01T03:34:54.217274Z",
+      "mimetype": null,
+      "name": "comm-0.2.3-py3-none-any.whl",
+      "path": "pypi/comm-0.2.3-py3-none-any.whl",
+      "size": 7294,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-01T03:35:11.499076Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-01T03:35:11.499076Z",
+  "mimetype": null,
+  "name": "pypi",
+  "path": "pypi",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

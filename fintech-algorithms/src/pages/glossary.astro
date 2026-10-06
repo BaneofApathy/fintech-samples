@@ -1,0 +1,93 @@
+---
+import Shell from '../components/layout/Shell.astro';
+import { course, href } from '../data';
+import { conceptualGlossary } from '../data/teaching-manifest';
+---
+
+<Shell title="Concepts, terminology & symbols">
+  <p class="page-subtitle">
+    Look up a concept, see a small example, and return to the lesson that teaches it.
+  </p>
+  <label for="concept-filter">Search concepts, definitions, and examples</label>
+  <input
+    class="glossary-filter"
+    id="concept-filter"
+    placeholder="Try gradient, covariance, precision, or token"
+  />
+  <p id="concept-count" class="small muted" role="status">
+    {conceptualGlossary.length} definitions with lesson links
+  </p>
+  <div class="concept-glossary">
+    {conceptualGlossary.map((entry) => (
+      <article
+        class="concept-glossary-entry"
+        data-concept={`${entry.term} ${entry.definition} ${entry.example} ${entry.topicTitle}`.toLowerCase()}
+      >
+        <h3>{entry.term}</h3>
+        <p>{entry.definition}</p>
+        <p class="term-example">Example: {entry.example}</p>
+        <a href={entry.href}>Learn it in {entry.topicTitle} →</a>
+      </article>
+    ))}
+  </div>
+  <h2>Symbols used in exercises</h2>
+  <p class="page-subtitle">
+    The same letter can mean different things in different exercises. Read the symbol key beside
+    each formula before substituting numbers.
+  </p>
+  <div class="filter-row">
+    <input
+      id="glossary-filter"
+      aria-label="Search symbols and meanings"
+      placeholder="Search PD, TP, variance, revenue, or an exercise ID"
+    />
+  </div>
+  {Object.entries(course.glossary)
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([symbol, meanings]) => (
+      <section
+        class="glossary-entry"
+        data-glossary={(
+          symbol +
+          ' ' +
+          meanings.map((m) => (m.exercises ?? [m.exercise]).join(' ') + ' ' + m.meaning).join(' ')
+        ).toLowerCase()}
+      >
+        <h3>{symbol}</h3>
+        {meanings.map((m) => (
+          <div class="glossary-meaning">
+            <span class="glossary-exercises">
+              {(m.exercises ?? [m.exercise]).map((id) => (
+                <a href={href(`/exercises/${id}/`)}>{id}</a>
+              ))}
+            </span>
+            <span>{m.meaning}</span>
+          </div>
+        ))}
+      </section>
+    ))}
+</Shell>
+<style>
+  .glossary-exercises {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+  }
+</style>
+<script>
+  document.querySelector<HTMLInputElement>('#concept-filter')!.addEventListener('input', (e) => {
+    const text = (e.currentTarget as HTMLInputElement).value.toLowerCase();
+    let count = 0;
+    document.querySelectorAll<HTMLElement>('[data-concept]').forEach((el) => {
+      el.hidden = !el.dataset.concept!.includes(text);
+      if (!el.hidden) count++;
+    });
+    document.querySelector('#concept-count')!.textContent = `${count} matching definitions`;
+  });
+  document.querySelector<HTMLInputElement>('#glossary-filter')!.addEventListener('input', (e) => {
+    const text = (e.currentTarget as HTMLInputElement).value.toLowerCase();
+    document
+      .querySelectorAll<HTMLElement>('[data-glossary]')
+      .forEach((el) => (el.hidden = !el.dataset.glossary!.includes(text)));
+  });
+</script>

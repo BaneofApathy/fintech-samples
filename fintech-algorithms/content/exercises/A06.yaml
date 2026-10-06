@@ -1,0 +1,483 @@
+id: A06
+title: Forecast Settlement Outflows
+minutes: 8
+kind: algorithm
+parent: time-series
+question: "Daily settlement outflows, in $ millions, were 100, 110, and 116 over the\
+  \ last three days.\n A fitted ARIMA(1,1,0) model forecasts changes using:\n    \
+  \                                        ∆yt = yt − yt−1 ,   ∆y\n              \
+  \                                                  c\n                         \
+  \                                          t+1 = 0.5∆yt .\n\n Forecast future errors\
+  \ as zero; there is no additional drift term.\n1. Forecast the next two daily outflow\
+  \ levels, without using future observations.\n2. Treasury adds a fixed $10 million\
+  \ buffer to the first forecast. How much liquidity does it\n   hold?\n3. The next\
+  \ day’s actual outflow later becomes 125. Compare the model’s absolute error with\
+  \ a\n   last-value forecast of 116."
+questionPages:
+- page: 85
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Class problem | 8 minutes — Forecast Settlement Outflows\n\
+    \n Daily settlement outflows, in $ millions, were 100, 110, and 116 over the last\
+    \ three days.\n A fitted ARIMA(1,1,0) model forecasts changes using:\n       \
+    \                                     ∆yt = yt − yt−1 ,   ∆y\n               \
+    \                                                 c\n                        \
+    \                                           t+1 = 0.5∆yt .\n\n Forecast future\
+    \ errors as zero; there is no additional drift term.\n1. Forecast the next two\
+    \ daily outflow levels, without using future observations.\n2. Treasury adds a\
+    \ fixed $10 million buffer to the first forecast. How much liquidity does it\n\
+    \   hold?\n3. The next day’s actual outflow later becomes 125. Compare the model’s\
+    \ absolute error with a\n   last-value forecast of 116."
+  paragraphs:
+  - ARIMA
+  - A06 | Class problem | 8 minutes — Forecast Settlement Outflows
+  - 'Daily settlement outflows, in $ millions, were 100, 110, and 116 over the last
+    three days. A fitted ARIMA(1,1,0) model forecasts changes using: ∆yt = yt − yt−1
+    , ∆y c t+1 = 0.5∆yt .'
+  - Forecast future errors as zero; there is no additional drift term. 1. Forecast
+    the next two daily outflow levels, without using future observations. 2. Treasury
+    adds a fixed $10 million buffer to the first forecast. How much liquidity does
+    it hold? 3. The next day’s actual outflow later becomes 125. Compare the model’s
+    absolute error with a last-value forecast of 116.
+  source:
+    pages:
+    - 85
+    verbatim: true
+formulaPages:
+- page: 80
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Formula explained (1/1)\n\n Question: What outflow level\
+    \ follows from forecasting the next change?\n                           ∆yt =\
+    \ yt − yt−1 ,      ∆y\n                                                  c   \
+    \   = 0.5∆yt ,\n                                                            t+1\n\
+    \n                                            ŷt+1 = yt + ∆y\n              \
+    \                                           c\n                              \
+    \                              t+1 .\n\n Read it aloud: Subtract yesterday’s level\
+    \ from today’s; predict half of that change for\n tomorrow; add the predicted\
+    \ change to today’s level.\n For a second forecast step, use the first forecasted\
+    \ change because the future observation is not\n yet available. The fixed liquidity\
+    \ holding is first-day forecast + US$10 million.\n ARIMA(1,1,0): One autoregressive\
+    \ lag, one differencing step, and no moving-average error lag.\n Drift is set\
+    \ to zero here."
+  paragraphs:
+  - ARIMA
+  - A06 | Formula explained (1/1)
+  - 'Question: What outflow level follows from forecasting the next change? ∆yt =
+    yt − yt−1 , ∆y c = 0.5∆yt , t+1'
+  - ŷt+1 = yt + ∆y c t+1 .
+  - 'Read it aloud: Subtract yesterday’s level from today’s; predict half of that
+    change for tomorrow; add the predicted change to today’s level. For a second forecast
+    step, use the first forecasted change because the future observation is not yet
+    available. The fixed liquidity holding is first-day forecast + US$10 million.
+    ARIMA(1,1,0): One autoregressive lag, one differencing step, and no moving-average
+    error lag. Drift is set to zero here.'
+  source:
+    pages:
+    - 80
+    verbatim: true
+symbolPages:
+- page: 81
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Symbols and terms (1/4)\n\n\n   Symbol or term       \
+    \                    Meaning in this example\n   ARIMA                       \
+    \             Autoregressive Integrated Moving Average: combines past-value\n\
+    \                                            dependence, differencing, and possibly\
+    \ past-error dependence.\n   (1, 1, 0)                                The three\
+    \ model orders: one lag of the differenced series; difference\n              \
+    \                              once; no lagged-error term.\n   yt , yt−1     \
+    \                           Today’s and yesterday’s actual settlement outflows,\
+    \ in millions of\n                                            dollars.\n   t +\
+    \ 1, t + 2                             One and two days beyond the last observed\
+    \ day; these are forecast\n                                            horizons.\n\
+    \   ∆ (delta)                                Change operator: subtract the preceding\
+    \ value.\n   ∆yt                                      Latest observed daily change,\
+    \ not the outflow level."
+  paragraphs:
+  - ARIMA
+  - A06 | Symbols and terms (1/4)
+  - 'Symbol or term Meaning in this example ARIMA Autoregressive Integrated Moving
+    Average: combines past-value dependence, differencing, and possibly past-error
+    dependence. (1, 1, 0) The three model orders: one lag of the differenced series;
+    difference once; no lagged-error term. yt , yt−1 Today’s and yesterday’s actual
+    settlement outflows, in millions of dollars. t + 1, t + 2 One and two days beyond
+    the last observed day; these are forecast horizons. ∆ (delta) Change operator:
+    subtract the preceding value. ∆yt Latest observed daily change, not the outflow
+    level.'
+  source: &id001
+    pages:
+    - 81
+    verbatim: true
+- page: 82
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Symbols and terms (2/4)\n\n\n   Symbol or term       \
+    \                    Meaning in this example\n   ∆y\n   c\n      t+1         \
+    \                          Predicted next change; the hat indicates a forecast.\n\
+    \   ŷt+1 , ŷt+2                            Predicted future outflow levels;\
+    \ obtain them by adding forecast\n                                           \
+    \ changes.\n   0.5                                      Fitted autoregressive\
+    \ coefficient: this model carries half the latest\n                          \
+    \                  change into the next prediction.\n   Drift; future error  \
+    \                    A constant average-change term; an unpredictable future shock.\
+    \ No\n                                            drift is added and future shocks\
+    \ have forecast mean zero here."
+  paragraphs:
+  - ARIMA
+  - A06 | Symbols and terms (2/4)
+  - 'Symbol or term Meaning in this example ∆y c t+1 Predicted next change; the hat
+    indicates a forecast. ŷt+1 , ŷt+2 Predicted future outflow levels; obtain them
+    by adding forecast changes. 0.5 Fitted autoregressive coefficient: this model
+    carries half the latest change into the next prediction. Drift; future error A
+    constant average-change term; an unpredictable future shock. No drift is added
+    and future shocks have forecast mean zero here.'
+  source: &id003
+    pages: &id002
+    - 82
+    verbatim: true
+- page: 83
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Symbols and terms (3/4)\n\n\n   Symbol or term       \
+    \                    Meaning in this example\n   Buffer                      \
+    \             Extra liquidity above the point forecast; the fixed US$10 million\
+    \ is an\n                                            assumption, not a prediction\
+    \ interval.\n   Absolute error                           Magnitude of actual minus\
+    \ forecast, written |y − ŷ|; the sign is\n                                  \
+    \          removed."
+  paragraphs:
+  - ARIMA
+  - A06 | Symbols and terms (3/4)
+  - Symbol or term Meaning in this example Buffer Extra liquidity above the point
+    forecast; the fixed US$10 million is an assumption, not a prediction interval.
+    Absolute error Magnitude of actual minus forecast, written |y − ŷ|; the sign
+    is removed.
+  source: &id004
+    pages:
+    - 83
+    verbatim: true
+- page: 84
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Symbols and terms (4/4)\n\n\n   Symbol or term       \
+    \                    Meaning in this example\n   Naive forecast              \
+    \             A simple reference prediction; the last-value version sets tomorrow\n\
+    \                                            equal to today’s level."
+  paragraphs:
+  - ARIMA
+  - A06 | Symbols and terms (4/4)
+  - Symbol or term Meaning in this example Naive forecast A simple reference prediction;
+    the last-value version sets tomorrow equal to today’s level.
+  source: &id005
+    pages:
+    - 84
+    verbatim: true
+solutionPages:
+- page: 86
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Worked solution — Forecast Settlement Outflows\n\n1. Calculate\
+    \ the latest observed change: 116 − 110 = 6 million.\n2. Forecast the next change\
+    \ and level:\n                       ∆y\n                       c\n          \
+    \                t+1 = 0.5(6) = 3,               ŷt+1 = 116 + 3 = 119.\n3. Forecast\
+    \ one more step, using the forecasted change:\n                    ∆y\n      \
+    \              c\n                       t+2 = 0.5(3) = 1.5,    ŷt+2 = 119 +\
+    \ 1.5 = 120.5.\n4. Add the buffer: 119 + 10 = $129 million.\n5. Evaluate after\
+    \ observing the next day: Model error = |125 − 119| = 6 million; last-value\n\
+    \   error = |125 − 116| = 9 million."
+  paragraphs:
+  - ARIMA
+  - A06 | Worked solution — Forecast Settlement Outflows
+  - '1. Calculate the latest observed change: 116 − 110 = 6 million. 2. Forecast the
+    next change and level: ∆y c t+1 = 0.5(6) = 3, ŷt+1 = 116 + 3 = 119. 3. Forecast
+    one more step, using the forecasted change: ∆y c t+2 = 0.5(3) = 1.5, ŷt+2 = 119
+    + 1.5 = 120.5. 4. Add the buffer: 119 + 10 = $129 million. 5. Evaluate after observing
+    the next day: Model error = |125 − 119| = 6 million; last-value error = |125 −
+    116| = 9 million.'
+  source:
+    pages:
+    - 86
+    verbatim: true
+interpretationPages:
+- page: 87
+  title: ARIMA
+  text: " ARIMA\n\n   A06 | Interpretation\n\n What the answer means\n The model reduces\
+    \ this day’s absolute error by $3 million. Treasury’s $129 million holding\n exceeds\
+    \ the realized outflow by $4 million. One successful day does not validate the\
+    \ model or\n establish that the fixed buffer is adequate.\n Why these steps matter\n\
+    \ A forecasted change and a forecasted level have different jobs even though both\
+    \ use dollar units.\n Treasury needs the level to fund settlements. The calculation\
+    \ must not use the actual 125 until\n the evaluation step, because it was unknown\
+    \ when the forecast was issued."
+  paragraphs:
+  - ARIMA
+  - A06 | Interpretation
+  - What the answer means The model reduces this day’s absolute error by $3 million.
+    Treasury’s $129 million holding exceeds the realized outflow by $4 million. One
+    successful day does not validate the model or establish that the fixed buffer
+    is adequate. Why these steps matter A forecasted change and a forecasted level
+    have different jobs even though both use dollar units. Treasury needs the level
+    to fund settlements. The calculation must not use the actual 125 until the evaluation
+    step, because it was unknown when the forecast was issued.
+  source:
+    pages:
+    - 87
+    verbatim: true
+source:
+  pages:
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  verbatim: true
+readAloud:
+- 'Subtract yesterday’s level from today’s; predict half of that change for tomorrow;
+  add the predicted change to today’s level. For a second forecast step, use the first
+  forecasted change because the future observation is not yet available. The fixed
+  liquidity holding is first-day forecast + US$10 million. ARIMA(1,1,0): One autoregressive
+  lag, one differencing step, and no moving-average error lag. Drift is set to zero
+  here.'
+siteAuthored: false
+givens:
+  previous: 110
+  last: 116
+  phi: 0.5
+  buffer: 10
+  actual: 125
+labels: &id006
+  previous: Previous observed outflow ($ millions)
+  last: Latest observed outflow ($ millions)
+  phi: Autoregressive coefficient
+  buffer: Liquidity buffer ($ millions)
+  actual: Later actual outflow ($ millions)
+deckSolution:
+  change: 6
+  nextChange: 3
+  next: 119
+  secondChange: 1.5
+  second: 120.5
+  liquidity: 129
+  modelError: 6
+  baselineError: 9
+latex:
+- \Delta y_t=y_t-y_{t-1},\quad \widehat{\Delta y}_{t+1}=0.5\Delta y_t,\quad \hat y_{t+1}=y_t+\widehat{\Delta
+  y}_{t+1}
+symbols:
+- symbol: ARIMA
+  meaning: 'Autoregressive Integrated Moving Average: combines past-value dependence,
+    differencing, and possibly past-error dependence.'
+  source: *id001
+- symbol: (1, 1, 0)
+  meaning: 'The three model orders: one lag of the differenced series; difference
+    once; no lagged-error term.'
+  source: *id001
+- symbol: yt , yt−1
+  meaning: Today’s and yesterday’s actual settlement outflows, in millions of dollars.
+  source: *id001
+- symbol: t + 1, t + 2
+  meaning: One and two days beyond the last observed day; these are forecast horizons.
+  source: *id001
+- symbol: ∆ (delta)
+  meaning: 'Change operator: subtract the preceding value.'
+  source: *id001
+- symbol: ∆yt
+  meaning: Latest observed daily change, not the outflow level.
+  source: *id001
+- symbol: Δŷₜ₊₁
+  meaning: Predicted next change; the hat indicates a forecast.
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: ŷt+1 , ŷt+2
+  meaning: Predicted future outflow levels; obtain them by adding forecast changes.
+  source: *id003
+- symbol: '0.5'
+  meaning: 'Fitted autoregressive coefficient: this model carries half the latest
+    change into the next prediction.'
+  source: *id003
+- symbol: Drift; future error
+  meaning: A constant average-change term; an unpredictable future shock. No drift
+    is added and future shocks have forecast mean zero here.
+  source: *id003
+- symbol: Buffer
+  meaning: Extra liquidity above the point forecast; the fixed US$10 million is an
+    assumption, not a prediction interval.
+  source: *id004
+- symbol: Absolute error
+  meaning: Magnitude of actual minus forecast, written |y − ŷ|; the sign is removed.
+  source: *id004
+- symbol: Naive forecast
+  meaning: A simple reference prediction; the last-value version sets tomorrow equal
+    to today’s level.
+  source: *id005
+steps:
+- id: change
+  title: Latest observed change
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Subtract the previous outflow from the latest outflow.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the previous outflow from the latest outflow.
+- id: nextChange
+  title: First predicted change
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply the latest change by the autoregressive coefficient.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the latest change by the autoregressive coefficient.
+- id: next
+  title: First forecast outflow
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Add the predicted change to the latest observed level.
+  mistakes:
+  - pattern: recompute
+    message: Add the predicted change to the latest observed level.
+- id: secondChange
+  title: Second predicted change
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Multiply the first predicted change by the same coefficient.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the first predicted change by the same coefficient.
+- id: second
+  title: Second forecast outflow
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Add the second predicted change to the first forecast level.
+  mistakes:
+  - pattern: recompute
+    message: Add the second predicted change to the first forecast level.
+- id: liquidity
+  title: Liquidity to hold
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id012
+  - Add the buffer to the first forecast.
+  mistakes:
+  - pattern: recompute
+    message: Add the buffer to the first forecast.
+- id: modelError
+  title: Model absolute error
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id013
+  - Take the absolute difference between the later actual and first forecast.
+  mistakes:
+  - pattern: recompute
+    message: Take the absolute difference between the later actual and first forecast.
+- id: baselineError
+  title: Last-value forecast absolute error
+  expects: number
+  unit: $ millions
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id014
+  - Take the absolute difference between the later actual and latest observed level.
+  mistakes:
+  - pattern: recompute
+    message: Take the absolute difference between the later actual and latest observed
+      level.
+learning:
+  title: Forecast Settlement Outflows
+  scenario: 'Treasury forecasts settlement outflows using a fitted ARIMA(1,1,0) model:
+    next change = coefficient × latest change. There is no drift, and future errors
+    are forecast as zero. All outflows are in $ millions.'
+  task: Forecast two future levels without using the later actual outflow. Add the
+    liquidity buffer to the first forecast, then compare its absolute error with a
+    last-value forecast.
+  interpretation: Forecast the second change from the first predicted change. The
+    later actual is used only for evaluation. One successful forecast does not establish
+    that the model or buffer is reliable.
+  summary: 'Next two forecasts: {next}, {second}. Liquidity held: {liquidity}. Model
+    and baseline absolute errors: {modelError}, {baselineError}.'
+  labels: *id006
+  steps:
+    change:
+      title: Latest observed change
+      hints: *id007
+      unit: $ millions
+    nextChange:
+      title: First predicted change
+      hints: *id008
+      unit: $ millions
+    next:
+      title: First forecast outflow
+      hints: *id009
+      unit: $ millions
+    secondChange:
+      title: Second predicted change
+      hints: *id010
+      unit: $ millions
+    second:
+      title: Second forecast outflow
+      hints: *id011
+      unit: $ millions
+    liquidity:
+      title: Liquidity to hold
+      hints: *id012
+      unit: $ millions
+    modelError:
+      title: Model absolute error
+      hints: *id013
+      unit: $ millions
+    baselineError:
+      title: Last-value forecast absolute error
+      hints: *id014
+      unit: $ millions
+  readAloud:
+  - 'Subtract yesterday’s level from today’s; predict half of that change for tomorrow;
+    add the predicted change to today’s level. For a second forecast step, use the
+    first forecasted change because the future observation is not yet available. The
+    fixed liquidity holding is first-day forecast + US$10 million. ARIMA(1,1,0): One
+    autoregressive lag, one differencing step, and no moving-average error lag. Drift
+    is set to zero here.'
+  workedExplanation:
+  - 'The model reduces this day’s absolute error by $3 million. Treasury’s $129 million
+    holding exceeds the realized outflow by $4 million. One successful day does not
+    validate the model or establish that the fixed buffer is adequate. '
+  - A forecasted change and a forecasted level have different jobs even though both
+    use dollar units. Treasury needs the level to fund settlements. The calculation
+    must not use the actual 125 until the evaluation step, because it was unknown
+    when the forecast was issued.
+  workedArithmetic:
+  - Latest change = 116 − 110 = 6 million. Next predicted change = 0.5 × 6 = 3 million;
+    next level = 116 + 3 = 119 million.
+  - Second predicted change = 0.5 × 3 = 1.5 million; second level = 119 + 1.5 = 120.5
+    million.
+  - Liquidity holding = 119 + 10 = $129 million.
+  - Model absolute error = |125 − 119| = $6 million; last-value error = |125 − 116|
+    = $9 million.
+formulaSource:
+  pages:
+  - 80
+  verbatim: false
+  reviewed: true

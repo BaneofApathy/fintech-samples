@@ -1,0 +1,259 @@
+slug: value-at-risk-and-expected-shortfall
+number: 33
+title: Value at Risk and Expected Shortfall
+question: act
+financialInterpretation: VaR gives a loss threshold at a confidence level. Expected
+  Shortfall gives the average loss beyond that threshold and is more informative about
+  the tail.
+workingExample: 'In 10,000 one-day loss scenarios, 99% VaR is $2.0 million. About
+  100 scenarios are worse than $2.0 million. Their average loss is $3.4 million, so
+  99% Expected Shortfall is $3.4 million. Interpretation: Under the model, only 1%
+  of days are expected to lose more than $2.0 million; when that happens, the average
+  modeled loss is $3.4 million.'
+whatItMisses: VaR is not the maximum loss. Both measures depend on distribution, correlation,
+  liquidity, and regime assumptions.
+exercises:
+- M33
+widget: monte-carlo-loss
+usedBy:
+- monte-carlo
+slides:
+- page: 514
+  title: EVALUATION MEASURE 33 OF 39
+  text: "    EVALUATION MEASURE 33 OF 39\n\n\n\n\n         Value at Risk and Expected\n\
+    \                  Shortfall\n       Estimates a loss threshold for rare bad outcomes\
+    \ and the\n                 average loss beyond that threshold."
+  paragraphs:
+  - EVALUATION MEASURE 33 OF 39
+  - Value at Risk and Expected Shortfall Estimates a loss threshold for rare bad outcomes
+    and the average loss beyond that threshold.
+  source:
+    pages:
+    - 514
+    verbatim: true
+- page: 515
+  title: Value at Risk and Expected Shortfall – how large can tail loss become?
+  text: " Value at Risk and Expected Shortfall – how large can tail loss become?\n\
+    \n\n Financial interpretation\n VaR gives a loss threshold at a confidence level.\
+    \ Expected Shortfall gives the average loss beyond that\n threshold and is more\
+    \ informative about the tail.\n\n Working example\n In 10,000 one-day loss scenarios,\
+    \ 99% VaR is $2.0 million. About 100 scenarios are worse than $2.0 million.\n\
+    \ Their average loss is $3.4 million, so 99% Expected Shortfall is $3.4 million.\
+    \ Interpretation: Under the\n model, only 1% of days are expected to lose more\
+    \ than $2.0 million; when that happens, the average\n modeled loss is $3.4 million.\n\
+    \n What it misses\n VaR is not the maximum loss. Both measures depend on distribution,\
+    \ correlation, liquidity, and regime\n assumptions."
+  paragraphs:
+  - Value at Risk and Expected Shortfall – how large can tail loss become?
+  - Financial interpretation VaR gives a loss threshold at a confidence level. Expected
+    Shortfall gives the average loss beyond that threshold and is more informative
+    about the tail.
+  - 'Working example In 10,000 one-day loss scenarios, 99% VaR is $2.0 million. About
+    100 scenarios are worse than $2.0 million. Their average loss is $3.4 million,
+    so 99% Expected Shortfall is $3.4 million. Interpretation: Under the model, only
+    1% of days are expected to lose more than $2.0 million; when that happens, the
+    average modeled loss is $3.4 million.'
+  - What it misses VaR is not the maximum loss. Both measures depend on distribution,
+    correlation, liquidity, and regime assumptions.
+  source:
+    pages:
+    - 515
+    verbatim: true
+- page: 516
+  title: VaR and Expected Shortfall
+  text: " VaR and Expected Shortfall\n\n   M33 | Formula explained (1/2)\n\n Question:\
+    \ What loss level marks the chosen percentile of the scenario distribution?\n\
+    \                                                   L(1) ≤ L(2) ≤ · · · ≤ L(N\
+    \ ) ,\n                                                  j = ⌈αN ⌉,      V aRα\
+    \ = L(j) .\n Read it aloud: Sort losses from smallest to largest. Multiply the\
+    \ confidence level by the\n number of scenarios, round the position upward, and\
+    \ read the loss at that position.\n This is the nearest-rank empirical convention\
+    \ supplied in the problem. The confidence level is\n 80% and the horizon is one\
+    \ day. Other quantile conventions can give different small-sample\n results."
+  paragraphs:
+  - VaR and Expected Shortfall
+  - M33 | Formula explained (1/2)
+  - 'Question: What loss level marks the chosen percentile of the scenario distribution?
+    L(1) ≤ L(2) ≤ · · · ≤ L(N ) , j = ⌈αN ⌉, V aRα = L(j) . Read it aloud: Sort losses
+    from smallest to largest. Multiply the confidence level by the number of scenarios,
+    round the position upward, and read the loss at that position. This is the nearest-rank
+    empirical convention supplied in the problem. The confidence level is 80% and
+    the horizon is one day. Other quantile conventions can give different small-sample
+    results.'
+  source:
+    pages:
+    - 516
+    verbatim: true
+- page: 517
+  title: VaR and Expected Shortfall
+  text: " VaR and Expected Shortfall\n\n   M33 | Formula explained (2/2)\n\n Question:\
+    \ How severe are the worst scenarios, and how often does loss strictly exceed\
+    \ VaR in\n this sample?\n For an integer tail size m = (1 − α)N :\n          \
+    \                                                               N\n          \
+    \                                                         1    X\n           \
+    \                                                ESα =              L(j) ,\n \
+    \                                                                  m j=N −m+1\n\
+    \                                                                           PN\n\
+    \                                                                            i=1\
+    \ 1[Li > V aRα ]\n                                                  Exceedance\
+    \ f raction =\n                                                              \
+    \         .\n                                                              N\n\
+    \ Read it aloud: Average the worst specified fraction of scenarios. Separately\
+    \ count losses\n strictly above the VaR threshold and divide by all scenarios.\n\
+    \ Here the worst 20% contains exactly two observations. With ties or a noninteger\
+    \ tail size, the\n tail-averaging convention must be specified rather than silently\
+    \ using a different rule."
+  paragraphs:
+  - VaR and Expected Shortfall
+  - M33 | Formula explained (2/2)
+  - 'Question: How severe are the worst scenarios, and how often does loss strictly
+    exceed VaR in this sample? For an integer tail size m = (1 − α)N : N 1 X ESα =
+    L(j) , m j=N −m+1 PN i=1 1[Li > V aRα ] Exceedance f raction = . N Read it aloud:
+    Average the worst specified fraction of scenarios. Separately count losses strictly
+    above the VaR threshold and divide by all scenarios. Here the worst 20% contains
+    exactly two observations. With ties or a noninteger tail size, the tail-averaging
+    convention must be specified rather than silently using a different rule.'
+  source:
+    pages:
+    - 517
+    verbatim: true
+- page: 518
+  title: VaR and Expected Shortfall
+  text: " VaR and Expected Shortfall\n\n   M33 | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Li     \
+    \                                        Loss in scenario i, with positive values\
+    \ meaning losses; the supplied\n                                             \
+    \     numbers are in thousands of dollars.\n   N                             \
+    \                 Number of equally weighted scenarios; 10 here.\n   L(j)    \
+    \                                       The jth smallest loss after sorting. Parentheses\
+    \ mark sorted position,\n                                                  not\
+    \ the original scenario number.\n   α                                        \
+    \      Confidence level as a fraction; 0.80 here. It is not a training learning\n\
+    \                                                  rate.\n   ⌈x⌉             \
+    \                               Ceiling: round x upward to the nearest integer\
+    \ position.\n   VaR                                            Value at Risk:\
+    \ the specified loss quantile for the stated horizon; not\n                  \
+    \                                maximum possible loss."
+  paragraphs:
+  - VaR and Expected Shortfall
+  - M33 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example Li Loss in scenario i, with positive values
+    meaning losses; the supplied numbers are in thousands of dollars. N Number of
+    equally weighted scenarios; 10 here. L(j) The jth smallest loss after sorting.
+    Parentheses mark sorted position, not the original scenario number. α Confidence
+    level as a fraction; 0.80 here. It is not a training learning rate. ⌈x⌉ Ceiling:
+    round x upward to the nearest integer position. VaR Value at Risk: the specified
+    loss quantile for the stated horizon; not maximum possible loss.'
+  source:
+    pages:
+    - 518
+    verbatim: true
+- page: 519
+  title: VaR and Expected Shortfall
+  text: " VaR and Expected Shortfall\n\n   M33 | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   m      \
+    \                                        Number of scenarios in the selected tail,\
+    \ (1 − α)N = 2 here.\n   ES                                             Expected\
+    \ Shortfall: average loss over the specified worst-tail fraction\n           \
+    \                                       under this empirical convention.\n   1[condition]\
+    \                                   Indicator: 1 when the condition is true and\
+    \ 0 otherwise.\n   >                                              Strictly greater\
+    \ than; a loss equal to VaR is not counted as an\n                           \
+    \                       exceedance here.\n   Horizon                         \
+    \               Length of the loss period; every scenario describes one day, not\
+    \ one\n                                                  month or one year."
+  paragraphs:
+  - VaR and Expected Shortfall
+  - M33 | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example m Number of scenarios in the selected
+    tail, (1 − α)N = 2 here. ES Expected Shortfall: average loss over the specified
+    worst-tail fraction under this empirical convention. 1[condition] Indicator: 1
+    when the condition is true and 0 otherwise. > Strictly greater than; a loss equal
+    to VaR is not counted as an exceedance here. Horizon Length of the loss period;
+    every scenario describes one day, not one month or one year.'
+  source:
+    pages:
+    - 519
+    verbatim: true
+- page: 520
+  title: VaR and Expected Shortfall
+  text: " VaR and Expected Shortfall\n\n   M33 | Class problem | 8 minutes — Threshold\
+    \ versus Tail Average\n\n A risk model produces these 10 equally weighted one-day\
+    \ loss scenarios, in $ thousands:\n                                          \
+    \        [10, 0, 5, 20, 1, 7, 3, 6, 2, 4].\n Use 80% confidence to keep the hand\
+    \ calculation small.\n▶ VaR: sort losses and choose observation ⌈0.80N ⌉ using\
+    \ the nearest-rank convention.\n▶ Expected Shortfall: average the losses in the\
+    \ worst 20% of scenarios.\n Calculate VaR, Expected Shortfall, and the observed\
+    \ fraction strictly exceeding VaR. Is VaR the\n largest possible loss? State the\
+    \ horizon with your answer."
+  paragraphs:
+  - VaR and Expected Shortfall
+  - M33 | Class problem | 8 minutes — Threshold versus Tail Average
+  - 'A risk model produces these 10 equally weighted one-day loss scenarios, in $
+    thousands: [10, 0, 5, 20, 1, 7, 3, 6, 2, 4]. Use 80% confidence to keep the hand
+    calculation small. ▶ VaR: sort losses and choose observation ⌈0.80N ⌉ using the
+    nearest-rank convention. ▶ Expected Shortfall: average the losses in the worst
+    20% of scenarios. Calculate VaR, Expected Shortfall, and the observed fraction
+    strictly exceeding VaR. Is VaR the largest possible loss? State the horizon with
+    your answer.'
+  source:
+    pages:
+    - 520
+    verbatim: true
+- page: 521
+  title: VaR and Expected Shortfall
+  text: " VaR and Expected Shortfall\n\n   M33 | Worked solution — Threshold versus\
+    \ Tail Average\n\n1. Sort losses: [0, 1, 2, 3, 4, 5, 6, 7, 10, 20].\n2. Locate\
+    \ VaR: ⌈0.80 × 10⌉ = 8. The eighth loss is 7.\n                              \
+    \   V aR80%,1 day = $7, 000.\n3. Identify the tail: worst 20% × 10 = 2 scenarios\
+    \ have losses 10 and 20.\n                             ES80%,1 day = (10 + 20)/2\
+    \ = $15, 000.\n4. Strict exceedances: 10 and 20 exceed 7, so 2/10 = 20%."
+  paragraphs:
+  - VaR and Expected Shortfall
+  - M33 | Worked solution — Threshold versus Tail Average
+  - '1. Sort losses: [0, 1, 2, 3, 4, 5, 6, 7, 10, 20]. 2. Locate VaR: ⌈0.80 × 10⌉
+    = 8. The eighth loss is 7. V aR80%,1 day = $7, 000. 3. Identify the tail: worst
+    20% × 10 = 2 scenarios have losses 10 and 20. ES80%,1 day = (10 + 20)/2 = $15,
+    000. 4. Strict exceedances: 10 and 20 exceed 7, so 2/10 = 20%.'
+  source:
+    pages:
+    - 521
+    verbatim: true
+- page: 522
+  title: VaR and Expected Shortfall
+  text: " VaR and Expected Shortfall\n\n   M33 | Interpretation\n\n What the answer\
+    \ means\n Under this empirical scenario distribution, 80% of one-day losses are\
+    \ no more than $7,000; the\n worst fifth averages $15,000. VaR is not a maximum\
+    \ loss: even this tiny sample includes a\n $20,000 loss. The 80% level is a teaching\
+    \ choice, not a recommended risk policy.\n Why these steps matter\n VaR identifies\
+    \ where the tail begins under the chosen convention. Expected Shortfall describes\n\
+    \ the size of losses within that tail. They can differ considerably because the\
+    \ threshold does not\n reveal how far the worst observations extend beyond it.\
+    \ Both are conditional on the supplied\n scenario distribution."
+  paragraphs:
+  - VaR and Expected Shortfall
+  - M33 | Interpretation
+  - 'What the answer means Under this empirical scenario distribution, 80% of one-day
+    losses are no more than $7,000; the worst fifth averages $15,000. VaR is not a
+    maximum loss: even this tiny sample includes a $20,000 loss. The 80% level is
+    a teaching choice, not a recommended risk policy. Why these steps matter VaR identifies
+    where the tail begins under the chosen convention. Expected Shortfall describes
+    the size of losses within that tail. They can differ considerably because the
+    threshold does not reveal how far the worst observations extend beyond it. Both
+    are conditional on the supplied scenario distribution.'
+  source:
+    pages:
+    - 522
+    verbatim: true
+source:
+  pages:
+  - 514
+  - 515
+  - 516
+  - 517
+  - 518
+  - 519
+  - 520
+  - 521
+  - 522
+  verbatim: true

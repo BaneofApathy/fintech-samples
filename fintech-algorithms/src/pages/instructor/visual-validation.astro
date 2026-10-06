@@ -1,0 +1,182 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import { algorithms, measures, href } from '../../data';
+import { visualCoverage } from '../../data/visual-registry';
+const prompts = [
+  'State the financial question and who makes the decision.',
+  'Identify the information available at decision time.',
+  'Predict what will change before touching the control.',
+  'Explain what changed and why, including what stayed fixed.',
+  'Name the relevant population, units, and time horizon.',
+  'Explain one limitation and a suitable check or control.',
+];
+const samples = [
+  ['Classification', '/measures/precision/', 'Which cases belong in the review denominator?'],
+  [
+    'Forecasting',
+    '/measures/mean-absolute-error/',
+    'What does a positive actual-minus-forecast residual mean?',
+  ],
+  [
+    'Relationships',
+    '/algorithms/graph-methods/intuition/',
+    'Which relationship adds evidence, and what else could explain it?',
+  ],
+  ['Evidence retrieval', '/algorithms/rag/intuition/', 'Which required fact is still unsupported?'],
+  [
+    'Allocation',
+    '/algorithms/optimization/intuition/',
+    'Why can the lowest-risk candidate fail a mandatory constraint?',
+  ],
+];
+---
+
+<Shell title="Visual learning validation">
+  <p class="page-subtitle">
+    Use this observation sheet with 5–8 finance students of varied technical backgrounds. Record
+    what each student predicts and explains.
+  </p>
+  <h2>Run one short session</h2>
+  <ol>
+    <li>
+      Ask about the learner’s familiarity with statistics, programming, and the financial problem.
+    </li>
+    <li>
+      Open a sampled visual with its initial state. Ask the learner to think aloud using the six
+      prompts below.
+    </li>
+    <li>
+      Record the prediction before allowing the interaction, then ask for an explanation without
+      supplying the takeaway.
+    </li>
+    <li>
+      Repeat with a second unfamiliar category. Record the exact misunderstanding, the control used,
+      and the displayed state.
+    </li>
+    <li>Revise repeated misunderstandings and repeat the affected task with a fresh learner.</li>
+  </ol>
+  <div class="table-scroll">
+    <table>
+      <caption>Suggested sample across five reasoning tasks</caption>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Probe</th>
+        </tr>
+      </thead>
+      <tbody>
+        {samples.map(([title, path, question]) => (
+          <tr>
+            <th>
+              <a href={href(path)}>{title}</a>
+            </th>
+            <td>{question}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <h2>Printable observation sheet</h2>
+  <p>
+    Participant code: __________ &nbsp; Topic and state: __________________ &nbsp; Date: __________
+  </p>
+  <p>
+    For each prompt, record <strong>independent / prompted / not yet understood</strong>, and a
+    short quotation or observed action. Keep personal identifiers out of the sheet.
+  </p>
+  <table class="observation">
+    <thead>
+      <tr>
+        <th>Prompt</th>
+        <th>Observation and result</th>
+      </tr>
+    </thead>
+    <tbody>
+      {prompts.map((prompt) => (
+        <tr>
+          <td>{prompt}</td>
+          <td> </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p>Repeated misconception: __________________________________________________</p>
+  <p>Proposed design change and follow-up evidence: __________________________________</p>
+  <button class="button secondary" id="print-validation">
+    Print facilitator sheet
+  </button>
+  <h2>Diagram index</h2>
+  <p>
+    {visualCoverage.algorithms} algorithm walkthroughs; {visualCoverage.measures} dedicated measure
+    views; {visualCoverage.financialApplications} financial applications;{' '}
+    {visualCoverage.foundations} foundations concepts; {visualCoverage.supplements} supplementary
+    problems; {visualCoverage.exercises} exercise mappings.
+  </p>
+  <details>
+    <summary>Algorithm walkthroughs</summary>
+    <ul>
+      {algorithms.map((a) => (
+        <li>
+          <a href={href(`/algorithms/${a.slug}/intuition/`)}>{a.title}</a>
+        </li>
+      ))}
+    </ul>
+  </details>
+  <details>
+    <summary>Measure diagrams</summary>
+    <ul>
+      {measures.map((m) => (
+        <li>
+          <a href={href(`/measures/${m.slug}/`)}>
+            {m.number}. {m.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </details>
+  <p>
+    <a href={href('/financial-problems/')}>Browse 96 financial problems →</a>
+  </p>
+  <h2>Definition references</h2>
+  <ul>
+    <li>
+      <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">
+        scikit-learn evaluation and scoring definitions
+      </a>
+    </li>
+    <li>
+      <a href="https://otexts.com/fpp3/accuracy.html">
+        Forecasting: Principles and Practice — evaluating forecast accuracy
+      </a>
+    </li>
+    <li>
+      <a href="https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html">
+        W3C — animation from interactions
+      </a>
+    </li>
+  </ul>
+</Shell>
+<script>
+  document.getElementById('print-validation')?.addEventListener('click', () => window.print());
+</script>
+<style>
+  .observation td:last-child {
+    width: 42%;
+    height: 6rem;
+  }
+  .observation td {
+    vertical-align: top;
+  }
+  @media print {
+    button,
+    details {
+      display: none;
+    }
+    .observation {
+      break-inside: avoid;
+    }
+    .observation td:last-child {
+      height: 4rem;
+    }
+  }
+</style>

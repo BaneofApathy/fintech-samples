@@ -1,0 +1,22 @@
+import { test, expect } from '@playwright/test';
+test.use({ serviceWorkers: 'allow' });
+test('first visit avoids full download; explicit preparation, offline reload, and removal preserve progress', async ({ page, context }) => {
+  test.setTimeout(180000);
+  const runtimeRequests: string[] = [];
+  page.on('request', r => { if (/\/python\/|\/labs\//.test(r.url())) runtimeRequests.push(r.url()); });
+  await page.goto('/');
+  await expect(page.locator('[data-offline-message]')).toContainText('Optional download');
+  expect(runtimeRequests).toEqual([]);
+  await page.evaluate(() => localStorage.setItem('offline-test-progress', 'preserved'));
+  await page.locator('[data-offline-prepare]').click();
+  await expect(page.locator('[data-offline-message]')).toContainText('Offline copy complete', { timeout: 120000 });
+  await context.setOffline(true);
+  await page.goto('/algorithms/logistic-regression/worked/');
+  await expect(page.locator('#exercise-A01-worked')).toBeVisible();
+  await page.reload(); await expect(page.locator('#exercise-A01-worked')).toBeVisible();
+  await context.setOffline(false);
+  await page.locator('[data-offline-remove]').click();
+  await expect(page.locator('[data-offline-message]')).toContainText('Learning progress was preserved');
+  expect(await page.evaluate(() => localStorage.getItem('offline-test-progress'))).toBe('preserved');
+  expect(await page.evaluate(async () => (await caches.keys()).filter(n => n.startsWith('fintech-')))).toEqual([]);
+});

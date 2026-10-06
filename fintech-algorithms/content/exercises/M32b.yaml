@@ -1,0 +1,473 @@
+id: M32b
+title: Can the Allocation Be Implemented?
+minutes: 9
+kind: measure
+parent: maximum-drawdown-turnover-tracking-error
+question: "A $1 million portfolio is rebalanced without market movement or cash flows.\n\
+  \   Asset                                             Current weight           \
+  \        Proposed weight\n   A                                                 \
+  \            60%                             40%\n   B                         \
+  \                                    30%                             40%\n   C \
+  \                                                            10%               \
+  \              20%\n\n Define one-way turnover as 12 i |winew − wiold |. Transaction\
+  \ costs are 10 basis points of\n                              P\n\n every dollar\
+  \ bought or sold; 10 bps = 0.10%.\n Calculate turnover, total dollars bought and\
+  \ sold, and cost. Every proposed allocation must now\n have no asset above 50%.\
+  \ Does an alternative proposal of 55%, 35%, 10% comply?\n Quantify any violation."
+questionPages:
+- page: 505
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Class problem | 9 minutes — Can the\
+    \ Allocation Be Implemented?\n\n A $1 million portfolio is rebalanced without\
+    \ market movement or cash flows.\n   Asset                                   \
+    \          Current weight                   Proposed weight\n   A            \
+    \                                                 60%                        \
+    \     40%\n   B                                                             30%\
+    \                             40%\n   C                                      \
+    \                       10%                             20%\n\n Define one-way\
+    \ turnover as 12 i |winew − wiold |. Transaction costs are 10 basis points of\n\
+    \                              P\n\n every dollar bought or sold; 10 bps = 0.10%.\n\
+    \ Calculate turnover, total dollars bought and sold, and cost. Every proposed\
+    \ allocation must now\n have no asset above 50%. Does an alternative proposal\
+    \ of 55%, 35%, 10% comply?\n Quantify any violation."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Class problem | 9 minutes — Can the Allocation Be Implemented?
+  - A $1 million portfolio is rebalanced without market movement or cash flows. Asset
+    Current weight Proposed weight A 60% 40% B 30% 40% C 10% 20%
+  - Define one-way turnover as 12 i |winew − wiold |. Transaction costs are 10 basis
+    points of P
+  - every dollar bought or sold; 10 bps = 0.10%. Calculate turnover, total dollars
+    bought and sold, and cost. Every proposed allocation must now have no asset above
+    50%. Does an alternative proposal of 55%, 35%, 10% comply? Quantify any violation.
+  source:
+    pages:
+    - 505
+    verbatim: true
+formulaPages:
+- page: 500
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Formula explained (1/2)\n\n Question:\
+    \ How much of the portfolio must trade to move from the old weights to the proposed\n\
+    \ weights?\n                                                       1X\n      \
+    \                 ∆wi = winew − wiold ,     TO =        |∆wi |,\n            \
+    \                                           2 i\n                            \
+    \                     X\n                     Gross traded dollars = V       |∆wi\
+    \ | = 2V T O,\n                                                              \
+    \             i\n                                                  T rading cost\
+    \ = c × Gross traded dollars.\n Read it aloud: Calculate every weight change and\
+    \ add their absolute sizes. Half of that total is\n one-way turnover; the full\
+    \ total captures both purchases and sales for the fee calculation.\n The identities\
+    \ here assume a fully invested portfolio, unchanged value during rebalancing,\
+    \ and\n no external cash flows, as specified in the problem."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Formula explained (1/2)
+  - 'Question: How much of the portfolio must trade to move from the old weights to
+    the proposed weights? 1X ∆wi = winew − wiold , TO = |∆wi |, 2 i X Gross traded
+    dollars = V |∆wi | = 2V T O, i T rading cost = c × Gross traded dollars. Read
+    it aloud: Calculate every weight change and add their absolute sizes. Half of
+    that total is one-way turnover; the full total captures both purchases and sales
+    for the fee calculation. The identities here assume a fully invested portfolio,
+    unchanged value during rebalancing, and no external cash flows, as specified in
+    the problem.'
+  source:
+    pages:
+    - 500
+    verbatim: true
+- page: 501
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Formula explained (2/2)\n\n Question:\
+    \ Does each proposed weight satisfy the allocation cap?\n                    \
+    \        Excessi = max(winew − ui , 0),             Dollar excessi = V × Excessi\
+    \ .\n Read it aloud: Subtract the permitted maximum from each proposed weight.\
+    \ A positive result\n is a violation; otherwise the excess is zero.\n For transaction\
+    \ fees:\n                                                  1 bp = 0.0001,   10\
+    \ bps = 0.001 = 0.10%.\n The fee in this exercise applies to every dollar bought\
+    \ or sold. A cap violation is separate\n from transaction cost and cannot be offset\
+    \ by a favorable expected return."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Formula explained (2/2)
+  - 'Question: Does each proposed weight satisfy the allocation cap? Excessi = max(winew
+    − ui , 0), Dollar excessi = V × Excessi . Read it aloud: Subtract the permitted
+    maximum from each proposed weight. A positive result is a violation; otherwise
+    the excess is zero. For transaction fees: 1 bp = 0.0001, 10 bps = 0.001 = 0.10%.
+    The fee in this exercise applies to every dollar bought or sold. A cap violation
+    is separate from transaction cost and cannot be offset by a favorable expected
+    return.'
+  source:
+    pages:
+    - 501
+    verbatim: true
+symbolPages:
+- page: 502
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Symbols and terms (1/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   i      \
+    \                                        Asset index: A, B, or C in this portfolio.\n\
+    \   wiold , winew                                  Current and proposed portfolio\
+    \ weights as fractions of total value;\n                                     \
+    \             superscripts are labels, not powers.\n   ∆wi                   \
+    \                         Change in weight; positive means buy, negative means\
+    \ sell under the\n                                                  fixed-value\
+    \ assumptions.\n   |∆wi |                                         Absolute weight\
+    \ change; counts buying and selling activity without\n                       \
+    \                           canceling one against the other."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example i Asset index: A, B, or C in this portfolio.
+    wiold , winew Current and proposed portfolio weights as fractions of total value;
+    superscripts are labels, not powers. ∆wi Change in weight; positive means buy,
+    negative means sell under the fixed-value assumptions. |∆wi | Absolute weight
+    change; counts buying and selling activity without canceling one against the other.'
+  source: &id001
+    pages:
+    - 502
+    verbatim: true
+- page: 503
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Symbols and terms (2/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   TO     \
+    \                                        One-way turnover: half the sum of absolute\
+    \ weight changes in this\n                                                  fully\
+    \ invested rebalance.\n   V                                              Portfolio\
+    \ value, $1 million, before transaction costs in the\n                       \
+    \                           calculation."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example TO One-way turnover: half the sum of absolute
+    weight changes in this fully invested rebalance. V Portfolio value, $1 million,
+    before transaction costs in the calculation.'
+  source: &id002
+    pages:
+    - 503
+    verbatim: true
+- page: 504
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Symbols and terms (3/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Gross traded\
+    \ dollars                           Total purchase value plus total sale value;\
+    \ not just the value on one\n                                                \
+    \  side.\n   c                                              Fee rate per dollar\
+    \ traded; 10 basis points equals 0.001.\n   ui                               \
+    \              Maximum permitted weight for asset i; 0.50 for each asset here.\n\
+    \   Excessi                                        Amount above the cap as a weight\
+    \ fraction; zero when the proposal\n                                         \
+    \         complies.\n   Basis point; percentage                        One basis\
+    \ point is 0.01 percentage point. A rise from 50% to 55% is\n   point        \
+    \                                  five percentage points.\n   Feasible      \
+    \                                 Satisfies every mandatory constraint under the\
+    \ stated assumptions."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Gross traded dollars Total purchase value
+    plus total sale value; not just the value on one side. c Fee rate per dollar traded;
+    10 basis points equals 0.001. ui Maximum permitted weight for asset i; 0.50 for
+    each asset here. Excessi Amount above the cap as a weight fraction; zero when
+    the proposal complies. Basis point; percentage One basis point is 0.01 percentage
+    point. A rise from 50% to 55% is point five percentage points. Feasible Satisfies
+    every mandatory constraint under the stated assumptions.
+  source: &id003
+    pages:
+    - 504
+    verbatim: true
+solutionPages:
+- page: 506
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Worked solution — Can the Allocation\
+    \ Be Implemented?\n\n1. Weight changes: [−20, +10, +10] percentage points.\n2.\
+    \ One-way turnover: (20 + 10 + 10)/2 = 20%, equivalent to $200,000 on one side.\n\
+    3. Trades: sell $200,000 of A; buy $100,000 of B and $100,000 of C. Gross traded\
+    \ value\n   = $400, 000.\n4. Cost: 400,000 × 0.001 = $400. Costs apply to both\
+    \ purchases and sales, not just one-way\n   turnover.\n5. Constraint check: [40,\
+    \ 40, 20]% is feasible. The alternative has one violation: A exceeds its\n   50%\
+    \ cap by 5 percentage points, or $50,000."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Worked solution — Can the Allocation Be Implemented?
+  - '1. Weight changes: [−20, +10, +10] percentage points. 2. One-way turnover: (20
+    + 10 + 10)/2 = 20%, equivalent to $200,000 on one side. 3. Trades: sell $200,000
+    of A; buy $100,000 of B and $100,000 of C. Gross traded value = $400, 000. 4.
+    Cost: 400,000 × 0.001 = $400. Costs apply to both purchases and sales, not just
+    one-way turnover. 5. Constraint check: [40, 40, 20]% is feasible. The alternative
+    has one violation: A exceeds its 50% cap by 5 percentage points, or $50,000.'
+  source:
+    pages:
+    - 506
+    verbatim: true
+interpretationPages:
+- page: 507
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Interpretation\n\n What the answer\
+    \ means\n Turnover estimates the trading burden; the fee calculation depends on\
+    \ the stated convention. A\n mandatory allocation cap is a separate pass/fail\
+    \ condition. Better expected performance does\n not make a noncompliant proposed\
+    \ allocation feasible.\n Why these steps matter\n Selling 20% of portfolio value\
+    \ and reinvesting it creates 20% one-way turnover but 40% gross\n trading. The\
+    \ stated fee charges both sides. Likewise, an asset at 55% breaches a 50% cap\
+    \ by\n five percentage points, not by 5% of its current holding."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Interpretation
+  - What the answer means Turnover estimates the trading burden; the fee calculation
+    depends on the stated convention. A mandatory allocation cap is a separate pass/fail
+    condition. Better expected performance does not make a noncompliant proposed allocation
+    feasible. Why these steps matter Selling 20% of portfolio value and reinvesting
+    it creates 20% one-way turnover but 40% gross trading. The stated fee charges
+    both sides. Likewise, an asset at 55% breaches a 50% cap by five percentage points,
+    not by 5% of its current holding.
+  source:
+    pages:
+    - 507
+    verbatim: true
+source:
+  pages:
+  - 500
+  - 501
+  - 502
+  - 503
+  - 504
+  - 505
+  - 506
+  - 507
+  verbatim: true
+readAloud:
+- Calculate every weight change and add their absolute sizes. Half of that total is
+  one-way turnover; the full total captures both purchases and sales for the fee calculation.
+  The identities here assume a fully invested portfolio, unchanged value during rebalancing,
+  and no external cash flows, as specified in the problem.
+- 'Subtract the permitted maximum from each proposed weight. A positive result is
+  a violation; otherwise the excess is zero. For transaction fees: 1 bp = 0.0001,
+  10 bps = 0.001 = 0.10%. The fee in this exercise applies to every dollar bought
+  or sold. A cap violation is separate from transaction cost and cannot be offset
+  by a favorable expected return.'
+siteAuthored: false
+givens:
+  current:
+  - 0.6
+  - 0.3
+  - 0.1
+  proposed:
+  - 0.4
+  - 0.4
+  - 0.2
+  alternative:
+  - 0.55
+  - 0.35
+  - 0.1
+  portfolio: 1000000
+  costRate: 0.001
+  cap: 0.5
+labels: &id004
+  current: Current asset weights
+  proposed: Proposed asset weights
+  alternative: Alternative weights to check against cap
+  portfolio: Portfolio value ($)
+  costRate: Fee per dollar bought or sold
+  cap: Maximum permitted asset weight
+deckSolution:
+  changes:
+  - -0.2
+  - 0.1
+  - 0.1
+  turnover: 0.2
+  gross: 400000
+  cost: 400
+  violation: 0.05
+  violationDollars: 50000
+latex:
+- Turnover=\frac12\sum_i|w_i^{new}-w_i^{old}|,\quad Cost=GrossTradedValue\times c
+- \Delta w_i=w_i^{new}-w_i^{old},\quad\operatorname{Gross\ traded\ dollars}=2V\operatorname{Turnover}
+- \operatorname{Excess}_i=\max(w_i^{new}-u_i,0),\quad\operatorname{Dollar\ excess}_i=V\operatorname{Excess}_i
+symbols:
+- symbol: i
+  meaning: 'Asset index: A, B, or C in this portfolio.'
+  source: *id001
+- symbol: wiold , winew
+  meaning: Current and proposed portfolio weights as fractions of total value; superscripts
+    are labels, not powers.
+  source: *id001
+- symbol: ∆wi
+  meaning: Change in weight; positive means buy, negative means sell under the fixed-value
+    assumptions.
+  source: *id001
+- symbol: '|∆wi |'
+  meaning: Absolute weight change; counts buying and selling activity without canceling
+    one against the other.
+  source: *id001
+- symbol: TO
+  meaning: 'One-way turnover: half the sum of absolute weight changes in this fully
+    invested rebalance.'
+  source: *id002
+- symbol: V
+  meaning: Portfolio value, $1 million, before transaction costs in the calculation.
+  source: *id002
+- symbol: Gross traded dollars
+  meaning: Total purchase value plus total sale value; not just the value on one side.
+  source: *id003
+- symbol: c
+  meaning: Fee rate per dollar traded; 10 basis points equals 0.001.
+  source: *id003
+- symbol: ui
+  meaning: Maximum permitted weight for asset i; 0.50 for each asset here.
+  source: *id003
+- symbol: Excessi
+  meaning: Amount above the cap as a weight fraction; zero when the proposal complies.
+  source: *id003
+- symbol: Basis point; percentage
+  meaning: One basis point is 0.01 percentage point. A rise from 50% to 55% is
+  source: *id003
+- symbol: point
+  meaning: five percentage points.
+  source: *id003
+- symbol: Feasible
+  meaning: Satisfies every mandatory constraint under the stated assumptions.
+  source: *id003
+steps:
+- id: changes
+  title: Changes in asset weights
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Subtract current weight from proposed weight for each asset.
+  mistakes:
+  - pattern: recompute
+    message: Subtract current weight from proposed weight for each asset.
+- id: turnover
+  title: One-way turnover
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Add absolute weight changes and divide by 2.
+  mistakes:
+  - pattern: recompute
+    message: Add absolute weight changes and divide by 2.
+- id: gross
+  title: Gross dollars bought and sold
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Multiply the full absolute-weight-change sum by portfolio value.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the full absolute-weight-change sum by portfolio value.
+- id: cost
+  title: Transaction fees
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply gross trading dollars by the fee rate.
+  mistakes:
+  - pattern: recompute
+    message: Multiply gross trading dollars by the fee rate.
+- id: violation
+  title: Largest alternative-weight cap excess
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract the cap from the largest alternative weight; use zero if none exceeds
+    it.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the cap from the largest alternative weight; use zero if none
+      exceeds it.
+- id: violationDollars
+  title: Dollar value above the cap
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Multiply the excess weight by portfolio value.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the excess weight by portfolio value.
+learning:
+  title: Can the Allocation Be Implemented?
+  scenario: A fully invested portfolio is rebalanced without market movement or cash
+    flows. One-way turnover is half the sum of absolute weight changes. The transaction
+    fee applies to every dollar bought or sold.
+  task: Calculate changes, turnover, gross trading and fees for the proposed weights.
+    Separately test the alternative weights against the asset cap and quantify the
+    largest excess.
+  interpretation: Selling and reinvesting the same amount creates two sides of gross
+    trading. A cap violation is a separate feasibility failure and cannot be offset
+    by favorable expected return.
+  summary: 'One-way turnover: {turnover}; gross trading: {gross}; fees: {cost}. Largest
+    alternative-weight excess: {violation}, or {violationDollars}.'
+  labels: *id004
+  steps:
+    changes:
+      title: Changes in asset weights
+      hints: *id005
+      unit: proportion
+    turnover:
+      title: One-way turnover
+      hints: *id006
+      unit: proportion
+    gross:
+      title: Gross dollars bought and sold
+      hints: *id007
+      unit: $
+    cost:
+      title: Transaction fees
+      hints: *id008
+      unit: $
+    violation:
+      title: Largest alternative-weight cap excess
+      hints: *id009
+      unit: proportion
+    violationDollars:
+      title: Dollar value above the cap
+      hints: *id010
+      unit: $
+  readAloud:
+  - Calculate every weight change and add their absolute sizes. Half of that total
+    is one-way turnover; the full total captures both purchases and sales for the
+    fee calculation. The identities here assume a fully invested portfolio, unchanged
+    value during rebalancing, and no external cash flows, as specified in the problem.
+  - 'Subtract the permitted maximum from each proposed weight. A positive result is
+    a violation; otherwise the excess is zero. For transaction fees: 1 bp = 0.0001,
+    10 bps = 0.001 = 0.10%. The fee in this exercise applies to every dollar bought
+    or sold. A cap violation is separate from transaction cost and cannot be offset
+    by a favorable expected return.'
+  workedExplanation:
+  - 'Turnover estimates the trading burden; the fee calculation depends on the stated
+    convention. A mandatory allocation cap is a separate pass/fail condition. Better
+    expected performance does not make a noncompliant proposed allocation feasible. '
+  - Selling 20% of portfolio value and reinvesting it creates 20% one-way turnover
+    but 40% gross trading. The stated fee charges both sides. Likewise, an asset at
+    55% breaches a 50% cap by five percentage points, not by 5% of its current holding.
+  workedArithmetic:
+  - Weight changes = [0.40 − 0.60, 0.40 − 0.30, 0.20 − 0.10] = [−0.20, 0.10, 0.10].
+  - One-way turnover = (0.20 + 0.10 + 0.10) / 2 = 20%. Gross trading = 0.40 × $1,000,000
+    = $400,000.
+  - Fees = $400,000 × 0.001 = $400, charging both purchases and sales.
+  - Alternative cap violation = 0.55 − 0.50 = 0.05, or 5 percentage points; dollar
+    excess = 0.05 × $1,000,000 = $50,000.
+formulaSource:
+  pages:
+  - 500
+  - 501
+  verbatim: false
+  reviewed: true

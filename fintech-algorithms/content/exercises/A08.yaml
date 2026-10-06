@@ -1,0 +1,508 @@
+id: A08
+title: A Small Attention Calculation
+minutes: 10
+kind: algorithm
+parent: transformers
+question: "Use this toy attention head and classifier, not a real FinBERT prediction,\
+  \ for the phrase\n “loss narrowed.”\n   Token                                  \
+  \  Already-scaled attention logit                     Toy value\n   loss       \
+  \                                                            ln(1)             \
+  \         −1\n   narrowed                                                      \
+  \         ln(3)                      +1\n\n           weights are normalized exponentials:\
+  \ ai = esi /               sj\n                                                \
+  \                 P\n Attention\n        P                                     \
+  \                        j e . The combined representation\n is h = i ai vi .\n\
+  \ The classifier’s logits are positive: 2h; neutral: 0; negative: −2h. Apply softmax\
+  \ again. Use\n e1 = 2.718, e0 = 1, and e−1 = 0.368.\n Calculate the attention weights,\
+  \ h, and the three class probabilities. The system auto-routes a\n label only when\
+  \ the highest probability is at least 70%. What happens here?"
+questionPages:
+- page: 111
+  title: Transformers
+  text: " Transformers\n\n   A08 | Class problem | 10 minutes — A Small Attention\
+    \ Calculation\n\n Use this toy attention head and classifier, not a real FinBERT\
+    \ prediction, for the phrase\n “loss narrowed.”\n   Token                    \
+    \                Already-scaled attention logit                     Toy value\n\
+    \   loss                                                                   ln(1)\
+    \                      −1\n   narrowed                                       \
+    \                        ln(3)                      +1\n\n           weights are\
+    \ normalized exponentials: ai = esi /               sj\n                     \
+    \                                            P\n Attention\n        P        \
+    \                                                     j e . The combined representation\n\
+    \ is h = i ai vi .\n The classifier’s logits are positive: 2h; neutral: 0; negative:\
+    \ −2h. Apply softmax again. Use\n e1 = 2.718, e0 = 1, and e−1 = 0.368.\n Calculate\
+    \ the attention weights, h, and the three class probabilities. The system auto-routes\
+    \ a\n label only when the highest probability is at least 70%. What happens here?"
+  paragraphs:
+  - Transformers
+  - A08 | Class problem | 10 minutes — A Small Attention Calculation
+  - Use this toy attention head and classifier, not a real FinBERT prediction, for
+    the phrase “loss narrowed.” Token Already-scaled attention logit Toy value loss
+    ln(1) −1 narrowed ln(3) +1
+  - 'weights are normalized exponentials: ai = esi / sj P Attention P j e . The combined
+    representation is h = i ai vi . The classifier’s logits are positive: 2h; neutral:
+    0; negative: −2h. Apply softmax again. Use e1 = 2.718, e0 = 1, and e−1 = 0.368.
+    Calculate the attention weights, h, and the three class probabilities. The system
+    auto-routes a label only when the highest probability is at least 70%. What happens
+    here?'
+  source:
+    pages:
+    - 111
+    verbatim: true
+formulaPages:
+- page: 104
+  title: Transformers
+  text: " Transformers\n\n   A08 | Formula explained (1/2)\n\n Question: How do two\
+    \ token values combine into a context-dependent representation?\n            \
+    \                         esi            X\n                              ai =\
+    \ P s j ,      h=      ai vi .\n                                     je      \
+    \        i\n\n Read it aloud: Exponentiate each token score, divide by the total\
+    \ to make weights that sum to\n one, and take a weighted average of the token\
+    \ values.\n This normalization is softmax. The logits are already scaled; do not\
+    \ apply another scaling step.\n The phrase and numeric values are deliberately\
+    \ simplified. They are not real FinBERT weights\n or an observed FinBERT output."
+  paragraphs:
+  - Transformers
+  - A08 | Formula explained (1/2)
+  - 'Question: How do two token values combine into a context-dependent representation?
+    esi X ai = P s j , h= ai vi . je i'
+  - 'Read it aloud: Exponentiate each token score, divide by the total to make weights
+    that sum to one, and take a weighted average of the token values. This normalization
+    is softmax. The logits are already scaled; do not apply another scaling step.
+    The phrase and numeric values are deliberately simplified. They are not real FinBERT
+    weights or an observed FinBERT output.'
+  source:
+    pages:
+    - 104
+    verbatim: true
+- page: 105
+  title: Transformers
+  text: " Transformers\n\n   A08 | Formula explained (2/2)\n\n Question: How does\
+    \ the toy classifier turn the representation into sentiment scores?\n        \
+    \                                  z0 = 0, z− = −2h,\n                       \
+    \                     z+ = 2h,\n                                             \
+    \  ezc\n                                   pc = z+               .\n         \
+    \                                e + ez0 + ez−\n Read it aloud: Form one score\
+    \ per sentiment label and apply softmax again across those three\n scores.\n The\
+    \ first softmax chooses attention weights over tokens. The second produces class\n\
+    \ probabilities over labels. They are separate operations.\n Automatically route\
+    \ the most likely label only if its probability is at least 0.70; otherwise use\n\
+    \ human review."
+  paragraphs:
+  - Transformers
+  - A08 | Formula explained (2/2)
+  - 'Question: How does the toy classifier turn the representation into sentiment
+    scores? z0 = 0, z− = −2h, z+ = 2h, ezc pc = z+ . e + ez0 + ez− Read it aloud:
+    Form one score per sentiment label and apply softmax again across those three
+    scores. The first softmax chooses attention weights over tokens. The second produces
+    class probabilities over labels. They are separate operations. Automatically route
+    the most likely label only if its probability is at least 0.70; otherwise use
+    human review.'
+  source:
+    pages:
+    - 105
+    verbatim: true
+symbolPages:
+- page: 106
+  title: Transformers
+  text: " Transformers\n\n   A08 | Symbols and terms (1/5)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   Token                \
+    \                    An input text unit. In this toy example each of the two words\
+    \ is\n                                            treated as one token.\n   si\
+    \                                       Already-scaled attention logit for token\
+    \ i; a raw score before\n                                            normalization.\n\
+    \   i, j                                     Token indices; j runs over all tokens\
+    \ in the softmax denominator.\n   e; ln                                    Exponential\
+    \ base, about 2.71828; its inverse, the natural logarithm.\n                 \
+    \                           Thus eln(3) = 3."
+  paragraphs:
+  - Transformers
+  - A08 | Symbols and terms (1/5)
+  - Symbol or term Meaning in this example Token An input text unit. In this toy example
+    each of the two words is treated as one token. si Already-scaled attention logit
+    for token i; a raw score before normalization. i, j Token indices; j runs over
+    all tokens in the softmax denominator. e; ln Exponential base, about 2.71828;
+    its inverse, the natural logarithm. Thus eln(3) = 3.
+  source: &id001
+    pages:
+    - 106
+    verbatim: true
+- page: 107
+  title: Transformers
+  text: " Transformers\n\n   A08 | Symbols and terms (2/5)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   ai                   \
+    \                    Nonnegative attention weight for token i; all attention weights\
+    \ sum\n                                            to 1.\n   vi              \
+    \                         Supplied scalar value associated with token i: −1 for\
+    \ “loss” and +1\n                                            for “narrowed.”"
+  paragraphs:
+  - Transformers
+  - A08 | Symbols and terms (2/5)
+  - 'Symbol or term Meaning in this example ai Nonnegative attention weight for token
+    i; all attention weights sum to 1. vi Supplied scalar value associated with token
+    i: −1 for “loss” and +1 for “narrowed.”'
+  source: &id002
+    pages:
+    - 107
+    verbatim: true
+- page: 108
+  title: Transformers
+  text: " Transformers\n\n   A08 | Symbols and terms (3/5)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   P\n                  \
+    \                          Add the indicated terms: token exponentials in the\
+    \ denominator or\n                                            weighted token values\
+    \ in the representation.\n   h                                        Combined\
+    \ scalar representation after attention; a learned vector is\n               \
+    \                             simplified to one number here.\n   z + , z0 , z−\
+    \                            Classification logits for positive, neutral, and\
+    \ negative sentiment; +,\n                                            0, and −\
+    \ name labels here.\n   c, pc                                    A selected class\
+    \ and its softmax probability; the three class\n                             \
+    \               probabilities sum to 1."
+  paragraphs:
+  - Transformers
+  - A08 | Symbols and terms (3/5)
+  - 'Symbol or term Meaning in this example P Add the indicated terms: token exponentials
+    in the denominator or weighted token values in the representation. h Combined
+    scalar representation after attention; a learned vector is simplified to one number
+    here. z + , z0 , z− Classification logits for positive, neutral, and negative
+    sentiment; +, 0, and − name labels here. c, pc A selected class and its softmax
+    probability; the three class probabilities sum to 1.'
+  source: &id003
+    pages:
+    - 108
+    verbatim: true
+- page: 109
+  title: Transformers
+  text: " Transformers\n\n   A08 | Symbols and terms (4/5)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   Logit; softmax       \
+    \                    An unnormalized score; the exponential normalization that\
+    \ converts\n                                            a group of scores into\
+    \ nonnegative shares summing to 1.\n   Routing threshold                     \
+    \   Minimum top-class probability required by this classroom workflow\n      \
+    \                                      before an automatic label is accepted."
+  paragraphs:
+  - Transformers
+  - A08 | Symbols and terms (4/5)
+  - Symbol or term Meaning in this example Logit; softmax An unnormalized score; the
+    exponential normalization that converts a group of scores into nonnegative shares
+    summing to 1. Routing threshold Minimum top-class probability required by this
+    classroom workflow before an automatic label is accepted.
+  source: &id004
+    pages:
+    - 109
+    verbatim: true
+- page: 110
+  title: Transformers
+  text: " Transformers\n\n   A08 | Symbols and terms (5/5)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   FinBERT              \
+    \                    A BERT-based language model adapted to financial text; this\
+    \ hand\n                                            calculation illustrates attention\
+    \ and classification, not its actual\n                                       \
+    \     internal parameters.\n   BERT; transformer                        Bidirectional\
+    \ Encoder Representations from Transformers; a model\n                       \
+    \                     architecture that builds context-dependent representations\
+    \ using\n                                            attention and other learned\
+    \ transformations."
+  paragraphs:
+  - Transformers
+  - A08 | Symbols and terms (5/5)
+  - Symbol or term Meaning in this example FinBERT A BERT-based language model adapted
+    to financial text; this hand calculation illustrates attention and classification,
+    not its actual internal parameters. BERT; transformer Bidirectional Encoder Representations
+    from Transformers; a model architecture that builds context-dependent representations
+    using attention and other learned transformations.
+  source: &id005
+    pages:
+    - 110
+    verbatim: true
+solutionPages:
+- page: 112
+  title: Transformers
+  text: " Transformers\n\n   A08 | Worked solution — A Small Attention Calculation\n\
+    \n1. Normalize attention scores: eln 1 = 1 and eln 3 = 3; total = 4. The weights\
+    \ are 0.25 and\n   0.75.\n2. Combine the values:\n                     h = 0.25(−1)\
+    \ + 0.75(+1) = −0.25 + 0.75 = 0.50.\n3. Calculate classifier logits: [2h, 0, −2h]\
+    \ = [1, 0, −1].\n4. Normalize again: The denominator is 2.718 + 1 + 0.368 = 4.086.\n\
+    \           P (positive) = 66.52%, P (neutral) = 24.47%, P (negative) = 9.01%.\n\
+    5. Apply the routing rule: Positive is the largest score, but 66.52% < 70%. Send\
+    \ the\n   sentence to human review."
+  paragraphs:
+  - Transformers
+  - A08 | Worked solution — A Small Attention Calculation
+  - '1. Normalize attention scores: eln 1 = 1 and eln 3 = 3; total = 4. The weights
+    are 0.25 and 0.75. 2. Combine the values: h = 0.25(−1) + 0.75(+1) = −0.25 + 0.75
+    = 0.50. 3. Calculate classifier logits: [2h, 0, −2h] = [1, 0, −1]. 4. Normalize
+    again: The denominator is 2.718 + 1 + 0.368 = 4.086. P (positive) = 66.52%, P
+    (neutral) = 24.47%, P (negative) = 9.01%. 5. Apply the routing rule: Positive
+    is the largest score, but 66.52% < 70%. Send the sentence to human review.'
+  source:
+    pages:
+    - 112
+    verbatim: true
+interpretationPages:
+- page: 113
+  title: Transformers
+  text: " Transformers\n\n   A08 | Interpretation\n\n What the answer means\n Context\
+    \ changes the representation of “loss”; the improvement word receives more weight\
+    \ in\n this toy calculation. The output is a sentiment score, not an investment\
+    \ recommendation.\n Attention weights alone are not a complete explanation of\
+    \ a real transformer.\n Why these steps matter\n The representation h is not itself\
+    \ a probability. The attention weights sum to one, and so do the\n class probabilities,\
+    \ but they describe different objects. A high weight on a word is not proof that\n\
+    \ the word caused a real model’s final decision."
+  paragraphs:
+  - Transformers
+  - A08 | Interpretation
+  - What the answer means Context changes the representation of “loss”; the improvement
+    word receives more weight in this toy calculation. The output is a sentiment score,
+    not an investment recommendation. Attention weights alone are not a complete explanation
+    of a real transformer. Why these steps matter The representation h is not itself
+    a probability. The attention weights sum to one, and so do the class probabilities,
+    but they describe different objects. A high weight on a word is not proof that
+    the word caused a real model’s final decision.
+  source:
+    pages:
+    - 113
+    verbatim: true
+source:
+  pages:
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  verbatim: true
+readAloud:
+- Exponentiate each token score, divide by the total to make weights that sum to one,
+  and take a weighted average of the token values. This normalization is softmax.
+  The logits are already scaled; do not apply another scaling step. The phrase and
+  numeric values are deliberately simplified. They are not real FinBERT weights or
+  an observed FinBERT output.
+- Form one score per sentiment label and apply softmax again across those three scores.
+  The first softmax chooses attention weights over tokens. The second produces class
+  probabilities over labels. They are separate operations. Automatically route the
+  most likely label only if its probability is at least 0.70; otherwise use human
+  review.
+siteAuthored: false
+givens:
+  logits:
+  - 0
+  - 1.0986122886681098
+  values:
+  - -1
+  - 1
+  threshold: 0.7
+labels: &id006
+  logits: Scaled token logits (loss, narrowed)
+  values: Token values (loss, narrowed)
+  threshold: Automatic-label threshold (proportion)
+deckSolution:
+  weights:
+  - 0.25
+  - 0.75
+  h: 0.5
+  classLogits:
+  - 1
+  - 0
+  - -1
+  probabilities:
+  - 0.6652
+  - 0.2447
+  - 0.0901
+  decision: false
+latex:
+- a_i=\frac{e^{s_i}}{\sum_j e^{s_j}}
+- h=\sum_i a_i v_i,\quad P_c=\frac{e^{\ell_c}}{\sum_j e^{\ell_j}}
+- z_+=2h,\quad z_0=0,\quad z_-=-2h
+symbols:
+- symbol: Token
+  meaning: An input text unit. In this toy example each of the two words is treated
+    as one token.
+  source: *id001
+- symbol: si
+  meaning: Already-scaled attention logit for token i; a raw score before normalization.
+  source: *id001
+- symbol: i, j
+  meaning: Token indices; j runs over all tokens in the softmax denominator.
+  source: *id001
+- symbol: e; ln
+  meaning: Exponential base, about 2.71828; its inverse, the natural logarithm. Thus
+    eln(3) = 3.
+  source: *id001
+- symbol: ai
+  meaning: Nonnegative attention weight for token i; all attention weights sum to
+    1.
+  source: *id002
+- symbol: vi
+  meaning: 'Supplied scalar value associated with token i: −1 for “loss” and +1 for
+    “narrowed.”'
+  source: *id002
+- symbol: P
+  meaning: 'Add the indicated terms: token exponentials in the denominator or weighted
+    token values in the representation.'
+  source: *id003
+- symbol: h
+  meaning: Combined scalar representation after attention; a learned vector is simplified
+    to one number here.
+  source: *id003
+- symbol: z + , z0 , z−
+  meaning: Classification logits for positive, neutral, and negative sentiment; +,
+    0, and − name labels here.
+  source: *id003
+- symbol: c, pc
+  meaning: A selected class and its softmax probability; the three class probabilities
+    sum to 1.
+  source: *id003
+- symbol: Logit; softmax
+  meaning: An unnormalized score; the exponential normalization that converts a group
+    of scores into nonnegative shares summing to 1.
+  source: *id004
+- symbol: Routing threshold
+  meaning: Minimum top-class probability required by this classroom workflow before
+    an automatic label is accepted.
+  source: *id004
+- symbol: FinBERT
+  meaning: A BERT-based language model adapted to financial text; this hand calculation
+    illustrates attention and classification, not its actual internal parameters.
+  source: *id005
+- symbol: BERT; transformer
+  meaning: Bidirectional Encoder Representations from Transformers; a model architecture
+    that builds context-dependent representations using attention and other learned
+    transformations.
+  source: *id005
+steps:
+- id: weights
+  title: Attention weights (loss, narrowed)
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Exponentiate both logits, then divide each exponential by their sum.
+  mistakes:
+  - pattern: recompute
+    message: Exponentiate both logits, then divide each exponential by their sum.
+- id: h
+  title: Combined token representation h
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply each token value by its attention weight and add.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each token value by its attention weight and add.
+- id: classLogits
+  title: Class logits (positive, neutral, negative)
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Use [2h, 0, −2h].
+  mistakes:
+  - pattern: recompute
+    message: Use [2h, 0, −2h].
+- id: probabilities
+  title: Class probabilities (positive, neutral, negative)
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Exponentiate all three class logits and divide each by their sum.
+  mistakes:
+  - pattern: recompute
+    message: Exponentiate all three class logits and divide each by their sum.
+- id: decision
+  title: Assign a label automatically?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Compare the largest class probability with the automatic-label threshold.
+  mistakes:
+  - pattern: recompute
+    message: Compare the largest class probability with the automatic-label threshold.
+learning:
+  title: A Small Attention Calculation
+  scenario: This toy attention head represents “loss narrowed.” Token logits are already
+    scaled. Token values are supplied in the same order. This is not a real FinBERT
+    prediction.
+  task: Apply softmax to token logits, compute the weighted representation h, then
+    apply softmax to class logits [2h, 0, −2h] for positive, neutral and negative
+    sentiment. Assign a label automatically only if the highest probability reaches
+    the threshold.
+  interpretation: Token attention weights and class probabilities each sum to one,
+    but describe different things. The representation h is not a probability, and
+    attention weights alone do not explain a real transformer’s decision.
+  summary: 'Attention weights: {weights}. Class probabilities (positive, neutral,
+    negative): {probabilities}. Automatic label assignment: {decision}.'
+  labels: *id006
+  steps:
+    weights:
+      title: Attention weights (loss, narrowed)
+      hints: *id007
+      unit: proportion
+    h:
+      title: Combined token representation h
+      hints: *id008
+      unit: ''
+    classLogits:
+      title: Class logits (positive, neutral, negative)
+      hints: *id009
+      unit: ''
+    probabilities:
+      title: Class probabilities (positive, neutral, negative)
+      hints: *id010
+      unit: proportion
+    decision:
+      title: Assign a label automatically?
+      hints: *id011
+      unit: ''
+  readAloud:
+  - Exponentiate each token score, divide by the total to make weights that sum to
+    one, and take a weighted average of the token values. This normalization is softmax.
+    The logits are already scaled; do not apply another scaling step. The phrase and
+    numeric values are deliberately simplified. They are not real FinBERT weights
+    or an observed FinBERT output.
+  - Form one score per sentiment label and apply softmax again across those three
+    scores. The first softmax chooses attention weights over tokens. The second produces
+    class probabilities over labels. They are separate operations. Automatically route
+    the most likely label only if its probability is at least 0.70; otherwise use
+    human review.
+  workedExplanation:
+  - 'Context changes the representation of “loss”; the improvement word receives more
+    weight in this toy calculation. The output is a sentiment score, not an investment
+    recommendation. Attention weights alone are not a complete explanation of a real
+    transformer. '
+  - The representation h is not itself a probability. The attention weights sum to
+    one, and so do the class probabilities, but they describe different objects. A
+    high weight on a word is not proof that the word caused a real model’s final decision.
+  workedArithmetic:
+  - Exponentiated attention logits are exp(ln 1) = 1 and exp(ln 3) = 3. Weights are
+    1/4 = 0.25 and 3/4 = 0.75.
+  - h = 0.25 × (−1) + 0.75 × 1 = 0.50. Class logits [2h, 0, −2h] are [1, 0, −1].
+  - Softmax denominator ≈ 2.718 + 1 + 0.368 = 4.086. Class probabilities are approximately
+    [66.52%, 24.47%, 9.01%].
+  - 66.52% < 70%, so the largest class score does not meet the automatic-label threshold;
+    use human review.
+formulaSource:
+  pages:
+  - 104
+  - 105
+  verbatim: false
+  reviewed: true

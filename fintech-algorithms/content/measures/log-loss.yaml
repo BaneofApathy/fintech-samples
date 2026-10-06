@@ -1,0 +1,251 @@
+slug: log-loss
+number: 16
+title: Log Loss
+question: probability
+financialInterpretation: Log loss rewards accurate probabilities and sharply penalizes
+  confident errors. It is useful when extreme confidence creates financial or operational
+  risk.
+workingExample: 'For a legitimate transaction, y = 0: Loss(p = 0.60) = − ln(1 − 0.60)
+  = 0.92 Loss(p = 0.99) = − ln(1 − 0.99) = 4.61 The 99% fraud prediction is punished
+  about five times more because it was confidently wrong.'
+whatItMisses: Log loss does not encode the bank’s actual dollar cost. Clip or regularize
+  extreme probabilities and still evaluate threshold economics.
+exercises:
+- M16
+widget: calibration-lab
+usedBy:
+- logistic-regression
+- gradient-boosting
+- transformers
+slides:
+- page: 327
+  title: EVALUATION MEASURE 16 OF 39
+  text: "    EVALUATION MEASURE 16 OF 39\n\n\n\n\n                          Log Loss\n\
+    \     Heavily penalizes confident probability predictions that turn\n        \
+    \                  out to be wrong."
+  paragraphs:
+  - EVALUATION MEASURE 16 OF 39
+  - Log Loss Heavily penalizes confident probability predictions that turn out to
+    be wrong.
+  source:
+    pages:
+    - 327
+    verbatim: true
+- page: 328
+  title: Log loss – how severely should we punish confident mistakes?
+  text: " Log loss – how severely should we punish confident mistakes?\n\n\n Financial\
+    \ interpretation\n Log loss rewards accurate probabilities and sharply penalizes\
+    \ confident errors. It is useful when extreme\n confidence creates financial or\
+    \ operational risk.\n\n Working example\n For a legitimate transaction, y = 0:\n\
+    \n                                                  Loss(p = 0.60) = − ln(1 −\
+    \ 0.60) = 0.92\n\n                                                  Loss(p = 0.99)\
+    \ = − ln(1 − 0.99) = 4.61\n The 99% fraud prediction is punished about five times\
+    \ more because it was confidently wrong.\n\n What it misses\n Log loss does not\
+    \ encode the bank’s actual dollar cost. Clip or regularize extreme probabilities\
+    \ and still\n evaluate threshold economics."
+  paragraphs:
+  - Log loss – how severely should we punish confident mistakes?
+  - Financial interpretation Log loss rewards accurate probabilities and sharply penalizes
+    confident errors. It is useful when extreme confidence creates financial or operational
+    risk.
+  - 'Working example For a legitimate transaction, y = 0:'
+  - Loss(p = 0.60) = − ln(1 − 0.60) = 0.92
+  - Loss(p = 0.99) = − ln(1 − 0.99) = 4.61 The 99% fraud prediction is punished about
+    five times more because it was confidently wrong.
+  - What it misses Log loss does not encode the bank’s actual dollar cost. Clip or
+    regularize extreme probabilities and still evaluate threshold economics.
+  source:
+    pages:
+    - 328
+    verbatim: true
+- page: 329
+  title: Log Loss
+  text: " Log Loss\n\n   M16 | Formula explained (1/2)\n\n Question: How much probability\
+    \ did the model place on the outcome that actually occurred?\n               \
+    \                                   ℓi = − [yi ln pi + (1 − yi ) ln(1 − pi )]\
+    \ ,\n                                                                        \
+    \  N\n                                                                      1\
+    \ X\n                                                              LL =      \
+    \    ℓi .\n                                                                  \
+    \    N i=1\n Read it aloud: For each transaction, take the negative natural logarithm\
+    \ of the probability\n assigned to its actual outcome; average those penalties.\n\
+    \ The 0/1 label selects the appropriate part of the formula: yi = 1 leaves − ln\
+    \ pi ; yi = 0 leaves\n − ln(1 − pi )."
+  paragraphs:
+  - Log Loss
+  - M16 | Formula explained (1/2)
+  - 'Question: How much probability did the model place on the outcome that actually
+    occurred? ℓi = − [yi ln pi + (1 − yi ) ln(1 − pi )] , N 1 X LL = ℓi . N i=1 Read
+    it aloud: For each transaction, take the negative natural logarithm of the probability
+    assigned to its actual outcome; average those penalties. The 0/1 label selects
+    the appropriate part of the formula: yi = 1 leaves − ln pi ; yi = 0 leaves − ln(1
+    − pi ).'
+  source:
+    pages:
+    - 329
+    verbatim: true
+- page: 330
+  title: Log Loss
+  text: " Log Loss\n\n   M16 | Formula explained (2/2)\n\n Why the logarithm matters\n\
+    \ A probability near 1 for the actual outcome gives a penalty near 0. A probability\
+    \ near 0 for the\n actual outcome gives a very large penalty.\n For a legitimate\
+    \ transaction, use the model’s probability of legitimacy, one minus its fraud\n\
+    \ probability. Using the fraud probability directly would score the wrong event.\n\
+    \ Natural logs give a unitless score conventionally measured in nats. This is\
+    \ not a loss in dollars.\n An actual outcome assigned probability zero has unbounded\
+    \ log penalty; all supplied values here\n are strictly between 0 and 1."
+  paragraphs:
+  - Log Loss
+  - M16 | Formula explained (2/2)
+  - Why the logarithm matters A probability near 1 for the actual outcome gives a
+    penalty near 0. A probability near 0 for the actual outcome gives a very large
+    penalty. For a legitimate transaction, use the model’s probability of legitimacy,
+    one minus its fraud probability. Using the fraud probability directly would score
+    the wrong event. Natural logs give a unitless score conventionally measured in
+    nats. This is not a loss in dollars. An actual outcome assigned probability zero
+    has unbounded log penalty; all supplied values here are strictly between 0 and
+    1.
+  source:
+    pages:
+    - 330
+    verbatim: true
+- page: 331
+  title: Log Loss
+  text: " Log Loss\n\n   M16 | Symbols and terms (1/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   N, i               \
+    \                            Number of transactions, here 3, and one transaction’s\
+    \ index.\n   yi                                             Actual fraud label:\
+    \ 1 for fraud and 0 for legitimate.\n   pi , 1 − pi                          \
+    \          Model probabilities of fraud and legitimacy for transaction i.\n  \
+    \ ln                                             Natural logarithm, using base\
+    \ e ≈ 2.71828; it maps a probability\n                                       \
+    \           between 0 and 1 to a nonpositive number.\n   ℓi (ell)            \
+    \                           One transaction’s negative-log penalty; lowercase\
+    \ ell is not the digit\n                                                  1.\n\
+    \   LL                                             Average log loss over all evaluated\
+    \ transactions."
+  paragraphs:
+  - Log Loss
+  - M16 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example N, i Number of transactions, here 3, and
+    one transaction’s index. yi Actual fraud label: 1 for fraud and 0 for legitimate.
+    pi , 1 − pi Model probabilities of fraud and legitimacy for transaction i. ln
+    Natural logarithm, using base e ≈ 2.71828; it maps a probability between 0 and
+    1 to a nonpositive number. ℓi (ell) One transaction’s negative-log penalty; lowercase
+    ell is not the digit 1. LL Average log loss over all evaluated transactions.'
+  source:
+    pages:
+    - 331
+    verbatim: true
+- page: 332
+  title: Log Loss
+  text: " Log Loss\n\n   M16 | Symbols and terms (2/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   yi , 1 − yi as multipliers\
+    \                     Switches selecting the fraud term or the legitimate term;\
+    \ exactly one\n                                                  is 1.\n   Nat\
+    \                                            Unit of logarithmic information when\
+    \ natural logs are used; not a\n                                             \
+    \     currency or percentage.\n   Threshold classification                   \
+    \    A separate conversion of probability to a yes/no label using the\n      \
+    \                                            supplied 0.50 cutoff."
+  paragraphs:
+  - Log Loss
+  - M16 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example yi , 1 − yi as multipliers Switches selecting
+    the fraud term or the legitimate term; exactly one is 1. Nat Unit of logarithmic
+    information when natural logs are used; not a currency or percentage. Threshold
+    classification A separate conversion of probability to a yes/no label using the
+    supplied 0.50 cutoff.
+  source:
+    pages:
+    - 332
+    verbatim: true
+- page: 333
+  title: Log Loss
+  text: " Log Loss\n\n   M16 | Class problem | 8 minutes — Penalize a Confident Mistake\n\
+    \n Two fraud models differ only on their third prediction:\n   Transaction   \
+    \                                      Actual fraud y         Model A probability\
+    \            Model B probability\n   1                                       \
+    \                             1                          0.80                \
+    \     0.80\n   2                                                             \
+    \       0                          0.10                     0.10\n   3       \
+    \                                                             0              \
+    \            0.99                     0.60\n\n                               \
+    \                                  1 X\n                                     \
+    \             Log loss = −       [yi ln pi + (1 − yi ) ln(1 − pi )].\n       \
+    \                                                          N i\n Use − ln(0.8)\
+    \ = 0.2231, − ln(0.9) = 0.1054, − ln(0.01) = 4.6052, and − ln(0.4) = 0.9163.\n\
+    \ Calculate each model’s average log loss. At threshold 0.50, do they make different\
+    \ yes/no\n classifications? Explain why the probability measure still distinguishes\
+    \ them."
+  paragraphs:
+  - Log Loss
+  - M16 | Class problem | 8 minutes — Penalize a Confident Mistake
+  - 'Two fraud models differ only on their third prediction: Transaction Actual fraud
+    y Model A probability Model B probability 1 1 0.80 0.80 2 0 0.10 0.10 3 0 0.99
+    0.60'
+  - 1 X Log loss = − [yi ln pi + (1 − yi ) ln(1 − pi )]. N i Use − ln(0.8) = 0.2231,
+    − ln(0.9) = 0.1054, − ln(0.01) = 4.6052, and − ln(0.4) = 0.9163. Calculate each
+    model’s average log loss. At threshold 0.50, do they make different yes/no classifications?
+    Explain why the probability measure still distinguishes them.
+  source:
+    pages:
+    - 333
+    verbatim: true
+- page: 334
+  title: Log Loss
+  text: " Log Loss\n\n   M16 | Worked solution — Penalize a Confident Mistake\n\n\
+    1. Select the probability assigned to the actual outcome. For transaction 1, use\
+    \ p; for\n   transactions 2 and 3, use 1 − p.\n2. Model A’s losses: [0.2231, 0.1054,\
+    \ 4.6052].\n                        LLA = (0.2231 + 0.1054 + 4.6052)/3 ≈ 1.6446.\n\
+    3. Model B’s losses: [0.2231, 0.1054, 0.9163].\n                        LLB =\
+    \ (0.2231 + 0.1054 + 0.9163)/3 ≈ 0.4149.\n4. Threshold classifications: Both predict\
+    \ [1, 0, 1] at 0.50. Each makes the same one\n   classification error."
+  paragraphs:
+  - Log Loss
+  - M16 | Worked solution — Penalize a Confident Mistake
+  - '1. Select the probability assigned to the actual outcome. For transaction 1,
+    use p; for transactions 2 and 3, use 1 − p. 2. Model A’s losses: [0.2231, 0.1054,
+    4.6052]. LLA = (0.2231 + 0.1054 + 4.6052)/3 ≈ 1.6446. 3. Model B’s losses: [0.2231,
+    0.1054, 0.9163]. LLB = (0.2231 + 0.1054 + 0.9163)/3 ≈ 0.4149. 4. Threshold classifications:
+    Both predict [1, 0, 1] at 0.50. Each makes the same one classification error.'
+  source:
+    pages:
+    - 334
+    verbatim: true
+- page: 335
+  title: Log Loss
+  text: " Log Loss\n\n   M16 | Interpretation\n\n What the answer means\n Model A’s\
+    \ 99% fraud probability on a legitimate transaction receives a much larger penalty\
+    \ than\n B’s 60%. Identical classification accuracy can conceal very different\
+    \ probability quality.\n Log loss is not a dollar-cost calculation.\n Why these\
+    \ steps matter\n Both models make the same yes/no decisions at 0.50, but the more\
+    \ confident mistake puts\n much less probability on the true outcome. Log loss\
+    \ detects that difference because it evaluates\n the full probabilities rather\
+    \ than only the thresholded labels."
+  paragraphs:
+  - Log Loss
+  - M16 | Interpretation
+  - What the answer means Model A’s 99% fraud probability on a legitimate transaction
+    receives a much larger penalty than B’s 60%. Identical classification accuracy
+    can conceal very different probability quality. Log loss is not a dollar-cost
+    calculation. Why these steps matter Both models make the same yes/no decisions
+    at 0.50, but the more confident mistake puts much less probability on the true
+    outcome. Log loss detects that difference because it evaluates the full probabilities
+    rather than only the thresholded labels.
+  source:
+    pages:
+    - 335
+    verbatim: true
+source:
+  pages:
+  - 327
+  - 328
+  - 329
+  - 330
+  - 331
+  - 332
+  - 333
+  - 334
+  - 335
+  verbatim: true

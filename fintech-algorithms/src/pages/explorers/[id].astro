@@ -1,0 +1,26 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import Widget from '../../components/widgets/Widget.svelte';
+import { widgets } from '../../components/widgets/catalog';
+import { exercise, href } from '../../data';
+export function getStaticPaths() {
+  return widgets.map((w) => ({ params: { id: w.id }, props: { widget: w } }));
+}
+const { widget: w } = Astro.props;
+---
+
+<Shell title={w.title}>
+  <p class="page-subtitle">
+    Change one input and examine the financial consequence. Reset the controls to the worked example
+    at any time.
+  </p>
+  <Widget id={w.id} exercise={exercise(w.exercise)} client:load />
+  <div class="button-row">
+    <a class="button secondary" href={href(`/exercises/${w.exercise}/`)}>
+      Work through {w.exercise}
+    </a>
+    <a class="button secondary" href={href('/explorers/')}>
+      All interactive explorers
+    </a>
+  </div>
+</Shell>

@@ -1,0 +1,340 @@
+id: M38
+title: Has the Applicant Mix Changed?
+minutes: 8
+kind: measure
+parent: population-stability-index
+question: "A credit model uses two fixed score bands. Higher scores mean higher default\
+  \ risk. The bands\n and their boundaries are identical in both periods.\n   Band\
+  \                                                         Reference share E    \
+  \                Current share A\n   Lower risk                                \
+  \                                   50%                             20%\n   Higher\
+  \ risk                                                                  50%    \
+  \                         80%\n                                                \
+  \           X\n                                                  P SI =       (Ai\
+  \ − Ei ) ln(Ai /Ei ).\n                                                        \
+  \   i\n\n Use proportions, not whole-number percentages. Calculate each band’s contribution\
+  \ and total\n PSI. Use ln(0.4) ≈ −0.9163 and ln(1.6) ≈ 0.4700. Does this calculation\
+  \ prove that model\n accuracy has deteriorated?"
+questionPages:
+- page: 563
+  title: PSI
+  text: " PSI\n\n   M38 | Class problem | 8 minutes — Has the Applicant Mix Changed?\n\
+    \n A credit model uses two fixed score bands. Higher scores mean higher default\
+    \ risk. The bands\n and their boundaries are identical in both periods.\n   Band\
+    \                                                         Reference share E  \
+    \                  Current share A\n   Lower risk                            \
+    \                                       50%                             20%\n\
+    \   Higher risk                                                              \
+    \    50%                             80%\n                                   \
+    \                        X\n                                                 \
+    \ P SI =       (Ai − Ei ) ln(Ai /Ei ).\n                                     \
+    \                      i\n\n Use proportions, not whole-number percentages. Calculate\
+    \ each band’s contribution and total\n PSI. Use ln(0.4) ≈ −0.9163 and ln(1.6)\
+    \ ≈ 0.4700. Does this calculation prove that model\n accuracy has deteriorated?"
+  paragraphs:
+  - PSI
+  - M38 | Class problem | 8 minutes — Has the Applicant Mix Changed?
+  - A credit model uses two fixed score bands. Higher scores mean higher default risk.
+    The bands and their boundaries are identical in both periods. Band Reference share
+    E Current share A Lower risk 50% 20% Higher risk 50% 80% X P SI = (Ai − Ei ) ln(Ai
+    /Ei ). i
+  - Use proportions, not whole-number percentages. Calculate each band’s contribution
+    and total PSI. Use ln(0.4) ≈ −0.9163 and ln(1.6) ≈ 0.4700. Does this calculation
+    prove that model accuracy has deteriorated?
+  source:
+    pages:
+    - 563
+    verbatim: true
+formulaPages:
+- page: 560
+  title: PSI
+  text: " PSI\n\n   M38 | Formula explained (1/1)\n\n Question: How much has the distribution\
+    \ across fixed score bands changed?\n                                        B\
+    \                \x12 \x13\n                                      X          \
+    \         Ai\n                             P SI =        (Ai − Ei ) ln     .\n\
+    \                                       i=1\n                                \
+    \                          Ei\n Read it aloud: For each band, multiply the change\
+    \ in its population share by the natural\n logarithm of its current-to-reference\
+    \ share ratio. Add the contributions across bands.\n Use proportions that sum\
+    \ to 1 within each period and the same band boundaries in both\n periods. The\
+    \ supplied shares are all positive, so the logarithms are defined.\n PSI is a\
+    \ distribution-shift measure. No realized default labels appear in its formula."
+  paragraphs:
+  - PSI
+  - M38 | Formula explained (1/1)
+  - "Question: How much has the distribution across fixed score bands changed? B \x12\
+    \ \x13 X Ai P SI = (Ai − Ei ) ln . i=1 Ei Read it aloud: For each band, multiply\
+    \ the change in its population share by the natural logarithm of its current-to-reference\
+    \ share ratio. Add the contributions across bands. Use proportions that sum to\
+    \ 1 within each period and the same band boundaries in both periods. The supplied\
+    \ shares are all positive, so the logarithms are defined. PSI is a distribution-shift\
+    \ measure. No realized default labels appear in its formula."
+  source:
+    pages:
+    - 560
+    verbatim: true
+symbolPages:
+- page: 561
+  title: PSI
+  text: " PSI\n\n   M38 | Symbols and terms (1/2)\n\n\n   Symbol or term         \
+    \                        Meaning in this example\n   PSI                     \
+    \                       Population Stability Index: a comparison of two distributions\n\
+    \                                                  represented using matching\
+    \ bins or bands.\n   i, B                                           Score-band\
+    \ index and number of bands; two here.\n   Ei                                \
+    \             Reference-period share in band i. E labels the reference distribution;\n\
+    \                                                  it is not the expectation operator\
+    \ in this formula.\n   Ai                                             Current-period\
+    \ share in the same band; A labels current share, not a\n                    \
+    \                              group of applicants from the fairness exercise.\n\
+    \   Ai − Ei                                        Absolute change in share as\
+    \ a fraction, not the relative percentage\n                                  \
+    \                increase.\n   Ai /Ei                                        \
+    \ Current share divided by reference share for that band."
+  paragraphs:
+  - PSI
+  - M38 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example PSI Population Stability Index: a comparison
+    of two distributions represented using matching bins or bands. i, B Score-band
+    index and number of bands; two here. Ei Reference-period share in band i. E labels
+    the reference distribution; it is not the expectation operator in this formula.
+    Ai Current-period share in the same band; A labels current share, not a group
+    of applicants from the fairness exercise. Ai − Ei Absolute change in share as
+    a fraction, not the relative percentage increase. Ai /Ei Current share divided
+    by reference share for that band.'
+  source: &id001
+    pages:
+    - 561
+    verbatim: true
+- page: 562
+  title: PSI
+  text: " PSI\n\n   M38 | Symbols and terms (2/2)\n\n\n   Symbol or term         \
+    \                        Meaning in this example\n   ln                      \
+    \                       Natural logarithm, whose base is e ≈ 2.71828.\n   Band;\
+    \ bin                                      A fixed interval of model scores used\
+    \ to count population shares.\n   Higher risk score                          \
+    \    The supplied direction of this model: a higher score means higher\n     \
+    \                                             predicted default risk.\n   Zero\
+    \ share                                     Would make a logarithm or ratio undefined;\
+    \ a disclosed smoothing or\n                                                 \
+    \ binning convention would be needed in a different example."
+  paragraphs:
+  - PSI
+  - M38 | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example ln Natural logarithm, whose base is e
+    ≈ 2.71828. Band; bin A fixed interval of model scores used to count population
+    shares. Higher risk score The supplied direction of this model: a higher score
+    means higher predicted default risk. Zero share Would make a logarithm or ratio
+    undefined; a disclosed smoothing or binning convention would be needed in a different
+    example.'
+  source: &id002
+    pages:
+    - 562
+    verbatim: true
+solutionPages:
+- page: 564
+  title: PSI
+  text: " PSI\n\n   M38 | Worked solution — Has the Applicant Mix Changed?\n\n1. Lower-risk\
+    \ band:\n                 (0.20 − 0.50) ln(0.20/0.50) = (−0.30)(−0.9163) = 0.27489.\n\
+    2. Higher-risk band:\n                   (0.80 − 0.50) ln(0.80/0.50) = (0.30)(0.4700)\
+    \ = 0.14100.\n3. Total: P SI = 0.27489 + 0.14100 = 0.41589.\n4. Describe the actual\
+    \ shift: the higher-risk band rose from 50% to 80%, a\n   30-percentage-point\
+    \ increase."
+  paragraphs:
+  - PSI
+  - M38 | Worked solution — Has the Applicant Mix Changed?
+  - '1. Lower-risk band: (0.20 − 0.50) ln(0.20/0.50) = (−0.30)(−0.9163) = 0.27489.
+    2. Higher-risk band: (0.80 − 0.50) ln(0.80/0.50) = (0.30)(0.4700) = 0.14100. 3.
+    Total: P SI = 0.27489 + 0.14100 = 0.41589. 4. Describe the actual shift: the higher-risk
+    band rose from 50% to 80%, a 30-percentage-point increase.'
+  source:
+    pages:
+    - 564
+    verbatim: true
+interpretationPages:
+- page: 565
+  title: PSI
+  text: " PSI\n\n   M38 | Interpretation\n\n What the answer means\n The score distribution\
+    \ has changed. Investigate applicant channels, product mix, policy changes,\n\
+    \ and the data pipeline. PSI is not an accuracy score or a default-rate estimate;\
+    \ outcome labels\n are needed to assess prediction quality. Identical band shares\
+    \ would give PSI of zero, but zero\n PSI would not guarantee a sound model.\n\
+    \ Why these steps matter\n For the lower band, both the share change and the log\
+    \ ratio are negative, producing a positive\n contribution. For the higher band,\
+    \ both are positive. The sum records the distribution change\n without establishing\
+    \ that predictions became wrong or that default rates actually rose."
+  paragraphs:
+  - PSI
+  - M38 | Interpretation
+  - What the answer means The score distribution has changed. Investigate applicant
+    channels, product mix, policy changes, and the data pipeline. PSI is not an accuracy
+    score or a default-rate estimate; outcome labels are needed to assess prediction
+    quality. Identical band shares would give PSI of zero, but zero PSI would not
+    guarantee a sound model. Why these steps matter For the lower band, both the share
+    change and the log ratio are negative, producing a positive contribution. For
+    the higher band, both are positive. The sum records the distribution change without
+    establishing that predictions became wrong or that default rates actually rose.
+  source:
+    pages:
+    - 565
+    verbatim: true
+source:
+  pages:
+  - 560
+  - 561
+  - 562
+  - 563
+  - 564
+  - 565
+  verbatim: true
+readAloud:
+- For each band, multiply the change in its population share by the natural logarithm
+  of its current-to-reference share ratio. Add the contributions across bands. Use
+  proportions that sum to 1 within each period and the same band boundaries in both
+  periods. The supplied shares are all positive, so the logarithms are defined. PSI
+  is a distribution-shift measure. No realized default labels appear in its formula.
+siteAuthored: false
+givens:
+  current:
+  - 0.2
+  - 0.8
+  reference:
+  - 0.5
+  - 0.5
+labels: &id003
+  current: Current band shares (lower risk, higher risk)
+  reference: Reference band shares (lower risk, higher risk)
+deckSolution:
+  terms:
+  - 0.27489
+  - 0.141
+  PSI: 0.41589
+  shift: 0.3
+latex:
+- PSI=\sum_i(A_i-E_i)\ln\frac{A_i}{E_i}
+symbols:
+- symbol: PSI
+  meaning: 'Population Stability Index: a comparison of two distributions represented
+    using matching bins or bands.'
+  source: *id001
+- symbol: i, B
+  meaning: Score-band index and number of bands; two here.
+  source: *id001
+- symbol: Ei
+  meaning: Reference-period share in band i. E labels the reference distribution;
+    it is not the expectation operator in this formula.
+  source: *id001
+- symbol: Ai
+  meaning: Current-period share in the same band; A labels current share, not a group
+    of applicants from the fairness exercise.
+  source: *id001
+- symbol: Ai − Ei
+  meaning: Absolute change in share as a fraction, not the relative percentage increase.
+  source: *id001
+- symbol: Ai /Ei
+  meaning: Current share divided by reference share for that band.
+  source: *id001
+- symbol: ln
+  meaning: Natural logarithm, whose base is e ≈ 2.71828.
+  source: *id002
+- symbol: Band; bin
+  meaning: A fixed interval of model scores used to count population shares.
+  source: *id002
+- symbol: Higher risk score
+  meaning: 'The supplied direction of this model: a higher score means higher predicted
+    default risk.'
+  source: *id002
+- symbol: Zero share
+  meaning: Would make a logarithm or ratio undefined; a disclosed smoothing or binning
+    convention would be needed in a different example.
+  source: *id002
+steps:
+- id: terms
+  title: PSI contribution from each band
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Multiply each share difference by the natural log of the current-to-reference
+    ratio.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each share difference by the natural log of the current-to-reference
+      ratio.
+- id: PSI
+  title: Population stability index
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Add the band contributions.
+  mistakes:
+  - pattern: recompute
+    message: Add the band contributions.
+- id: shift
+  title: Change in the higher-risk share
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Subtract reference higher-risk share from current higher-risk share.
+  mistakes:
+  - pattern: recompute
+    message: Subtract reference higher-risk share from current higher-risk share.
+learning:
+  title: Has the Applicant Mix Changed?
+  scenario: 'Credit scores use two identical bands in both periods: lower risk, then
+    higher risk. Current and reference shares are positive and sum to one.'
+  task: For each band calculate (current − reference) × ln(current/reference). Add
+    the contributions for PSI and calculate the higher-risk share change.
+  interpretation: PSI measures distribution change without using realized outcome
+    labels. It cannot establish accuracy deterioration or its cause. Investigate population,
+    policy and data changes before drawing conclusions.
+  summary: 'PSI: {PSI}. Higher-risk share change: {shift}.'
+  labels: *id003
+  steps:
+    terms:
+      title: PSI contribution from each band
+      hints: *id004
+      unit: ''
+    PSI:
+      title: Population stability index
+      hints: *id005
+      unit: ''
+    shift:
+      title: Change in the higher-risk share
+      hints: *id006
+      unit: proportion
+  readAloud:
+  - For each band, multiply the change in its population share by the natural logarithm
+    of its current-to-reference share ratio. Add the contributions across bands. Use
+    proportions that sum to 1 within each period and the same band boundaries in both
+    periods. The supplied shares are all positive, so the logarithms are defined.
+    PSI is a distribution-shift measure. No realized default labels appear in its
+    formula.
+  workedExplanation:
+  - 'The score distribution has changed. Investigate applicant channels, product mix,
+    policy changes, and the data pipeline. PSI is not an accuracy score or a default-rate
+    estimate; outcome labels are needed to assess prediction quality. Identical band
+    shares would give PSI of zero, but zero PSI would not guarantee a sound model. '
+  - For the lower band, both the share change and the log ratio are negative, producing
+    a positive contribution. For the higher band, both are positive. The sum records
+    the distribution change without establishing that predictions became wrong or
+    that default rates actually rose.
+  workedArithmetic:
+  - Lower-risk contribution = (0.20 − 0.50) × ln(0.20/0.50) ≈ (−0.30) × (−0.9163)
+    = 0.27489.
+  - Higher-risk contribution = (0.80 − 0.50) × ln(0.80/0.50) ≈ 0.30 × 0.4700 = 0.14100.
+  - PSI ≈ 0.27489 + 0.14100 = 0.41589. Higher-risk share increased by 80% − 50% =
+    30 percentage points.
+formulaSource:
+  pages:
+  - 560
+  verbatim: false
+  reviewed: true

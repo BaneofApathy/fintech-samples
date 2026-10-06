@@ -1,0 +1,13 @@
+flowchart LR
+  L[1. Working local package<br/>Six processes, queues, memory]
+  V[2. Cloud VM runbook<br/>Same container, SSH tunnel]
+  D[3. Future generation<br/>Independent participants + durable state]
+  L --> V
+  V -. requires implementation .-> D
+  D --> AWS[AWS: ECS + SQS + RDS PostgreSQL]
+  D --> GCP[GCP: Cloud Run + Pub/Sub + Cloud SQL]
+  D --> AZ[Azure: Container Apps + Service Bus + PostgreSQL]
+  classDef built fill:#EDF5F5,stroke:#007D82,color:#15384A
+  classDef future fill:#FFFFFF,stroke:#536773,stroke-dasharray:5 5,color:#536773
+  class L,V built
+  class D,AWS,GCP,AZ future

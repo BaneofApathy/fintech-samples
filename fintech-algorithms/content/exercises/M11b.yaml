@@ -1,0 +1,415 @@
+id: M11b
+title: State the Convention
+minutes: 10
+kind: measure
+parent: precision-recall-curve-and-pr-auc
+question: "In a ranking of 20 transactions, the 3 frauds appear at ranks 1, 3, and\
+  \ 6. The precision at\n those ranks is 1, 2/3, and 1/2.\n Average precision (AP),\
+  \ the calculation used by the deck’s classification code, is:\n                \
+  \                            X\n                                     AP =      \
+  \ ∆Rj Pj .\n                                                    j\n\n Each discovered\
+  \ fraud increases recall by 1/3.\n\nFor a trapezoidal PR-area comparison, use these\
+  \ three nonzero-width segments, including the\n conventional starting point (R,\
+  \ P ) = (0, 1):\n   Recall interval                                Starting precision\
+  \               Ending precision\n   0 to 1/3                                  \
+  \                       1                             1\n   1/3 to 2/3         \
+  \                                          1/2                            2/3\n\
+  \   2/3 to 1                                                     2/5           \
+  \                 1/2\n Calculate AP and the trapezoidal area. Why should a report\
+  \ not label both numbers identically\n without a definition?"
+questionPages:
+- page: 291
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Class problem | 10 minutes — State\
+    \ the Convention (1/2)\n\n In a ranking of 20 transactions, the 3 frauds appear\
+    \ at ranks 1, 3, and 6. The precision at\n those ranks is 1, 2/3, and 1/2.\n Average\
+    \ precision (AP), the calculation used by the deck’s classification code, is:\n\
+    \                                            X\n                             \
+    \        AP =       ∆Rj Pj .\n                                               \
+    \     j\n\n Each discovered fraud increases recall by 1/3."
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Class problem | 10 minutes — State the Convention (1/2)
+  - 'In a ranking of 20 transactions, the 3 frauds appear at ranks 1, 3, and 6. The
+    precision at those ranks is 1, 2/3, and 1/2. Average precision (AP), the calculation
+    used by the deck’s classification code, is: X AP = ∆Rj Pj . j'
+  - Each discovered fraud increases recall by 1/3.
+  source:
+    pages:
+    - 291
+    verbatim: true
+- page: 292
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Class problem — State the Convention\
+    \ (2/2)\n\n For a trapezoidal PR-area comparison, use these three nonzero-width\
+    \ segments, including the\n conventional starting point (R, P ) = (0, 1):\n  \
+    \ Recall interval                                Starting precision          \
+    \     Ending precision\n   0 to 1/3                                          \
+    \               1                             1\n   1/3 to 2/3               \
+    \                                    1/2                            2/3\n   2/3\
+    \ to 1                                                     2/5               \
+    \             1/2\n Calculate AP and the trapezoidal area. Why should a report\
+    \ not label both numbers identically\n without a definition?"
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Class problem — State the Convention (2/2)
+  - 'For a trapezoidal PR-area comparison, use these three nonzero-width segments,
+    including the conventional starting point (R, P ) = (0, 1): Recall interval Starting
+    precision Ending precision 0 to 1/3 1 1 1/3 to 2/3 1/2 2/3 2/3 to 1 2/5 1/2 Calculate
+    AP and the trapezoidal area. Why should a report not label both numbers identically
+    without a definition?'
+  source:
+    pages:
+    - 292
+    verbatim: true
+formulaPages:
+- page: 287
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Formula explained (1/2)\n\n Question:\
+    \ How does average precision summarize the ranking?\n                        \
+    \       X\n                        AP =       ∆Rj Pj ,    ∆Rj = Rj − Rj−1 .\n\
+    \                                                  j\n\n Read it aloud: For every\
+    \ increase in recall, multiply the size of the increase by precision at that\n\
+    \ point, then add the contributions.\n Only newly discovered frauds increase recall\
+    \ in this untied ranking. With three frauds, each\n discovery contributes a recall\
+    \ increase of one-third.\n This is a weighted average of precision, with recall\
+    \ increments as weights. It is not the ordinary\n average of precision at every\
+    \ rank."
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Formula explained (1/2)
+  - 'Question: How does average precision summarize the ranking? X AP = ∆Rj Pj , ∆Rj
+    = Rj − Rj−1 . j'
+  - 'Read it aloud: For every increase in recall, multiply the size of the increase
+    by precision at that point, then add the contributions. Only newly discovered
+    frauds increase recall in this untied ranking. With three frauds, each discovery
+    contributes a recall increase of one-third. This is a weighted average of precision,
+    with recall increments as weights. It is not the ordinary average of precision
+    at every rank.'
+  source:
+    pages:
+    - 287
+    verbatim: true
+- page: 288
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Formula explained (2/2)\n\n Question:\
+    \ Why can trapezoidal PR area give a different number?\n                     \
+    \            Pstart,j + Pend,j           X\n                       Aj = ∆Rj  \
+    \                   ,    A=     Aj .\n                                       \
+    \   2                   j\n\n Read it aloud: For each horizontal recall interval,\
+    \ multiply its width by the average of its two\n endpoint precision values. Add\
+    \ the trapezoids.\n The exercise supplies which endpoints to use, including the\
+    \ starting point (R, P ) = (0, 1).\n Vertical movements add no area because their\
+    \ recall width is zero.\n AP uses one precision level per recall increment; the\
+    \ trapezoidal rule joins endpoints with\n straight lines. State the convention\
+    \ when reporting “PR-AUC.”"
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Formula explained (2/2)
+  - 'Question: Why can trapezoidal PR area give a different number? Pstart,j + Pend,j
+    X Aj = ∆Rj , A= Aj . 2 j'
+  - 'Read it aloud: For each horizontal recall interval, multiply its width by the
+    average of its two endpoint precision values. Add the trapezoids. The exercise
+    supplies which endpoints to use, including the starting point (R, P ) = (0, 1).
+    Vertical movements add no area because their recall width is zero. AP uses one
+    precision level per recall increment; the trapezoidal rule joins endpoints with
+    straight lines. State the convention when reporting “PR-AUC.”'
+  source:
+    pages:
+    - 288
+    verbatim: true
+symbolPages:
+- page: 289
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Symbols and terms (1/2)\n\n\n\
+    \   Symbol or term                                 Meaning in this example\n \
+    \  AP                                             Average precision, calculated\
+    \ by recall-increment weighting in this\n                                    \
+    \              exercise.\n   PR-AUC                                         Area\
+    \ under a precision–recall curve; its numerical value requires an\n          \
+    \                                        integration or interpolation convention.\n\
+    \   j                                              Index of a recall-increase\
+    \ interval in the sum.\n   Rj , Rj−1                                      Recall\
+    \ after and before interval j; their difference is the added fraud\n         \
+    \                                         coverage.\n   ∆Rj                  \
+    \                          Recall increment, one-third for each newly found fraud\
+    \ here.\n   Pj                                             Precision after the\
+    \ additional fraud is included; these are 1, 2/3, and\n                      \
+    \                            1/2."
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example AP Average precision, calculated by recall-increment
+    weighting in this exercise. PR-AUC Area under a precision–recall curve; its numerical
+    value requires an integration or interpolation convention. j Index of a recall-increase
+    interval in the sum. Rj , Rj−1 Recall after and before interval j; their difference
+    is the added fraud coverage. ∆Rj Recall increment, one-third for each newly found
+    fraud here. Pj Precision after the additional fraud is included; these are 1,
+    2/3, and 1/2.
+  source: &id001
+    pages:
+    - 289
+    verbatim: true
+- page: 290
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Symbols and terms (2/2)\n\n\n\
+    \   Symbol or term                                 Meaning in this example\n \
+    \  Pstart,j , Pend,j                              Precision values at the two\
+    \ ends of the supplied trapezoid interval.\n   Aj , A                        \
+    \                 Area of one trapezoid and total trapezoidal PR area; both are\n\
+    \                                                  unitless.\n   Interpolation\
+    \                                  A rule for filling between observed points;\
+    \ AP and the trapezoidal\n                                                  method\
+    \ use different conventions.\n   R, P in a plotted pair                      \
+    \   Horizontal recall coordinate and vertical precision coordinate,\n        \
+    \                                          respectively."
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Pstart,j , Pend,j Precision values at the
+    two ends of the supplied trapezoid interval. Aj , A Area of one trapezoid and
+    total trapezoidal PR area; both are unitless. Interpolation A rule for filling
+    between observed points; AP and the trapezoidal method use different conventions.
+    R, P in a plotted pair Horizontal recall coordinate and vertical precision coordinate,
+    respectively.
+  source: &id002
+    pages:
+    - 290
+    verbatim: true
+solutionPages:
+- page: 293
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Worked solution — State the Convention\n\
+    \n1. Calculate average precision using precision at each new fraud:\n        \
+    \                               \x12 \x13       \x12 \x13\n                  \
+    \            1      1 2       1 1      13\n                       AP = (1) + \
+    \           +        =    = 0.7222.\n                              3      3 3\
+    \       3 2      18\n2. Calculate the three trapezoid areas:\n               \
+    \                        11+1\n                                              \
+    \    A1 =\n                                              = 0.3333.\n         \
+    \                              3 2\n                                    1 1/2\
+    \ + 2/3\n                              A2 =              = 0.1944.\n         \
+    \                           3     2\n                                    1 2/5\
+    \ + 1/2\n                              A3 =              = 0.1500.\n         \
+    \                           3     2\n3. Add them: A1 + A2 + A3 = 0.6778. Vertical\
+    \ movements have zero width and add no area."
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Worked solution — State the Convention
+  - "1. Calculate average precision using precision at each new fraud: \x12 \x13 \x12\
+    \ \x13 1 1 2 1 1 13 AP = (1) + + = = 0.7222. 3 3 3 3 2 18 2. Calculate the three\
+    \ trapezoid areas: 11+1 A1 = = 0.3333. 3 2 1 1/2 + 2/3 A2 = = 0.1944. 3 2 1 2/5\
+    \ + 1/2 A3 = = 0.1500. 3 2 3. Add them: A1 + A2 + A3 = 0.6778. Vertical movements\
+    \ have zero width and add no area."
+  source:
+    pages:
+    - 293
+    verbatim: true
+interpretationPages:
+- page: 294
+  title: Average Precision and PR-AUC
+  text: " Average Precision and PR-AUC\n\n   M11b | Interpretation\n\n What the answer\
+    \ means\n AP = 0.7222 and trapezoidal PR-area = 0.6778 describe the same ranking\
+    \ using different\n interpolation conventions. AP is a recall-weighted summary\
+    \ of precision, not “72.22% of\n transactions are correct.” Report the convention\
+    \ explicitly when comparing models.\n Why these steps matter\n The difference\
+    \ between 0.7222 and 0.6778 is not a change in the model or its ranking. It comes\n\
+    \ from the way the curve’s area is summarized. Comparing these two numbers as\
+    \ if they were the\n same statistic would manufacture a performance difference."
+  paragraphs:
+  - Average Precision and PR-AUC
+  - M11b | Interpretation
+  - What the answer means AP = 0.7222 and trapezoidal PR-area = 0.6778 describe the
+    same ranking using different interpolation conventions. AP is a recall-weighted
+    summary of precision, not “72.22% of transactions are correct.” Report the convention
+    explicitly when comparing models. Why these steps matter The difference between
+    0.7222 and 0.6778 is not a change in the model or its ranking. It comes from the
+    way the curve’s area is summarized. Comparing these two numbers as if they were
+    the same statistic would manufacture a performance difference.
+  source:
+    pages:
+    - 294
+    verbatim: true
+source:
+  pages:
+  - 287
+  - 288
+  - 289
+  - 290
+  - 291
+  - 292
+  - 293
+  - 294
+  verbatim: true
+readAloud:
+- For every increase in recall, multiply the size of the increase by precision at
+  that point, then add the contributions. Only newly discovered frauds increase recall
+  in this untied ranking. With three frauds, each discovery contributes a recall increase
+  of one-third. This is a weighted average of precision, with recall increments as
+  weights. It is not the ordinary average of precision at every rank.
+- For each horizontal recall interval, multiply its width by the average of its two
+  endpoint precision values. Add the trapezoids. The exercise supplies which endpoints
+  to use, including the starting point (R, P ) = (0, 1). Vertical movements add no
+  area because their recall width is zero. AP uses one precision level per recall
+  increment; the trapezoidal rule joins endpoints with straight lines. State the convention
+  when reporting “PR-AUC.”
+siteAuthored: false
+givens:
+  precisions:
+  - 1
+  - 0.6666666666666666
+  - 0.5
+  delta: 0.3333333333333333
+  starts:
+  - 1
+  - 0.5
+  - 0.4
+  ends:
+  - 1
+  - 0.6666666666666666
+  - 0.5
+labels: &id003
+  precisions: Precision at each new-fraud discovery
+  delta: Recall increment and interval width
+  starts: Starting precisions for the intervals
+  ends: Ending precisions for the intervals
+deckSolution:
+  AP: 0.7222222
+  areas:
+  - 0.3333333333333333
+  - 0.1944444
+  - 0.15
+  trapezoid: 0.6777778
+latex:
+- AP=\sum_j\Delta R_jP_j,\quad Area_{trap}=\sum_j\Delta R_j\frac{P_{start,j}+P_{end,j}}{2}
+- \Delta R_j=R_j-R_{j-1}
+symbols:
+- symbol: AP
+  meaning: Average precision, calculated by recall-increment weighting in this exercise.
+  source: *id001
+- symbol: PR-AUC
+  meaning: Area under a precision–recall curve; its numerical value requires an integration
+    or interpolation convention.
+  source: *id001
+- symbol: j
+  meaning: Index of a recall-increase interval in the sum.
+  source: *id001
+- symbol: Rj , Rj−1
+  meaning: Recall after and before interval j; their difference is the added fraud
+    coverage.
+  source: *id001
+- symbol: ∆Rj
+  meaning: Recall increment, one-third for each newly found fraud here.
+  source: *id001
+- symbol: Pj
+  meaning: Precision after the additional fraud is included; these are 1, 2/3, and
+    1/2.
+  source: *id001
+- symbol: Pstart,j , Pend,j
+  meaning: Precision values at the two ends of the supplied trapezoid interval.
+  source: *id002
+- symbol: Aj , A
+  meaning: Area of one trapezoid and total trapezoidal PR area; both are unitless.
+  source: *id002
+- symbol: Interpolation
+  meaning: A rule for filling between observed points; AP and the trapezoidal method
+    use different conventions.
+  source: *id002
+- symbol: R, P in a plotted pair
+  meaning: Horizontal recall coordinate and vertical precision coordinate, respectively.
+  source: *id002
+steps:
+- id: AP
+  title: Average precision
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Multiply each discovery precision by the recall increment and add.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each discovery precision by the recall increment and add.
+- id: areas
+  title: Areas of the supplied trapezoids
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - For each interval, multiply its width by the average of its two endpoint precisions.
+  mistakes:
+  - pattern: recompute
+    message: For each interval, multiply its width by the average of its two endpoint
+      precisions.
+- id: trapezoid
+  title: Total trapezoidal PR area
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Add all trapezoid areas.
+  mistakes:
+  - pattern: recompute
+    message: Add all trapezoid areas.
+learning:
+  title: State the Convention
+  scenario: A ranked list can be summarized by average precision or by trapezoidal
+    precision–recall area. The recall increments and interval endpoint precisions
+    are supplied.
+  task: Calculate AP as the sum of recall increment × precision at each discovery.
+    Calculate each trapezoid as recall width × average endpoint precision, then add
+    the areas.
+  interpretation: The same ranking can have different AP and trapezoidal areas because
+    the interpolation convention differs. State which quantity you report as PR-AUC.
+  summary: 'Average precision: {AP}. Trapezoidal PR area: {trapezoid}.'
+  labels: *id003
+  steps:
+    AP:
+      title: Average precision
+      hints: *id004
+      unit: ''
+    areas:
+      title: Areas of the supplied trapezoids
+      hints: *id005
+      unit: ''
+    trapezoid:
+      title: Total trapezoidal PR area
+      hints: *id006
+      unit: ''
+  readAloud:
+  - For every increase in recall, multiply the size of the increase by precision at
+    that point, then add the contributions. Only newly discovered frauds increase
+    recall in this untied ranking. With three frauds, each discovery contributes a
+    recall increase of one-third. This is a weighted average of precision, with recall
+    increments as weights. It is not the ordinary average of precision at every rank.
+  - For each horizontal recall interval, multiply its width by the average of its
+    two endpoint precision values. Add the trapezoids. The exercise supplies which
+    endpoints to use, including the starting point (R, P ) = (0, 1). Vertical movements
+    add no area because their recall width is zero. AP uses one precision level per
+    recall increment; the trapezoidal rule joins endpoints with straight lines. State
+    the convention when reporting “PR-AUC.”
+  workedExplanation:
+  - 'AP = 0.7222 and trapezoidal PR-area = 0.6778 describe the same ranking using
+    different interpolation conventions. AP is a recall-weighted summary of precision,
+    not “72.22% of transactions are correct.” Report the convention explicitly when
+    comparing models. '
+  - The difference between 0.7222 and 0.6778 is not a change in the model or its ranking.
+    It comes from the way the curve’s area is summarized. Comparing these two numbers
+    as if they were the same statistic would manufacture a performance difference.
+  workedArithmetic:
+  - AP = (1/3) × 1 + (1/3) × (2/3) + (1/3) × (1/2) = 13/18 ≈ 0.7222.
+  - Trapezoid 1 = (1/3) × (1 + 1) / 2 = 1/3. Trapezoid 2 = (1/3) × (1/2 + 2/3) / 2
+    = 7/36 ≈ 0.1944.
+  - Trapezoid 3 = (1/3) × (2/5 + 1/2) / 2 = 0.15. Total area ≈ 0.3333 + 0.1944 + 0.15
+    = 0.6778. Vertical movements add zero area.
+formulaSource:
+  pages:
+  - 287
+  - 288
+  verbatim: false
+  reviewed: true

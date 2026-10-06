@@ -1,0 +1,228 @@
+slug: confusion-matrix
+number: 1
+title: Confusion Matrix
+question: rare
+financialInterpretation: 'The confusion matrix counts the four operational outcomes
+  created by a chosen threshold: caught fraud, missed fraud, unnecessary customer
+  friction, and legitimate transactions passed correctly.'
+workingExample: ': 10,000 transactions Translate the cells There are 100 actual frauds.
+  The model flags 200 ▶ TP: fraud caught transactions. Of those flags, 60 are truly
+  fraud. ▶ FP: good customer interrupted Actual fraud Actual legitimate ▶ FN: fraud
+  missed Flagged TP = 60 FP = 140 ▶ TN: legitimate transaction passed Not flagged
+  FN = 40 TN = 9,760 Remember Every classification measure on the next slides is a
+  different summary of these four counts.'
+whatItMisses: ''
+exercises:
+- M01
+widget: confusion-builder
+usedBy:
+- logistic-regression
+- trees-and-forests
+slides:
+- page: 198
+  title: EVALUATION MEASURE 1 OF 39
+  text: "    EVALUATION MEASURE 1 OF 39\n\n\n\n\n                     Confusion Matrix\n\
+    \       Shows how many risky cases were caught or missed, and\n         how many\
+    \ legitimate cases were wrongly flagged or\n                         correctly\
+    \ passed."
+  paragraphs:
+  - EVALUATION MEASURE 1 OF 39
+  - Confusion Matrix Shows how many risky cases were caught or missed, and how many
+    legitimate cases were wrongly flagged or correctly passed.
+  source:
+    pages:
+    - 198
+    verbatim: true
+- page: 199
+  title: Confusion matrix – what happened to each decision?
+  text: " Confusion matrix – what happened to each decision?\n\n\n Financial interpretation\n\
+    \ The confusion matrix counts the four operational outcomes created by a chosen\
+    \ threshold: caught fraud,\n missed fraud, unnecessary customer friction, and\
+    \ legitimate transactions passed correctly.\n\n\n Working example: 10,000 transactions\
+    \                                 Translate the cells\n       There are 100 actual\
+    \ frauds. The model flags 200               ▶ TP: fraud caught\n        transactions.\
+    \ Of those flags, 60 are truly fraud.             ▶ FP: good customer interrupted\n\
+    \                                   Actual fraud   Actual legitimate   ▶ FN: fraud\
+    \ missed\n       Flagged                         TP = 60       FP = 140      \
+    \   ▶ TN: legitimate transaction passed\n       Not flagged                  \
+    \   FN = 40      TN = 9,760\n                                                \
+    \                      Remember\n                                            \
+    \                          Every classification measure on the next slides\n \
+    \                                                                     is a different\
+    \ summary of these four counts."
+  paragraphs:
+  - Confusion matrix – what happened to each decision?
+  - 'Financial interpretation The confusion matrix counts the four operational outcomes
+    created by a chosen threshold: caught fraud, missed fraud, unnecessary customer
+    friction, and legitimate transactions passed correctly.'
+  - 'Working example: 10,000 transactions Translate the cells There are 100 actual
+    frauds. The model flags 200 ▶ TP: fraud caught transactions. Of those flags, 60
+    are truly fraud. ▶ FP: good customer interrupted Actual fraud Actual legitimate
+    ▶ FN: fraud missed Flagged TP = 60 FP = 140 ▶ TN: legitimate transaction passed
+    Not flagged FN = 40 TN = 9,760 Remember Every classification measure on the next
+    slides is a different summary of these four counts.'
+  source:
+    pages:
+    - 199
+    verbatim: true
+- page: 200
+  title: Confusion Matrix
+  text: " Confusion Matrix\n\n   M01 | Formula explained (1/1)\n\n Question: How many\
+    \ decisions fall into each of the four possible outcomes?\n                  \
+    \                     T P + F N = all actual frauds,     T P + F P = all flags,\n\
+    \                            T N + F P = all legitimate cases,           N = T\
+    \ P + F P + F N + T N.\n Read it aloud: Actual frauds are caught or missed. Flags\
+    \ are correct alerts or false alerts.\n Every transaction belongs to exactly one\
+    \ cell.\n From the supplied totals, calculate the known caught frauds first, then\
+    \ subtract to obtain the\n other three cells.\n A confusion matrix is a table\
+    \ of counts, not a prediction formula. Always identify which\n outcome is called\
+    \ positive before filling it in."
+  paragraphs:
+  - Confusion Matrix
+  - M01 | Formula explained (1/1)
+  - 'Question: How many decisions fall into each of the four possible outcomes? T
+    P + F N = all actual frauds, T P + F P = all flags, T N + F P = all legitimate
+    cases, N = T P + F P + F N + T N. Read it aloud: Actual frauds are caught or missed.
+    Flags are correct alerts or false alerts. Every transaction belongs to exactly
+    one cell. From the supplied totals, calculate the known caught frauds first, then
+    subtract to obtain the other three cells. A confusion matrix is a table of counts,
+    not a prediction formula. Always identify which outcome is called positive before
+    filling it in.'
+  source:
+    pages:
+    - 200
+    verbatim: true
+- page: 201
+  title: Confusion Matrix
+  text: " Confusion Matrix\n\n   M01 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   TP             \
+    \                                True positives: actual frauds correctly flagged.\
+    \ “True” means the\n                                                  prediction\
+    \ matches the outcome.\n   FP                                             False\
+    \ positives: legitimate transactions incorrectly flagged.\n   FN             \
+    \                                False negatives: actual frauds incorrectly passed\
+    \ or left unflagged.\n   TN                                             True negatives:\
+    \ legitimate transactions correctly passed.\n   N                            \
+    \                  Total evaluated transactions, here 1,000.\n   Positive class\
+    \                                 The event being detected; fraud in this exercise,\
+    \ not a judgment that\n                                                  fraud\
+    \ is desirable."
+  paragraphs:
+  - Confusion Matrix
+  - M01 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example TP True positives: actual frauds correctly
+    flagged. “True” means the prediction matches the outcome. FP False positives:
+    legitimate transactions incorrectly flagged. FN False negatives: actual frauds
+    incorrectly passed or left unflagged. TN True negatives: legitimate transactions
+    correctly passed. N Total evaluated transactions, here 1,000. Positive class The
+    event being detected; fraud in this exercise, not a judgment that fraud is desirable.'
+  source:
+    pages:
+    - 201
+    verbatim: true
+- page: 202
+  title: Confusion Matrix
+  text: " Confusion Matrix\n\n   M01 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Negative class \
+    \                                The other outcome; legitimate activity here.\n\
+    \   Positive prediction; flag                      The detector’s decision to\
+    \ mark a transaction for intervention or\n                                   \
+    \               review.\n   Actual outcome; label                          Confirmed\
+    \ fraud or legitimate status, available later for evaluation.\n   Confusion matrix\
+    \                               A table crossing predicted decisions with actual\
+    \ labels to count\n                                                  correct and\
+    \ incorrect outcomes."
+  paragraphs:
+  - Confusion Matrix
+  - M01 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Negative class The other outcome; legitimate
+    activity here. Positive prediction; flag The detector’s decision to mark a transaction
+    for intervention or review. Actual outcome; label Confirmed fraud or legitimate
+    status, available later for evaluation. Confusion matrix A table crossing predicted
+    decisions with actual labels to count correct and incorrect outcomes.
+  source:
+    pages:
+    - 202
+    verbatim: true
+- page: 203
+  title: Confusion Matrix
+  text: " Confusion Matrix\n\n   M01 | Class problem | 5 minutes — Count the Four\
+    \ Outcomes\n\n A fraud detector processes 1,000 transactions. Later investigation\
+    \ establishes that 20 were\n fraud.\n The detector flagged 50 transactions. Of\
+    \ the flagged transactions, 15 were fraud.\n Treat fraud as the positive class\
+    \ and a flag as a positive prediction.\n1. Fill in all four cells: true positives,\
+    \ false positives, false negatives, and true negatives.\n2. Verify that the four\
+    \ counts add to 1,000.\n3. How many legitimate customers were interrupted, and\
+    \ how many frauds were missed?\n   Decision                                  \
+    \      Actually fraud                    Actually legitimate\n   Flagged     \
+    \                                                  ?                         \
+    \            ?\n   Not flagged                                               \
+    \    ?                                     ?"
+  paragraphs:
+  - Confusion Matrix
+  - M01 | Class problem | 5 minutes — Count the Four Outcomes
+  - 'A fraud detector processes 1,000 transactions. Later investigation establishes
+    that 20 were fraud. The detector flagged 50 transactions. Of the flagged transactions,
+    15 were fraud. Treat fraud as the positive class and a flag as a positive prediction.
+    1. Fill in all four cells: true positives, false positives, false negatives, and
+    true negatives. 2. Verify that the four counts add to 1,000. 3. How many legitimate
+    customers were interrupted, and how many frauds were missed? Decision Actually
+    fraud Actually legitimate Flagged ? ? Not flagged ? ?'
+  source:
+    pages:
+    - 203
+    verbatim: true
+- page: 204
+  title: Confusion Matrix
+  text: " Confusion Matrix\n\n   M01 | Worked solution — Count the Four Outcomes\n\
+    \n1. True positives: The 15 confirmed frauds among the flags give T P = 15.\n\
+    2. False positives: F P = 50 − 15 = 35.\n3. False negatives: F N = 20 − 15 = 5.\n\
+    4. True negatives: There are 1,000 − 20 = 980 legitimate transactions, so\n  \
+    \ T N = 980 − 35 = 945.\n   Decision                                       Actually\
+    \ fraud                   Actually legitimate\n   Flagged                    \
+    \                               15                                    35\n   Not\
+    \ flagged                                                 5                  \
+    \                945\n Check: 15 + 35 + 5 + 945 = 1,000."
+  paragraphs:
+  - Confusion Matrix
+  - M01 | Worked solution — Count the Four Outcomes
+  - '1. True positives: The 15 confirmed frauds among the flags give T P = 15. 2.
+    False positives: F P = 50 − 15 = 35. 3. False negatives: F N = 20 − 15 = 5. 4.
+    True negatives: There are 1,000 − 20 = 980 legitimate transactions, so T N = 980
+    − 35 = 945. Decision Actually fraud Actually legitimate Flagged 15 35 Not flagged
+    5 945 Check: 15 + 35 + 5 + 945 = 1,000.'
+  source:
+    pages:
+    - 204
+    verbatim: true
+- page: 205
+  title: Confusion Matrix
+  text: " Confusion Matrix\n\n   M01 | Interpretation\n\n What the answer means\n\
+    \ The detector finds 15 frauds, misses 5, interrupts 35 legitimate transactions,\
+    \ and correctly\n passes 945. These are counts at one chosen threshold, not probabilities.\n\
+    \ Why these steps matter\n The total number of flags includes false alarms. The\
+    \ total number of actual frauds includes\n missed fraud. Those two totals are\
+    \ usually different, which is why precision and recall require\n different denominators."
+  paragraphs:
+  - Confusion Matrix
+  - M01 | Interpretation
+  - What the answer means The detector finds 15 frauds, misses 5, interrupts 35 legitimate
+    transactions, and correctly passes 945. These are counts at one chosen threshold,
+    not probabilities. Why these steps matter The total number of flags includes false
+    alarms. The total number of actual frauds includes missed fraud. Those two totals
+    are usually different, which is why precision and recall require different denominators.
+  source:
+    pages:
+    - 205
+    verbatim: true
+source:
+  pages:
+  - 198
+  - 199
+  - 200
+  - 201
+  - 202
+  - 203
+  - 204
+  - 205
+  verbatim: true

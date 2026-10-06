@@ -1,0 +1,478 @@
+id: A02
+title: A Fraud Split
+minutes: 10
+kind: algorithm
+parent: trees-and-forests
+question: "A training node contains 10 transactions: 4 frauds and 6 legitimate transactions.\
+  \ A\n proposed split produces:\n   Device group                                \
+  \           Fraud                        Legitimate\n   New device             \
+  \                                      3                                1\n   Trusted\
+  \ device                                               1                       \
+  \         5\n\n Use Gini impurity G = 1 − p2f − p2l . Weight each child node by\
+  \ its share of the 10 records.\n For a new transaction, three fitted trees output\
+  \ fraud scores of 0.75, 0.50, and 0.25. The\n forest averages these scores. The\
+  \ challenge threshold is 0.60.\n1. Calculate parent impurity, weighted child impurity,\
+  \ and the reduction.\n2. Calculate the forest score and apply the challenge threshold.\n\
+  3. Would the first tree alone produce the same action?"
+questionPages:
+- page: 39
+  title: Trees and Random Forests
+  text: " Trees and Random Forests\n\n   A02 | Class problem | 10 minutes — A Fraud\
+    \ Split\n\n A training node contains 10 transactions: 4 frauds and 6 legitimate\
+    \ transactions. A\n proposed split produces:\n   Device group                \
+    \                           Fraud                        Legitimate\n   New device\
+    \                                                   3                        \
+    \        1\n   Trusted device                                               1\
+    \                                5\n\n Use Gini impurity G = 1 − p2f − p2l . Weight\
+    \ each child node by its share of the 10 records.\n For a new transaction, three\
+    \ fitted trees output fraud scores of 0.75, 0.50, and 0.25. The\n forest averages\
+    \ these scores. The challenge threshold is 0.60.\n1. Calculate parent impurity,\
+    \ weighted child impurity, and the reduction.\n2. Calculate the forest score and\
+    \ apply the challenge threshold.\n3. Would the first tree alone produce the same\
+    \ action?"
+  paragraphs:
+  - Trees and Random Forests
+  - A02 | Class problem | 10 minutes — A Fraud Split
+  - 'A training node contains 10 transactions: 4 frauds and 6 legitimate transactions.
+    A proposed split produces: Device group Fraud Legitimate New device 3 1 Trusted
+    device 1 5'
+  - Use Gini impurity G = 1 − p2f − p2l . Weight each child node by its share of the
+    10 records. For a new transaction, three fitted trees output fraud scores of 0.75,
+    0.50, and 0.25. The forest averages these scores. The challenge threshold is 0.60.
+    1. Calculate parent impurity, weighted child impurity, and the reduction. 2. Calculate
+    the forest score and apply the challenge threshold. 3. Would the first tree alone
+    produce the same action?
+  source:
+    pages:
+    - 39
+    verbatim: true
+formulaPages:
+- page: 35
+  title: Trees and Random Forests
+  text: " Trees and Random Forests\n\n   A02 | Formula explained (1/2)\n\n Question:\
+    \ Does splitting the transactions make the resulting groups less mixed?\n    \
+    \                                           G = 1 − p2f − p2l ,\n            \
+    \                                         n1      n2\n                       \
+    \                     Gsplit =    G1 + G 2 ,\n                               \
+    \                      N       N\n                                           \
+    \ ∆G = Gparent − Gsplit .\n Read it aloud: Calculate how mixed each group is;\
+    \ average the child impurities using their\n record counts; subtract that average\
+    \ from the original impurity.\n A pure group contains only one class and has impurity\
+    \ zero. A useful candidate split reduces\n impurity on the training records; validation\
+    \ is still separate."
+  paragraphs:
+  - Trees and Random Forests
+  - A02 | Formula explained (1/2)
+  - 'Question: Does splitting the transactions make the resulting groups less mixed?
+    G = 1 − p2f − p2l , n1 n2 Gsplit = G1 + G 2 , N N ∆G = Gparent − Gsplit . Read
+    it aloud: Calculate how mixed each group is; average the child impurities using
+    their record counts; subtract that average from the original impurity. A pure
+    group contains only one class and has impurity zero. A useful candidate split
+    reduces impurity on the training records; validation is still separate.'
+  source:
+    pages:
+    - 35
+    verbatim: true
+- page: 36
+  title: Trees and Random Forests
+  text: " Trees and Random Forests\n\n   A02 | Formula explained (2/2)\n\n Question:\
+    \ What does this small forest predict?\n                                     \
+    \                      B\n                                                   \
+    \     1 X\n                                            pforest =         pb .\n\
+    \                                                        B b=1\n Read it aloud:\
+    \ Add the fraud scores supplied by the trees and divide by the number of trees.\n\
+    \ Here the exercise averages three scores, not three yes/no votes. Challenge when\
+    \ the resulting\n score is at least 0.60.\n Distinguish the terms: A node is a\
+    \ group of records. A split divides a node. A leaf is a final\n node that supplies\
+    \ a prediction. A forest combines several trees."
+  paragraphs:
+  - Trees and Random Forests
+  - A02 | Formula explained (2/2)
+  - 'Question: What does this small forest predict? B 1 X pforest = pb . B b=1 Read
+    it aloud: Add the fraud scores supplied by the trees and divide by the number
+    of trees. Here the exercise averages three scores, not three yes/no votes. Challenge
+    when the resulting score is at least 0.60. Distinguish the terms: A node is a
+    group of records. A split divides a node. A leaf is a final node that supplies
+    a prediction. A forest combines several trees.'
+  source:
+    pages:
+    - 36
+    verbatim: true
+symbolPages:
+- page: 37
+  title: Trees and Random Forests
+  text: " Trees and Random Forests\n\n   A02 | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   G            \
+    \                            Gini impurity: how mixed a node is; for two classes\
+    \ it ranges from 0\n                                            to 0.5.\n   pf\
+    \ , pl                                  Fractions of fraud and legitimate records\
+    \ within the particular node;\n                                            they\
+    \ sum to 1.\n   p2f , p2l                                Each class fraction multiplied\
+    \ by itself; the square is not a\n                                           \
+    \ percentage conversion.\n   N                                        Number of\
+    \ records in the parent node: 10.\n   n1 , n2                                \
+    \  Child record counts: 4 for new devices and 6 for trusted devices.\n   G 1 ,\
+    \ G2                                 Impurities of the new-device and trusted-device\
+    \ child nodes."
+  paragraphs:
+  - Trees and Random Forests
+  - A02 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example G Gini impurity: how mixed a node is;
+    for two classes it ranges from 0 to 0.5. pf , pl Fractions of fraud and legitimate
+    records within the particular node; they sum to 1. p2f , p2l Each class fraction
+    multiplied by itself; the square is not a percentage conversion. N Number of records
+    in the parent node: 10. n1 , n2 Child record counts: 4 for new devices and 6 for
+    trusted devices. G 1 , G2 Impurities of the new-device and trusted-device child
+    nodes.'
+  source: &id001
+    pages:
+    - 37
+    verbatim: true
+- page: 38
+  title: Trees and Random Forests
+  text: " Trees and Random Forests\n\n   A02 | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   Gparent , Gsplit\
+    \                         Original impurity and record-weighted impurity after\
+    \ the split.\n   ∆G                                       Reduction in impurity;\
+    \ a positive value means the proposed split\n                                \
+    \            makes the training groups less mixed.\n   B, b                  \
+    \                   Number of trees, here 3, and an index selecting one tree.\n\
+    \   pb , pforest                             One tree’s supplied fraud score and\
+    \ the mean score across trees.\n   PB\n        b=1                           \
+    \      Add the contribution from each of the B trees.\n   Challenge          \
+    \                      An extra identity or transaction check; it is not necessarily\
+    \ a decline."
+  paragraphs:
+  - Trees and Random Forests
+  - A02 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Gparent , Gsplit Original impurity and
+    record-weighted impurity after the split. ∆G Reduction in impurity; a positive
+    value means the proposed split makes the training groups less mixed. B, b Number
+    of trees, here 3, and an index selecting one tree. pb , pforest One tree’s supplied
+    fraud score and the mean score across trees. PB b=1 Add the contribution from
+    each of the B trees. Challenge An extra identity or transaction check; it is not
+    necessarily a decline.
+  source: &id002
+    pages: &id003
+    - 38
+    verbatim: true
+solutionPages:
+- page: 40
+  title: Trees and Random Forests
+  text: " Trees and Random Forests\n\n   A02 | Worked solution — A Fraud Split\n\n\
+    1. Parent impurity: 1 − 0.42 − 0.62 = 0.48.\n2. Child impurities:\n          \
+    \                                     Gnew = 1 − (3/4)2 − (1/4)2 = 0.375.\n  \
+    \                                           Gtrusted = 1 − (1/6)2 − (5/6)2 = 0.2778.\n\
+    3. Weight the children:\n                      Gsplit = (4/10)(0.375) + (6/10)(0.2778)\
+    \ = 0.3167.\n                                            Impurity reduction =\
+    \ 0.48 − 0.3167 = 0.1633.\n4. Average the tree outputs: (0.75 + 0.50 + 0.25)/3\
+    \ = 0.50.\n5. Apply the threshold: The forest does not trigger a challenge because\
+    \ 0.50 < 0.60. The first\n   tree alone would trigger one because 0.75 ≥ 0.60."
+  paragraphs:
+  - Trees and Random Forests
+  - A02 | Worked solution — A Fraud Split
+  - '1. Parent impurity: 1 − 0.42 − 0.62 = 0.48. 2. Child impurities: Gnew = 1 − (3/4)2
+    − (1/4)2 = 0.375. Gtrusted = 1 − (1/6)2 − (5/6)2 = 0.2778. 3. Weight the children:
+    Gsplit = (4/10)(0.375) + (6/10)(0.2778) = 0.3167. Impurity reduction = 0.48 −
+    0.3167 = 0.1633. 4. Average the tree outputs: (0.75 + 0.50 + 0.25)/3 = 0.50. 5.
+    Apply the threshold: The forest does not trigger a challenge because 0.50 < 0.60.
+    The first tree alone would trigger one because 0.75 ≥ 0.60.'
+  source:
+    pages:
+    - 40
+    verbatim: true
+interpretationPages:
+- page: 41
+  title: Trees and Random Forests
+  text: " Trees and Random Forests\n\n   A02 | Interpretation\n\n What the answer\
+    \ means\n The split creates more uniform groups in this training sample. Averaging\
+    \ trees changes the\n intervention decision; it does not prove that the resulting\
+    \ score is calibrated. Gini impurity\n here is different from the AUC-derived\
+    \ Gini coefficient.\n Why these steps matter\n Child size matters: averaging the\
+    \ two child impurities 50/50 would incorrectly give the\n four-record group as\
+    \ much influence as the six-record group. The forest score and the split\n impurity\
+    \ answer different questions; neither is a measured probability calibration result."
+  paragraphs:
+  - Trees and Random Forests
+  - A02 | Interpretation
+  - 'What the answer means The split creates more uniform groups in this training
+    sample. Averaging trees changes the intervention decision; it does not prove that
+    the resulting score is calibrated. Gini impurity here is different from the AUC-derived
+    Gini coefficient. Why these steps matter Child size matters: averaging the two
+    child impurities 50/50 would incorrectly give the four-record group as much influence
+    as the six-record group. The forest score and the split impurity answer different
+    questions; neither is a measured probability calibration result.'
+  source:
+    pages:
+    - 41
+    verbatim: true
+source:
+  pages:
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  verbatim: true
+readAloud:
+- Calculate how mixed each group is; average the child impurities using their record
+  counts; subtract that average from the original impurity. A pure group contains
+  only one class and has impurity zero. A useful candidate split reduces impurity
+  on the training records; validation is still separate.
+- 'Add the fraud scores supplied by the trees and divide by the number of trees. Here
+  the exercise averages three scores, not three yes/no votes. Challenge when the resulting
+  score is at least 0.60. Distinguish the terms: A node is a group of records. A split
+  divides a node. A leaf is a final node that supplies a prediction. A forest combines
+  several trees.'
+siteAuthored: false
+givens:
+  counts:
+  - 3
+  - 1
+  - 1
+  - 5
+  scores:
+  - 0.75
+  - 0.5
+  - 0.25
+  threshold: 0.6
+labels: &id004
+  counts: Transaction counts (new fraud, new legitimate, trusted fraud, trusted legitimate)
+  scores: Fraud scores from the fitted trees
+  threshold: Challenge threshold (proportion)
+deckSolution:
+  parent: 0.48
+  newGini: 0.375
+  trustedGini: 0.2777778
+  weighted: 0.3166667
+  gain: 0.1633333
+  score: 0.5
+  decision: false
+  firstDecision: true
+latex:
+- G=1-p_f^2-p_l^2,\quad G_{split}=\sum_j\frac{n_j}{N}G_j
+- \Delta G=G_{parent}-G_{split}
+- p_{forest}=\frac{1}{B}\sum_{b=1}^{B}p_b
+symbols:
+- symbol: G
+  meaning: 'Gini impurity: how mixed a node is; for two classes it ranges from 0 to
+    0.5.'
+  source: *id001
+- symbol: pf , pl
+  meaning: Fractions of fraud and legitimate records within the particular node; they
+    sum to 1.
+  source: *id001
+- symbol: p2f , p2l
+  meaning: Each class fraction multiplied by itself; the square is not a percentage
+    conversion.
+  source: *id001
+- symbol: N
+  meaning: 'Number of records in the parent node: 10.'
+  source: *id001
+- symbol: n1 , n2
+  meaning: 'Child record counts: 4 for new devices and 6 for trusted devices.'
+  source: *id001
+- symbol: G 1 , G2
+  meaning: Impurities of the new-device and trusted-device child nodes.
+  source: *id001
+- symbol: Gparent , Gsplit
+  meaning: Original impurity and record-weighted impurity after the split.
+  source: *id002
+- symbol: ∆G
+  meaning: Reduction in impurity; a positive value means the proposed split makes
+    the training groups less mixed.
+  source: *id002
+- symbol: B, b
+  meaning: Number of trees, here 3, and an index selecting one tree.
+  source: *id002
+- symbol: pb , pforest
+  meaning: One tree’s supplied fraud score and the mean score across trees.
+  source: *id002
+- symbol: Σ (b = 1 … B)
+  meaning: Add the contribution from each of the B trees.
+  source:
+    pages: *id003
+    verbatim: false
+- symbol: Challenge
+  meaning: An extra identity or transaction check; it is not necessarily a decline.
+  source: *id002
+steps:
+- id: parent
+  title: Parent Gini impurity
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Combine both device groups to find the fraud and legitimate shares.
+  mistakes:
+  - pattern: recompute
+    message: Combine both device groups to find the fraud and legitimate shares.
+- id: newGini
+  title: New-device Gini impurity
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide each new-device count by the total in that group, square both shares, then
+    subtract their sum from 1.
+  mistakes:
+  - pattern: recompute
+    message: Divide each new-device count by the total in that group, square both
+      shares, then subtract their sum from 1.
+- id: trustedGini
+  title: Trusted-device Gini impurity
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Use only trusted-device records when calculating the two class shares.
+  mistakes:
+  - pattern: recompute
+    message: Use only trusted-device records when calculating the two class shares.
+- id: weighted
+  title: Weighted child impurity
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply each child impurity by its share of all records, then add.
+  mistakes:
+  - pattern: recompute
+    message: Multiply each child impurity by its share of all records, then add.
+- id: gain
+  title: Reduction in impurity
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract weighted child impurity from parent impurity.
+  mistakes:
+  - pattern: recompute
+    message: Subtract weighted child impurity from parent impurity.
+- id: score
+  title: Average forest score
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Add the supplied tree scores and divide by the number of trees.
+  mistakes:
+  - pattern: recompute
+    message: Add the supplied tree scores and divide by the number of trees.
+- id: decision
+  title: Does the forest trigger a challenge?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Challenge when the average score is at least the threshold.
+  mistakes:
+  - pattern: recompute
+    message: Challenge when the average score is at least the threshold.
+- id: firstDecision
+  title: Would the first tree trigger a challenge?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id012
+  - Compare the first supplied tree score with the same threshold.
+  mistakes:
+  - pattern: recompute
+    message: Compare the first supplied tree score with the same threshold.
+learning:
+  title: A Fraud Split
+  scenario: A proposed tree split groups transactions by whether the device is new
+    or trusted. Counts below are ordered as new-device fraud, new-device legitimate,
+    trusted-device fraud, trusted-device legitimate.
+  task: Use Gini impurity 1 − fraud-share² − legitimate-share². Weight child impurities
+    by their record counts. Average the fitted tree scores and apply the challenge
+    threshold.
+  interpretation: A useful training split reduces impurity. That does not establish
+    validation performance or probability calibration. Average the supplied tree scores,
+    rather than converting them to votes first.
+  summary: 'Impurity reduction: {gain}. Forest score: {score}. Challenge the transaction:
+    {decision}.'
+  labels: *id004
+  steps:
+    parent:
+      title: Parent Gini impurity
+      hints: *id005
+      unit: ''
+    newGini:
+      title: New-device Gini impurity
+      hints: *id006
+      unit: ''
+    trustedGini:
+      title: Trusted-device Gini impurity
+      hints: *id007
+      unit: ''
+    weighted:
+      title: Weighted child impurity
+      hints: *id008
+      unit: ''
+    gain:
+      title: Reduction in impurity
+      hints: *id009
+      unit: ''
+    score:
+      title: Average forest score
+      hints: *id010
+      unit: proportion
+    decision:
+      title: Does the forest trigger a challenge?
+      hints: *id011
+      unit: ''
+    firstDecision:
+      title: Would the first tree trigger a challenge?
+      hints: *id012
+      unit: ''
+  readAloud:
+  - Calculate how mixed each group is; average the child impurities using their record
+    counts; subtract that average from the original impurity. A pure group contains
+    only one class and has impurity zero. A useful candidate split reduces impurity
+    on the training records; validation is still separate.
+  - 'Add the fraud scores supplied by the trees and divide by the number of trees.
+    Here the exercise averages three scores, not three yes/no votes. Challenge when
+    the resulting score is at least 0.60. Distinguish the terms: A node is a group
+    of records. A split divides a node. A leaf is a final node that supplies a prediction.
+    A forest combines several trees.'
+  workedExplanation:
+  - 'The split creates more uniform groups in this training sample. Averaging trees
+    changes the intervention decision; it does not prove that the resulting score
+    is calibrated. Gini impurity here is different from the AUC-derived Gini coefficient. '
+  - 'Child size matters: averaging the two child impurities 50/50 would incorrectly
+    give the four-record group as much influence as the six-record group. The forest
+    score and the split impurity answer different questions; neither is a measured
+    probability calibration result.'
+  workedArithmetic:
+  - Parent Gini = 1 − (4/10)² − (6/10)² = 0.48.
+  - New-device Gini = 1 − (3/4)² − (1/4)² = 0.375. Trusted-device Gini = 1 − (1/6)²
+    − (5/6)² ≈ 0.2778.
+  - Weighted child Gini = (4/10) × 0.375 + (6/10) × 0.2778 ≈ 0.3167. Reduction ≈ 0.48
+    − 0.3167 = 0.1633.
+  - Forest score = (0.75 + 0.50 + 0.25) / 3 = 0.50 < 0.60, so no challenge. The first
+    tree alone scores 0.75 ≥ 0.60 and would challenge.
+formulaSource:
+  pages:
+  - 35
+  - 36
+  verbatim: false
+  reviewed: true

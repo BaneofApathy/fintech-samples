@@ -1,0 +1,173 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import Callout from '../../components/content/Callout.astro';
+import LessonContent from '../../components/content/LessonContent.astro';
+import Formula from '../../components/math/Formula.astro';
+import Exercise from '../../components/exercise/Exercise.svelte';
+import { widgets } from '../../components/widgets/catalog';
+import { measures, exercise, algorithms, course, href } from '../../data';
+import MeasureVisual from '../../components/visuals/measures/MeasureVisual.svelte';
+import TopicIntroduction from '../../components/learning/TopicIntroduction.astro';
+import TeachingSequence from '../../components/learning/TeachingSequence.astro';
+import ConceptPractice from '../../components/exercise/ConceptPractice.svelte';
+import Checkpoint from '../../components/exercise/Checkpoint.svelte';
+import Completion from '../../components/layout/Completion.svelte';
+import { teachingTopic } from '../../data/teaching-manifest';
+import { toPracticeTopic } from '../../engine/assessment';
+export function getStaticPaths() {
+  return measures.map((m) => ({ params: { slug: m.slug }, props: { measure: m } }));
+}
+const { measure: m } = Astro.props;
+const w = widgets.find((w) => w.id === m.widget)!;
+const topic = teachingTopic('measure:' + m.slug);
+const practiceTopic = toPracticeTopic(topic);
+---
+
+<Shell title={m.title}>
+  <div class="eyebrow">Measure {String(m.number).padStart(2, '0')} of 39</div>
+  <p class="page-subtitle">
+    {course.evaluation.find((q) => q.id === m.question)?.title}{' '}
+    {course.evaluation.find((q) => q.id === m.question)?.interpretation}
+  </p>
+  <aside class="return-to-unit" hidden>
+    <a id="measure-return" href={href('/')}>
+      Return to your unit →
+    </a>
+  </aside>
+  <nav class="measure-stage-nav" aria-label="Measure learning stages">
+    <a href="#learn">1 · Learn</a>
+    <a href="#calculate">2 · Calculate</a>
+    <a href="#interpret">3 · Interpret</a>
+    <a href="#practice">4 · Practice</a>
+  </nav>
+  <section class="measure-stage" id="learn">
+    <TopicIntroduction {topic} />
+    <TeachingSequence {topic} stage="learn" />
+  </section>
+  <section class="measure-stage" id="calculate">
+    <h2>Calculate it step by step</h2>
+    <TeachingSequence {topic} stage="calculate" />
+    <div id="measure-visual">
+      <MeasureVisual number={m.number} client:visible />
+    </div>
+    <details class="optional-exploration">
+      <summary>Worked example</summary>
+      <LessonContent sections={m.lessonSections} />
+    </details>
+  </section>
+  <section class="measure-stage" id="interpret">
+    <h2>Interpret the result</h2>
+    <TeachingSequence {topic} stage="interpret" />
+    <Callout label="Financial interpretation">{m.financialInterpretation}</Callout>
+    <Callout label="What it misses" kind="warning">
+      {m.whatItMisses}
+    </Callout>
+  </section>
+  {m.relatedExplorer ? (
+    <aside class="info-card" aria-label="Related practice">
+      <h2>Related practice</h2>
+      <p>{m.relatedExplorer.description}</p>
+      <a href={href(m.relatedExplorer.href)}>{m.relatedExplorer.title}</a>
+    </aside>
+  ) : (
+    <details class="optional-exploration">
+      <summary>Explore the related numerical example</summary>
+      <p>
+        This explorer uses a separate practice example. Change one input and compare the results.
+      </p>
+      <a href={href(`/explorers/${w.id}/`)}>Open {w.title} →</a>
+    </details>
+  )}
+  <section class="measure-stage" id="practice">
+    <h2>Check your understanding</h2>
+    <div id="concept-practice">
+      <ConceptPractice
+        topic={practiceTopic}
+        questions={topic.questions.filter((q) => q.role !== 'guided')}
+        sessionId={`${topic.id}:practice`}
+        base={import.meta.env.BASE_URL}
+        client:load
+      />
+    </div>
+    <h2>Calculate it yourself</h2>
+    {m.exercises.map((id) => {
+      const e = exercise(id);
+      return (
+        <section>
+          <h2>
+            {e.id} · {e.title}
+          </h2>
+          {e.latex.map((l, i) => (
+            <Formula
+              latex={l}
+              symbols={e.formulaSymbols?.[i] ?? e.symbols}
+              readAloud={e.readAloud[i]}
+            />
+          ))}
+          <details class="optional-exploration">
+            <summary>Worked calculation · {e.id}</summary>
+            <Exercise exercise={e} client:visible />
+          </details>
+          <Exercise exercise={e} practice client:visible />
+        </section>
+      );
+    })}
+    <Checkpoint
+      topic={practiceTopic}
+      questions={topic.questions}
+      base={import.meta.env.BASE_URL}
+      client:visible
+    />
+    <Completion
+      section={`measure:${m.slug}`}
+      previousUrl={href('/measures/')}
+      previousLabel="All measures"
+      nextUrl={href('/measures/')}
+      nextLabel="All measures"
+      client:load
+    />
+  </section>
+  <h2>Use this measure with</h2>
+  <div class="button-row">
+    {m.usedBy.map((sl) => {
+      const a = algorithms.find((a) => a.slug === sl)!;
+      return (
+        <a class="button secondary" href={href(`/algorithms/${sl}/measures/`)}>
+          {a.title}
+        </a>
+      );
+    })}
+  </div>
+  <a class="button secondary" href={href('/measures/')}>
+    Back to all measures
+  </a>
+</Shell>
+<script
+  define:vars={{
+    returnUnits: algorithms.map(({ slug, title }) => ({ slug, title })),
+    courseBase: import.meta.env.BASE_URL,
+  }}
+>
+  const slug = new URLSearchParams(location.search).get('from');
+  const unit = returnUnits.find((a) => a.slug === slug);
+  if (unit) {
+    const link = document.querySelector('#measure-return');
+    link.href = `${courseBase}algorithms/${unit.slug}/measures/`;
+    link.textContent = `← Return to ${unit.title}`;
+    document.querySelector('.return-to-unit')?.removeAttribute('hidden');
+    // Keep the originating unit when following lesson anchors on this measure.
+    document.addEventListener(
+      'click',
+      (event) => {
+        const anchor = event.target instanceof Element ? event.target.closest('a[href]') : null;
+        if (!anchor) return;
+        const destination = new URL(anchor.href, location.href);
+        if (destination.origin === location.origin && destination.pathname === location.pathname) {
+          destination.searchParams.set('from', unit.slug);
+          anchor.href = destination.href;
+        }
+      },
+      true,
+    );
+  }
+</script>

@@ -1,0 +1,432 @@
+id: M36
+title: Better Than the Baseline, Short of Hindsight
+minutes: 8
+kind: measure
+parent: cumulative-reward-and-regret
+question: "A desk executes a $1 million order over three intervals. All compared schedules\
+  \ complete the\n order. Costs include the same execution-cost components.\n   Interval\
+  \                                       Learned policy cost\n   1              \
+  \                                $300\n   2                                    \
+  \          $200\n   3                                              $400\n Reward\
+  \ equals negative cost, and rewards are undiscounted for this exercise. A TWAP\n\
+  \ baseline costs $1,200. The best feasible schedule chosen with hindsight costs\
+  \ $700.\n Calculate cumulative reward, dollar improvement over TWAP, and hindsight\
+  \ regret. Express the\n last two values in basis points of order value. One basis\
+  \ point is 0.0001 of the notional."
+questionPages:
+- page: 546
+  title: Reward and Regret
+  text: " Reward and Regret\n\n   M36 | Class problem | 8 minutes — Better Than the\
+    \ Baseline, Short of Hindsight\n\n A desk executes a $1 million order over three\
+    \ intervals. All compared schedules complete the\n order. Costs include the same\
+    \ execution-cost components.\n   Interval                                    \
+    \   Learned policy cost\n   1                                              $300\n\
+    \   2                                              $200\n   3                \
+    \                              $400\n Reward equals negative cost, and rewards\
+    \ are undiscounted for this exercise. A TWAP\n baseline costs $1,200. The best\
+    \ feasible schedule chosen with hindsight costs $700.\n Calculate cumulative reward,\
+    \ dollar improvement over TWAP, and hindsight regret. Express the\n last two values\
+    \ in basis points of order value. One basis point is 0.0001 of the notional."
+  paragraphs:
+  - Reward and Regret
+  - M36 | Class problem | 8 minutes — Better Than the Baseline, Short of Hindsight
+  - A desk executes a $1 million order over three intervals. All compared schedules
+    complete the order. Costs include the same execution-cost components. Interval
+    Learned policy cost 1 $300 2 $200 3 $400 Reward equals negative cost, and rewards
+    are undiscounted for this exercise. A TWAP baseline costs $1,200. The best feasible
+    schedule chosen with hindsight costs $700. Calculate cumulative reward, dollar
+    improvement over TWAP, and hindsight regret. Express the last two values in basis
+    points of order value. One basis point is 0.0001 of the notional.
+  source:
+    pages:
+    - 546
+    verbatim: true
+formulaPages:
+- page: 542
+  title: Reward and Regret
+  text: " Reward and Regret\n\n   M36 | Formula explained (1/2)\n\n Question: What\
+    \ reward did the execution policy accumulate, and how much did it save against\n\
+    \ the baseline?\n                           T\n                           X  \
+    \                           XT\n                 Cpolicy =    ct ,    rt = −ct\
+    \ ,    G=       rt = −Cpolicy ,\n                                            \
+    \      t=1             t=1\n                        Improvement = CT W AP − Cpolicy\
+    \ ,   Regret = Cpolicy − Chindsight .\n Read it aloud: Add execution costs. Because\
+    \ reward is negative cost, add their negatives to\n obtain cumulative reward.\
+    \ Savings compare against the baseline; regret compares against the\n specified\
+    \ best feasible hindsight schedule.\n All schedules complete the same order and\
+    \ include the same cost components. Rewards are\n undiscounted here, unlike the\
+    \ discounted values in the Q-learning example."
+  paragraphs:
+  - Reward and Regret
+  - M36 | Formula explained (1/2)
+  - 'Question: What reward did the execution policy accumulate, and how much did it
+    save against the baseline? T X XT Cpolicy = ct , rt = −ct , G= rt = −Cpolicy ,
+    t=1 t=1 Improvement = CT W AP − Cpolicy , Regret = Cpolicy − Chindsight . Read
+    it aloud: Add execution costs. Because reward is negative cost, add their negatives
+    to obtain cumulative reward. Savings compare against the baseline; regret compares
+    against the specified best feasible hindsight schedule. All schedules complete
+    the same order and include the same cost components. Rewards are undiscounted
+    here, unlike the discounted values in the Q-learning example.'
+  source:
+    pages:
+    - 542
+    verbatim: true
+- page: 543
+  title: Reward and Regret
+  text: " Reward and Regret\n\n   M36 | Formula explained (2/2)\n\n Question: How\
+    \ large is a dollar cost difference relative to the order?\n                 \
+    \                           Dollar dif f erence\n                       Dif f\
+    \ erencebps =                         × 10,000,\n                            \
+    \                         V\n                             Dollar value of 1 bp\
+    \ = V × 0.0001.\n Read it aloud: Divide the dollar difference by order notional,\
+    \ then express that fraction in basis\n points.\n Use the same notional for policy,\
+    \ baseline, and hindsight comparisons. A negative reward is\n expected under the\
+    \ chosen sign convention; a higher, less negative reward means a lower cost."
+  paragraphs:
+  - Reward and Regret
+  - M36 | Formula explained (2/2)
+  - 'Question: How large is a dollar cost difference relative to the order? Dollar
+    dif f erence Dif f erencebps = × 10,000, V Dollar value of 1 bp = V × 0.0001.
+    Read it aloud: Divide the dollar difference by order notional, then express that
+    fraction in basis points. Use the same notional for policy, baseline, and hindsight
+    comparisons. A negative reward is expected under the chosen sign convention; a
+    higher, less negative reward means a lower cost.'
+  source:
+    pages:
+    - 543
+    verbatim: true
+symbolPages:
+- page: 544
+  title: Reward and Regret
+  text: " Reward and Regret\n\n   M36 | Symbols and terms (1/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   t, T      \
+    \                                     Execution interval and total number of intervals;\
+    \ three in this\n                                                  example.\n\
+    \   ct , rt                                        Dollar execution cost and its\
+    \ negative reward in interval t.\n   G                                       \
+    \       Cumulative undiscounted reward across this execution episode; not a\n\
+    \                                                  return percentage or probability.\n\
+    \   Cpolicy                                        Total cost incurred by the\
+    \ learned execution schedule.\n   TWAP                                       \
+    \    Time-weighted average price; the baseline here is a schedule that\n     \
+    \                                             spreads equal quantities over equal\
+    \ time intervals.\n   CT W AP                                        Supplied\
+    \ total cost of the baseline schedule, $1,200."
+  paragraphs:
+  - Reward and Regret
+  - M36 | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example t, T Execution interval and total number
+    of intervals; three in this example. ct , rt Dollar execution cost and its negative
+    reward in interval t. G Cumulative undiscounted reward across this execution episode;
+    not a return percentage or probability. Cpolicy Total cost incurred by the learned
+    execution schedule. TWAP Time-weighted average price; the baseline here is a schedule
+    that spreads equal quantities over equal time intervals. CT W AP Supplied total
+    cost of the baseline schedule, $1,200.
+  source: &id001
+    pages:
+    - 544
+    verbatim: true
+- page: 545
+  title: Reward and Regret
+  text: " Reward and Regret\n\n   M36 | Symbols and terms (2/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   Chindsight\
+    \                                     Supplied cost of the best feasible schedule\
+    \ selected using information\n                                               \
+    \   available afterward, $700.\n   Regret                                    \
+    \     Extra cost relative to that specified hindsight comparator; not\n      \
+    \                                            automatically relative to a live\
+    \ attainable policy.\n   V                                              Original\
+    \ order value or notional; $1 million here.\n   Basis point (bp)             \
+    \                  One ten-thousandth of notional, equal to 0.01 percentage point.\n\
+    \   Undiscounted                                   Each interval’s reward receives\
+    \ full weight, rather than reduced\n                                         \
+    \         weight for later rewards."
+  paragraphs:
+  - Reward and Regret
+  - M36 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Chindsight Supplied cost of the best feasible
+    schedule selected using information available afterward, $700. Regret Extra cost
+    relative to that specified hindsight comparator; not automatically relative to
+    a live attainable policy. V Original order value or notional; $1 million here.
+    Basis point (bp) One ten-thousandth of notional, equal to 0.01 percentage point.
+    Undiscounted Each interval’s reward receives full weight, rather than reduced
+    weight for later rewards.
+  source: &id002
+    pages:
+    - 545
+    verbatim: true
+solutionPages:
+- page: 547
+  title: Reward and Regret
+  text: " Reward and Regret\n\n   M36 | Worked solution — Better Than the Baseline,\
+    \ Short of Hindsight\n\n1. Policy total cost: 300 + 200 + 400 = $900.\n2. Cumulative\
+    \ reward: −300 − 200 − 400 = −$900 in the chosen reward units.\n3. Improvement\
+    \ over TWAP: 1,200 − 900 = $300.\n4. Hindsight regret: 900 − 700 = $200.\n5. One\
+    \ basis point of this order: 1,000,000 × 0.0001 = $100. Improvement\n   = 300/100\
+    \ = 3 bps; regret = 200/100 = 2 bps."
+  paragraphs:
+  - Reward and Regret
+  - M36 | Worked solution — Better Than the Baseline, Short of Hindsight
+  - '1. Policy total cost: 300 + 200 + 400 = $900. 2. Cumulative reward: −300 − 200
+    − 400 = −$900 in the chosen reward units. 3. Improvement over TWAP: 1,200 − 900
+    = $300. 4. Hindsight regret: 900 − 700 = $200. 5. One basis point of this order:
+    1,000,000 × 0.0001 = $100. Improvement = 300/100 = 3 bps; regret = 200/100 = 2
+    bps.'
+  source:
+    pages:
+    - 547
+    verbatim: true
+interpretationPages:
+- page: 548
+  title: Reward and Regret
+  text: " Reward and Regret\n\n   M36 | Interpretation\n\n What the answer means\n\
+    \ The policy saves 3 basis points versus TWAP but costs 2 basis points more than\
+    \ the hindsight\n schedule. Hindsight has information the live policy did not\
+    \ possess. A less negative reward is\n better here; reward becomes economically\
+    \ misleading if material costs or incomplete-order\n penalties are omitted.\n\
+    \ Why these steps matter\n The policy can beat a realistic baseline while still\
+    \ falling short of hindsight. Those are different\n comparisons and should not\
+    \ be combined. The order-value denominator turns dollar differences\n into comparable\
+    \ cost fractions, while the reward sign convention determines which numerical\n\
+    \ direction is better."
+  paragraphs:
+  - Reward and Regret
+  - M36 | Interpretation
+  - What the answer means The policy saves 3 basis points versus TWAP but costs 2
+    basis points more than the hindsight schedule. Hindsight has information the live
+    policy did not possess. A less negative reward is better here; reward becomes
+    economically misleading if material costs or incomplete-order penalties are omitted.
+    Why these steps matter The policy can beat a realistic baseline while still falling
+    short of hindsight. Those are different comparisons and should not be combined.
+    The order-value denominator turns dollar differences into comparable cost fractions,
+    while the reward sign convention determines which numerical direction is better.
+  source:
+    pages:
+    - 548
+    verbatim: true
+source:
+  pages:
+  - 542
+  - 543
+  - 544
+  - 545
+  - 546
+  - 547
+  - 548
+  verbatim: true
+readAloud:
+- Add execution costs. Because reward is negative cost, add their negatives to obtain
+  cumulative reward. Savings compare against the baseline; regret compares against
+  the specified best feasible hindsight schedule. All schedules complete the same
+  order and include the same cost components. Rewards are undiscounted here, unlike
+  the discounted values in the Q-learning example.
+- Divide the dollar difference by order notional, then express that fraction in basis
+  points. Use the same notional for policy, baseline, and hindsight comparisons. A
+  negative reward is expected under the chosen sign convention; a higher, less negative
+  reward means a lower cost.
+siteAuthored: false
+givens:
+  costs:
+  - 300
+  - 200
+  - 400
+  baseline: 1200
+  hindsight: 700
+  notional: 1000000
+labels: &id003
+  costs: Policy costs by interval ($)
+  baseline: TWAP total cost ($)
+  hindsight: Best feasible hindsight cost ($)
+  notional: Order value ($)
+deckSolution:
+  cost: 900
+  reward: -900
+  saving: 300
+  regret: 200
+  savingBps: 3
+  regretBps: 2
+latex:
+- Reward=-\sum_tCost_t,\quad Regret=Cost_{policy}-Cost_{best\ feasible}
+- \operatorname{Improvement}=C_{TWAP}-C_{policy}
+- \operatorname{Difference}_{bps}=\frac{\operatorname{Dollar\ difference}}V\times10000,\quad\operatorname{Value\
+  of\ 1bp}=V\times0.0001
+symbols:
+- symbol: t, T
+  meaning: Execution interval and total number of intervals; three in this example.
+  source: *id001
+- symbol: ct , rt
+  meaning: Dollar execution cost and its negative reward in interval t.
+  source: *id001
+- symbol: G
+  meaning: Cumulative undiscounted reward across this execution episode; not a return
+    percentage or probability.
+  source: *id001
+- symbol: Cpolicy
+  meaning: Total cost incurred by the learned execution schedule.
+  source: *id001
+- symbol: TWAP
+  meaning: Time-weighted average price; the baseline here is a schedule that spreads
+    equal quantities over equal time intervals.
+  source: *id001
+- symbol: CT W AP
+  meaning: Supplied total cost of the baseline schedule, $1,200.
+  source: *id001
+- symbol: Chindsight
+  meaning: Supplied cost of the best feasible schedule selected using information
+    available afterward, $700.
+  source: *id002
+- symbol: Regret
+  meaning: Extra cost relative to that specified hindsight comparator; not automatically
+    relative to a live attainable policy.
+  source: *id002
+- symbol: V
+  meaning: Original order value or notional; $1 million here.
+  source: *id002
+- symbol: Basis point (bp)
+  meaning: One ten-thousandth of notional, equal to 0.01 percentage point.
+  source: *id002
+- symbol: Undiscounted
+  meaning: Each interval’s reward receives full weight, rather than reduced weight
+    for later rewards.
+  source: *id002
+steps:
+- id: cost
+  title: Policy total execution cost
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Add interval costs.
+  mistakes:
+  - pattern: recompute
+    message: Add interval costs.
+- id: reward
+  title: Cumulative reward
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Negate total cost, since rewards equal negative costs.
+  mistakes:
+  - pattern: recompute
+    message: Negate total cost, since rewards equal negative costs.
+- id: saving
+  title: Saving versus TWAP
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Subtract policy cost from TWAP cost.
+  mistakes:
+  - pattern: recompute
+    message: Subtract policy cost from TWAP cost.
+- id: regret
+  title: Regret versus hindsight
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Subtract hindsight cost from policy cost.
+  mistakes:
+  - pattern: recompute
+    message: Subtract hindsight cost from policy cost.
+- id: savingBps
+  title: Saving in basis points
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Divide dollar saving by order value and multiply by 10,000.
+  mistakes:
+  - pattern: recompute
+    message: Divide dollar saving by order value and multiply by 10,000.
+- id: regretBps
+  title: Regret in basis points
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Divide dollar regret by order value and multiply by 10,000.
+  mistakes:
+  - pattern: recompute
+    message: Divide dollar regret by order value and multiply by 10,000.
+learning:
+  title: Better Than the Baseline, Short of Hindsight
+  scenario: A learned execution policy, TWAP baseline and best feasible hindsight
+    schedule complete the same order. Each comparison includes the same cost components.
+    Reward is negative cost and is undiscounted.
+  task: Add policy costs, calculate cumulative reward, savings versus TWAP and regret
+    versus hindsight. Convert savings and regret to basis points of order notional.
+  interpretation: Beating a feasible baseline and matching hindsight are different
+    comparisons. Hindsight has information unavailable to the live policy. Omitted
+    costs or incomplete-order penalties can make a reward misleading.
+  summary: 'Cumulative reward: {reward}. Saving versus TWAP: {saving} ({savingBps});
+    hindsight regret: {regret} ({regretBps}).'
+  labels: *id003
+  steps:
+    cost:
+      title: Policy total execution cost
+      hints: *id004
+      unit: $
+    reward:
+      title: Cumulative reward
+      hints: *id005
+      unit: $
+    saving:
+      title: Saving versus TWAP
+      hints: *id006
+      unit: $
+    regret:
+      title: Regret versus hindsight
+      hints: *id007
+      unit: $
+    savingBps:
+      title: Saving in basis points
+      hints: *id008
+      unit: bps
+    regretBps:
+      title: Regret in basis points
+      hints: *id009
+      unit: bps
+  readAloud:
+  - Add execution costs. Because reward is negative cost, add their negatives to obtain
+    cumulative reward. Savings compare against the baseline; regret compares against
+    the specified best feasible hindsight schedule. All schedules complete the same
+    order and include the same cost components. Rewards are undiscounted here, unlike
+    the discounted values in the Q-learning example.
+  - Divide the dollar difference by order notional, then express that fraction in
+    basis points. Use the same notional for policy, baseline, and hindsight comparisons.
+    A negative reward is expected under the chosen sign convention; a higher, less
+    negative reward means a lower cost.
+  workedExplanation:
+  - 'The policy saves 3 basis points versus TWAP but costs 2 basis points more than
+    the hindsight schedule. Hindsight has information the live policy did not possess.
+    A less negative reward is better here; reward becomes economically misleading
+    if material costs or incomplete-order penalties are omitted. '
+  - The policy can beat a realistic baseline while still falling short of hindsight.
+    Those are different comparisons and should not be combined. The order-value denominator
+    turns dollar differences into comparable cost fractions, while the reward sign
+    convention determines which numerical direction is better.
+  workedArithmetic:
+  - Policy cost = $300 + $200 + $400 = $900; cumulative reward = −$900.
+  - Saving versus TWAP = $1,200 − $900 = $300. Hindsight regret = $900 − $700 = $200.
+  - One basis point = $1,000,000 × 0.0001 = $100. Saving = 300/100 = 3 bps; regret
+    = 200/100 = 2 bps.
+formulaSource:
+  pages:
+  - 542
+  - 543
+  verbatim: false
+  reviewed: true

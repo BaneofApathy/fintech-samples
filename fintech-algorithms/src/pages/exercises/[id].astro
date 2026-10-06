@@ -1,0 +1,28 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import Formula from '../../components/math/Formula.astro';
+import Exercise from '../../components/exercise/Exercise.svelte';
+import { exercises, href } from '../../data';
+import SupplementVisual from '../../components/visuals/SupplementVisual.svelte';
+export function getStaticPaths() {
+  return exercises.map((e) => ({ params: { id: e.id }, props: { exercise: e } }));
+}
+const { exercise: e } = Astro.props;
+---
+
+<Shell title={`${e.id}: ${e.title}`}>
+  <p class="page-subtitle">
+    A hand calculation using the definitions and symbol meanings provided with each formula.
+  </p>
+  {e.id.startsWith('S') && <div id="supplement-visual"><SupplementVisual id={e.id} givens={e.givens} client:visible /></div>}
+  {e.latex.map((l, i) => (
+    <Formula latex={l} symbols={e.formulaSymbols?.[i] ?? e.symbols} readAloud={e.readAloud[i]} />
+  ))}
+  <details class="source-slide" id="exercise-symbols">
+    <summary>All symbols and terms in this exercise</summary>
+    <div class="table-scroll"><table><thead><tr><th scope="col">Symbol or term</th><th scope="col">Meaning</th></tr></thead><tbody>{e.symbols.map((symbol) => <tr><td>{symbol.symbol}</td><td>{symbol.meaning}</td></tr>)}</tbody></table></div>
+  </details>
+  <Exercise exercise={e} client:load />
+  <h2>Practice with a stable variant</h2>
+  <Exercise exercise={e} practice client:visible />
+</Shell>

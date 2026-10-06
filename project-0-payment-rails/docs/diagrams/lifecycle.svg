@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+<title id="title">Payment lifecycle and financial effects</title><desc id="desc">Authorization creates a hold, merchant full capture preserves it, clearing replaces the hold with a posted debit and obligation, and settlement credits merchant proceeds and illustrative fee buckets. A decline creates no hold.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#007D82"/></marker><marker id="return" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#926300"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#15384A}.label{font-size:20px;font-weight:700}.body{font-size:17px}.small{font-size:15px;fill:#536773}.title{font-size:32px;font-weight:700}.eyebrow{font-size:15px;font-weight:700;fill:#007D82;letter-spacing:1px}</style>
+<text class="eyebrow" x="35" y="35">USF • AI IN FINTECH • PROJECT 0</text>
+<text class="title" x="35" y="83">Payment lifecycle and financial effects</text>
+<rect x="45" y="175" width="255" height="100" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="172.5" y="209" text-anchor="middle">AUTHORIZED</text>
+<text class="body" x="172.5" y="240" text-anchor="middle">Hold reserved</text>
+<line x1="300" y1="222" x2="325" y2="222" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="330" y="175" width="255" height="100" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="457.5" y="209" text-anchor="middle">CAPTURED</text>
+<text class="body" x="457.5" y="240" text-anchor="middle">Full collection intent</text>
+<line x1="585" y1="222" x2="610" y2="222" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="615" y="175" width="255" height="100" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="742.5" y="209" text-anchor="middle">CLEARED</text>
+<text class="body" x="742.5" y="240" text-anchor="middle">Posted debit + obligation</text>
+<line x1="870" y1="222" x2="895" y2="222" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="900" y="175" width="255" height="100" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="1027.5" y="209" text-anchor="middle">SETTLED</text>
+<text class="body" x="1027.5" y="240" text-anchor="middle">Proceeds + fee buckets</text>
+<text class="body" x="45" y="135" text-anchor="start">Approved $50 purchase from a $500 fictional account</text>
+<rect x="45" y="335" width="255" height="130" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="172.5" y="369" text-anchor="middle">Authorization</text>
+<text class="body" x="172.5" y="400" text-anchor="middle">Posted: $500</text>
+<text class="body" x="172.5" y="427" text-anchor="middle">Held: $50</text>
+<text class="body" x="172.5" y="454" text-anchor="middle">Available: $450</text>
+<rect x="330" y="335" width="255" height="130" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="457.5" y="369" text-anchor="middle">Capture</text>
+<text class="body" x="457.5" y="400" text-anchor="middle">Posted: $500</text>
+<text class="body" x="457.5" y="427" text-anchor="middle">Held: $50</text>
+<text class="body" x="457.5" y="454" text-anchor="middle">Available: $450</text>
+<rect x="615" y="335" width="255" height="130" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="742.5" y="369" text-anchor="middle">Clearing</text>
+<text class="body" x="742.5" y="400" text-anchor="middle">Posted: $450 / held: $0</text>
+<text class="body" x="742.5" y="427" text-anchor="middle">Available: $450</text>
+<text class="body" x="742.5" y="454" text-anchor="middle">Obligation: $50</text>
+<rect x="900" y="335" width="255" height="130" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="1027.5" y="369" text-anchor="middle">Settlement</text>
+<text class="body" x="1027.5" y="400" text-anchor="middle">Obligation: $0</text>
+<text class="body" x="1027.5" y="427" text-anchor="middle">Merchant: $48.75</text>
+<text class="body" x="1027.5" y="454" text-anchor="middle">Fees: $1.25</text>
+<rect x="45" y="530" width="365" height="90" rx="12" fill="#EDF5F5" stroke="#9A3232" stroke-width="2"/>
+<text class="label" x="227.5" y="564" text-anchor="middle">DECLINED</text>
+<text class="body" x="227.5" y="595" text-anchor="middle">No hold, debit, or proceeds</text>
+<text class="body" x="460" y="552" text-anchor="start">Replay: recorded outcome, no new financial effect.</text>
+<text class="body" x="460" y="579" text-anchor="start">Invalid stage: reject without changing the valid state.</text>
+<text class="body" x="460" y="606" text-anchor="start">Debit posting at clearing is a simplified teaching convention.</text>
+</svg>

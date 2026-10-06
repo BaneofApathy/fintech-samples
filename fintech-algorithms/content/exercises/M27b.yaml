@@ -1,0 +1,468 @@
+id: M27b
+title: Did the Same Segments Reappear?
+minutes: 10
+kind: measure
+parent: inertia-and-stability
+question: "Two clustering runs assign the same six customers to these groups:\n  \
+  \ Customer                   1                   2           3           4     \
+  \               5         6\n   Original                   A                   A\
+  \           A           B                    B         B\n   Rerun             \
+  \         X                   X           Y           X                    Y   \
+  \      Y\n Use the overlap table to calculate adjusted Rand index:\n           \
+  \                                                       S − RC/T\n             \
+  \                                         ARI =                    .\n         \
+  \                                                     (R + C)/2 − RC/T\n S is the\
+  \ sum of n2 over overlap cells; R and C are the corresponding sums over row and\n\
+  \                   \x01\n\n column totals; T = 62 = 15.\n                     \
+  \ \x01\n\n Calculation aids: 12 = 0, 22 = 1, 32 = 3. Why should renaming clusters\
+  \ not affect this\n                     \x01        \x01         \x01\n\n measure?"
+questionPages:
+- page: 442
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Class problem | 10 minutes — Did the Same\
+    \ Segments Reappear?\n\n Two clustering runs assign the same six customers to\
+    \ these groups:\n   Customer                   1                   2         \
+    \  3           4                    5         6\n   Original                 \
+    \  A                   A           A           B                    B        \
+    \ B\n   Rerun                      X                   X           Y         \
+    \  X                    Y         Y\n Use the overlap table to calculate adjusted\
+    \ Rand index:\n                                                              \
+    \    S − RC/T\n                                                      ARI =   \
+    \                 .\n                                                        \
+    \      (R + C)/2 − RC/T\n S is the sum of n2 over overlap cells; R and C are the\
+    \ corresponding sums over row and\n                   \x01\n\n column totals;\
+    \ T = 62 = 15.\n                      \x01\n\n Calculation aids: 12 = 0, 22 =\
+    \ 1, 32 = 3. Why should renaming clusters not affect this\n                  \
+    \   \x01        \x01         \x01\n\n measure?"
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Class problem | 10 minutes — Did the Same Segments Reappear?
+  - "Two clustering runs assign the same six customers to these groups: Customer 1\
+    \ 2 3 4 5 6 Original A A A B B B Rerun X X Y X Y Y Use the overlap table to calculate\
+    \ adjusted Rand index: S − RC/T ARI = . (R + C)/2 − RC/T S is the sum of n2 over\
+    \ overlap cells; R and C are the corresponding sums over row and \x01"
+  - "column totals; T = 62 = 15. \x01"
+  - "Calculation aids: 12 = 0, 22 = 1, 32 = 3. Why should renaming clusters not affect\
+    \ this \x01 \x01 \x01"
+  - measure?
+  source:
+    pages:
+    - 442
+    verbatim: true
+formulaPages:
+- page: 437
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Formula explained (1/2)\n\n Question: Do\
+    \ two clustering runs keep the same customer pairs together?\n               \
+    \                           !\n                                        n     n(n\
+    \ − 1)\n                                            =          .\n           \
+    \                             2        2\n Read it aloud: Count the number of\
+    \ distinct unordered pairs among n customers. Choosing\n customers 1 and 2 is\
+    \ the same pair as choosing 2 and 1, so divide by two.\n Build an overlap table:\
+    \ each cell counts customers belonging to one original cluster and one\n rerun\
+    \ cluster. Its row and column totals recover the group sizes in the two runs.\n\
+    \ Clusters are compared by membership, not by their arbitrary names."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Formula explained (1/2)
+  - 'Question: Do two clustering runs keep the same customer pairs together? ! n n(n
+    − 1) = . 2 2 Read it aloud: Count the number of distinct unordered pairs among
+    n customers. Choosing customers 1 and 2 is the same pair as choosing 2 and 1,
+    so divide by two. Build an overlap table: each cell counts customers belonging
+    to one original cluster and one rerun cluster. Its row and column totals recover
+    the group sizes in the two runs. Clusters are compared by membership, not by their
+    arbitrary names.'
+  source:
+    pages:
+    - 437
+    verbatim: true
+- page: 438
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Formula explained (2/2)\n\n Question: How\
+    \ much membership agreement remains after adjusting for chance?\n            \
+    \                                                  S − RC/T\n                \
+    \                                  ARI =                    .\n              \
+    \                                            (R + C)/2 − RC/T\n Read it aloud:\
+    \ Subtract the chance-reference count from observed common-group pair count;\n\
+    \ divide by the corresponding maximum-reference gap.\n Calculate S from overlap-cell\
+    \ pair counts; R and C from row-total and column-total pair\n counts; T from all\
+    \ possible customer pairs.\n The chance reference holds the two sets of cluster\
+    \ sizes fixed. A negative result is below that\n reference, not a negative fraction\
+    \ of correctly classified customers."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Formula explained (2/2)
+  - 'Question: How much membership agreement remains after adjusting for chance? S
+    − RC/T ARI = . (R + C)/2 − RC/T Read it aloud: Subtract the chance-reference count
+    from observed common-group pair count; divide by the corresponding maximum-reference
+    gap. Calculate S from overlap-cell pair counts; R and C from row-total and column-total
+    pair counts; T from all possible customer pairs. The chance reference holds the
+    two sets of cluster sizes fixed. A negative result is below that reference, not
+    a negative fraction of correctly classified customers.'
+  source:
+    pages:
+    - 438
+    verbatim: true
+symbolPages:
+- page: 439
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Symbols and terms (1/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   ARI    \
+    \                                        Adjusted Rand index: a chance-adjusted\
+    \ comparison of two\n                                                  groupings\
+    \ of the same observations.\n                     n\n                        \
+    \ \x01\n   n inside          2                            Number of customers\
+    \ in whichever cell, row, column, or full sample\n                           \
+    \                       is being counted.\n     n\n         \x01\n     2     \
+    \                                       “n choose two”: distinct customer-pair\
+    \ count; fewer than two\n                                                  customers\
+    \ produce zero pairs.\n   Overlap cell                                   Count\
+    \ of customers sharing both an original cluster and a rerun\n                \
+    \                                  cluster."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Symbols and terms (1/3)
+  - "Symbol or term Meaning in this example ARI Adjusted Rand index: a chance-adjusted\
+    \ comparison of two groupings of the same observations. n \x01 n inside 2 Number\
+    \ of customers in whichever cell, row, column, or full sample is being counted.\
+    \ n \x01 2 “n choose two”: distinct customer-pair count; fewer than two customers\
+    \ produce zero pairs. Overlap cell Count of customers sharing both an original\
+    \ cluster and a rerun cluster."
+  source: &id001
+    pages: &id002
+    - 439
+    verbatim: true
+- page: 440
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Symbols and terms (2/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   S      \
+    \                                        Sum of pair counts within overlap cells;\
+    \ pairs grouped together in\n                                                \
+    \  both runs.\n   R                                              Sum of pair counts\
+    \ from original-cluster row totals; this R is not\n                          \
+    \                        recall."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example S Sum of pair counts within overlap cells;
+    pairs grouped together in both runs. R Sum of pair counts from original-cluster
+    row totals; this R is not recall.
+  source: &id003
+    pages:
+    - 440
+    verbatim: true
+- page: 441
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Symbols and terms (3/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   C      \
+    \                                        Sum of pair counts from rerun-cluster\
+    \ column totals; this C is not a\n                                           \
+    \       cost.\n                                                  Total possible\
+    \ unordered pairs among all six customers, 62 .\n                            \
+    \                                                                            \
+    \    \x01\n   T\n   RC/T                                           Expected shared-pair\
+    \ count under the fixed-size chance reference;\n                             \
+    \                     juxtaposition RC means multiplication.\n   (R + C)/2   \
+    \                                   Normalizing reference built from the two within-cluster\
+    \ pair totals.\n   Membership agreement                           Agreement about\
+    \ who is grouped with whom, independent of\n                                 \
+    \                 whether the labels are A/B or X/Y."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Symbols and terms (3/3)
+  - "Symbol or term Meaning in this example C Sum of pair counts from rerun-cluster\
+    \ column totals; this C is not a cost. Total possible unordered pairs among all\
+    \ six customers, 62 . \x01 T RC/T Expected shared-pair count under the fixed-size\
+    \ chance reference; juxtaposition RC means multiplication. (R + C)/2 Normalizing\
+    \ reference built from the two within-cluster pair totals. Membership agreement\
+    \ Agreement about who is grouped with whom, independent of whether the labels\
+    \ are A/B or X/Y."
+  source: &id004
+    pages: &id005
+    - 441
+    verbatim: true
+solutionPages:
+- page: 443
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Worked solution — Did the Same Segments\
+    \ Reappear?\n\n1. Build the overlap table.\n   Original / rerun              \
+    \                 X                            Y             Total\n   A     \
+    \                                         2                                1 \
+    \            3\n   B                                              1          \
+    \                      2             3\n   Total                             \
+    \             3                                3             6\n\n2. Within-cell\
+    \ pairs: S = 1 + 0 + 0 + 1 = 2.\n3. Row and column pairs: R = 3 + 3 = 6; C = 3\
+    \ + 3 = 6.\n4. Chance adjustment: RC/T = 36/15 = 2.4.\n5. ARI: (2 − 2.4)/(6 −\
+    \ 2.4) = −0.4/3.6 = −0.1111."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Worked solution — Did the Same Segments Reappear?
+  - 1. Build the overlap table. Original / rerun X Y Total A 2 1 3 B 1 2 3 Total 3
+    3 6
+  - '2. Within-cell pairs: S = 1 + 0 + 0 + 1 = 2. 3. Row and column pairs: R = 3 +
+    3 = 6; C = 3 + 3 = 6. 4. Chance adjustment: RC/T = 36/15 = 2.4. 5. ARI: (2 − 2.4)/(6
+    − 2.4) = −0.4/3.6 = −0.1111.'
+  source:
+    pages:
+    - 443
+    verbatim: true
+interpretationPages:
+- page: 444
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Interpretation\n\n What the answer means\n\
+    \ These two runs disagree substantially on who belongs together; agreement is\
+    \ below the\n chance-adjusted reference for these cluster sizes. The value is\
+    \ not “negative accuracy.” Cluster\n names are arbitrary: exchanging X and Y would\
+    \ leave ARI unchanged. This small exercise does\n not establish stability for\
+    \ the bank’s full customer population.\n Why these steps matter\n Compute pair\
+    \ counts, not percentages of matching letters. A relabeling can change every\n\
+    \ displayed group name without moving any customer. ARI therefore ignores names\
+    \ and compares\n the underlying grouping structure."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Interpretation
+  - 'What the answer means These two runs disagree substantially on who belongs together;
+    agreement is below the chance-adjusted reference for these cluster sizes. The
+    value is not “negative accuracy.” Cluster names are arbitrary: exchanging X and
+    Y would leave ARI unchanged. This small exercise does not establish stability
+    for the bank’s full customer population. Why these steps matter Compute pair counts,
+    not percentages of matching letters. A relabeling can change every displayed group
+    name without moving any customer. ARI therefore ignores names and compares the
+    underlying grouping structure.'
+  source:
+    pages:
+    - 444
+    verbatim: true
+source:
+  pages:
+  - 437
+  - 438
+  - 439
+  - 440
+  - 441
+  - 442
+  - 443
+  - 444
+  verbatim: true
+readAloud:
+- 'Count the number of distinct unordered pairs among n customers. Choosing customers
+  1 and 2 is the same pair as choosing 2 and 1, so divide by two. Build an overlap
+  table: each cell counts customers belonging to one original cluster and one rerun
+  cluster. Its row and column totals recover the group sizes in the two runs. Clusters
+  are compared by membership, not by their arbitrary names.'
+- Subtract the chance-reference count from observed common-group pair count; divide
+  by the corresponding maximum-reference gap. Calculate S from overlap-cell pair counts;
+  R and C from row-total and column-total pair counts; T from all possible customer
+  pairs. The chance reference holds the two sets of cluster sizes fixed. A negative
+  result is below that reference, not a negative fraction of correctly classified
+  customers.
+siteAuthored: false
+givens:
+  overlap:
+  - 2
+  - 1
+  - 1
+  - 2
+labels: &id006
+  overlap: Overlap cells (row 1 then row 2)
+deckSolution:
+  S: 2
+  R: 6
+  C: 6
+  T: 15
+  chance: 2.4
+  ARI: -0.1111111
+latex:
+- ARI=\frac{S-RC/T}{(R+C)/2-RC/T}
+- \binom n2=\frac{n(n-1)}{2}
+symbols:
+- symbol: ARI
+  meaning: 'Adjusted Rand index: a chance-adjusted comparison of two groupings of
+    the same observations.'
+  source: *id001
+- symbol: n in a pair count
+  meaning: Number of customers in whichever cell, row, column, or full sample is being
+    counted.
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: n choose 2
+  meaning: '“n choose two”: distinct customer-pair count; fewer than two customers
+    produce zero pairs.'
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: Overlap cell
+  meaning: Count of customers sharing both an original cluster and a rerun cluster.
+  source: *id001
+- symbol: S
+  meaning: Sum of pair counts within overlap cells; pairs grouped together in both
+    runs.
+  source: *id003
+- symbol: R
+  meaning: Sum of pair counts from original-cluster row totals; this R is not recall.
+  source: *id003
+- symbol: C
+  meaning: Sum of pair counts from rerun-cluster column totals; this C is not a cost.
+  source: *id004
+- symbol: T
+  meaning: 'Total possible unordered pairs among all six customers: 6 choose 2.'
+  source:
+    pages: *id005
+    verbatim: false
+- symbol: RC/T
+  meaning: Expected shared-pair count under the fixed-size chance reference; juxtaposition
+    RC means multiplication.
+  source: *id004
+- symbol: (R + C)/2
+  meaning: Normalizing reference built from the two within-cluster pair totals.
+  source: *id004
+- symbol: Membership agreement
+  meaning: Agreement about who is grouped with whom, independent of whether the labels
+    are A/B or X/Y.
+  source: *id004
+steps:
+- id: S
+  title: Sum of within-cell pair counts
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Calculate n(n − 1)/2 for each overlap cell and add.
+  mistakes:
+  - pattern: recompute
+    message: Calculate n(n − 1)/2 for each overlap cell and add.
+- id: R
+  title: Sum of row-total pair counts
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Find both row totals, calculate their pair counts and add.
+  mistakes:
+  - pattern: recompute
+    message: Find both row totals, calculate their pair counts and add.
+- id: C
+  title: Sum of column-total pair counts
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Find both column totals, calculate their pair counts and add.
+  mistakes:
+  - pattern: recompute
+    message: Find both column totals, calculate their pair counts and add.
+- id: T
+  title: All unordered customer pairs
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Add all cells to get N, then calculate N(N − 1)/2.
+  mistakes:
+  - pattern: recompute
+    message: Add all cells to get N, then calculate N(N − 1)/2.
+- id: chance
+  title: Chance-reference pair count
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Calculate R × C / T.
+  mistakes:
+  - pattern: recompute
+    message: Calculate R × C / T.
+- id: ARI
+  title: Adjusted Rand index
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id012
+  - Subtract chance from S, then divide by (R + C)/2 minus chance.
+  mistakes:
+  - pattern: recompute
+    message: Subtract chance from S, then divide by (R + C)/2 minus chance.
+learning:
+  title: Did the Same Segments Reappear?
+  scenario: Two clustering runs are compared with a 2 × 2 overlap table, listed row
+    by row. A cell counts customers sharing one original cluster and one rerun cluster.
+  task: For any count n, the number of unordered pairs is n(n − 1)/2. Sum pair counts
+    over cells (S), rows (R), columns (C), and all customers (T). Compute ARI = (S
+    − RC/T) / ((R + C)/2 − RC/T).
+  interpretation: Cluster names are arbitrary. ARI compares membership pairs and adjusts
+    for a reference holding cluster sizes fixed. A negative result is below that reference,
+    not negative classification accuracy.
+  summary: 'Adjusted Rand index: {ARI}. Observed within-cell pair count: {S}; chance-reference
+    count: {chance}.'
+  labels: *id006
+  steps:
+    S:
+      title: Sum of within-cell pair counts
+      hints: *id007
+      unit: ''
+    R:
+      title: Sum of row-total pair counts
+      hints: *id008
+      unit: ''
+    C:
+      title: Sum of column-total pair counts
+      hints: *id009
+      unit: ''
+    T:
+      title: All unordered customer pairs
+      hints: *id010
+      unit: ''
+    chance:
+      title: Chance-reference pair count
+      hints: *id011
+      unit: ''
+    ARI:
+      title: Adjusted Rand index
+      hints: *id012
+      unit: ''
+  readAloud:
+  - 'Count the number of distinct unordered pairs among n customers. Choosing customers
+    1 and 2 is the same pair as choosing 2 and 1, so divide by two. Build an overlap
+    table: each cell counts customers belonging to one original cluster and one rerun
+    cluster. Its row and column totals recover the group sizes in the two runs. Clusters
+    are compared by membership, not by their arbitrary names.'
+  - Subtract the chance-reference count from observed common-group pair count; divide
+    by the corresponding maximum-reference gap. Calculate S from overlap-cell pair
+    counts; R and C from row-total and column-total pair counts; T from all possible
+    customer pairs. The chance reference holds the two sets of cluster sizes fixed.
+    A negative result is below that reference, not a negative fraction of correctly
+    classified customers.
+  workedExplanation:
+  - 'These two runs disagree substantially on who belongs together; agreement is below
+    the chance-adjusted reference for these cluster sizes. The value is not “negative
+    accuracy.” Cluster names are arbitrary: exchanging X and Y would leave ARI unchanged.
+    This small exercise does not establish stability for the bank’s full customer
+    population. '
+  - Compute pair counts, not percentages of matching letters. A relabeling can change
+    every displayed group name without moving any customer. ARI therefore ignores
+    names and compares the underlying grouping structure.
+  workedArithmetic:
+  - Overlap rows are [2, 1] and [1, 2]; both row totals and column totals are [3,
+    3]. Total customers = 6, so T = 6 × 5 / 2 = 15 pairs.
+  - 'Within-cell pairs: S = 1 + 0 + 0 + 1 = 2. Row pairs R = 3 + 3 = 6; column pairs
+    C = 3 + 3 = 6.'
+  - Chance-reference count = RC/T = 36/15 = 2.4.
+  - ARI = (2 − 2.4) / ((6 + 6)/2 − 2.4) = −0.4/3.6 ≈ −0.1111.
+formulaSource:
+  pages:
+  - 437
+  - 438
+  verbatim: false
+  reviewed: true

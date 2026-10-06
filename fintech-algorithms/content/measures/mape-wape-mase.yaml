@@ -1,0 +1,282 @@
+slug: mape-wape-mase
+number: 22
+title: MAPE, WAPE, MASE
+question: forecast
+financialInterpretation: Percentage and scaled errors help compare forecasts across
+  products, currencies, or portfolios of different sizes.
+workingExample: Actual values are [100, 120, 80, 150] and absolute errors are [10,
+  10, 20, 10]. 10 + 8.3 + 25 + 6.7 50 M AP E = = 12.5%, W AP E = = 11.1% 4 450 If
+  a naive forecast has MAE = 20, then M ASE = 12.5/20 = 0.625 A MASE below 1 means
+  the model beats that named naive baseline.
+whatItMisses: MAPE is unstable near zero and awkward with negative values. WAPE can
+  hide weak small-series performance. Always state the MASE baseline.
+exercises:
+- M22
+widget: forecast-eval
+usedBy:
+- time-series
+slides:
+- page: 384
+  title: EVALUATION MEASURE 22 OF 39
+  text: "    EVALUATION MEASURE 22 OF 39\n\n\n\n\n          MAPE, WAPE, and MASE\n\
+    \        Scales forecast errors as percentages or against a simple\n         \
+    \         baseline so results can be compared."
+  paragraphs:
+  - EVALUATION MEASURE 22 OF 39
+  - MAPE, WAPE, and MASE Scales forecast errors as percentages or against a simple
+    baseline so results can be compared.
+  source:
+    pages:
+    - 384
+    verbatim: true
+- page: 385
+  title: MAPE, WAPE, and MASE – error relative to scale or a naive forecast
+  text: " MAPE, WAPE, and MASE – error relative to scale or a naive forecast\n\n\n\
+    \ Financial interpretation\n Percentage and scaled errors help compare forecasts\
+    \ across products, currencies, or portfolios of different sizes.\n\n\n Working\
+    \ example\n Actual values are [100, 120, 80, 150] and absolute errors are [10,\
+    \ 10, 20, 10].\n                                                  10 + 8.3 + 25\
+    \ + 6.7                         50\n                                      M AP\
+    \ E =                        = 12.5%,   W AP E =         = 11.1%\n           \
+    \                                                4                           \
+    \       450\n If a naive forecast has MAE = 20, then\n                       \
+    \                                    M ASE = 12.5/20 = 0.625\n A MASE below 1\
+    \ means the model beats that named naive baseline.\n\n What it misses\n MAPE is\
+    \ unstable near zero and awkward with negative values. WAPE can hide weak small-series\
+    \ performance.\n Always state the MASE baseline."
+  paragraphs:
+  - MAPE, WAPE, and MASE – error relative to scale or a naive forecast
+  - Financial interpretation Percentage and scaled errors help compare forecasts across
+    products, currencies, or portfolios of different sizes.
+  - Working example Actual values are [100, 120, 80, 150] and absolute errors are
+    [10, 10, 20, 10]. 10 + 8.3 + 25 + 6.7 50 M AP E = = 12.5%, W AP E = = 11.1% 4
+    450 If a naive forecast has MAE = 20, then M ASE = 12.5/20 = 0.625 A MASE below
+    1 means the model beats that named naive baseline.
+  - What it misses MAPE is unstable near zero and awkward with negative values. WAPE
+    can hide weak small-series performance. Always state the MASE baseline.
+  source:
+    pages:
+    - 385
+    verbatim: true
+- page: 386
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Formula explained (1/2)\n\n Question:\
+    \ What does the error represent relative to the target’s size?\n             \
+    \                    n                              P\n                      \
+    \        1 X |yi − ŷi |                       |yi − ŷi |\n                 \
+    \ M AP E =                    ,     W AP E = iP                 .\n          \
+    \                    n i=1 |yi |                             i |yi |\n\n Read\
+    \ it aloud: MAPE calculates a percentage-type error for each day and then averages.\n\
+    \ WAPE totals all absolute errors and divides by total absolute actual volume.\n\
+    \ Both formulas above return fractions; multiply by 100 when writing percentage\
+    \ numbers.\n MAPE is undefined when an individual actual value is zero. WAPE requires\
+    \ a nonzero total\n denominator."
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Formula explained (1/2)
+  - 'Question: What does the error represent relative to the target’s size? n P 1
+    X |yi − ŷi | |yi − ŷi | M AP E = , W AP E = iP . n i=1 |yi | i |yi |'
+  - 'Read it aloud: MAPE calculates a percentage-type error for each day and then
+    averages. WAPE totals all absolute errors and divides by total absolute actual
+    volume. Both formulas above return fractions; multiply by 100 when writing percentage
+    numbers. MAPE is undefined when an individual actual value is zero. WAPE requires
+    a nonzero total denominator.'
+  source:
+    pages:
+    - 386
+    verbatim: true
+- page: 387
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Formula explained (2/2)\n\n Question:\
+    \ How large is test error relative to a simple training-history error scale?\n\
+    \                                                               T\n          \
+    \                                                1 X\n                       \
+    \                           dtrain =        |xt − xt−1 |,\n                  \
+    \                                      T − 1 t=2\n                           \
+    \                                1 Pn\n                                      \
+    \                     n   i=1 |yi − ŷi |\n                                  \
+    \                 M ASE =                     .\n                            \
+    \                                    dtrain\n Read it aloud: Average absolute\
+    \ changes between consecutive training values. Divide the\n test-period MAE by\
+    \ that training-period naive-error scale.\n Here the naive reference predicts\
+    \ the previous observation, with no seasonal lag. Training\n history and test\
+    \ outcomes remain separate. A MASE below one means test error is below the\n training\
+    \ reference scale, not necessarily below a test-period naive forecast’s error."
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Formula explained (2/2)
+  - 'Question: How large is test error relative to a simple training-history error
+    scale? T 1 X dtrain = |xt − xt−1 |, T − 1 t=2 1 Pn n i=1 |yi − ŷi | M ASE = .
+    dtrain Read it aloud: Average absolute changes between consecutive training values.
+    Divide the test-period MAE by that training-period naive-error scale. Here the
+    naive reference predicts the previous observation, with no seasonal lag. Training
+    history and test outcomes remain separate. A MASE below one means test error is
+    below the training reference scale, not necessarily below a test-period naive
+    forecast’s error.'
+  source:
+    pages:
+    - 387
+    verbatim: true
+- page: 388
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Symbols and terms (1/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   MAPE   \
+    \                                        Mean absolute percentage error: mean\
+    \ of per-observation absolute\n                                              \
+    \    proportional errors.\n   WAPE                                           Weighted\
+    \ absolute percentage error: total absolute error divided by\n               \
+    \                                   total absolute actual volume.\n   MASE   \
+    \                                        Mean absolute scaled error: test MAE\
+    \ divided by a separately\n                                                  defined\
+    \ training naive-error scale.\n   yi , ŷi , n                               \
+    \    Actuals, predictions, and record count in the test period; there are\n  \
+    \                                                four test observations."
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example MAPE Mean absolute percentage error: mean
+    of per-observation absolute proportional errors. WAPE Weighted absolute percentage
+    error: total absolute error divided by total absolute actual volume. MASE Mean
+    absolute scaled error: test MAE divided by a separately defined training naive-error
+    scale. yi , ŷi , n Actuals, predictions, and record count in the test period;
+    there are four test observations.'
+  source:
+    pages:
+    - 388
+    verbatim: true
+- page: 389
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Symbols and terms (2/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   xt , T \
+    \                                        Training-series value at training time\
+    \ t and number of training\n                                                 \
+    \ observations; here T = 4.\n   t = 2, . . . , T                             \
+    \  Consecutive training changes begin at observation 2 because each\n        \
+    \                                          needs a previous value."
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example xt , T Training-series value at training
+    time t and number of training observations; here T = 4. t = 2, . . . , T Consecutive
+    training changes begin at observation 2 because each needs a previous value.
+  source:
+    pages:
+    - 389
+    verbatim: true
+- page: 390
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Symbols and terms (3/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   T −1   \
+    \                                        Number of one-step differences in the\
+    \ training series; four values give\n                                        \
+    \          three changes.\n   dtrain                                         Training\
+    \ mean absolute one-step change; same dollar unit as test\n                  \
+    \                                MAE.\n            P\n   | · |,              \
+    \                           Absolute value; add all indicated error or change\
+    \ magnitudes.\n   Scaled; unitless                               Dividing two\
+    \ quantities with the same units cancels those units;\n                      \
+    \                            MASE is not dollars or a probability.\n   Naive \
+    \                                         A simple forecasting rule; here predict\
+    \ the next value using the\n                                                 \
+    \ preceding value."
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example T −1 Number of one-step differences in
+    the training series; four values give three changes. dtrain Training mean absolute
+    one-step change; same dollar unit as test MAE. P | · |, Absolute value; add all
+    indicated error or change magnitudes. Scaled; unitless Dividing two quantities
+    with the same units cancels those units; MASE is not dollars or a probability.
+    Naive A simple forecasting rule; here predict the next value using the preceding
+    value.
+  source:
+    pages:
+    - 390
+    verbatim: true
+- page: 391
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Class problem | 10 minutes — Percentage\
+    \ of What?\n\n Daily settlement amounts are in $ thousands.\n▶ Test actuals: [100,\
+    \ 120, 80, 150].\n▶ Test forecasts: [90, 130, 100, 140].\n▶ Separate training\
+    \ history: [80, 100, 120, 140].\n Calculate:\n                               \
+    \                                                    P\n                     \
+    \                         100% X |yi − ŷi |                       |yi − ŷi |\n\
+    \                                     M AP E =                    ,   W AP E =\
+    \          P           .\n                                                n  \
+    \     |yi |                             |yi |\n For MASE, use test MAE divided\
+    \ by the training-period mean absolute one-step change:\n the error scale of a\
+    \ nonseasonal naive forecast.\n Explain why these three denominators answer different\
+    \ questions. What happens to MAPE\n when an actual value is zero?"
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Class problem | 10 minutes — Percentage of What?
+  - 'Daily settlement amounts are in $ thousands. ▶ Test actuals: [100, 120, 80, 150].
+    ▶ Test forecasts: [90, 130, 100, 140]. ▶ Separate training history: [80, 100,
+    120, 140]. Calculate: P 100% X |yi − ŷi | |yi − ŷi | M AP E = , W AP E = P .
+    n |yi | |yi | For MASE, use test MAE divided by the training-period mean absolute
+    one-step change: the error scale of a nonseasonal naive forecast. Explain why
+    these three denominators answer different questions. What happens to MAPE when
+    an actual value is zero?'
+  source:
+    pages:
+    - 391
+    verbatim: true
+- page: 392
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Worked solution — Percentage of What?\n\
+    \n1. Absolute test errors: [10, 10, 20, 10]; sum = 50; test MAE = 50/4 = 12.5.\n\
+    2. Percentage errors: 10/100 = 10%; 10/120 = 8.333%; 20/80 = 25%; 10/150 = 6.667%.\n\
+    \                      M AP E = (10 + 8.333 + 25 + 6.667)/4 = 12.5%.\n3. Aggregate\
+    \ scale: W AP E = 50/(100 + 120 + 80 + 150) = 11.11%.\n4. Training naive scale:\
+    \ (|100 − 80| + |120 − 100| + |140 − 120|)/3 = 20.\n5. MASE: 12.5/20 = 0.625."
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Worked solution — Percentage of What?
+  - '1. Absolute test errors: [10, 10, 20, 10]; sum = 50; test MAE = 50/4 = 12.5.
+    2. Percentage errors: 10/100 = 10%; 10/120 = 8.333%; 20/80 = 25%; 10/150 = 6.667%.
+    M AP E = (10 + 8.333 + 25 + 6.667)/4 = 12.5%. 3. Aggregate scale: W AP E = 50/(100
+    + 120 + 80 + 150) = 11.11%. 4. Training naive scale: (|100 − 80| + |120 − 100|
+    + |140 − 120|)/3 = 20. 5. MASE: 12.5/20 = 0.625.'
+  source:
+    pages:
+    - 392
+    verbatim: true
+- page: 393
+  title: Scaled Forecast Errors
+  text: " Scaled Forecast Errors\n\n   M22 | Interpretation\n\n What the answer means\n\
+    \ MAPE averages each day’s percentage miss. WAPE compares total absolute error\
+    \ with total\n volume. MASE says the test error is 62.5% of the training naive-error\
+    \ scale; it does not, by\n itself, establish superiority to a naive forecast on\
+    \ the test period. MAPE is undefined at zero\n actuals.\n Why these steps matter\n\
+    \ The denominators intentionally differ. MAPE gives each day’s proportional miss\
+    \ equal weight;\n WAPE evaluates error relative to total volume; MASE compares\
+    \ against a historical forecasting\n scale. A name containing “percentage” is\
+    \ not permission to ignore zeros, signs, or the\n evaluation window."
+  paragraphs:
+  - Scaled Forecast Errors
+  - M22 | Interpretation
+  - What the answer means MAPE averages each day’s percentage miss. WAPE compares
+    total absolute error with total volume. MASE says the test error is 62.5% of the
+    training naive-error scale; it does not, by itself, establish superiority to a
+    naive forecast on the test period. MAPE is undefined at zero actuals. Why these
+    steps matter The denominators intentionally differ. MAPE gives each day’s proportional
+    miss equal weight; WAPE evaluates error relative to total volume; MASE compares
+    against a historical forecasting scale. A name containing “percentage” is not
+    permission to ignore zeros, signs, or the evaluation window.
+  source:
+    pages:
+    - 393
+    verbatim: true
+source:
+  pages:
+  - 384
+  - 385
+  - 386
+  - 387
+  - 388
+  - 389
+  - 390
+  - 391
+  - 392
+  - 393
+  verbatim: true

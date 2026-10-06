@@ -1,0 +1,28 @@
+---
+import Shell from '../components/layout/Shell.astro';
+import LearnerProgress from '../components/learning/LearnerProgress.svelte';
+import { algorithms, shortTitles } from '../data';
+import { teachingTopics } from '../data/teaching-manifest';
+import { toPracticeTopic } from '../engine/assessment';
+const units = algorithms.map((a, i) => ({
+  slug: a.slug,
+  title: shortTitles[i],
+  description: a.oneLine,
+  exercises: a.exercises,
+}));
+---
+
+<Shell
+  title="My progress"
+  description="Resume a lesson, review independent and assisted practice, and save a copy of your learning progress."
+>
+  <p class="page-subtitle">
+    Review lessons, practice results, and checkpoints.
+  </p>
+  <LearnerProgress
+    {units}
+    topics={teachingTopics.map(toPracticeTopic)}
+    base={import.meta.env.BASE_URL}
+    client:load
+  />
+</Shell>

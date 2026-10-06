@@ -1,0 +1,59 @@
+name: Verify course projects
+on:
+  push:
+    branches: [main, publish-course-apps]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publication:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 scripts/check-publication.py
+  algorithms:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: fintech-algorithms
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: fintech-algorithms/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm validate
+      - run: pnpm check
+      - run: pnpm build
+      - run: pnpm test
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - run: pnpm test:notebooks
+        env:
+          CHROMIUM_EXECUTABLE: ''
+      - run: python3 ../scripts/check-publication.py --dist
+  payment-rails:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: project-0-payment-rails
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24
+      - run: python3 -m unittest discover -s tests -v
+      - run: npm run build
+      - run: python3 ../scripts/check-publication.py --dist

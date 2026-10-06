@@ -1,0 +1,222 @@
+slug: prediction-interval-coverage-and-width
+number: 24
+title: Prediction-Interval Coverage and Width
+question: forecast
+financialInterpretation: A forecast interval supports reserves and liquidity buffers.
+  Coverage asks how often reality falls inside the interval; width asks how useful
+  or conservative the interval is.
+workingExample: 'A model issues 90% prediction intervals for 50 days. Only 37 actual
+  values fall inside: 37 Coverage = = 74% 50 The model is overconfident. If another
+  model achieves 92% coverage only by making every interval extremely wide, it may
+  still be operationally weak.'
+whatItMisses: Report coverage and average width together, by horizon and during stress
+  periods. Average coverage can hide poor tail behavior.
+exercises:
+- M24
+widget: forecast-eval
+usedBy:
+- time-series
+slides:
+- page: 403
+  title: EVALUATION MEASURE 24 OF 39
+  text: "    EVALUATION MEASURE 24 OF 39\n\n\n\n\n       Prediction-Interval Coverage\n\
+    \                and Width\n    Checks whether uncertainty ranges contain actual\
+    \ outcomes\n     and whether those ranges are narrow enough to be useful."
+  paragraphs:
+  - EVALUATION MEASURE 24 OF 39
+  - Prediction-Interval Coverage and Width Checks whether uncertainty ranges contain
+    actual outcomes and whether those ranges are narrow enough to be useful.
+  source:
+    pages:
+    - 403
+    verbatim: true
+- page: 404
+  title: Prediction-interval coverage and width – did uncertainty bands contain reality?
+  text: " Prediction-interval coverage and width – did uncertainty bands contain\n\
+    \ reality?\n\n Financial interpretation\n A forecast interval supports reserves\
+    \ and liquidity buffers. Coverage asks how often reality falls inside the\n interval;\
+    \ width asks how useful or conservative the interval is.\n\n Working example\n\
+    \ A model issues 90% prediction intervals for 50 days. Only 37 actual values fall\
+    \ inside:\n                                                               37\n\
+    \                                                  Coverage =      = 74%\n   \
+    \                                                            50\n The model is\
+    \ overconfident. If another model achieves 92% coverage only by making every interval\n\
+    \ extremely wide, it may still be operationally weak.\n\n What it misses\n Report\
+    \ coverage and average width together, by horizon and during stress periods. Average\
+    \ coverage can\n hide poor tail behavior."
+  paragraphs:
+  - Prediction-interval coverage and width – did uncertainty bands contain reality?
+  - Financial interpretation A forecast interval supports reserves and liquidity buffers.
+    Coverage asks how often reality falls inside the interval; width asks how useful
+    or conservative the interval is.
+  - 'Working example A model issues 90% prediction intervals for 50 days. Only 37
+    actual values fall inside: 37 Coverage = = 74% 50 The model is overconfident.
+    If another model achieves 92% coverage only by making every interval extremely
+    wide, it may still be operationally weak.'
+  - What it misses Report coverage and average width together, by horizon and during
+    stress periods. Average coverage can hide poor tail behavior.
+  source:
+    pages:
+    - 404
+    verbatim: true
+- page: 405
+  title: Prediction Intervals
+  text: " Prediction Intervals\n\n   M24 | Formula explained (1/1)\n\n Question: How\
+    \ often do the ranges contain the outcome, and how wide are they?\n          \
+    \                                  Coveredi = 1(Li ≤ yi ≤ Ui ),\n            \
+    \                            1 X                              1X\n           \
+    \                  Coverage =     Coveredi ,    M ean width =      (Ui − Li ).\n\
+    \                                        n i                              n i\n\
+    \ Read it aloud: Mark each actual as inside or outside its range, then average\
+    \ those 0/1 marks.\n Separately subtract each lower bound from its upper bound\
+    \ and average the widths.\n The endpoints count as covered. Lowering the lower\
+    \ bound by 10 and raising the upper bound\n by 10 widens each interval by 20,\
+    \ not 10."
+  paragraphs:
+  - Prediction Intervals
+  - M24 | Formula explained (1/1)
+  - 'Question: How often do the ranges contain the outcome, and how wide are they?
+    Coveredi = 1(Li ≤ yi ≤ Ui ), 1 X 1X Coverage = Coveredi , M ean width = (Ui −
+    Li ). n i n i Read it aloud: Mark each actual as inside or outside its range,
+    then average those 0/1 marks. Separately subtract each lower bound from its upper
+    bound and average the widths. The endpoints count as covered. Lowering the lower
+    bound by 10 and raising the upper bound by 10 widens each interval by 20, not
+    10.'
+  source:
+    pages:
+    - 405
+    verbatim: true
+- page: 406
+  title: Prediction Intervals
+  text: " Prediction Intervals\n\n   M24 | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Li , Ui\
+    \                                        Lower and upper bounds of the prediction\
+    \ interval for day i, in\n                                                  millions\
+    \ of dollars.\n   yi                                             Actual outflow\
+    \ on that day.\n   n, i                                           Number of evaluated\
+    \ days, here 5, and one day index.\n   1(·)                                  \
+    \         Indicator returning 1 when its condition is true and 0 otherwise.\n\
+    \   Coveredi                                       One if the day’s actual is\
+    \ between the inclusive bounds, otherwise\n                                  \
+    \                zero.\n   Coverage                                       Observed\
+    \ fraction of evaluated outcomes inside their intervals."
+  paragraphs:
+  - Prediction Intervals
+  - M24 | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example Li , Ui Lower and upper bounds of the prediction
+    interval for day i, in millions of dollars. yi Actual outflow on that day. n,
+    i Number of evaluated days, here 5, and one day index. 1(·) Indicator returning
+    1 when its condition is true and 0 otherwise. Coveredi One if the day’s actual
+    is between the inclusive bounds, otherwise zero. Coverage Observed fraction of
+    evaluated outcomes inside their intervals.
+  source:
+    pages:
+    - 406
+    verbatim: true
+- page: 407
+  title: Prediction Intervals
+  text: " Prediction Intervals\n\n   M24 | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Width  \
+    \                                        Distance between the upper and lower\
+    \ bounds, in the same dollar\n                                               \
+    \   unit as the forecast.\n   Nominal 90%                                    Intended\
+    \ coverage level under the model; not a promise that exactly\n               \
+    \                                   90% of any small sample must fall inside.\n\
+    \   Prediction interval                            Range for a future observation,\
+    \ not a confidence interval for an\n                                         \
+    \         estimated mean."
+  paragraphs:
+  - Prediction Intervals
+  - M24 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Width Distance between the upper and lower
+    bounds, in the same dollar unit as the forecast. Nominal 90% Intended coverage
+    level under the model; not a promise that exactly 90% of any small sample must
+    fall inside. Prediction interval Range for a future observation, not a confidence
+    interval for an estimated mean.
+  source:
+    pages:
+    - 407
+    verbatim: true
+- page: 408
+  title: Prediction Intervals
+  text: " Prediction Intervals\n\n   M24 | Class problem | 8 minutes — Covered, but\
+    \ Useful?\n\n Treasury receives these purported 90% prediction intervals, in $\
+    \ millions.\n   Day                                            Lower bound   Upper\
+    \ bound          Actual outflow\n   1                                        \
+    \               90                 120              110\n   2                \
+    \                                      100                 120              125\n\
+    \   3                                                       85               \
+    \  105               95\n   4                                                \
+    \      130                 160              150\n   5                        \
+    \                              100                 110              105\n Count\
+    \ an actual on either boundary as covered. Calculate observed coverage and average\
+    \ width.\n Then lower every lower bound by 10 and raise every upper bound by 10.\
+    \ Recalculate both\n measures. Which result is more useful for treasury?"
+  paragraphs:
+  - Prediction Intervals
+  - M24 | Class problem | 8 minutes — Covered, but Useful?
+  - Treasury receives these purported 90% prediction intervals, in $ millions. Day
+    Lower bound Upper bound Actual outflow 1 90 120 110 2 100 120 125 3 85 105 95
+    4 130 160 150 5 100 110 105 Count an actual on either boundary as covered. Calculate
+    observed coverage and average width. Then lower every lower bound by 10 and raise
+    every upper bound by 10. Recalculate both measures. Which result is more useful
+    for treasury?
+  source:
+    pages:
+    - 408
+    verbatim: true
+- page: 409
+  title: Prediction Intervals
+  text: " Prediction Intervals\n\n   M24 | Worked solution — Covered, but Useful?\n\
+    \n1. Original coverage: days 1, 3, 4, and 5 are inside; day 2 is outside. Coverage\
+    \ = 4/5 = 80%.\n2. Original widths: 30, 20, 20, 30, 10. Mean = 110/5 = $22 million.\n\
+    3. Widened intervals: [80, 130], [90, 130], [75, 115], [120, 170], [90, 120].\n\
+    4. Widened coverage: all five actuals are inside, so 5/5 = 100%.\n5. Widened average\
+    \ width: each interval grows by 20; 22 + 20 = $42 million."
+  paragraphs:
+  - Prediction Intervals
+  - M24 | Worked solution — Covered, but Useful?
+  - '1. Original coverage: days 1, 3, 4, and 5 are inside; day 2 is outside. Coverage
+    = 4/5 = 80%. 2. Original widths: 30, 20, 20, 30, 10. Mean = 110/5 = $22 million.
+    3. Widened intervals: [80, 130], [90, 130], [75, 115], [120, 170], [90, 120].
+    4. Widened coverage: all five actuals are inside, so 5/5 = 100%. 5. Widened average
+    width: each interval grows by 20; 22 + 20 = $42 million.'
+  source:
+    pages:
+    - 409
+    verbatim: true
+- page: 410
+  title: Prediction Intervals
+  text: " Prediction Intervals\n\n   M24 | Interpretation\n\n What the answer means\n\
+    \ Wider ranges cover more outcomes but give less precise funding guidance. Neither\
+    \ result alone\n determines the better system: treasury needs sufficiently reliable\
+    \ coverage and useful width.\n Five observations are too few to conclude that\
+    \ the original 90% intervals are systematically\n miscalibrated.\n Why these steps\
+    \ matter\n Making every interval very wide can raise coverage without giving treasury\
+    \ a useful forecast.\n Coverage and width must be read together, and the five-day\
+    \ count alone is too small to\n establish long-run calibration."
+  paragraphs:
+  - Prediction Intervals
+  - M24 | Interpretation
+  - 'What the answer means Wider ranges cover more outcomes but give less precise
+    funding guidance. Neither result alone determines the better system: treasury
+    needs sufficiently reliable coverage and useful width. Five observations are too
+    few to conclude that the original 90% intervals are systematically miscalibrated.
+    Why these steps matter Making every interval very wide can raise coverage without
+    giving treasury a useful forecast. Coverage and width must be read together, and
+    the five-day count alone is too small to establish long-run calibration.'
+  source:
+    pages:
+    - 410
+    verbatim: true
+source:
+  pages:
+  - 403
+  - 404
+  - 405
+  - 406
+  - 407
+  - 408
+  - 409
+  - 410
+  verbatim: true

@@ -1,0 +1,119 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import {
+  financialCases,
+  financialCaseHref,
+  financialCasesForAlgorithm,
+} from '../../data/financial-cases';
+import { algorithms, href } from '../../data';
+---
+
+<Shell
+  title="Financial problems"
+  description="96 financial problems with diagrams and numerical comparisons."
+>
+  <p class="page-subtitle">
+    Choose a financial question, change an input, and compare the result.
+  </p>
+  <label for="case-search">Find a financial problem</label>
+  <input
+    id="case-search"
+    type="search"
+    placeholder="Try claims, liquidity, evidence, or credit"
+    autocomplete="off"
+  />
+  <p id="case-count" role="status">
+    {financialCases.length} financial problems
+  </p>
+  {algorithms.map((algorithm) => (
+    <section data-case-group>
+      <h2>{algorithm.title}</h2>
+      <ul class="case-directory">
+        {financialCasesForAlgorithm(algorithm.slug).map((item) => (
+          <li
+            data-financial-case
+            data-search={`${item.title} ${item.question} ${algorithm.title}`.toLowerCase()}
+          >
+            <a href={financialCaseHref(item)}>{item.title}</a>
+            <p>{item.question}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+  <h2>Additional operational and supporting cases</h2>
+  <ul>
+    <li>
+      <a href={href('/measures/fairness-measures/')}>Approval rates and group errors · M19</a>
+    </li>
+    <li>
+      <a href={href('/measures/task-success-verification-unsafe-actions/')}>
+        Invoice-agent completion, verification, and authority · M37
+      </a>
+    </li>
+    <li>
+      <a href={href('/measures/population-stability-index/')}>Applicant population drift · M38</a>
+    </li>
+    <li>
+      <a href={href('/measures/latency-throughput-review-load-cost/')}>
+        Service latency, queues, workflow costs, and availability · M39a–d
+      </a>
+    </li>
+    <li>
+      <a href={href('/exercises/S01/')}>Parsing integrity · S01</a> and{' '}
+      <a href={href('/exercises/S02/')}>answer completeness · S02</a>
+    </li>
+    <li>
+      <a href={href('/exercises/S03/')}>Incomplete execution · S03</a> and{' '}
+      <a href={href('/exercises/S04/')}>execution tails · S04</a>
+    </li>
+  </ul>
+</Shell>
+<script>
+  const input = document.querySelector<HTMLInputElement>('#case-search')!;
+  const entries = [...document.querySelectorAll<HTMLElement>('[data-financial-case]')];
+  input.addEventListener('input', () => {
+    const words = input.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    for (const item of entries)
+      item.hidden = !words.every((word) => item.dataset.search!.includes(word));
+    for (const section of document.querySelectorAll<HTMLElement>('[data-case-group]'))
+      section.hidden = !section.querySelector('[data-financial-case]:not([hidden])');
+    const count = entries.filter((item) => !item.hidden).length;
+    document.querySelector('#case-count')!.textContent =
+      `${count} financial problem${count === 1 ? '' : 's'}${count ? '' : ' found. Try a broader term.'}`;
+  });
+</script>
+<style>
+  #case-search {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background: var(--sl-color-bg);
+    color: var(--sl-color-text);
+    border: 1px solid var(--sl-color-gray-4);
+    border-radius: 0.5rem;
+    font: inherit;
+  }
+  .case-directory {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+    gap: 0.8rem;
+    list-style: none;
+    padding: 0;
+  }
+  .case-directory li {
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.6rem;
+    padding: 0.8rem;
+  }
+  .case-directory li[hidden] {
+    display: none;
+  }
+  .case-directory a {
+    font-weight: 700;
+  }
+  .case-directory p {
+    margin: 0.35rem 0 0;
+    font-size: 0.92rem;
+  }
+</style>

@@ -1,0 +1,371 @@
+id: M28
+title: Find All the Evidence
+minutes: 8
+kind: measure
+parent: retrieval-recall-k-and-context-precision
+question: "A financial Q&A system retrieves three distinct chunks per question.\n\
+  \   Question                                       All relevant chunks in the corpus\
+  \                   Retrieved top 3\n   Q1                                     \
+  \        A, B                                                A, C, D\n   Q2    \
+  \                                         E                                    \
+  \               F, E, G\n For this exercise:\n                                 \
+  \          relevant chunks retrieved\n                                         \
+  \             Recall@3 =      ,\n                                              \
+  \ all relevant chunks\n                                                   relevant\
+  \ chunks retrieved\n                        Context precision@3 =              \
+  \                  .\n                                                         \
+  \      3\n Calculate each question’s scores and their unweighted means across questions.\
+  \ Context\n precision here means a simple relevant-chunk share, not a rank-weighted\
+  \ evaluator. Did finding\n at least one relevant chunk for each question produce\
+  \ 100% recall?"
+questionPages:
+- page: 450
+  title: Retrieval Recall and Context Precision
+  text: " Retrieval Recall and Context Precision\n\n   M28 | Class problem | 8 minutes\
+    \ — Find All the Evidence\n\n A financial Q&A system retrieves three distinct\
+    \ chunks per question.\n   Question                                       All\
+    \ relevant chunks in the corpus                   Retrieved top 3\n   Q1     \
+    \                                        A, B                                \
+    \                A, C, D\n   Q2                                             E\
+    \                                                   F, E, G\n For this exercise:\n\
+    \                                           relevant chunks retrieved\n      \
+    \                                                Recall@3 =      ,\n         \
+    \                                      all relevant chunks\n                 \
+    \                                  relevant chunks retrieved\n               \
+    \         Context precision@3 =                                .\n           \
+    \                                                    3\n Calculate each question’s\
+    \ scores and their unweighted means across questions. Context\n precision here\
+    \ means a simple relevant-chunk share, not a rank-weighted evaluator. Did finding\n\
+    \ at least one relevant chunk for each question produce 100% recall?"
+  paragraphs:
+  - Retrieval Recall and Context Precision
+  - M28 | Class problem | 8 minutes — Find All the Evidence
+  - 'A financial Q&A system retrieves three distinct chunks per question. Question
+    All relevant chunks in the corpus Retrieved top 3 Q1 A, B A, C, D Q2 E F, E, G
+    For this exercise: relevant chunks retrieved Recall@3 = , all relevant chunks
+    relevant chunks retrieved Context precision@3 = . 3 Calculate each question’s
+    scores and their unweighted means across questions. Context precision here means
+    a simple relevant-chunk share, not a rank-weighted evaluator. Did finding at least
+    one relevant chunk for each question produce 100% recall?'
+  source:
+    pages:
+    - 450
+    verbatim: true
+formulaPages:
+- page: 447
+  title: Retrieval Recall and Context Precision
+  text: " Retrieval Recall and Context Precision\n\n   M28 | Formula explained (1/1)\n\
+    \n Question: How much required evidence was found, and how much of the retrieved\
+    \ context is\n useful?\n                      |Relq ∩ Retq |                 \
+    \             |Relq ∩ Retq |\n         Recall@Kq =                 ,   Context\
+    \ precision@Kq =                  .\n                          |Relq |       \
+    \                                K\n Read it aloud: Count retrieved chunks that\
+    \ are relevant. Divide by all relevant chunks for\n recall; divide by the retrieved\
+    \ queue size for context precision.\n Compute each question separately, then take\
+    \ an unweighted average across questions. Here\n each query retrieves exactly\
+    \ three distinct chunks.\n Context precision uses simple relevant-chunk share\
+    \ in this exercise, not a rank-weighted\n evaluator’s definition."
+  paragraphs:
+  - Retrieval Recall and Context Precision
+  - M28 | Formula explained (1/1)
+  - 'Question: How much required evidence was found, and how much of the retrieved
+    context is useful? |Relq ∩ Retq | |Relq ∩ Retq | Recall@Kq = , Context precision@Kq
+    = . |Relq | K Read it aloud: Count retrieved chunks that are relevant. Divide
+    by all relevant chunks for recall; divide by the retrieved queue size for context
+    precision. Compute each question separately, then take an unweighted average across
+    questions. Here each query retrieves exactly three distinct chunks. Context precision
+    uses simple relevant-chunk share in this exercise, not a rank-weighted evaluator’s
+    definition.'
+  source:
+    pages:
+    - 447
+    verbatim: true
+symbolPages:
+- page: 448
+  title: Retrieval Recall and Context Precision
+  text: " Retrieval Recall and Context Precision\n\n   M28 | Symbols and terms (1/2)\n\
+    \n\n   Symbol or term                                 Meaning in this example\n\
+    \   q                                              A question index, Q1 or Q2;\
+    \ this q is not an embedding vector here.\n   K                              \
+    \                Number of retrieved chunks per question, fixed at 3.\n   Relq\
+    \                                           Set of all relevant chunks in the\
+    \ corpus for question q.\n   Retq                                           Set\
+    \ of the top K chunks actually retrieved for question q.\n   ∩               \
+    \                               Set intersection: chunks occurring in both sets.\n\
+    \   | · | around a set                             Number of distinct items in\
+    \ the set; not absolute value of a number."
+  paragraphs:
+  - Retrieval Recall and Context Precision
+  - M28 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example q A question index, Q1 or Q2; this q is
+    not an embedding vector here. K Number of retrieved chunks per question, fixed
+    at 3. Relq Set of all relevant chunks in the corpus for question q. Retq Set of
+    the top K chunks actually retrieved for question q. ∩ Set intersection: chunks
+    occurring in both sets. | · | around a set Number of distinct items in the set;
+    not absolute value of a number.'
+  source: &id001
+    pages:
+    - 448
+    verbatim: true
+- page: 449
+  title: Retrieval Recall and Context Precision
+  text: " Retrieval Recall and Context Precision\n\n   M28 | Symbols and terms (2/2)\n\
+    \n\n   Symbol or term                                 Meaning in this example\n\
+    \   Recall@K                                       Relevant-chunk coverage; finding\
+    \ one useful passage is insufficient\n                                       \
+    \           when several are required.\n   Context precision@K               \
+    \             Share of the K retrieved chunks judged relevant, using this explicit\n\
+    \                                                  classroom definition.\n   Corpus;\
+    \ chunk                                  Complete searchable document collection;\
+    \ one separately retrievable\n                                               \
+    \   passage.\n   Question-level hit rate                        Share of questions\
+    \ receiving at least one relevant chunk, a different\n                       \
+    \                           measure from relevant-chunk recall.\n   Unweighted\
+    \ mean                                Each question receives the same weight,\
+    \ even if its number of\n                                                  relevant\
+    \ passages differs."
+  paragraphs:
+  - Retrieval Recall and Context Precision
+  - M28 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Recall@K Relevant-chunk coverage; finding
+    one useful passage is insufficient when several are required. Context precision@K
+    Share of the K retrieved chunks judged relevant, using this explicit classroom
+    definition. Corpus; chunk Complete searchable document collection; one separately
+    retrievable passage. Question-level hit rate Share of questions receiving at least
+    one relevant chunk, a different measure from relevant-chunk recall. Unweighted
+    mean Each question receives the same weight, even if its number of relevant passages
+    differs.
+  source: &id002
+    pages:
+    - 449
+    verbatim: true
+solutionPages:
+- page: 451
+  title: Retrieval Recall and Context Precision
+  text: " Retrieval Recall and Context Precision\n\n   M28 | Worked solution — Find\
+    \ All the Evidence\n\n1. Q1: retrieved evidence intersects {A, B} at {A} only.\n\
+    \              Recall@3 = 1/2 = 50%,         Context precision@3 = 1/3 = 33.33%.\n\
+    2. Q2: retrieved evidence includes its only relevant chunk, E.\n             \
+    \ Recall@3 = 1/1 = 100%,          Context precision@3 = 1/3 = 33.33%.\n3. Mean\
+    \ recall: (50% + 100%)/2 = 75%.\n4. Mean context precision: (1/3 + 1/3)/2 = 33.33%."
+  paragraphs:
+  - Retrieval Recall and Context Precision
+  - M28 | Worked solution — Find All the Evidence
+  - '1. Q1: retrieved evidence intersects {A, B} at {A} only. Recall@3 = 1/2 = 50%,
+    Context precision@3 = 1/3 = 33.33%. 2. Q2: retrieved evidence includes its only
+    relevant chunk, E. Recall@3 = 1/1 = 100%, Context precision@3 = 1/3 = 33.33%.
+    3. Mean recall: (50% + 100%)/2 = 75%. 4. Mean context precision: (1/3 + 1/3)/2
+    = 33.33%.'
+  source:
+    pages:
+    - 451
+    verbatim: true
+interpretationPages:
+- page: 452
+  title: Retrieval Recall and Context Precision
+  text: " Retrieval Recall and Context Precision\n\n   M28 | Interpretation\n\n What\
+    \ the answer means\n Both questions have an evidence “hit,” but Q1 is missing\
+    \ half its required source material. A\n 100% question-level hit rate is not 100%\
+    \ relevant-chunk recall. Two-thirds of the\n supplied context is irrelevant in\
+    \ both cases. Generation still needs separate evaluation.\n Why these steps matter\n\
+    \ The missing B chunk in Q1 matters even though A was retrieved. Counting Q1 as\
+    \ a binary\n “hit” discards information about completeness. Mean recall across\
+    \ questions also differs from\n pooling all retrieved chunks into one global numerator\
+    \ and denominator."
+  paragraphs:
+  - Retrieval Recall and Context Precision
+  - M28 | Interpretation
+  - What the answer means Both questions have an evidence “hit,” but Q1 is missing
+    half its required source material. A 100% question-level hit rate is not 100%
+    relevant-chunk recall. Two-thirds of the supplied context is irrelevant in both
+    cases. Generation still needs separate evaluation. Why these steps matter The
+    missing B chunk in Q1 matters even though A was retrieved. Counting Q1 as a binary
+    “hit” discards information about completeness. Mean recall across questions also
+    differs from pooling all retrieved chunks into one global numerator and denominator.
+  source:
+    pages:
+    - 452
+    verbatim: true
+source:
+  pages:
+  - 447
+  - 448
+  - 449
+  - 450
+  - 451
+  - 452
+  verbatim: true
+readAloud:
+- Count retrieved chunks that are relevant. Divide by all relevant chunks for recall;
+  divide by the retrieved queue size for context precision. Compute each question
+  separately, then take an unweighted average across questions. Here each query retrieves
+  exactly three distinct chunks. Context precision uses simple relevant-chunk share
+  in this exercise, not a rank-weighted evaluator’s definition.
+siteAuthored: false
+givens:
+  found:
+  - 1
+  - 1
+  relevant:
+  - 2
+  - 1
+  K: 3
+labels: &id003
+  found: Relevant passages retrieved per question
+  relevant: All relevant passages available per question
+  K: Passages retrieved for each question
+deckSolution:
+  recalls:
+  - 0.5
+  - 1
+  precision:
+  - 0.3333333333333333
+  - 0.3333333333333333
+  meanRecall: 0.75
+  meanPrecision: 0.3333333333333333
+latex:
+- Recall@K=\frac{RetrievedRelevant}{AllRelevant},\quad ContextPrecision@K=\frac{RetrievedRelevant}{K}
+symbols:
+- symbol: q
+  meaning: A question index, Q1 or Q2; this q is not an embedding vector here.
+  source: *id001
+- symbol: K
+  meaning: Number of retrieved chunks per question, fixed at 3.
+  source: *id001
+- symbol: Relq
+  meaning: Set of all relevant chunks in the corpus for question q.
+  source: *id001
+- symbol: Retq
+  meaning: Set of the top K chunks actually retrieved for question q.
+  source: *id001
+- symbol: ∩
+  meaning: 'Set intersection: chunks occurring in both sets.'
+  source: *id001
+- symbol: '| · | around a set'
+  meaning: Number of distinct items in the set; not absolute value of a number.
+  source: *id001
+- symbol: Recall@K
+  meaning: Relevant-chunk coverage; finding one useful passage is insufficient when
+    several are required.
+  source: *id002
+- symbol: Context precision@K
+  meaning: Share of the K retrieved chunks judged relevant, using this explicit classroom
+    definition.
+  source: *id002
+- symbol: Corpus; chunk
+  meaning: Complete searchable document collection; one separately retrievable passage.
+  source: *id002
+- symbol: Question-level hit rate
+  meaning: Share of questions receiving at least one relevant chunk, a different measure
+    from relevant-chunk recall.
+  source: *id002
+- symbol: Unweighted mean
+  meaning: Each question receives the same weight, even if its number of relevant
+    passages differs.
+  source: *id002
+steps:
+- id: recalls
+  title: Recall for each question
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide relevant passages retrieved by all relevant passages available for that
+    question.
+  mistakes:
+  - pattern: recompute
+    message: Divide relevant passages retrieved by all relevant passages available
+      for that question.
+- id: precision
+  title: Context precision for each question
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide relevant passages retrieved by K.
+  mistakes:
+  - pattern: recompute
+    message: Divide relevant passages retrieved by K.
+- id: meanRecall
+  title: Mean retrieval recall
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average the per-question recall fractions.
+  mistakes:
+  - pattern: recompute
+    message: Average the per-question recall fractions.
+- id: meanPrecision
+  title: Mean context precision
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Average the per-question context-precision fractions.
+  mistakes:
+  - pattern: recompute
+    message: Average the per-question context-precision fractions.
+learning:
+  title: Find All the Evidence
+  scenario: A retriever returns the same number of distinct passages for each question.
+    Relevant-passage counts are established by a relevance rubric. Context precision
+    here is a simple relevant share, not a rank-weighted measure.
+  task: Calculate recall and context precision per question, then the unweighted mean
+    of each across questions.
+  interpretation: Finding one relevant passage is a hit, but may leave required evidence
+    missing. Averaging per-query recall is different from pooling all passage counts.
+    Answer quality needs its own evaluation.
+  summary: 'Mean retrieval recall: {meanRecall}; mean context precision: {meanPrecision}.'
+  labels: *id003
+  steps:
+    recalls:
+      title: Recall for each question
+      hints: *id004
+      unit: proportion
+    precision:
+      title: Context precision for each question
+      hints: *id005
+      unit: proportion
+    meanRecall:
+      title: Mean retrieval recall
+      hints: *id006
+      unit: proportion
+    meanPrecision:
+      title: Mean context precision
+      hints: *id007
+      unit: proportion
+  readAloud:
+  - Count retrieved chunks that are relevant. Divide by all relevant chunks for recall;
+    divide by the retrieved queue size for context precision. Compute each question
+    separately, then take an unweighted average across questions. Here each query
+    retrieves exactly three distinct chunks. Context precision uses simple relevant-chunk
+    share in this exercise, not a rank-weighted evaluator’s definition.
+  workedExplanation:
+  - 'Both questions have an evidence “hit,” but Q1 is missing half its required source
+    material. A 100% question-level hit rate is not 100% relevant-chunk recall. Two-thirds
+    of the supplied context is irrelevant in both cases. Generation still needs separate
+    evaluation. '
+  - The missing B chunk in Q1 matters even though A was retrieved. Counting Q1 as
+    a binary “hit” discards information about completeness. Mean recall across questions
+    also differs from pooling all retrieved chunks into one global numerator and denominator.
+  workedArithmetic:
+  - 'Q1 retrieves one of its two relevant passages: recall = 1/2 = 50%; context precision
+    = 1/3 ≈ 33.33%.'
+  - 'Q2 retrieves its only relevant passage: recall = 1/1 = 100%; context precision
+    = 1/3 ≈ 33.33%.'
+  - Mean recall = (0.5 + 1) / 2 = 75%. Mean context precision = (1/3 + 1/3) / 2 =
+    1/3 ≈ 33.33%.
+formulaSource:
+  pages:
+  - 447
+  verbatim: false
+  reviewed: true

@@ -1,0 +1,219 @@
+slug: var-exception-rate
+number: 35
+title: VaR Exception Rate
+question: act
+financialInterpretation: Backtesting counts how often actual loss exceeds the predicted
+  VaR threshold. Too many exceptions indicate underestimated tail risk or regime change.
+workingExample: A 99% daily VaR model is tested over 250 trading days. Roughly 1%
+  exceptions implies about 2–3 breaches in an ordinary year. If 12 days exceed VaR,
+  the model is materially underestimating risk or the environment has changed.
+whatItMisses: Exception count alone does not show the size of breaches or clustered
+  failures. Also review Expected Shortfall, stress tests, and breach timing.
+exercises:
+- M35
+widget: monte-carlo-loss
+usedBy:
+- monte-carlo
+slides:
+- page: 532
+  title: EVALUATION MEASURE 35 OF 39
+  text: "    EVALUATION MEASURE 35 OF 39\n\n\n\n\n                     VaR Exception\
+    \ Rate\n      Counts how often real losses exceed predicted VaR to test\n    \
+    \           whether the tail-risk model holds up."
+  paragraphs:
+  - EVALUATION MEASURE 35 OF 39
+  - VaR Exception Rate Counts how often real losses exceed predicted VaR to test whether
+    the tail-risk model holds up.
+  source:
+    pages:
+    - 532
+    verbatim: true
+- page: 533
+  title: VaR exception rate – did the tail model hold up in real outcomes?
+  text: " VaR exception rate – did the tail model hold up in real outcomes?\n\n\n\
+    \ Financial interpretation\n Backtesting counts how often actual loss exceeds\
+    \ the predicted VaR threshold. Too many exceptions\n indicate underestimated tail\
+    \ risk or regime change.\n\n Working example\n A 99% daily VaR model is tested\
+    \ over 250 trading days. Roughly 1% exceptions implies about 2–3 breaches\n in\
+    \ an ordinary year. If 12 days exceed VaR, the model is materially underestimating\
+    \ risk or the environment\n has changed.\n\n What it misses\n Exception count\
+    \ alone does not show the size of breaches or clustered failures. Also review\
+    \ Expected\n Shortfall, stress tests, and breach timing."
+  paragraphs:
+  - VaR exception rate – did the tail model hold up in real outcomes?
+  - Financial interpretation Backtesting counts how often actual loss exceeds the
+    predicted VaR threshold. Too many exceptions indicate underestimated tail risk
+    or regime change.
+  - Working example A 99% daily VaR model is tested over 250 trading days. Roughly
+    1% exceptions implies about 2–3 breaches in an ordinary year. If 12 days exceed
+    VaR, the model is materially underestimating risk or the environment has changed.
+  - What it misses Exception count alone does not show the size of breaches or clustered
+    failures. Also review Expected Shortfall, stress tests, and breach timing.
+  source:
+    pages:
+    - 533
+    verbatim: true
+- page: 534
+  title: VaR Exceptions
+  text: " VaR Exceptions\n\n   M35 | Formula explained (1/1)\n\n Question: How often\
+    \ did realized losses exceed the risk model’s daily threshold?\n             \
+    \                                     N\n                                    \
+    \              X                                                     B\n     \
+    \                                      B=           1[Lt > V aRα,t ],     Exception\
+    \ rate =            ,\n                                                  t=1\n\
+    \                                                                            \
+    \                            N\n                           N ominal rate = 1 −\
+    \ α,                   N ominal expected count = N (1 − α),\n                \
+    \                                    B/N\n                                   \
+    \                       .    Rate ratio =\n                                  \
+    \                  1−α\n Read it aloud: Compare each day’s actual loss with the\
+    \ forecast made for that day. Count\n strict breaches and divide by days evaluated.\
+    \ Compare that rate with the exceedance probability\n implied by the stated confidence\
+    \ target.\n The nominal expected count is a benchmark expectation, not a guaranteed\
+    \ count or an\n automatic acceptance range."
+  paragraphs:
+  - VaR Exceptions
+  - M35 | Formula explained (1/1)
+  - 'Question: How often did realized losses exceed the risk model’s daily threshold?
+    N X B B= 1[Lt > V aRα,t ], Exception rate = , t=1 N N ominal rate = 1 − α, N ominal
+    expected count = N (1 − α), B/N . Rate ratio = 1−α Read it aloud: Compare each
+    day’s actual loss with the forecast made for that day. Count strict breaches and
+    divide by days evaluated. Compare that rate with the exceedance probability implied
+    by the stated confidence target. The nominal expected count is a benchmark expectation,
+    not a guaranteed count or an automatic acceptance range.'
+  source:
+    pages:
+    - 534
+    verbatim: true
+- page: 535
+  title: VaR Exceptions
+  text: " VaR Exceptions\n\n   M35 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   t              \
+    \                                Trading day being evaluated.\n   N          \
+    \                                    Number of backtest days; 250 here.\n   Lt\
+    \                                             Actual loss on day t, measured on\
+    \ the same loss basis and horizon as\n                                       \
+    \           the VaR forecast.\n   V aRα,t                                    \
+    \    The model’s loss threshold at confidence level α for day t; it may\n    \
+    \                                              vary by day.\n   α            \
+    \                                  Stated VaR confidence level; 0.99 for the one-day\
+    \ forecast here.\n   1[·]                                           Indicator\
+    \ that contributes 1 for a strict breach and 0 otherwise."
+  paragraphs:
+  - VaR Exceptions
+  - M35 | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example t Trading day being evaluated. N Number
+    of backtest days; 250 here. Lt Actual loss on day t, measured on the same loss
+    basis and horizon as the VaR forecast. V aRα,t The model’s loss threshold at confidence
+    level α for day t; it may vary by day. α Stated VaR confidence level; 0.99 for
+    the one-day forecast here. 1[·] Indicator that contributes 1 for a strict breach
+    and 0 otherwise.
+  source:
+    pages:
+    - 535
+    verbatim: true
+- page: 536
+  title: VaR Exceptions
+  text: " VaR Exceptions\n\n   M35 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   B              \
+    \                                Count of days with losses above their forecasts;\
+    \ 10 here.\n   Exception; breach                              A realized loss\
+    \ exceeding the matching forecasted threshold.\n   Backtest                  \
+    \                     Compare forecasts made without future knowledge with outcomes\n\
+    \                                                  observed later.\n   Clustering\
+    \ of exceptions                       Breaches concentrated in nearby periods\
+    \ rather than spread through\n                                               \
+    \   the evaluation window."
+  paragraphs:
+  - VaR Exceptions
+  - M35 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example B Count of days with losses above their
+    forecasts; 10 here. Exception; breach A realized loss exceeding the matching forecasted
+    threshold. Backtest Compare forecasts made without future knowledge with outcomes
+    observed later. Clustering of exceptions Breaches concentrated in nearby periods
+    rather than spread through the evaluation window.
+  source:
+    pages:
+    - 536
+    verbatim: true
+- page: 537
+  title: VaR Exceptions
+  text: " VaR Exceptions\n\n   M35 | Class problem | 7 minutes — Does the Tail Forecast\
+    \ Hold Up?\n\n A bank evaluates a 99% one-day VaR forecast over 250 trading days.\
+    \ Actual daily losses\n exceed that day’s predicted VaR on 10 days. Six of those\
+    \ exceptions occur within one 10-day\n period.\n Calculate:\n1. The observed exception\
+    \ rate.\n2. The nominal expected number of exceptions under the 99% target.\n\
+    3. The ratio of observed to nominal exception rates.\n Explain why reviewing only\
+    \ the annual exception count would miss something important. Does\n the count\
+    \ alone identify the cause of the problem?"
+  paragraphs:
+  - VaR Exceptions
+  - M35 | Class problem | 7 minutes — Does the Tail Forecast Hold Up?
+  - 'A bank evaluates a 99% one-day VaR forecast over 250 trading days. Actual daily
+    losses exceed that day’s predicted VaR on 10 days. Six of those exceptions occur
+    within one 10-day period. Calculate: 1. The observed exception rate. 2. The nominal
+    expected number of exceptions under the 99% target. 3. The ratio of observed to
+    nominal exception rates. Explain why reviewing only the annual exception count
+    would miss something important. Does the count alone identify the cause of the
+    problem?'
+  source:
+    pages:
+    - 537
+    verbatim: true
+- page: 538
+  title: VaR Exceptions
+  text: " VaR Exceptions\n\n   M35 | Worked solution — Does the Tail Forecast Hold\
+    \ Up?\n\n1. Observed exception rate: 10/250 = 4%.\n2. Nominal exception probability:\
+    \ 1 − 0.99 = 1%.\n3. Expected count: 250(0.01) = 2.5 exceptions—not a guaranteed\
+    \ count or an acceptance\n   band.\n4. Rate ratio: 4%/1% = 4× the nominal rate.\n\
+    5. Timing: six exceptions concentrated in ten days can reveal a stress-period\
+    \ weakness hidden\n   by an annual average."
+  paragraphs:
+  - VaR Exceptions
+  - M35 | Worked solution — Does the Tail Forecast Hold Up?
+  - '1. Observed exception rate: 10/250 = 4%. 2. Nominal exception probability: 1
+    − 0.99 = 1%. 3. Expected count: 250(0.01) = 2.5 exceptions—not a guaranteed count
+    or an acceptance band. 4. Rate ratio: 4%/1% = 4× the nominal rate. 5. Timing:
+    six exceptions concentrated in ten days can reveal a stress-period weakness hidden
+    by an annual average.'
+  source:
+    pages:
+    - 538
+    verbatim: true
+- page: 539
+  title: VaR Exceptions
+  text: " VaR Exceptions\n\n   M35 | Interpretation\n\n What the answer means\n The\
+    \ model’s tail forecast deserves investigation: exceptions are more frequent than\
+    \ its nominal\n target, and many are clustered. Frequency tests, dependence checks,\
+    \ breach sizes, and market\n or data changes are needed to assess the problem.\
+    \ The count alone does not prove a particular\n cause or quantify losses beyond\
+    \ VaR.\n Why these steps matter\n Using the daily matching forecast matters: comparing\
+    \ every day against one convenient\n annual-average VaR would change the test.\
+    \ The nominal 1% rate follows from the 99% target;\n it does not explain why this\
+    \ sample’s observed rate is 4% or why six exceptions appeared close\n together."
+  paragraphs:
+  - VaR Exceptions
+  - M35 | Interpretation
+  - 'What the answer means The model’s tail forecast deserves investigation: exceptions
+    are more frequent than its nominal target, and many are clustered. Frequency tests,
+    dependence checks, breach sizes, and market or data changes are needed to assess
+    the problem. The count alone does not prove a particular cause or quantify losses
+    beyond VaR. Why these steps matter Using the daily matching forecast matters:
+    comparing every day against one convenient annual-average VaR would change the
+    test. The nominal 1% rate follows from the 99% target; it does not explain why
+    this sample’s observed rate is 4% or why six exceptions appeared close together.'
+  source:
+    pages:
+    - 539
+    verbatim: true
+source:
+  pages:
+  - 532
+  - 533
+  - 534
+  - 535
+  - 536
+  - 537
+  - 538
+  - 539
+  verbatim: true

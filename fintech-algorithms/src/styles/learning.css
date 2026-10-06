@@ -1,0 +1,367 @@
+/* Shared teaching surfaces. Navigation lives in navigation.css. */
+:root {
+  --sl-text-body: 1.0625rem;
+  --sl-line-height: 1.65;
+  --sl-content-width: 68rem;
+  --reading-width: 68ch;
+}
+html {
+  scroll-padding-top: 6rem;
+}
+body {
+  background: var(--canvas);
+}
+.main-pane {
+  background: var(--paper);
+}
+h1#_top {
+  font-size: clamp(1.75rem, 3vw, 2.125rem);
+  line-height: 1.2;
+}
+.course-body {
+  font-size: 1.0625rem;
+}
+.course-body h2 {
+  font-family: var(--sl-font);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.course-body h3 {
+  font-size: 1.075rem;
+  font-weight: 600;
+}
+.course-body h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.1rem 0 0.5rem;
+}
+.course-body > p,
+.lesson-section > p,
+.lesson-section > ul,
+.lesson-outcomes {
+  max-width: var(--reading-width);
+}
+.page-subtitle {
+  margin: 0.4rem 0 0.5rem !important;
+}
+.lesson-time {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-bottom: 1.75rem !important;
+}
+.lesson-question {
+  max-width: 36ch;
+  margin-top: 1.5rem !important;
+}
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.035em;
+  text-transform: none;
+}
+.small,
+.tag,
+.chart-caption {
+  font-size: 0.875rem;
+}
+.tag {
+  background: transparent;
+  border: none;
+  padding: 0.1rem 0;
+}
+.button,
+.action,
+.icon-button,
+.hint-button,
+.symbol-toggle {
+  min-height: 44px;
+}
+.button,
+.action {
+  font-size: 0.9375rem;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+}
+.icon-button {
+  min-width: 44px;
+}
+.button.quiet {
+  text-decoration: underline !important;
+  text-underline-offset: 0.2rem;
+}
+.course-body summary {
+  min-height: 44px;
+  cursor: pointer;
+  padding: 0.6rem 0;
+  font-size: 0.9375rem;
+  color: var(--green);
+}
+.course-body details {
+  margin: 1rem 0;
+}
+.course-body details > summary {
+  font-weight: 500;
+}
+.course-body details[open] > summary {
+  margin-bottom: 0.75rem;
+}
+.course-body a {
+  text-underline-offset: 0.18em;
+}
+.course-body :is(.widget-layout, .widget-readouts, .givens, .problem-grid, .picker-grid, .library-filters) > * {
+  margin-block: 0;
+}
+.problem-grid {
+  gap: 1.5rem 2rem;
+  margin: 1.5rem 0;
+}
+.info-card {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+.info-card h3 {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.info-card p {
+  font-size: 1rem;
+}
+.callout:not(.warning) {
+  border: 0;
+  border-left: 2px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  padding: 0.25rem 0 0.25rem 1rem;
+}
+.callout-label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.callout-copy {
+  font-size: 1rem;
+  max-width: var(--reading-width);
+}
+.callout.warning {
+  border-radius: 0.4rem;
+}
+.lesson-outcomes {
+  padding-top: 0.5rem;
+}
+.formula-block {
+  background: var(--canvas);
+  border: 0;
+  padding: 1.25rem;
+}
+.formula-read {
+  font-size: 1rem;
+}
+.symbols-table,
+.table-scroll table {
+  font-size: 0.9375rem;
+}
+th {
+  font-size: 0.875rem;
+}
+.source-slide {
+  border: 0;
+  background: transparent;
+}
+.exercise-card {
+  box-shadow: none;
+  border-radius: 0.65rem;
+  margin: 1.5rem 0;
+}
+.exercise-head {
+  background: var(--canvas);
+  align-items: baseline;
+  padding: 1.1rem 1.25rem;
+}
+.exercise-head h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.exercise-head .tag {
+  font-size: 0.875rem;
+}
+.exercise-content {
+  padding: 1.25rem;
+}
+.exercise-problem {
+  max-width: var(--reading-width);
+}
+.givens {
+  gap: 0.5rem 1rem;
+  margin: 1.25rem 0;
+}
+.given {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0.6rem 0;
+}
+.given b {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.given span {
+  font-size: 0.9375rem;
+}
+.step-row {
+  padding: 1rem 0;
+}
+.step-label {
+  line-height: 1.5;
+}
+.step-inputs input,
+.step-inputs select,
+.picker-field select,
+textarea {
+  font-size: 1rem;
+  min-height: 44px;
+}
+.step-inputs {
+  flex-wrap: wrap;
+}
+.step-reason {
+  color: var(--muted);
+  font-family: var(--sl-font);
+  font-size: 0.9375rem;
+  margin: 0.5rem 0 0 !important;
+}
+.revealed .tag {
+  margin-left: 0.75rem;
+  color: var(--muted);
+  font-family: var(--sl-font);
+}
+.feedback,
+.hint {
+  font-size: 0.9375rem;
+}
+.exercise-complete {
+  background: var(--canvas);
+  border-radius: 0.4rem;
+  margin-top: 1rem;
+}
+.worked-reasoning p,
+.worked-arithmetic li {
+  font-size: 1rem;
+  max-width: var(--reading-width);
+  overflow-wrap: anywhere;
+}
+.optional-exploration {
+  border-top: 1px solid var(--line);
+  padding-top: 0.5rem;
+}
+.measure-link,
+.lab-card {
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  padding: 1rem 0;
+}
+.measure-link strong {
+  font-size: 1rem;
+}
+.measure-link small {
+  font-size: 0.875rem;
+}
+.picker-grid {
+  gap: 1rem;
+}
+.picker-field label {
+  display: block;
+  font-size: 0.9375rem;
+  margin-bottom: 0.5rem;
+}
+.defense-response textarea {
+  min-height: 8rem;
+  padding: 0.8rem;
+  line-height: 1.6;
+}
+.course-footer {
+  font-size: 0.875rem;
+}
+.course-footer small {
+  font-size: 0.875rem;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 799px) {
+  .course-body {
+    font-size: 1rem;
+  }
+  .problem-grid {
+    grid-template-columns: 1fr;
+  }
+  .content-panel {
+    padding: 1.25rem 1rem !important;
+  }
+  .course-body h2 {
+    font-size: 1.3rem;
+  }
+  .lesson-time {
+    margin-bottom: 1rem !important;
+  }
+  .givens {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .exercise-content {
+    padding: 1rem;
+  }
+  .exercise-head {
+    padding: 1rem;
+  }
+  .step-inputs {
+    margin-left: 0;
+    gap: 0.6rem;
+  }
+  .step-inputs input,
+  .step-inputs select {
+    width: 100%;
+  }
+  .step-inputs .cell-table {
+    width: 100%;
+  }
+  .step-inputs > .button {
+    width: 100%;
+  }
+  .feedback,
+  .hint,
+  .revealed {
+    margin-left: 0;
+  }
+  .formula-block {
+    padding: 0.8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+@media print {
+  body,
+  .main-pane {
+    background: white;
+  }
+  .course-body {
+    font-size: 10pt;
+  }
+  .worked-arithmetic,
+  .worked-reasoning {
+    break-inside: avoid;
+  }
+}

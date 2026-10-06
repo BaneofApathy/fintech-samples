@@ -1,0 +1,479 @@
+id: S03
+title: Include the Shares You Did Not Buy
+minutes: 10
+kind: skill
+parent: reinforcement-learning
+question: "A desk must buy 1,000 shares. The arrival-price benchmark is $50.00 per\
+  \ share.\n   Execution                                               Shares    \
+  \                                 Price\n   First fill                         \
+  \                        400                                    $50.10\n   Second\
+  \ fill                                                400                      \
+  \              $50.20\n   Still unfilled                                       \
+  \      200                      Closing price: $50.30\n\n Total fees are $20. Define\
+  \ buy-order implementation shortfall as executed price slippage versus\n arrival,\
+  \ plus opportunity cost on unfilled shares at the closing price, plus fees.\n Calculate\
+  \ completion rate, each cost component, total shortfall, and shortfall in basis\
+  \ points of\n the original target notional. Use 1 bp = 0.0001."
+questionPages:
+- page: 171
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Class problem | 10 minutes — Include\
+    \ the Shares You Did Not Buy\n\n A desk must buy 1,000 shares. The arrival-price\
+    \ benchmark is $50.00 per share.\n   Execution                               \
+    \                Shares                                     Price\n   First fill\
+    \                                                 400                        \
+    \            $50.10\n   Second fill                                          \
+    \      400                                    $50.20\n   Still unfilled      \
+    \                                       200                      Closing price:\
+    \ $50.30\n\n Total fees are $20. Define buy-order implementation shortfall as\
+    \ executed price slippage versus\n arrival, plus opportunity cost on unfilled\
+    \ shares at the closing price, plus fees.\n Calculate completion rate, each cost\
+    \ component, total shortfall, and shortfall in basis points of\n the original\
+    \ target notional. Use 1 bp = 0.0001."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Class problem | 10 minutes — Include the Shares You Did Not Buy
+  - 'A desk must buy 1,000 shares. The arrival-price benchmark is $50.00 per share.
+    Execution Shares Price First fill 400 $50.10 Second fill 400 $50.20 Still unfilled
+    200 Closing price: $50.30'
+  - Total fees are $20. Define buy-order implementation shortfall as executed price
+    slippage versus arrival, plus opportunity cost on unfilled shares at the closing
+    price, plus fees. Calculate completion rate, each cost component, total shortfall,
+    and shortfall in basis points of the original target notional. Use 1 bp = 0.0001.
+  source:
+    pages:
+    - 171
+    verbatim: true
+formulaPages:
+- page: 165
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Formula explained (1/2)\n\n Question:\
+    \ What did the buy order cost relative to executing the full intended quantity\
+    \ at the\n arrival price?\n                         X\n                IS =  \
+    \       qi (Pi − P0 ) +       qu (Pclose − P0 )       +F ees.\n              \
+    \                                     |        {z       }\n                  \
+    \         i\n                         |       {z     }      U nf illed opportunity\
+    \ cost\n                                            Executed price slippage\n\n\
+    \ Read it aloud: For each fill, multiply shares bought by the extra price above\
+    \ arrival. Add the\n benchmark cost of shares left unfilled when the price moved,\
+    \ then add fees.\n This is the buy-order convention specified in the exercise.\
+    \ A higher execution or closing price\n produces a positive cost. The unfilled-share\
+    \ term is a benchmark opportunity cost, not a paid\n transaction fee."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Formula explained (1/2)
+  - 'Question: What did the buy order cost relative to executing the full intended
+    quantity at the arrival price? X IS = qi (Pi − P0 ) + qu (Pclose − P0 ) +F ees.
+    | {z } i | {z } U nf illed opportunity cost Executed price slippage'
+  - 'Read it aloud: For each fill, multiply shares bought by the extra price above
+    arrival. Add the benchmark cost of shares left unfilled when the price moved,
+    then add fees. This is the buy-order convention specified in the exercise. A higher
+    execution or closing price produces a positive cost. The unfilled-share term is
+    a benchmark opportunity cost, not a paid transaction fee.'
+  source:
+    pages:
+    - 165
+    verbatim: true
+- page: 166
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Formula explained (2/2)\n\n Question:\
+    \ How much of the order was completed, and how large is shortfall relative to\
+    \ intended\n order value?\n                                                  \
+    \          P\n                                  X                            \
+    \ qi\n                        qu = Q −     qi ,   Completion = i ,\n         \
+    \                          i\n                                               \
+    \              Q\n                                                           \
+    \        IS\n                                            V0 = QP0 ,   ISbps =\
+    \      × 10,000.\n                                                           \
+    \        V0\n Read it aloud: Add filled quantities and divide by the intended\
+    \ quantity. Multiply the intended\n quantity by the arrival price for the original\
+    \ target notional, then express total shortfall as basis\n points of that amount.\n\
+    \ Do not change the denominator to the executed portion merely because some shares\
+    \ remain\n unfilled."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Formula explained (2/2)
+  - 'Question: How much of the order was completed, and how large is shortfall relative
+    to intended order value? P X qi qu = Q − qi , Completion = i , i Q IS V0 = QP0
+    , ISbps = × 10,000. V0 Read it aloud: Add filled quantities and divide by the
+    intended quantity. Multiply the intended quantity by the arrival price for the
+    original target notional, then express total shortfall as basis points of that
+    amount. Do not change the denominator to the executed portion merely because some
+    shares remain unfilled.'
+  source:
+    pages:
+    - 166
+    verbatim: true
+symbolPages:
+- page: 167
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Symbols and terms (1/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   Q            \
+    \                            Original intended buy quantity, 1,000 shares; not\
+    \ a\n                                            reinforcement-learning Q-value.\n\
+    \   i, qi                                    Fill index and quantity bought in\
+    \ that fill; 400 shares in each of two\n                                     \
+    \       fills.\n   Pi                                       Price paid per share\
+    \ in fill i; $50.10 and $50.20.\n   P0                                       Arrival-price\
+    \ benchmark, $50.00 per share, used for the intended\n                       \
+    \                     trade’s reference value."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Symbols and terms (1/4)
+  - Symbol or term Meaning in this example Q Original intended buy quantity, 1,000
+    shares; not a reinforcement-learning Q-value. i, qi Fill index and quantity bought
+    in that fill; 400 shares in each of two fills. Pi Price paid per share in fill
+    i; $50.10 and $50.20. P0 Arrival-price benchmark, $50.00 per share, used for the
+    intended trade’s reference value.
+  source: &id001
+    pages:
+    - 167
+    verbatim: true
+- page: 168
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Symbols and terms (2/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   qu           \
+    \                            Shares unfilled by the evaluation endpoint; target\
+    \ quantity minus\n                                            filled quantities.\n\
+    \   Pclose                                   Closing price used to value the unfilled-share\
+    \ opportunity cost,\n                                            $50.30."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Symbols and terms (2/4)
+  - Symbol or term Meaning in this example qu Shares unfilled by the evaluation endpoint;
+    target quantity minus filled quantities. Pclose Closing price used to value the
+    unfilled-share opportunity cost, $50.30.
+  source: &id002
+    pages:
+    - 168
+    verbatim: true
+- page: 169
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Symbols and terms (3/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   F ees        \
+    \                            Total additional execution fees, $20, counted once.\n\
+    \   IS                                       Implementation shortfall in dollars\
+    \ under the supplied buy-order\n                                            convention.\n\
+    \   V0                                       Original target notional: all intended\
+    \ shares valued at the arrival\n                                            price.\n\
+    \   ISbps                                    Implementation shortfall as basis\
+    \ points of original target notional;\n                                      \
+    \      10,000 basis points equal the whole notional."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Symbols and terms (3/4)
+  - 'Symbol or term Meaning in this example F ees Total additional execution fees,
+    $20, counted once. IS Implementation shortfall in dollars under the supplied buy-order
+    convention. V0 Original target notional: all intended shares valued at the arrival
+    price. ISbps Implementation shortfall as basis points of original target notional;
+    10,000 basis points equal the whole notional.'
+  source: &id003
+    pages:
+    - 169
+    verbatim: true
+- page: 170
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Symbols and terms (4/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   Fill; slippage\
+    \                           An executed portion of the order; its price difference\
+    \ from the stated\n                                            benchmark.\n  \
+    \ Opportunity cost                         Benchmark-based cost of the missed\
+    \ trade as the market moved, not\n                                           \
+    \ an actual cash fee on unfilled shares."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Symbols and terms (4/4)
+  - Symbol or term Meaning in this example Fill; slippage An executed portion of the
+    order; its price difference from the stated benchmark. Opportunity cost Benchmark-based
+    cost of the missed trade as the market moved, not an actual cash fee on unfilled
+    shares.
+  source: &id004
+    pages:
+    - 170
+    verbatim: true
+solutionPages:
+- page: 172
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Worked solution — Include the Shares\
+    \ You Did Not Buy\n\n1. Completion: (400 + 400)/1,000 = 80%.\n2. Executed slippage:\n\
+    \                 400(50.10 − 50.00) + 400(50.20 − 50.00) = 40 + 80 = $120.\n\
+    3. Unfilled-share opportunity cost: 200(50.30 − 50.00) = $60.\n4. Total shortfall:\
+    \ 120 + 60 + 20 = $200.\n5. Original target notional: 1,000(50) = $50,000.\n \
+    \                                            200\n                         Shortfall\
+    \ in bps =        × 10,000 = 40 bps.\n                                       \
+    \     50,000"
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Worked solution — Include the Shares You Did Not Buy
+  - '1. Completion: (400 + 400)/1,000 = 80%. 2. Executed slippage: 400(50.10 − 50.00)
+    + 400(50.20 − 50.00) = 40 + 80 = $120. 3. Unfilled-share opportunity cost: 200(50.30
+    − 50.00) = $60. 4. Total shortfall: 120 + 60 + 20 = $200. 5. Original target notional:
+    1,000(50) = $50,000. 200 Shortfall in bps = × 10,000 = 40 bps. 50,000'
+  source:
+    pages:
+    - 172
+    verbatim: true
+interpretationPages:
+- page: 173
+  title: Implementation Shortfall
+  text: " Implementation Shortfall\n\n   S03 | Interpretation\n\n What the answer\
+    \ means\n Looking only at executed prices would omit the cost of missing 200 shares\
+    \ while the market\n rose. The opportunity cost is a benchmark-based estimate,\
+    \ not a cash fee. The stated shortfall\n convention and completion rate should\
+    \ accompany the result.\n Why these steps matter\n The intended order is the economic\
+    \ reference. Ignoring unfilled shares could make a policy look\n cheap simply\
+    \ by avoiding trades while the market moves against the unfinished order. Reporting\n\
+    \ completion alongside full-order shortfall exposes that failure."
+  paragraphs:
+  - Implementation Shortfall
+  - S03 | Interpretation
+  - What the answer means Looking only at executed prices would omit the cost of missing
+    200 shares while the market rose. The opportunity cost is a benchmark-based estimate,
+    not a cash fee. The stated shortfall convention and completion rate should accompany
+    the result. Why these steps matter The intended order is the economic reference.
+    Ignoring unfilled shares could make a policy look cheap simply by avoiding trades
+    while the market moves against the unfinished order. Reporting completion alongside
+    full-order shortfall exposes that failure.
+  source:
+    pages:
+    - 173
+    verbatim: true
+source:
+  pages:
+  - 165
+  - 166
+  - 167
+  - 168
+  - 169
+  - 170
+  - 171
+  - 172
+  - 173
+  verbatim: true
+readAloud:
+- For each fill, multiply shares bought by the extra price above arrival. Add the
+  benchmark cost of shares left unfilled when the price moved, then add fees. This
+  is the buy-order convention specified in the exercise. A higher execution or closing
+  price produces a positive cost. The unfilled-share term is a benchmark opportunity
+  cost, not a paid transaction fee.
+- Add filled quantities and divide by the intended quantity. Multiply the intended
+  quantity by the arrival price for the original target notional, then express total
+  shortfall as basis points of that amount. Do not change the denominator to the executed
+  portion merely because some shares remain unfilled.
+siteAuthored: false
+givens:
+  target: 1000
+  arrival: 50
+  shares:
+  - 400
+  - 400
+  prices:
+  - 50.1
+  - 50.2
+  close: 50.3
+  fees: 20
+labels: &id005
+  target: Intended order size (shares)
+  arrival: Arrival price ($ per share)
+  shares: Filled shares in each execution
+  prices: Execution prices ($ per share)
+  close: Closing price ($ per share)
+  fees: Total fees ($)
+deckSolution:
+  completion: 0.8
+  slippage: 120
+  opportunity: 60
+  total: 200
+  notional: 50000
+  bps: 40
+latex:
+- IS=\sum_jq_j(p_j-p_0)+q_{unfilled}(p_T-p_0)+fees,\quad IS_{bps}=10^4\frac{IS}{q_{target}p_0}
+- q_u=Q-\sum_iq_i,\quad\operatorname{Completion}=\frac{\sum_iq_i}{Q},\quad V_0=QP_0
+symbols:
+- symbol: Q
+  meaning: Original intended buy quantity, 1,000 shares; not a reinforcement-learning
+    Q-value.
+  source: *id001
+- symbol: i, qi
+  meaning: Fill index and quantity bought in that fill; 400 shares in each of two
+    fills.
+  source: *id001
+- symbol: Pi
+  meaning: Price paid per share in fill i; $50.10 and $50.20.
+  source: *id001
+- symbol: P0
+  meaning: Arrival-price benchmark, $50.00 per share, used for the intended trade’s
+    reference value.
+  source: *id001
+- symbol: qu
+  meaning: Shares unfilled by the evaluation endpoint; target quantity minus filled
+    quantities.
+  source: *id002
+- symbol: Pclose
+  meaning: Closing price used to value the unfilled-share opportunity cost, $50.30.
+  source: *id002
+- symbol: F ees
+  meaning: Total additional execution fees, $20, counted once.
+  source: *id003
+- symbol: IS
+  meaning: Implementation shortfall in dollars under the supplied buy-order convention.
+  source: *id003
+- symbol: V0
+  meaning: 'Original target notional: all intended shares valued at the arrival price.'
+  source: *id003
+- symbol: ISbps
+  meaning: Implementation shortfall as basis points of original target notional; 10,000
+    basis points equal the whole notional.
+  source: *id003
+- symbol: Fill; slippage
+  meaning: An executed portion of the order; its price difference from the stated
+    benchmark.
+  source: *id004
+- symbol: Opportunity cost
+  meaning: Benchmark-based cost of the missed trade as the market moved, not an actual
+    cash fee on unfilled shares.
+  source: *id004
+steps:
+- id: completion
+  title: Order completion rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide total filled shares by intended shares.
+  mistakes:
+  - pattern: recompute
+    message: Divide total filled shares by intended shares.
+- id: slippage
+  title: Executed-price slippage
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - For each fill, multiply shares by execution price minus arrival price, then add.
+  mistakes:
+  - pattern: recompute
+    message: For each fill, multiply shares by execution price minus arrival price,
+      then add.
+- id: opportunity
+  title: Opportunity cost on unfilled shares
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply unfilled shares by closing price minus arrival price.
+  mistakes:
+  - pattern: recompute
+    message: Multiply unfilled shares by closing price minus arrival price.
+- id: total
+  title: Total implementation shortfall
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Add slippage, opportunity cost and fees.
+  mistakes:
+  - pattern: recompute
+    message: Add slippage, opportunity cost and fees.
+- id: notional
+  title: Intended arrival-price notional
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Multiply intended shares by arrival price.
+  mistakes:
+  - pattern: recompute
+    message: Multiply intended shares by arrival price.
+- id: bps
+  title: Shortfall in basis points
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Divide shortfall by intended notional, then multiply by 10,000.
+  mistakes:
+  - pattern: recompute
+    message: Divide shortfall by intended notional, then multiply by 10,000.
+learning:
+  title: Include the Shares You Did Not Buy
+  scenario: A buy order is partially filled. Implementation shortfall includes price
+    slippage from the arrival price, opportunity cost on unfilled shares at the closing
+    price, and fees.
+  task: Calculate completion, both cost components and total cost. Express total cost
+    in basis points of the intended order’s arrival-price notional. One basis point
+    is 0.0001.
+  interpretation: Unfilled shares still belong in the intended-order comparison. Opportunity
+    cost is a benchmark estimate, not a cash transaction fee.
+  summary: 'Completion: {completion}. Total shortfall: {total}, or {bps}.'
+  labels: *id005
+  steps:
+    completion:
+      title: Order completion rate
+      hints: *id006
+      unit: proportion
+    slippage:
+      title: Executed-price slippage
+      hints: *id007
+      unit: $
+    opportunity:
+      title: Opportunity cost on unfilled shares
+      hints: *id008
+      unit: $
+    total:
+      title: Total implementation shortfall
+      hints: *id009
+      unit: $
+    notional:
+      title: Intended arrival-price notional
+      hints: *id010
+      unit: $
+    bps:
+      title: Shortfall in basis points
+      hints: *id011
+      unit: bps
+  readAloud:
+  - For each fill, multiply shares bought by the extra price above arrival. Add the
+    benchmark cost of shares left unfilled when the price moved, then add fees. This
+    is the buy-order convention specified in the exercise. A higher execution or closing
+    price produces a positive cost. The unfilled-share term is a benchmark opportunity
+    cost, not a paid transaction fee.
+  - Add filled quantities and divide by the intended quantity. Multiply the intended
+    quantity by the arrival price for the original target notional, then express total
+    shortfall as basis points of that amount. Do not change the denominator to the
+    executed portion merely because some shares remain unfilled.
+  workedExplanation:
+  - 'Looking only at executed prices would omit the cost of missing 200 shares while
+    the market rose. The opportunity cost is a benchmark-based estimate, not a cash
+    fee. The stated shortfall convention and completion rate should accompany the
+    result. '
+  - The intended order is the economic reference. Ignoring unfilled shares could make
+    a policy look cheap simply by avoiding trades while the market moves against the
+    unfinished order. Reporting completion alongside full-order shortfall exposes
+    that failure.
+  workedArithmetic:
+  - Completion = (400 + 400) / 1,000 = 80%.
+  - Executed slippage = 400 × (50.10 − 50.00) + 400 × (50.20 − 50.00) = $40 + $80
+    = $120.
+  - Unfilled opportunity cost = 200 × (50.30 − 50.00) = $60. Total shortfall = 120
+    + 60 + 20 = $200.
+  - Intended notional = 1,000 × $50 = $50,000. Shortfall = (200 / 50,000) × 10,000
+    = 40 bps.
+formulaSource:
+  pages:
+  - 165
+  - 166
+  verbatim: false
+  reviewed: true

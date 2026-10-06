@@ -1,0 +1,18 @@
+stateDiagram-v2
+  [*] --> PENDING: Purchase
+  PENDING --> AUTHORIZED: Issuer approves / hold reserved
+  PENDING --> DECLINED: Issuer declines / no hold
+  AUTHORIZED --> CAPTURED: Merchant full capture / hold remains
+  CAPTURED --> CLEARED: Batch accepted / posted debit replaces hold
+  CLEARED --> SETTLED: Batch reconciled / proceeds + fee allocations
+  DECLINED --> [*]
+  SETTLED --> [*]
+  note right of AUTHORIZED
+    Posted 50000, held 5000, available 45000 cents
+  end note
+  note right of CLEARED
+    Posted 45000, held 0, obligation 5000 cents
+  end note
+  note right of SETTLED
+    Obligation 0; merchant 4875 + fees 125 = 5000 cents
+  end note

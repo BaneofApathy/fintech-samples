@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="765" viewBox="0 0 1320 765" role="img" aria-labelledby="title desc">
+<title id="title">Authorization: request forward, decision back</title><desc id="desc">A payment request crosses the payer, merchant, gateway, acquirer and network to the issuer. The issuer checks account and available funds, reserves a hold if approved, then its decision crosses the full reverse path.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#007D82"/></marker><marker id="return" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#926300"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#15384A}.label{font-size:20px;font-weight:700}.body{font-size:17px}.small{font-size:15px;fill:#536773}.title{font-size:32px;font-weight:700}.eyebrow{font-size:15px;font-weight:700;fill:#007D82;letter-spacing:1px}</style>
+<text class="eyebrow" x="35" y="35">USF • AI IN FINTECH • PROJECT 0</text>
+<text class="title" x="35" y="83">Authorization: request forward, decision back</text>
+<rect x="20" y="125" width="180" height="60" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="110.0" y="159" text-anchor="middle">Payer</text>
+<line x1="110" y1="188" x2="110" y2="710" stroke="#CCD8DD" stroke-dasharray="6 5"/>
+<rect x="240" y="125" width="180" height="60" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="330.0" y="159" text-anchor="middle">Merchant / POS</text>
+<line x1="330" y1="188" x2="330" y2="710" stroke="#CCD8DD" stroke-dasharray="6 5"/>
+<rect x="460" y="125" width="180" height="60" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="550.0" y="159" text-anchor="middle">Gateway</text>
+<line x1="550" y1="188" x2="550" y2="710" stroke="#CCD8DD" stroke-dasharray="6 5"/>
+<rect x="680" y="125" width="180" height="60" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="770.0" y="159" text-anchor="middle">Acquirer</text>
+<line x1="770" y1="188" x2="770" y2="710" stroke="#CCD8DD" stroke-dasharray="6 5"/>
+<rect x="900" y="125" width="180" height="60" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="990.0" y="159" text-anchor="middle">Network</text>
+<line x1="990" y1="188" x2="990" y2="710" stroke="#CCD8DD" stroke-dasharray="6 5"/>
+<rect x="1120" y="125" width="180" height="60" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="1210.0" y="159" text-anchor="middle">Issuer</text>
+<line x1="1210" y1="188" x2="1210" y2="710" stroke="#CCD8DD" stroke-dasharray="6 5"/>
+<line x1="110" y1="220" x2="330" y2="220" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="small" x="220.0" y="208" text-anchor="middle">AUTHORIZE</text>
+<line x1="330" y1="265" x2="550" y2="265" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="small" x="440.0" y="253" text-anchor="middle">AUTHORIZE</text>
+<line x1="550" y1="310" x2="770" y2="310" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="small" x="660.0" y="298" text-anchor="middle">AUTHORIZE</text>
+<line x1="770" y1="355" x2="990" y2="355" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="small" x="880.0" y="343" text-anchor="middle">AUTHORIZE</text>
+<line x1="990" y1="400" x2="1210" y2="400" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="small" x="1100.0" y="388" text-anchor="middle">AUTHORIZE</text>
+<rect x="1010" y="420" width="280" height="77" rx="7" fill="#EDF5F5" stroke="#007D82"/>
+<text class="small" x="1150" y="443" text-anchor="middle">Check token, status, funds</text>
+<text class="small" x="1150" y="463" text-anchor="middle">Approve → reserve hold</text>
+<text class="small" x="1150" y="483" text-anchor="middle">Posted balance unchanged</text>
+<line x1="1210" y1="520" x2="990" y2="520" stroke="#926300" stroke-width="2.5" marker-end="url(#return)"/>
+<text class="small" x="1100.0" y="508" text-anchor="middle" style="fill:#926300">AUTH_RESULT</text>
+<line x1="990" y1="565" x2="770" y2="565" stroke="#926300" stroke-width="2.5" marker-end="url(#return)"/>
+<text class="small" x="880.0" y="553" text-anchor="middle" style="fill:#926300">AUTH_RESULT</text>
+<line x1="770" y1="610" x2="550" y2="610" stroke="#926300" stroke-width="2.5" marker-end="url(#return)"/>
+<text class="small" x="660.0" y="598" text-anchor="middle" style="fill:#926300">AUTH_RESULT</text>
+<line x1="550" y1="655" x2="330" y2="655" stroke="#926300" stroke-width="2.5" marker-end="url(#return)"/>
+<text class="small" x="440.0" y="643" text-anchor="middle" style="fill:#926300">AUTH_RESULT</text>
+<line x1="330" y1="700" x2="110" y2="700" stroke="#926300" stroke-width="2.5" marker-end="url(#return)"/>
+<text class="small" x="220.0" y="688" text-anchor="middle" style="fill:#926300">AUTH_RESULT</text>
+<text class="small" x="35" y="745" text-anchor="start">Stable payment ID and operation ID remain in every hop; amounts are integer cents.</text>
+</svg>

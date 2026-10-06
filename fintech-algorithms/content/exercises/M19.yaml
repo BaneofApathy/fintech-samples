@@ -1,0 +1,487 @@
+id: M19
+title: Compare Rates, Not Just Counts
+minutes: 10
+kind: measure
+parent: fairness-measures
+question: "Use a retrospective benchmark with repayment outcomes known for every case.\
+  \ These\n are simulated approval decisions, so rejected-applicant outcome gaps are\
+  \ not part of this\n exercise.\n Here, approval is the positive prediction and repayment\
+  \ is the positive outcome.\n   Group                                          Applicants\
+  \   Approvals    Actual repayers                 Repayers\n                    \
+  \                                                                              \
+  \          approved\n   A                                                   1,000\
+  \        600                         800              560\n   B                \
+  \                                   1,000        400                         500\
+  \              300\n\n Calculate each group’s approval rate, the B/A selection-rate\
+  \ ratio, repayment true-positive\n rate, and false-positive rate among non-repayers.\
+  \ Find the TPR gap. Do equal false-positive\n rates settle the fairness question?"
+questionPages:
+- page: 365
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Class problem | 10 minutes — Compare Rates,\
+    \ Not Just Counts\n\n Use a retrospective benchmark with repayment outcomes known\
+    \ for every case. These\n are simulated approval decisions, so rejected-applicant\
+    \ outcome gaps are not part of this\n exercise.\n Here, approval is the positive\
+    \ prediction and repayment is the positive outcome.\n   Group                \
+    \                          Applicants   Approvals    Actual repayers         \
+    \        Repayers\n                                                          \
+    \                                                  approved\n   A            \
+    \                                       1,000        600                     \
+    \    800              560\n   B                                              \
+    \     1,000        400                         500              300\n\n Calculate\
+    \ each group’s approval rate, the B/A selection-rate ratio, repayment true-positive\n\
+    \ rate, and false-positive rate among non-repayers. Find the TPR gap. Do equal\
+    \ false-positive\n rates settle the fairness question?"
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Class problem | 10 minutes — Compare Rates, Not Just Counts
+  - Use a retrospective benchmark with repayment outcomes known for every case. These
+    are simulated approval decisions, so rejected-applicant outcome gaps are not part
+    of this exercise. Here, approval is the positive prediction and repayment is the
+    positive outcome. Group Applicants Approvals Actual repayers Repayers approved
+    A 1,000 600 800 560 B 1,000 400 500 300
+  - Calculate each group’s approval rate, the B/A selection-rate ratio, repayment
+    true-positive rate, and false-positive rate among non-repayers. Find the TPR gap.
+    Do equal false-positive rates settle the fairness question?
+  source:
+    pages:
+    - 365
+    verbatim: true
+formulaPages:
+- page: 361
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Formula explained (1/2)\n\n Question: Are\
+    \ approval rates and classification error rates the same across the two groups?\n\
+    \                                     Ag                       SelectionB\n  \
+    \                    Selectiong =       ,      RatioB/A =               ,\n  \
+    \                                   Ng                       SelectionA\n    \
+    \                                                         T Pg               \
+    \ Ag − T Pg\n                                                  T P Rg =      \
+    \  ,   F P Rg =             .\n                                              \
+    \                Rg                 Ng − Rg\n Read it aloud: Calculate approvals\
+    \ among all applicants, approved repayers among all repayers,\n and approved non-repayers\
+    \ among all non-repayers.\n Here the positive decision is approval and the positive\
+    \ actual outcome is repayment. That\n differs from the fraud-positive convention\
+    \ used in most earlier exercises."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Formula explained (1/2)
+  - 'Question: Are approval rates and classification error rates the same across the
+    two groups? Ag SelectionB Selectiong = , RatioB/A = , Ng SelectionA T Pg Ag −
+    T Pg T P Rg = , F P Rg = . Rg Ng − Rg Read it aloud: Calculate approvals among
+    all applicants, approved repayers among all repayers, and approved non-repayers
+    among all non-repayers. Here the positive decision is approval and the positive
+    actual outcome is repayment. That differs from the fraud-positive convention used
+    in most earlier exercises.'
+  source:
+    pages:
+    - 361
+    verbatim: true
+- page: 362
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Formula explained (2/2)\n\n Question: How\
+    \ should the difference between the groups be expressed?\n                   \
+    \                               ∆T P R = T P RA − T P RB .\n Read it aloud: Subtract\
+    \ the repayer approval rates. This is a rate gap; multiply the decimal\n difference\
+    \ by 100 to state it in percentage points.\n The selection-rate ratio is a quotient,\
+    \ not a difference. It uses A as the reference group because\n the problem specifies\
+    \ B/A.\n The exercise is retrospective with known outcomes for every case. These\
+    \ diagnostics describe\n differences; no standalone legal or causal conclusion\
+    \ follows from the arithmetic."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Formula explained (2/2)
+  - 'Question: How should the difference between the groups be expressed? ∆T P R =
+    T P RA − T P RB . Read it aloud: Subtract the repayer approval rates. This is
+    a rate gap; multiply the decimal difference by 100 to state it in percentage points.
+    The selection-rate ratio is a quotient, not a difference. It uses A as the reference
+    group because the problem specifies B/A. The exercise is retrospective with known
+    outcomes for every case. These diagnostics describe differences; no standalone
+    legal or causal conclusion follows from the arithmetic.'
+  source:
+    pages:
+    - 362
+    verbatim: true
+symbolPages:
+- page: 363
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   g      \
+    \                                        Group index, either A or B; the letters\
+    \ are anonymous group labels.\n   Ng                                         \
+    \    Total applicants in group g.\n   Ag                                     \
+    \        Number receiving a simulated approval in that group; this A is an\n \
+    \                                                 approval count, not the group\
+    \ label by itself.\n   Rg                                             Actual repayers\
+    \ in the group; Rg is a count, not recall.\n   T Pg                          \
+    \                 Actual repayers who receive simulated approval: positive decisions\
+    \ on\n                                                  positive outcomes.\n \
+    \  Ag − T Pg                                      Approved applicants who are\
+    \ non-repayers; the false-positive count\n                                   \
+    \               for this label definition."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example g Group index, either A or B; the letters
+    are anonymous group labels. Ng Total applicants in group g. Ag Number receiving
+    a simulated approval in that group; this A is an approval count, not the group
+    label by itself. Rg Actual repayers in the group; Rg is a count, not recall. T
+    Pg Actual repayers who receive simulated approval: positive decisions on positive
+    outcomes. Ag − T Pg Approved applicants who are non-repayers; the false-positive
+    count for this label definition.'
+  source: &id001
+    pages:
+    - 363
+    verbatim: true
+- page: 364
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Ng − Rg\
+    \                                        All actual non-repayers, the FPR denominator.\n\
+    \   Selectiong                                     Approval fraction among all\
+    \ applicants in the group.\n   RatioB/A                                      \
+    \ Group B’s selection rate divided by group A’s; unitless.\n   T P Rg , F P Rg\
+    \                                Approval rate among repayers; approval rate among\
+    \ non-repayers.\n   ∆T P R                                         Repayer-approval\
+    \ gap between the groups, corresponding to an\n                              \
+    \                    equal-opportunity diagnostic under this label definition.\n\
+    \   Retrospective benchmark                        Evaluation using already-known\
+    \ outcomes for all records, rather than\n                                    \
+    \              unknowable repayment outcomes for real rejected applicants."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Ng − Rg All actual non-repayers, the FPR
+    denominator. Selectiong Approval fraction among all applicants in the group. RatioB/A
+    Group B’s selection rate divided by group A’s; unitless. T P Rg , F P Rg Approval
+    rate among repayers; approval rate among non-repayers. ∆T P R Repayer-approval
+    gap between the groups, corresponding to an equal-opportunity diagnostic under
+    this label definition. Retrospective benchmark Evaluation using already-known
+    outcomes for all records, rather than unknowable repayment outcomes for real rejected
+    applicants.
+  source: &id002
+    pages:
+    - 364
+    verbatim: true
+solutionPages:
+- page: 366
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Worked solution — Compare Rates, Not Just\
+    \ Counts\n\n1. Approval rates: A = 600/1,000 = 60%; B = 400/1,000 = 40%. B/A ratio\n\
+    \   = 40/60 = 0.667.\n2. Repayment TPRs: A = 560/800 = 70%; B = 300/500 = 60%.\
+    \ Gap = 10 percentage\n   points.\n3. Non-repayers: A = 1,000 − 800 = 200; B =\
+    \ 1,000 − 500 = 500.\n4. Non-repayers approved: A = 600 − 560 = 40; B = 400 −\
+    \ 300 = 100.\n5. False-positive rates: A = 40/200 = 20%; B = 100/500 = 20%."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Worked solution — Compare Rates, Not Just Counts
+  - '1. Approval rates: A = 600/1,000 = 60%; B = 400/1,000 = 40%. B/A ratio = 40/60
+    = 0.667. 2. Repayment TPRs: A = 560/800 = 70%; B = 300/500 = 60%. Gap = 10 percentage
+    points. 3. Non-repayers: A = 1,000 − 800 = 200; B = 1,000 − 500 = 500. 4. Non-repayers
+    approved: A = 600 − 560 = 40; B = 400 − 300 = 100. 5. False-positive rates: A
+    = 40/200 = 20%; B = 100/500 = 20%.'
+  source:
+    pages:
+    - 366
+    verbatim: true
+interpretationPages:
+- page: 367
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Interpretation\n\n What the answer means\n\
+    \ Approval rates and repayer capture differ even though both groups have the same\
+    \ FPR. These\n diagnostics identify differences that need investigation; they\
+    \ do not independently establish\n fairness, unfairness, or a legal conclusion.\
+    \ Outcome definitions, population differences, and\n uncertainty remain important.\n\
+    \ Why these steps matter\n The two groups have different repayment prevalences\
+    \ in the supplied benchmark. Equal FPR\n alone therefore does not imply equal\
+    \ approval rates or equal TPR. The arithmetic describes the\n pattern, not its\
+    \ cause or whether any decision is legally justified."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Interpretation
+  - What the answer means Approval rates and repayer capture differ even though both
+    groups have the same FPR. These diagnostics identify differences that need investigation;
+    they do not independently establish fairness, unfairness, or a legal conclusion.
+    Outcome definitions, population differences, and uncertainty remain important.
+    Why these steps matter The two groups have different repayment prevalences in
+    the supplied benchmark. Equal FPR alone therefore does not imply equal approval
+    rates or equal TPR. The arithmetic describes the pattern, not its cause or whether
+    any decision is legally justified.
+  source:
+    pages:
+    - 367
+    verbatim: true
+source:
+  pages:
+  - 361
+  - 362
+  - 363
+  - 364
+  - 365
+  - 366
+  - 367
+  verbatim: true
+readAloud:
+- Calculate approvals among all applicants, approved repayers among all repayers,
+  and approved non-repayers among all non-repayers. Here the positive decision is
+  approval and the positive actual outcome is repayment. That differs from the fraud-positive
+  convention used in most earlier exercises.
+- Subtract the repayer approval rates. This is a rate gap; multiply the decimal difference
+  by 100 to state it in percentage points. The selection-rate ratio is a quotient,
+  not a difference. It uses A as the reference group because the problem specifies
+  B/A. The exercise is retrospective with known outcomes for every case. These diagnostics
+  describe differences; no standalone legal or causal conclusion follows from the
+  arithmetic.
+siteAuthored: false
+givens:
+  NA: 1000
+  NB: 1000
+  approvedA: 600
+  approvedB: 400
+  repayA: 800
+  repayB: 500
+  TPA: 560
+  TPB: 300
+labels: &id003
+  NA: Applicants in group A
+  NB: Applicants in group B
+  approvedA: Approvals in group A
+  approvedB: Approvals in group B
+  repayA: Actual repayers in A
+  repayB: Actual repayers in B
+  TPA: Repayers approved in A
+  TPB: Repayers approved in B
+deckSolution:
+  selectionA: 0.6
+  selectionB: 0.4
+  ratio: 0.6666667
+  TPRA: 0.7
+  TPRB: 0.6
+  gap: 0.1
+  FPRA: 0.2
+  FPRB: 0.2
+latex:
+- SR_g=\frac{Approvals_g}{N_g},\quad TPR_g=\frac{TP_g}{P_g},\quad FPR_g=\frac{FP_g}{N_g-P_g}
+- \operatorname{Ratio}_{B/A}=\frac{\operatorname{Selection}_B}{\operatorname{Selection}_A},\quad\Delta
+  TPR=TPR_A-TPR_B
+symbols:
+- symbol: g
+  meaning: Group index, either A or B; the letters are anonymous group labels.
+  source: *id001
+- symbol: Ng
+  meaning: Total applicants in group g.
+  source: *id001
+- symbol: Ag
+  meaning: Number receiving a simulated approval in that group; this A is an approval
+    count, not the group label by itself.
+  source: *id001
+- symbol: Rg
+  meaning: Actual repayers in the group; Rg is a count, not recall.
+  source: *id001
+- symbol: T Pg
+  meaning: 'Actual repayers who receive simulated approval: positive decisions on
+    positive outcomes.'
+  source: *id001
+- symbol: Ag − T Pg
+  meaning: Approved applicants who are non-repayers; the false-positive count for
+    this label definition.
+  source: *id001
+- symbol: Ng − Rg
+  meaning: All actual non-repayers, the FPR denominator.
+  source: *id002
+- symbol: Selectiong
+  meaning: Approval fraction among all applicants in the group.
+  source: *id002
+- symbol: RatioB/A
+  meaning: Group B’s selection rate divided by group A’s; unitless.
+  source: *id002
+- symbol: T P Rg , F P Rg
+  meaning: Approval rate among repayers; approval rate among non-repayers.
+  source: *id002
+- symbol: ∆T P R
+  meaning: Repayer-approval gap between the groups, corresponding to an equal-opportunity
+    diagnostic under this label definition.
+  source: *id002
+- symbol: Retrospective benchmark
+  meaning: Evaluation using already-known outcomes for all records, rather than unknowable
+    repayment outcomes for real rejected applicants.
+  source: *id002
+steps:
+- id: selectionA
+  title: Group A approval rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide A’s approvals by A’s applicants.
+  mistakes:
+  - pattern: recompute
+    message: Divide A’s approvals by A’s applicants.
+- id: selectionB
+  title: Group B approval rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide B’s approvals by B’s applicants.
+  mistakes:
+  - pattern: recompute
+    message: Divide B’s approvals by B’s applicants.
+- id: ratio
+  title: Selection-rate ratio B/A
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide B’s approval rate by A’s approval rate.
+  mistakes:
+  - pattern: recompute
+    message: Divide B’s approval rate by A’s approval rate.
+- id: TPRA
+  title: Group A repayer true-positive rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide approved repayers in A by all repayers in A.
+  mistakes:
+  - pattern: recompute
+    message: Divide approved repayers in A by all repayers in A.
+- id: TPRB
+  title: Group B repayer true-positive rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Divide approved repayers in B by all repayers in B.
+  mistakes:
+  - pattern: recompute
+    message: Divide approved repayers in B by all repayers in B.
+- id: gap
+  title: Absolute repayer TPR gap
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Take the absolute difference between the two TPRs.
+  mistakes:
+  - pattern: recompute
+    message: Take the absolute difference between the two TPRs.
+- id: FPRA
+  title: Group A non-repayer false-positive rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Subtract approved repayers from approvals; divide by applicants minus repayers
+    in A.
+  mistakes:
+  - pattern: recompute
+    message: Subtract approved repayers from approvals; divide by applicants minus
+      repayers in A.
+- id: FPRB
+  title: Group B non-repayer false-positive rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Use the corresponding non-repayer counts for B.
+  mistakes:
+  - pattern: recompute
+    message: Use the corresponding non-repayer counts for B.
+learning:
+  title: Compare Rates, Not Just Counts
+  scenario: A retrospective lending benchmark knows repayment outcomes for every applicant.
+    Approval is the positive prediction; repayment is the positive outcome. These
+    are simulated decisions, so rejected-applicant outcome gaps are outside this example.
+  task: Calculate approval rates, the B/A selection-rate ratio, repayment TPRs, their
+    absolute gap, and FPRs among non-repayers.
+  interpretation: Different approval rates can coexist with equal FPR when repayment
+    prevalences differ. These diagnostics identify differences to investigate; they
+    do not independently establish fairness, cause or a legal conclusion.
+  summary: 'Approval-rate ratio B/A: {ratio}. Repayer TPR gap: {gap}. FPRs: A {FPRA},
+    B {FPRB}.'
+  labels: *id003
+  steps:
+    selectionA:
+      title: Group A approval rate
+      hints: *id004
+      unit: proportion
+    selectionB:
+      title: Group B approval rate
+      hints: *id005
+      unit: proportion
+    ratio:
+      title: Selection-rate ratio B/A
+      hints: *id006
+      unit: ''
+    TPRA:
+      title: Group A repayer true-positive rate
+      hints: *id007
+      unit: proportion
+    TPRB:
+      title: Group B repayer true-positive rate
+      hints: *id008
+      unit: proportion
+    gap:
+      title: Absolute repayer TPR gap
+      hints: *id009
+      unit: proportion
+    FPRA:
+      title: Group A non-repayer false-positive rate
+      hints: *id010
+      unit: proportion
+    FPRB:
+      title: Group B non-repayer false-positive rate
+      hints: *id011
+      unit: proportion
+  readAloud:
+  - Calculate approvals among all applicants, approved repayers among all repayers,
+    and approved non-repayers among all non-repayers. Here the positive decision is
+    approval and the positive actual outcome is repayment. That differs from the fraud-positive
+    convention used in most earlier exercises.
+  - Subtract the repayer approval rates. This is a rate gap; multiply the decimal
+    difference by 100 to state it in percentage points. The selection-rate ratio is
+    a quotient, not a difference. It uses A as the reference group because the problem
+    specifies B/A. The exercise is retrospective with known outcomes for every case.
+    These diagnostics describe differences; no standalone legal or causal conclusion
+    follows from the arithmetic.
+  workedExplanation:
+  - 'Approval rates and repayer capture differ even though both groups have the same
+    FPR. These diagnostics identify differences that need investigation; they do not
+    independently establish fairness, unfairness, or a legal conclusion. Outcome definitions,
+    population differences, and uncertainty remain important. '
+  - The two groups have different repayment prevalences in the supplied benchmark.
+    Equal FPR alone therefore does not imply equal approval rates or equal TPR. The
+    arithmetic describes the pattern, not its cause or whether any decision is legally
+    justified.
+  workedArithmetic:
+  - 'Approval rates: A = 600/1,000 = 60%; B = 400/1,000 = 40%. B/A selection-rate
+    ratio = 0.40/0.60 ≈ 0.667.'
+  - 'Repayer TPRs: A = 560/800 = 70%; B = 300/500 = 60%; gap = 10 percentage points.'
+  - A has 1,000 − 800 = 200 non-repayers and 600 − 560 = 40 approved non-repayers,
+    so FPR = 40/200 = 20%.
+  - B has 1,000 − 500 = 500 non-repayers and 400 − 300 = 100 approved non-repayers,
+    so FPR = 100/500 = 20%.
+formulaSource:
+  pages:
+  - 361
+  - 362
+  verbatim: false
+  reviewed: true

@@ -1,0 +1,623 @@
+slug: maximum-drawdown-turnover-tracking-error
+number: 32
+title: Maximum Drawdown, Turnover, Tracking Error
+question: act
+financialInterpretation: These measures capture investor pain, trading cost, and deviation
+  from a benchmark – dimensions that average return does not show.
+workingExample: '▶ Portfolio rises from 100 to 120, then falls to 90: max drawdown
+  = (120 − 90)/120 = 25%. ▶ Weights move from [50, 30, 20]% to [30, 50, 20]%: one-way
+  turnover = 12 (20 + 20 + 0) = 20%. ▶ If active returns have 3% standard deviation,
+  tracking error is 3%.'
+whatItMisses: Report transaction cost, liquidity, taxes, and hard constraint violations.
+  An optimizer is unacceptable if any mandatory constraint is breached.
+exercises:
+- M32a
+- M32b
+- M32c
+widget: portfolio-feasible
+usedBy:
+- optimization
+- reinforcement-learning
+slides:
+- page: 492
+  title: EVALUATION MEASURE 32 OF 39
+  text: "    EVALUATION MEASURE 32 OF 39\n\n\n\n\n          Maximum Drawdown,\n  \
+    \     Turnover, and Tracking Error\n      Describes the worst decline, trading\
+    \ burden, and deviation\n                         from a benchmark."
+  paragraphs:
+  - EVALUATION MEASURE 32 OF 39
+  - Maximum Drawdown, Turnover, and Tracking Error Describes the worst decline, trading
+    burden, and deviation from a benchmark.
+  source:
+    pages:
+    - 492
+    verbatim: true
+- page: 493
+  title: Maximum drawdown, turnover, and tracking error – can the strategy survive
+    and be implemented?
+  text: " Maximum drawdown, turnover, and tracking error – can the strategy\n survive\
+    \ and be implemented?\n\n\n Financial interpretation\n These measures capture\
+    \ investor pain, trading cost, and deviation from a benchmark – dimensions that\n\
+    \ average return does not show.\n\n Working example\n▶ Portfolio rises from 100\
+    \ to 120, then falls to 90: max drawdown = (120 − 90)/120 = 25%.\n▶ Weights move\
+    \ from [50, 30, 20]% to [30, 50, 20]%: one-way turnover = 12 (20 + 20 + 0) = 20%.\n\
+    ▶ If active returns have 3% standard deviation, tracking error is 3%.\n\n What\
+    \ it misses\n Report transaction cost, liquidity, taxes, and hard constraint violations.\
+    \ An optimizer is unacceptable if any\n mandatory constraint is breached."
+  paragraphs:
+  - Maximum drawdown, turnover, and tracking error – can the strategy survive and
+    be implemented?
+  - Financial interpretation These measures capture investor pain, trading cost, and
+    deviation from a benchmark – dimensions that average return does not show.
+  - 'Working example ▶ Portfolio rises from 100 to 120, then falls to 90: max drawdown
+    = (120 − 90)/120 = 25%. ▶ Weights move from [50, 30, 20]% to [30, 50, 20]%: one-way
+    turnover = 12 (20 + 20 + 0) = 20%. ▶ If active returns have 3% standard deviation,
+    tracking error is 3%.'
+  - What it misses Report transaction cost, liquidity, taxes, and hard constraint
+    violations. An optimizer is unacceptable if any mandatory constraint is breached.
+  source:
+    pages:
+    - 493
+    verbatim: true
+- page: 494
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Formula explained (1/1)\n\n Question: How\
+    \ far below its previous high did the account fall during the observed path?\n\
+    \                                            Ht − Vt\n               Ht = max\
+    \ Vu ,        DDt =           ,    M DD = max DDt .\n                      u≤t\
+    \                      Ht                     t\n\n For the entire period:\n \
+    \                                                            Vf inal − Vinitial\n\
+    \                                                  Return =                  \
+    \    .\n                                                                  Vinitial\n\
+    \ Read it aloud: At each observation, find the highest value seen so far. Divide\
+    \ the fall from that\n peak by the peak. The largest of those fractions is maximum\
+    \ drawdown.\n Drawdown is reported as a positive loss magnitude here. The final-return\
+    \ calculation treats the\n supplied values as a no-external-cash-flow path, or\
+    \ an equivalently cash-flow-adjusted series."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Formula explained (1/1)
+  - 'Question: How far below its previous high did the account fall during the observed
+    path? Ht − Vt Ht = max Vu , DDt = , M DD = max DDt . u≤t Ht t'
+  - 'For the entire period: Vf inal − Vinitial Return = . Vinitial Read it aloud:
+    At each observation, find the highest value seen so far. Divide the fall from
+    that peak by the peak. The largest of those fractions is maximum drawdown. Drawdown
+    is reported as a positive loss magnitude here. The final-return calculation treats
+    the supplied values as a no-external-cash-flow path, or an equivalently cash-flow-adjusted
+    series.'
+  source:
+    pages:
+    - 494
+    verbatim: true
+- page: 495
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Symbols and terms (1/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   t         \
+    \                                     Current observation in the time-ordered\
+    \ account-value series.\n   u≤t                                            An\
+    \ observation no later than the current one; future observations are\n       \
+    \                                           excluded from the running peak.\n\
+    \   Vt                                             Account value at observation\
+    \ t, in thousands of dollars in this\n                                       \
+    \           exercise.\n   Ht                                             Running\
+    \ peak, or high-water mark: the greatest account value\n                     \
+    \                             observed up through time t.\n   max            \
+    \                                Select the largest value from the stated set\
+    \ of observations.\n   DDt                                            Drawdown\
+    \ at one observation: fraction below the running peak."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example t Current observation in the time-ordered
+    account-value series. u≤t An observation no later than the current one; future
+    observations are excluded from the running peak. Vt Account value at observation
+    t, in thousands of dollars in this exercise. Ht Running peak, or high-water mark:
+    the greatest account value observed up through time t. max Select the largest
+    value from the stated set of observations. DDt Drawdown at one observation: fraction
+    below the running peak.'
+  source:
+    pages:
+    - 495
+    verbatim: true
+- page: 496
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Symbols and terms (2/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   M DD      \
+    \                                     Maximum drawdown: the greatest peak-relative\
+    \ decline in the\n                                                  observed series.\n\
+    \   Vinitial , Vf inal                             First and last observed account\
+    \ values; these determine the\n                                              \
+    \    full-period return, not the worst intermediate decline.\n   Trough      \
+    \                                   A low point following a peak; the relevant\
+    \ observed trough here is 80\n                                               \
+    \   after a peak of 120.\n   Cash-flow-adjusted                             Adjusted\
+    \ so deposits or withdrawals are not mistakenly treated as\n                 \
+    \                                 investment gains or losses."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example M DD Maximum drawdown: the greatest peak-relative
+    decline in the observed series. Vinitial , Vf inal First and last observed account
+    values; these determine the full-period return, not the worst intermediate decline.
+    Trough A low point following a peak; the relevant observed trough here is 80 after
+    a peak of 120. Cash-flow-adjusted Adjusted so deposits or withdrawals are not
+    mistakenly treated as investment gains or losses.'
+  source:
+    pages:
+    - 496
+    verbatim: true
+- page: 497
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Class problem | 8 minutes — The Loss Hidden\
+    \ by a Good Ending\n\n An investment account’s value follows this sequence, in\
+    \ $ thousands:\n   Observation                                     1         \
+    \  2           3                   4     5      6\n   Value                  \
+    \                        100       120           90                110     80\
+    \    125\n At each observation:\n                                            \
+    \            highest value reached so far − valuet\n                         \
+    \                 Drawdownt =                                         .\n    \
+    \                                                        highest value reached\
+    \ so far\n Calculate the running peak, each drawdown, maximum drawdown, and final\
+    \ return relative to\n the initial value. Can a profitable period still contain\
+    \ a large drawdown?"
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Class problem | 8 minutes — The Loss Hidden by a Good Ending
+  - 'An investment account’s value follows this sequence, in $ thousands: Observation
+    1 2 3 4 5 6 Value 100 120 90 110 80 125 At each observation: highest value reached
+    so far − valuet Drawdownt = . highest value reached so far Calculate the running
+    peak, each drawdown, maximum drawdown, and final return relative to the initial
+    value. Can a profitable period still contain a large drawdown?'
+  source:
+    pages:
+    - 497
+    verbatim: true
+- page: 498
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Worked solution — The Loss Hidden by a Good\
+    \ Ending\n\n1. Track the peak before calculating the decline.\n   Observation\
+    \                                    Value        Running peak               \
+    \   Drawdown\n   1                                                100        \
+    \               100                 0%\n   2                                 \
+    \               120                       120                 0%\n   3       \
+    \                                          90                       120     30/120\
+    \ = 25%\n   4                                                110             \
+    \          120    10/120 = 8.33%\n   5                                       \
+    \          80                       120    40/120 = 33.33%\n   6             \
+    \                                   125                       125            \
+    \     0%\n\n2. Maximum drawdown: 33.33%, from 120 down to 80.\n3. Final return:\
+    \ (125 − 100)/100 = 25%."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Worked solution — The Loss Hidden by a Good Ending
+  - 1. Track the peak before calculating the decline. Observation Value Running peak
+    Drawdown 1 100 100 0% 2 120 120 0% 3 90 120 30/120 = 25% 4 110 120 10/120 = 8.33%
+    5 80 120 40/120 = 33.33% 6 125 125 0%
+  - '2. Maximum drawdown: 33.33%, from 120 down to 80. 3. Final return: (125 − 100)/100
+    = 25%.'
+  source:
+    pages:
+    - 498
+    verbatim: true
+- page: 499
+  title: Maximum Drawdown
+  text: " Maximum Drawdown\n\n   M32a | Interpretation\n\n What the answer means\n\
+    \ An investor ended up 25% but first endured a one-third decline from the account’s\
+    \ earlier peak.\n Final return hides that path. The later value of 125 cannot\
+    \ be used as the peak for the earlier\n decline to 80.\n Why these steps matter\n\
+    \ The denominator is the earlier peak of 120, not the starting value of 100 or\
+    \ the later value of\n 125. The numerator measures the investor’s decline from\
+    \ that peak. A strong final return\n cannot remove the funding or behavioral strain\
+    \ experienced during the earlier drawdown."
+  paragraphs:
+  - Maximum Drawdown
+  - M32a | Interpretation
+  - What the answer means An investor ended up 25% but first endured a one-third decline
+    from the account’s earlier peak. Final return hides that path. The later value
+    of 125 cannot be used as the peak for the earlier decline to 80. Why these steps
+    matter The denominator is the earlier peak of 120, not the starting value of 100
+    or the later value of 125. The numerator measures the investor’s decline from
+    that peak. A strong final return cannot remove the funding or behavioral strain
+    experienced during the earlier drawdown.
+  source:
+    pages:
+    - 499
+    verbatim: true
+- page: 500
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Formula explained (1/2)\n\n Question:\
+    \ How much of the portfolio must trade to move from the old weights to the proposed\n\
+    \ weights?\n                                                       1X\n      \
+    \                 ∆wi = winew − wiold ,     TO =        |∆wi |,\n            \
+    \                                           2 i\n                            \
+    \                     X\n                     Gross traded dollars = V       |∆wi\
+    \ | = 2V T O,\n                                                              \
+    \             i\n                                                  T rading cost\
+    \ = c × Gross traded dollars.\n Read it aloud: Calculate every weight change and\
+    \ add their absolute sizes. Half of that total is\n one-way turnover; the full\
+    \ total captures both purchases and sales for the fee calculation.\n The identities\
+    \ here assume a fully invested portfolio, unchanged value during rebalancing,\
+    \ and\n no external cash flows, as specified in the problem."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Formula explained (1/2)
+  - 'Question: How much of the portfolio must trade to move from the old weights to
+    the proposed weights? 1X ∆wi = winew − wiold , TO = |∆wi |, 2 i X Gross traded
+    dollars = V |∆wi | = 2V T O, i T rading cost = c × Gross traded dollars. Read
+    it aloud: Calculate every weight change and add their absolute sizes. Half of
+    that total is one-way turnover; the full total captures both purchases and sales
+    for the fee calculation. The identities here assume a fully invested portfolio,
+    unchanged value during rebalancing, and no external cash flows, as specified in
+    the problem.'
+  source:
+    pages:
+    - 500
+    verbatim: true
+- page: 501
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Formula explained (2/2)\n\n Question:\
+    \ Does each proposed weight satisfy the allocation cap?\n                    \
+    \        Excessi = max(winew − ui , 0),             Dollar excessi = V × Excessi\
+    \ .\n Read it aloud: Subtract the permitted maximum from each proposed weight.\
+    \ A positive result\n is a violation; otherwise the excess is zero.\n For transaction\
+    \ fees:\n                                                  1 bp = 0.0001,   10\
+    \ bps = 0.001 = 0.10%.\n The fee in this exercise applies to every dollar bought\
+    \ or sold. A cap violation is separate\n from transaction cost and cannot be offset\
+    \ by a favorable expected return."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Formula explained (2/2)
+  - 'Question: Does each proposed weight satisfy the allocation cap? Excessi = max(winew
+    − ui , 0), Dollar excessi = V × Excessi . Read it aloud: Subtract the permitted
+    maximum from each proposed weight. A positive result is a violation; otherwise
+    the excess is zero. For transaction fees: 1 bp = 0.0001, 10 bps = 0.001 = 0.10%.
+    The fee in this exercise applies to every dollar bought or sold. A cap violation
+    is separate from transaction cost and cannot be offset by a favorable expected
+    return.'
+  source:
+    pages:
+    - 501
+    verbatim: true
+- page: 502
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Symbols and terms (1/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   i      \
+    \                                        Asset index: A, B, or C in this portfolio.\n\
+    \   wiold , winew                                  Current and proposed portfolio\
+    \ weights as fractions of total value;\n                                     \
+    \             superscripts are labels, not powers.\n   ∆wi                   \
+    \                         Change in weight; positive means buy, negative means\
+    \ sell under the\n                                                  fixed-value\
+    \ assumptions.\n   |∆wi |                                         Absolute weight\
+    \ change; counts buying and selling activity without\n                       \
+    \                           canceling one against the other."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example i Asset index: A, B, or C in this portfolio.
+    wiold , winew Current and proposed portfolio weights as fractions of total value;
+    superscripts are labels, not powers. ∆wi Change in weight; positive means buy,
+    negative means sell under the fixed-value assumptions. |∆wi | Absolute weight
+    change; counts buying and selling activity without canceling one against the other.'
+  source:
+    pages:
+    - 502
+    verbatim: true
+- page: 503
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Symbols and terms (2/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   TO     \
+    \                                        One-way turnover: half the sum of absolute\
+    \ weight changes in this\n                                                  fully\
+    \ invested rebalance.\n   V                                              Portfolio\
+    \ value, $1 million, before transaction costs in the\n                       \
+    \                           calculation."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example TO One-way turnover: half the sum of absolute
+    weight changes in this fully invested rebalance. V Portfolio value, $1 million,
+    before transaction costs in the calculation.'
+  source:
+    pages:
+    - 503
+    verbatim: true
+- page: 504
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Symbols and terms (3/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Gross traded\
+    \ dollars                           Total purchase value plus total sale value;\
+    \ not just the value on one\n                                                \
+    \  side.\n   c                                              Fee rate per dollar\
+    \ traded; 10 basis points equals 0.001.\n   ui                               \
+    \              Maximum permitted weight for asset i; 0.50 for each asset here.\n\
+    \   Excessi                                        Amount above the cap as a weight\
+    \ fraction; zero when the proposal\n                                         \
+    \         complies.\n   Basis point; percentage                        One basis\
+    \ point is 0.01 percentage point. A rise from 50% to 55% is\n   point        \
+    \                                  five percentage points.\n   Feasible      \
+    \                                 Satisfies every mandatory constraint under the\
+    \ stated assumptions."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Gross traded dollars Total purchase value
+    plus total sale value; not just the value on one side. c Fee rate per dollar traded;
+    10 basis points equals 0.001. ui Maximum permitted weight for asset i; 0.50 for
+    each asset here. Excessi Amount above the cap as a weight fraction; zero when
+    the proposal complies. Basis point; percentage One basis point is 0.01 percentage
+    point. A rise from 50% to 55% is point five percentage points. Feasible Satisfies
+    every mandatory constraint under the stated assumptions.
+  source:
+    pages:
+    - 504
+    verbatim: true
+- page: 505
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Class problem | 9 minutes — Can the\
+    \ Allocation Be Implemented?\n\n A $1 million portfolio is rebalanced without\
+    \ market movement or cash flows.\n   Asset                                   \
+    \          Current weight                   Proposed weight\n   A            \
+    \                                                 60%                        \
+    \     40%\n   B                                                             30%\
+    \                             40%\n   C                                      \
+    \                       10%                             20%\n\n Define one-way\
+    \ turnover as 12 i |winew − wiold |. Transaction costs are 10 basis points of\n\
+    \                              P\n\n every dollar bought or sold; 10 bps = 0.10%.\n\
+    \ Calculate turnover, total dollars bought and sold, and cost. Every proposed\
+    \ allocation must now\n have no asset above 50%. Does an alternative proposal\
+    \ of 55%, 35%, 10% comply?\n Quantify any violation."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Class problem | 9 minutes — Can the Allocation Be Implemented?
+  - A $1 million portfolio is rebalanced without market movement or cash flows. Asset
+    Current weight Proposed weight A 60% 40% B 30% 40% C 10% 20%
+  - Define one-way turnover as 12 i |winew − wiold |. Transaction costs are 10 basis
+    points of P
+  - every dollar bought or sold; 10 bps = 0.10%. Calculate turnover, total dollars
+    bought and sold, and cost. Every proposed allocation must now have no asset above
+    50%. Does an alternative proposal of 55%, 35%, 10% comply? Quantify any violation.
+  source:
+    pages:
+    - 505
+    verbatim: true
+- page: 506
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Worked solution — Can the Allocation\
+    \ Be Implemented?\n\n1. Weight changes: [−20, +10, +10] percentage points.\n2.\
+    \ One-way turnover: (20 + 10 + 10)/2 = 20%, equivalent to $200,000 on one side.\n\
+    3. Trades: sell $200,000 of A; buy $100,000 of B and $100,000 of C. Gross traded\
+    \ value\n   = $400, 000.\n4. Cost: 400,000 × 0.001 = $400. Costs apply to both\
+    \ purchases and sales, not just one-way\n   turnover.\n5. Constraint check: [40,\
+    \ 40, 20]% is feasible. The alternative has one violation: A exceeds its\n   50%\
+    \ cap by 5 percentage points, or $50,000."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Worked solution — Can the Allocation Be Implemented?
+  - '1. Weight changes: [−20, +10, +10] percentage points. 2. One-way turnover: (20
+    + 10 + 10)/2 = 20%, equivalent to $200,000 on one side. 3. Trades: sell $200,000
+    of A; buy $100,000 of B and $100,000 of C. Gross traded value = $400, 000. 4.
+    Cost: 400,000 × 0.001 = $400. Costs apply to both purchases and sales, not just
+    one-way turnover. 5. Constraint check: [40, 40, 20]% is feasible. The alternative
+    has one violation: A exceeds its 50% cap by 5 percentage points, or $50,000.'
+  source:
+    pages:
+    - 506
+    verbatim: true
+- page: 507
+  title: Turnover and Constraints
+  text: " Turnover and Constraints\n\n   M32b | Interpretation\n\n What the answer\
+    \ means\n Turnover estimates the trading burden; the fee calculation depends on\
+    \ the stated convention. A\n mandatory allocation cap is a separate pass/fail\
+    \ condition. Better expected performance does\n not make a noncompliant proposed\
+    \ allocation feasible.\n Why these steps matter\n Selling 20% of portfolio value\
+    \ and reinvesting it creates 20% one-way turnover but 40% gross\n trading. The\
+    \ stated fee charges both sides. Likewise, an asset at 55% breaches a 50% cap\
+    \ by\n five percentage points, not by 5% of its current holding."
+  paragraphs:
+  - Turnover and Constraints
+  - M32b | Interpretation
+  - What the answer means Turnover estimates the trading burden; the fee calculation
+    depends on the stated convention. A mandatory allocation cap is a separate pass/fail
+    condition. Better expected performance does not make a noncompliant proposed allocation
+    feasible. Why these steps matter Selling 20% of portfolio value and reinvesting
+    it creates 20% one-way turnover but 40% gross trading. The stated fee charges
+    both sides. Likewise, an asset at 55% breaches a 50% cap by five percentage points,
+    not by 5% of its current holding.
+  source:
+    pages:
+    - 507
+    verbatim: true
+- page: 508
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Formula explained (1/1)\n\n Question: How variable\
+    \ are the fund’s returns relative to its benchmark?\n                        \
+    \                                    n\n                                     \
+    \                    1X\n                                a t = r t − bt ,   ā\
+    \ =        at ,\n                                                         n t=1\n\
+    \                                                 sP\n                       \
+    \                             n             2\n                              \
+    \                      t=1 (at − ā)\n                               T Emonthly\
+    \ =                         ,\n                                              \
+    \        n−1\n                                                            √\n\
+    \                                 T Eannual = T Emonthly 12.\n Read it aloud:\
+    \ Subtract the benchmark return from the fund return each month. Calculate the\n\
+    \ sample standard deviation of those differences. Under this exercise’s stable,\
+    \ uncorrelated-month\n assumption, multiply by the square root of 12 to annualize.\n\
+    \ Tracking error measures variability around mean active return, not the average\
+    \ shortfall below\n the benchmark."
+  paragraphs:
+  - Tracking Error
+  - M32c | Formula explained (1/1)
+  - 'Question: How variable are the fund’s returns relative to its benchmark? n 1X
+    a t = r t − bt , ā = at , n t=1 sP n 2 t=1 (at − ā) T Emonthly = , n−1 √ T Eannual
+    = T Emonthly 12. Read it aloud: Subtract the benchmark return from the fund return
+    each month. Calculate the sample standard deviation of those differences. Under
+    this exercise’s stable, uncorrelated-month assumption, multiply by the square
+    root of 12 to annualize. Tracking error measures variability around mean active
+    return, not the average shortfall below the benchmark.'
+  source:
+    pages:
+    - 508
+    verbatim: true
+- page: 509
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   t, n           \
+    \                                Month index and number of observed months; n\
+    \ = 4 here.\n   rt , bt                                        Fund return and\
+    \ benchmark return in month t, measured on the\n                             \
+    \                     same basis.\n   Benchmark                              \
+    \        Reference investment return against which the fund is compared.\n   at\
+    \                                             Active return: fund return minus\
+    \ benchmark return, which can be\n                                           \
+    \       positive or negative.\n   ā                                         \
+    \    Arithmetic average of the active returns.\n   at − ā                   \
+    \                     One month’s deviation from average active return."
+  paragraphs:
+  - Tracking Error
+  - M32c | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example t, n Month index and number of observed
+    months; n = 4 here. rt , bt Fund return and benchmark return in month t, measured
+    on the same basis. Benchmark Reference investment return against which the fund
+    is compared. at Active return: fund return minus benchmark return, which can be
+    positive or negative. ā Arithmetic average of the active returns. at − ā One
+    month’s deviation from average active return.'
+  source:
+    pages:
+    - 509
+    verbatim: true
+- page: 510
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   TE             \
+    \                                Tracking error: standard deviation of active\
+    \ returns, not an average\n                                                  forecast\
+    \ error.\n   n−1                                            Sample-variance denominator;\
+    \ one degree of freedom is used in\n                                         \
+    \         estimating the mean.\n   √\n       12                              \
+    \           Annualization multiplier under the stated monthly assumptions; not\n\
+    \                                                  a universal rule when returns\
+    \ are serially correlated.\n   Percentage-point return                       \
+    \ A fund return of 3% minus a benchmark return of 2% is 1\n   difference     \
+    \                                percentage point, or 0.01 in decimal return units."
+  paragraphs:
+  - Tracking Error
+  - M32c | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example TE Tracking error: standard deviation
+    of active returns, not an average forecast error. n−1 Sample-variance denominator;
+    one degree of freedom is used in estimating the mean. √ 12 Annualization multiplier
+    under the stated monthly assumptions; not a universal rule when returns are serially
+    correlated. Percentage-point return A fund return of 3% minus a benchmark return
+    of 2% is 1 difference percentage point, or 0.01 in decimal return units.'
+  source:
+    pages:
+    - 510
+    verbatim: true
+- page: 511
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Class problem | 9 minutes — How Far Does the\
+    \ Fund Wander from Its Benchmark?\n\n A fund and its benchmark have these monthly\
+    \ returns:\n                                                              Active\
+    \ return is fund minus benchmark. Use sample\n   Month                  Fund \
+    \                   Benchmark\n                                              \
+    \                standard deviation:\n   1                           3%      \
+    \                 2%\n                                                       \
+    \                                   sP\n                                     \
+    \                                                         (at − ā)2\n   2   \
+    \                        1%                       2%                  T Emonthly\
+    \ =                 .\n                                                      \
+    \                                         n−1\n   3                          \
+    \ 4%                       3%\n                                              \
+    \                Calculate monthly tracking error. For this exercise,\n   4  \
+    \                         0%                       1%    assume stable, uncorrelated\
+    \ monthly active\n                                                           \
+    \                                           √ returns and\n                  \
+    \                                            annualize using T Eannual = T Emonthly\
+    \ 12. Does\n                                                              tracking\
+    \ error say whether the fund outperformed?"
+  paragraphs:
+  - Tracking Error
+  - M32c | Class problem | 9 minutes — How Far Does the Fund Wander from Its Benchmark?
+  - 'A fund and its benchmark have these monthly returns: Active return is fund minus
+    benchmark. Use sample Month Fund Benchmark standard deviation: 1 3% 2% sP (at
+    − ā)2 2 1% 2% T Emonthly = . n−1 3 4% 3% Calculate monthly tracking error. For
+    this exercise, 4 0% 1% assume stable, uncorrelated monthly active √ returns and
+    annualize using T Eannual = T Emonthly 12. Does tracking error say whether the
+    fund outperformed?'
+  source:
+    pages:
+    - 511
+    verbatim: true
+- page: 512
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Worked solution — How Far Does the Fund Wander\
+    \ from Its Benchmark?\n\n1. Active returns: [1, −1, 1, −1] percentage points.\n\
+    2. Mean active return: (1 − 1 + 1 − 1)/4 = 0.\n3. Squared deviations: 1, 1, 1,\
+    \ 1; sum = 4 squared percentage points.\n4. Monthly sample tracking error:\n \
+    \                           q             q\n                               4/(4\
+    \ − 1) = 4/3 = 1.1547%.\n5. Annualized estimate under the stated assumptions:\n\
+    \                                           √\n                              \
+    \  1.1547% × 12 = 4.00%."
+  paragraphs:
+  - Tracking Error
+  - M32c | Worked solution — How Far Does the Fund Wander from Its Benchmark?
+  - '1. Active returns: [1, −1, 1, −1] percentage points. 2. Mean active return: (1
+    − 1 + 1 − 1)/4 = 0. 3. Squared deviations: 1, 1, 1, 1; sum = 4 squared percentage
+    points. 4. Monthly sample tracking error: q q 4/(4 − 1) = 4/3 = 1.1547%. 5. Annualized
+    estimate under the stated assumptions: √ 1.1547% × 12 = 4.00%.'
+  source:
+    pages:
+    - 512
+    verbatim: true
+- page: 513
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Interpretation\n\n What the answer means\n Tracking\
+    \ error describes the variability of benchmark-relative returns—not a 4% loss\
+    \ or 4%\n underperformance. Mean monthly active return is zero here, yet active\
+    \ risk is positive.\n Annualization and this four-observation estimate should\
+    \ not be treated as reliable without more\n data.\n Why these steps matter\n Active\
+    \ returns of +1 and −1 percentage point average to zero but still fluctuate. Tracking\
+    \ error\n measures that fluctuation. Computing the standard deviation of the fund’s\
+    \ returns alone would\n answer a different question about total risk rather than\
+    \ benchmark-relative risk."
+  paragraphs:
+  - Tracking Error
+  - M32c | Interpretation
+  - What the answer means Tracking error describes the variability of benchmark-relative
+    returns—not a 4% loss or 4% underperformance. Mean monthly active return is zero
+    here, yet active risk is positive. Annualization and this four-observation estimate
+    should not be treated as reliable without more data. Why these steps matter Active
+    returns of +1 and −1 percentage point average to zero but still fluctuate. Tracking
+    error measures that fluctuation. Computing the standard deviation of the fund’s
+    returns alone would answer a different question about total risk rather than benchmark-relative
+    risk.
+  source:
+    pages:
+    - 513
+    verbatim: true
+source:
+  pages:
+  - 492
+  - 493
+  - 494
+  - 495
+  - 496
+  - 497
+  - 498
+  - 499
+  - 500
+  - 501
+  - 502
+  - 503
+  - 504
+  - 505
+  - 506
+  - 507
+  - 508
+  - 509
+  - 510
+  - 511
+  - 512
+  - 513
+  verbatim: true

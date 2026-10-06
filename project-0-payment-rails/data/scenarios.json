@@ -1,0 +1,6 @@
+{
+  "approved": {"amount_cents": 5000, "account_id": "demo-active", "network": "Visa"},
+  "insufficient": {"amount_cents": 60000, "account_id": "demo-active", "network": "Mastercard"},
+  "inactive": {"amount_cents": 5000, "account_id": "demo-inactive", "network": "Visa"},
+  "invalid": {"amount_cents": 5000, "account_id": "unknown-token", "network": "Mastercard"}
+}

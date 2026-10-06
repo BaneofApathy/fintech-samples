@@ -1,0 +1,486 @@
+id: M39c
+title: Price the Entire Workflow
+minutes: 9
+kind: measure
+parent: latency-throughput-review-load-cost
+question: "A financial assistant handles 1,000 requests:\n▶ Total model and retrieval\
+  \ spend is $500, including calls that abstain.\n▶ It abstains on 100 requests. Each\
+  \ goes to manual review at $3 and is answered correctly.\n▶ Of the 900 automatically\
+  \ answered requests, 800 are correct and 100 are wrong.\n Calculate abstention rate,\
+  \ automated-answer coverage, total operating cost, cost per incoming\n request,\
+  \ and cost per correctly resolved request. Also calculate accuracy among automatic\n\
+  \ answers. Include all spending in the cost numerator; exclude downstream financial\
+  \ harm for this\n exercise."
+questionPages:
+- page: 588
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Class problem | 9 minutes — Price the Entire\
+    \ Workflow\n\n A financial assistant handles 1,000 requests:\n▶ Total model and\
+    \ retrieval spend is $500, including calls that abstain.\n▶ It abstains on 100\
+    \ requests. Each goes to manual review at $3 and is answered correctly.\n▶ Of\
+    \ the 900 automatically answered requests, 800 are correct and 100 are wrong.\n\
+    \ Calculate abstention rate, automated-answer coverage, total operating cost,\
+    \ cost per incoming\n request, and cost per correctly resolved request. Also calculate\
+    \ accuracy among automatic\n answers. Include all spending in the cost numerator;\
+    \ exclude downstream financial harm for this\n exercise."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Class problem | 9 minutes — Price the Entire Workflow
+  - 'A financial assistant handles 1,000 requests: ▶ Total model and retrieval spend
+    is $500, including calls that abstain. ▶ It abstains on 100 requests. Each goes
+    to manual review at $3 and is answered correctly. ▶ Of the 900 automatically answered
+    requests, 800 are correct and 100 are wrong. Calculate abstention rate, automated-answer
+    coverage, total operating cost, cost per incoming request, and cost per correctly
+    resolved request. Also calculate accuracy among automatic answers. Include all
+    spending in the cost numerator; exclude downstream financial harm for this exercise.'
+  source:
+    pages:
+    - 588
+    verbatim: true
+formulaPages:
+- page: 583
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Formula explained (1/2)\n\n Question: What\
+    \ fraction of requests are answered automatically, and how accurate are those\n\
+    \ automatic answers?\n                               Nabstain                \
+    \               Nauto\n                 Abstention =            ,    Automatic\
+    \ coverage =          ,\n                                  N                 \
+    \                    N\n                                                    Nauto,correct\n\
+    \                            Automatic accuracy =                  .\n       \
+    \                                                Nauto\n Read it aloud: Divide\
+    \ abstentions and automatic answers by incoming requests. Evaluate\n accuracy\
+    \ only among the requests actually answered automatically.\n Here every request\
+    \ takes exactly one of those routes, so N = Nabstain + Nauto . A decision to\n\
+    \ abstain is not automatically a wrong answer; it routes the case to the stated\
+    \ human process."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Formula explained (1/2)
+  - 'Question: What fraction of requests are answered automatically, and how accurate
+    are those automatic answers? Nabstain Nauto Abstention = , Automatic coverage
+    = , N N Nauto,correct Automatic accuracy = . Nauto Read it aloud: Divide abstentions
+    and automatic answers by incoming requests. Evaluate accuracy only among the requests
+    actually answered automatically. Here every request takes exactly one of those
+    routes, so N = Nabstain + Nauto . A decision to abstain is not automatically a
+    wrong answer; it routes the case to the stated human process.'
+  source:
+    pages:
+    - 583
+    verbatim: true
+- page: 584
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Formula explained (2/2)\n\n Question: What\
+    \ does the entire workflow cost per request and per correct resolution?\n    \
+    \                                          Ctotal = Cmodel + Nabstain chuman ,\n\
+    \                                                                      Ctotal\n\
+    \                                                  Cost per request =        \
+    \ ,\n                                                                        N\n\
+    \                                                                            Ctotal\n\
+    \                                 Cost per correct resolution =              \
+    \                  .\n                                                       \
+    \        Nauto,correct + Nhuman,correct\n Read it aloud: Add all model-and-retrieval\
+    \ spending to all required human review spending.\n Divide that same total either\
+    \ by incoming volume or by the number correctly resolved.\n Failed automatic answers\
+    \ remain in the spending numerator. All manually reviewed requests are\n correctly\
+    \ resolved under the supplied assumption. Downstream financial harm is explicitly\n\
+    \ excluded."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Formula explained (2/2)
+  - 'Question: What does the entire workflow cost per request and per correct resolution?
+    Ctotal = Cmodel + Nabstain chuman , Ctotal Cost per request = , N Ctotal Cost
+    per correct resolution = . Nauto,correct + Nhuman,correct Read it aloud: Add all
+    model-and-retrieval spending to all required human review spending. Divide that
+    same total either by incoming volume or by the number correctly resolved. Failed
+    automatic answers remain in the spending numerator. All manually reviewed requests
+    are correctly resolved under the supplied assumption. Downstream financial harm
+    is explicitly excluded.'
+  source:
+    pages:
+    - 584
+    verbatim: true
+symbolPages:
+- page: 585
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Symbols and terms (1/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   N      \
+    \                                        Incoming request count, 1,000; includes\
+    \ automatic answers and\n                                                  abstentions.\n\
+    \   Nabstain , Nauto                               Requests deferred to manual\
+    \ review and requests answered\n                                             \
+    \     automatically; 100 and 900.\n   Nauto,correct                          \
+    \        Correct automatic answers, 800; the other 100 automatic answers\n   \
+    \                                               are wrong.\n   Nhuman,correct\
+    \                                 Correct manual resolutions, 100 under the stipulated\
+    \ perfect-review\n                                                  assumption."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example N Incoming request count, 1,000; includes
+    automatic answers and abstentions. Nabstain , Nauto Requests deferred to manual
+    review and requests answered automatically; 100 and 900. Nauto,correct Correct
+    automatic answers, 800; the other 100 automatic answers are wrong. Nhuman,correct
+    Correct manual resolutions, 100 under the stipulated perfect-review assumption.
+  source: &id001
+    pages:
+    - 585
+    verbatim: true
+- page: 586
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Symbols and terms (2/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Cmodel \
+    \                                        All model and retrieval spending, $500,\
+    \ including calls that lead to\n                                             \
+    \     abstention.\n   chuman                                         Manual review\
+    \ cost per abstained request, $3."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Cmodel All model and retrieval spending,
+    $500, including calls that lead to abstention. chuman Manual review cost per abstained
+    request, $3.
+  source: &id002
+    pages:
+    - 586
+    verbatim: true
+- page: 587
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Symbols and terms (3/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Ctotal \
+    \                                        Total operating spending included in\
+    \ this exercise; excludes financial\n                                        \
+    \          harm from wrong answers.\n   Abstention                           \
+    \          The system declines to supply an automatic answer and takes the\n \
+    \                                                 specified escalation route.\n\
+    \   Automatic coverage                             Share of incoming requests\
+    \ receiving an automatic answer; not\n                                       \
+    \           prediction-interval coverage or evidence recall.\n   Conditional accuracy\
+    \                           Accuracy within a specified subset, here the automatically\
+    \ answered\n                                                  requests rather\
+    \ than all incoming requests."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Ctotal Total operating spending included
+    in this exercise; excludes financial harm from wrong answers. Abstention The system
+    declines to supply an automatic answer and takes the specified escalation route.
+    Automatic coverage Share of incoming requests receiving an automatic answer; not
+    prediction-interval coverage or evidence recall. Conditional accuracy Accuracy
+    within a specified subset, here the automatically answered requests rather than
+    all incoming requests.
+  source: &id003
+    pages:
+    - 587
+    verbatim: true
+solutionPages:
+- page: 589
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Worked solution — Price the Entire Workflow\n\
+    \n1. Abstention rate: 100/1,000 = 10%. Automated-answer coverage = 900/1,000 =\
+    \ 90%.\n2. Human review cost: 100($3) = $300.\n3. Total operating cost: $500 +\
+    \ $300 = $800.\n4. Cost per incoming request: 800/1,000 = $0.80.\n5. Correctly\
+    \ resolved requests: 800 + 100 = 900.\n                      All-in cost per correct\
+    \ resolution = 800/900 ≈ $0.89.\n6. Automatic-answer accuracy: 800/900 = 88.89%."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Worked solution — Price the Entire Workflow
+  - '1. Abstention rate: 100/1,000 = 10%. Automated-answer coverage = 900/1,000 =
+    90%. 2. Human review cost: 100($3) = $300. 3. Total operating cost: $500 + $300
+    = $800. 4. Cost per incoming request: 800/1,000 = $0.80. 5. Correctly resolved
+    requests: 800 + 100 = 900. All-in cost per correct resolution = 800/900 ≈ $0.89.
+    6. Automatic-answer accuracy: 800/900 = 88.89%.'
+  source:
+    pages:
+    - 589
+    verbatim: true
+interpretationPages:
+- page: 590
+  title: Cost and Abstention
+  text: " Cost and Abstention\n\n   M39c | Interpretation\n\n What the answer means\n\
+    \ Abstention adds review expense and routes those cases to correct manual resolution\
+    \ under the\n exercise’s assumptions. Model spend alone understates operating\
+    \ cost. Even the all-in $0.80 per\n request excludes the consequences of the 100\
+    \ wrong answers; it is not a complete economic loss\n measure.\n Why these steps\
+    \ matter\n The same numerical fraction can represent different concepts: 800/900\
+    \ is automatic-answer\n accuracy, while $800 divided by 900 correct resolutions\
+    \ is a cost in dollars. The numerator’s\n units and the denominator’s population\
+    \ determine the meaning. The scenario does not establish\n what automatic answers\
+    \ would have been produced on the abstained cases."
+  paragraphs:
+  - Cost and Abstention
+  - M39c | Interpretation
+  - 'What the answer means Abstention adds review expense and routes those cases to
+    correct manual resolution under the exercise’s assumptions. Model spend alone
+    understates operating cost. Even the all-in $0.80 per request excludes the consequences
+    of the 100 wrong answers; it is not a complete economic loss measure. Why these
+    steps matter The same numerical fraction can represent different concepts: 800/900
+    is automatic-answer accuracy, while $800 divided by 900 correct resolutions is
+    a cost in dollars. The numerator’s units and the denominator’s population determine
+    the meaning. The scenario does not establish what automatic answers would have
+    been produced on the abstained cases.'
+  source:
+    pages:
+    - 590
+    verbatim: true
+source:
+  pages:
+  - 583
+  - 584
+  - 585
+  - 586
+  - 587
+  - 588
+  - 589
+  - 590
+  verbatim: true
+readAloud:
+- Divide abstentions and automatic answers by incoming requests. Evaluate accuracy
+  only among the requests actually answered automatically. Here every request takes
+  exactly one of those routes, so N = Nabstain + Nauto . A decision to abstain is
+  not automatically a wrong answer; it routes the case to the stated human process.
+- Add all model-and-retrieval spending to all required human review spending. Divide
+  that same total either by incoming volume or by the number correctly resolved. Failed
+  automatic answers remain in the spending numerator. All manually reviewed requests
+  are correctly resolved under the supplied assumption. Downstream financial harm
+  is explicitly excluded.
+siteAuthored: false
+givens:
+  requests: 1000
+  spend: 500
+  abstained: 100
+  reviewCost: 3
+  autoCorrect: 800
+labels: &id004
+  requests: Incoming requests
+  spend: Total model and retrieval spending ($)
+  abstained: Requests sent to human review
+  reviewCost: Cost per human review ($)
+  autoCorrect: Correct automatic answers
+deckSolution:
+  abstention: 0.1
+  coverage: 0.9
+  reviewSpend: 300
+  totalCost: 800
+  perRequest: 0.8
+  correct: 900
+  perCorrect: 0.8888888888888888
+  autoAccuracy: 0.8888888888888888
+latex:
+- CostPerCorrect=\frac{ModelSpend+ReviewSpend}{CorrectAutomatic+CorrectManual}
+- \operatorname{Abstention}=\frac{N_{abstain}}N,\quad\operatorname{Coverage}=\frac{N_{auto}}N,\quad\operatorname{Automatic\
+  accuracy}=\frac{N_{auto,correct}}{N_{auto}}
+- C_{total}=C_{model}+N_{abstain}C_{human},\quad\operatorname{Cost\ per\ request}=\frac{C_{total}}N
+symbols:
+- symbol: N
+  meaning: Incoming request count, 1,000; includes automatic answers and abstentions.
+  source: *id001
+- symbol: Nabstain , Nauto
+  meaning: Requests deferred to manual review and requests answered automatically;
+    100 and 900.
+  source: *id001
+- symbol: Nauto,correct
+  meaning: Correct automatic answers, 800; the other 100 automatic answers are wrong.
+  source: *id001
+- symbol: Nhuman,correct
+  meaning: Correct manual resolutions, 100 under the stipulated perfect-review assumption.
+  source: *id001
+- symbol: Cmodel
+  meaning: All model and retrieval spending, $500, including calls that lead to abstention.
+  source: *id002
+- symbol: chuman
+  meaning: Manual review cost per abstained request, $3.
+  source: *id002
+- symbol: Ctotal
+  meaning: Total operating spending included in this exercise; excludes financial
+    harm from wrong answers.
+  source: *id003
+- symbol: Abstention
+  meaning: The system declines to supply an automatic answer and takes the specified
+    escalation route.
+  source: *id003
+- symbol: Automatic coverage
+  meaning: Share of incoming requests receiving an automatic answer; not prediction-interval
+    coverage or evidence recall.
+  source: *id003
+- symbol: Conditional accuracy
+  meaning: Accuracy within a specified subset, here the automatically answered requests
+    rather than all incoming requests.
+  source: *id003
+steps:
+- id: abstention
+  title: Abstention rate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide reviewed requests by incoming requests.
+  mistakes:
+  - pattern: recompute
+    message: Divide reviewed requests by incoming requests.
+- id: coverage
+  title: Automatic-answer coverage
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide incoming minus reviewed requests by incoming requests.
+  mistakes:
+  - pattern: recompute
+    message: Divide incoming minus reviewed requests by incoming requests.
+- id: reviewSpend
+  title: Human review spending
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Multiply reviewed requests by cost per review.
+  mistakes:
+  - pattern: recompute
+    message: Multiply reviewed requests by cost per review.
+- id: totalCost
+  title: Total operating cost
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Add model/retrieval spending and human review spending.
+  mistakes:
+  - pattern: recompute
+    message: Add model/retrieval spending and human review spending.
+- id: perRequest
+  title: Cost per incoming request
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Divide total operating cost by incoming requests.
+  mistakes:
+  - pattern: recompute
+    message: Divide total operating cost by incoming requests.
+- id: correct
+  title: Correctly resolved requests
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Add correct automatic answers and all reviewed requests.
+  mistakes:
+  - pattern: recompute
+    message: Add correct automatic answers and all reviewed requests.
+- id: perCorrect
+  title: Cost per correct resolution
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Divide total operating cost by correctly resolved requests.
+  mistakes:
+  - pattern: recompute
+    message: Divide total operating cost by correctly resolved requests.
+- id: autoAccuracy
+  title: Accuracy among automatic answers
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id012
+  - Divide correct automatic answers by incoming minus reviewed requests.
+  mistakes:
+  - pattern: recompute
+    message: Divide correct automatic answers by incoming minus reviewed requests.
+learning:
+  title: Price the Entire Workflow
+  scenario: A financial assistant either answers automatically or abstains and routes
+    to human review. Every reviewed request is resolved correctly. Model-and-retrieval
+    spending includes all requests, including abstentions.
+  task: Calculate routing rates, review spending, all-in operating cost and costs
+    per incoming request and per correct resolution. Also calculate accuracy among
+    automatic answers. Exclude downstream financial harm.
+  interpretation: Use all operating spending in both cost numerators. Automatic-answer
+    accuracy uses automatic answers as its denominator; cost per correct resolution
+    includes correct human resolutions. Operating cost alone omits harm from wrong
+    answers.
+  summary: 'Operating cost: {totalCost}; per incoming request: {perRequest}; per correct
+    resolution: {perCorrect}. Automatic-answer accuracy: {autoAccuracy}.'
+  labels: *id004
+  steps:
+    abstention:
+      title: Abstention rate
+      hints: *id005
+      unit: proportion
+    coverage:
+      title: Automatic-answer coverage
+      hints: *id006
+      unit: proportion
+    reviewSpend:
+      title: Human review spending
+      hints: *id007
+      unit: $
+    totalCost:
+      title: Total operating cost
+      hints: *id008
+      unit: $
+    perRequest:
+      title: Cost per incoming request
+      hints: *id009
+      unit: $
+    correct:
+      title: Correctly resolved requests
+      hints: *id010
+      unit: ''
+    perCorrect:
+      title: Cost per correct resolution
+      hints: *id011
+      unit: $
+    autoAccuracy:
+      title: Accuracy among automatic answers
+      hints: *id012
+      unit: proportion
+  readAloud:
+  - Divide abstentions and automatic answers by incoming requests. Evaluate accuracy
+    only among the requests actually answered automatically. Here every request takes
+    exactly one of those routes, so N = Nabstain + Nauto . A decision to abstain is
+    not automatically a wrong answer; it routes the case to the stated human process.
+  - Add all model-and-retrieval spending to all required human review spending. Divide
+    that same total either by incoming volume or by the number correctly resolved.
+    Failed automatic answers remain in the spending numerator. All manually reviewed
+    requests are correctly resolved under the supplied assumption. Downstream financial
+    harm is explicitly excluded.
+  workedExplanation:
+  - 'Abstention adds review expense and routes those cases to correct manual resolution
+    under the exercise’s assumptions. Model spend alone understates operating cost.
+    Even the all-in $0.80 per request excludes the consequences of the 100 wrong answers;
+    it is not a complete economic loss measure. '
+  - 'The same numerical fraction can represent different concepts: 800/900 is automatic-answer
+    accuracy, while $800 divided by 900 correct resolutions is a cost in dollars.
+    The numerator’s units and the denominator’s population determine the meaning.
+    The scenario does not establish what automatic answers would have been produced
+    on the abstained cases.'
+  workedArithmetic:
+  - Abstention = 100/1,000 = 10%; automatic coverage = (1,000 − 100) / 1,000 = 90%.
+  - Review spending = 100 × $3 = $300; total operating cost = $500 + $300 = $800.
+  - Cost per incoming request = $800/1,000 = $0.80. Correct resolutions = 800 + 100
+    = 900; cost per correct resolution = $800/900 ≈ $0.89.
+  - Automatic-answer accuracy = 800/900 ≈ 88.89%. This shares the numerical fraction
+    with cost per correct resolution but has different units and meaning.
+formulaSource:
+  pages:
+  - 583
+  - 584
+  verbatim: false
+  reviewed: true
