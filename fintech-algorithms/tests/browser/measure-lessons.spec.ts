@@ -31,12 +31,15 @@ test('measure examples use readable tables and equations without duplicate slide
 
 test('the first measure visuals explain their outcomes in text beside the diagram', async ({ page }) => {
   await page.goto('/exercises/M01/');
+  await expect(page.locator('astro-island[client="load"][ssr]')).toHaveCount(0);
   await page.locator('#exercise-M01-worked .exercise-visual > summary').click();
   await expect(page.locator('.vm-description')).toContainText('A true positive is a fraud correctly flagged');
   await page.goto('/exercises/M02/');
+  await expect(page.locator('astro-island[client="load"][ssr]')).toHaveCount(0);
   await page.locator('#exercise-M02-worked .exercise-visual > summary').click();
   await expect(page.locator('.vm-description')).toContainText(/a baseline that passes everyone/i);
   await page.goto('/exercises/M03/');
+  await expect(page.locator('astro-island[client="load"][ssr]')).toHaveCount(0);
   await page.locator('#exercise-M03-worked .exercise-visual > summary').click();
   await expect(page.locator('.vm-description')).toContainText(/equal weighting is not the same as weighting errors by their dollar cost/i);
   await page.goto('/explorers/confusion-builder/');

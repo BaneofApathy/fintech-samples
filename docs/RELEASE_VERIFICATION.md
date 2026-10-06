@@ -29,6 +29,8 @@ Release prepared on 6 October 2026 from the instructor's local course applicatio
 - Source and deployment inventories passed the publication checker. The bundled scientific runtime, including Python's standard-library ZIP, is retained; third-party notices remain intact.
 - Instructor authorship and existing license notices are preserved. Public GitHub account identities and commit metadata remain visible.
 
+Additional CI checks exposed a narrow-screen overflow in the new offline controls and a measure interaction that could run before hydration. The control now wraps within its container; the measure test waits for hydration. All 24 affected layout/measure checks and targeted browser-Python checks passed locally with the matching Chromium 153 build. Linux browser-Python diagnostics remain part of the release gate.
+
 The first GitHub run exposed a 5-second timeout on the test that verifies 192 sequential compressed representations. Its per-test allowance is now 30 seconds; assertions and the application are unchanged.
 
 CI re-runs the complete browser suite and project checks for the published branch. Deployment URLs and final CI outcomes are verified separately before production release.
