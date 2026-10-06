@@ -1,36 +1,41 @@
 # Publication verification
 
-Release prepared on 6 October 2026 from the instructor's local course applications. Only the two selected reference projects and public contribution documentation were imported into the existing repository.
+Prepared on **6 October 2026** from the instructor's course applications. Only the two selected reference projects and public contribution documentation were imported into the existing repository. Production publication is pending Vercel authentication and the final release checks.
 
-## Algorithms
+## Fintech Algorithms
 
-- Frozen dependency installation completed with Node 24.19.0 and pnpm 11.25.0.
-- Content validation passed: 12 algorithms, 39 measures, 64 exercises, 61 teaching topics, 319 lessons, and 732 explained questions.
-- Astro diagnostics reported zero errors; svelte-check reported zero errors and zero warnings. Existing informational hints remain.
-- Production build and Pagefind indexing completed. The optional offline inventory contains 1,663 files and approximately 116.9 MiB before transfer compression.
-- All 756 unit tests passed in 22 files, including explicit preparation, interrupted download, retention of the previous complete cache, retry, and removal behavior.
-- Initial browser run: 279 passed; 22 failed because the tests expected former feedback labels or an outdated guided activity ID. No application teaching behavior was changed to resolve those stale assertions. All 30 tests in the three affected browser files passed on the targeted rerun, covering all 22 initial failures.
-- The new browser check passed: an ordinary first visit made no Python/notebook runtime requests; explicit preparation completed; a lesson reloaded offline; removal cleared course caches while preserving browser progress.
-- All 12 notebook examples executed offline and printed their expected primary metrics. Notebook reload and return to the course also passed offline.
+| Check | Result |
+|---|---|
+| Reproducible installation | Frozen lock file; Node 24.19.0 and pnpm 11.25.0 |
+| Teaching content | 12 algorithms, 39 measures, 64 exercises, 61 topics, 319 lessons, 732 explained questions |
+| Types and components | Zero Astro errors; zero Svelte errors or warnings; existing informational hints remain |
+| Production build | Static pages and Pagefind search built successfully |
+| Unit tests | 756 passed in 22 files |
+| Clean-checkout browser suite | 301 passed, including browser Python, search, navigation, saved progress, keyboard access, layouts, and offline preparation |
+| Clean-checkout notebooks | All 12 examples executed and printed their primary metrics; offline reload and return to the course passed |
+
+Ordinary visits do not download the complete course. The optional offline control exposes its download size, progress, retry, update, and removal behavior. Tests cover interrupted downloads, retention of the previous complete cache, successful retry, offline reload, and preservation of learner progress after removal. The complete optional inventory is approximately **116.9 MiB** before transfer compression.
+
+Clean-checkout testing identified a required OpenBLAS ZIP excluded by an archive ignore rule. That library is now tracked with its upstream license. The publication check verifies that every pinned scientific package is present, staged or tracked, and matches its lock-file hash. Browser checks also cover narrow-screen text reflow and navigation controls when text is doubled; fixes retain the existing teaching and progress behavior.
 
 ## Payment Rails
 
-- All 22 Python tests passed, including financial rules, exact fee arithmetic, six-process integration, HTTP commands, launcher startup, and shutdown.
-- The static guide and source ZIP built successfully.
-- Desktop (1,440 px) and mobile (390 px) checks passed: local links, anchors, PDF/source downloads, axe accessibility, no horizontal overflow, and no browser errors.
-- Screenshots and both PDFs were reviewed. The documents contain 10 and 20 pages; PDF metadata identifies the course, with no student author fields.
-- The $50 example shows a $50 authorization hold, a $450 posted balance after clearing, and $48.75 merchant proceeds after $1.25 in illustrative fees.
+| Check | Result |
+|---|---|
+| Python suite | 22 passed, including financial rules, exact fee arithmetic, six-process integration, HTTP commands, launcher startup, and shutdown |
+| Static guide | Built successfully with the selected PDFs, diagrams, screenshots, and downloadable source ZIP |
+| Desktop/mobile | Checked at 1,440 px and 390 px; no page overflow, serious automated accessibility findings, or browser errors |
+| Links/downloads | Internal links, anchors, PDF downloads, images, and source download verified locally |
+| Document review | All 30 pages across the two PDFs and the selected screenshots reviewed; metadata identifies the course |
 
-## Publication privacy
+The illustrative $50 purchase shows a $50 authorization hold, a $450 posted payer balance after clearing, and **$48.75 merchant proceeds** after $1.25 in demonstration fees. The hosted site is a guide; the unchanged Python simulator runs locally or in Docker. Project 0 remains an instructor reference with an unscored exploration checklist.
 
-- Private course folders, individual assignment packets, raw authoring sources, caches, dependencies, generated QA, and old distributions are excluded.
-- A private roster comparison found zero known student-name matches in the selected source files and PDF text. The comparison list is not published.
-- Selected screenshots contain fictional demonstration accounts only. Course data, examples, and payment fixtures are fictional; no learner progress, student records, or real financial records are included.
-- Source and deployment inventories passed the publication checker. The bundled scientific runtime, including Python's standard-library ZIP, is retained; third-party notices remain intact.
-- Instructor authorship and existing license notices are preserved. Public GitHub account identities and commit metadata remain visible.
+## Privacy and release controls
 
-Additional CI checks exposed a narrow-screen overflow in the new offline controls and a measure interaction that could run before hydration. The control now wraps within its container; the measure test waits for hydration. All 24 affected layout/measure checks and targeted browser-Python checks passed locally with the matching Chromium 153 build. A clean checkout exposed an excluded OpenBLAS ZIP required by SciPy. The required archive is now included with its upstream license; the publication check verifies every pinned runtime package is tracked, present, and matches its lock-file hash. Clean-checkout browser and Linux CI checks remain part of the release gate.
+- Private course folders, individual assignment packets, raw authoring sources, caches, dependencies, local configuration, generated QA, and old distributions are excluded.
+- A private roster comparison found no known student-name matches in the selected source files or PDF text. The comparison list is not published.
+- Screenshots, notebook examples, course datasets, and payment fixtures contain fictional demonstration data. No learner progress, student records, grades, or real financial records are included.
+- Source and deployment inventories passed the publication check. Required Python archives and component license notices are retained.
+- Instructor authorship and the repository's existing license history are preserved. Public GitHub identities and commit metadata remain visible.
 
-The first GitHub run exposed a 5-second timeout on the test that verifies 192 sequential compressed representations. Its per-test allowance is now 30 seconds; assertions and the application are unchanged.
-
-CI re-runs the complete browser suite and project checks for the published branch. Deployment URLs and final CI outcomes are verified separately before production release.
+[Repository CI](https://github.com/adnanmasood/fintech-samples/actions/workflows/verify.yml) repeats content validation, type checks, unit tests, the full browser suite, notebook execution, Payment Rails tests, and publication checks. Production URLs, public access, and deployed browser flows must be verified before completing the release.

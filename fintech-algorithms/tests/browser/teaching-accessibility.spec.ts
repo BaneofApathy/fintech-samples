@@ -206,6 +206,12 @@ for (const path of [
       expect(pageLayout.width, JSON.stringify(pageLayout)).toBeLessThanOrEqual(
         pageLayout.viewport + 1,
       );
+      const headerControls = await page.locator('.header-controls').evaluate((el) => {
+        const box = el.getBoundingClientRect();
+        return { left: box.left, right: box.right, viewport: innerWidth };
+      });
+      expect(headerControls.left).toBeGreaterThanOrEqual(0);
+      expect(headerControls.right).toBeLessThanOrEqual(headerControls.viewport);
       const clipped = await page
         .locator('.practice-choice span, .practice-feedback, .teaching-definition')
         .evaluateAll((elements) =>

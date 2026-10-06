@@ -2,6 +2,14 @@
 .course-header {
   gap: 1rem;
 }
+.course-header .wordmark {
+  min-width: 0;
+  flex-shrink: 1;
+}
+.course-header .wordmark > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .primary-navigation {
   display: flex;
   align-items: center;

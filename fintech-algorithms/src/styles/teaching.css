@@ -59,6 +59,11 @@
 .teaching-terms dt {
   font-weight: 650;
 }
+.teaching-terms dt,
+.teaching-terms dd {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .teaching-terms dd {
   margin: 0;
   line-height: 1.7;
@@ -275,7 +280,7 @@
 }
 @media (max-width: 640px) {
   .teaching-terms > div {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.3rem;
   }
   .foundation-catalog {
