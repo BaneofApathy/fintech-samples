@@ -97,12 +97,18 @@ test('algorithm prerequisites and guided explanation review links resolve under 
       '#' +
       encodeURIComponent(question.lessonId),
   );
-  expect((await saved(page)).learningActivity).toMatchObject({
-    id: `${topic.id}:${question.lessonId}`,
+  const activity = (await saved(page)).learningActivity;
+  // The feedback focus may scroll the lesson into the reading position. Both
+  // the question session and reading activity resume at this same lesson URL.
+  expect([sessionId, `${topic.id}:${question.lessonId}`]).toContain(activity?.id);
+  expect(activity).toMatchObject({
     href: route('algorithms/logistic-regression/intuition/') + '#' + question.lessonId,
   });
   await review.click();
   await expect(page.locator(`[id="${question.lessonId}"]`)).toBeVisible();
+  await expect.poll(async () => (await saved(page)).learningActivity?.id).toBe(
+    `${topic.id}:${question.lessonId}`,
+  );
 });
 
 for (const kind of ['algorithm', 'measure', 'foundation'] as const) {
