@@ -1,0 +1,370 @@
+id: M05
+title: Put a Price on Missed Fraud
+minutes: 5
+kind: measure
+parent: recall
+question: "A batch contains 20 actual frauds.\n▶ Detector A catches 15.\n▶ Detector\
+  \ B catches 8.\n Assume each missed fraud causes $2,000 of unrecovered loss. For\
+  \ this exercise, all frauds\n have the same loss amount.\n                     \
+  \                          Frauds caught\n                                    Recall\
+  \ =                    .\n                                              All actual\
+  \ frauds\n Calculate recall, missed-fraud counts, and residual fraud loss for each\
+  \ detector. How much lower\n is A’s missed-fraud loss? Can you select a final policy\
+  \ without knowing false alerts and review\n costs?"
+questionPages:
+- page: 235
+  title: Recall
+  text: " Recall\n\n   M05 | Class problem | 5 minutes — Put a Price on Missed Fraud\n\
+    \n A batch contains 20 actual frauds.\n▶ Detector A catches 15.\n▶ Detector B\
+    \ catches 8.\n Assume each missed fraud causes $2,000 of unrecovered loss. For\
+    \ this exercise, all frauds\n have the same loss amount.\n                   \
+    \                            Frauds caught\n                                 \
+    \   Recall =                    .\n                                          \
+    \    All actual frauds\n Calculate recall, missed-fraud counts, and residual fraud\
+    \ loss for each detector. How much lower\n is A’s missed-fraud loss? Can you select\
+    \ a final policy without knowing false alerts and review\n costs?"
+  paragraphs:
+  - Recall
+  - M05 | Class problem | 5 minutes — Put a Price on Missed Fraud
+  - A batch contains 20 actual frauds. ▶ Detector A catches 15. ▶ Detector B catches
+    8. Assume each missed fraud causes $2,000 of unrecovered loss. For this exercise,
+    all frauds have the same loss amount. Frauds caught Recall = . All actual frauds
+    Calculate recall, missed-fraud counts, and residual fraud loss for each detector.
+    How much lower is A’s missed-fraud loss? Can you select a final policy without
+    knowing false alerts and review costs?
+  source:
+    pages:
+    - 235
+    verbatim: true
+formulaPages:
+- page: 232
+  title: Recall
+  text: " Recall\n\n   M05 | Formula explained (1/1)\n\n Question: What fraction of\
+    \ fraud was found, and how much loss remains from misses?\n                  \
+    \                     TP\n                         Recall =             ,    F\
+    \ N = F − T P,\n                                   TP + FN\n                 \
+    \                    Lmiss = cF N F N.\n Read it aloud: Divide caught frauds by\
+    \ all actual frauds. Subtract the caught count from the\n total to find misses.\
+    \ Multiply misses by the assumed loss per miss.\n This is event recall: each fraud\
+    \ counts once. Because the example assigns every fraud the\n same US$2,000 loss,\
+    \ the capture fractions also describe the share of fraud value detected here."
+  paragraphs:
+  - Recall
+  - M05 | Formula explained (1/1)
+  - 'Question: What fraction of fraud was found, and how much loss remains from misses?
+    TP Recall = , F N = F − T P, TP + FN Lmiss = cF N F N. Read it aloud: Divide caught
+    frauds by all actual frauds. Subtract the caught count from the total to find
+    misses. Multiply misses by the assumed loss per miss. This is event recall: each
+    fraud counts once. Because the example assigns every fraud the same US$2,000 loss,
+    the capture fractions also describe the share of fraud value detected here.'
+  source:
+    pages:
+    - 232
+    verbatim: true
+symbolPages:
+- page: 233
+  title: Recall
+  text: " Recall\n\n   M05 | Symbols and terms (1/2)\n\n\n   Symbol or term      \
+    \                           Meaning in this example\n   TP                   \
+    \                          Number of actual frauds caught by the detector.\n \
+    \  FN                                             Number of actual frauds missed\
+    \ by the detector.\n   F = TP + FN                                    Total fraud\
+    \ events in the batch, here 20; F is a count, not an\n                       \
+    \                           F-score.\n   cF N                                \
+    \           Unrecovered loss for each missed fraud, assumed to be US$2,000.\n\
+    \   Lmiss                                          Residual loss attributable\
+    \ to missed frauds under the stated\n                                        \
+    \          assumption, in dollars.\n   Recall                                \
+    \         Share of all actual frauds that were identified, also called sensitivity\n\
+    \                                                  or TPR."
+  paragraphs:
+  - Recall
+  - M05 | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example TP Number of actual frauds caught by the
+    detector. FN Number of actual frauds missed by the detector. F = TP + FN Total
+    fraud events in the batch, here 20; F is a count, not an F-score. cF N Unrecovered
+    loss for each missed fraud, assumed to be US$2,000. Lmiss Residual loss attributable
+    to missed frauds under the stated assumption, in dollars. Recall Share of all
+    actual frauds that were identified, also called sensitivity or TPR.
+  source: &id001
+    pages:
+    - 233
+    verbatim: true
+- page: 234
+  title: Recall
+  text: " Recall\n\n   M05 | Symbols and terms (2/2)\n\n\n   Symbol or term      \
+    \                           Meaning in this example\n   Residual             \
+    \                          What remains after detection or control; here it refers\
+    \ only to loss\n                                                  from missed\
+    \ events.\n   Value capture                                  Share of fraud dollars\
+    \ identified; generally different from event recall\n                        \
+    \                          when fraud amounts differ."
+  paragraphs:
+  - Recall
+  - M05 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Residual What remains after detection or
+    control; here it refers only to loss from missed events. Value capture Share of
+    fraud dollars identified; generally different from event recall when fraud amounts
+    differ.
+  source: &id002
+    pages:
+    - 234
+    verbatim: true
+solutionPages:
+- page: 236
+  title: Recall
+  text: " Recall\n\n   M05 | Worked solution — Put a Price on Missed Fraud\n\n1. Recall:\
+    \ A = 15/20 = 75%; B = 8/20 = 40%.\n2. Frauds missed: A = 20 − 15 = 5; B = 20\
+    \ − 8 = 12.\n3. Residual loss:\n                                          A =\
+    \ 5(2,000) = $10,000,   B = 12(2,000) = $24,000.\n4. Difference: 24,000 − 10,000\
+    \ = $14,000."
+  paragraphs:
+  - Recall
+  - M05 | Worked solution — Put a Price on Missed Fraud
+  - '1. Recall: A = 15/20 = 75%; B = 8/20 = 40%. 2. Frauds missed: A = 20 − 15 = 5;
+    B = 20 − 8 = 12. 3. Residual loss: A = 5(2,000) = $10,000, B = 12(2,000) = $24,000.
+    4. Difference: 24,000 − 10,000 = $14,000.'
+  source:
+    pages:
+    - 236
+    verbatim: true
+interpretationPages:
+- page: 237
+  title: Recall
+  text: " Recall\n\n   M05 | Interpretation\n\n What the answer means\n A captures\
+    \ 75% of fraud events and leaves $14,000 less modeled missed-fraud loss than\n\
+    \ B. This is event recall; it equals value capture here only because fraud losses\
+    \ are assumed equal.\n False alerts, review costs, and intervention effectiveness\
+    \ are still needed for the overall decision.\n Why these steps matter\n A higher\
+    \ recall can reduce the number of missed frauds, but it does not describe the\
+    \ cost of the\n extra flags. The modeled US$14,000 difference is a comparison\
+    \ of missed-fraud loss only, not\n a complete profit comparison."
+  paragraphs:
+  - Recall
+  - M05 | Interpretation
+  - What the answer means A captures 75% of fraud events and leaves $14,000 less modeled
+    missed-fraud loss than B. This is event recall; it equals value capture here only
+    because fraud losses are assumed equal. False alerts, review costs, and intervention
+    effectiveness are still needed for the overall decision. Why these steps matter
+    A higher recall can reduce the number of missed frauds, but it does not describe
+    the cost of the extra flags. The modeled US$14,000 difference is a comparison
+    of missed-fraud loss only, not a complete profit comparison.
+  source:
+    pages:
+    - 237
+    verbatim: true
+source:
+  pages:
+  - 232
+  - 233
+  - 234
+  - 235
+  - 236
+  - 237
+  verbatim: true
+readAloud:
+- 'Divide caught frauds by all actual frauds. Subtract the caught count from the total
+  to find misses. Multiply misses by the assumed loss per miss. This is event recall:
+  each fraud counts once. Because the example assigns every fraud the same US$2,000
+  loss, the capture fractions also describe the share of fraud value detected here.'
+siteAuthored: false
+givens:
+  fraud: 20
+  caughtA: 15
+  caughtB: 8
+  loss: 2000
+labels: &id003
+  fraud: Actual frauds in the batch
+  caughtA: Frauds caught by A
+  caughtB: Frauds caught by B
+  loss: Loss per missed fraud ($)
+deckSolution:
+  recallA: 0.75
+  recallB: 0.4
+  missedA: 5
+  missedB: 12
+  lossA: 10000
+  lossB: 24000
+  saving: 14000
+latex:
+- Recall=\frac{TP}{TP+FN},\quad ResidualLoss=FN\times c_{FN}
+- FN=F-TP
+symbols:
+- symbol: TP
+  meaning: Number of actual frauds caught by the detector.
+  source: *id001
+- symbol: FN
+  meaning: Number of actual frauds missed by the detector.
+  source: *id001
+- symbol: F = TP + FN
+  meaning: Total fraud events in the batch, here 20; F is a count, not an F-score.
+  source: *id001
+- symbol: cF N
+  meaning: Unrecovered loss for each missed fraud, assumed to be US$2,000.
+  source: *id001
+- symbol: Lmiss
+  meaning: Residual loss attributable to missed frauds under the stated assumption,
+    in dollars.
+  source: *id001
+- symbol: Recall
+  meaning: Share of all actual frauds that were identified, also called sensitivity
+    or TPR.
+  source: *id001
+- symbol: Residual
+  meaning: What remains after detection or control; here it refers only to loss from
+    missed events.
+  source: *id002
+- symbol: Value capture
+  meaning: Share of fraud dollars identified; generally different from event recall
+    when fraud amounts differ.
+  source: *id002
+steps:
+- id: recallA
+  title: Detector A recall
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide frauds caught by A by all actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Divide frauds caught by A by all actual frauds.
+- id: recallB
+  title: Detector B recall
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide frauds caught by B by all actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Divide frauds caught by B by all actual frauds.
+- id: missedA
+  title: Frauds missed by A
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Subtract A’s caught frauds from actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Subtract A’s caught frauds from actual frauds.
+- id: missedB
+  title: Frauds missed by B
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Subtract B’s caught frauds from actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Subtract B’s caught frauds from actual frauds.
+- id: lossA
+  title: Residual loss with A
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply frauds missed by A by loss per missed fraud.
+  mistakes:
+  - pattern: recompute
+    message: Multiply frauds missed by A by loss per missed fraud.
+- id: lossB
+  title: Residual loss with B
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Multiply frauds missed by B by loss per missed fraud.
+  mistakes:
+  - pattern: recompute
+    message: Multiply frauds missed by B by loss per missed fraud.
+- id: saving
+  title: Reduction in residual loss using A
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Subtract A’s residual loss from B’s.
+  mistakes:
+  - pattern: recompute
+    message: Subtract A’s residual loss from B’s.
+learning:
+  title: Put a Price on Missed Fraud
+  scenario: Two detectors catch different numbers of frauds in the same batch. Each
+    missed fraud has the same assumed unrecovered loss.
+  task: Find each detector’s recall, missed-fraud count and residual loss, then compare
+    the losses.
+  interpretation: Event recall equals value capture here only because every fraud
+    has the same loss. False alerts, review expense and intervention effectiveness
+    are needed for a complete policy comparison.
+  summary: 'Residual fraud loss: A {lossA}, B {lossB}. A’s reduction in missed-fraud
+    loss: {saving}.'
+  labels: *id003
+  steps:
+    recallA:
+      title: Detector A recall
+      hints: *id004
+      unit: proportion
+    recallB:
+      title: Detector B recall
+      hints: *id005
+      unit: proportion
+    missedA:
+      title: Frauds missed by A
+      hints: *id006
+      unit: ''
+    missedB:
+      title: Frauds missed by B
+      hints: *id007
+      unit: ''
+    lossA:
+      title: Residual loss with A
+      hints: *id008
+      unit: $
+    lossB:
+      title: Residual loss with B
+      hints: *id009
+      unit: $
+    saving:
+      title: Reduction in residual loss using A
+      hints: *id010
+      unit: $
+  readAloud:
+  - 'Divide caught frauds by all actual frauds. Subtract the caught count from the
+    total to find misses. Multiply misses by the assumed loss per miss. This is event
+    recall: each fraud counts once. Because the example assigns every fraud the same
+    US$2,000 loss, the capture fractions also describe the share of fraud value detected
+    here.'
+  workedExplanation:
+  - 'A captures 75% of fraud events and leaves $14,000 less modeled missed-fraud loss
+    than B. This is event recall; it equals value capture here only because fraud
+    losses are assumed equal. False alerts, review costs, and intervention effectiveness
+    are still needed for the overall decision. '
+  - A higher recall can reduce the number of missed frauds, but it does not describe
+    the cost of the extra flags. The modeled US$14,000 difference is a comparison
+    of missed-fraud loss only, not a complete profit comparison.
+  workedArithmetic:
+  - 'Recall: A = 15/20 = 75%; B = 8/20 = 40%.'
+  - 'Missed frauds: A = 20 − 15 = 5; B = 20 − 8 = 12.'
+  - 'Residual losses: A = 5 × $2,000 = $10,000; B = 12 × $2,000 = $24,000. Difference
+    = $24,000 − $10,000 = $14,000.'
+formulaSource:
+  pages:
+  - 232
+  verbatim: false
+  reviewed: true

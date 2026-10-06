@@ -1,0 +1,344 @@
+id: A05
+title: Rank Unusual Payments
+minutes: 6
+kind: algorithm
+parent: isolation-forest
+question: "Three transactions have the following isolation path lengths across three\
+  \ fitted trees:\n                                                              For\
+  \ this exercise, the supplied normalization\n   Transaction                    \
+  \     Tree     Tree   Tree\n                                          1        2\
+  \      3\n                                                              constant\
+  \ is c = 4. Calculate the anomaly score\n                                      \
+  \                        using:\n   A                                        2 \
+  \     3      1\n                                                               \
+  \    s = 2−h̄/c ,        h̄ = average path length.\n   B                       \
+  \                 4      5      3\n   C                                        6\
+  \      5      7   1. Calculate each average path length and score.\n           \
+  \                                                   2. Rank the transactions. Only\
+  \ one can be\n                                                                 investigated\
+  \ now.\n                                                              3. Does a\
+  \ score near 0.71 mean a 71% probability\n                                     \
+  \                            of fraud?\n                                       \
+  \                       Use 2−0.5 = 0.7071 and 2−1.5 = 0.3536."
+questionPages:
+- page: 72
+  title: Isolation Forest
+  text: " Isolation Forest\n\n   A05 | Class problem | 6 minutes — Rank Unusual Payments\n\
+    \n Three transactions have the following isolation path lengths across three fitted\
+    \ trees:\n                                                              For this\
+    \ exercise, the supplied normalization\n   Transaction                       \
+    \  Tree     Tree   Tree\n                                          1        2\
+    \      3\n                                                              constant\
+    \ is c = 4. Calculate the anomaly score\n                                    \
+    \                          using:\n   A                                      \
+    \  2      3      1\n                                                         \
+    \          s = 2−h̄/c ,        h̄ = average path length.\n   B               \
+    \                         4      5      3\n   C                              \
+    \          6      5      7   1. Calculate each average path length and score.\n\
+    \                                                              2. Rank the transactions.\
+    \ Only one can be\n                                                          \
+    \       investigated now.\n                                                  \
+    \            3. Does a score near 0.71 mean a 71% probability\n              \
+    \                                                   of fraud?\n              \
+    \                                                Use 2−0.5 = 0.7071 and 2−1.5\
+    \ = 0.3536."
+  paragraphs:
+  - Isolation Forest
+  - A05 | Class problem | 6 minutes — Rank Unusual Payments
+  - 'Three transactions have the following isolation path lengths across three fitted
+    trees: For this exercise, the supplied normalization Transaction Tree Tree Tree
+    1 2 3 constant is c = 4. Calculate the anomaly score using: A 2 3 1 s = 2−h̄/c
+    , h̄ = average path length. B 4 5 3 C 6 5 7 1. Calculate each average path length
+    and score. 2. Rank the transactions. Only one can be investigated now. 3. Does
+    a score near 0.71 mean a 71% probability of fraud? Use 2−0.5 = 0.7071 and 2−1.5
+    = 0.3536.'
+  source:
+    pages:
+    - 72
+    verbatim: true
+formulaPages:
+- page: 69
+  title: Isolation Forest
+  text: " Isolation Forest\n\n   A05 | Formula explained (1/1)\n\n Question: Which\
+    \ payment was easiest for the trees to separate from other payments?\n       \
+    \                           h1 + h2 + · · · + hB\n                           \
+    \  h̄ =                      ,   s = 2−h̄/c .\n                              \
+    \             B\n Read it aloud: Average the isolation path lengths, divide by\
+    \ the supplied normalization\n constant, negate that ratio, and use it as the\
+    \ exponent of 2.\n A shorter average path produces a larger score with this convention.\
+    \ Rank scores from largest to\n smallest.\n The exercise supplies c = 4 so students\
+    \ can focus on scoring, not on calculating the sample-size\n adjustment."
+  paragraphs:
+  - Isolation Forest
+  - A05 | Formula explained (1/1)
+  - 'Question: Which payment was easiest for the trees to separate from other payments?
+    h1 + h2 + · · · + hB h̄ = , s = 2−h̄/c . B Read it aloud: Average the isolation
+    path lengths, divide by the supplied normalization constant, negate that ratio,
+    and use it as the exponent of 2. A shorter average path produces a larger score
+    with this convention. Rank scores from largest to smallest. The exercise supplies
+    c = 4 so students can focus on scoring, not on calculating the sample-size adjustment.'
+  source:
+    pages:
+    - 69
+    verbatim: true
+symbolPages:
+- page: 70
+  title: Isolation Forest
+  text: " Isolation Forest\n\n   A05 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   Isolation path       \
+    \                    The sequence of splits followed for an observation; its length\
+    \ counts\n                                            the steps used to isolate\
+    \ it.\n   hb                                       Path length for this transaction\
+    \ in tree b.\n   B, b                                     Number of trees, here\
+    \ 3, and the index of an individual tree.\n   h̄                             \
+    \          Mean path length; the bar means average, not a new type of tree.\n\
+    \   c                                        Positive normalization constant supplied\
+    \ as 4; scales path length for\n                                            comparison.\n\
+    \   s                                        Anomaly score with higher meaning\
+    \ more unusual; it is not fraud\n                                            probability."
+  paragraphs:
+  - Isolation Forest
+  - A05 | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example Isolation path The sequence of splits followed
+    for an observation; its length counts the steps used to isolate it. hb Path length
+    for this transaction in tree b. B, b Number of trees, here 3, and the index of
+    an individual tree. h̄ Mean path length; the bar means average, not a new type
+    of tree. c Positive normalization constant supplied as 4; scales path length for
+    comparison. s Anomaly score with higher meaning more unusual; it is not fraud
+    probability.
+  source: &id001
+    pages:
+    - 70
+    verbatim: true
+- page: 71
+  title: Isolation Forest
+  text: " Isolation Forest\n\n   A05 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   2u                   \
+    \                    Two raised to exponent u; a negative exponent produces a\n\
+    \                                            reciprocal, such as 2−1 = 1/2.\n\
+    \   Rank                                     Position after sorting scores. Rank\
+    \ 1 is the transaction reviewed first\n                                      \
+    \      here.\n   Anomaly                                  An observation that\
+    \ differs from the reference pattern; it can be\n                            \
+    \                legitimate."
+  paragraphs:
+  - Isolation Forest
+  - A05 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example 2u Two raised to exponent u; a negative
+    exponent produces a reciprocal, such as 2−1 = 1/2. Rank Position after sorting
+    scores. Rank 1 is the transaction reviewed first here. Anomaly An observation
+    that differs from the reference pattern; it can be legitimate.
+  source: &id002
+    pages:
+    - 71
+    verbatim: true
+solutionPages:
+- page: 73
+  title: Isolation Forest
+  text: " Isolation Forest\n\n   A05 | Worked solution — Rank Unusual Payments\n\n\
+    1. Average the path lengths:\n                       h̄A = (2 + 3 + 1)/3 = 2,\
+    \               h̄B = 4,     h̄C = 6.\n2. Normalize and calculate scores:\n  \
+    \ Transaction                              Average path Calculation          \
+    \               Score\n   A                                                  \
+    \ 2 2−2/4                               0.7071\n                             \
+    \                             −4/4\n   B                                     \
+    \              4 2                                   0.5000\n                \
+    \                                          −6/4\n   C                        \
+    \                           6 2                                   0.3536\n\n3.\
+    \ Rank highest first: A, B, C. Send A to the available investigator."
+  paragraphs:
+  - Isolation Forest
+  - A05 | Worked solution — Rank Unusual Payments
+  - '1. Average the path lengths: h̄A = (2 + 3 + 1)/3 = 2, h̄B = 4, h̄C = 6. 2. Normalize
+    and calculate scores: Transaction Average path Calculation Score A 2 2−2/4 0.7071
+    −4/4 B 4 2 0.5000 −6/4 C 6 2 0.3536'
+  - '3. Rank highest first: A, B, C. Send A to the available investigator.'
+  source:
+    pages:
+    - 73
+    verbatim: true
+interpretationPages:
+- page: 74
+  title: Isolation Forest
+  text: " Isolation Forest\n\n   A05 | Interpretation\n\n What the answer means\n\
+    \ A was isolated fastest and receives the highest anomaly score. 0.7071 is not\
+    \ a 70.71% fraud\n probability. A large legitimate payment can also be unusual;\
+    \ investigation supplies the missing\n evidence.\n Why these steps matter\n Normalization\
+    \ makes the path length a comparable score. It does not add fraud labels. The\n\
+    \ investor or merchant’s intent is absent from this calculation; the available\
+    \ reviewer gets the\n most unusual case, not a mathematically proven fraud."
+  paragraphs:
+  - Isolation Forest
+  - A05 | Interpretation
+  - What the answer means A was isolated fastest and receives the highest anomaly
+    score. 0.7071 is not a 70.71% fraud probability. A large legitimate payment can
+    also be unusual; investigation supplies the missing evidence. Why these steps
+    matter Normalization makes the path length a comparable score. It does not add
+    fraud labels. The investor or merchant’s intent is absent from this calculation;
+    the available reviewer gets the most unusual case, not a mathematically proven
+    fraud.
+  source:
+    pages:
+    - 74
+    verbatim: true
+source:
+  pages:
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  verbatim: true
+readAloud:
+- Average the isolation path lengths, divide by the supplied normalization constant,
+  negate that ratio, and use it as the exponent of 2. A shorter average path produces
+  a larger score with this convention. Rank scores from largest to smallest. The exercise
+  supplies c = 4 so students can focus on scoring, not on calculating the sample-size
+  adjustment.
+siteAuthored: false
+givens:
+  paths:
+  - 2
+  - 3
+  - 1
+  - 4
+  - 5
+  - 3
+  - 6
+  - 5
+  - 7
+  c: 4
+labels: &id003
+  paths: Path lengths (three for A, then B, then C)
+  c: Path-length normalization constant
+deckSolution:
+  means:
+  - 2
+  - 4
+  - 6
+  scores:
+  - 0.7071
+  - 0.5
+  - 0.3536
+  top: 1
+latex:
+- \bar h=\frac{1}{T}\sum_t h_t,\quad s=2^{-\bar h/c}
+symbols:
+- symbol: Isolation path
+  meaning: The sequence of splits followed for an observation; its length counts the
+    steps used to isolate it.
+  source: *id001
+- symbol: hb
+  meaning: Path length for this transaction in tree b.
+  source: *id001
+- symbol: B, b
+  meaning: Number of trees, here 3, and the index of an individual tree.
+  source: *id001
+- symbol: h̄
+  meaning: Mean path length; the bar means average, not a new type of tree.
+  source: *id001
+- symbol: c
+  meaning: Positive normalization constant supplied as 4; scales path length for comparison.
+  source: *id001
+- symbol: s
+  meaning: Anomaly score with higher meaning more unusual; it is not fraud probability.
+  source: *id001
+- symbol: 2u
+  meaning: Two raised to exponent u; a negative exponent produces a reciprocal, such
+    as 2−1 = 1/2.
+  source: *id002
+- symbol: Rank
+  meaning: Position after sorting scores. Rank 1 is the transaction reviewed first
+    here.
+  source: *id002
+- symbol: Anomaly
+  meaning: An observation that differs from the reference pattern; it can be legitimate.
+  source: *id002
+steps:
+- id: means
+  title: Average path lengths for A, B and C
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Average each consecutive group of three path lengths.
+  mistakes:
+  - pattern: recompute
+    message: Average each consecutive group of three path lengths.
+- id: scores
+  title: Anomaly scores for A, B and C
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - For each mean h, calculate 2^(−h / c).
+  mistakes:
+  - pattern: recompute
+    message: For each mean h, calculate 2^(−h / c).
+- id: top
+  title: Highest-scoring transaction (A=1, B=2, C=3)
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - The shortest average path gives the largest score.
+  mistakes:
+  - pattern: recompute
+    message: The shortest average path gives the largest score.
+learning:
+  title: Rank Unusual Payments
+  scenario: Three transactions have isolation path lengths from three fitted trees.
+    The first three values belong to transaction A, the next three to B, and the last
+    three to C.
+  task: Average each transaction’s path lengths and calculate score = 2^(−average
+    path / normalization constant). Rank the transactions for a single investigation
+    slot.
+  interpretation: Short paths produce high anomaly scores under this convention. A
+    high score shows unusual behavior; it does not establish fraud or give a fraud
+    probability.
+  summary: 'Anomaly scores for A, B and C: {scores}. Highest-scoring transaction number:
+    {top}.'
+  labels: *id003
+  steps:
+    means:
+      title: Average path lengths for A, B and C
+      hints: *id004
+      unit: ''
+    scores:
+      title: Anomaly scores for A, B and C
+      hints: *id005
+      unit: ''
+    top:
+      title: Highest-scoring transaction (A=1, B=2, C=3)
+      hints: *id006
+      unit: ''
+  readAloud:
+  - Average the isolation path lengths, divide by the supplied normalization constant,
+    negate that ratio, and use it as the exponent of 2. A shorter average path produces
+    a larger score with this convention. Rank scores from largest to smallest. The
+    exercise supplies c = 4 so students can focus on scoring, not on calculating the
+    sample-size adjustment.
+  workedExplanation:
+  - 'A was isolated fastest and receives the highest anomaly score. 0.7071 is not
+    a 70.71% fraud probability. A large legitimate payment can also be unusual; investigation
+    supplies the missing evidence. '
+  - Normalization makes the path length a comparable score. It does not add fraud
+    labels. The investor or merchant’s intent is absent from this calculation; the
+    available reviewer gets the most unusual case, not a mathematically proven fraud.
+  workedArithmetic:
+  - 'Average paths: A = (2 + 3 + 1) / 3 = 2; B = (4 + 5 + 3) / 3 = 4; C = (6 + 5 +
+    7) / 3 = 6.'
+  - 'Scores: A = 2^(−2/4) ≈ 0.7071; B = 2^(−4/4) = 0.5; C = 2^(−6/4) ≈ 0.3536.'
+  - 0.7071 > 0.5 > 0.3536, so the one available investigation slot goes to A.
+formulaSource:
+  pages:
+  - 69
+  verbatim: false
+  reviewed: true

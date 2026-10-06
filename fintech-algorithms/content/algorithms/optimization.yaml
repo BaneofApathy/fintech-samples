@@ -1,0 +1,366 @@
+slug: optimization
+number: 10
+title: Constrained Optimization
+group: Choose an action
+oneLine: Choose a portfolio that meets return, risk, and allocation constraints.
+baseline: Equal-weight portfolio or an existing policy allocation.
+primerSlides:
+- page: 141
+  title: 'Primer 10A: Constrained optimization – definition and intuition'
+  text: " Primer 10A: Constrained optimization – definition and intuition\n\n\n  \
+    \ Financial problem: Given forecasts, costs, and limits, what feasible allocation\
+    \ or action best meets the\n   financial objective?\n\n\n\n Definition       \
+    \                                                                            \
+    \        Plain-English intuition\n Constrained optimization selects decision variables\
+    \ to                                               Prediction estimates what may\
+    \ happen.\n maximize or minimize an explicit objective while satisfying      \
+    \                                    Optimization chooses what to do, subject\
+    \ to what is\n equality, inequality, capacity, policy, and regulatory        \
+    \                                       allowed.\n constraints. It is decision\
+    \ mathematics, not inherently\n machine learning.\n                          \
+    \                                                                            Anchor\
+    \ idea\n                                                                     \
+    \                                 minw f (w) subject to gi (w) ≤ 0 and hj (w)\
+    \ = 0.\n Input → output\n Input: An objective, decision variables, estimated parameters,\
+    \ and a\n complete set of hard and soft constraints.\n Output: A feasible allocation,\
+    \ schedule, route, or policy – plus\n diagnostics about binding constraints and\
+    \ sensitivity.\n What it learns: Nothing unless parameters come from learned models.\
+    \ The optimizer faithfully solves the problem that was specified – including any\
+    \ bad assumptions."
+  paragraphs:
+  - 'Primer 10A: Constrained optimization – definition and intuition'
+  - 'Financial problem: Given forecasts, costs, and limits, what feasible allocation
+    or action best meets the financial objective?'
+  - 'Definition Plain-English intuition Constrained optimization selects decision
+    variables to Prediction estimates what may happen. maximize or minimize an explicit
+    objective while satisfying Optimization chooses what to do, subject to what is
+    equality, inequality, capacity, policy, and regulatory allowed. constraints. It
+    is decision mathematics, not inherently machine learning. Anchor idea minw f (w)
+    subject to gi (w) ≤ 0 and hj (w) = 0. Input → output Input: An objective, decision
+    variables, estimated parameters, and a complete set of hard and soft constraints.
+    Output: A feasible allocation, schedule, route, or policy – plus diagnostics about
+    binding constraints and sensitivity. What it learns: Nothing unless parameters
+    come from learned models. The optimizer faithfully solves the problem that was
+    specified – including any bad assumptions.'
+  source:
+    pages:
+    - 141
+    verbatim: true
+- page: 142
+  title: 'Primer 10B: Constrained optimization – worked fintech example'
+  text: " Primer 10B: Constrained optimization – worked fintech example\n\n\n Portfolio\
+    \ allocation under real limits\n A portfolio team wants the best risk-return tradeoff\
+    \ while limiting single-asset exposure, sector\n concentration, turnover, and\
+    \ liquidity risk.\n\n\n From data to action                                  \
+    \                       Comparison point\n1. Define weights as decision variables\
+    \ and specify the risk / return        Baseline: Equal weighting, current\n  \
+    \                                                                           allocation,\
+    \ or a simple priority rule.\n   objective.\n2. Add constraints: weights sum to\
+    \ one, long-only, per-asset cap,\n   turnover budget, and liquidity limits.\n\
+    \                                                                            \
+    \ Control to teach\n                                                         \
+    \                    Watch for: False precision in inputs,\n3. Solve and compare\
+    \ with equal-weight and current-portfolio                 omitted constraints,\
+    \ infeasible problems,\n   baselines.                                        \
+    \                        unstable optima, and objectives that ignore\n       \
+    \                                                                      customer\
+    \ or regulatory outcomes.\n4. Stress expected returns and covariance; inspect\
+    \ which constraints\n   bind and how unstable the solution is."
+  paragraphs:
+  - 'Primer 10B: Constrained optimization – worked fintech example'
+  - Portfolio allocation under real limits A portfolio team wants the best risk-return
+    tradeoff while limiting single-asset exposure, sector concentration, turnover,
+    and liquidity risk.
+  - 'From data to action Comparison point 1. Define weights as decision variables
+    and specify the risk / return Baseline: Equal weighting, current allocation, or
+    a simple priority rule. objective. 2. Add constraints: weights sum to one, long-only,
+    per-asset cap, turnover budget, and liquidity limits. Control to teach Watch for:
+    False precision in inputs, 3. Solve and compare with equal-weight and current-portfolio
+    omitted constraints, infeasible problems, baselines. unstable optima, and objectives
+    that ignore customer or regulatory outcomes. 4. Stress expected returns and covariance;
+    inspect which constraints bind and how unstable the solution is.'
+  source:
+    pages:
+    - 142
+    verbatim: true
+- page: 143
+  title: 'Primer 10C: Constrained optimization – when to use it, and when not to'
+  text: " Primer 10C: Constrained optimization – when to use it, and when not\n to\n\
+    \n\n Use it when                                                          Do not\
+    \ use it when\n▶ The action variables and objective are explicit.            \
+    \        ▶ The question is prediction rather than allocation.\n▶ Constraints are\
+    \ known and auditable.                                ▶ Key constraints are political,\
+    \ ethical, or\n▶ Choosing among feasible actions is the real                 \
+    \          operational but remain unstated.\n  problem.                      \
+    \                                      ▶ Input estimates are too unstable for\
+    \ a point\n▶ Sensitivity and scenario analysis can be performed.             \
+    \      optimum.\n\n▶ The organization can separate hard policy               \
+    \            ▶ The objective rewards the wrong proxy.\n  constraints from preferences.\
+    \                                       ▶ A simple rule already achieves the business\
+    \ need\n                                                                     \
+    \   with less model risk.\n\n Better fit in those cases\n Use prediction models\
+    \ to estimate inputs, robust / stochastic optimization under uncertainty, or rules\
+    \ when the decision logic is simple\n and fixed."
+  paragraphs:
+  - 'Primer 10C: Constrained optimization – when to use it, and when not to'
+  - Use it when Do not use it when ▶ The action variables and objective are explicit.
+    ▶ The question is prediction rather than allocation. ▶ Constraints are known and
+    auditable. ▶ Key constraints are political, ethical, or ▶ Choosing among feasible
+    actions is the real operational but remain unstated. problem. ▶ Input estimates
+    are too unstable for a point ▶ Sensitivity and scenario analysis can be performed.
+    optimum.
+  - ▶ The organization can separate hard policy ▶ The objective rewards the wrong
+    proxy. constraints from preferences. ▶ A simple rule already achieves the business
+    need with less model risk.
+  - Better fit in those cases Use prediction models to estimate inputs, robust / stochastic
+    optimization under uncertainty, or rules when the decision logic is simple and
+    fixed.
+  source:
+    pages:
+    - 143
+    verbatim: true
+- page: 144
+  title: 'Primer 10D: Constrained optimization – fintech problem map'
+  text: " Primer 10D: Constrained optimization – fintech problem map\n\n\n\n Common\
+    \ fintech problems                                                  Operational\
+    \ profile\n▶ Portfolio construction                    ▶ Collateral optimization\
+    \     ▶ Latency: low to high by problem size\n▶ Liquidity and cash allocation\
+    \ ▶ Credit-line allocation                  ▶ Explainability: high if objective\
+    \ is clear\n▶ Capital allocation                        ▶ Treasury funding mix\
+    \        ▶ Data need: parameter estimates +\n▶ Payment routing               \
+    \            ▶ Workforce / review-queue      constraints\n                   \
+    \                           scheduling                  ▶ Monitor: feasibility,\
+    \ sensitivity,\n                                                             \
+    \               realized objective\n\n\n\n   Student defense question: Can the\
+    \ student state the objective and every material constraint,\n   then show how\
+    \ sensitive the answer is to uncertain inputs?"
+  paragraphs:
+  - 'Primer 10D: Constrained optimization – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Portfolio construction ▶ Collateral
+    optimization ▶ Latency: low to high by problem size ▶ Liquidity and cash allocation
+    ▶ Credit-line allocation ▶ Explainability: high if objective is clear ▶ Capital
+    allocation ▶ Treasury funding mix ▶ Data need: parameter estimates + ▶ Payment
+    routing ▶ Workforce / review-queue constraints scheduling ▶ Monitor: feasibility,
+    sensitivity, realized objective'
+  - 'Student defense question: Can the student state the objective and every material
+    constraint, then show how sensitive the answer is to uncertain inputs?'
+  source:
+    pages:
+    - 144
+    verbatim: true
+definition: Constrained optimization selects decision variables to maximize or minimize
+  an explicit objective while satisfying equality, inequality, capacity, policy, and
+  regulatory constraints. It is decision mathematics, not inherently machine learning.
+intuition: Prediction estimates what may happen. Optimization chooses what to do,
+  subject to what is allowed.   Anchor idea minw f (w) subject to gi (w) ≤ 0 and hj
+  (w) = 0.
+useWhen:
+- The action variables and objective are explicit.
+- Constraints are known and auditable.
+- Choosing among feasible actions is the real problem.
+- Sensitivity and scenario analysis can be performed.
+- The organization can separate hard policy constraints from preferences.
+avoidWhen:
+- The question is prediction rather than allocation.
+- Key constraints are political, ethical, or operational but remain unstated.
+- Input estimates are too unstable for a point optimum.
+- The objective rewards the wrong proxy.
+- A simple rule already achieves the business need with less model risk.
+deepDive:
+  problem:
+  - page: 662
+    title: 'Financial problem: how should a portfolio be allocated?'
+    text: " Financial problem: how should a portfolio be allocated?\n\n\n\n    Financial\
+      \ problem\n    A wealth platform must allocate $1 million across four assets\
+      \ while meeting a target return,\n    limiting concentration, and controlling\
+      \ portfolio volatility.\n\n\n This is an action problem\n Prediction estimates\
+      \ returns and risk. Optimization selects weights subject to an objective and\n\
+      \ constraints.\n\n   Decision to make: Choose a feasible allocation; do not\
+      \ confuse a mathematically optimal\n   solution with a reliable investment outcome."
+    paragraphs:
+    - 'Financial problem: how should a portfolio be allocated?'
+    - Financial problem A wealth platform must allocate $1 million across four assets
+      while meeting a target return, limiting concentration, and controlling portfolio
+      volatility.
+    - This is an action problem Prediction estimates returns and risk. Optimization
+      selects weights subject to an objective and constraints.
+    - 'Decision to make: Choose a feasible allocation; do not confuse a mathematically
+      optimal solution with a reliable investment outcome.'
+    source:
+      pages:
+      - 662
+      verbatim: true
+  method:
+  - page: 663
+    title: 'Method: mean-variance optimization'
+    text: " Method: mean-variance optimization\n\n\n Let w be portfolio weights, µ\
+      \ expected returns, and Σ the covariance matrix.\n\n                       \
+      \                                              min    w⊤ Σw\n              \
+      \                                                        w\n\n subject to:\n\
+      \                                                       1⊤ w = 1,   µ⊤ w ≥ rtarget\
+      \ ,   0 ≤ wi ≤ ui\n\n\n\n Objective                                        \
+      \                           Practical constraints\n Minimize estimated variance\
+      \ for a required         No shorting, position limits, turnover limits,\n return.\
+      \                                            sector caps, liquidity limits,\
+      \ and transaction\n                                                    costs.\n\
+      \ Baseline: Equal-weight portfolio or an existing policy allocation."
+    paragraphs:
+    - 'Method: mean-variance optimization'
+    - Let w be portfolio weights, µ expected returns, and Σ the covariance matrix.
+    - min w⊤ Σw w
+    - 'subject to: 1⊤ w = 1, µ⊤ w ≥ rtarget , 0 ≤ wi ≤ ui'
+    - 'Objective Practical constraints Minimize estimated variance for a required
+      No shorting, position limits, turnover limits, return. sector caps, liquidity
+      limits, and transaction costs. Baseline: Equal-weight portfolio or an existing
+      policy allocation.'
+    source:
+      pages:
+      - 663
+      verbatim: true
+  code:
+  - page: 664
+    title: 'Working example: constrained minimum variance'
+    text: " Working example: constrained minimum variance\n\n\n\n  import numpy as\
+      \ np\n  from scipy.optimize import minimize                                \
+      \          Modify\n  mu = np.array([.06, .08, .10, .04])\n  Sigma = np.array([\
+      \                                                          ▶ Raise target return.\n\
+      \   [.040,.012,.018,.006], [.012,.055,.020,.008],\n   [.018,.020,.090,.010],\
+      \ [.006,.008,.010,.025]])                             ▶ Add a 20% asset cap.\n\
+      \  def variance(w): return w @ Sigma @ w\n  constraints = [                \
+      \                                             ▶ Add transaction cost.\n   {\"\
+      type\":\"eq\", \"fun\": lambda w: w.sum()-1},\n\n  ]\n   {\"type\":\"ineq\"\
+      , \"fun\": lambda w: w @ mu - .07}                             ▶ Perturb expected\
+      \ returns.\n  bounds = [(0, .50)] * 4\n  x0 = np.repeat(.25, 4)\n  result =\
+      \ minimize(variance, x0, method=\"SLSQP\",                              Primary\
+      \ metric:\n  w = result.x\n                    bounds=bounds, constraints=constraints)\n\
+      \                                                                          \
+      \     Out-of-sample risk, return,\n  print(\"weights\", w.round(3))\n  print(\"\
+      return\", round(w @ mu, 4))                                            turnover,\
+      \ and constraint\n  print(\"volatility\", round(np.sqrt(variance(w)), 4))\n\
+      \                                                                          \
+      \     violations."
+    paragraphs:
+    - 'Working example: constrained minimum variance'
+    - 'import numpy as np from scipy.optimize import minimize Modify mu = np.array([.06,
+      .08, .10, .04]) Sigma = np.array([ ▶ Raise target return. [.040,.012,.018,.006],
+      [.012,.055,.020,.008], [.018,.020,.090,.010], [.006,.008,.010,.025]]) ▶ Add
+      a 20% asset cap. def variance(w): return w @ Sigma @ w constraints = [ ▶ Add
+      transaction cost. {"type":"eq", "fun": lambda w: w.sum()-1},'
+    - '] {"type":"ineq", "fun": lambda w: w @ mu - .07} ▶ Perturb expected returns.
+      bounds = [(0, .50)] * 4 x0 = np.repeat(.25, 4) result = minimize(variance, x0,
+      method="SLSQP", Primary metric: w = result.x bounds=bounds, constraints=constraints)
+      Out-of-sample risk, return, print("weights", w.round(3)) print("return", round(w
+      @ mu, 4)) turnover, and constraint print("volatility", round(np.sqrt(variance(w)),
+      4)) violations.'
+    source:
+      pages:
+      - 664
+      verbatim: true
+  economics:
+  - page: 665
+    title: The real risk is input sensitivity
+    text: " The real risk is input sensitivity\n\n\n\n▶ Expected returns are estimated\
+      \ with large error.\n▶ Correlations change during stress, often when diversification\
+      \ is needed most.\n▶ Small input changes can create large allocation changes.\n\
+      ▶ Unconstrained solutions may concentrate in assets with optimistic estimates.\n\
+      \n Required sensitivity test\n Perturb each expected return by ±1% and each\
+      \ correlation by ±0.10. Report whether the\n recommended portfolio remains recognizable.\n\
+      \ Required artifact: Equal-weight comparison, sensitivity analysis, turnover\
+      \ estimate, and\n documented constraints."
+    paragraphs:
+    - The real risk is input sensitivity
+    - ▶ Expected returns are estimated with large error. ▶ Correlations change during
+      stress, often when diversification is needed most. ▶ Small input changes can
+      create large allocation changes. ▶ Unconstrained solutions may concentrate in
+      assets with optimistic estimates.
+    - 'Required sensitivity test Perturb each expected return by ±1% and each correlation
+      by ±0.10. Report whether the recommended portfolio remains recognizable. Required
+      artifact: Equal-weight comparison, sensitivity analysis, turnover estimate,
+      and documented constraints.'
+    source:
+      pages:
+      - 665
+      verbatim: true
+  choice:
+  - page: 666
+    title: When constrained optimization fits
+    text: " When constrained optimization fits\n\n\n\n Use it when               \
+      \                            Avoid or constrain it when\n▶ The objective and\
+      \ constraints can be stated.         ▶ Inputs are too unstable or speculative.\n\
+      ▶ Inputs are measured and stress-tested.               ▶ Important constraints\
+      \ are omitted.\n▶ Feasibility matters as much as prediction.           ▶ The\
+      \ objective ignores tail loss or liquidity.\n▶ Stakeholders can review tradeoffs.\
+      \                   ▶ Output is treated as advice without suitability\n    \
+      \                                                     controls.\n\n\n\n   Student\
+      \ defense question: If the “optimal” portfolio changes completely after a 0.5%\
+      \ return\n   revision, what does that say about the decision?"
+    paragraphs:
+    - When constrained optimization fits
+    - Use it when Avoid or constrain it when ▶ The objective and constraints can be
+      stated. ▶ Inputs are too unstable or speculative. ▶ Inputs are measured and
+      stress-tested. ▶ Important constraints are omitted. ▶ Feasibility matters as
+      much as prediction. ▶ The objective ignores tail loss or liquidity. ▶ Stakeholders
+      can review tradeoffs. ▶ Output is treated as advice without suitability controls.
+    - 'Student defense question: If the “optimal” portfolio changes completely after
+      a 0.5% return revision, what does that say about the decision?'
+    source:
+      pages:
+      - 666
+      verbatim: true
+financialProblem: 'A wealth platform must allocate $1 million across four assets while
+  meeting a target return, limiting concentration, and controlling portfolio volatility.
+  This is an action problem Prediction estimates returns and risk. Optimization selects
+  weights subject to an objective and constraints. Decision to make: Choose a feasible
+  allocation; do not confuse a mathematically optimal solution with a reliable investment
+  outcome.'
+defenseQuestions:
+- text: Can the student state the objective and every material constraint, then show
+    how sensitive the answer is to uncertain inputs?
+  source:
+    pages:
+    - 144
+    verbatim: true
+- text: If the “optimal” portfolio changes completely after a 0.5% return revision,
+    what does that say about the decision?
+  source:
+    pages:
+    - 666
+    verbatim: true
+exercises:
+- A10
+measures:
+- sharpe-and-sortino-ratios
+- maximum-drawdown-turnover-tracking-error
+widgets:
+- portfolio-feasible
+lab:
+  dataset: Frozen synthetic asset-return sample
+  task: Constrained portfolio
+  requiredComparison: Equal weight
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 140
+  - 141
+  - 142
+  - 143
+  - 144
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  - 661
+  - 662
+  - 663
+  - 664
+  - 665
+  - 666
+  verbatim: true

@@ -1,0 +1,366 @@
+slug: isolation-forest
+number: 5
+title: Isolation Forest
+group: Discover structure
+oneLine: Rank unusual payments for a limited investigation queue.
+baseline: Simple amount and velocity rules.
+primerSlides:
+- page: 65
+  title: 'Primer 5A: Isolation Forest – definition and intuition'
+  text: " Primer 5A: Isolation Forest – definition and intuition\n\n\n   Financial\
+    \ problem: Which transactions or accounts deserve scarce investigator attention\
+    \ when confirmed fraud\n   labels are incomplete or delayed?\n\n\n\n Definition\
+    \                                                                            \
+    \           Plain-English intuition\n Isolation Forest is an unsupervised anomaly\
+    \ detector. It                                         Common observations need\
+    \ many random cuts\n repeatedly makes random feature splits; observations isolated\
+    \                                    before they stand alone. Unusual observations\
+    \ are\n in unusually short paths receive higher anomaly scores.              \
+    \                            easier to isolate.\n\n Input → output           \
+    \                                                                        Anchor\
+    \ idea\n Input: Numeric or encoded behavioral features representing typical  \
+    \                             Shorter expected path length ⇒ higher anomaly\n\
+    \ activity for the population or peer group.                                 \
+    \                                          score.\n Output: An anomaly score or\
+    \ rank. It is not automatically a fraud\n probability or proof of misconduct.\n\
+    \ What it learns: Deviation from the training distribution, not the intent behind\
+    \ the deviation."
+  paragraphs:
+  - 'Primer 5A: Isolation Forest – definition and intuition'
+  - 'Financial problem: Which transactions or accounts deserve scarce investigator
+    attention when confirmed fraud labels are incomplete or delayed?'
+  - Definition Plain-English intuition Isolation Forest is an unsupervised anomaly
+    detector. It Common observations need many random cuts repeatedly makes random
+    feature splits; observations isolated before they stand alone. Unusual observations
+    are in unusually short paths receive higher anomaly scores. easier to isolate.
+  - 'Input → output Anchor idea Input: Numeric or encoded behavioral features representing
+    typical Shorter expected path length ⇒ higher anomaly activity for the population
+    or peer group. score. Output: An anomaly score or rank. It is not automatically
+    a fraud probability or proof of misconduct. What it learns: Deviation from the
+    training distribution, not the intent behind the deviation.'
+  source:
+    pages:
+    - 65
+    verbatim: true
+- page: 66
+  title: 'Primer 5B: Isolation Forest – worked fintech example'
+  text: " Primer 5B: Isolation Forest – worked fintech example\n\n\n Top-k transaction\
+    \ review\n A payments team processes 100,000 transactions per day but can investigate\
+    \ only 200. Many new fraud\n patterns have no confirmed labels yet.\n\n\n From\
+    \ data to action                                                         Comparison\
+    \ point\n1. Create only pre-decision features: amount deviation, velocity,   \
+    \         Baseline: Simple amount and velocity rules,\n                      \
+    \                                                       plus random sampling for\
+    \ comparison.\n   device novelty, and peer-group distance.\n2. Fit the detector\
+    \ on a carefully chosen historical window and score\n   the next period.\n   \
+    \                                                                          Control\
+    \ to teach\n                                                                 \
+    \            Watch for: Concept drift, mixed\n3. Rank transactions by anomaly\
+    \ score and send the top 200 to                populations, contamination assumptions,\n\
+    \   review.                                                                  \
+    \ and treating an anomaly as a confirmed\n                                   \
+    \                                          fraud event.\n4. Use investigator outcomes\
+    \ to measure precision@200 and to seed\n   a future supervised model."
+  paragraphs:
+  - 'Primer 5B: Isolation Forest – worked fintech example'
+  - Top-k transaction review A payments team processes 100,000 transactions per day
+    but can investigate only 200. Many new fraud patterns have no confirmed labels
+    yet.
+  - 'From data to action Comparison point 1. Create only pre-decision features: amount
+    deviation, velocity, Baseline: Simple amount and velocity rules, plus random sampling
+    for comparison. device novelty, and peer-group distance. 2. Fit the detector on
+    a carefully chosen historical window and score the next period. Control to teach
+    Watch for: Concept drift, mixed 3. Rank transactions by anomaly score and send
+    the top 200 to populations, contamination assumptions, review. and treating an
+    anomaly as a confirmed fraud event. 4. Use investigator outcomes to measure precision@200
+    and to seed a future supervised model.'
+  source:
+    pages:
+    - 66
+    verbatim: true
+- page: 67
+  title: 'Primer 5C: Isolation Forest – when to use it, and when not to'
+  text: " Primer 5C: Isolation Forest – when to use it, and when not to\n\n\n Use\
+    \ it when                                                          Do not use\
+    \ it when\n▶ Rare-event labels are missing, delayed, or                      \
+    \    ▶ A well-labeled supervised dataset already captures\n  incomplete.     \
+    \                                                      the target.\n▶ The objective\
+    \ is screening or prioritization.                       ▶ Every unusual event\
+    \ will be treated as\n▶ Normal behavior can be represented with              \
+    \                 wrongdoing.\n  meaningful features.                        \
+    \                        ▶ Normal behavior changes faster than the\n▶ Investigator\
+    \ capacity creates a natural top-k                         retraining cycle.\n\
+    \  evaluation.                                                         ▶ Relationships\
+    \ among accounts are more\n▶ You need a fast challenger for emerging patterns.\
+    \                     informative than row-level features.\n                 \
+    \                                                     ▶ A calibrated event probability\
+    \ is required.\n\n Better fit in those cases\n Use supervised boosting when labels\
+    \ are mature, graph analytics for coordinated behavior, or robust statistical\
+    \ controls for simple\n univariate anomalies."
+  paragraphs:
+  - 'Primer 5C: Isolation Forest – when to use it, and when not to'
+  - Use it when Do not use it when ▶ Rare-event labels are missing, delayed, or ▶
+    A well-labeled supervised dataset already captures incomplete. the target. ▶ The
+    objective is screening or prioritization. ▶ Every unusual event will be treated
+    as ▶ Normal behavior can be represented with wrongdoing. meaningful features.
+    ▶ Normal behavior changes faster than the ▶ Investigator capacity creates a natural
+    top-k retraining cycle. evaluation. ▶ Relationships among accounts are more ▶
+    You need a fast challenger for emerging patterns. informative than row-level features.
+    ▶ A calibrated event probability is required.
+  - Better fit in those cases Use supervised boosting when labels are mature, graph
+    analytics for coordinated behavior, or robust statistical controls for simple
+    univariate anomalies.
+  source:
+    pages:
+    - 67
+    verbatim: true
+- page: 68
+  title: 'Primer 5D: Isolation Forest – fintech problem map'
+  text: " Primer 5D: Isolation Forest – fintech problem map\n\n\n\n Common fintech\
+    \ problems                                                    Operational profile\n\
+    ▶ Emerging payment fraud                    ▶ Unusual wire activity         ▶\
+    \ Latency: low\n▶ AML transaction screening                 ▶ Merchant behavior\
+    \ changes     ▶ Explainability: low to medium\n▶ Account takeover signals    \
+    \              ▶ Market surveillance alerts    ▶ Data need: medium\n▶ Employee\
+    \ expense anomalies ▶ Operational reconciliation                   ▶ Monitor:\
+    \ alert yield, score drift,\n                               exceptions       \
+    \                              peer-group fit\n\n\n\n   Student defense question:\
+    \ Can the student evaluate the ranked queue against investigator\n   capacity\
+    \ without calling the score a fraud probability?"
+  paragraphs:
+  - 'Primer 5D: Isolation Forest – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Emerging payment fraud ▶ Unusual
+    wire activity ▶ Latency: low ▶ AML transaction screening ▶ Merchant behavior changes
+    ▶ Explainability: low to medium ▶ Account takeover signals ▶ Market surveillance
+    alerts ▶ Data need: medium ▶ Employee expense anomalies ▶ Operational reconciliation
+    ▶ Monitor: alert yield, score drift, exceptions peer-group fit'
+  - 'Student defense question: Can the student evaluate the ranked queue against investigator
+    capacity without calling the score a fraud probability?'
+  source:
+    pages:
+    - 68
+    verbatim: true
+definition: Isolation Forest is an unsupervised anomaly detector. It repeatedly makes
+  random feature splits; observations isolated in unusually short paths receive higher
+  anomaly scores.
+intuition: Common observations need many random cuts before they stand alone. Unusual
+  observations are easier to isolate.
+useWhen:
+- Rare-event labels are missing, delayed, or incomplete.
+- The objective is screening or prioritization.
+- Normal behavior can be represented with meaningful features.
+- Investigator capacity creates a natural top-k evaluation.
+- You need a fast challenger for emerging patterns.
+avoidWhen:
+- A well-labeled supervised dataset already captures the target.
+- Every unusual event will be treated as wrongdoing.
+- Normal behavior changes faster than the retraining cycle.
+- Relationships among accounts are more informative than row-level features.
+- A calibrated event probability is required.
+deepDive:
+  problem:
+  - page: 628
+    title: 'Financial problem: how do we find a fraud pattern we have never labeled?'
+    text: " Financial problem: how do we find a fraud pattern we have never\n labeled?\n\
+      \n\n    Financial problem\n    A payments platform launches in a new market.\
+      \ Confirmed fraud labels are sparse, but analysts\n    need a ranked list of\
+      \ transactions that look unusual relative to normal behavior.\n\n\n The key\
+      \ distinction\n Supervised fraud models learn known patterns from labeled outcomes.\
+      \ Anomaly detection searches\n for observations that are rare or structurally\
+      \ different.\n\n   Decision to make: Rank unusual activity for investigation\
+      \ without pretending that unusual\n   means fraudulent.\n\n   Student defense\
+      \ question: Name three legitimate transactions that could look anomalous."
+    paragraphs:
+    - 'Financial problem: how do we find a fraud pattern we have never labeled?'
+    - Financial problem A payments platform launches in a new market. Confirmed fraud
+      labels are sparse, but analysts need a ranked list of transactions that look
+      unusual relative to normal behavior.
+    - The key distinction Supervised fraud models learn known patterns from labeled
+      outcomes. Anomaly detection searches for observations that are rare or structurally
+      different.
+    - 'Decision to make: Rank unusual activity for investigation without pretending
+      that unusual means fraudulent.'
+    - 'Student defense question: Name three legitimate transactions that could look
+      anomalous.'
+    source:
+      pages:
+      - 628
+      verbatim: true
+  method:
+  - page: 629
+    title: 'Method: anomalies are easier to isolate'
+    text: " Method: anomalies are easier to isolate\n\n\n\n Isolation Forest repeatedly:\n\
+      1. Selects a feature at random.\n                                          \
+      \                                      isolated quickly\n2. Selects a split\
+      \ value at random.\n3. Measures how many splits are needed to isolate a\n  \
+      \ point.\n Points with short average path lengths receive higher\n anomaly scores.\n\
+      \n Baseline: Simple amount and velocity rules."
+    paragraphs:
+    - 'Method: anomalies are easier to isolate'
+    - 'Isolation Forest repeatedly: 1. Selects a feature at random. isolated quickly
+      2. Selects a split value at random. 3. Measures how many splits are needed to
+      isolate a point. Points with short average path lengths receive higher anomaly
+      scores.'
+    - 'Baseline: Simple amount and velocity rules.'
+    source:
+      pages:
+      - 629
+      verbatim: true
+  code:
+  - page: 630
+    title: 'Working example: rank suspicious transactions'
+    text: " Working example: rank suspicious transactions\n\n\n\n  import numpy as\
+      \ np\n  from sklearn.ensemble import IsolationForest                       \
+      \                          In class\n  rng = np.random.default_rng(12)\n  normal\
+      \ = np.c_[                                                                 \
+      \            ▶ Change contamination.\n      rng.lognormal(3.2, .5, 2000),  \
+      \         # amount\n      rng.normal(14, 3, 2000),\n      rng.poisson(2, 2000),\n\
+      \                                              # hour\n                    \
+      \                          # tx count in hour\n                            \
+      \                                                                  ▶ Remove\
+      \ scaling-sensitive\n      rng.normal(0, 1, 2000)]                  # distance\
+      \ from usual location                   fields.\n  anomaly = np.array([\n  \
+      \    [4500, 3, 18, 8], [2800, 2, 22, 11], [15, 4, 35, 9],                  \
+      \                  ▶ Add customer-relative\n      [9000, 13, 1, 0], [3200, 23,\
+      \ 16, 7]])\n  X = np.vstack([normal, anomaly])                             \
+      \                                 features.\n  iso = IsolationForest(n_estimators=300,\
+      \ contamination=.01,\n                        random_state=12)\n           \
+      \                                                                          \
+      \         ▶ Inspect top 10 cases.\n  iso.fit(X)\n  score = -iso.score_samples(X)\
+      \   # larger = more anomalous\n  print(np.argsort(score)[-10:][::-1])\n    \
+      \                                                                          \
+      \                 Primary metric: Analyst\n                                \
+      \                                                               yield in the\
+      \ top k alerts."
+    paragraphs:
+    - 'Working example: rank suspicious transactions'
+    - 'import numpy as np from sklearn.ensemble import IsolationForest In class rng
+      = np.random.default_rng(12) normal = np.c_[ ▶ Change contamination. rng.lognormal(3.2,
+      .5, 2000), # amount rng.normal(14, 3, 2000), rng.poisson(2, 2000), # hour #
+      tx count in hour ▶ Remove scaling-sensitive rng.normal(0, 1, 2000)] # distance
+      from usual location fields. anomaly = np.array([ [4500, 3, 18, 8], [2800, 2,
+      22, 11], [15, 4, 35, 9], ▶ Add customer-relative [9000, 13, 1, 0], [3200, 23,
+      16, 7]]) X = np.vstack([normal, anomaly]) features. iso = IsolationForest(n_estimators=300,
+      contamination=.01, random_state=12) ▶ Inspect top 10 cases. iso.fit(X) score
+      = -iso.score_samples(X) # larger = more anomalous print(np.argsort(score)[-10:][::-1])
+      Primary metric: Analyst yield in the top k alerts.'
+    source:
+      pages:
+      - 630
+      verbatim: true
+  economics:
+  - page: 631
+    title: Evaluation without pretending labels do not matter
+    text: " Evaluation without pretending labels do not matter\n\n\n\n1. Use later-confirmed\
+      \ outcomes or analyst adjudication to estimate precision@k.\n2. Track how many\
+      \ novel cases were found beyond existing rules.\n3. Measure review burden: alerts\
+      \ per analyst, time per case, and repeat false positives.\n4. Evaluate by customer\
+      \ and merchant slices, not only overall.\n5. Backtest chronologically; anomaly\
+      \ definitions drift as products and behavior change.\n\n Common failure\n The\
+      \ model rediscovers “large transaction” and floods analysts with wealthy customers,\
+      \ travel,\n payroll events, or seasonal activity.\n Required artifact: Top-alert\
+      \ review table with reason codes and analyst disposition."
+    paragraphs:
+    - Evaluation without pretending labels do not matter
+    - '1. Use later-confirmed outcomes or analyst adjudication to estimate precision@k.
+      2. Track how many novel cases were found beyond existing rules. 3. Measure review
+      burden: alerts per analyst, time per case, and repeat false positives. 4. Evaluate
+      by customer and merchant slices, not only overall. 5. Backtest chronologically;
+      anomaly definitions drift as products and behavior change.'
+    - 'Common failure The model rediscovers “large transaction” and floods analysts
+      with wealthy customers, travel, payroll events, or seasonal activity. Required
+      artifact: Top-alert review table with reason codes and analyst disposition.'
+    source:
+      pages:
+      - 631
+      verbatim: true
+  choice:
+  - page: 632
+    title: When anomaly detection fits
+    text: " When anomaly detection fits\n\n\n\n Use it when                      \
+      \                 Avoid or constrain it when\n▶ Labels are missing, delayed,\
+      \ or incomplete.      ▶ A high-quality supervised target exists.\n▶ Novel patterns\
+      \ matter.                        ▶ Review capacity is tiny and false positives\
+      \ are\n▶ The output feeds investigation, not automatic   expensive.\n  guilt.\
+      \                                        ▶ Rare legitimate behavior dominates\
+      \ the tail.\n▶ Behavior can be normalized by peer or            ▶ Features cannot\
+      \ be made context-relative.\n  customer history.\n\n\n   Student defense question:\
+      \ Should the anomaly score trigger a decline, a step-up challenge, or\n   only\
+      \ a review queue? What evidence supports the action?"
+    paragraphs:
+    - When anomaly detection fits
+    - Use it when Avoid or constrain it when ▶ Labels are missing, delayed, or incomplete.
+      ▶ A high-quality supervised target exists. ▶ Novel patterns matter. ▶ Review
+      capacity is tiny and false positives are ▶ The output feeds investigation, not
+      automatic expensive. guilt. ▶ Rare legitimate behavior dominates the tail. ▶
+      Behavior can be normalized by peer or ▶ Features cannot be made context-relative.
+      customer history.
+    - 'Student defense question: Should the anomaly score trigger a decline, a step-up
+      challenge, or only a review queue? What evidence supports the action?'
+    source:
+      pages:
+      - 632
+      verbatim: true
+financialProblem: 'A payments platform launches in a new market. Confirmed fraud labels
+  are sparse, but analysts need a ranked list of transactions that look unusual relative
+  to normal behavior. The key distinction Supervised fraud models learn known patterns
+  from labeled outcomes. Anomaly detection searches for observations that are rare
+  or structurally different. Decision to make: Rank unusual activity for investigation
+  without pretending that unusual means fraudulent. Student defense question: Name
+  three legitimate transactions that could look anomalous.'
+defenseQuestions:
+- text: Can the student evaluate the ranked queue against investigator capacity without
+    calling the score a fraud probability?
+  source:
+    pages:
+    - 68
+    verbatim: true
+- text: Name three legitimate transactions that could look anomalous.
+  source:
+    pages:
+    - 628
+    verbatim: true
+- text: Should the anomaly score trigger a decline, a step-up challenge, or only a
+    review queue? What evidence supports the action?
+  source:
+    pages:
+    - 632
+    verbatim: true
+exercises:
+- A05
+measures:
+- precision
+- recall
+- precision-k-and-recall-k
+- lift-and-cumulative-gain
+- latency-throughput-review-load-cost
+widgets:
+- isolation-paths
+lab:
+  dataset: Frozen synthetic card transactions
+  task: Rank cases under review capacity
+  requiredComparison: Rules vs supervised vs anomaly
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 64
+  - 65
+  - 66
+  - 67
+  - 68
+  - 69
+  - 70
+  - 71
+  - 72
+  - 73
+  - 74
+  - 627
+  - 628
+  - 629
+  - 630
+  - 631
+  - 632
+  verbatim: true

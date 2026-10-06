@@ -1,0 +1,357 @@
+id: A07
+title: Trace Shared Connections
+minutes: 7
+kind: algorithm
+parent: graph-methods
+question: "At the decision cutoff, an undirected graph contains these links:\n   \
+  \ Account A –- Device 7\n    Account B –- Device 7\n    Account B –- Merchant 9\n\
+  \    Account C –- Merchant 9\n    Account D –- Device 8\n\n A connected component\
+  \ is a set of nodes reachable from one another. A node’s degree is its\n number\
+  \ of direct links.\n1. List the connected components and their sizes, counting all\
+  \ node types.\n2. Calculate each account’s degree. Which account has the most direct\
+  \ links?\n3. Find the shortest path from Account A to Account C; count its edges.\n\
+  4. Does being in the same component establish that A and C committed fraud?"
+questionPages:
+- page: 96
+  title: Graph Methods
+  text: " Graph Methods\n\n   A07 | Class problem | 7 minutes — Trace Shared Connections\n\
+    \n At the decision cutoff, an undirected graph contains these links:\n    Account\
+    \ A –- Device 7\n    Account B –- Device 7\n    Account B –- Merchant 9\n    Account\
+    \ C –- Merchant 9\n    Account D –- Device 8\n\n A connected component is a set\
+    \ of nodes reachable from one another. A node’s degree is its\n number of direct\
+    \ links.\n1. List the connected components and their sizes, counting all node\
+    \ types.\n2. Calculate each account’s degree. Which account has the most direct\
+    \ links?\n3. Find the shortest path from Account A to Account C; count its edges.\n\
+    4. Does being in the same component establish that A and C committed fraud?"
+  paragraphs:
+  - Graph Methods
+  - A07 | Class problem | 7 minutes — Trace Shared Connections
+  - 'At the decision cutoff, an undirected graph contains these links: Account A –-
+    Device 7 Account B –- Device 7 Account B –- Merchant 9 Account C –- Merchant 9
+    Account D –- Device 8'
+  - A connected component is a set of nodes reachable from one another. A node’s degree
+    is its number of direct links. 1. List the connected components and their sizes,
+    counting all node types. 2. Calculate each account’s degree. Which account has
+    the most direct links? 3. Find the shortest path from Account A to Account C;
+    count its edges. 4. Does being in the same component establish that A and C committed
+    fraud?
+  source:
+    pages:
+    - 96
+    verbatim: true
+formulaPages:
+- page: 93
+  title: Graph Methods
+  text: " Graph Methods\n\n   A07 | Formula explained (1/1)\n\n Question: Which entities\
+    \ are connected, and how many links separate two accounts?\n                 \
+    \  deg(v) = |N (v)|,        d(u, v) = min{number of edges in a path from u to\
+    \ v}.\n Read it aloud: Degree counts direct neighbors. Shortest-path distance\
+    \ counts the fewest links\n needed to travel between two nodes.\n A connected\
+    \ component contains all nodes that can reach one another through these links.\n\
+    \ Count accounts, devices, and merchants when finding its size.\n The graph is\
+    \ undirected: a listed link can be followed in either direction. It represents\n\
+    \ relationships, not the flow of money."
+  paragraphs:
+  - Graph Methods
+  - A07 | Formula explained (1/1)
+  - 'Question: Which entities are connected, and how many links separate two accounts?
+    deg(v) = |N (v)|, d(u, v) = min{number of edges in a path from u to v}. Read it
+    aloud: Degree counts direct neighbors. Shortest-path distance counts the fewest
+    links needed to travel between two nodes. A connected component contains all nodes
+    that can reach one another through these links. Count accounts, devices, and merchants
+    when finding its size. The graph is undirected: a listed link can be followed
+    in either direction. It represents relationships, not the flow of money.'
+  source:
+    pages:
+    - 93
+    verbatim: true
+symbolPages:
+- page: 94
+  title: Graph Methods
+  text: " Graph Methods\n\n   A07 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   Node; u, v           \
+    \                    One entity in the network, such as an account, device, or\
+    \ merchant;\n                                            u and v denote selected\
+    \ nodes.\n   Edge                                     One link between two entities;\
+    \ the supplied list defines all links\n                                      \
+    \      available at the cutoff.\n   N (v)                                    Set\
+    \ of nodes directly linked to node v; read as “neighbors of v.”\n   |N (v)|  \
+    \                                Number of elements in that set; vertical bars\
+    \ around a set mean its\n                                            size, not\
+    \ absolute value.\n   deg(v)                                   Degree: number\
+    \ of direct links to node v in this simple graph.\n   Path                   \
+    \                  A route that follows one linked pair after another."
+  paragraphs:
+  - Graph Methods
+  - A07 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example Node; u, v One entity in the network,
+    such as an account, device, or merchant; u and v denote selected nodes. Edge One
+    link between two entities; the supplied list defines all links available at the
+    cutoff. N (v) Set of nodes directly linked to node v; read as “neighbors of v.”
+    |N (v)| Number of elements in that set; vertical bars around a set mean its size,
+    not absolute value. deg(v) Degree: number of direct links to node v in this simple
+    graph. Path A route that follows one linked pair after another.'
+  source: &id001
+    pages:
+    - 94
+    verbatim: true
+- page: 95
+  title: Graph Methods
+  text: " Graph Methods\n\n   A07 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   d(u, v)              \
+    \                    Shortest-path length between nodes u and v, counted in edges.\n\
+    \   min                                      Choose the smallest value among the\
+    \ candidate path lengths.\n   Connected component                      A maximal\
+    \ set of mutually reachable nodes; adding another\n                          \
+    \                  reachable node would mean the set was incomplete.\n   Cutoff\
+    \                                   Latest time at which a link is allowed into\
+    \ this historical decision;\n                                            later\
+    \ links cannot be used."
+  paragraphs:
+  - Graph Methods
+  - A07 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example d(u, v) Shortest-path length between nodes
+    u and v, counted in edges. min Choose the smallest value among the candidate path
+    lengths. Connected component A maximal set of mutually reachable nodes; adding
+    another reachable node would mean the set was incomplete. Cutoff Latest time at
+    which a link is allowed into this historical decision; later links cannot be used.
+  source: &id002
+    pages:
+    - 95
+    verbatim: true
+solutionPages:
+- page: 97
+  title: Graph Methods
+  text: " Graph Methods\n\n   A07 | Worked solution — Trace Shared Connections\n\n\
+    1. Follow the links to identify components.\n       • Component 1: A, B, C, Device\
+    \ 7, Merchant 9 — 5 nodes.\n       • Component 2: D, Device 8 — 2 nodes.\n2. Count\
+    \ account links: A has 1; B has 2; C has 1; D has 1. B has the highest account\n\
+    \   degree.\n3. Trace the shortest A-to-C route:\n                          A\
+    \ → Device 7 → B → M erchant 9 → C.\n      The route contains 4 edges.\n4. Separate\
+    \ a link from a conclusion: Shared use of a device or merchant may warrant\n \
+    \  investigation, but it is not proof of fraud."
+  paragraphs:
+  - Graph Methods
+  - A07 | Worked solution — Trace Shared Connections
+  - '1. Follow the links to identify components. • Component 1: A, B, C, Device 7,
+    Merchant 9 — 5 nodes. • Component 2: D, Device 8 — 2 nodes. 2. Count account links:
+    A has 1; B has 2; C has 1; D has 1. B has the highest account degree. 3. Trace
+    the shortest A-to-C route: A → Device 7 → B → M erchant 9 → C. The route contains
+    4 edges. 4. Separate a link from a conclusion: Shared use of a device or merchant
+    may warrant investigation, but it is not proof of fraud.'
+  source:
+    pages:
+    - 97
+    verbatim: true
+interpretationPages:
+- page: 98
+  title: Graph Methods
+  text: " Graph Methods\n\n   A07 | Interpretation\n\n What the answer means\n B connects\
+    \ two parts of the account network and may be useful to investigate. Component\
+    \ size\n and degree are relational features, not probabilities or findings of\
+    \ misconduct.\n Why these steps matter\n A four-edge path does not imply four\
+    \ transfers or four criminal steps. Its meaning comes from\n the edge definitions.\
+    \ Device sharing and merchant sharing may produce legitimate links, so\n graph\
+    \ features support investigation rather than establish misconduct."
+  paragraphs:
+  - Graph Methods
+  - A07 | Interpretation
+  - What the answer means B connects two parts of the account network and may be useful
+    to investigate. Component size and degree are relational features, not probabilities
+    or findings of misconduct. Why these steps matter A four-edge path does not imply
+    four transfers or four criminal steps. Its meaning comes from the edge definitions.
+    Device sharing and merchant sharing may produce legitimate links, so graph features
+    support investigation rather than establish misconduct.
+  source:
+    pages:
+    - 98
+    verbatim: true
+source:
+  pages:
+  - 93
+  - 94
+  - 95
+  - 96
+  - 97
+  - 98
+  verbatim: true
+readAloud:
+- 'Degree counts direct neighbors. Shortest-path distance counts the fewest links
+  needed to travel between two nodes. A connected component contains all nodes that
+  can reach one another through these links. Count accounts, devices, and merchants
+  when finding its size. The graph is undirected: a listed link can be followed in
+  either direction. It represents relationships, not the flow of money.'
+siteAuthored: false
+givens:
+  links: 5
+labels: &id003
+  links: Number of undirected links
+deckSolution:
+  components: 2
+  sizes:
+  - 5
+  - 2
+  degrees:
+  - 1
+  - 2
+  - 1
+  - 1
+  edges: 4
+  proof: false
+latex:
+- \deg(v)=|N(v)|,\quad d(A,C)=\min_{\pi:A\to C}|\pi|
+symbols:
+- symbol: Node; u, v
+  meaning: One entity in the network, such as an account, device, or merchant; u and
+    v denote selected nodes.
+  source: *id001
+- symbol: Edge
+  meaning: One link between two entities; the supplied list defines all links available
+    at the cutoff.
+  source: *id001
+- symbol: N (v)
+  meaning: Set of nodes directly linked to node v; read as “neighbors of v.”
+  source: *id001
+- symbol: '|N (v)|'
+  meaning: Number of elements in that set; vertical bars around a set mean its size,
+    not absolute value.
+  source: *id001
+- symbol: deg(v)
+  meaning: 'Degree: number of direct links to node v in this simple graph.'
+  source: *id001
+- symbol: Path
+  meaning: A route that follows one linked pair after another.
+  source: *id001
+- symbol: d(u, v)
+  meaning: Shortest-path length between nodes u and v, counted in edges.
+  source: *id002
+- symbol: min
+  meaning: Choose the smallest value among the candidate path lengths.
+  source: *id002
+- symbol: Connected component
+  meaning: A maximal set of mutually reachable nodes; adding another reachable node
+    would mean the set was incomplete.
+  source: *id002
+- symbol: Cutoff
+  meaning: Latest time at which a link is allowed into this historical decision; later
+    links cannot be used.
+  source: *id002
+steps:
+- id: components
+  title: Number of connected components
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Group nodes that can reach one another by following links.
+  mistakes:
+  - pattern: recompute
+    message: Group nodes that can reach one another by following links.
+- id: sizes
+  title: Nodes in each component
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Count devices and merchants as well as accounts; enter the larger component first.
+  mistakes:
+  - pattern: recompute
+    message: Count devices and merchants as well as accounts; enter the larger component
+      first.
+- id: degrees
+  title: Account degrees (A, B, C, D)
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Count direct neighbors of each account.
+  mistakes:
+  - pattern: recompute
+    message: Count direct neighbors of each account.
+- id: edges
+  title: Edges on the shortest A-to-C path
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Trace A → Device 7 → B → Merchant 9 → C.
+  mistakes:
+  - pattern: recompute
+    message: Trace A → Device 7 → B → Merchant 9 → C.
+- id: proof
+  title: Do these links prove fraud?
+  expects: boolean
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - A shared relationship alone does not establish an account’s intent.
+  mistakes:
+  - pattern: recompute
+    message: A shared relationship alone does not establish an account’s intent.
+learning:
+  title: Trace Shared Connections
+  scenario: An undirected graph has links A–Device 7, B–Device 7, B–Merchant 9, C–Merchant
+    9, and D–Device 8. Nodes represent accounts, devices and merchants.
+  task: Count components, their sizes, account degrees and the shortest A-to-C path.
+    Enter component sizes largest first and account degrees in A, B, C, D order.
+  interpretation: Sharing a device or merchant can be legitimate. These links support
+    investigation but do not prove misconduct or represent transfers of money.
+  summary: 'Component sizes: {sizes}. Account degrees: {degrees}. The shortest A-to-C
+    path uses {edges} edges. Do the links prove fraud? {proof}.'
+  labels: *id003
+  steps:
+    components:
+      title: Number of connected components
+      hints: *id004
+      unit: ''
+    sizes:
+      title: Nodes in each component
+      hints: *id005
+      unit: ''
+    degrees:
+      title: Account degrees (A, B, C, D)
+      hints: *id006
+      unit: ''
+    edges:
+      title: Edges on the shortest A-to-C path
+      hints: *id007
+      unit: ''
+    proof:
+      title: Do these links prove fraud?
+      hints: *id008
+      unit: ''
+  readAloud:
+  - 'Degree counts direct neighbors. Shortest-path distance counts the fewest links
+    needed to travel between two nodes. A connected component contains all nodes that
+    can reach one another through these links. Count accounts, devices, and merchants
+    when finding its size. The graph is undirected: a listed link can be followed
+    in either direction. It represents relationships, not the flow of money.'
+  workedExplanation:
+  - 'B connects two parts of the account network and may be useful to investigate.
+    Component size and degree are relational features, not probabilities or findings
+    of misconduct. '
+  - A four-edge path does not imply four transfers or four criminal steps. Its meaning
+    comes from the edge definitions. Device sharing and merchant sharing may produce
+    legitimate links, so graph features support investigation rather than establish
+    misconduct.
+  workedArithmetic:
+  - 'The first component is {A, B, C, Device 7, Merchant 9}: 5 nodes. The second is
+    {D, Device 8}: 2 nodes.'
+  - Account degrees in A, B, C, D order are [1, 2, 1, 1].
+  - A → Device 7 → B → Merchant 9 → C uses 4 edges. These shared relationships do
+    not prove fraud.
+formulaSource:
+  pages:
+  - 93
+  verbatim: false
+  reviewed: true

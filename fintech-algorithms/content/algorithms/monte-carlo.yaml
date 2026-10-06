@@ -1,0 +1,397 @@
+slug: monte-carlo
+number: 12
+title: Monte Carlo Simulation
+group: Choose an action
+oneLine: Estimate portfolio loss, reserve breaches, and simulation noise.
+baseline: Expected loss = P D × LGD × EAD using average inputs.
+primerSlides:
+- page: 181
+  title: 'Primer 12A: Monte Carlo simulation – definition and intuition'
+  text: " Primer 12A: Monte Carlo simulation – definition and intuition\n\n\n   Financial\
+    \ problem: What is the range and tail of possible losses, returns, liquidity needs,\
+    \ or prices when\n   several uncertain variables interact?\n\n\n\n Definition\
+    \                                                                            \
+    \                Plain-English intuition\n Monte Carlo simulation repeatedly samples\
+    \ uncertain inputs                                            Instead of one best\
+    \ guess, run many plausible worlds.\n and runs a financial model to approximate\
+    \ the distribution of                                         The result is only\
+    \ as credible as the assumptions that\n outcomes. It is a numerical uncertainty\
+    \ method, not                                                   generate those\
+    \ worlds.\n inherently an AI or ML algorithm.\n                              \
+    \                                                                         Anchor\
+    \ idea\n Input → output                                                      \
+    \                                                       PN\n                 \
+    \                                                                            \
+    \             E[L] ≈ N1              i=1\n                                   \
+    \                                                                            \
+    \                      L(i) ; tail metrics come from\n Input: Probability distributions,\
+    \ correlations, scenario logic, and a\n deterministic model that maps sampled\
+    \ inputs to outcomes.                                                        \
+    \              simulated quantiles.\n Output: An empirical distribution: expected\
+    \ value, quantiles,\n probability of breach, tail loss, and sensitivity.\n What\
+    \ it learns: Nothing from data unless distributions are estimated separately.\
+    \ More simulations reduce sampling noise, not model misspecification."
+  paragraphs:
+  - 'Primer 12A: Monte Carlo simulation – definition and intuition'
+  - 'Financial problem: What is the range and tail of possible losses, returns, liquidity
+    needs, or prices when several uncertain variables interact?'
+  - 'Definition Plain-English intuition Monte Carlo simulation repeatedly samples
+    uncertain inputs Instead of one best guess, run many plausible worlds. and runs
+    a financial model to approximate the distribution of The result is only as credible
+    as the assumptions that outcomes. It is a numerical uncertainty method, not generate
+    those worlds. inherently an AI or ML algorithm. Anchor idea Input → output PN
+    E[L] ≈ N1 i=1 L(i) ; tail metrics come from Input: Probability distributions,
+    correlations, scenario logic, and a deterministic model that maps sampled inputs
+    to outcomes. simulated quantiles. Output: An empirical distribution: expected
+    value, quantiles, probability of breach, tail loss, and sensitivity. What it learns:
+    Nothing from data unless distributions are estimated separately. More simulations
+    reduce sampling noise, not model misspecification.'
+  source:
+    pages:
+    - 181
+    verbatim: true
+- page: 182
+  title: 'Primer 12B: Monte Carlo simulation – worked fintech example'
+  text: " Primer 12B: Monte Carlo simulation – worked fintech example\n\n\n Loan-portfolio\
+    \ loss reserve\n A lender needs the distribution of one-year credit losses when\
+    \ default probability, exposure, recovery, and\n correlated economic stress are\
+    \ uncertain.\n\n\n From data to action                                       \
+    \                  Comparison point\n1. Specify borrower PD, exposure, and loss-given-default\
+    \                     Baseline: Deterministic expected loss using\n          \
+    \                                                                   average PD,\
+    \ EAD, and LGD.\n   distributions plus dependence assumptions.\n2. Simulate portfolio\
+    \ losses 10,000 times and calculate mean loss and\n   the 95th / 99th percentiles.\n\
+    \                                                                            \
+    \ Control to teach\n                                                         \
+    \                    Watch for: Wrong distributions, ignored\n3. Compare independent\
+    \ defaults with a correlated recession scenario.        correlation, too few tail\
+    \ events, hidden\n                                                           \
+    \                  model dependence, and presenting a\n4. Test whether the reserve\
+    \ covers the desired tail and identify which       simulated quantile as certainty.\n\
+    \   assumptions drive the result."
+  paragraphs:
+  - 'Primer 12B: Monte Carlo simulation – worked fintech example'
+  - Loan-portfolio loss reserve A lender needs the distribution of one-year credit
+    losses when default probability, exposure, recovery, and correlated economic stress
+    are uncertain.
+  - 'From data to action Comparison point 1. Specify borrower PD, exposure, and loss-given-default
+    Baseline: Deterministic expected loss using average PD, EAD, and LGD. distributions
+    plus dependence assumptions. 2. Simulate portfolio losses 10,000 times and calculate
+    mean loss and the 95th / 99th percentiles. Control to teach Watch for: Wrong distributions,
+    ignored 3. Compare independent defaults with a correlated recession scenario.
+    correlation, too few tail events, hidden model dependence, and presenting a 4.
+    Test whether the reserve covers the desired tail and identify which simulated
+    quantile as certainty. assumptions drive the result.'
+  source:
+    pages:
+    - 182
+    verbatim: true
+- page: 183
+  title: 'Primer 12C: Monte Carlo simulation – when to use it, and when not to'
+  text: " Primer 12C: Monte Carlo simulation – when to use it, and when not to\n\n\
+    \n Use it when                                                          Do not\
+    \ use it when\n▶ Multiple uncertain inputs propagate through a               \
+    \        ▶ The underlying model is not credible.\n  known model.             \
+    \                                           ▶ Input distributions are invented\
+    \ without evidence.\n▶ Tail risk or probability of breach matters.           \
+    \              ▶ A simple closed-form result answers the question.\n▶ Path dependence\
+    \ makes a single closed form                          ▶ Rare tail behavior is\
+    \ under-sampled or structurally\n  inadequate.                               \
+    \                            missing.\n▶ Scenario and sensitivity analysis are\
+    \                               ▶ Simulation is used to hide rather than expose\n\
+    \  decision-relevant.                                                    assumptions.\n\
+    ▶ Assumptions can be documented and challenged.\n\n Better fit in those cases\n\
+    \ Use analytical formulas when available, historical stress tests for observed\
+    \ episodes, or robust optimization when the main task is\n choosing an action\
+    \ under uncertainty."
+  paragraphs:
+  - 'Primer 12C: Monte Carlo simulation – when to use it, and when not to'
+  - Use it when Do not use it when ▶ Multiple uncertain inputs propagate through a
+    ▶ The underlying model is not credible. known model. ▶ Input distributions are
+    invented without evidence. ▶ Tail risk or probability of breach matters. ▶ A simple
+    closed-form result answers the question. ▶ Path dependence makes a single closed
+    form ▶ Rare tail behavior is under-sampled or structurally inadequate. missing.
+    ▶ Scenario and sensitivity analysis are ▶ Simulation is used to hide rather than
+    expose decision-relevant. assumptions. ▶ Assumptions can be documented and challenged.
+  - Better fit in those cases Use analytical formulas when available, historical stress
+    tests for observed episodes, or robust optimization when the main task is choosing
+    an action under uncertainty.
+  source:
+    pages:
+    - 183
+    verbatim: true
+- page: 184
+  title: 'Primer 12D: Monte Carlo simulation – fintech problem map'
+  text: " Primer 12D: Monte Carlo simulation – fintech problem map\n\n\n\n Common\
+    \ fintech problems                                                     Operational\
+    \ profile\n▶ Credit-loss and reserve                   ▶ Liquidity stress testing\
+    \       ▶ Latency: batch / parallel\n  simulation                            \
+    \    ▶ Capital adequacy scenarios     ▶ Explainability: assumption-driven\n▶ Value-at-Risk\
+    \ / Expected                  ▶ Retirement and wealth          ▶ Data need: distributions\
+    \ +\n  Shortfall                                   planning                  \
+    \       dependence\n▶ Option and derivative                     ▶ Portfolio drawdown\
+    \ analysis    ▶ Monitor: backtests, tail coverage,\n  pricing                \
+    \                                                      sensitivity\n▶ Asset-liability\
+    \ management\n\n\n   Student defense question: Can the student distinguish sampling\
+    \ error from model risk and show\n   how correlation changes the tail?"
+  paragraphs:
+  - 'Primer 12D: Monte Carlo simulation – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Credit-loss and reserve ▶ Liquidity
+    stress testing ▶ Latency: batch / parallel simulation ▶ Capital adequacy scenarios
+    ▶ Explainability: assumption-driven ▶ Value-at-Risk / Expected ▶ Retirement and
+    wealth ▶ Data need: distributions + Shortfall planning dependence ▶ Option and
+    derivative ▶ Portfolio drawdown analysis ▶ Monitor: backtests, tail coverage,
+    pricing sensitivity ▶ Asset-liability management'
+  - 'Student defense question: Can the student distinguish sampling error from model
+    risk and show how correlation changes the tail?'
+  source:
+    pages:
+    - 184
+    verbatim: true
+definition: Monte Carlo simulation repeatedly samples uncertain inputs and runs a
+  financial model to approximate the distribution of outcomes. It is a numerical uncertainty
+  method, not inherently an AI or ML algorithm.
+intuition: Instead of one best guess, run many plausible worlds. The result is only
+  as credible as the assumptions that generate those worlds.  Anchor idea
+useWhen:
+- Multiple uncertain inputs propagate through a known model.
+- Tail risk or probability of breach matters.
+- Path dependence makes a single closed form inadequate.
+- Scenario and sensitivity analysis are decision-relevant.
+- Assumptions can be documented and challenged.
+avoidWhen:
+- The underlying model is not credible.
+- Input distributions are invented without evidence.
+- A simple closed-form result answers the question.
+- Rare tail behavior is under-sampled or structurally missing.
+- Simulation is used to hide rather than expose assumptions.
+deepDive:
+  problem:
+  - page: 675
+    title: 'Financial problem: how much reserve is enough?'
+    text: " Financial problem: how much reserve is enough?\n\n\n\n    Financial problem\n\
+      \    A lender holds a portfolio of 1,000 loans. It knows average default probability\
+      \ and loss given\n    default, but management needs the full loss distribution–especially\
+      \ the tail.\n\n\n A point estimate is not enough\n Expected loss supports pricing\
+      \ and provisioning. Capital and contingency planning require plausible\n severe\
+      \ outcomes and their probability.\n\n   Decision to make: Simulate many coherent\
+      \ scenarios, then inspect the distribution of losses\n   rather than one “most\
+      \ likely” number."
+    paragraphs:
+    - 'Financial problem: how much reserve is enough?'
+    - Financial problem A lender holds a portfolio of 1,000 loans. It knows average
+      default probability and loss given default, but management needs the full loss
+      distribution–especially the tail.
+    - A point estimate is not enough Expected loss supports pricing and provisioning.
+      Capital and contingency planning require plausible severe outcomes and their
+      probability.
+    - 'Decision to make: Simulate many coherent scenarios, then inspect the distribution
+      of losses rather than one “most likely” number.'
+    source:
+      pages:
+      - 675
+      verbatim: true
+  method:
+  - page: 676
+    title: 'Method: sample uncertain inputs and recompute the outcome'
+    text: " Method: sample uncertain inputs and recompute the outcome\n\n\n\n\n  \
+      \            Assumptions                                                   \
+      \                                                Loss distribution\n       \
+      \                                              Sample one scenario   Compute\
+      \ portfolio loss           Enough runs?\n        PD, LGD, EAD, correlation \
+      \                                                                          \
+      \               mean, quantiles, tail\n\n\n\n                              \
+      \                                                      no\n\n\n▶ Simulation\
+      \ propagates assumed uncertainty through a financial model.\n▶ More runs reduce\
+      \ sampling noise; they do not repair bad assumptions.\n Baseline: Expected loss\
+      \ = P D × LGD × EAD using average inputs."
+    paragraphs:
+    - 'Method: sample uncertain inputs and recompute the outcome'
+    - Assumptions Loss distribution Sample one scenario Compute portfolio loss Enough
+      runs? PD, LGD, EAD, correlation mean, quantiles, tail
+    - 'no'
+    - '▶ Simulation propagates assumed uncertainty through a financial model. ▶ More
+      runs reduce sampling noise; they do not repair bad assumptions. Baseline: Expected
+      loss = P D × LGD × EAD using average inputs.'
+    source:
+      pages:
+      - 676
+      verbatim: true
+  economics:
+  - page: 677
+    title: Correlation changes the tail
+    text: " Correlation changes the tail\n\n\n\n Two portfolios can have the same\
+      \ expected number of defaults but very different severe-loss risk.\n\n Independent\
+      \ defaults                                                      Correlated defaults\n\
+      \ Losses are more dispersed around the average;                            \
+      \ A common economic factor moves many\n large simultaneous default waves are\
+      \ less likely.                         borrowers together, creating a much heavier\n\
+      \                                                                          \
+      \ portfolio tail.\n A simple latent-factor model:\n                        \
+      \                         √\n                                              \
+      \                            def aulti = ⊮[Zi < Φ−1 (P Di )]\n             \
+      \                                               p\n                        \
+      \              Zi =           ρY +    1 − ρ εi ,"
+    paragraphs:
+    - Correlation changes the tail
+    - Two portfolios can have the same expected number of defaults but very different
+      severe-loss risk.
+    - 'Independent defaults Correlated defaults Losses are more dispersed around the
+      average; A common economic factor moves many large simultaneous default waves
+      are less likely. borrowers together, creating a much heavier portfolio tail.
+      A simple latent-factor model: √ def aulti = ⊮[Zi < Φ−1 (P Di )] p Zi = ρY +
+      1 − ρ εi ,'
+    source:
+      pages:
+      - 677
+      verbatim: true
+  - page: 679
+    title: How to validate a simulation
+    text: " How to validate a simulation\n\n\n1. Verify the code on a case with a\
+      \ known analytical answer.\n2. Check convergence: do key quantiles stabilize\
+      \ as runs increase?\n3. Stress assumptions one at a time and together.\n4. Backtest\
+      \ distributions where enough history exists.\n5. Separate parameter uncertainty\
+      \ from random scenario variation.\n6. Report assumptions beside every result.\n\
+      \n False precision\n “The 99th percentile loss is $327,418” is misleading if\
+      \ PD, LGD, and correlation are rough\n estimates. Report sensible ranges and\
+      \ sensitivity.\n Required artifact: Assumption register, convergence plot, sensitivity\
+      \ table, and tail-loss summary."
+    paragraphs:
+    - How to validate a simulation
+    - '1. Verify the code on a case with a known analytical answer. 2. Check convergence:
+      do key quantiles stabilize as runs increase? 3. Stress assumptions one at a
+      time and together. 4. Backtest distributions where enough history exists. 5.
+      Separate parameter uncertainty from random scenario variation. 6. Report assumptions
+      beside every result.'
+    - 'False precision “The 99th percentile loss is $327,418” is misleading if PD,
+      LGD, and correlation are rough estimates. Report sensible ranges and sensitivity.
+      Required artifact: Assumption register, convergence plot, sensitivity table,
+      and tail-loss summary.'
+    source:
+      pages:
+      - 679
+      verbatim: true
+  code:
+  - page: 678
+    title: 'Working example: correlated loan losses'
+    text: " Working example: correlated loan losses\n\n\n\n  import numpy as np\n\
+      \  from scipy.stats import norm\n  rng = np.random.default_rng(17)\n       \
+      \                                                                          \
+      \    Modify\n  n_sims, n_loans = 5000, 1000                                \
+      \                       ▶ Set ρ = 0.\n  pd = np.full(n_loans, .025)\n  ead =\
+      \ np.full(n_loans, 10000.0)\n  lgd = np.full(n_loans, .45)\n               \
+      \                                                                      ▶ Double\
+      \ PD.\n  rho = .12\n                                                       \
+      \                              ▶ Make LGD random.\n  common = rng.normal(size=(n_sims,\
+      \ 1))\n  idiosyncratic = rng.normal(size=(n_sims, n_loans))\n  latent = np.sqrt(rho)*common\
+      \ + np.sqrt(1-rho)*idiosyncratic\n                                         \
+      \                                            ▶ Add sector factors.\n  defaults\
+      \ = latent < norm.ppf(pd)\n  loss = (defaults * ead * lgd).sum(axis=1)     \
+      \                                     Primary metric: Tail\n  print(\"Expected\
+      \ loss:\", loss.mean())\n  print(\"95th percentile:\", np.quantile(loss, .95))\n\
+      \                                                                          \
+      \           quantiles and probability\n  print(\"99th percentile:\", np.quantile(loss,\
+      \ .99))\n  print(\"P(loss > $200k):\", (loss > 200000).mean())\n           \
+      \                                                                          of\
+      \ breaching a reserve."
+    paragraphs:
+    - 'Working example: correlated loan losses'
+    - 'import numpy as np from scipy.stats import norm rng = np.random.default_rng(17)
+      Modify n_sims, n_loans = 5000, 1000 ▶ Set ρ = 0. pd = np.full(n_loans, .025)
+      ead = np.full(n_loans, 10000.0) lgd = np.full(n_loans, .45) ▶ Double PD. rho
+      = .12 ▶ Make LGD random. common = rng.normal(size=(n_sims, 1)) idiosyncratic
+      = rng.normal(size=(n_sims, n_loans)) latent = np.sqrt(rho)*common + np.sqrt(1-rho)*idiosyncratic
+      ▶ Add sector factors. defaults = latent < norm.ppf(pd) loss = (defaults * ead
+      * lgd).sum(axis=1) Primary metric: Tail print("Expected loss:", loss.mean())
+      print("95th percentile:", np.quantile(loss, .95)) quantiles and probability
+      print("99th percentile:", np.quantile(loss, .99)) print("P(loss > $200k):",
+      (loss > 200000).mean()) of breaching a reserve.'
+    source:
+      pages:
+      - 678
+      verbatim: true
+  choice:
+  - page: 680
+    title: When Monte Carlo fits
+    text: " When Monte Carlo fits\n\n\n\n Use it when                            \
+      \             Avoid or constrain it when\n▶ The output depends on several uncertain\
+      \            ▶ Input distributions are invented without\n  inputs.         \
+      \                                     evidence.\n▶ Tail outcomes and nonlinear\
+      \ payoffs matter.        ▶ Dependence is ignored.\n▶ Closed-form solutions are\
+      \ unavailable or too       ▶ Users treat simulated frequency as certainty.\n\
+      \  restrictive.                                       ▶ A simple analytical\
+      \ solution is sufficient.\n▶ Scenario assumptions can be reviewed.\n\n\n   Student\
+      \ defense question: Does one million simulations make the answer trustworthy\
+      \ if the\n   correlation assumption is wrong? Explain."
+    paragraphs:
+    - When Monte Carlo fits
+    - Use it when Avoid or constrain it when ▶ The output depends on several uncertain
+      ▶ Input distributions are invented without inputs. evidence. ▶ Tail outcomes
+      and nonlinear payoffs matter. ▶ Dependence is ignored. ▶ Closed-form solutions
+      are unavailable or too ▶ Users treat simulated frequency as certainty. restrictive.
+      ▶ A simple analytical solution is sufficient. ▶ Scenario assumptions can be
+      reviewed.
+    - 'Student defense question: Does one million simulations make the answer trustworthy
+      if the correlation assumption is wrong? Explain.'
+    source:
+      pages:
+      - 680
+      verbatim: true
+financialProblem: 'A lender holds a portfolio of 1,000 loans. It knows average default
+  probability and loss given default, but management needs the full loss distribution–especially
+  the tail. A point estimate is not enough Expected loss supports pricing and provisioning.
+  Capital and contingency planning require plausible severe outcomes and their probability.
+  Decision to make: Simulate many coherent scenarios, then inspect the distribution
+  of losses rather than one “most likely” number.'
+defenseQuestions:
+- text: Can the student distinguish sampling error from model risk and show how correlation
+    changes the tail?
+  source:
+    pages:
+    - 184
+    verbatim: true
+- text: Does one million simulations make the answer trustworthy if the correlation
+    assumption is wrong? Explain.
+  source:
+    pages:
+    - 680
+    verbatim: true
+exercises:
+- A12
+measures:
+- value-at-risk-and-expected-shortfall
+- probability-of-shortfall-and-monte-carlo-error
+- var-exception-rate
+widgets:
+- monte-carlo-loss
+lab:
+  dataset: Synthetic loan portfolio
+  task: Tail loss and reserve breach
+  requiredComparison: Expected loss only
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 180
+  - 181
+  - 182
+  - 183
+  - 184
+  - 185
+  - 186
+  - 187
+  - 188
+  - 189
+  - 190
+  - 191
+  - 192
+  - 674
+  - 675
+  - 676
+  - 677
+  - 678
+  - 679
+  - 680
+  verbatim: true

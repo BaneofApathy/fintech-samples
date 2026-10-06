@@ -1,0 +1,66 @@
+---
+import Shell from '../../../components/layout/Shell.astro';
+import CaseVisual from '../../../components/visuals/cases/CaseVisual.svelte';
+import {
+  financialCases,
+  financialCaseHref,
+  financialCasesForAlgorithm,
+} from '../../../data/financial-cases';
+import { algorithms, measures, href } from '../../../data';
+export function getStaticPaths() {
+  return financialCases.map((scenario) => ({
+    params: { algorithm: scenario.algorithmSlug, case: scenario.slug },
+    props: { scenario },
+  }));
+}
+const { scenario } = Astro.props;
+const algorithm = algorithms.find((a) => a.slug === scenario.algorithmSlug)!;
+const related = financialCasesForAlgorithm(scenario.algorithmSlug);
+---
+
+<Shell title={scenario.title} description={scenario.question}>
+  <p class="eyebrow">Financial problem · {algorithm.title}</p>
+  <p class="page-subtitle">{scenario.question}</p>
+  <p>
+    <strong>Decision owner:</strong> {scenario.owner}
+  </p>
+  <CaseVisual {scenario} client:visible />
+  <div class="problem-grid">
+    <section class="info-card">
+      <h2>Decision-time evidence</h2>
+      <p>{scenario.timing}</p>
+    </section>
+    <section class="info-card">
+      <h2>Comparison to defend</h2>
+      <p>{scenario.baseline}</p>
+    </section>
+  </div>
+  <h2>Measures that help answer this question</h2>
+  <div class="button-row">
+    {scenario.measureSlugs.map((slug) => (
+      <a class="button secondary" href={href(`/measures/${slug}/`)}>
+        {measures.find((m) => m.slug === slug)?.title ?? slug}
+      </a>
+    ))}
+  </div>
+  <details class="source-slide">
+    <summary>Other applications of {algorithm.title}</summary>
+    <ul>
+      {related
+        .filter((item) => item.slug !== scenario.slug)
+        .map((item) => (
+          <li>
+            <a href={financialCaseHref(item)}>{item.title}</a>
+          </li>
+        ))}
+    </ul>
+  </details>
+  <div class="button-row">
+    <a class="button" href={href(`/algorithms/${scenario.algorithmSlug}/`)}>
+      Back to {algorithm.title}
+    </a>
+    <a class="button secondary" href={href('/financial-problems/')}>
+      All 96 financial problems
+    </a>
+  </div>
+</Shell>

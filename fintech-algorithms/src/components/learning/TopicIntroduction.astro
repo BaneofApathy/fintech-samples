@@ -1,0 +1,58 @@
+---
+import type { TeachingTopic } from '../../data/teaching-types';
+import { prerequisiteTitle, prerequisiteHref } from '../../data/teaching-manifest';
+interface Props {
+  topic: TeachingTopic;
+  vocabulary?: boolean;
+}
+const { topic, vocabulary = true } = Astro.props;
+---
+
+<section class="topic-introduction" aria-label={`Introduction to ${topic.title}`}>
+  <h2>What is {topic.title}?</h2>
+  <p class="teaching-definition">{topic.definition}</p>
+  <div class="precise-definition">
+    <h3>Technical definition</h3>
+    <p>{topic.preciseDefinition}</p>
+  </div>
+  {topic.prerequisites.length > 0 && (
+    <div class="prerequisite-links">
+      <strong>Helpful foundations</strong>
+      {topic.prerequisites.map((slug) => (
+        <a href={prerequisiteHref(slug)}>{prerequisiteTitle(slug)}</a>
+      ))}
+    </div>
+  )}
+  {vocabulary && (
+    <div class="topic-vocabulary">
+      <h3>Start with these terms</h3>
+      <dl class="teaching-terms">
+        {topic.terms.slice(0, 4).map((term) => (
+          <div>
+            <dt>{term.term}</dt>
+            <dd>
+              {term.definition}
+              <span class="term-example">Example: {term.example}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      {topic.terms.length > 4 && (
+        <details>
+          <summary>More terminology · {topic.terms.length - 4} additional terms</summary>
+          <dl class="teaching-terms">
+            {topic.terms.slice(4).map((term) => (
+              <div>
+                <dt>{term.term}</dt>
+                <dd>
+                  {term.definition}
+                  <span class="term-example">Example: {term.example}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+      )}
+    </div>
+  )}
+</section>

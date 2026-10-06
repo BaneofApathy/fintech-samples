@@ -1,0 +1,177 @@
+.algorithm-walkthrough {
+  --av-a: var(--green, #17664d);
+  --av-b: var(--gold, #9b6816);
+  --av-c: var(--blue, #325dae);
+  --av-ink: var(--ink, #22302a);
+  --av-paper: var(--paper, #fffdf8);
+}
+.algorithm-walkthrough .algorithm-diagram {
+  margin: 1rem 0;
+  min-width: 0;
+}
+.algorithm-walkthrough .diagram-scroll {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border: 1px solid var(--line, #d9dfd7);
+  border-radius: 10px;
+  background: var(--av-paper);
+}
+.algorithm-walkthrough .diagram-scroll:focus-visible {
+  outline: 3px solid var(--av-c);
+  outline-offset: 2px;
+}
+.algorithm-walkthrough svg {
+  display: block;
+  width: 100%;
+  min-width: 480px;
+  height: auto;
+  color: var(--av-ink);
+}
+.algorithm-walkthrough svg text {
+  font:
+    15px system-ui,
+    sans-serif;
+  fill: currentColor;
+}
+.algorithm-walkthrough svg .tiny {
+  font-size: 13px;
+}
+.algorithm-walkthrough svg .big {
+  font-size: 22px;
+  font-weight: 700;
+}
+.algorithm-walkthrough svg .bold {
+  font-weight: 700;
+}
+.algorithm-walkthrough svg .axis {
+  stroke: currentColor;
+  stroke-opacity: 0.5;
+  stroke-width: 1;
+}
+.algorithm-walkthrough svg .link {
+  stroke: var(--av-a);
+  stroke-width: 2;
+  fill: none;
+}
+.algorithm-walkthrough svg .link-gold {
+  stroke: var(--av-b);
+  stroke-width: 2;
+  fill: none;
+}
+.algorithm-walkthrough svg .dash {
+  stroke-dasharray: 6 5;
+}
+.algorithm-walkthrough svg .node {
+  fill: var(--av-paper);
+  stroke: var(--av-a);
+  stroke-width: 2;
+}
+.algorithm-walkthrough svg .gold-node {
+  fill: var(--av-paper);
+  stroke: var(--av-b);
+  stroke-width: 2;
+}
+.algorithm-walkthrough svg .selected {
+  stroke: var(--av-c);
+  stroke-width: 4;
+}
+.algorithm-walkthrough svg .a {
+  fill: var(--av-a);
+}
+.algorithm-walkthrough svg .b {
+  fill: var(--av-b);
+}
+.algorithm-walkthrough svg .c {
+  fill: var(--av-c);
+}
+.algorithm-walkthrough svg .white {
+  fill: white;
+}
+.algorithm-walkthrough svg .faded {
+  opacity: 0.25;
+}
+.algorithm-walkthrough .diagram-note {
+  margin: 0.65rem 0 0;
+  line-height: 1.55;
+  font-size: 0.91rem;
+}
+.algorithm-walkthrough .diagram-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.8rem 0;
+}
+.algorithm-walkthrough .diagram-metrics > span {
+  flex: 1 1 140px;
+  padding: 0.65rem;
+  border-left: 3px solid var(--av-a);
+  background: var(--green-soft, #edf5ee);
+  font-size: 0.85rem;
+}
+.algorithm-walkthrough .diagram-metrics strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 1.06rem;
+}
+.algorithm-walkthrough .diagram-metrics > span.active {
+  border-color: var(--av-c);
+  box-shadow: 0 0 0 1px var(--av-c);
+}
+.algorithm-walkthrough .diagram-table {
+  overflow: auto;
+  margin-top: 0.7rem;
+}
+.algorithm-walkthrough .diagram-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.algorithm-walkthrough .diagram-table th,
+.algorithm-walkthrough .diagram-table td {
+  padding: 0.45rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line, #ddd);
+}
+.algorithm-walkthrough .diagram-table tr.emphasis {
+  background: var(--green-soft, #edf5ee);
+}
+.algorithm-walkthrough .process-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 0.65rem;
+}
+.algorithm-walkthrough .process-cards > div {
+  padding: 0.75rem;
+  border: 1px solid var(--line, #ddd);
+  border-radius: 8px;
+}
+.algorithm-walkthrough .process-cards > div.active {
+  border: 2px solid var(--av-c);
+}
+.algorithm-walkthrough .process-cards strong,
+.algorithm-walkthrough .process-cards span {
+  display: block;
+}
+.algorithm-walkthrough .process-cards span {
+  font-size: 0.88rem;
+  margin-top: 0.4rem;
+}
+.algorithm-walkthrough .token {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--av-c);
+  border-radius: 4px;
+}
+.algorithm-walkthrough .method-context {
+  padding: 0.75rem;
+  border-left: 3px solid var(--av-b);
+  background: var(--gold-soft, #fbf3df);
+  line-height: 1.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  .algorithm-walkthrough * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

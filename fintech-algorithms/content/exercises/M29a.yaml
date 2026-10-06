@@ -1,0 +1,347 @@
+id: M29a
+title: How Soon Does the First Useful Source Appear?
+minutes: 6
+kind: measure
+parent: mrr-and-ndcg
+question: "Four analyst questions produce their first relevant filing passage at these\
+  \ ranks:\n   Question                                       First relevant rank\n\
+  \   Q1                                             1\n   Q2                    \
+  \                         2\n   Q3                                             4\n\
+  \   Q4                                             Not found in the evaluated results\n\
+  \n                                                                  1 X 1\n    \
+  \                                                   M RR =               .\n   \
+  \                                                               Q q rankq\n Use\
+  \ zero for a question with no relevant result. Calculate MRR. Then assume a revised\
+  \ retriever\n brings Q4’s first relevant passage to rank 2, with the other ranks\
+  \ unchanged. Calculate the new\n MRR and improvement."
+questionPages:
+- page: 459
+  title: MRR
+  text: " MRR\n\n   M29a | Class problem | 6 minutes — How Soon Does the First Useful\
+    \ Source Appear?\n\n Four analyst questions produce their first relevant filing\
+    \ passage at these ranks:\n   Question                                       First\
+    \ relevant rank\n   Q1                                             1\n   Q2  \
+    \                                           2\n   Q3                         \
+    \                    4\n   Q4                                             Not\
+    \ found in the evaluated results\n\n                                         \
+    \                         1 X 1\n                                            \
+    \           M RR =               .\n                                         \
+    \                         Q q rankq\n Use zero for a question with no relevant\
+    \ result. Calculate MRR. Then assume a revised retriever\n brings Q4’s first relevant\
+    \ passage to rank 2, with the other ranks unchanged. Calculate the new\n MRR and\
+    \ improvement."
+  paragraphs:
+  - MRR
+  - M29a | Class problem | 6 minutes — How Soon Does the First Useful Source Appear?
+  - 'Four analyst questions produce their first relevant filing passage at these ranks:
+    Question First relevant rank Q1 1 Q2 2 Q3 4 Q4 Not found in the evaluated results'
+  - 1 X 1 M RR = . Q q rankq Use zero for a question with no relevant result. Calculate
+    MRR. Then assume a revised retriever brings Q4’s first relevant passage to rank
+    2, with the other ranks unchanged. Calculate the new MRR and improvement.
+  source:
+    pages:
+    - 459
+    verbatim: true
+formulaPages:
+- page: 455
+  title: MRR
+  text: " MRR\n\n   M29a | Formula explained (1/1)\n\n Question: How high in the results\
+    \ is the first relevant passage?\n                               (\n         \
+    \                         1/rankq , a relevant result is found,\n            \
+    \           RRq =\n                                  0,           none is found,\n\
+    \                                                             Q\n            \
+    \                                             1 X\n                          \
+    \                        M RR =       RRq .\n                                \
+    \                         Q q=1\n\n Read it aloud: Take one divided by the position\
+    \ of the first relevant result. Give zero to a\n query with none in the evaluated\
+    \ results. Average across all questions, including the zero cases.\n Ranks start\
+    \ at 1, not zero. Bringing a source from rank 4 to rank 2 raises its contribution\
+    \ from\n one-quarter to one-half."
+  paragraphs:
+  - MRR
+  - M29a | Formula explained (1/1)
+  - 'Question: How high in the results is the first relevant passage? ( 1/rankq ,
+    a relevant result is found, RRq = 0, none is found, Q 1 X M RR = RRq . Q q=1'
+  - 'Read it aloud: Take one divided by the position of the first relevant result.
+    Give zero to a query with none in the evaluated results. Average across all questions,
+    including the zero cases. Ranks start at 1, not zero. Bringing a source from rank
+    4 to rank 2 raises its contribution from one-quarter to one-half.'
+  source:
+    pages:
+    - 455
+    verbatim: true
+symbolPages:
+- page: 456
+  title: MRR
+  text: " MRR\n\n   M29a | Symbols and terms (1/3)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   Q, q                   \
+    \                        Total number of evaluated questions, here 4, and a question\
+    \ index.\n   rankq                                          Position of the first\
+    \ relevant passage for question q in the evaluated\n                         \
+    \                         result list.\n   RRq                               \
+    \             Reciprocal rank for one query; 1 means the first result is relevant.\n\
+    \   MRR                                            Mean reciprocal rank: average\
+    \ of all question-level reciprocal ranks."
+  paragraphs:
+  - MRR
+  - M29a | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example Q, q Total number of evaluated questions,
+    here 4, and a question index. rankq Position of the first relevant passage for
+    question q in the evaluated result list. RRq Reciprocal rank for one query; 1
+    means the first result is relevant. MRR Mean reciprocal rank: average of all question-level
+    reciprocal ranks.'
+  source: &id001
+    pages:
+    - 456
+    verbatim: true
+- page: 457
+  title: MRR
+  text: " MRR\n\n   M29a | Symbols and terms (2/3)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   Reciprocal             \
+    \                        One divided by a value; a smaller positive rank produces\
+    \ a larger\n                                                  reciprocal.\n  \
+    \ Not found                                      No relevant item within the evaluated\
+    \ results; assign zero without\n                                             \
+    \     attempting division by an undefined rank."
+  paragraphs:
+  - MRR
+  - M29a | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Reciprocal One divided by a value; a smaller
+    positive rank produces a larger reciprocal. Not found No relevant item within
+    the evaluated results; assign zero without attempting division by an undefined
+    rank.
+  source: &id002
+    pages:
+    - 457
+    verbatim: true
+- page: 458
+  title: MRR
+  text: " MRR\n\n   M29a | Symbols and terms (3/3)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   PQ\n       q=1         \
+    \                               Include every evaluated query, even those with\
+    \ no relevant result.\n   Score-unit improvement                         New MRR\
+    \ minus old MRR; not automatically a percentage-point\n                      \
+    \                            change in answer accuracy."
+  paragraphs:
+  - MRR
+  - M29a | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example PQ q=1 Include every evaluated query, even
+    those with no relevant result. Score-unit improvement New MRR minus old MRR; not
+    automatically a percentage-point change in answer accuracy.
+  source: &id004
+    pages: &id003
+    - 458
+    verbatim: true
+solutionPages:
+- page: 460
+  title: MRR
+  text: " MRR\n\n   M29a | Worked solution — How Soon Does the First Useful Source\
+    \ Appear?\n\n1. Reciprocal ranks: Q1 = 1; Q2 = 1/2 = 0.5; Q3 = 1/4 = 0.25; Q4\
+    \ = 0.\n2. Original MRR:\n                                                  (1\
+    \ + 0.5 + 0.25 + 0)/4 = 1.75/4 = 0.4375.\n3. Updated Q4 contribution: 1/2 = 0.5.\n\
+    4. Updated MRR:\n                                                  (1 + 0.5 +\
+    \ 0.25 + 0.5)/4 = 2.25/4 = 0.5625.\n5. Improvement: 0.5625 − 0.4375 = 0.125 score\
+    \ units."
+  paragraphs:
+  - MRR
+  - M29a | Worked solution — How Soon Does the First Useful Source Appear?
+  - '1. Reciprocal ranks: Q1 = 1; Q2 = 1/2 = 0.5; Q3 = 1/4 = 0.25; Q4 = 0. 2. Original
+    MRR: (1 + 0.5 + 0.25 + 0)/4 = 1.75/4 = 0.4375. 3. Updated Q4 contribution: 1/2
+    = 0.5. 4. Updated MRR: (1 + 0.5 + 0.25 + 0.5)/4 = 2.25/4 = 0.5625. 5. Improvement:
+    0.5625 − 0.4375 = 0.125 score units.'
+  source:
+    pages:
+    - 460
+    verbatim: true
+interpretationPages:
+- page: 461
+  title: MRR
+  text: " MRR\n\n   M29a | Interpretation\n\n What the answer means\n The first useful\
+    \ passage now appears earlier for more questions, reducing how far an analyst\
+    \ or\n downstream system must search. MRR is not the percentage of correct answers\
+    \ and ignores\n the ordering of additional relevant passages after the first.\n\
+    \ Why these steps matter\n The unresolved question belongs in the denominator\
+    \ of the original MRR. Dropping it would\n inflate the reported retrieval quality\
+    \ by evaluating only successful searches."
+  paragraphs:
+  - MRR
+  - M29a | Interpretation
+  - What the answer means The first useful passage now appears earlier for more questions,
+    reducing how far an analyst or downstream system must search. MRR is not the percentage
+    of correct answers and ignores the ordering of additional relevant passages after
+    the first. Why these steps matter The unresolved question belongs in the denominator
+    of the original MRR. Dropping it would inflate the reported retrieval quality
+    by evaluating only successful searches.
+  source:
+    pages:
+    - 461
+    verbatim: true
+source:
+  pages:
+  - 455
+  - 456
+  - 457
+  - 458
+  - 459
+  - 460
+  - 461
+  verbatim: true
+readAloud:
+- Take one divided by the position of the first relevant result. Give zero to a query
+  with none in the evaluated results. Average across all questions, including the
+  zero cases. Ranks start at 1, not zero. Bringing a source from rank 4 to rank 2
+  raises its contribution from one-quarter to one-half.
+siteAuthored: false
+givens:
+  ranks:
+  - 1
+  - 2
+  - 4
+  - 0
+  newRank: 2
+labels: &id005
+  ranks: First relevant ranks (0 means not found)
+  newRank: New relevant rank for the last query
+deckSolution:
+  RR:
+  - 1
+  - 0.5
+  - 0.25
+  - 0
+  MRR: 0.4375
+  newMRR: 0.5625
+  improvement: 0.125
+latex:
+- RR_q=\begin{cases}1/rank_q&\text{found}\\0&\text{not found}\end{cases},\quad MRR=\frac1Q\sum_qRR_q
+symbols:
+- symbol: Q, q
+  meaning: Total number of evaluated questions, here 4, and a question index.
+  source: *id001
+- symbol: rankq
+  meaning: Position of the first relevant passage for question q in the evaluated
+    result list.
+  source: *id001
+- symbol: RRq
+  meaning: Reciprocal rank for one query; 1 means the first result is relevant.
+  source: *id001
+- symbol: MRR
+  meaning: 'Mean reciprocal rank: average of all question-level reciprocal ranks.'
+  source: *id001
+- symbol: Reciprocal
+  meaning: One divided by a value; a smaller positive rank produces a larger reciprocal.
+  source: *id002
+- symbol: Not found
+  meaning: No relevant item within the evaluated results; assign zero without attempting
+    division by an undefined rank.
+  source: *id002
+- symbol: Σ (q = 1 … Q)
+  meaning: Include every evaluated query, even those with no relevant result.
+  source:
+    pages: *id003
+    verbatim: false
+- symbol: Score-unit improvement
+  meaning: New MRR minus old MRR; not automatically a percentage-point change in answer
+    accuracy.
+  source: *id004
+steps:
+- id: RR
+  title: Reciprocal rank for each query
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Use 1/rank when rank is positive and 0 for a missing result.
+  mistakes:
+  - pattern: recompute
+    message: Use 1/rank when rank is positive and 0 for a missing result.
+- id: MRR
+  title: Mean reciprocal rank
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Average all reciprocal ranks, including zero values.
+  mistakes:
+  - pattern: recompute
+    message: Average all reciprocal ranks, including zero values.
+- id: newMRR
+  title: MRR after improving the last query
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Replace the last reciprocal rank by 1/newRank, then average.
+  mistakes:
+  - pattern: recompute
+    message: Replace the last reciprocal rank by 1/newRank, then average.
+- id: improvement
+  title: MRR improvement
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract original MRR from revised MRR.
+  mistakes:
+  - pattern: recompute
+    message: Subtract original MRR from revised MRR.
+learning:
+  title: How Soon Does the First Useful Source Appear?
+  scenario: An analyst records the rank of the first relevant passage for each query.
+    Rank 0 means no relevant result in the evaluated list.
+  task: Assign reciprocal rank 1/rank when found and 0 otherwise. Calculate mean reciprocal
+    rank, then replace the last query’s missing result with the supplied new rank
+    and calculate improvement.
+  interpretation: Include unsuccessful queries in the mean. MRR measures how early
+    the first relevant passage appears; it ignores additional relevant passages and
+    does not measure answer correctness.
+  summary: 'Original MRR: {MRR}; revised MRR: {newMRR}; improvement: {improvement}.'
+  labels: *id005
+  steps:
+    RR:
+      title: Reciprocal rank for each query
+      hints: *id006
+      unit: ''
+    MRR:
+      title: Mean reciprocal rank
+      hints: *id007
+      unit: ''
+    newMRR:
+      title: MRR after improving the last query
+      hints: *id008
+      unit: ''
+    improvement:
+      title: MRR improvement
+      hints: *id009
+      unit: ''
+  readAloud:
+  - Take one divided by the position of the first relevant result. Give zero to a
+    query with none in the evaluated results. Average across all questions, including
+    the zero cases. Ranks start at 1, not zero. Bringing a source from rank 4 to rank
+    2 raises its contribution from one-quarter to one-half.
+  workedExplanation:
+  - 'The first useful passage now appears earlier for more questions, reducing how
+    far an analyst or downstream system must search. MRR is not the percentage of
+    correct answers and ignores the ordering of additional relevant passages after
+    the first. '
+  - The unresolved question belongs in the denominator of the original MRR. Dropping
+    it would inflate the reported retrieval quality by evaluating only successful
+    searches.
+  workedArithmetic:
+  - Reciprocal ranks are [1, 1/2, 1/4, 0] = [1, 0.5, 0.25, 0]. Original MRR = 1.75/4
+    = 0.4375.
+  - Moving the last query’s first relevant passage to rank 2 changes its contribution
+    to 1/2. New MRR = (1 + 0.5 + 0.25 + 0.5) / 4 = 0.5625.
+  - Improvement = 0.5625 − 0.4375 = 0.125.
+formulaSource:
+  pages:
+  - 455
+  verbatim: false
+  reviewed: true

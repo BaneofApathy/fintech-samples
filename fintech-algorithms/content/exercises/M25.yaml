@@ -1,0 +1,371 @@
+id: M25
+title: Penalize a Cash Shortage More Heavily
+minutes: 7
+kind: measure
+parent: pinball-loss
+question: "A model forecasts the 95th percentile of daily liquidity need at $130 million\
+  \ on each of three\n days. Actual needs are 150, 120, and 130.\n For quantile τ\
+  \ = 0.95, use:\n                                                       (\n     \
+  \                                                   τ (y − q̂),        y ≥ q̂,\n\
+  \                                                  L=\n                        \
+  \                                 (1 − τ )(q̂ − y), y < q̂.\n Calculate each day’s\
+  \ pinball loss and their average. Then compare a $10 million underforecast\n with\
+  \ a $10 million overforecast. Why is one penalized more heavily?"
+questionPages:
+- page: 417
+  title: Pinball Loss
+  text: " Pinball Loss\n\n   M25 | Class problem | 7 minutes — Penalize a Cash Shortage\
+    \ More Heavily\n\n A model forecasts the 95th percentile of daily liquidity need\
+    \ at $130 million on each of three\n days. Actual needs are 150, 120, and 130.\n\
+    \ For quantile τ = 0.95, use:\n                                              \
+    \         (\n                                                        τ (y − q̂),\
+    \        y ≥ q̂,\n                                                  L=\n     \
+    \                                                    (1 − τ )(q̂ − y), y < q̂.\n\
+    \ Calculate each day’s pinball loss and their average. Then compare a $10 million\
+    \ underforecast\n with a $10 million overforecast. Why is one penalized more heavily?"
+  paragraphs:
+  - Pinball Loss
+  - M25 | Class problem | 7 minutes — Penalize a Cash Shortage More Heavily
+  - 'A model forecasts the 95th percentile of daily liquidity need at $130 million
+    on each of three days. Actual needs are 150, 120, and 130. For quantile τ = 0.95,
+    use: ( τ (y − q̂), y ≥ q̂, L= (1 − τ )(q̂ − y), y < q̂. Calculate each day’s pinball
+    loss and their average. Then compare a $10 million underforecast with a $10 million
+    overforecast. Why is one penalized more heavily?'
+  source:
+    pages:
+    - 417
+    verbatim: true
+formulaPages:
+- page: 413
+  title: Pinball Loss
+  text: " Pinball Loss\n\n   M25 | Formula explained (1/1)\n\n Question: How should\
+    \ an error be scored when the forecast is intended to be a high quantile?\n  \
+    \                                       (\n                                  \
+    \        τ (y − q̂),       y ≥ q̂,\n                            Lτ (y, q̂) =\n\
+    \                                          (1 − τ )(q̂ − y), y < q̂.\n Read it\
+    \ aloud: If actual demand is above the quantile forecast, multiply the shortage\
+    \ by tau.\n Otherwise multiply the excess by one minus tau.\n Average the daily\
+    \ losses for an overall score. The two branches meet at zero when actual equals\n\
+    \ forecast.\n At tau 0.95, equal-sized under- and overforecasts receive weights\
+    \ 0.95 and 0.05."
+  paragraphs:
+  - Pinball Loss
+  - M25 | Formula explained (1/1)
+  - 'Question: How should an error be scored when the forecast is intended to be a
+    high quantile? ( τ (y − q̂), y ≥ q̂, Lτ (y, q̂) = (1 − τ )(q̂ − y), y < q̂. Read
+    it aloud: If actual demand is above the quantile forecast, multiply the shortage
+    by tau. Otherwise multiply the excess by one minus tau. Average the daily losses
+    for an overall score. The two branches meet at zero when actual equals forecast.
+    At tau 0.95, equal-sized under- and overforecasts receive weights 0.95 and 0.05.'
+  source:
+    pages:
+    - 413
+    verbatim: true
+symbolPages:
+- page: 414
+  title: Pinball Loss
+  text: " Pinball Loss\n\n   M25 | Symbols and terms (1/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   τ (tau)        \
+    \                                Quantile level; 0.95 means the intended 95th\
+    \ percentile of the\n                                                  predicted\
+    \ distribution.\n   q̂                                             Predicted quantile\
+    \ value: US$130 million for each day here, not a\n                           \
+    \                       predicted mean.\n   y                                \
+    \              Actual liquidity requirement for the day, in millions of dollars.\n\
+    \   Lτ                                             Pinball loss at quantile tau;\
+    \ a nonnegative, asymmetrically weighted\n                                   \
+    \               error score."
+  paragraphs:
+  - Pinball Loss
+  - M25 | Symbols and terms (1/3)
+  - 'Symbol or term Meaning in this example τ (tau) Quantile level; 0.95 means the
+    intended 95th percentile of the predicted distribution. q̂ Predicted quantile
+    value: US$130 million for each day here, not a predicted mean. y Actual liquidity
+    requirement for the day, in millions of dollars. Lτ Pinball loss at quantile tau;
+    a nonnegative, asymmetrically weighted error score.'
+  source: &id001
+    pages:
+    - 414
+    verbatim: true
+- page: 415
+  title: Pinball Loss
+  text: " Pinball Loss\n\n   M25 | Symbols and terms (2/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   y − q̂         \
+    \                                Shortage when actual demand exceeds the forecast;\
+    \ use the top\n                                                  branch.\n   q̂\
+    \ − y                                         Excess forecast when the prediction\
+    \ is above actual demand; use the\n                                          \
+    \        bottom branch."
+  paragraphs:
+  - Pinball Loss
+  - M25 | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example y − q̂ Shortage when actual demand exceeds
+    the forecast; use the top branch. q̂ − y Excess forecast when the prediction is
+    above actual demand; use the bottom branch.
+  source: &id002
+    pages:
+    - 415
+    verbatim: true
+- page: 416
+  title: Pinball Loss
+  text: " Pinball Loss\n\n   M25 | Symbols and terms (3/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   1−τ            \
+    \                                Complementary weight, 0.05 for the 95th-percentile\
+    \ exercise.\n   Piecewise formula                              A formula with\
+    \ different calculations chosen by stated conditions;\n                      \
+    \                            apply only one branch per observation.\n   Quantile;\
+    \ percentile                           A cutoff in a distribution; the 0.95 quantile\
+    \ is the 95th percentile."
+  paragraphs:
+  - Pinball Loss
+  - M25 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example 1−τ Complementary weight, 0.05 for the
+    95th-percentile exercise. Piecewise formula A formula with different calculations
+    chosen by stated conditions; apply only one branch per observation. Quantile;
+    percentile A cutoff in a distribution; the 0.95 quantile is the 95th percentile.
+  source: &id003
+    pages:
+    - 416
+    verbatim: true
+solutionPages:
+- page: 418
+  title: Pinball Loss
+  text: " Pinball Loss\n\n   M25 | Worked solution — Penalize a Cash Shortage More\
+    \ Heavily\n\n1. Actual 150: forecast is short by 150 − 130 = 20; loss = 0.95(20)\
+    \ = 19.\n2. Actual 120: forecast is high by 130 − 120 = 10; loss = 0.05(10) =\
+    \ 0.5.\n3. Actual 130: no error; loss = 0.\n4. Average: (19 + 0.5 + 0)/3 = 6.5,\
+    \ in weighted $ million error units.\n5. Equal-sized misses: a 10-unit shortage\
+    \ costs 0.95(10) = 9.5 score units; a 10-unit excess\n   costs 0.05(10) = 0.5.\
+    \ Ratio = 9.5/0.5 = 19."
+  paragraphs:
+  - Pinball Loss
+  - M25 | Worked solution — Penalize a Cash Shortage More Heavily
+  - '1. Actual 150: forecast is short by 150 − 130 = 20; loss = 0.95(20) = 19. 2.
+    Actual 120: forecast is high by 130 − 120 = 10; loss = 0.05(10) = 0.5. 3. Actual
+    130: no error; loss = 0. 4. Average: (19 + 0.5 + 0)/3 = 6.5, in weighted $ million
+    error units. 5. Equal-sized misses: a 10-unit shortage costs 0.95(10) = 9.5 score
+    units; a 10-unit excess costs 0.05(10) = 0.5. Ratio = 9.5/0.5 = 19.'
+  source:
+    pages:
+    - 418
+    verbatim: true
+interpretationPages:
+- page: 419
+  title: Pinball Loss
+  text: " Pinball Loss\n\n   M25 | Interpretation\n\n What the answer means\n This\
+    \ scoring rule strongly discourages underestimating a high liquidity quantile.\
+    \ The 19-to-1\n weighting comes from choosing the 95th percentile; it is not automatically\
+    \ the bank’s actual\n funding-cost ratio. The computed score is not a realized\
+    \ cash loss.\n Why these steps matter\n The high quantile intentionally penalizes\
+    \ shortfalls more than excess. The weights describe the\n scoring target, not\
+    \ observed borrowing fees or a stated regulatory reserve requirement. The\n average\
+    \ 6.5 is in weighted million-dollar error units, not realized loss."
+  paragraphs:
+  - Pinball Loss
+  - M25 | Interpretation
+  - What the answer means This scoring rule strongly discourages underestimating a
+    high liquidity quantile. The 19-to-1 weighting comes from choosing the 95th percentile;
+    it is not automatically the bank’s actual funding-cost ratio. The computed score
+    is not a realized cash loss. Why these steps matter The high quantile intentionally
+    penalizes shortfalls more than excess. The weights describe the scoring target,
+    not observed borrowing fees or a stated regulatory reserve requirement. The average
+    6.5 is in weighted million-dollar error units, not realized loss.
+  source:
+    pages:
+    - 419
+    verbatim: true
+source:
+  pages:
+  - 413
+  - 414
+  - 415
+  - 416
+  - 417
+  - 418
+  - 419
+  verbatim: true
+readAloud:
+- If actual demand is above the quantile forecast, multiply the shortage by tau. Otherwise
+  multiply the excess by one minus tau. Average the daily losses for an overall score.
+  The two branches meet at zero when actual equals forecast. At tau 0.95, equal-sized
+  under- and overforecasts receive weights 0.95 and 0.05.
+siteAuthored: false
+givens:
+  tau: 0.95
+  forecast: 130
+  actual:
+  - 150
+  - 120
+  - 130
+  equalError: 10
+labels: &id004
+  tau: Quantile level tau
+  forecast: Quantile forecast ($ millions)
+  actual: Actual liquidity needs ($ millions)
+  equalError: Equal miss size to compare ($ millions)
+deckSolution:
+  losses:
+  - 19
+  - 0.5
+  - 0
+  average: 6.5
+  under: 9.5
+  over: 0.5
+  ratio: 19
+latex:
+- L_\tau(y,q)=\begin{cases}\tau(y-q)&y\ge q\\(1-\tau)(q-y)&y<q\end{cases}
+symbols:
+- symbol: τ (tau)
+  meaning: Quantile level; 0.95 means the intended 95th percentile of the predicted
+    distribution.
+  source: *id001
+- symbol: q̂
+  meaning: 'Predicted quantile value: US$130 million for each day here, not a predicted
+    mean.'
+  source: *id001
+- symbol: y
+  meaning: Actual liquidity requirement for the day, in millions of dollars.
+  source: *id001
+- symbol: Lτ
+  meaning: Pinball loss at quantile tau; a nonnegative, asymmetrically weighted error
+    score.
+  source: *id001
+- symbol: y − q̂
+  meaning: Shortage when actual demand exceeds the forecast; use the top branch.
+  source: *id002
+- symbol: q̂ − y
+  meaning: Excess forecast when the prediction is above actual demand; use the bottom
+    branch.
+  source: *id002
+- symbol: 1−τ
+  meaning: Complementary weight, 0.05 for the 95th-percentile exercise.
+  source: *id003
+- symbol: Piecewise formula
+  meaning: A formula with different calculations chosen by stated conditions; apply
+    only one branch per observation.
+  source: *id003
+- symbol: Quantile; percentile
+  meaning: A cutoff in a distribution; the 0.95 quantile is the 95th percentile.
+  source: *id003
+steps:
+- id: losses
+  title: Daily pinball losses
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - If actual ≥ forecast use tau × (actual − forecast); otherwise use (1 − tau) ×
+    (forecast − actual).
+  mistakes:
+  - pattern: recompute
+    message: If actual ≥ forecast use tau × (actual − forecast); otherwise use (1
+      − tau) × (forecast − actual).
+- id: average
+  title: Mean pinball loss
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average the daily losses.
+  mistakes:
+  - pattern: recompute
+    message: Average the daily losses.
+- id: under
+  title: Penalty for an underforecast
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Multiply the equal miss size by tau.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the equal miss size by tau.
+- id: over
+  title: Penalty for an overforecast
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Multiply the equal miss size by 1 − tau.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the equal miss size by 1 − tau.
+- id: ratio
+  title: Underforecast-to-overforecast penalty ratio
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Divide the underforecast penalty by the overforecast penalty.
+  mistakes:
+  - pattern: recompute
+    message: Divide the underforecast penalty by the overforecast penalty.
+learning:
+  title: Penalize a Cash Shortage More Heavily
+  scenario: A model forecasts a chosen quantile of daily liquidity need. Amounts are
+    in $ millions. Pinball loss uses weight tau for underforecasts and 1 − tau for
+    overforecasts.
+  task: Calculate daily pinball losses and their mean. Compare equal-sized under-
+    and overforecasts, including their penalty ratio.
+  interpretation: The asymmetric weights define the quantile being estimated. They
+    are not automatically the institution’s actual funding-cost ratio, and the score
+    is not realized cash loss.
+  summary: 'Mean pinball loss: {average}. Equal-miss penalties: underforecast {under},
+    overforecast {over}; ratio {ratio}.'
+  labels: *id004
+  steps:
+    losses:
+      title: Daily pinball losses
+      hints: *id005
+      unit: ''
+    average:
+      title: Mean pinball loss
+      hints: *id006
+      unit: ''
+    under:
+      title: Penalty for an underforecast
+      hints: *id007
+      unit: ''
+    over:
+      title: Penalty for an overforecast
+      hints: *id008
+      unit: ''
+    ratio:
+      title: Underforecast-to-overforecast penalty ratio
+      hints: *id009
+      unit: ''
+  readAloud:
+  - If actual demand is above the quantile forecast, multiply the shortage by tau.
+    Otherwise multiply the excess by one minus tau. Average the daily losses for an
+    overall score. The two branches meet at zero when actual equals forecast. At tau
+    0.95, equal-sized under- and overforecasts receive weights 0.95 and 0.05.
+  workedExplanation:
+  - 'This scoring rule strongly discourages underestimating a high liquidity quantile.
+    The 19-to-1 weighting comes from choosing the 95th percentile; it is not automatically
+    the bank’s actual funding-cost ratio. The computed score is not a realized cash
+    loss. '
+  - The high quantile intentionally penalizes shortfalls more than excess. The weights
+    describe the scoring target, not observed borrowing fees or a stated regulatory
+    reserve requirement. The average 6.5 is in weighted million-dollar error units,
+    not realized loss.
+  workedArithmetic:
+  - 'For actual 150: loss = 0.95 × (150 − 130) = 19. For actual 120: loss = 0.05 ×
+    (130 − 120) = 0.5. For actual 130: loss = 0.'
+  - Mean loss = (19 + 0.5 + 0) / 3 = 6.5 weighted million-dollar error units.
+  - Equal 10-unit misses give underforecast penalty 0.95 × 10 = 9.5 and overforecast
+    penalty 0.05 × 10 = 0.5. Their ratio = 9.5/0.5 = 19.
+formulaSource:
+  pages:
+  - 413
+  verbatim: false
+  reviewed: true

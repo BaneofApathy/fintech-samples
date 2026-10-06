@@ -1,0 +1,18 @@
+<section class="offline-controls" aria-label="Offline course">
+  <div><strong>Learn without a connection</strong><p data-offline-message role="status" aria-live="polite">Download the course when you need offline access.</p></div>
+  <div class="offline-actions"><button type="button" data-offline-prepare>Make available offline</button><button type="button" data-offline-remove hidden>Remove offline copy</button></div>
+  <progress data-offline-progress hidden max="100" value="0" aria-label="Offline download progress"></progress>
+</section>
+<style>
+  .offline-controls { margin:2rem auto; padding:1.2rem; border:1px solid var(--sl-color-gray-5); border-radius:.75rem; display:flex; flex-wrap:wrap; align-items:center; gap:1rem; max-width:70rem; }
+  .offline-controls > div { min-width:0; max-width:100%; overflow-wrap:anywhere; }
+  p { font-size:.9rem; margin:.3rem 0 0; } .offline-actions { display:flex; flex-wrap:wrap; gap:.6rem; margin-left:auto; }
+  button { font:inherit; padding:.55rem .8rem; cursor:pointer; border-radius:.4rem; border:1px solid var(--sl-color-gray-4); background:var(--sl-color-bg); color:var(--sl-color-text); }
+  button:focus-visible { outline:3px solid var(--sl-color-text-accent); outline-offset:3px; } button:disabled { cursor:wait; opacity:.65; }
+  button { max-width:100%; white-space:normal; overflow-wrap:anywhere; }
+  progress { width:100%; } [hidden] { display:none !important; }
+</style>
+<script>
+  import { initializeOfflineControls } from '../../engine/offline';
+  initializeOfflineControls();
+</script>

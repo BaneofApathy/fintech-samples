@@ -1,0 +1,248 @@
+slug: task-success-verification-unsafe-actions
+number: 37
+title: Task Success, Verification, Unsafe Actions
+question: operate
+financialInterpretation: Agent evaluation must measure end-to-end completion, deterministic
+  checks, tool-use errors, cost, latency, and attempted unsafe actions.
+workingExample: ': 500 invoice-processing tasks ▶ 460 complete and pass deterministic
+  verification: task success = 92%. ▶ 475 pass all required field checks: verification
+  pass rate = 95%. ▶ 5 attempt an action outside authority but are blocked: unsafe-attempt
+  rate = 1%. ▶ Average cost = $0.42 per task; p95 latency = 11 seconds.'
+whatItMisses: A blocked unsafe action is still a serious signal. Review traces, failure
+  categories, iteration counts, and tail cost.
+exercises:
+- M37
+widget: ops-budget
+usedBy: []
+slides:
+- page: 549
+  title: EVALUATION MEASURE 37 OF 39
+  text: "    EVALUATION MEASURE 37 OF 39\n\n\n\n      Task Success, Verification\n\
+    \     Pass Rate, and Unsafe-Action\n                 Rate\n       Tests whether\
+    \ an agent completes work correctly, passes\n           checks, and avoids actions\
+    \ outside its authority."
+  paragraphs:
+  - EVALUATION MEASURE 37 OF 39
+  - Task Success, Verification Pass Rate, and Unsafe-Action Rate Tests whether an
+    agent completes work correctly, passes checks, and avoids actions outside its
+    authority.
+  source:
+    pages:
+    - 549
+    verbatim: true
+- page: 550
+  title: Task success, verification pass rate, and unsafe-action rate – does an agent
+    finish correctly and safely?
+  text: " Task success, verification pass rate, and unsafe-action rate – does an\n\
+    \ agent finish correctly and safely?\n\n Financial interpretation\n Agent evaluation\
+    \ must measure end-to-end completion, deterministic checks, tool-use errors, cost,\
+    \ latency,\n and attempted unsafe actions.\n\n Working example: 500 invoice-processing\
+    \ tasks\n▶ 460 complete and pass deterministic verification: task success = 92%.\n\
+    ▶ 475 pass all required field checks: verification pass rate = 95%.\n▶ 5 attempt\
+    \ an action outside authority but are blocked: unsafe-attempt rate = 1%.\n▶ Average\
+    \ cost = $0.42 per task; p95 latency = 11 seconds.\n\n What it misses\n A blocked\
+    \ unsafe action is still a serious signal. Review traces, failure categories,\
+    \ iteration counts, and tail\n cost."
+  paragraphs:
+  - Task success, verification pass rate, and unsafe-action rate – does an agent finish
+    correctly and safely?
+  - Financial interpretation Agent evaluation must measure end-to-end completion,
+    deterministic checks, tool-use errors, cost, latency, and attempted unsafe actions.
+  - 'Working example: 500 invoice-processing tasks ▶ 460 complete and pass deterministic
+    verification: task success = 92%. ▶ 475 pass all required field checks: verification
+    pass rate = 95%. ▶ 5 attempt an action outside authority but are blocked: unsafe-attempt
+    rate = 1%. ▶ Average cost = $0.42 per task; p95 latency = 11 seconds.'
+  - What it misses A blocked unsafe action is still a serious signal. Review traces,
+    failure categories, iteration counts, and tail cost.
+  source:
+    pages:
+    - 550
+    verbatim: true
+- page: 551
+  title: Agent Measures
+  text: " Agent Measures\n\n   M37 | Formula explained (1/1)\n\n Question: Did the\
+    \ agent finish correctly, pass checks, stay within authority, and use its tools\n\
+    \ reliably?\n                                   Nsuccess                     \
+    \   Ncheck\n                        Success =           ,     V erif ication =\
+    \         ,\n                                    Ntasks                      \
+    \    Ntasks\n                                   Nattempt                     \
+    \                Nunsaf e\n           U nsaf e attempt rate =            ,   \
+    \ U nsaf e execution rate =             ,\n                                  \
+    \   Ntasks                                      Ntasks\n                     \
+    \                                  Nerror\n                                  \
+    \ T ool error rate =          .\n                                            \
+    \            Ncalls\n Read it aloud: Divide each task-level outcome count by assigned\
+    \ tasks. Divide tool-call errors\n by tool calls. Do not substitute one denominator\
+    \ for the other.\n The unsafe-attempt count is the number of tasks containing\
+    \ at least one unauthorized\n attempt, not the total number of such attempts."
+  paragraphs:
+  - Agent Measures
+  - M37 | Formula explained (1/1)
+  - 'Question: Did the agent finish correctly, pass checks, stay within authority,
+    and use its tools reliably? Nsuccess Ncheck Success = , V erif ication = , Ntasks
+    Ntasks Nattempt Nunsaf e U nsaf e attempt rate = , U nsaf e execution rate = ,
+    Ntasks Ntasks Nerror T ool error rate = . Ncalls Read it aloud: Divide each task-level
+    outcome count by assigned tasks. Divide tool-call errors by tool calls. Do not
+    substitute one denominator for the other. The unsafe-attempt count is the number
+    of tasks containing at least one unauthorized attempt, not the total number of
+    such attempts.'
+  source:
+    pages:
+    - 551
+    verbatim: true
+- page: 552
+  title: Agent Measures
+  text: " Agent Measures\n\n   M37 | Symbols and terms (1/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Ntasks         \
+    \                                Total assigned invoice tasks, including failures\
+    \ and incomplete tasks;\n                                                  100\
+    \ here.\n   Nsuccess                                       Tasks that complete\
+    \ correctly and pass every required verification\n                           \
+    \                       check; 90 here.\n   Ncheck                           \
+    \              Tasks passing the specified field checks; 95 here, including five\
+    \ that\n                                                  do not finish the workflow.\n\
+    \   Nattempt                                       Tasks containing at least one\
+    \ attempted action outside the agent’s\n                                     \
+    \             permitted authority; four here."
+  paragraphs:
+  - Agent Measures
+  - M37 | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example Ntasks Total assigned invoice tasks, including
+    failures and incomplete tasks; 100 here. Nsuccess Tasks that complete correctly
+    and pass every required verification check; 90 here. Ncheck Tasks passing the
+    specified field checks; 95 here, including five that do not finish the workflow.
+    Nattempt Tasks containing at least one attempted action outside the agent’s permitted
+    authority; four here.
+  source:
+    pages:
+    - 552
+    verbatim: true
+- page: 553
+  title: Agent Measures
+  text: " Agent Measures\n\n   M37 | Symbols and terms (2/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Nunsaf e       \
+    \                                Tasks containing an actually executed unauthorized\
+    \ action; zero\n                                                  because every\
+    \ attempt is blocked here.\n   Ncalls , Nerror                               \
+    \ Total tool calls and calls returning an error; 200 and 10 respectively."
+  paragraphs:
+  - Agent Measures
+  - M37 | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example Nunsaf e Tasks containing an actually executed
+    unauthorized action; zero because every attempt is blocked here. Ncalls , Nerror
+    Total tool calls and calls returning an error; 200 and 10 respectively.
+  source:
+    pages:
+    - 553
+    verbatim: true
+- page: 554
+  title: Agent Measures
+  text: " Agent Measures\n\n   M37 | Symbols and terms (3/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Tool call      \
+    \                                A request the agent sends to an external function\
+    \ or service; a single\n                                                  task\
+    \ may contain several calls.\n   Verification check                          \
+    \   An explicitly defined test of required data or actions; passing field\n  \
+    \                                                checks alone is not full workflow\
+    \ completion.\n   Authority                                      The set of actions\
+    \ and resources the agent is permitted to use for\n                          \
+    \                        this task.\n   Trace                                \
+    \          Recorded sequence of the agent’s decisions, tool calls, outputs, and\n\
+    \                                                  interventions used to investigate\
+    \ behavior."
+  paragraphs:
+  - Agent Measures
+  - M37 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example Tool call A request the agent sends to
+    an external function or service; a single task may contain several calls. Verification
+    check An explicitly defined test of required data or actions; passing field checks
+    alone is not full workflow completion. Authority The set of actions and resources
+    the agent is permitted to use for this task. Trace Recorded sequence of the agent’s
+    decisions, tool calls, outputs, and interventions used to investigate behavior.
+  source:
+    pages:
+    - 554
+    verbatim: true
+- page: 555
+  title: Agent Measures
+  text: " Agent Measures\n\n   M37 | Class problem | 8 minutes — Completed, Checked,\
+    \ and Within Authority?\n\n An invoice agent processes 100 assigned tasks:\n▶\
+    \ 90 complete correctly and pass every required verification check.\n▶ 95 pass\
+    \ the required field checks; five of these do not finish the workflow.\n▶ Four\
+    \ tasks contain an attempted action outside the agent’s authority. Every such\
+    \ attempt is\n  blocked.\n▶ Across 200 tool calls, 10 return an error.\n Define\
+    \ success as correct completion plus all required checks. Calculate task success,\n\
+    \ field-verification pass rate, task-level unsafe-attempt rate, task-level unsafe-execution\
+    \ rate,\n and tool-call error rate. Does blocking all unsafe attempts make those\
+    \ attempts irrelevant?"
+  paragraphs:
+  - Agent Measures
+  - M37 | Class problem | 8 minutes — Completed, Checked, and Within Authority?
+  - 'An invoice agent processes 100 assigned tasks: ▶ 90 complete correctly and pass
+    every required verification check. ▶ 95 pass the required field checks; five of
+    these do not finish the workflow. ▶ Four tasks contain an attempted action outside
+    the agent’s authority. Every such attempt is blocked. ▶ Across 200 tool calls,
+    10 return an error. Define success as correct completion plus all required checks.
+    Calculate task success, field-verification pass rate, task-level unsafe-attempt
+    rate, task-level unsafe-execution rate, and tool-call error rate. Does blocking
+    all unsafe attempts make those attempts irrelevant?'
+  source:
+    pages:
+    - 555
+    verbatim: true
+- page: 556
+  title: Agent Measures
+  text: " Agent Measures\n\n   M37 | Worked solution — Completed, Checked, and Within\
+    \ Authority?\n\n1. Task success: 90/100 = 90%.\n2. Field-verification pass rate:\
+    \ 95/100 = 95%.\n3. Tasks with unsafe attempts: 4/100 = 4%.\n4. Tasks with executed\
+    \ unauthorized actions: 0/100 = 0%.\n5. Tool-call error rate: 10/200 = 5%."
+  paragraphs:
+  - Agent Measures
+  - M37 | Worked solution — Completed, Checked, and Within Authority?
+  - '1. Task success: 90/100 = 90%. 2. Field-verification pass rate: 95/100 = 95%.
+    3. Tasks with unsafe attempts: 4/100 = 4%. 4. Tasks with executed unauthorized
+    actions: 0/100 = 0%. 5. Tool-call error rate: 10/200 = 5%.'
+  source:
+    pages:
+    - 556
+    verbatim: true
+- page: 557
+  title: Agent Measures
+  text: " Agent Measures\n\n   M37 | Interpretation\n\n What the answer means\n Passing\
+    \ field checks does not guarantee that an invoice workflow finished. Zero executed\n\
+    \ unauthorized actions shows that the blocking control worked in this sample—not\
+    \ that the agent\n never tried to exceed its authority. Tool errors use a different\
+    \ denominator from task outcomes\n and may be recoverable. Inspect the four unsafe-attempt\
+    \ traces even when final task results\n look acceptable.\n Why these steps matter\n\
+    \ A recovered tool error can occur during a task that ultimately succeeds. An\
+    \ unsafe attempt can\n also be blocked before causing an unauthorized action.\
+    \ These counts therefore need not be\n mutually exclusive or add to 100%; each\
+    \ rate measures a distinct failure or control outcome."
+  paragraphs:
+  - Agent Measures
+  - M37 | Interpretation
+  - What the answer means Passing field checks does not guarantee that an invoice
+    workflow finished. Zero executed unauthorized actions shows that the blocking
+    control worked in this sample—not that the agent never tried to exceed its authority.
+    Tool errors use a different denominator from task outcomes and may be recoverable.
+    Inspect the four unsafe-attempt traces even when final task results look acceptable.
+    Why these steps matter A recovered tool error can occur during a task that ultimately
+    succeeds. An unsafe attempt can also be blocked before causing an unauthorized
+    action. These counts therefore need not be mutually exclusive or add to 100%;
+    each rate measures a distinct failure or control outcome.
+  source:
+    pages:
+    - 557
+    verbatim: true
+source:
+  pages:
+  - 549
+  - 550
+  - 551
+  - 552
+  - 553
+  - 554
+  - 555
+  - 556
+  - 557
+  verbatim: true

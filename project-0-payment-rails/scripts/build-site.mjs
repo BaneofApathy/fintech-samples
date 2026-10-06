@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+fs.rmSync('site-dist', { recursive: true, force: true });
+fs.cpSync('site', 'site-dist', { recursive: true });
+fs.mkdirSync('site-dist/downloads', { recursive: true });
+fs.mkdirSync('site-dist/images', { recursive: true });
+for (const name of ['00_payment_rails_course_guide.pdf', '00_payment_rails_technical_design.pdf']) fs.copyFileSync('docs/' + name, 'site-dist/downloads/' + name);
+for (const name of ['architecture.svg', 'lifecycle.svg', 'authorization_sequence.svg']) fs.copyFileSync('docs/diagrams/' + name, 'site-dist/images/' + name);
+for (const name of ['approved.png', 'declined.png', 'settled.png']) fs.copyFileSync('screenshots/' + name, 'site-dist/images/' + name);
+const archive = spawnSync('python3', ['scripts/package-source.py'], { stdio: 'inherit' });
+if (archive.status !== 0) process.exit(archive.status || 1);
+console.log('Payment Rails guide built with reviewed documents and a source download.');

@@ -1,0 +1,269 @@
+- page: 681
+  title: 'Algorithm selection: prediction and discovery'
+  text: " Algorithm selection: prediction and discovery\n\n\n    Financial question\
+    \                              Start with                           Compare against\n\
+    \    What is the probability of                      Logistic regression     \
+    \             Gradient boosting\n    default?\n    Which tabular cases are   \
+    \                      Random forest / boosting             Rules and logistic\
+    \ regression\n    highest risk?\n    What natural groups ex-                 \
+    \        K-means or DBSCAN                    Business-defined segmentation\n\
+    \    ist?\n    What looks unusual with-                        Isolation Forest\
+    \                     Rules and supervised model\n    out labels?\n    What happens\
+    \ next in                            Seasonal    naive,    then   ARI-    Moving\
+    \ average / simple regression\n    time?                                     \
+    \      MA/SARIMA\n    Who is connected to                             Graph features\
+    \                       Transaction-only model\n    whom?"
+  paragraphs:
+  - 'Algorithm selection: prediction and discovery'
+  - Financial question Start with Compare against What is the probability of Logistic
+    regression Gradient boosting default? Which tabular cases are Random forest /
+    boosting Rules and logistic regression highest risk? What natural groups ex- K-means
+    or DBSCAN Business-defined segmentation ist? What looks unusual with- Isolation
+    Forest Rules and supervised model out labels? What happens next in Seasonal naive,
+    then ARI- Moving average / simple regression time? MA/SARIMA Who is connected
+    to Graph features Transaction-only model whom?
+  source:
+    pages:
+    - 681
+    verbatim: true
+- page: 682
+  title: 'Algorithm selection: language, action, and uncertainty'
+  text: " Algorithm selection: language, action, and uncertainty\n\n\n\n    Financial\
+    \ question                              Start with                           \
+    \    Compare against\n    What does this sentence                         FinBERT\
+    \ / transformer classifier         Keywords / linear text model\n    mean?\n \
+    \   Where is the supporting                         Embeddings + RAG         \
+    \                Keyword search\n    evidence?\n    What action satisfies con-\
+    \                      Constrained optimization                 Equal-weight or\
+    \ policy rule\n    straints?\n    What sequence of actions                   \
+    \     Reinforcement learning                   Deterministic policy\n    is best?\n\
+    \    What is the distribution                        Monte Carlo simulation  \
+    \                 Expected-value calculation\n    of outcomes?"
+  paragraphs:
+  - 'Algorithm selection: language, action, and uncertainty'
+  - Financial question Start with Compare against What does this sentence FinBERT
+    / transformer classifier Keywords / linear text model mean? Where is the supporting
+    Embeddings + RAG Keyword search evidence? What action satisfies con- Constrained
+    optimization Equal-weight or policy rule straints? What sequence of actions Reinforcement
+    learning Deterministic policy is best? What is the distribution Monte Carlo simulation
+    Expected-value calculation of outcomes?
+  source:
+    pages:
+    - 682
+    verbatim: true
+- page: 683
+  title: The minimum deliverable for each algorithm
+  text: ' The minimum deliverable for each algorithm
+
+
+
+
+    1. Financial problem: one sentence with a decision owner and consequence.
+
+    2. Data contract: features, target, timing, unit of analysis, and forbidden fields.
+
+    3. Baseline: a rule or simpler method on the same split.
+
+    4. Working example: reproducible notebook with pinned seed and environment.
+
+    5. Evaluation: metric tied to cost, capacity, or risk.
+
+    6. Failure case: one example the team can explain.
+
+    7. Control: threshold, abstention, human review, constraint, or fallback.
+
+    8. Recommendation: deploy, pilot, revise, or reject–with scope.'
+  paragraphs:
+  - The minimum deliverable for each algorithm
+  - '1. Financial problem: one sentence with a decision owner and consequence. 2.
+    Data contract: features, target, timing, unit of analysis, and forbidden fields.
+    3. Baseline: a rule or simpler method on the same split. 4. Working example: reproducible
+    notebook with pinned seed and environment. 5. Evaluation: metric tied to cost,
+    capacity, or risk. 6. Failure case: one example the team can explain. 7. Control:
+    threshold, abstention, human review, constraint, or fallback. 8. Recommendation:
+    deploy, pilot, revise, or reject–with scope.'
+  source:
+    pages:
+    - 683
+    verbatim: true
+- page: 684
+  title: Suggested lab pairings
+  text: " Suggested lab pairings\n\n\n    Algorithm                              \
+    \ Dataset / source                  Student task                        Required\
+    \ comparison\n\n    Logistic / boosting                     Home Credit or LendingClub\
+    \        PD, calibration, cost threshold     Logistic vs boosting\n    Trees /\
+    \ Isolation Forest                ULB or IEEE-CIS fraud             Rank cases\
+    \ under review capac-      Rules vs supervised vs anomaly\n                  \
+    \                                                            ity\n    Clustering\
+    \                              Synthetic or anonymized trans-    Build and profile\
+    \ segments          k and seed stability\n                                   \
+    \         action aggregates\n    ARIMA / SARIMA                          Frozen\
+    \ FRED or payment-           7- and 28-day forecast              Seasonal naive\n\
+    \                                            volume series\n    Graph        \
+    \                           Synthetic entity network or en-   Detect connected\
+    \ rings              Tabular-only model\n                                    \
+    \        riched fraud data\n    FinBERT                                 Financial\
+    \ PhraseBank              Classify sentiment and chal-        Keyword / linear\
+    \ baseline\n                                                                 \
+    \             lenge cases\n    RAG                                     Frozen\
+    \ SEC filing corpus          Answer with citations and ab-       Keyword search\
+    \ / no retrieval\n                                                           \
+    \                   stain on misses\n    Optimization                        \
+    \    Frozen asset-return sample        Constrained portfolio               Equal\
+    \ weight\n    Reinforcement learning                  Instructor market simulator\
+    \       Execution policy                    TWAP / VWAP\n    Monte Carlo     \
+    \                        Synthetic loan portfolio          Tail loss and reserve\
+    \ breach        Expected loss only"
+  paragraphs:
+  - Suggested lab pairings
+  - Algorithm Dataset / source Student task Required comparison
+  - Logistic / boosting Home Credit or LendingClub PD, calibration, cost threshold
+    Logistic vs boosting Trees / Isolation Forest ULB or IEEE-CIS fraud Rank cases
+    under review capac- Rules vs supervised vs anomaly ity Clustering Synthetic or
+    anonymized trans- Build and profile segments k and seed stability action aggregates
+    ARIMA / SARIMA Frozen FRED or payment- 7- and 28-day forecast Seasonal naive volume
+    series Graph Synthetic entity network or en- Detect connected rings Tabular-only
+    model riched fraud data FinBERT Financial PhraseBank Classify sentiment and chal-
+    Keyword / linear baseline lenge cases RAG Frozen SEC filing corpus Answer with
+    citations and ab- Keyword search / no retrieval stain on misses Optimization Frozen
+    asset-return sample Constrained portfolio Equal weight Reinforcement learning
+    Instructor market simulator Execution policy TWAP / VWAP Monte Carlo Synthetic
+    loan portfolio Tail loss and reserve breach Expected loss only
+  source:
+    pages:
+    - 684
+    verbatim: true
+- page: 685
+  title: A 40-minute classroom pattern that works
+  text: " A 40-minute classroom pattern that works\n\n\n    Time                 \
+    \             Segment       Instructor / student activity\n    5 min         \
+    \                    Problem       Present the decision, data, and cost of being\
+    \ wrong\n    5 min                             Intuition     One visual and one\
+    \ hand-worked example\n    8 min                             Demo          Run\
+    \ a prepared baseline and the target method\n    12 min                      \
+    \      Modify        Students change one assumption, parameter, or threshold\n\
+    \    5 min                             Break it      Introduce leakage, imbalance,\
+    \ drift, or bad assumptions\n    5 min                             Defend    \
+    \    One student explains method choice, metric, and stop\n                  \
+    \                                  condition\n\n\n Do not start with a blank notebook\n\
+    \ Provide runnable scaffolding. The learning objective is judgment: reading, modifying,\
+    \ testing, and\n defending the code."
+  paragraphs:
+  - A 40-minute classroom pattern that works
+  - Time Segment Instructor / student activity 5 min Problem Present the decision,
+    data, and cost of being wrong 5 min Intuition One visual and one hand-worked example
+    8 min Demo Run a prepared baseline and the target method 12 min Modify Students
+    change one assumption, parameter, or threshold 5 min Break it Introduce leakage,
+    imbalance, drift, or bad assumptions 5 min Defend One student explains method
+    choice, metric, and stop condition
+  - 'Do not start with a blank notebook Provide runnable scaffolding. The learning
+    objective is judgment: reading, modifying, testing, and defending the code.'
+  source:
+    pages:
+    - 685
+    verbatim: true
+- page: 686
+  title: 'Capstone defense: eight questions every team must answer'
+  text: ' Capstone defense: eight questions every team must answer
+
+
+
+
+    1. What financial decision does the system support?
+
+    2. What was known at decision time?
+
+    3. Why is this algorithm more appropriate than the baseline?
+
+    4. Which metric matches the cost of error?
+
+    5. Where does the model fail by customer, product, time, or scenario?
+
+    6. What control prevents a wrong result from becoming a harmful action?
+
+    7. What will be monitored after deployment?
+
+    8. Under what condition will the model be paused, rolled back, or replaced?'
+  paragraphs:
+  - 'Capstone defense: eight questions every team must answer'
+  - 1. What financial decision does the system support? 2. What was known at decision
+    time? 3. Why is this algorithm more appropriate than the baseline? 4. Which metric
+    matches the cost of error? 5. Where does the model fail by customer, product,
+    time, or scenario? 6. What control prevents a wrong result from becoming a harmful
+    action? 7. What will be monitored after deployment? 8. Under what condition will
+    the model be paused, rolled back, or replaced?
+  source:
+    pages:
+    - 686
+    verbatim: true
+- page: 687
+  title: Final synthesis
+  text: " Final synthesis\n\n\n\n Prediction                                     \
+    \    Discovery and evidence              Action and uncertainty\n Logistic regression,\
+    \ trees,                        Clustering, anomaly detection,      Optimization,\
+    \ reinforcement\n boosting, time series,                             graphs, embeddings,\
+    \ RAG.            learning, Monte Carlo\n transformers.                      \
+    \                                                    simulation.\n\n         \
+    \                                    The method is only half the work.\n     \
+    \   The other half is data timing, evaluation, financial consequences, controls,\
+    \ and\n                                         honest limits.\n\n\n   Student\
+    \ defense question: For your project, which simpler method must your chosen algorithm\n\
+    \   beat before it earns deployment?"
+  paragraphs:
+  - Final synthesis
+  - Prediction Discovery and evidence Action and uncertainty Logistic regression,
+    trees, Clustering, anomaly detection, Optimization, reinforcement boosting, time
+    series, graphs, embeddings, RAG. learning, Monte Carlo transformers. simulation.
+  - The method is only half the work. The other half is data timing, evaluation, financial
+    consequences, controls, and honest limits.
+  - 'Student defense question: For your project, which simpler method must your chosen
+    algorithm beat before it earns deployment?'
+  source:
+    pages:
+    - 687
+    verbatim: true
+- page: 688
+  title: Selected references and implementation sources
+  text: " Selected references and implementation sources\n\n\n ▶ James, Witten, Hastie,\
+    \ Tibshirani. An Introduction to Statistical Learning.\n ▶ Hyndman and Athanasopoulos.\
+    \ Forecasting: Principles and Practice.\n ▶ scikit-learn documentation: linear\
+    \ models, ensembles, clustering, anomaly detection, metrics.\n ▶ statsmodels documentation:\
+    \ ARIMA and SARIMAX.\n ▶ NetworkX documentation: graph construction, components,\
+    \ centrality, and communities.\n ▶ ProsusAI/FinBERT model card; Financial PhraseBank\
+    \ dataset documentation.\n ▶ Sentence-Transformers documentation; Lewis et al.,\
+    \ “Retrieval-Augmented Generation.”\n ▶ Markowitz, “Portfolio Selection”; SciPy\
+    \ constrained optimization documentation.\n ▶ Sutton and Barto. Reinforcement\
+    \ Learning: An Introduction.\n ▶ Glasserman. Monte Carlo Methods in Financial\
+    \ Engineering.\n\n\n   Course implementation note: Freeze datasets for reproducibility,\
+    \ pin package versions, keep an offline fallback, and require\n   students to\
+    \ submit the tests they wrote–not only the output they obtained."
+  paragraphs:
+  - Selected references and implementation sources
+  - '▶ James, Witten, Hastie, Tibshirani. An Introduction to Statistical Learning.
+    ▶ Hyndman and Athanasopoulos. Forecasting: Principles and Practice. ▶ scikit-learn
+    documentation: linear models, ensembles, clustering, anomaly detection, metrics.
+    ▶ statsmodels documentation: ARIMA and SARIMAX. ▶ NetworkX documentation: graph
+    construction, components, centrality, and communities. ▶ ProsusAI/FinBERT model
+    card; Financial PhraseBank dataset documentation. ▶ Sentence-Transformers documentation;
+    Lewis et al., “Retrieval-Augmented Generation.” ▶ Markowitz, “Portfolio Selection”;
+    SciPy constrained optimization documentation. ▶ Sutton and Barto. Reinforcement
+    Learning: An Introduction. ▶ Glasserman. Monte Carlo Methods in Financial Engineering.'
+  - 'Course implementation note: Freeze datasets for reproducibility, pin package
+    versions, keep an offline fallback, and require students to submit the tests they
+    wrote–not only the output they obtained.'
+  source:
+    pages:
+    - 688
+    verbatim: true
+- page: 689
+  title: Choose. Test. Defend. A fintech model is useful only when its decision, evidence,
+    cost, and
+  text: "           Choose. Test. Defend.\nA fintech model is useful only when its\
+    \ decision, evidence, cost, and\n                           limits are clear."
+  paragraphs:
+  - Choose. Test. Defend. A fintech model is useful only when its decision, evidence,
+    cost, and limits are clear.
+  source:
+    pages:
+    - 689
+    verbatim: true

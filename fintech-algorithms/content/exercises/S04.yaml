@@ -1,0 +1,380 @@
+id: S04
+title: A Better Average Can Hide Worse Executions
+minutes: 8
+kind: skill
+parent: reinforcement-learning
+question: "Ten completed orders have total execution costs in basis points:\n    \
+  \                                        [2, 3, 4, 5, 6, 7, 8, 9, 20, 30].\n A baseline\
+  \ costs 12 basis points on every one of the same ten orders.\n Calculate the learned\
+  \ policy’s mean, nearest-rank p90 and p95, and mean cost of its worst\n 20% of orders.\
+  \ Compare the mean and worst-20% result with the baseline. Use percentile rank\n\
+  \ ⌈pN ⌉. Which policy is better depends on what business preference?"
+questionPages:
+- page: 177
+  title: Tail Slippage
+  text: " Tail Slippage\n\n   S04 | Class problem | 8 minutes — A Better Average Can\
+    \ Hide Worse Executions\n\n Ten completed orders have total execution costs in\
+    \ basis points:\n                                            [2, 3, 4, 5, 6, 7,\
+    \ 8, 9, 20, 30].\n A baseline costs 12 basis points on every one of the same ten\
+    \ orders.\n Calculate the learned policy’s mean, nearest-rank p90 and p95, and\
+    \ mean cost of its worst\n 20% of orders. Compare the mean and worst-20% result\
+    \ with the baseline. Use percentile rank\n ⌈pN ⌉. Which policy is better depends\
+    \ on what business preference?"
+  paragraphs:
+  - Tail Slippage
+  - S04 | Class problem | 8 minutes — A Better Average Can Hide Worse Executions
+  - 'Ten completed orders have total execution costs in basis points: [2, 3, 4, 5,
+    6, 7, 8, 9, 20, 30]. A baseline costs 12 basis points on every one of the same
+    ten orders. Calculate the learned policy’s mean, nearest-rank p90 and p95, and
+    mean cost of its worst 20% of orders. Compare the mean and worst-20% result with
+    the baseline. Use percentile rank ⌈pN ⌉. Which policy is better depends on what
+    business preference?'
+  source:
+    pages:
+    - 177
+    verbatim: true
+formulaPages:
+- page: 174
+  title: Tail Slippage
+  text: " Tail Slippage\n\n   S04 | Formula explained (1/1)\n\n Question: Does the\
+    \ policy’s average execution cost hide expensive outcomes in its tail?\n     \
+    \                               1 X\n                               c̄ =     \
+    \  ci ,    cp = c(⌈pN ⌉) ,\n                                    N i\n        \
+    \                                                       N\n                  \
+    \                                       1    X\n                             \
+    \               T ail mean =            c(j) ,        m = f N.\n             \
+    \                                            m j=N −m+1\n\n Read it aloud: Average\
+    \ all order costs for the mean. Sort them and read the nearest-rank\n observation\
+    \ for a percentile. Average the largest selected fraction for the tail mean.\n\
+    \ Here f = 0.20 and N = 10, so the tail contains exactly two orders. Orders receive\
+    \ equal weight;\n order notionals are not supplied for a value-weighted calculation."
+  paragraphs:
+  - Tail Slippage
+  - S04 | Formula explained (1/1)
+  - 'Question: Does the policy’s average execution cost hide expensive outcomes in
+    its tail? 1 X c̄ = ci , cp = c(⌈pN ⌉) , N i N 1 X T ail mean = c(j) , m = f N.
+    m j=N −m+1'
+  - 'Read it aloud: Average all order costs for the mean. Sort them and read the nearest-rank
+    observation for a percentile. Average the largest selected fraction for the tail
+    mean. Here f = 0.20 and N = 10, so the tail contains exactly two orders. Orders
+    receive equal weight; order notionals are not supplied for a value-weighted calculation.'
+  source:
+    pages:
+    - 174
+    verbatim: true
+symbolPages:
+- page: 175
+  title: Tail Slippage
+  text: " Tail Slippage\n\n   S04 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   ci                   \
+    \                    Execution cost of completed order i, expressed in basis points\
+    \ of that\n                                            order’s notional.\n   N\
+    \                                        Number of completed orders, ten.\n  \
+    \ c̄                                       Arithmetic mean cost across orders;\
+    \ lower cost is better under the\n                                           \
+    \ stated comparison.\n   c(j)                                     The jth lowest\
+    \ cost after sorting orders from cheapest to most\n                          \
+    \                  expensive.\n   p                                        Percentile\
+    \ fraction, 0.90 for p90 or 0.95 for p95.\n   ⌈pN ⌉                          \
+    \          Nearest-rank position: round upward to the next integer."
+  paragraphs:
+  - Tail Slippage
+  - S04 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example ci Execution cost of completed order i,
+    expressed in basis points of that order’s notional. N Number of completed orders,
+    ten. c̄ Arithmetic mean cost across orders; lower cost is better under the stated
+    comparison. c(j) The jth lowest cost after sorting orders from cheapest to most
+    expensive. p Percentile fraction, 0.90 for p90 or 0.95 for p95. ⌈pN ⌉ Nearest-rank
+    position: round upward to the next integer.'
+  source: &id001
+    pages:
+    - 175
+    verbatim: true
+- page: 176
+  title: Tail Slippage
+  text: " Tail Slippage\n\n   S04 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                           Meaning in this example\n   f, m                 \
+    \                    Tail fraction and corresponding number of worst orders; 20%\
+    \ and\n                                            two in this exercise.\n   Tail\
+    \                                     The high-cost end of the observed distribution,\
+    \ not the last orders in\n                                            chronological\
+    \ time.\n   Basis point (bp)                         One ten-thousandth of order\
+    \ value. A cost of 20 bps is 0.20% of\n                                      \
+    \      that order’s notional.\n   Baseline                                 Comparator\
+    \ that costs 12 bps on every one of the same ten orders."
+  paragraphs:
+  - Tail Slippage
+  - S04 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example f, m Tail fraction and corresponding number
+    of worst orders; 20% and two in this exercise. Tail The high-cost end of the observed
+    distribution, not the last orders in chronological time. Basis point (bp) One
+    ten-thousandth of order value. A cost of 20 bps is 0.20% of that order’s notional.
+    Baseline Comparator that costs 12 bps on every one of the same ten orders.
+  source: &id002
+    pages:
+    - 176
+    verbatim: true
+solutionPages:
+- page: 178
+  title: Tail Slippage
+  text: " Tail Slippage\n\n   S04 | Worked solution — A Better Average Can Hide Worse\
+    \ Executions\n\n1. Mean: total = 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 20 + 30 = 94;\
+    \ mean = 94/10 = 9.4 bps.\n2. p90: rank ⌈0.90(10)⌉ = 9; result = 20 bps.\n3. p95:\
+    \ rank ⌈0.95(10)⌉ = 10; result = 30 bps.\n4. Worst 20%: two largest costs, 20\
+    \ and 30; average = 25 bps.\n5. Baseline: mean and worst-20% average are both\
+    \ 12 bps."
+  paragraphs:
+  - Tail Slippage
+  - S04 | Worked solution — A Better Average Can Hide Worse Executions
+  - '1. Mean: total = 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 20 + 30 = 94; mean = 94/10 =
+    9.4 bps. 2. p90: rank ⌈0.90(10)⌉ = 9; result = 20 bps. 3. p95: rank ⌈0.95(10)⌉
+    = 10; result = 30 bps. 4. Worst 20%: two largest costs, 20 and 30; average = 25
+    bps. 5. Baseline: mean and worst-20% average are both 12 bps.'
+  source:
+    pages:
+    - 178
+    verbatim: true
+interpretationPages:
+- page: 179
+  title: Tail Slippage
+  text: " Tail Slippage\n\n   S04 | Interpretation\n\n What the answer means\n The\
+    \ learned policy improves average cost by 2.6 bps, but its worst fifth costs 13\
+    \ bps more than\n the baseline’s worst fifth. Choosing between them requires an\
+    \ explicit tolerance for execution tail\n risk. Ten orders are enough for arithmetic,\
+    \ not for a reliable estimate of future tail performance.\n Why these steps matter\n\
+    \ The mean can improve when many orders get slightly cheaper even as a few become\
+    \ much more\n expensive. Percentiles describe thresholds and the tail mean describes\
+    \ the average beyond the\n selected worst-fraction boundary. Neither the small\
+    \ sample nor a lower overall mean establishes\n acceptable future tail behavior."
+  paragraphs:
+  - Tail Slippage
+  - S04 | Interpretation
+  - What the answer means The learned policy improves average cost by 2.6 bps, but
+    its worst fifth costs 13 bps more than the baseline’s worst fifth. Choosing between
+    them requires an explicit tolerance for execution tail risk. Ten orders are enough
+    for arithmetic, not for a reliable estimate of future tail performance. Why these
+    steps matter The mean can improve when many orders get slightly cheaper even as
+    a few become much more expensive. Percentiles describe thresholds and the tail
+    mean describes the average beyond the selected worst-fraction boundary. Neither
+    the small sample nor a lower overall mean establishes acceptable future tail behavior.
+  source:
+    pages:
+    - 179
+    verbatim: true
+source:
+  pages:
+  - 174
+  - 175
+  - 176
+  - 177
+  - 178
+  - 179
+  verbatim: true
+readAloud:
+- Average all order costs for the mean. Sort them and read the nearest-rank observation
+  for a percentile. Average the largest selected fraction for the tail mean. Here
+  f = 0.20 and N = 10, so the tail contains exactly two orders. Orders receive equal
+  weight; order notionals are not supplied for a value-weighted calculation.
+siteAuthored: false
+givens:
+  costs:
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 20
+  - 30
+  baseline: 12
+  tail: 0.2
+labels: &id003
+  costs: Order costs (bps)
+  baseline: Baseline cost per order (bps)
+  tail: Worst-tail fraction
+deckSolution:
+  mean: 9.4
+  p90: 20
+  p95: 30
+  tailMean: 25
+  meanSaving: 2.6
+  tailExtra: 13
+latex:
+- \bar c=\frac{1}{N}\sum_i c_i,\quad c_p=c_{(\lceil pN\rceil)},\quad TailMean=\operatorname{mean}(\text{worst
+  }20\%)
+symbols:
+- symbol: ci
+  meaning: Execution cost of completed order i, expressed in basis points of that
+    order’s notional.
+  source: *id001
+- symbol: N
+  meaning: Number of completed orders, ten.
+  source: *id001
+- symbol: c̄
+  meaning: Arithmetic mean cost across orders; lower cost is better under the stated
+    comparison.
+  source: *id001
+- symbol: c(j)
+  meaning: The jth lowest cost after sorting orders from cheapest to most expensive.
+  source: *id001
+- symbol: p
+  meaning: Percentile fraction, 0.90 for p90 or 0.95 for p95.
+  source: *id001
+- symbol: ⌈pN ⌉
+  meaning: 'Nearest-rank position: round upward to the next integer.'
+  source: *id001
+- symbol: f, m
+  meaning: Tail fraction and corresponding number of worst orders; 20% and two in
+    this exercise.
+  source: *id002
+- symbol: Tail
+  meaning: The high-cost end of the observed distribution, not the last orders in
+    chronological time.
+  source: *id002
+- symbol: Basis point (bp)
+  meaning: One ten-thousandth of order value. A cost of 20 bps is 0.20% of that order’s
+    notional.
+  source: *id002
+- symbol: Baseline
+  meaning: Comparator that costs 12 bps on every one of the same ten orders.
+  source: *id002
+steps:
+- id: mean
+  title: Mean execution cost
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Add all order costs and divide by the number of orders.
+  mistakes:
+  - pattern: recompute
+    message: Add all order costs and divide by the number of orders.
+- id: p90
+  title: 90th-percentile cost
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Sort costs and select rank ceiling(0.90 × count), starting ranks at 1.
+  mistakes:
+  - pattern: recompute
+    message: Sort costs and select rank ceiling(0.90 × count), starting ranks at 1.
+- id: p95
+  title: 95th-percentile cost
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Sort costs and select rank ceiling(0.95 × count).
+  mistakes:
+  - pattern: recompute
+    message: Sort costs and select rank ceiling(0.95 × count).
+- id: tailMean
+  title: Mean cost in the worst tail
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Average the largest tail-fraction of order costs; round the count upward if needed.
+  mistakes:
+  - pattern: recompute
+    message: Average the largest tail-fraction of order costs; round the count upward
+      if needed.
+- id: meanSaving
+  title: Mean cost saving versus baseline
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Subtract the policy mean from baseline cost.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the policy mean from baseline cost.
+- id: tailExtra
+  title: Extra tail cost versus baseline
+  expects: number
+  unit: bps
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract baseline cost from the policy tail mean.
+  mistakes:
+  - pattern: recompute
+    message: Subtract baseline cost from the policy tail mean.
+learning:
+  title: A Better Average Can Hide Worse Executions
+  scenario: Completed orders have equal weight. Costs are measured in basis points.
+    A baseline incurs the same supplied cost on every order.
+  task: Calculate mean cost, nearest-rank p90 and p95, and mean cost in the supplied
+    worst-tail fraction. Compare average and tail cost with the baseline. Use percentile
+    rank ceiling(p × number of orders).
+  interpretation: A policy can improve average cost while making its worst executions
+    more expensive. Choose the comparison that reflects the desk’s risk tolerance;
+    a small sample is not a reliable future tail estimate.
+  summary: 'Mean cost: {mean}. Tail mean: {tailMean}. Mean saving versus baseline:
+    {meanSaving}; extra tail cost: {tailExtra}.'
+  labels: *id003
+  steps:
+    mean:
+      title: Mean execution cost
+      hints: *id004
+      unit: bps
+    p90:
+      title: 90th-percentile cost
+      hints: *id005
+      unit: bps
+    p95:
+      title: 95th-percentile cost
+      hints: *id006
+      unit: bps
+    tailMean:
+      title: Mean cost in the worst tail
+      hints: *id007
+      unit: bps
+    meanSaving:
+      title: Mean cost saving versus baseline
+      hints: *id008
+      unit: bps
+    tailExtra:
+      title: Extra tail cost versus baseline
+      hints: *id009
+      unit: bps
+  readAloud:
+  - Average all order costs for the mean. Sort them and read the nearest-rank observation
+    for a percentile. Average the largest selected fraction for the tail mean. Here
+    f = 0.20 and N = 10, so the tail contains exactly two orders. Orders receive equal
+    weight; order notionals are not supplied for a value-weighted calculation.
+  workedExplanation:
+  - 'The learned policy improves average cost by 2.6 bps, but its worst fifth costs
+    13 bps more than the baseline’s worst fifth. Choosing between them requires an
+    explicit tolerance for execution tail risk. Ten orders are enough for arithmetic,
+    not for a reliable estimate of future tail performance. '
+  - The mean can improve when many orders get slightly cheaper even as a few become
+    much more expensive. Percentiles describe thresholds and the tail mean describes
+    the average beyond the selected worst-fraction boundary. Neither the small sample
+    nor a lower overall mean establishes acceptable future tail behavior.
+  workedArithmetic:
+  - Total cost = 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 20 + 30 = 94 bps; mean = 94/10 =
+    9.4 bps.
+  - p90 uses rank ceiling(0.90 × 10) = 9, giving 20 bps. p95 uses rank 10, giving
+    30 bps.
+  - 'The worst 20% contains two orders: (20 + 30) / 2 = 25 bps.'
+  - Mean saving = 12 − 9.4 = 2.6 bps. Extra tail cost = 25 − 12 = 13 bps.
+formulaSource:
+  pages:
+  - 174
+  verbatim: false
+  reviewed: true

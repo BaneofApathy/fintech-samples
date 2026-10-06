@@ -1,0 +1,419 @@
+slug: gradient-boosting
+number: 3
+title: Gradient-Boosted Trees
+group: Predict an outcome
+oneLine: Improve tabular credit-risk ranking against a simple baseline.
+baseline: Logistic regression on the same pre-decision features.
+primerSlides:
+- page: 43
+  title: 'Primer 3A: Gradient-boosted trees – definition and intuition'
+  text: " Primer 3A: Gradient-boosted trees – definition and intuition\n\n\n   Financial\
+    \ problem: Can a lender improve risk ranking on complex tabular data without moving\
+    \ to an opaque\n   end-to-end neural system?\n\n\n\n Definition              \
+    \                                                                          Plain-English\
+    \ intuition\n Gradient boosting builds a sequence of usually shallow trees.  \
+    \                                   The first tree makes a rough estimate. Later\
+    \ trees\n Each new tree is trained to reduce the errors left by the          \
+    \                               focus on the cases the current model handles poorly.\n\
+    \ current ensemble, producing a weighted sum of corrective                   \
+    \                       Small corrections accumulate into a strong predictor.\n\
+    \ models.\n                                                                  \
+    \                                 Anchor idea\n Input → output               \
+    \                                                                            \
+    \                     PM\n Input: Structured features with a labeled target; common\n\
+    \                                                                            \
+    \                          FM (x) = F0 (x) + m=1 ηfm (x), where η\n implementations\
+    \ include XGBoost, LightGBM, and CatBoost.                                   \
+    \             controls the size of each correction.\n Output: A classification\
+    \ score, probability after calibration, or\n numeric forecast.\n What it learns:\
+    \ Nonlinear interactions, thresholds, and missing-value patterns in tabular data."
+  paragraphs:
+  - 'Primer 3A: Gradient-boosted trees – definition and intuition'
+  - 'Financial problem: Can a lender improve risk ranking on complex tabular data
+    without moving to an opaque end-to-end neural system?'
+  - 'Definition Plain-English intuition Gradient boosting builds a sequence of usually
+    shallow trees. The first tree makes a rough estimate. Later trees Each new tree
+    is trained to reduce the errors left by the focus on the cases the current model
+    handles poorly. current ensemble, producing a weighted sum of corrective Small
+    corrections accumulate into a strong predictor. models. Anchor idea Input → output
+    PM Input: Structured features with a labeled target; common FM (x) = F0 (x) +
+    m=1 ηfm (x), where η implementations include XGBoost, LightGBM, and CatBoost.
+    controls the size of each correction. Output: A classification score, probability
+    after calibration, or numeric forecast. What it learns: Nonlinear interactions,
+    thresholds, and missing-value patterns in tabular data.'
+  source:
+    pages:
+    - 43
+    verbatim: true
+- page: 44
+  title: 'Primer 3B: Gradient-boosted trees – worked fintech example'
+  text: " Primer 3B: Gradient-boosted trees – worked fintech example\n\n\n Probability\
+    \ of default with explanations\n A lender has application, bureau, and cash-flow\
+    \ features. Defaults are uncommon, and the decision must\n still produce defensible\
+    \ adverse-action reasons.\n\n\n From data to action                          \
+    \                             Comparison point\n1. Train a time-aware logistic\
+    \ baseline and a boosted-tree challenger      Baseline: Logistic regression on\
+    \ the same\n                                                                 \
+    \          features and validation window.\n   on the same split.\n2. Tune depth,\
+    \ learning rate, and number of trees using only               Control to teach\n\
+    \   validation data.\n                                                       \
+    \                    Watch for: Target leakage, over-tuning,\n3. Calibrate the\
+    \ selected model, then choose a threshold from              unstable SHAP narratives,\
+    \ and optimizing\n                                                           \
+    \                AUC while ignoring calibration and cost.\n   expected loss and\
+    \ review capacity.\n4. Use SHAP as a diagnostic, then map approved features to\n\
+    \   controlled adverse-action reason codes."
+  paragraphs:
+  - 'Primer 3B: Gradient-boosted trees – worked fintech example'
+  - Probability of default with explanations A lender has application, bureau, and
+    cash-flow features. Defaults are uncommon, and the decision must still produce
+    defensible adverse-action reasons.
+  - 'From data to action Comparison point 1. Train a time-aware logistic baseline
+    and a boosted-tree challenger Baseline: Logistic regression on the same features
+    and validation window. on the same split. 2. Tune depth, learning rate, and number
+    of trees using only Control to teach validation data. Watch for: Target leakage,
+    over-tuning, 3. Calibrate the selected model, then choose a threshold from unstable
+    SHAP narratives, and optimizing AUC while ignoring calibration and cost. expected
+    loss and review capacity. 4. Use SHAP as a diagnostic, then map approved features
+    to controlled adverse-action reason codes.'
+  source:
+    pages:
+    - 44
+    verbatim: true
+- page: 45
+  title: 'Primer 3C: Gradient-boosted trees – when to use it, and when not to'
+  text: " Primer 3C: Gradient-boosted trees – when to use it, and when not to\n\n\n\
+    \ Use it when                                                        Do not use\
+    \ it when\n▶ Tabular data contain nonlinearities and                         \
+    \  ▶ The sample is too small for reliable tuning.\n  interactions.           \
+    \                                          ▶ Policy demands a simple monotonic\
+    \ scorecard and\n▶ Predictive lift over a linear baseline has business       \
+    \          no challenger process exists.\n  value.                           \
+    \                                 ▶ The main input is raw language, images, or\
+    \ graph\n▶ You can support disciplined validation and                        \
+    \  structure.\n  explanation.                                                \
+    \      ▶ The task requires extrapolation far outside\n▶ Missing values and mixed\
+    \ feature behavior are                       observed data.\n  common.       \
+    \                                                    ▶ The team cannot monitor\
+    \ calibration, drift, and\n▶ Inference must remain fast enough for operational\
+    \                   reason-code stability.\n  decisions.\n\n Better fit in those\
+    \ cases\n Use logistic regression when transparency dominates, a transformer for\
+    \ text, or a graph model when connected behavior is central."
+  paragraphs:
+  - 'Primer 3C: Gradient-boosted trees – when to use it, and when not to'
+  - Use it when Do not use it when ▶ Tabular data contain nonlinearities and ▶ The
+    sample is too small for reliable tuning. interactions. ▶ Policy demands a simple
+    monotonic scorecard and ▶ Predictive lift over a linear baseline has business
+    no challenger process exists. value. ▶ The main input is raw language, images,
+    or graph ▶ You can support disciplined validation and structure. explanation.
+    ▶ The task requires extrapolation far outside ▶ Missing values and mixed feature
+    behavior are observed data. common. ▶ The team cannot monitor calibration, drift,
+    and ▶ Inference must remain fast enough for operational reason-code stability.
+    decisions.
+  - Better fit in those cases Use logistic regression when transparency dominates,
+    a transformer for text, or a graph model when connected behavior is central.
+  source:
+    pages:
+    - 45
+    verbatim: true
+- page: 46
+  title: 'Primer 3D: Gradient-boosted trees – fintech problem map'
+  text: " Primer 3D: Gradient-boosted trees – fintech problem map\n\n\n\n Common fintech\
+    \ problems                                                    Operational profile\n\
+    ▶ Credit risk and underwriting ▶ Collections prioritization                 ▶\
+    \ Latency: low\n▶ Fraud and chargebacks                     ▶ Customer churn \
+    \               ▶ Explainability: medium with\n▶ AML alert ranking           \
+    \              ▶ Insurance pricing support       diagnostics\n\n▶ Merchant quality\
+    \ / default                ▶ Cash-flow event prediction    ▶ Data need: medium\
+    \ to high\n  risk                                                            \
+    \          ▶ Monitor: calibration, drift, SHAP /\n                           \
+    \                                                   reason stability\n\n\n\n \
+    \  Student defense question: Can the student show that added complexity produces\
+    \ measurable\n   economic value over the logistic baseline?"
+  paragraphs:
+  - 'Primer 3D: Gradient-boosted trees – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Credit risk and underwriting ▶
+    Collections prioritization ▶ Latency: low ▶ Fraud and chargebacks ▶ Customer churn
+    ▶ Explainability: medium with ▶ AML alert ranking ▶ Insurance pricing support
+    diagnostics'
+  - '▶ Merchant quality / default ▶ Cash-flow event prediction ▶ Data need: medium
+    to high risk ▶ Monitor: calibration, drift, SHAP / reason stability'
+  - 'Student defense question: Can the student show that added complexity produces
+    measurable economic value over the logistic baseline?'
+  source:
+    pages:
+    - 46
+    verbatim: true
+definition: Gradient boosting builds a sequence of usually shallow trees. Each new
+  tree is trained to reduce the errors left by the current ensemble, producing a weighted
+  sum of corrective models.
+intuition: The first tree makes a rough estimate. Later trees focus on the cases the
+  current model handles poorly. Small corrections accumulate into a strong predictor.  Anchor
+  idea
+useWhen:
+- Tabular data contain nonlinearities and interactions.
+- Predictive lift over a linear baseline has business value.
+- You can support disciplined validation and explanation.
+- Missing values and mixed feature behavior are common.
+- Inference must remain fast enough for operational decisions.
+avoidWhen:
+- The sample is too small for reliable tuning.
+- Policy demands a simple monotonic scorecard and no challenger process exists.
+- The main input is raw language, images, or graph structure.
+- The task requires extrapolation far outside observed data.
+- The team cannot monitor calibration, drift, and reason-code stability.
+deepDive:
+  problem:
+  - page: 615
+    title: 'Financial problem: can we improve default prediction without losing control?'
+    text: " Financial problem: can we improve default prediction without losing\n\
+      \ control?\n\n    Financial problem\n    A lender has hundreds of structured\
+      \ variables and suspects that combinations of utilization,\n    recent inquiries,\
+      \ income volatility, and loan purpose contain nonlinear risk signals.\n\n Business\
+      \ question\n Can a more expressive model reduce credit loss enough to justify\
+      \ additional tuning, explanation,\n calibration, and monitoring work?\n\n  \
+      \ Decision to make: Compare gradient boosting against logistic regression using\
+      \ the same split,\n   features, cost function, and governance requirements.\n\
+      \n   Student defense question: What minimum improvement would justify the added\
+      \ complexity in\n   your institution?"
+    paragraphs:
+    - 'Financial problem: can we improve default prediction without losing control?'
+    - Financial problem A lender has hundreds of structured variables and suspects
+      that combinations of utilization, recent inquiries, income volatility, and loan
+      purpose contain nonlinear risk signals.
+    - Business question Can a more expressive model reduce credit loss enough to justify
+      additional tuning, explanation, calibration, and monitoring work?
+    - 'Decision to make: Compare gradient boosting against logistic regression using
+      the same split, features, cost function, and governance requirements.'
+    - 'Student defense question: What minimum improvement would justify the added
+      complexity in your institution?'
+    source:
+      pages:
+      - 615
+      verbatim: true
+  method:
+  - page: 616
+    title: 'Method: many weak trees correct one another'
+    text: " Method: many weak trees correct one another\n\n\n\n\n                \
+      \                                        Tree 1            Tree 2          \
+      \   Tree 3          Weighted sum\n             Initial prediction\n        \
+      \                                            fits residuals    corrects errors\
+      \    corrects again       final score\n\n\n\n                              \
+      \                                Fm (x) = Fm−1 (x) + η hm (x)\n\n▶ Each new\
+      \ tree focuses on remaining errors.\n▶ Learning rate η controls how much each\
+      \ tree contributes.\n▶ Shallow trees capture interactions without creating one\
+      \ enormous tree.\n Baseline: Logistic regression on the same pre-decision features."
+    paragraphs:
+    - 'Method: many weak trees correct one another'
+    - Tree 1 Tree 2 Tree 3 Weighted sum Initial prediction fits residuals corrects
+      errors corrects again final score
+    - Fm (x) = Fm−1 (x) + η hm (x)
+    - '▶ Each new tree focuses on remaining errors. ▶ Learning rate η controls how
+      much each tree contributes. ▶ Shallow trees capture interactions without creating
+      one enormous tree. Baseline: Logistic regression on the same pre-decision features.'
+    source:
+      pages:
+      - 616
+      verbatim: true
+  economics:
+  - page: 617
+    title: The four controls that matter most
+    text: " The four controls that matter most\n\n\n    Control                  \
+      \                       What it changes                           Failure if\
+      \ ignored\n    Learning rate                                   Size of each\
+      \ correction                   Large steps overfit; tiny steps re-\n       \
+      \                                                                          \
+      \             quire many trees\n    Tree depth / leaves                    \
+      \         Interaction complexity                    Deep trees memorize rare\
+      \ patterns\n    Early stopping                                  Stops when validation\
+      \ loss no longer      Training continues after useful sig-\n               \
+      \                                     improves                             \
+      \     nal is exhausted\n    Class /                   sample               \
+      \ Relative cost of observations             Rare defaults or fraud cases are\
+      \ un-\n    weights                                                         \
+      \                          deremphasized\n\n\n Do not tune by folklore\n “500\
+      \ trees and depth 6” is not a principle. Tune on the validation set, record\
+      \ the search space, and\n retain the simpler model when performance is effectively\
+      \ tied."
+    paragraphs:
+    - The four controls that matter most
+    - Control What it changes Failure if ignored Learning rate Size of each correction
+      Large steps overfit; tiny steps re- quire many trees Tree depth / leaves Interaction
+      complexity Deep trees memorize rare patterns Early stopping Stops when validation
+      loss no longer Training continues after useful sig- improves nal is exhausted
+      Class / sample Relative cost of observations Rare defaults or fraud cases are
+      un- weights deremphasized
+    - Do not tune by folklore “500 trees and depth 6” is not a principle. Tune on
+      the validation set, record the search space, and retain the simpler model when
+      performance is effectively tied.
+    source:
+      pages:
+      - 617
+      verbatim: true
+  - page: 619
+    title: 'Explainability: answer the decision, not just the model'
+    text: " Explainability: answer the decision, not just the model\n\n\n\n\n Global\
+      \ questions                                   Local questions\n▶ Which features\
+      \ matter across the portfolio?       ▶ Why did this applicant receive this score?\n\
+      ▶ Are relationships stable over time?               ▶ Which observed factors\
+      \ could be stated\n▶ Does the model rely on proxies or brittle           accurately?\n\
+      \  fields?                                          ▶ Would a small data correction\
+      \ change the\n                                                      decision?\n\
+      \ Watch for: An explanation method describes model behavior. It does not prove\
+      \ the feature caused\n the outcome or that the decision is fair. Required artifact:\
+      \ Baseline comparison, calibration, local\n explanations, adverse-action mapping\
+      \ where applicable, and one-page model card."
+    paragraphs:
+    - 'Explainability: answer the decision, not just the model'
+    - 'Global questions Local questions ▶ Which features matter across the portfolio?
+      ▶ Why did this applicant receive this score? ▶ Are relationships stable over
+      time? ▶ Which observed factors could be stated ▶ Does the model rely on proxies
+      or brittle accurately? fields? ▶ Would a small data correction change the decision?
+      Watch for: An explanation method describes model behavior. It does not prove
+      the feature caused the outcome or that the decision is fair. Required artifact:
+      Baseline comparison, calibration, local explanations, adverse-action mapping
+      where applicable, and one-page model card.'
+    source:
+      pages:
+      - 619
+      verbatim: true
+  code:
+  - page: 618
+    title: 'Working example: gradient boosting versus logistic regression'
+    text: " Working example: gradient boosting versus logistic regression\n\n\n  from\
+      \ sklearn.datasets import make_classification\n  from sklearn.model_selection\
+      \ import train_test_split\n  from sklearn.ensemble import HistGradientBoostingClassifier\n\
+      \                                                                          \
+      \             Ask students\n  from sklearn.linear_model import LogisticRegression\n\
+      \  from sklearn.pipeline import make_pipeline                              \
+      \            ▶ Which model ranks\n  from sklearn.preprocessing import StandardScaler\n\
+      \  from sklearn.metrics import roc_auc_score, brier_score_loss             \
+      \              better?\n  X, y = make_classification(n_samples=12000, n_features=20,\n\
+      \      n_informative=10, weights=[.92, .08], flip_y=.01,\n                 \
+      \                                                                     ▶ Which\
+      \ calibrates better?\n      random_state=21)\n  Xtr, Xte, ytr, yte = train_test_split(\
+      \                                              ▶ What changes after\n      X,\
+      \ y, test_size=.30, stratify=y, random_state=21)\n                         \
+      \                                                               probability\
+      \ calibration?\n  models = {\n   \"logit\": make_pipeline(StandardScaler(),\n\
+      \             LogisticRegression(max_iter=2000)),\n                        \
+      \                                                              ▶ Is the gain\
+      \ operationally\n   \"boost\": HistGradientBoostingClassifier(max_iter=250,\n\
+      \             learning_rate=.05, max_leaf_nodes=15, random_state=21)\n     \
+      \                                                                          \
+      \         meaningful?\n  }\n  for name, m in models.items():\n      m.fit(Xtr,\
+      \ ytr); p = m.predict_proba(Xte)[:, 1]\n      print(name, \"AUC\", roc_auc_score(yte,p),\n\
+      \             \"Brier\", brier_score_loss(yte,p))"
+    paragraphs:
+    - 'Working example: gradient boosting versus logistic regression'
+    - 'from sklearn.datasets import make_classification from sklearn.model_selection
+      import train_test_split from sklearn.ensemble import HistGradientBoostingClassifier
+      Ask students from sklearn.linear_model import LogisticRegression from sklearn.pipeline
+      import make_pipeline ▶ Which model ranks from sklearn.preprocessing import StandardScaler
+      from sklearn.metrics import roc_auc_score, brier_score_loss better? X, y = make_classification(n_samples=12000,
+      n_features=20, n_informative=10, weights=[.92, .08], flip_y=.01, ▶ Which calibrates
+      better? random_state=21) Xtr, Xte, ytr, yte = train_test_split( ▶ What changes
+      after X, y, test_size=.30, stratify=y, random_state=21) probability calibration?
+      models = { "logit": make_pipeline(StandardScaler(), LogisticRegression(max_iter=2000)),
+      ▶ Is the gain operationally "boost": HistGradientBoostingClassifier(max_iter=250,
+      learning_rate=.05, max_leaf_nodes=15, random_state=21) meaningful? } for name,
+      m in models.items(): m.fit(Xtr, ytr); p = m.predict_proba(Xte)[:, 1] print(name,
+      "AUC", roc_auc_score(yte,p), "Brier", brier_score_loss(yte,p))'
+    source:
+      pages:
+      - 618
+      verbatim: true
+  choice:
+  - page: 620
+    title: When gradient boosting fits
+    text: " When gradient boosting fits\n\n\n\n Use it when                      \
+      \                  Avoid or constrain it when\n▶ Tabular data has nonlinear\
+      \ interactions.          ▶ Data volume is too small for stable complexity.\n\
+      ▶ Predictive performance matters materially.        ▶ Explanations cannot be\
+      \ made\n▶ You can support tuning and monitoring.              decision-specific.\n\
+      ▶ Latency and memory remain manageable.             ▶ Retraining and drift monitoring\
+      \ are\n                                                      unavailable.\n\
+      \                                                    ▶ A linear model performs\
+      \ essentially as well.\n\n\n   Student defense question: Would you accept a\
+      \ 0.7-point AUC gain if calibration worsened and\n   review teams could not\
+      \ explain individual decisions?"
+    paragraphs:
+    - When gradient boosting fits
+    - Use it when Avoid or constrain it when ▶ Tabular data has nonlinear interactions.
+      ▶ Data volume is too small for stable complexity. ▶ Predictive performance matters
+      materially. ▶ Explanations cannot be made ▶ You can support tuning and monitoring.
+      decision-specific. ▶ Latency and memory remain manageable. ▶ Retraining and
+      drift monitoring are unavailable. ▶ A linear model performs essentially as well.
+    - 'Student defense question: Would you accept a 0.7-point AUC gain if calibration
+      worsened and review teams could not explain individual decisions?'
+    source:
+      pages:
+      - 620
+      verbatim: true
+financialProblem: 'A lender has hundreds of structured variables and suspects that
+  combinations of utilization, recent inquiries, income volatility, and loan purpose
+  contain nonlinear risk signals. Business question Can a more expressive model reduce
+  credit loss enough to justify additional tuning, explanation, calibration, and monitoring
+  work? Decision to make: Compare gradient boosting against logistic regression using
+  the same split, features, cost function, and governance requirements. Student defense
+  question: What minimum improvement would justify the added complexity in your institution?'
+defenseQuestions:
+- text: Can the student show that added complexity produces measurable economic value
+    over the logistic baseline?
+  source:
+    pages:
+    - 46
+    verbatim: true
+- text: What minimum improvement would justify the added complexity in your institution?
+  source:
+    pages:
+    - 615
+    verbatim: true
+- text: Would you accept a 0.7-point AUC gain if calibration worsened and review teams
+    could not explain individual decisions?
+  source:
+    pages:
+    - 620
+    verbatim: true
+exercises:
+- A03
+measures:
+- roc-auc-and-gini
+- precision-recall-curve-and-pr-auc
+- calibration-curve
+- brier-score
+- log-loss
+- expected-cost
+- fairness-measures
+- population-stability-index
+widgets:
+- boosting-steps
+lab:
+  dataset: Frozen synthetic credit applications
+  task: PD, calibration, cost threshold
+  requiredComparison: Logistic vs boosting
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  - 47
+  - 48
+  - 49
+  - 50
+  - 51
+  - 52
+  - 614
+  - 615
+  - 616
+  - 617
+  - 618
+  - 619
+  - 620
+  verbatim: true

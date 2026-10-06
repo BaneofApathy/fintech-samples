@@ -1,0 +1,445 @@
+slug: logistic-regression
+number: 1
+title: Logistic Regression
+group: Predict an outcome
+oneLine: Estimate default probability before deciding how to review a loan.
+baseline: A transparent policy scorecard or simple affordability rule.
+primerSlides:
+- page: 16
+  title: 'Primer 1A: Logistic regression – definition and intuition'
+  text: " Primer 1A: Logistic regression – definition and intuition\n\n\n   Financial\
+    \ problem: Should a lender approve, price, or manually review an application based\
+    \ on its estimated\n   probability of default?\n\n\n\n Definition            \
+    \                                                                            \
+    \    Plain-English intuition\n A supervised linear classifier that converts a\
+    \ weighted sum of                                        Each feature adds or\
+    \ subtracts evidence. The\n features into a probability through the logistic,\
+    \ or sigmoid,                                         sigmoid compresses the combined\
+    \ evidence into a\n function. Its coefficients show whether a feature raises or\
+    \                                           probability. The model estimates risk;\
+    \ a separate\n lowers the log-odds of the outcome.                           \
+    \                                        policy chooses the action threshold.\n\
+    \n Input → output                                                            \
+    \                            Anchor idea\n Input: Tabular features known at decision\
+    \ time, plus a binary target                                                 \
+    \                                 1\n such as default / no default.          \
+    \                                                                            \
+    \  p(y = 1 | x) =\n                                                          \
+    \                                                                            \
+    \          1 + e−(β0 +β T x)\n Output: A score between 0 and 1; use calibration\
+    \ if the score must\n behave like a probability.\n What it learns: A linear decision\
+    \ boundary in the supplied feature space. Nonlinear behavior must be added through\
+    \ transformations or interactions."
+  paragraphs:
+  - 'Primer 1A: Logistic regression – definition and intuition'
+  - 'Financial problem: Should a lender approve, price, or manually review an application
+    based on its estimated probability of default?'
+  - Definition Plain-English intuition A supervised linear classifier that converts
+    a weighted sum of Each feature adds or subtracts evidence. The features into a
+    probability through the logistic, or sigmoid, sigmoid compresses the combined
+    evidence into a function. Its coefficients show whether a feature raises or probability.
+    The model estimates risk; a separate lowers the log-odds of the outcome. policy
+    chooses the action threshold.
+  - 'Input → output Anchor idea Input: Tabular features known at decision time, plus
+    a binary target 1 such as default / no default. p(y = 1 | x) = 1 + e−(β0 +β T
+    x) Output: A score between 0 and 1; use calibration if the score must behave like
+    a probability. What it learns: A linear decision boundary in the supplied feature
+    space. Nonlinear behavior must be added through transformations or interactions.'
+  source:
+    pages:
+    - 16
+    verbatim: true
+- page: 17
+  title: 'Primer 1B: Logistic regression – worked fintech example'
+  text: " Primer 1B: Logistic regression – worked fintech example\n\n\n Loan default\
+    \ triage\n An applicant has 42% revolving utilization, stable income, no recent\
+    \ delinquencies, and a moderate\n debt-to-income ratio. All fields are available\
+    \ at application time.\n\n\n From data to action                             \
+    \                            Comparison point\n1. Prepare only application-time\
+    \ features; split by time before              Baseline: A simple scorecard, a\
+    \ single policy\n                                                            \
+    \                 rule, and a majority-class predictor.\n   preprocessing.\n2.\
+    \ The model returns an illustrative probability of default of 5.8%.\n        \
+    \                                                                     Control\
+    \ to teach\n3. Policy bands are: approve below 4%, review from 4–8%, decline \
+    \            Watch for: Calibration, temporal leakage,\n   above 8%.         \
+    \                                                        proxy variables, and\
+    \ thresholds chosen\n                                                        \
+    \                     without loss assumptions.\n4. The application goes to review.\
+    \ The model did not classify the\n   customer as certain to default."
+  paragraphs:
+  - 'Primer 1B: Logistic regression – worked fintech example'
+  - Loan default triage An applicant has 42% revolving utilization, stable income,
+    no recent delinquencies, and a moderate debt-to-income ratio. All fields are available
+    at application time.
+  - 'From data to action Comparison point 1. Prepare only application-time features;
+    split by time before Baseline: A simple scorecard, a single policy rule, and a
+    majority-class predictor. preprocessing. 2. The model returns an illustrative
+    probability of default of 5.8%. Control to teach 3. Policy bands are: approve
+    below 4%, review from 4–8%, decline Watch for: Calibration, temporal leakage,
+    above 8%. proxy variables, and thresholds chosen without loss assumptions. 4.
+    The application goes to review. The model did not classify the customer as certain
+    to default.'
+  source:
+    pages:
+    - 17
+    verbatim: true
+- page: 18
+  title: 'Primer 1C: Logistic regression – when to use it, and when not to'
+  text: " Primer 1C: Logistic regression – when to use it, and when not to\n\n\n Use\
+    \ it when                                                          Do not use\
+    \ it when\n▶ The target is binary and the data are mostly                    \
+    \    ▶ High-order nonlinear interactions dominate\n  tabular.                \
+    \                                              performance.\n▶ Interpretability\
+    \ and stable reason codes matter.                    ▶ The main signal is raw\
+    \ text, images, graphs, or\n▶ You need a strong, fast baseline before adding \
+    \                       long sequences.\n  complexity.                       \
+    \                                  ▶ The question is causal: What will this\n\
+    ▶ The relationship is approximately linear after                        intervention\
+    \ change?\n  sensible transformations.                                       \
+    \    ▶ The outcome is time-to-event rather than a\n▶ You need low-latency scoring\
+    \ and inexpensive                          fixed-window label.\n  retraining.\
+    \                                                         ▶ The population or\
+    \ product definition changes too\n                                           \
+    \                             quickly for stable coefficients.\n\n Better fit\
+    \ in those cases\n Use boosted trees for nonlinear tabular structure, survival\
+    \ analysis for time-to-event, or a language model for unstructured text."
+  paragraphs:
+  - 'Primer 1C: Logistic regression – when to use it, and when not to'
+  - 'Use it when Do not use it when ▶ The target is binary and the data are mostly
+    ▶ High-order nonlinear interactions dominate tabular. performance. ▶ Interpretability
+    and stable reason codes matter. ▶ The main signal is raw text, images, graphs,
+    or ▶ You need a strong, fast baseline before adding long sequences. complexity.
+    ▶ The question is causal: What will this ▶ The relationship is approximately linear
+    after intervention change? sensible transformations. ▶ The outcome is time-to-event
+    rather than a ▶ You need low-latency scoring and inexpensive fixed-window label.
+    retraining. ▶ The population or product definition changes too quickly for stable
+    coefficients.'
+  - Better fit in those cases Use boosted trees for nonlinear tabular structure, survival
+    analysis for time-to-event, or a language model for unstructured text.
+  source:
+    pages:
+    - 18
+    verbatim: true
+- page: 19
+  title: 'Primer 1D: Logistic regression – fintech problem map'
+  text: " Primer 1D: Logistic regression – fintech problem map\n\n\n\n Common fintech\
+    \ problems                                                     Operational profile\n\
+    ▶ Probability of default and                ▶ Collections                    ▶\
+    \ Latency: very low\n  delinquency                                 propensity-to-pay\
+    \              ▶ Explainability: high\n▶ Fraud or chargeback                 \
+    \      ▶ Merchant onboarding risk       ▶ Data need: low to medium\n  likelihood\
+    \                                ▶ Insurance claim escalation     ▶ Monitor: calibration,\
+    \ drift, threshold\n▶ AML alert prioritization                  ▶ Offer response\
+    \ / conversion      economics\n▶ Customer churn and                          propensity\n\
+    \  attrition\n\n\n   Student defense question: Can the student separate the model\
+    \ probability from the business\n   action and defend the threshold in dollars?"
+  paragraphs:
+  - 'Primer 1D: Logistic regression – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Probability of default and ▶ Collections
+    ▶ Latency: very low delinquency propensity-to-pay ▶ Explainability: high ▶ Fraud
+    or chargeback ▶ Merchant onboarding risk ▶ Data need: low to medium likelihood
+    ▶ Insurance claim escalation ▶ Monitor: calibration, drift, threshold ▶ AML alert
+    prioritization ▶ Offer response / conversion economics ▶ Customer churn and propensity
+    attrition'
+  - 'Student defense question: Can the student separate the model probability from
+    the business action and defend the threshold in dollars?'
+  source:
+    pages:
+    - 19
+    verbatim: true
+definition: A supervised linear classifier that converts a weighted sum of features
+  into a probability through the logistic, or sigmoid, function. Its coefficients
+  show whether a feature raises or lowers the log-odds of the outcome.
+intuition: Each feature adds or subtracts evidence. The sigmoid compresses the combined
+  evidence into a probability. The model estimates risk; a separate policy chooses
+  the action threshold.
+useWhen:
+- The target is binary and the data are mostly tabular.
+- Interpretability and stable reason codes matter.
+- You need a strong, fast baseline before adding complexity.
+- The relationship is approximately linear after sensible transformations.
+- You need low-latency scoring and inexpensive retraining.
+avoidWhen:
+- High-order nonlinear interactions dominate performance.
+- The main signal is raw text, images, graphs, or long sequences.
+- 'The question is causal: What will this intervention change?'
+- The outcome is time-to-event rather than a fixed-window label.
+- The population or product definition changes too quickly for stable coefficients.
+deepDive:
+  problem:
+  - page: 602
+    title: 'Financial problem: should this borrower be approved?'
+    text: " Financial problem: should this borrower be approved?\n\n\n    Financial\
+      \ problem\n    A lender receives 40,000 personal-loan applications each month.\
+      \ It must estimate probability of\n    default before pricing, approving, or\
+      \ declining each application.\n\n\n Available before the decision          \
+      \                Unequal costs\n Income, debt-to-income ratio, payment history,\
+      \         Declining a good applicant loses margin and trust.\n utilization,\
+      \ requested amount, employment length.      Approving a borrower who defaults\
+      \ creates credit\n                                                        loss\
+      \ and collection cost.\n\n   Decision to make: Estimate a calibrated default\
+      \ probability, then choose a threshold tied to expected\n   loss and policy.\n\
+      \n\n   Student defense question: What information would be unavailable at application\
+      \ time and therefore\n   constitute leakage?"
+    paragraphs:
+    - 'Financial problem: should this borrower be approved?'
+    - Financial problem A lender receives 40,000 personal-loan applications each month.
+      It must estimate probability of default before pricing, approving, or declining
+      each application.
+    - Available before the decision Unequal costs Income, debt-to-income ratio, payment
+      history, Declining a good applicant loses margin and trust. utilization, requested
+      amount, employment length. Approving a borrower who defaults creates credit
+      loss and collection cost.
+    - 'Decision to make: Estimate a calibrated default probability, then choose a
+      threshold tied to expected loss and policy.'
+    - 'Student defense question: What information would be unavailable at application
+      time and therefore constitute leakage?'
+    source:
+      pages:
+      - 602
+      verbatim: true
+  method:
+  - page: 603
+    title: 'Method: logistic regression turns features into a probability'
+    text: " Method: logistic regression turns features into a probability\n\n\n\n\
+      \ Model\n                                                                  \
+      \             P (def ault)\n                      z = β0 + β1 x1 + · · · + βp\
+      \ xp\n                                                    1\n              \
+      \    P (y = 1 | x) = σ(z) =\n                                              \
+      \   1 + e−z\n                                                              \
+      \                           0.50\n▶ Output is between 0 and 1.\n▶ A coefficient\
+      \ changes the log-odds, holding\n  other variables fixed.\n▶ Regularization\
+      \ limits unstable coefficients.                                            \
+      \            risk score z\n\n                                              \
+      \             Baseline: A transparent policy scorecard or\n                \
+      \                                           simple affordability rule."
+    paragraphs:
+    - 'Method: logistic regression turns features into a probability'
+    - Model P (def ault) z = β0 + β1 x1 + · · · + βp xp 1 P (y = 1 | x) = σ(z) = 1
+      + e−z 0.50 ▶ Output is between 0 and 1. ▶ A coefficient changes the log-odds,
+      holding other variables fixed. ▶ Regularization limits unstable coefficients.
+      risk score z
+    - 'Baseline: A transparent policy scorecard or simple affordability rule.'
+    source:
+      pages:
+      - 603
+      verbatim: true
+  hand:
+  - page: 604
+    title: One calculation students should do by hand
+    text: " One calculation students should do by hand\n\n Suppose the fitted model\
+      \ is:\n                             z = −3.0 + 0.04(DTI) + 1.2(prior delinquency)\
+      \ − 0.03(income in $000s)\n For an applicant with DTI = 35, one prior delinquency,\
+      \ and income = 60:\n                                                 z = −3.0\
+      \ + 0.04(35) + 1.2 − 0.03(60) = −2.2\n                                     \
+      \                                       1\n                                \
+      \                        P (def ault) =            ≈ 0.10\n                \
+      \                                                         1 + e2.2\n\n Interpretation\n\
+      \ The model estimates about a 10% default probability under the training distribution.\
+      \ It does not\n determine approval by itself.\n\n   Student defense question:\
+      \ Would a 10% PD be acceptable for a secured loan, an unsecured\n   loan, and\
+      \ a credit-card line? Why might the threshold differ?"
+    paragraphs:
+    - One calculation students should do by hand
+    - 'Suppose the fitted model is: z = −3.0 + 0.04(DTI) + 1.2(prior delinquency)
+      − 0.03(income in $000s) For an applicant with DTI = 35, one prior delinquency,
+      and income = 60: z = −3.0 + 0.04(35) + 1.2 − 0.03(60) = −2.2 1 P (def ault)
+      = ≈ 0.10 1 + e2.2'
+    - Interpretation The model estimates about a 10% default probability under the
+      training distribution. It does not determine approval by itself.
+    - 'Student defense question: Would a 10% PD be acceptable for a secured loan,
+      an unsecured loan, and a credit-card line? Why might the threshold differ?'
+    source:
+      pages:
+      - 604
+      verbatim: true
+  code:
+  - page: 605
+    title: 'Working example: probability of default'
+    text: " Working example: probability of default\n\n\n\n  from sklearn.datasets\
+      \ import make_classification\n  from sklearn.model_selection import train_test_split\n\
+      \  from sklearn.pipeline import make_pipeline\n                            \
+      \                                              Modify in class\n  from sklearn.preprocessing\
+      \ import StandardScaler\n  from sklearn.linear_model import LogisticRegression\
+      \                     ▶ Change class imbalance.\n  from sklearn.metrics import\
+      \ roc_auc_score, brier_score_loss\n\n  X, y = make_classification(n_samples=5000,\
+      \ n_features=8,\n                                                          \
+      \                ▶ Change regularization C.\n      weights=[0.90, 0.10], class_sep=1.1,\
+      \ random_state=7)\n  Xtr, Xte, ytr, yte = train_test_split(                \
+      \                  ▶ Add a noisy feature.\n      X, y, test_size=.30, stratify=y,\
+      \ random_state=7)\n\n  model = make_pipeline(StandardScaler(),\n           \
+      \                                                               ▶ Compare unscaled\
+      \ data.\n      LogisticRegression(C=1.0, max_iter=2000))\n  model.fit(Xtr, ytr)\n\
+      \  pd_hat = model.predict_proba(Xte)[:, 1]                                 Primary\
+      \ metric: ROC-AUC\n  print(\"ROC-AUC:\", roc_auc_score(yte, pd_hat))       \
+      \                    plus calibration. Required\n  print(\"Brier:\", brier_score_loss(yte,\
+      \ pd_hat))\n  print(\"First five PDs:\", pd_hat[:5].round(3))              \
+      \             artifact: Coefficient table and\n                            \
+      \                                              calibration plot."
+    paragraphs:
+    - 'Working example: probability of default'
+    - from sklearn.datasets import make_classification from sklearn.model_selection
+      import train_test_split from sklearn.pipeline import make_pipeline Modify in
+      class from sklearn.preprocessing import StandardScaler from sklearn.linear_model
+      import LogisticRegression ▶ Change class imbalance. from sklearn.metrics import
+      roc_auc_score, brier_score_loss
+    - X, y = make_classification(n_samples=5000, n_features=8, ▶ Change regularization
+      C. weights=[0.90, 0.10], class_sep=1.1, random_state=7) Xtr, Xte, ytr, yte =
+      train_test_split( ▶ Add a noisy feature. X, y, test_size=.30, stratify=y, random_state=7)
+    - 'model = make_pipeline(StandardScaler(), ▶ Compare unscaled data. LogisticRegression(C=1.0,
+      max_iter=2000)) model.fit(Xtr, ytr) pd_hat = model.predict_proba(Xte)[:, 1]
+      Primary metric: ROC-AUC print("ROC-AUC:", roc_auc_score(yte, pd_hat)) plus calibration.
+      Required print("Brier:", brier_score_loss(yte, pd_hat)) print("First five PDs:",
+      pd_hat[:5].round(3)) artifact: Coefficient table and calibration plot.'
+    source:
+      pages:
+      - 605
+      verbatim: true
+  economics:
+  - page: 606
+    title: 'From probability to approval: choose the threshold economically'
+    text: " From probability to approval: choose the threshold economically\n\n Assume\
+      \ a simplified loss table per application:\n\n            Decision error   \
+      \                                     Example cost                         \
+      \                  Why\n            Approve a borrower who defaults        \
+      \                     $4,000           principal loss, servicing, collections\n\
+      \            Decline a borrower who would repay                            $450\
+      \    lost contribution margin and relationship\n            Manual review  \
+      \                                                $18                       \
+      \ analyst time and delay\n\n\n Threshold exercise\n For thresholds t ∈ {0.05,\
+      \ 0.10, 0.20, 0.30}, calculate:\n\n                                        \
+      \    Expected cost(t) = 4000 F N (t) + 450 F P (t) + 18 Nreview (t)\n\n Select\
+      \ the operating point using validation data, then report one untouched test\
+      \ result.\n\n Watch for: A threshold optimized on one economic cycle may fail\
+      \ when loss rates, funding costs, or\n applicant mix change."
+    paragraphs:
+    - 'From probability to approval: choose the threshold economically'
+    - 'Assume a simplified loss table per application:'
+    - Decision error Example cost Why Approve a borrower who defaults $4,000 principal
+      loss, servicing, collections Decline a borrower who would repay $450 lost contribution
+      margin and relationship Manual review $18 analyst time and delay
+    - 'Threshold exercise For thresholds t ∈ {0.05, 0.10, 0.20, 0.30}, calculate:'
+    - Expected cost(t) = 4000 F N (t) + 450 F P (t) + 18 Nreview (t)
+    - Select the operating point using validation data, then report one untouched
+      test result.
+    - 'Watch for: A threshold optimized on one economic cycle may fail when loss rates,
+      funding costs, or applicant mix change.'
+    source:
+      pages:
+      - 606
+      verbatim: true
+  choice:
+  - page: 607
+    title: When logistic regression is the right choice
+    text: " When logistic regression is the right choice\n\n\n Use it when       \
+      \                                 Avoid or extend it when\n▶ The outcome is\
+      \ binary.                            ▶ Important interactions are highly nonlinear.\n\
+      ▶ Interpretability and stable probabilities matter. ▶ The classes are not separable\
+      \ with available\n▶ Relationships are approximately linear in           features.\n\
+      \      log-odds.                                     ▶ Coefficients are unstable\
+      \ because features are\n▶ You need a strong, auditable baseline.           \
+      \   collinear.\n                                                    ▶ The data-generating\
+      \ process changes\n                                                       materially.\n\
+      \ Required artifact: Model card, coefficient stability check, calibration curve,\
+      \ and threshold-cost\n table.\n\n   Student defense question: If gradient boosting\
+      \ improves AUC slightly but produces worse\n   calibration and weaker explanations,\
+      \ which model would you deploy? Defend the tradeoff."
+    paragraphs:
+    - When logistic regression is the right choice
+    - 'Use it when Avoid or extend it when ▶ The outcome is binary. ▶ Important interactions
+      are highly nonlinear. ▶ Interpretability and stable probabilities matter. ▶
+      The classes are not separable with available ▶ Relationships are approximately
+      linear in features. log-odds. ▶ Coefficients are unstable because features are
+      ▶ You need a strong, auditable baseline. collinear. ▶ The data-generating process
+      changes materially. Required artifact: Model card, coefficient stability check,
+      calibration curve, and threshold-cost table.'
+    - 'Student defense question: If gradient boosting improves AUC slightly but produces
+      worse calibration and weaker explanations, which model would you deploy? Defend
+      the tradeoff.'
+    source:
+      pages:
+      - 607
+      verbatim: true
+financialProblem: A lender receives 40,000 personal-loan applications each month.
+  It must estimate probability of default before pricing, approving, or declining
+  each application.
+defenseQuestions:
+- text: Can the student separate the model probability from the business action and
+    defend the threshold in dollars?
+  source:
+    pages:
+    - 19
+    verbatim: true
+- text: What information would be unavailable at application time and therefore constitute
+    leakage?
+  source:
+    pages:
+    - 602
+    verbatim: true
+- text: Would a 10% PD be acceptable for a secured loan, an unsecured loan, and a
+    credit-card line? Why might the threshold differ?
+  source:
+    pages:
+    - 604
+    verbatim: true
+- text: If gradient boosting improves AUC slightly but produces worse calibration
+    and weaker explanations, which model would you deploy? Defend the tradeoff.
+  source:
+    pages:
+    - 607
+    verbatim: true
+exercises:
+- A01
+measures:
+- confusion-matrix
+- accuracy
+- balanced-accuracy
+- precision
+- recall
+- specificity-and-false-positive-rate
+- f1-and-f-beta
+- roc-curve
+- roc-auc-and-gini
+- precision-recall-curve-and-pr-auc
+- calibration-curve
+- brier-score
+- log-loss
+- expected-cost
+- fairness-measures
+- population-stability-index
+widgets:
+- sigmoid-el
+lab:
+  dataset: Frozen synthetic credit applications
+  task: PD, calibration, cost threshold
+  requiredComparison: Logistic vs boosting
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 601
+  - 602
+  - 603
+  - 604
+  - 605
+  - 606
+  - 607
+  verbatim: true

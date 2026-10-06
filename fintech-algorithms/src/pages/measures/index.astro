@@ -1,0 +1,68 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import { measures, course, href } from '../../data';
+---
+
+<Shell title="Measures & evaluation">
+  <p class="page-subtitle">
+    Choose the question you need to answer, then try a worked example. Each measure explains what it
+    tells you and what you still need to check.
+  </p>
+  <div class="filter-row">
+    <input
+      id="measure-filter"
+      aria-label="Filter measures by name"
+      placeholder="Find a measure, such as recall or drawdown"
+    />
+    <a class="button secondary" href={href('/measure-picker/')}>
+      Help me choose
+    </a>
+  </div>
+  {course.evaluation.map((q) => (
+    <section id={q.id} class="measure-group">
+      <div class="section-heading">
+        <h2>{q.title}</h2>
+      </div>
+      <p class="muted small">{q.interpretation}</p>
+      <div class="measure-list">
+        {measures
+          .filter((m) => m.question === q.id)
+          .map((m) => (
+            <a
+              class="measure-link"
+              data-measure={m.title.toLowerCase()}
+              href={href(`/measures/${m.slug}/`)}
+            >
+              <span class="measure-num">{String(m.number).padStart(2, '0')}</span>
+              <span>
+                <strong>{m.title}</strong>
+                <small>{m.financialInterpretation}</small>
+              </span>
+            </a>
+          ))}
+      </div>
+    </section>
+  ))}
+  <p id="no-measures" hidden>
+    No measures match that search.
+  </p>
+</Shell>
+<script>
+  document.querySelector<HTMLInputElement>('#measure-filter')!.addEventListener('input', (e) => {
+    const text = (e.currentTarget as HTMLInputElement).value.toLowerCase();
+    let count = 0;
+    document.querySelectorAll<HTMLElement>('[data-measure]').forEach((a) => {
+      a.hidden = !a.dataset.measure!.includes(text);
+      if (!a.hidden) count++;
+    });
+    document
+      .querySelectorAll<HTMLElement>('.measure-group')
+      .forEach(
+        (s) =>
+          (s.hidden = !Array.from(s.querySelectorAll<HTMLElement>('[data-measure]')).some(
+            (a) => !a.hidden,
+          )),
+      );
+    document.querySelector<HTMLElement>('#no-measures')!.hidden = count > 0;
+  });
+</script>

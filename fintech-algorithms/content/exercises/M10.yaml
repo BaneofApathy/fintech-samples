@@ -1,0 +1,377 @@
+id: M10
+title: Find the Largest Separation
+minutes: 6
+kind: measure
+parent: ks-statistic
+question: "A validation sample contains 20 defaults and 80 non-defaults. Flagging\
+  \ everyone at or above\n each available cutoff gives:\n                        \
+  \           KS = max |Default capture rate − Non-default capture rate| .\n\n   \
+  \                                                                     At each cutoff,\
+  \ calculate the fraction of\n   Cutoff                                     Defaults\
+  \   Non-defaults\n                                               flagged       \
+  \ flagged\n                                                                    \
+  \    defaults flagged and the fraction of\n                                    \
+  \                                    non-defaults flagged.\n   A               \
+  \                                 5              2    Find KS across these cutoffs.\
+  \ Is the\n   B                                               12             12 \
+  \   cutoff with the largest gap automatically\n   C                            \
+  \                   18             40    the best lending threshold?\n   D     \
+  \                                          20             80"
+questionPages:
+- page: 276
+  title: KS
+  text: " KS\n\n   M10 | Class problem | 6 minutes — Find the Largest Separation\n\
+    \n A validation sample contains 20 defaults and 80 non-defaults. Flagging everyone\
+    \ at or above\n each available cutoff gives:\n                               \
+    \    KS = max |Default capture rate − Non-default capture rate| .\n\n        \
+    \                                                                At each cutoff,\
+    \ calculate the fraction of\n   Cutoff                                     Defaults\
+    \   Non-defaults\n                                               flagged     \
+    \   flagged\n                                                                \
+    \        defaults flagged and the fraction of\n                              \
+    \                                          non-defaults flagged.\n   A       \
+    \                                         5              2    Find KS across these\
+    \ cutoffs. Is the\n   B                                               12     \
+    \        12    cutoff with the largest gap automatically\n   C               \
+    \                                18             40    the best lending threshold?\n\
+    \   D                                               20             80"
+  paragraphs:
+  - KS
+  - M10 | Class problem | 6 minutes — Find the Largest Separation
+  - 'A validation sample contains 20 defaults and 80 non-defaults. Flagging everyone
+    at or above each available cutoff gives: KS = max |Default capture rate − Non-default
+    capture rate| .'
+  - At each cutoff, calculate the fraction of Cutoff Defaults Non-defaults flagged
+    flagged defaults flagged and the fraction of non-defaults flagged. A 5 2 Find
+    KS across these cutoffs. Is the B 12 12 cutoff with the largest gap automatically
+    C 18 40 the best lending threshold? D 20 80
+  source:
+    pages:
+    - 276
+    verbatim: true
+formulaPages:
+- page: 273
+  title: KS
+  text: " KS\n\n   M10 | Formula explained (1/1)\n\n Question: At which evaluated\
+    \ cutoff are the two actual classes most separated?\n                        \
+    \                                   T P (t)              F P (t)\n           \
+    \                                       D(t) =           ,   L(t) =          \
+    \ ,\n                                                            N+          \
+    \         N−\n                                                      KS = max |D(t)\
+    \ − L(t)|.\n                                                                 t\n\
+    \n Read it aloud: At each cutoff, compare the fraction of defaults flagged with\
+    \ the fraction of\n non-defaults flagged. Keep the largest absolute difference.\n\
+    \ This is the Kolmogorov–Smirnov statistic applied to the class score distributions.\
+    \ The exercise\n calculates the maximum over the supplied cutoffs, not over additional\
+    \ unobserved thresholds."
+  paragraphs:
+  - KS
+  - M10 | Formula explained (1/1)
+  - 'Question: At which evaluated cutoff are the two actual classes most separated?
+    T P (t) F P (t) D(t) = , L(t) = , N+ N− KS = max |D(t) − L(t)|. t'
+  - 'Read it aloud: At each cutoff, compare the fraction of defaults flagged with
+    the fraction of non-defaults flagged. Keep the largest absolute difference. This
+    is the Kolmogorov–Smirnov statistic applied to the class score distributions.
+    The exercise calculates the maximum over the supplied cutoffs, not over additional
+    unobserved thresholds.'
+  source:
+    pages:
+    - 273
+    verbatim: true
+symbolPages:
+- page: 274
+  title: KS
+  text: " KS\n\n   M10 | Symbols and terms (1/2)\n\n\n   Symbol or term          \
+    \                       Meaning in this example\n   t                        \
+    \                      An evaluated score cutoff; A, B, C, or D labels a cutoff\
+    \ in the table.\n   T P (t)                                        Defaults flagged\
+    \ at cutoff t.\n   F P (t)                                        Non-defaults\
+    \ flagged at cutoff t.\n   N+ , N−                                        Total\
+    \ actual defaults and non-defaults: 20 and 80, respectively.\n   D(t), L(t)  \
+    \                                   Default capture rate and non-default capture\
+    \ rate at the same\n                                                  cutoff.\n\
+    \   |D(t) − L(t)|                                  Absolute class-rate gap; remove\
+    \ the sign before finding the\n                                              \
+    \    maximum."
+  paragraphs:
+  - KS
+  - M10 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example t An evaluated score cutoff; A, B, C,
+    or D labels a cutoff in the table. T P (t) Defaults flagged at cutoff t. F P (t)
+    Non-defaults flagged at cutoff t. N+ , N− Total actual defaults and non-defaults:
+    20 and 80, respectively. D(t), L(t) Default capture rate and non-default capture
+    rate at the same cutoff. |D(t) − L(t)| Absolute class-rate gap; remove the sign
+    before finding the maximum.'
+  source: &id001
+    pages:
+    - 274
+    verbatim: true
+- page: 275
+  title: KS
+  text: " KS\n\n   M10 | Symbols and terms (2/2)\n\n\n   Symbol or term          \
+    \                       Meaning in this example\n   maxt                     \
+    \                      Select the largest value across all evaluated cutoffs.\n\
+    \   KS                                             Largest separation between\
+    \ the two cumulative score distributions;\n                                  \
+    \                unitless, often expressed in percentage points.\n   Percentage\
+    \ points; pp                          Direct difference between two percentages,\
+    \ not a percentage change\n                                                  relative\
+    \ to one of them."
+  paragraphs:
+  - KS
+  - M10 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example maxt Select the largest value across all
+    evaluated cutoffs. KS Largest separation between the two cumulative score distributions;
+    unitless, often expressed in percentage points. Percentage points; pp Direct difference
+    between two percentages, not a percentage change relative to one of them.
+  source: &id002
+    pages:
+    - 275
+    verbatim: true
+solutionPages:
+- page: 277
+  title: KS
+  text: " KS\n\n   M10 | Worked solution — Find the Largest Separation\n\n1. Divide\
+    \ each class count by its own total.\n   Cutoff                              \
+    \           Default capture   Non-default capture         Absolute gap\n   A \
+    \                                               5/20 = 25%           2/80 = 2.5%\
+    \                 22.5 pp\n   B                                              \
+    \ 12/20 = 60%           12/80 = 15%                  45 pp\n   C             \
+    \                                  18/20 = 90%           40/80 = 50%         \
+    \          40 pp\n   D                                              20/20 = 100%\
+    \          80/80 = 100%                    0 pp\n\n2. Select the largest separation:\
+    \ KS = 0.45, or 45 percentage points, at cutoff B among\n   those evaluated."
+  paragraphs:
+  - KS
+  - M10 | Worked solution — Find the Largest Separation
+  - 1. Divide each class count by its own total. Cutoff Default capture Non-default
+    capture Absolute gap A 5/20 = 25% 2/80 = 2.5% 22.5 pp B 12/20 = 60% 12/80 = 15%
+    45 pp C 18/20 = 90% 40/80 = 50% 40 pp D 20/20 = 100% 80/80 = 100% 0 pp
+  - '2. Select the largest separation: KS = 0.45, or 45 percentage points, at cutoff
+    B among those evaluated.'
+  source:
+    pages:
+    - 277
+    verbatim: true
+interpretationPages:
+- page: 278
+  title: KS
+  text: " KS\n\n   M10 | Interpretation\n\n What the answer means\n At B, the model\
+    \ has captured 60% of defaults but only 15% of non-defaults. That separation is\n\
+    \ a ranking diagnostic. Choosing a lending action still requires loss severity,\
+    \ approval value,\n capacity, and policy constraints.\n Why these steps matter\n\
+    \ Dividing both counts by all 100 applicants would answer a different question.\
+    \ KS compares\n within-class capture rates, so each class needs its own denominator.\
+    \ The biggest statistical\n gap does not include lending margins or loss severity."
+  paragraphs:
+  - KS
+  - M10 | Interpretation
+  - What the answer means At B, the model has captured 60% of defaults but only 15%
+    of non-defaults. That separation is a ranking diagnostic. Choosing a lending action
+    still requires loss severity, approval value, capacity, and policy constraints.
+    Why these steps matter Dividing both counts by all 100 applicants would answer
+    a different question. KS compares within-class capture rates, so each class needs
+    its own denominator. The biggest statistical gap does not include lending margins
+    or loss severity.
+  source:
+    pages:
+    - 278
+    verbatim: true
+source:
+  pages:
+  - 273
+  - 274
+  - 275
+  - 276
+  - 277
+  - 278
+  verbatim: true
+readAloud:
+- At each cutoff, compare the fraction of defaults flagged with the fraction of non-defaults
+  flagged. Keep the largest absolute difference. This is the Kolmogorov–Smirnov statistic
+  applied to the class score distributions. The exercise calculates the maximum over
+  the supplied cutoffs, not over additional unobserved thresholds.
+siteAuthored: false
+givens:
+  defaultCounts:
+  - 5
+  - 12
+  - 18
+  - 20
+  otherCounts:
+  - 2
+  - 12
+  - 40
+  - 80
+  defaults: 20
+  others: 80
+labels: &id003
+  defaultCounts: Defaults flagged at each cutoff
+  otherCounts: Non-defaults flagged at each cutoff
+  defaults: Actual defaults in validation
+  others: Actual non-defaults in validation
+deckSolution:
+  TPR:
+  - 0.25
+  - 0.6
+  - 0.9
+  - 1
+  FPR:
+  - 0.025
+  - 0.15
+  - 0.5
+  - 1
+  gaps:
+  - 0.225
+  - 0.45
+  - 0.4
+  - 0
+  KS: 0.45
+  cutoff: 2
+latex:
+- KS=\max_t|TPR(t)-FPR(t)|
+- D(t)=\frac{TP(t)}{N_+},\quad L(t)=\frac{FP(t)}{N_-}
+symbols:
+- symbol: t
+  meaning: An evaluated score cutoff; A, B, C, or D labels a cutoff in the table.
+  source: *id001
+- symbol: T P (t)
+  meaning: Defaults flagged at cutoff t.
+  source: *id001
+- symbol: F P (t)
+  meaning: Non-defaults flagged at cutoff t.
+  source: *id001
+- symbol: N+ , N−
+  meaning: 'Total actual defaults and non-defaults: 20 and 80, respectively.'
+  source: *id001
+- symbol: D(t), L(t)
+  meaning: Default capture rate and non-default capture rate at the same cutoff.
+  source: *id001
+- symbol: '|D(t) − L(t)|'
+  meaning: Absolute class-rate gap; remove the sign before finding the maximum.
+  source: *id001
+- symbol: maxt
+  meaning: Select the largest value across all evaluated cutoffs.
+  source: *id002
+- symbol: KS
+  meaning: Largest separation between the two cumulative score distributions; unitless,
+    often expressed in percentage points.
+  source: *id002
+- symbol: Percentage points; pp
+  meaning: Direct difference between two percentages, not a percentage change relative
+    to one of them.
+  source: *id002
+steps:
+- id: TPR
+  title: Default capture rates
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide defaults flagged at each cutoff by all actual defaults.
+  mistakes:
+  - pattern: recompute
+    message: Divide defaults flagged at each cutoff by all actual defaults.
+- id: FPR
+  title: Non-default capture rates
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide non-defaults flagged at each cutoff by all actual non-defaults.
+  mistakes:
+  - pattern: recompute
+    message: Divide non-defaults flagged at each cutoff by all actual non-defaults.
+- id: gaps
+  title: Absolute capture-rate gaps
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Take the absolute difference between the two rates at each cutoff.
+  mistakes:
+  - pattern: recompute
+    message: Take the absolute difference between the two rates at each cutoff.
+- id: KS
+  title: KS statistic
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Select the largest absolute gap.
+  mistakes:
+  - pattern: recompute
+    message: Select the largest absolute gap.
+- id: cutoff
+  title: Cutoff number with the largest gap
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Enter its position in the listed cutoff order, starting at 1.
+  mistakes:
+  - pattern: recompute
+    message: Enter its position in the listed cutoff order, starting at 1.
+learning:
+  title: Find the Largest Separation
+  scenario: At each candidate cutoff, a validation sample has known counts of defaults
+    and non-defaults flagged. Cutoffs are numbered in the listed order.
+  task: Calculate class-specific capture rates, their absolute gaps, the maximum gap
+    (KS), and its cutoff number.
+  interpretation: Each class uses its own denominator. The largest statistical gap
+    does not account for lending margins, loss severity or review capacity.
+  summary: 'KS: {KS}. The largest gap occurs at cutoff number {cutoff}.'
+  labels: *id003
+  steps:
+    TPR:
+      title: Default capture rates
+      hints: *id004
+      unit: proportion
+    FPR:
+      title: Non-default capture rates
+      hints: *id005
+      unit: proportion
+    gaps:
+      title: Absolute capture-rate gaps
+      hints: *id006
+      unit: proportion
+    KS:
+      title: KS statistic
+      hints: *id007
+      unit: proportion
+    cutoff:
+      title: Cutoff number with the largest gap
+      hints: *id008
+      unit: ''
+  readAloud:
+  - At each cutoff, compare the fraction of defaults flagged with the fraction of
+    non-defaults flagged. Keep the largest absolute difference. This is the Kolmogorov–Smirnov
+    statistic applied to the class score distributions. The exercise calculates the
+    maximum over the supplied cutoffs, not over additional unobserved thresholds.
+  workedExplanation:
+  - 'At B, the model has captured 60% of defaults but only 15% of non-defaults. That
+    separation is a ranking diagnostic. Choosing a lending action still requires loss
+    severity, approval value, capacity, and policy constraints. '
+  - Dividing both counts by all 100 applicants would answer a different question.
+    KS compares within-class capture rates, so each class needs its own denominator.
+    The biggest statistical gap does not include lending margins or loss severity.
+  workedArithmetic:
+  - 'Default capture rates: [5/20, 12/20, 18/20, 20/20] = [25%, 60%, 90%, 100%].'
+  - 'Non-default capture rates: [2/80, 12/80, 40/80, 80/80] = [2.5%, 15%, 50%, 100%].'
+  - Absolute gaps are [22.5, 45, 40, 0] percentage points. KS = 0.45 at cutoff B,
+    the second listed cutoff.
+formulaSource:
+  pages:
+  - 273
+  verbatim: false
+  reviewed: true

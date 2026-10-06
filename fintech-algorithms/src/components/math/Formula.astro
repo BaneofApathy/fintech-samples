@@ -1,0 +1,60 @@
+---
+import katex from 'katex';
+import { annotateFormula } from './annotate';
+interface Props {
+  latex: string;
+  symbols?: { symbol: string; meaning: string }[];
+  readAloud?: string;
+}
+const { latex, symbols = [], readAloud } = Astro.props;
+const { annotated, meanings: ids } = annotateFormula(latex, symbols);
+let html = katex.renderToString(annotated, {
+  displayMode: true,
+  output: 'htmlAndMathml',
+  throwOnError: false,
+  trust: true,
+  strict: false,
+});
+for (const [id, meaning] of ids) {
+  const escaped = meaning
+    .replaceAll('&', '&amp;')
+    .replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;');
+  html = html.replace(
+    new RegExp(`class="([^\"]*\\bsym-${id}\\b[^\"]*)"`, 'g'),
+    `class="$1 symbol-button" title="${escaped}" aria-label="${escaped}"`,
+  );
+}
+---
+
+<div class="formula-block">
+  <div class="formula-render" set:html={html} />
+  {symbols.length > 0 && (
+    <div class="symbol-key" role="group" aria-label="Formula symbol meanings">
+      {symbols.map((s) => (
+        <span class="symbol-tip">
+          <button
+            type="button"
+            class="symbol-toggle"
+            data-formula-symbol={s.symbol}
+            aria-expanded="false"
+            aria-label={`Meaning of ${s.symbol}`}
+          >
+            {s.symbol}
+          </button>
+          <span class="symbol-explanation" role="note">
+            {s.meaning}
+          </span>
+        </span>
+      ))}
+    </div>
+  )}
+  {readAloud ? (
+    <p class="read-aloud">
+      <b>Read it aloud</b>
+      {readAloud}
+    </p>
+  ) : (
+    <p class="read-aloud editorial-pending">An explanation is unavailable for this formula.</p>
+  )}
+</div>

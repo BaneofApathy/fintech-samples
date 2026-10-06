@@ -1,0 +1,25 @@
+---
+import { sections, href } from '../../data';
+const { slug, active } = Astro.props;
+---
+
+<nav class="unit-section-selector" aria-label="Unit sections">
+  <label for="section-selector">Current section</label>
+  <select id="section-selector" aria-label="Choose unit section">
+    {sections.map(([key, label], i) => (
+      <option
+        selected={key === active}
+        value={href(`/algorithms/${slug}/${key === 'problem' ? '' : key + '/'}`)}
+      >
+        {i + 1} of 7 · {label}
+      </option>
+    ))}
+  </select>
+</nav>
+<script>
+  document
+    .querySelector<HTMLSelectElement>('#section-selector')
+    ?.addEventListener('change', (event) => {
+      location.assign((event.currentTarget as HTMLSelectElement).value);
+    });
+</script>

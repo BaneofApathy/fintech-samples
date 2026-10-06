@@ -1,0 +1,457 @@
+id: M18
+title: Expose the Weak Class
+minutes: 10
+kind: measure
+parent: macro-f1-micro-f1-weighted-f1
+question: "A financial-sentiment classifier has this confusion matrix. Rows are actual\
+  \ classes; columns\n are predicted classes.\n For each class, treat that class as\
+  \ positive and the others as negative:\n                                       \
+  \             2T Pc\n                                     F 1c =               \
+  \       .\n                                            2T Pc + F Pc + F Nc\n   \
+  \                                                 Calculate per-class F1, macro-F1,\n\
+  \  Actual /      Neutral Positive Negative\n  predicted\n                      \
+  \                              support-weighted F1, and micro-F1. For\n        \
+  \                                            micro-F1, add TP, FP, and FN across\
+  \ classes\n  Neutral              8           1           1    before applying the\
+  \ formula. There is exactly\n  Positive             1           3           0  \
+  \  one actual and one predicted label per record.\n   Negative                 \
+  \               2      0   0"
+questionPages:
+- page: 356
+  title: Multi-Class F1
+  text: " Multi-Class F1\n\n   M18 | Class problem | 10 minutes — Expose the Weak\
+    \ Class\n\n A financial-sentiment classifier has this confusion matrix. Rows are\
+    \ actual classes; columns\n are predicted classes.\n For each class, treat that\
+    \ class as positive and the others as negative:\n                            \
+    \                        2T Pc\n                                     F 1c =  \
+    \                    .\n                                            2T Pc + F\
+    \ Pc + F Nc\n                                                    Calculate per-class\
+    \ F1, macro-F1,\n  Actual /      Neutral Positive Negative\n  predicted\n    \
+    \                                                support-weighted F1, and micro-F1.\
+    \ For\n                                                    micro-F1, add TP, FP,\
+    \ and FN across classes\n  Neutral              8           1           1    before\
+    \ applying the formula. There is exactly\n  Positive             1           3\
+    \           0    one actual and one predicted label per record.\n   Negative \
+    \                               2      0   0"
+  paragraphs:
+  - Multi-Class F1
+  - M18 | Class problem | 10 minutes — Expose the Weak Class
+  - 'A financial-sentiment classifier has this confusion matrix. Rows are actual classes;
+    columns are predicted classes. For each class, treat that class as positive and
+    the others as negative: 2T Pc F 1c = . 2T Pc + F Pc + F Nc Calculate per-class
+    F1, macro-F1, Actual / Neutral Positive Negative predicted support-weighted F1,
+    and micro-F1. For micro-F1, add TP, FP, and FN across classes Neutral 8 1 1 before
+    applying the formula. There is exactly Positive 1 3 0 one actual and one predicted
+    label per record. Negative 2 0 0'
+  source:
+    pages:
+    - 356
+    verbatim: true
+formulaPages:
+- page: 352
+  title: Multi-Class F1
+  text: " Multi-Class F1\n\n   M18 | Formula explained (1/2)\n\n Question: How well\
+    \ does the classifier recognize each sentiment class?\n                      \
+    \                           2T Pc\n                                F 1c =    \
+    \                    .\n                                          2T Pc + F Pc\
+    \ + F Nc\n Read it aloud: Pick one class. Count records correctly assigned to\
+    \ it, records incorrectly\n assigned to it, and records from it missed by the\
+    \ classifier. Apply the binary F1 formula to those\n counts.\n In the original\
+    \ confusion matrix, rows are actual labels and columns are predicted labels. A\n\
+    \ diagonal cell is that class’s true-positive count. Its other column entries\
+    \ are false positives; its\n other row entries are false negatives."
+  paragraphs:
+  - Multi-Class F1
+  - M18 | Formula explained (1/2)
+  - 'Question: How well does the classifier recognize each sentiment class? 2T Pc
+    F 1c = . 2T Pc + F Pc + F Nc Read it aloud: Pick one class. Count records correctly
+    assigned to it, records incorrectly assigned to it, and records from it missed
+    by the classifier. Apply the binary F1 formula to those counts. In the original
+    confusion matrix, rows are actual labels and columns are predicted labels. A diagonal
+    cell is that class’s true-positive count. Its other column entries are false positives;
+    its other row entries are false negatives.'
+  source:
+    pages:
+    - 352
+    verbatim: true
+- page: 353
+  title: Multi-Class F1
+  text: " Multi-Class F1\n\n   M18 | Formula explained (2/2)\n\n Question: What do\
+    \ the three averaging conventions emphasize?\n                               \
+    \                              P\n                                1 X        \
+    \                    nc F 1c\n                   F 1macro =        F 1c ,    F\
+    \ 1weighted = c         ,\n                               C c                \
+    \             N\n                                                P\n         \
+    \                                     2 c T Pc\n                        F 1micro\
+    \ = P           P           P     .\n                                   2 c T\
+    \ Pc + c F Pc + c F Nc\n Read it aloud: Macro gives each class equal weight. Weighted\
+    \ F1 uses the class’s actual\n sample count as its weight. Micro pools the decision\
+    \ counts first and calculates one F1.\n The example has one true and one predicted\
+    \ label per record and includes every class. Under\n that setup, micro-F1 equals\
+    \ accuracy."
+  paragraphs:
+  - Multi-Class F1
+  - M18 | Formula explained (2/2)
+  - 'Question: What do the three averaging conventions emphasize? P 1 X nc F 1c F
+    1macro = F 1c , F 1weighted = c , C c N P 2 c T Pc F 1micro = P P P . 2 c T Pc
+    + c F Pc + c F Nc Read it aloud: Macro gives each class equal weight. Weighted
+    F1 uses the class’s actual sample count as its weight. Micro pools the decision
+    counts first and calculates one F1. The example has one true and one predicted
+    label per record and includes every class. Under that setup, micro-F1 equals accuracy.'
+  source:
+    pages:
+    - 353
+    verbatim: true
+symbolPages:
+- page: 354
+  title: Multi-Class F1
+  text: " Multi-Class F1\n\n   M18 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   c, C           \
+    \                                One sentiment class and the number of classes:\
+    \ neutral, positive,\n                                                  negative;\
+    \ C = 3.\n   T Pc                                           Records truly in class\
+    \ c and predicted as class c.\n   F Pc                                       \
+    \    Records from other classes incorrectly predicted as class c.\n   F Nc   \
+    \                                        Records truly in class c but predicted\
+    \ as another class.\n   nc ; support                                   Number\
+    \ of actual records in class c, equal to its confusion-matrix\n              \
+    \                                    row total.\n             P\n   N=       \
+    \      c nc                            All evaluated records, 16 in this example."
+  paragraphs:
+  - Multi-Class F1
+  - M18 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example c, C One sentiment class and the number
+    of classes: neutral, positive, negative; C = 3. T Pc Records truly in class c
+    and predicted as class c. F Pc Records from other classes incorrectly predicted
+    as class c. F Nc Records truly in class c but predicted as another class. nc ;
+    support Number of actual records in class c, equal to its confusion-matrix row
+    total. P N= c nc All evaluated records, 16 in this example.'
+  source: &id001
+    pages: &id002
+    - 354
+    verbatim: true
+- page: 355
+  title: Multi-Class F1
+  text: " Multi-Class F1\n\n   M18 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   F 1c           \
+    \                                The F1 score for one class when compared with\
+    \ all other classes.\n   P\n       c                                         \
+    \ Add one quantity from each of the three classes.\n   Macro; weighted; micro\
+    \                         Average class scores equally; average class scores by\
+    \ support; pool\n                                                  counts before\
+    \ scoring.\n   One-versus-rest                                Treat the selected\
+    \ class as positive and combine every other class as\n                       \
+    \                           negative for its per-class calculation."
+  paragraphs:
+  - Multi-Class F1
+  - M18 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example F 1c The F1 score for one class when compared
+    with all other classes. P c Add one quantity from each of the three classes. Macro;
+    weighted; micro Average class scores equally; average class scores by support;
+    pool counts before scoring. One-versus-rest Treat the selected class as positive
+    and combine every other class as negative for its per-class calculation.
+  source: &id003
+    pages: &id004
+    - 355
+    verbatim: true
+solutionPages:
+- page: 357
+  title: Multi-Class F1
+  text: " Multi-Class F1\n\n   M18 | Worked solution — Expose the Weak Class\n\n1.\
+    \ Calculate per-class counts and scores.\n   Class                           \
+    \               TP   FP     FN                  Actual              F1\n     \
+    \                                                                            support\n\
+    \   Neutral                                         8    3        2          \
+    \         10          16/21 =\n                                              \
+    \                                                     0.7619\n   Positive    \
+    \                                    3    1        1                    4    \
+    \  6/8 = 0.7500\n   Negative                                        0    1   \
+    \     2                    2          0/3 = 0\n\n2. Macro-F1: (0.7619 + 0.7500\
+    \ + 0)/3 = 0.5040.\n3. Weighted-F1: [10(0.7619) + 4(0.75) + 2(0)]/16 = 0.6637.\n\
+    4. Micro totals: T P = 11, F P = 5, F N = 5.\n                             F 1micro\
+    \ = 22/(22 + 5 + 5) = 0.6875."
+  paragraphs:
+  - Multi-Class F1
+  - M18 | Worked solution — Expose the Weak Class
+  - 1. Calculate per-class counts and scores. Class TP FP FN Actual F1 support Neutral
+    8 3 2 10 16/21 = 0.7619 Positive 3 1 1 4 6/8 = 0.7500 Negative 0 1 2 2 0/3 = 0
+  - '2. Macro-F1: (0.7619 + 0.7500 + 0)/3 = 0.5040. 3. Weighted-F1: [10(0.7619) +
+    4(0.75) + 2(0)]/16 = 0.6637. 4. Micro totals: T P = 11, F P = 5, F N = 5. F 1micro
+    = 22/(22 + 5 + 5) = 0.6875.'
+  source:
+    pages:
+    - 357
+    verbatim: true
+interpretationPages:
+- page: 358
+  title: Multi-Class F1
+  text: " Multi-Class F1\n\n   M18 | Interpretation\n\n What the answer means\n The\
+    \ classifier catches none of the negative statements. Micro-F1 and weighted-F1\
+    \ conceal\n more of that weakness because neutral examples dominate. Here micro-F1\
+    \ equals accuracy,\n 11/16, because every record has exactly one label.\n Why\
+    \ these steps matter\n A wrong neutral-to-negative prediction adds a false negative\
+    \ to neutral and a false positive to\n negative. The same record therefore appears\
+    \ in two pooled error counts. Micro-F1 accounts for\n that convention; it must\
+    \ not be calculated by simply averaging the class F1 scores."
+  paragraphs:
+  - Multi-Class F1
+  - M18 | Interpretation
+  - What the answer means The classifier catches none of the negative statements.
+    Micro-F1 and weighted-F1 conceal more of that weakness because neutral examples
+    dominate. Here micro-F1 equals accuracy, 11/16, because every record has exactly
+    one label. Why these steps matter A wrong neutral-to-negative prediction adds
+    a false negative to neutral and a false positive to negative. The same record
+    therefore appears in two pooled error counts. Micro-F1 accounts for that convention;
+    it must not be calculated by simply averaging the class F1 scores.
+  source:
+    pages:
+    - 358
+    verbatim: true
+source:
+  pages:
+  - 352
+  - 353
+  - 354
+  - 355
+  - 356
+  - 357
+  - 358
+  verbatim: true
+readAloud:
+- Pick one class. Count records correctly assigned to it, records incorrectly assigned
+  to it, and records from it missed by the classifier. Apply the binary F1 formula
+  to those counts. In the original confusion matrix, rows are actual labels and columns
+  are predicted labels. A diagonal cell is that class’s true-positive count. Its other
+  column entries are false positives; its other row entries are false negatives.
+- Macro gives each class equal weight. Weighted F1 uses the class’s actual sample
+  count as its weight. Micro pools the decision counts first and calculates one F1.
+  The example has one true and one predicted label per record and includes every class.
+  Under that setup, micro-F1 equals accuracy.
+siteAuthored: false
+givens:
+  matrix:
+  - 8
+  - 1
+  - 1
+  - 1
+  - 3
+  - 0
+  - 2
+  - 0
+  - 0
+labels: &id005
+  matrix: Confusion matrix by row (neutral, positive, negative)
+deckSolution:
+  perClass:
+  - 0.7619048
+  - 0.75
+  - 0
+  macro: 0.5039683
+  weighted: 0.6636905
+  micro: 0.6875
+  TP: 11
+  FP: 5
+  FN: 5
+latex:
+- F1_c=\frac{2TP_c}{2TP_c+FP_c+FN_c},\quad F1_{macro}=\frac1C\sum_cF1_c
+- F1_{weighted}=\frac{\sum_cn_cF1_c}{N}
+- F1_{micro}=\frac{2\sum_cTP_c}{2\sum_cTP_c+\sum_cFP_c+\sum_cFN_c}
+symbols:
+- symbol: c, C
+  meaning: 'One sentiment class and the number of classes: neutral, positive, negative;
+    C = 3.'
+  source: *id001
+- symbol: T Pc
+  meaning: Records truly in class c and predicted as class c.
+  source: *id001
+- symbol: F Pc
+  meaning: Records from other classes incorrectly predicted as class c.
+  source: *id001
+- symbol: F Nc
+  meaning: Records truly in class c but predicted as another class.
+  source: *id001
+- symbol: nc ; support
+  meaning: Number of actual records in class c, equal to its confusion-matrix row
+    total.
+  source: *id001
+- symbol: N = Σ₍c₎ n꜀
+  meaning: All evaluated records, 16 in this example.
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: F 1c
+  meaning: The F1 score for one class when compared with all other classes.
+  source: *id003
+- symbol: Σ over classes
+  meaning: Add one quantity from each of the three classes.
+  source:
+    pages: *id004
+    verbatim: false
+- symbol: Macro; weighted; micro
+  meaning: Average class scores equally; average class scores by support; pool counts
+    before scoring.
+  source: *id003
+- symbol: One-versus-rest
+  meaning: Treat the selected class as positive and combine every other class as negative
+    for its per-class calculation.
+  source: *id003
+steps:
+- id: perClass
+  title: F1 by class (neutral, positive, negative)
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - For each class use 2TP / (2TP + FP + FN), taking TP from its diagonal cell.
+  mistakes:
+  - pattern: recompute
+    message: For each class use 2TP / (2TP + FP + FN), taking TP from its diagonal
+      cell.
+- id: macro
+  title: Macro-F1
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Average the three class F1 scores with equal weights.
+  mistakes:
+  - pattern: recompute
+    message: Average the three class F1 scores with equal weights.
+- id: weighted
+  title: Support-weighted F1
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Weight each class F1 by its actual row total, then divide by all records.
+  mistakes:
+  - pattern: recompute
+    message: Weight each class F1 by its actual row total, then divide by all records.
+- id: micro
+  title: Micro-F1
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Pool TP, FP and FN across classes, then apply the F1 formula.
+  mistakes:
+  - pattern: recompute
+    message: Pool TP, FP and FN across classes, then apply the F1 formula.
+- id: TP
+  title: Pooled true positives
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Add the three diagonal counts.
+  mistakes:
+  - pattern: recompute
+    message: Add the three diagonal counts.
+- id: FP
+  title: Pooled false positives
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - For each class, count predictions of that class from other actual classes; add.
+  mistakes:
+  - pattern: recompute
+    message: For each class, count predictions of that class from other actual classes;
+      add.
+- id: FN
+  title: Pooled false negatives
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id012
+  - For each class, count actual records predicted as another class; add.
+  mistakes:
+  - pattern: recompute
+    message: For each class, count actual records predicted as another class; add.
+learning:
+  title: Expose the Weak Class
+  scenario: 'A sentiment classifier has three classes in this order: neutral, positive,
+    negative. Its confusion matrix is listed row by row, with actual classes as rows
+    and predicted classes as columns. Every record has one actual and one predicted
+    label.'
+  task: Calculate per-class F1, macro-F1, support-weighted F1 and micro-F1. Also sum
+    TP, FP and FN over all three one-versus-rest class comparisons.
+  interpretation: Macro-F1 gives each class equal weight; weighted F1 uses actual
+    class counts. Micro-F1 pools counts and equals accuracy for this single-label
+    setup. Inspect per-class results to find a missed minority class.
+  summary: 'Class F1 scores: {perClass}. Macro: {macro}; weighted: {weighted}; micro:
+    {micro}.'
+  labels: *id005
+  steps:
+    perClass:
+      title: F1 by class (neutral, positive, negative)
+      hints: *id006
+      unit: ''
+    macro:
+      title: Macro-F1
+      hints: *id007
+      unit: ''
+    weighted:
+      title: Support-weighted F1
+      hints: *id008
+      unit: ''
+    micro:
+      title: Micro-F1
+      hints: *id009
+      unit: ''
+    TP:
+      title: Pooled true positives
+      hints: *id010
+      unit: ''
+    FP:
+      title: Pooled false positives
+      hints: *id011
+      unit: ''
+    FN:
+      title: Pooled false negatives
+      hints: *id012
+      unit: ''
+  readAloud:
+  - Pick one class. Count records correctly assigned to it, records incorrectly assigned
+    to it, and records from it missed by the classifier. Apply the binary F1 formula
+    to those counts. In the confusion matrix, rows are actual labels and columns are
+    predicted labels. A diagonal cell is that class’s true-positive count. Its other
+    column entries are false positives; its other row entries are false negatives.
+  - Macro gives each class equal weight. Weighted F1 uses the class’s actual sample
+    count as its weight. Micro pools the decision counts first and calculates one
+    F1. The example has one true and one predicted label per record and includes every
+    class. Under that setup, micro-F1 equals accuracy.
+  workedExplanation:
+  - 'The classifier catches none of the negative statements. Micro-F1 and weighted-F1
+    conceal more of that weakness because neutral examples dominate. Here micro-F1
+    equals accuracy, 11/16, because every record has exactly one label. '
+  - A wrong neutral-to-negative prediction adds a false negative to neutral and a
+    false positive to negative. The same record therefore appears in two pooled error
+    counts. Micro-F1 accounts for that convention; it must not be calculated by simply
+    averaging the class F1 scores.
+  workedArithmetic:
+  - Neutral counts (TP, FP, FN) = (8, 3, 2), so F1 = 16/21 ≈ 0.7619. Positive counts
+    (3, 1, 1) give F1 = 6/8 = 0.75. Negative counts (0, 1, 2) give F1 = 0.
+  - Macro-F1 = (16/21 + 0.75 + 0) / 3 ≈ 0.5040.
+  - Weighted-F1 = [10 × (16/21) + 4 × 0.75 + 2 × 0] / 16 ≈ 0.6637.
+  - Pooled counts are TP = 11, FP = 5, FN = 5. Micro-F1 = 22 / (22 + 5 + 5) = 0.6875.
+formulaSource:
+  pages:
+  - 352
+  - 353
+  verbatim: false
+  reviewed: true

@@ -1,0 +1,271 @@
+---
+import { algorithms, measures, exercise, sections, href, type Algorithm } from '../../data';
+import UnitTabs from '../layout/UnitTabs.astro';
+import Completion from '../layout/Completion.svelte';
+import Callout from './Callout.astro';
+import LessonContent from './LessonContent.astro';
+import Formula from '../math/Formula.astro';
+import Exercise from '../exercise/Exercise.svelte';
+import Widget from '../widgets/Widget.svelte';
+import { widgets } from '../widgets/catalog';
+import BuildActivities from './BuildActivities.svelte';
+import { learningPath } from '../../data/learning-path';
+import labs from '../../data/labs.json';
+import AlgorithmVisual from '../visuals/algorithms/AlgorithmVisual.svelte';
+import { financialCasesForAlgorithm, financialCaseHref } from '../../data/financial-cases';
+import { teachingTopic } from '../../data/teaching-manifest';
+import TopicIntroduction from '../learning/TopicIntroduction.astro';
+import TeachingSequence from '../learning/TeachingSequence.astro';
+import ConceptPractice from '../exercise/ConceptPractice.svelte';
+import { toPracticeTopic } from '../../engine/assessment';
+interface Props {
+  algorithm: Algorithm;
+  section: string;
+}
+const { algorithm: a, section } = Astro.props;
+const sources = a.exercises.map(exercise);
+const widget = widgets.find((w) => w.id === a.widgets[0])!;
+const unitMeasures = measures.filter((m) => a.measures.includes(m.slug));
+const nextSection = sections[sections.findIndex((s) => s[0] === section) + 1];
+const nextAlgorithm = algorithms[a.number];
+const learning = learningPath[a.slug];
+const lab = labs[a.slug as keyof typeof labs];
+const applications = financialCasesForAlgorithm(a.slug);
+const topic = teachingTopic('algorithm:' + a.slug);
+const practiceTopic = toPracticeTopic(topic);
+---
+
+<div class="eyebrow">
+  Unit {String(a.number).padStart(2, '0')} of 12 · {a.group}
+</div>
+{section === 'problem' && (
+  <>
+    <p class="page-subtitle">{a.oneLine}</p>
+    <p class="lesson-time">
+      {topic.lessons.length} lessons
+    </p>
+  </>
+)}
+<UnitTabs slug={a.slug} active={section} />
+{section === 'problem' && (
+  <>
+    <h2 class="lesson-question">{learning.question}</h2>
+    <Callout label="Financial problem" kind="problem">
+      {a.financialProblem}
+    </Callout>
+    <TopicIntroduction {topic} vocabulary={false} />
+    <p>
+      <a class="button" href={href(`/algorithms/${a.slug}/intuition/#${topic.lessons[0].id}`)}>
+        Start with the definition and how it works →
+      </a>
+    </p>
+    <details class="optional-exploration">
+      <summary>Preview the financial workflow</summary>
+      <div id="algorithm-visual">
+        <AlgorithmVisual slug={a.slug} mode="problem" client:visible />
+      </div>
+    </details>
+    <div class="problem-grid">
+      <div class="info-card">
+        <h3>Available before the decision</h3>
+        <p>{a.lesson.available}</p>
+      </div>
+      <div class="info-card">
+        <h3>Unequal costs</h3>
+        <p>{a.lesson.costs}</p>
+      </div>
+    </div>
+    <Callout label="Decision to make">{a.lesson.decision}</Callout>
+    <Callout label="Baseline">{a.baseline}</Callout>
+    <details class="application-links">
+      <summary>8 financial applications</summary>
+      <div class="application-grid">
+        {applications.map((item) => (
+          <a href={financialCaseHref(item)}>
+            <strong>{item.title}</strong>
+            <span>{item.question}</span>
+          </a>
+        ))}
+      </div>
+      <a href={href('/financial-problems/')}>Browse all 96 financial applications →</a>
+    </details>
+    <section class="lesson-outcomes">
+      <h3>By the end of this unit</h3>
+      <ul>
+        {learning.outcomes.map((outcome) => (
+          <li>{outcome}</li>
+        ))}
+      </ul>
+      <p class="small muted">
+        Helpful starting knowledge: {learning.prerequisites.join('; ')}.{' '}
+        <a href={href('/foundations/')}>Review the foundations</a>.
+      </p>
+    </section>
+  </>
+)}
+{section === 'intuition' && (
+  <>
+    <TopicIntroduction {topic} />
+    <TeachingSequence {topic} stage="intuition" />
+    <div id="algorithm-visual">
+      <AlgorithmVisual slug={a.slug} mode="intuition" client:visible />
+    </div>
+    <details class="optional-exploration">
+      <summary>Numerical example</summary>
+      <Widget id={widget.id} exercise={exercise(widget.exercise)} client:visible />
+    </details>
+    <details class="optional-exploration">
+      <summary>Additional method notes</summary>
+      <LessonContent sections={a.lesson.method} />
+    </details>
+  </>
+)}
+{section === 'formula' && (
+  <>
+    <TeachingSequence {topic} stage="formula" />
+    <h2>Formulas and inputs</h2>
+    <p class="muted">
+      Focus or tap an annotated symbol for its meaning. The complete symbol key is below.
+    </p>
+    <AlgorithmVisual slug={a.slug} mode="formula" client:visible />
+    {sources.map((e) => (
+      <section class="original-course-formulas">
+        <h3>
+          {e.id} · {e.title}
+        </h3>
+        {e.latex.map((l, i) => (
+          <Formula
+            latex={l}
+            symbols={e.formulaSymbols?.[i] ?? e.symbols}
+            readAloud={e.readAloud[i]}
+          />
+        ))}
+        <details class="source-slide">
+          <summary>Symbols and terms · {e.id}</summary>
+          <div class="table-scroll">
+            <table class="symbols-table">
+              <thead>
+                <tr>
+                  <th scope="col">Symbol or term</th>
+                  <th scope="col">Meaning in this example</th>
+                </tr>
+              </thead>
+              <tbody>
+                {e.symbols.map((s) => (
+                  <tr>
+                    <td>{s.symbol}</td>
+                    <td>{s.meaning}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+    ))}
+  </>
+)}
+{section === 'worked' && (
+  <>
+    <TeachingSequence {topic} stage="worked" />
+    <h2>Follow the calculation</h2>
+    <p class="muted">
+      Read the substitutions and what each result means. Then try a fresh case in Practice.
+    </p>
+    {sources.map((e) => (
+      <Exercise exercise={e} client:visible />
+    ))}
+    <details class="optional-exploration">
+      <summary>Additional worked-example notes</summary>
+      <LessonContent sections={a.lesson.worked} />
+    </details>
+  </>
+)}
+{section === 'practice' && (
+  <>
+    <h2>Practice the method</h2>
+    <p>
+      Answer the concept questions, then work through the calculations.
+    </p>
+    <div id="concept-practice">
+      <ConceptPractice
+        topic={practiceTopic}
+        questions={topic.questions.filter((q) => q.role !== 'guided')}
+        sessionId={`${topic.id}:practice`}
+        base={import.meta.env.BASE_URL}
+        client:load
+      />
+    </div>
+    <h2>Calculate it yourself</h2>
+    <p class="muted">
+      Your practice seed stays the same after a refresh. “New numbers” changes the inputs in
+      exercises with variable inputs and recomputes each step.
+    </p>
+    {sources.map((e) => (
+      <Exercise exercise={e} practice client:visible />
+    ))}
+    <details class="optional-exploration">
+      <summary>Explore a change before trying again</summary>
+      <p>
+        <a href={href(`/explorers/${widget.id}/`)}>Open {widget.title} →</a>
+      </p>
+      {a.number === 1 && (
+        <p>
+          <a href={href('/explorers/threshold-explorer/')}>Compare threshold and decision cost →</a>
+        </p>
+      )}
+    </details>
+  </>
+)}
+{section === 'measures' && (
+  <>
+    <TeachingSequence {topic} stage="measures" />
+    <details class="optional-exploration">
+      <summary>Connect the calculation to the decision</summary>
+      <AlgorithmVisual slug={a.slug} mode="measures" client:visible />
+    </details>
+    <details class="optional-exploration">
+      <summary>Additional evaluation notes</summary>
+      <LessonContent sections={a.lesson.evaluation} />
+    </details>
+    <h2>Measures for this task</h2>
+    <div class="measure-list">
+      {unitMeasures.map((m) => (
+        <a class="measure-link" href={href(`/measures/${m.slug}/`) + `?from=${a.slug}`}>
+          <span class="measure-num">{String(m.number).padStart(2, '0')}</span>
+          <span>
+            <strong>{m.title}</strong>
+            <small>{m.financialInterpretation}</small>
+          </span>
+        </a>
+      ))}
+    </div>
+  </>
+)}
+{section === 'defend' && (
+  <>
+    <TeachingSequence {topic} stage="defend" />
+    <BuildActivities
+      algorithm={a}
+      sources={sources}
+      lab={lab}
+      teaching={practiceTopic}
+      questions={topic.questions}
+      client:load
+    />
+  </>
+)}
+<Completion
+  section={a.slug + ':' + section}
+  nextUrl={
+    nextSection
+      ? href(`/algorithms/${a.slug}/${nextSection[0]}/`)
+      : nextAlgorithm
+        ? href(`/algorithms/${nextAlgorithm.slug}/`)
+        : href('/synthesis/')
+  }
+  nextLabel={
+    nextSection ? nextSection[1] : nextAlgorithm ? nextAlgorithm.title : 'Synthesis & capstone'
+  }
+  client:load
+/>

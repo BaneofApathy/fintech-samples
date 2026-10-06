@@ -1,0 +1,225 @@
+slug: calibration-curve
+number: 14
+title: Calibration Curve
+question: probability
+financialInterpretation: Calibration matters when scores drive pricing, reserves,
+  limits, expected loss, or risk-based authentication. A 10% probability should correspond
+  to roughly 10 events in 100 similar cases.
+workingExample: Score band Cases Actual defaults Interpretation Around 10% 100 9 Close
+  to calibrated Around 20% 100 31 Model materially understates risk
+whatItMisses: A perfectly calibrated model can rank poorly, and a high-AUC model can
+  be badly calibrated. Report discrimination and calibration separately.
+exercises:
+- M14
+widget: calibration-lab
+usedBy:
+- logistic-regression
+- gradient-boosting
+- transformers
+slides:
+- page: 311
+  title: EVALUATION MEASURE 14 OF 39
+  text: "    EVALUATION MEASURE 14 OF 39\n\n\n\n\n                     Calibration\
+    \ Curve\n     Checks whether predicted probabilities match what actually\n   \
+    \                          happens."
+  paragraphs:
+  - EVALUATION MEASURE 14 OF 39
+  - Calibration Curve Checks whether predicted probabilities match what actually happens.
+  source:
+    pages:
+    - 311
+    verbatim: true
+- page: 312
+  title: Calibration curve – does a predicted probability behave like a probability?
+  text: " Calibration curve – does a predicted probability behave like a probability?\n\
+    \n\n Financial interpretation\n Calibration matters when scores drive pricing,\
+    \ reserves, limits, expected loss, or risk-based authentication. A\n 10% probability\
+    \ should correspond to roughly 10 events in 100 similar cases.\n\n Working example\n\
+    \    Score band                 Cases              Actual defaults   Interpretation\n\
+    \    Around 10%                   100                     9          Close to\
+    \ calibrated\n    Around 20%                   100                    31     \
+    \     Model materially understates risk\n\n\n What it misses\n A perfectly calibrated\
+    \ model can rank poorly, and a high-AUC model can be badly calibrated. Report\n\
+    \ discrimination and calibration separately."
+  paragraphs:
+  - Calibration curve – does a predicted probability behave like a probability?
+  - Financial interpretation Calibration matters when scores drive pricing, reserves,
+    limits, expected loss, or risk-based authentication. A 10% probability should
+    correspond to roughly 10 events in 100 similar cases.
+  - Working example Score band Cases Actual defaults Interpretation Around 10% 100
+    9 Close to calibrated Around 20% 100 31 Model materially understates risk
+  - What it misses A perfectly calibrated model can rank poorly, and a high-AUC model
+    can be badly calibrated. Report discrimination and calibration separately.
+  source:
+    pages:
+    - 312
+    verbatim: true
+- page: 313
+  title: Calibration
+  text: " Calibration\n\n   M14 | Formula explained (1/1)\n\n Question: Do groups\
+    \ assigned a probability experience roughly that event frequency?\n          \
+    \                                               db\n                         \
+    \        Eb = nb p̄b ,     Ob =     ,\n                                      \
+    \                   nb\n                                   X                 \
+    \        X\n                           EL = c     Eb ,      Lactual = c     db\
+    \ .\n                                                  b              b\n\n Read\
+    \ it aloud: For each band, multiply loan count by mean predicted probability for\
+    \ expected\n defaults. Divide observed defaults by loan count for observed default\
+    \ rate. Multiply total default\n counts by the fixed loss amount to compare losses.\n\
+    \ Plot mean predicted probability on the horizontal axis and observed frequency\
+    \ on the vertical\n axis. Perfect sample agreement would lie on the diagonal where\
+    \ the two are equal."
+  paragraphs:
+  - Calibration
+  - M14 | Formula explained (1/1)
+  - 'Question: Do groups assigned a probability experience roughly that event frequency?
+    db Eb = nb p̄b , Ob = , nb X X EL = c Eb , Lactual = c db . b b'
+  - 'Read it aloud: For each band, multiply loan count by mean predicted probability
+    for expected defaults. Divide observed defaults by loan count for observed default
+    rate. Multiply total default counts by the fixed loss amount to compare losses.
+    Plot mean predicted probability on the horizontal axis and observed frequency
+    on the vertical axis. Perfect sample agreement would lie on the diagonal where
+    the two are equal.'
+  source:
+    pages:
+    - 313
+    verbatim: true
+- page: 314
+  title: Calibration
+  text: " Calibration\n\n   M14 | Symbols and terms (1/2)\n\n\n   Symbol or term \
+    \                                Meaning in this example\n   b               \
+    \                               Index of a score band: low, medium, or high.\n\
+    \   nb                                             Number of loans in band b,\
+    \ 100 in each band here.\n   p̄b                                            Mean\
+    \ predicted default probability in the band; the bar means\n                 \
+    \                                 average across its loans.\n   Eb           \
+    \                                  Expected default count in band b, not its observed\
+    \ count.\n   db , Ob                                        Observed default count\
+    \ and observed default rate in band b.\n   c                                 \
+    \             Fixed loss per actual default, US$4,000."
+  paragraphs:
+  - Calibration
+  - M14 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example b Index of a score band: low, medium,
+    or high. nb Number of loans in band b, 100 in each band here. p̄b Mean predicted
+    default probability in the band; the bar means average across its loans. Eb Expected
+    default count in band b, not its observed count. db , Ob Observed default count
+    and observed default rate in band b. c Fixed loss per actual default, US$4,000.'
+  source:
+    pages:
+    - 314
+    verbatim: true
+- page: 315
+  title: Calibration
+  text: " Calibration\n\n   M14 | Symbols and terms (2/2)\n\n\n   Symbol or term \
+    \                                Meaning in this example\n   P\n       b     \
+    \                                     Add the quantity across the three bands.\n\
+    \   EL, Lactual                                    Probability-based expected\
+    \ loss and realized sample loss, in dollars.\n   Calibration curve           \
+    \                   Plot comparing predicted probabilities with observed event\n\
+    \                                                  frequencies for defined groups\
+    \ of predictions.\n   Calibration gap                                Observed\
+    \ rate minus predicted probability in a band, usually\n                      \
+    \                            expressed in percentage points."
+  paragraphs:
+  - Calibration
+  - M14 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example P b Add the quantity across the three bands.
+    EL, Lactual Probability-based expected loss and realized sample loss, in dollars.
+    Calibration curve Plot comparing predicted probabilities with observed event frequencies
+    for defined groups of predictions. Calibration gap Observed rate minus predicted
+    probability in a band, usually expressed in percentage points.
+  source:
+    pages:
+    - 315
+    verbatim: true
+- page: 316
+  title: Calibration
+  text: " Calibration\n\n   M14 | Class problem | 8 minutes — Do the Probabilities\
+    \ Match Outcomes?\n\n A lender groups loans into three score bands. The table\
+    \ gives the mean predicted probability\n within each band:\n   Band          \
+    \                                 Loans          Mean predicted             Actual\
+    \ defaults\n                                                               default\
+    \ probability\n   Low                                              100       \
+    \                        5%                  3\n   Medium                    \
+    \                       100                               10%               10\n\
+    \   High                                             100                     \
+    \          20%               30\n\n1. Calculate expected defaults and observed\
+    \ default rates for each band.\n2. Identify which band understated risk most in\
+    \ this sample.\n3. Assume a fixed $4,000 loss per default. Compare the total probability-based\
+    \ expected-loss\n   estimate with realized loss.\n4. Which calibration-curve points\
+    \ would you plot?"
+  paragraphs:
+  - Calibration
+  - M14 | Class problem | 8 minutes — Do the Probabilities Match Outcomes?
+  - 'A lender groups loans into three score bands. The table gives the mean predicted
+    probability within each band: Band Loans Mean predicted Actual defaults default
+    probability Low 100 5% 3 Medium 100 10% 10 High 100 20% 30'
+  - 1. Calculate expected defaults and observed default rates for each band. 2. Identify
+    which band understated risk most in this sample. 3. Assume a fixed $4,000 loss
+    per default. Compare the total probability-based expected-loss estimate with realized
+    loss. 4. Which calibration-curve points would you plot?
+  source:
+    pages:
+    - 316
+    verbatim: true
+- page: 317
+  title: Calibration
+  text: " Calibration\n\n   M14 | Worked solution — Do the Probabilities Match Outcomes?\n\
+    \n1. Expected defaults: 100(0.05) = 5; 100(0.10) = 10; 100(0.20) = 20. Total 35.\n\
+    2. Observed rates: 3/100 = 3%, 10/100 = 10%, and 30/100 = 30%. Total actual defaults\
+    \ 43.\n3. Largest understatement: The high band predicts 20% but observes 30%:\
+    \ 10 percentage\n   points, or 10 additional defaults.\n4. Loss comparison:\n\
+    \                                                  Expected loss = 35(4,000) =\
+    \ $140,000.\n                                                  Realized loss =\
+    \ 43(4,000) = $172,000.\n      Difference: $32,000.\n5. Plot (predicted, observed):\
+    \ (5%, 3%), (10%, 10%), (20%, 30%)."
+  paragraphs:
+  - Calibration
+  - M14 | Worked solution — Do the Probabilities Match Outcomes?
+  - '1. Expected defaults: 100(0.05) = 5; 100(0.10) = 10; 100(0.20) = 20. Total 35.
+    2. Observed rates: 3/100 = 3%, 10/100 = 10%, and 30/100 = 30%. Total actual defaults
+    43. 3. Largest understatement: The high band predicts 20% but observes 30%: 10
+    percentage points, or 10 additional defaults. 4. Loss comparison: Expected loss
+    = 35(4,000) = $140,000. Realized loss = 43(4,000) = $172,000. Difference: $32,000.
+    5. Plot (predicted, observed): (5%, 3%), (10%, 10%), (20%, 30%).'
+  source:
+    pages:
+    - 317
+    verbatim: true
+- page: 318
+  title: Calibration
+  text: " Calibration\n\n   M14 | Interpretation\n\n What the answer means\n The highest\
+    \ band understates observed risk in this sample, affecting the expected-loss\n\
+    \ calculation. The sample does not establish a permanent calibration error; uncertainty,\
+    \ time\n stability, and larger validation samples still matter.\n Why these steps\
+    \ matter\n Mean probability times group size equals the sum of individual probabilities,\
+    \ so it is appropriate\n for the expected count. Individual loans still default\
+    \ or do not default; a probability is evaluated\n by frequencies across cases,\
+    \ not by demanding that every single outcome match it exactly."
+  paragraphs:
+  - Calibration
+  - M14 | Interpretation
+  - What the answer means The highest band understates observed risk in this sample,
+    affecting the expected-loss calculation. The sample does not establish a permanent
+    calibration error; uncertainty, time stability, and larger validation samples
+    still matter. Why these steps matter Mean probability times group size equals
+    the sum of individual probabilities, so it is appropriate for the expected count.
+    Individual loans still default or do not default; a probability is evaluated by
+    frequencies across cases, not by demanding that every single outcome match it
+    exactly.
+  source:
+    pages:
+    - 318
+    verbatim: true
+source:
+  pages:
+  - 311
+  - 312
+  - 313
+  - 314
+  - 315
+  - 316
+  - 317
+  - 318
+  verbatim: true

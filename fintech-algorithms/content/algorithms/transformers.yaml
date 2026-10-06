@@ -1,0 +1,390 @@
+slug: transformers
+number: 8
+title: Transformers and FinBERT
+group: Understand language
+oneLine: Classify financial language and review uncertain sentiment.
+baseline: Keyword lists or bag-of-words logistic regression.
+primerSlides:
+- page: 100
+  title: 'Primer 8A: Transformers and FinBERT – definition and intuition'
+  text: " Primer 8A: Transformers and FinBERT – definition and intuition\n\n\n   Financial\
+    \ problem: How can a financial institution classify, extract, or summarize meaning\
+    \ from earnings calls,\n   filings, complaints, contracts, and messages?\n\n\n\
+    \n Definition                                                                \
+    \                             Plain-English intuition\n A transformer is a neural\
+    \ architecture that uses attention to                                        \
+    \  Attention lets each token weigh other relevant tokens\n model relationships\
+    \ among tokens. FinBERT is a                                                 \
+    \        in context, so the meaning of a phrase can depend\n finance-adapted transformer\
+    \ commonly used for tasks such                                               on\
+    \ words far away in the sentence or document.\n as sentiment classification.\n\
+    \                                                                            \
+    \                            Anchor idea\n Input → output                    \
+    \                                                                            \
+    \                               √\n Input: Tokenized text; the same architecture\
+    \ can be fine-tuned for\n                                                    \
+    \                                                      Attention(Q, K, V ) = softmax(QK\
+    \ T / d)V .\n classification, extraction, ranking, or generation.\n Output: A\
+    \ label and confidence score, token-level spans, embeddings,\n or generated text\
+    \ – depending on the task and model.\n What it learns: Statistical language patterns.\
+    \ A generated statement can be fluent without being factually or numerically correct."
+  paragraphs:
+  - 'Primer 8A: Transformers and FinBERT – definition and intuition'
+  - 'Financial problem: How can a financial institution classify, extract, or summarize
+    meaning from earnings calls, filings, complaints, contracts, and messages?'
+  - 'Definition Plain-English intuition A transformer is a neural architecture that
+    uses attention to Attention lets each token weigh other relevant tokens model
+    relationships among tokens. FinBERT is a in context, so the meaning of a phrase
+    can depend finance-adapted transformer commonly used for tasks such on words far
+    away in the sentence or document. as sentiment classification. Anchor idea Input
+    → output √ Input: Tokenized text; the same architecture can be fine-tuned for
+    Attention(Q, K, V ) = softmax(QK T / d)V . classification, extraction, ranking,
+    or generation. Output: A label and confidence score, token-level spans, embeddings,
+    or generated text – depending on the task and model. What it learns: Statistical
+    language patterns. A generated statement can be fluent without being factually
+    or numerically correct.'
+  source:
+    pages:
+    - 100
+    verbatim: true
+- page: 101
+  title: 'Primer 8B: Transformers and FinBERT – worked fintech example'
+  text: " Primer 8B: Transformers and FinBERT – worked fintech example\n\n\n Earnings-call\
+    \ language classification\n An analyst wants to tag management statements as positive,\
+    \ neutral, or negative and extract references to\n guidance, margin pressure,\
+    \ and liquidity.\n\n\n From data to action                                   \
+    \                      Comparison point\n1. Define the exact task: sentence classification,\
+    \ span extraction, or       Baseline: Keyword rules, bag-of-words\n          \
+    \                                                                   logistic regression,\
+    \ and a majority label.\n   generation.\n2. Label a small gold set using finance-specific\
+    \ instructions and\n   disagreement review.\n                                \
+    \                                             Control to teach\n             \
+    \                                                                Watch for: Domain\
+    \ shift, token truncation,\n3. Run FinBERT or a fine-tuned transformer; inspect\
+    \ errors around            misleading confidence, prompt sensitivity,\n   negation\
+    \ and forward-looking language.                                    and arithmetic\
+    \ or citation errors in\n                                                    \
+    \                         generation.\n4. For summaries, verify every material\
+    \ figure and date against the\n   source text."
+  paragraphs:
+  - 'Primer 8B: Transformers and FinBERT – worked fintech example'
+  - Earnings-call language classification An analyst wants to tag management statements
+    as positive, neutral, or negative and extract references to guidance, margin pressure,
+    and liquidity.
+  - 'From data to action Comparison point 1. Define the exact task: sentence classification,
+    span extraction, or Baseline: Keyword rules, bag-of-words logistic regression,
+    and a majority label. generation. 2. Label a small gold set using finance-specific
+    instructions and disagreement review. Control to teach Watch for: Domain shift,
+    token truncation, 3. Run FinBERT or a fine-tuned transformer; inspect errors around
+    misleading confidence, prompt sensitivity, negation and forward-looking language.
+    and arithmetic or citation errors in generation. 4. For summaries, verify every
+    material figure and date against the source text.'
+  source:
+    pages:
+    - 101
+    verbatim: true
+- page: 102
+  title: 'Primer 8C: Transformers and FinBERT – when to use it, and when not to'
+  text: " Primer 8C: Transformers and FinBERT – when to use it, and when not\n to\n\
+    \n\n Use it when                                                          Do not\
+    \ use it when\n▶ The signal is primarily in natural language                 \
+    \       ▶ Exact arithmetic or database retrieval is the\n  context.          \
+    \                                                   primary task.\n▶ Keyword rules\
+    \ miss negation, nuance, or                            ▶ A simple deterministic\
+    \ rule solves the problem\n  long-range meaning.                             \
+    \                     reliably.\n▶ Pretrained transfer learning is appropriate\
+    \ for the                ▶ The input is mostly tabular and small.\n  data size.\
+    \                                                         ▶ Generated text will\
+    \ trigger consequential action\n▶ A labeled evaluation set can be created.   \
+    \                          without verification.\n▶ The workflow supports review\
+    \ for consequential                     ▶ Privacy, retention, or licensing constraints\
+    \ are\n  outputs.                                                            \
+    \ unresolved.\n Better fit in those cases\n Use rules for deterministic extraction,\
+    \ classical text models for transparent baselines, RAG for evidence-grounded Q&A,\
+    \ or calculators\n for arithmetic."
+  paragraphs:
+  - 'Primer 8C: Transformers and FinBERT – when to use it, and when not to'
+  - Use it when Do not use it when ▶ The signal is primarily in natural language ▶
+    Exact arithmetic or database retrieval is the context. primary task. ▶ Keyword
+    rules miss negation, nuance, or ▶ A simple deterministic rule solves the problem
+    long-range meaning. reliably. ▶ Pretrained transfer learning is appropriate for
+    the ▶ The input is mostly tabular and small. data size. ▶ Generated text will
+    trigger consequential action ▶ A labeled evaluation set can be created. without
+    verification. ▶ The workflow supports review for consequential ▶ Privacy, retention,
+    or licensing constraints are outputs. unresolved. Better fit in those cases Use
+    rules for deterministic extraction, classical text models for transparent baselines,
+    RAG for evidence-grounded Q&A, or calculators for arithmetic.
+  source:
+    pages:
+    - 102
+    verbatim: true
+- page: 103
+  title: 'Primer 8D: Transformers and FinBERT – fintech problem map'
+  text: " Primer 8D: Transformers and FinBERT – fintech problem map\n\n\n Common fintech\
+    \ problems                                                    Operational profile\n\
+    ▶ Financial sentiment                       ▶ Earnings-call analysis        ▶\
+    \ Latency: medium\n  classification                            ▶ News and research\
+    \ tagging     ▶ Explainability: low to medium\n▶ Complaint and message       \
+    \              ▶ Regulatory change triage      ▶ Data need: pretrained + task\n\
+    \  routing                                                                   \
+    \  examples\n                                            ▶ Draft narrative generation\n\
+    ▶ KYC / onboarding                            with review                   ▶\
+    \ Monitor: slice accuracy, drift, factual\n  document classification         \
+    \                                            error rate\n▶ Contract and covenant\n\
+    \  extraction\n\n\n   Student defense question: Can the student distinguish classification,\
+    \ extraction, and generation\n   – and evaluate each with the right gold standard?"
+  paragraphs:
+  - 'Primer 8D: Transformers and FinBERT – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Financial sentiment ▶ Earnings-call
+    analysis ▶ Latency: medium classification ▶ News and research tagging ▶ Explainability:
+    low to medium ▶ Complaint and message ▶ Regulatory change triage ▶ Data need:
+    pretrained + task routing examples ▶ Draft narrative generation ▶ KYC / onboarding
+    with review ▶ Monitor: slice accuracy, drift, factual document classification
+    error rate ▶ Contract and covenant extraction'
+  - 'Student defense question: Can the student distinguish classification, extraction,
+    and generation – and evaluate each with the right gold standard?'
+  source:
+    pages:
+    - 103
+    verbatim: true
+definition: A transformer is a neural architecture that uses attention to model relationships
+  among tokens. FinBERT is a finance-adapted transformer commonly used for tasks such
+  as sentiment classification.
+intuition: Attention lets each token weigh other relevant tokens in context, so the
+  meaning of a phrase can depend on words far away in the sentence or document.  Anchor
+  idea
+useWhen:
+- The signal is primarily in natural language
+- context.
+- Keyword rules miss negation, nuance, or
+- long-range meaning.
+- Pretrained transfer learning is appropriate for the
+- data size.
+- A labeled evaluation set can be created.
+- The workflow supports review for consequential
+- outputs.
+avoidWhen: []
+deepDive:
+  problem:
+  - page: 648
+    title: 'Financial problem: how do we triage thousands of financial statements?'
+    text: " Financial problem: how do we triage thousands of financial statements?\n\
+      \n\n\n    Financial problem\n    An analyst team receives earnings-call sentences,\
+      \ filings, and news faster than humans can read\n    them. It needs to classify\
+      \ sentiment, detect guidance changes, and route material passages for\n    review.\n\
+      \n\n A narrow, testable task\n Given one sentence, classify it as positive,\
+      \ negative, or neutral in financial context.\n\n   Decision to make: Use a domain-adapted\
+      \ transformer for classification before asking a\n   generative model to summarize\
+      \ everything."
+    paragraphs:
+    - 'Financial problem: how do we triage thousands of financial statements?'
+    - Financial problem An analyst team receives earnings-call sentences, filings,
+      and news faster than humans can read them. It needs to classify sentiment, detect
+      guidance changes, and route material passages for review.
+    - A narrow, testable task Given one sentence, classify it as positive, negative,
+      or neutral in financial context.
+    - 'Decision to make: Use a domain-adapted transformer for classification before
+      asking a generative model to summarize everything.'
+    source:
+      pages:
+      - 648
+      verbatim: true
+  method:
+  - page: 649
+    title: 'Method: attention builds context-sensitive representations'
+    text: " Method: attention builds context-sensitive representations\n\n\n\n   \
+      \           Tokens                         Token + position       Self-attention\
+      \    Transformer                 Classification head\n         “margin improved”\
+      \                     embeddings          context mixing    encoder layers \
+      \         positive / neutral / negative\n\n\n For one attention head:\n    \
+      \                                                                          \
+      \            QK ⊤\n                                                        \
+      \                              \x12           \x13\n                       \
+      \                               Attention(Q, K, V ) = softmax       √      \
+      \     V\n                                                                  \
+      \                          dk\n\n▶ The same word can mean different things in\
+      \ different sentences.\n▶ FinBERT adapts a transformer to financial language\
+      \ and sentiment labels.\n Baseline: Keyword lists or bag-of-words logistic regression."
+    paragraphs:
+    - 'Method: attention builds context-sensitive representations'
+    - Tokens Token + position Self-attention Transformer Classification head “margin
+      improved” embeddings context mixing encoder layers positive / neutral / negative
+    - "For one attention head: QK ⊤ \x12 \x13 Attention(Q, K, V ) = softmax √ V dk"
+    - '▶ The same word can mean different things in different sentences. ▶ FinBERT
+      adapts a transformer to financial language and sentiment labels. Baseline: Keyword
+      lists or bag-of-words logistic regression.'
+    source:
+      pages:
+      - 649
+      verbatim: true
+  economics:
+  - page: 650
+    title: Classification is not generation
+    text: " Classification is not generation\n\n\n\n\n Classifier                \
+      \                           Generative model\n▶ Fixed label set            \
+      \                         ▶ Open-ended output\n▶ Compact output            \
+      \                          ▶ Can synthesize and explain\n▶ Straightforward confusion\
+      \ matrix                    ▶ Requires factuality and completeness checks\n\
+      ▶ Easier thresholding and monitoring                  ▶ More ways to fail silently\n\
+      \n   Decision to make: Choose the narrowest task that solves the financial problem.\
+      \ Do not use\n   generation when a tested classifier is enough."
+    paragraphs:
+    - Classification is not generation
+    - Classifier Generative model ▶ Fixed label set ▶ Open-ended output ▶ Compact
+      output ▶ Can synthesize and explain ▶ Straightforward confusion matrix ▶ Requires
+      factuality and completeness checks ▶ Easier thresholding and monitoring ▶ More
+      ways to fail silently
+    - 'Decision to make: Choose the narrowest task that solves the financial problem.
+      Do not use generation when a tested classifier is enough.'
+    source:
+      pages:
+      - 650
+      verbatim: true
+  - page: 652
+    title: How to evaluate a financial language classifier
+    text: " How to evaluate a financial language classifier\n\n\n\n1. Use an in-domain\
+      \ labeled test set, not generic movie reviews or social media.\n2. Report per-class\
+      \ precision and recall; neutral often dominates.\n3. Review disagreement cases\
+      \ where experts themselves differ.\n4. Test slices: sectors, document types,\
+      \ sentence length, negation, and dates.\n5. Monitor label distribution and confidence\
+      \ drift after deployment.\n\n A high confidence score is not a guarantee\n Neural\
+      \ classifiers can be confidently wrong under domain shift. Calibrate or threshold\
+      \ confidence\n only after testing on representative data.\n Required artifact:\
+      \ Confusion matrix, challenge set, and documented abstention threshold."
+    paragraphs:
+    - How to evaluate a financial language classifier
+    - '1. Use an in-domain labeled test set, not generic movie reviews or social media.
+      2. Report per-class precision and recall; neutral often dominates. 3. Review
+      disagreement cases where experts themselves differ. 4. Test slices: sectors,
+      document types, sentence length, negation, and dates. 5. Monitor label distribution
+      and confidence drift after deployment.'
+    - 'A high confidence score is not a guarantee Neural classifiers can be confidently
+      wrong under domain shift. Calibrate or threshold confidence only after testing
+      on representative data. Required artifact: Confusion matrix, challenge set,
+      and documented abstention threshold.'
+    source:
+      pages:
+      - 652
+      verbatim: true
+  code:
+  - page: 651
+    title: 'Working example: FinBERT sentiment classification'
+    text: " Working example: FinBERT sentiment classification\n\n\n\n  # Colab: pip\
+      \ install -q transformers torch\n  from transformers import pipeline       \
+      \                                Challenge cases\n  clf = pipeline(\"text-classification\"\
+      ,\n                 model=\"ProsusAI/finbert\",                            \
+      \   ▶ Negation\n                 truncation=True)\n\n  sentences = [\n     \
+      \                                                                    ▶ Mixed\
+      \ sentiment\n   \"Operating margin expanded by 240 basis points.\",\n   \"Management\
+      \ withdrew full-year revenue guidance.\",                    ▶ Forward-looking\
+      \ language\n   \"The company completed its scheduled debt repayment.\"\n  ]\n\
+      \  for text, result in zip(sentences, clf(sentences)):\n                   \
+      \                                                      ▶ Numerical contradiction\n\
+      \      print(text)\n      print(result)   # label and confidence score     \
+      \                  ▶ Very long passages\n                                  \
+      \                                        Primary metric: Macro-F1\n        \
+      \                                                                  and per-class\
+      \ recall."
+    paragraphs:
+    - 'Working example: FinBERT sentiment classification'
+    - '# Colab: pip install -q transformers torch from transformers import pipeline
+      Challenge cases clf = pipeline("text-classification", model="ProsusAI/finbert",
+      ▶ Negation truncation=True)'
+    - 'sentences = [ ▶ Mixed sentiment "Operating margin expanded by 240 basis points.",
+      "Management withdrew full-year revenue guidance.", ▶ Forward-looking language
+      "The company completed its scheduled debt repayment." ] for text, result in
+      zip(sentences, clf(sentences)): ▶ Numerical contradiction print(text) print(result)
+      # label and confidence score ▶ Very long passages Primary metric: Macro-F1 and
+      per-class recall.'
+    source:
+      pages:
+      - 651
+      verbatim: true
+  choice:
+  - page: 653
+    title: When transformers fit
+    text: " When transformers fit\n\n\n\n Use them when                          \
+      \              Avoid or constrain them when\n▶ Language context changes meaning.\
+      \                   ▶ A keyword or linear model performs as well.\n▶ Enough\
+      \ representative labeled or pretraining        ▶ The text exceeds context limits\
+      \ without a\n  data exists.                                          plan.\n\
+      ▶ The task benefits from domain adaptation.           ▶ Numerical precision\
+      \ is the primary task.\n▶ Latency and compute are acceptable.              \
+      \   ▶ No representative evaluation set exists.\n\n\n\n   Student defense question:\
+      \ A model labels “loss narrowed from $20M to $5M” as negative\n   because it\
+      \ sees “loss.” How would you expose and correct this failure?"
+    paragraphs:
+    - When transformers fit
+    - Use them when Avoid or constrain them when ▶ Language context changes meaning.
+      ▶ A keyword or linear model performs as well. ▶ Enough representative labeled
+      or pretraining ▶ The text exceeds context limits without a data exists. plan.
+      ▶ The task benefits from domain adaptation. ▶ Numerical precision is the primary
+      task. ▶ Latency and compute are acceptable. ▶ No representative evaluation set
+      exists.
+    - 'Student defense question: A model labels “loss narrowed from $20M to $5M” as
+      negative because it sees “loss.” How would you expose and correct this failure?'
+    source:
+      pages:
+      - 653
+      verbatim: true
+financialProblem: 'An analyst team receives earnings-call sentences, filings, and
+  news faster than humans can read them. It needs to classify sentiment, detect guidance
+  changes, and route material passages for review. A narrow, testable task Given one
+  sentence, classify it as positive, negative, or neutral in financial context. Decision
+  to make: Use a domain-adapted transformer for classification before asking a generative
+  model to summarize everything.'
+defenseQuestions:
+- text: Can the student distinguish classification, extraction, and generation – and
+    evaluate each with the right gold standard?
+  source:
+    pages:
+    - 103
+    verbatim: true
+- text: A model labels “loss narrowed from $20M to $5M” as negative because it sees
+    “loss.” How would you expose and correct this failure?
+  source:
+    pages:
+    - 653
+    verbatim: true
+exercises:
+- A08
+measures:
+- macro-f1-micro-f1-weighted-f1
+- calibration-curve
+- log-loss
+- latency-throughput-review-load-cost
+widgets:
+- attention-mini
+lab:
+  dataset: Frozen miniature financial phrase sample
+  task: Classify sentiment and challenge cases
+  requiredComparison: Keyword / linear baseline
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 99
+  - 100
+  - 101
+  - 102
+  - 103
+  - 104
+  - 105
+  - 106
+  - 107
+  - 108
+  - 109
+  - 110
+  - 111
+  - 112
+  - 113
+  - 647
+  - 648
+  - 649
+  - 650
+  - 651
+  - 652
+  - 653
+  verbatim: true

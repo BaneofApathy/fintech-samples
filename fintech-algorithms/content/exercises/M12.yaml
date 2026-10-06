@@ -1,0 +1,388 @@
+id: M12
+title: Match Review Capacity
+minutes: 6
+kind: measure
+parent: precision-k-and-recall-k
+question: "A batch contains 100 transactions and 8 actual frauds.\n The top 5 model-ranked\
+  \ transactions contain 3 frauds. The top 10 contain 5 frauds.\n1. Calculate precision@5\
+  \ and recall@5.\n2. Calculate precision@10 and recall@10.\n3. How many extra reviews\
+  \ and extra frauds result from increasing capacity from 5 to 10?\n4. Each review\
+  \ costs $2. What is the additional review cost per additional fraud found?\n Assume\
+  \ all reviewed cases receive correct investigation outcomes. Do not assume investigation\n\
+  \ automatically prevents the loss."
+questionPages:
+- page: 300
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Class problem | 6 minutes — Match Review\
+    \ Capacity\n\n A batch contains 100 transactions and 8 actual frauds.\n The top\
+    \ 5 model-ranked transactions contain 3 frauds. The top 10 contain 5 frauds.\n\
+    1. Calculate precision@5 and recall@5.\n2. Calculate precision@10 and recall@10.\n\
+    3. How many extra reviews and extra frauds result from increasing capacity from\
+    \ 5 to 10?\n4. Each review costs $2. What is the additional review cost per additional\
+    \ fraud found?\n Assume all reviewed cases receive correct investigation outcomes.\
+    \ Do not assume investigation\n automatically prevents the loss."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Class problem | 6 minutes — Match Review Capacity
+  - A batch contains 100 transactions and 8 actual frauds. The top 5 model-ranked
+    transactions contain 3 frauds. The top 10 contain 5 frauds. 1. Calculate precision@5
+    and recall@5. 2. Calculate precision@10 and recall@10. 3. How many extra reviews
+    and extra frauds result from increasing capacity from 5 to 10? 4. Each review
+    costs $2. What is the additional review cost per additional fraud found? Assume
+    all reviewed cases receive correct investigation outcomes. Do not assume investigation
+    automatically prevents the loss.
+  source:
+    pages:
+    - 300
+    verbatim: true
+formulaPages:
+- page: 297
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Formula explained (1/1)\n\n Question:\
+    \ How useful is the queue at the number of reviews the team can actually perform?\n\
+    \                                          CK                     CK\n       \
+    \                 P recision@K =       ,    Recall@K =         ,\n           \
+    \                               K                       F\n                  \
+    \                                       c(K2 − K1 )\n                        Extra\
+    \ cost per extra f raud =                .\n                                 \
+    \                        C K2 − C K1\n Read it aloud: Fraud count divided by queue\
+    \ size gives queue quality; fraud count divided by\n all frauds gives coverage.\
+    \ To price an expansion, divide additional review spending by additional\n discoveries.\n\
+    \ Use the two queue sizes from the same ranked population. A discovered fraud\
+    \ is not\n automatically a prevented or recovered loss."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Formula explained (1/1)
+  - 'Question: How useful is the queue at the number of reviews the team can actually
+    perform? CK CK P recision@K = , Recall@K = , K F c(K2 − K1 ) Extra cost per extra
+    f raud = . C K2 − C K1 Read it aloud: Fraud count divided by queue size gives
+    queue quality; fraud count divided by all frauds gives coverage. To price an expansion,
+    divide additional review spending by additional discoveries. Use the two queue
+    sizes from the same ranked population. A discovered fraud is not automatically
+    a prevented or recovered loss.'
+  source:
+    pages:
+    - 297
+    verbatim: true
+symbolPages:
+- page: 298
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   K      \
+    \                                        Review capacity, or number of highest-ranked\
+    \ cases reviewed.\n   K1 , K2                                        Original\
+    \ and expanded queue sizes: 5 and 10.\n   CK                                 \
+    \            Actual frauds among the top K transactions: 3 at K=5 and 5 at\n \
+    \                                                 K=10.\n   F                \
+    \                              All actual frauds in the batch, including those\
+    \ never reviewed: 8.\n   c                                              Review\
+    \ cost per transaction, US$2.\n   K2 − K1                                    \
+    \    Number of additional reviews when the queue expands."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example K Review capacity, or number of highest-ranked
+    cases reviewed. K1 , K2 Original and expanded queue sizes: 5 and 10. CK Actual
+    frauds among the top K transactions: 3 at K=5 and 5 at K=10. F All actual frauds
+    in the batch, including those never reviewed: 8. c Review cost per transaction,
+    US$2. K2 − K1 Number of additional reviews when the queue expands.'
+  source: &id001
+    pages:
+    - 298
+    verbatim: true
+- page: 299
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   CK 2 − CK\
+    \ 1                                    Additional frauds found, not total frauds\
+    \ in the expanded queue.\n   Incremental cost                               Cost\
+    \ of the additional work only; here every added review is priced\n           \
+    \                                       identically."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example CK 2 − CK 1 Additional frauds found, not
+    total frauds in the expanded queue. Incremental cost Cost of the additional work
+    only; here every added review is priced identically.
+  source: &id002
+    pages:
+    - 299
+    verbatim: true
+solutionPages:
+- page: 301
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Worked solution — Match Review Capacity\n\
+    \n1. At K = 5:\n                                                   P @5 = 3/5\
+    \ = 60%,    R@5 = 3/8 = 37.5%.\n2. At K = 10:\n                              \
+    \                    P @10 = 5/10 = 50%,   R@10 = 5/8 = 62.5%.\n3. Incremental\
+    \ work and capture: 10 − 5 = 5 additional reviews find 5 − 3 = 2 additional\n\
+    \   frauds.\n4. Incremental cost: 5($2) = $10, or $10/2 = $5 per additional fraud\
+    \ found."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Worked solution — Match Review Capacity
+  - '1. At K = 5: P @5 = 3/5 = 60%, R@5 = 3/8 = 37.5%. 2. At K = 10: P @10 = 5/10
+    = 50%, R@10 = 5/8 = 62.5%. 3. Incremental work and capture: 10 − 5 = 5 additional
+    reviews find 5 − 3 = 2 additional frauds. 4. Incremental cost: 5($2) = $10, or
+    $10/2 = $5 per additional fraud found.'
+  source:
+    pages:
+    - 301
+    verbatim: true
+interpretationPages:
+- page: 302
+  title: Precision@K and Recall@K
+  text: " Precision@K and Recall@K\n\n   M12 | Interpretation\n\n What the answer\
+    \ means\n Expanding the queue lowers precision from 60% to 50% but increases fraud\
+    \ coverage from\n 37.5% to 62.5%. The extra cases may be worth reviewing, but\
+    \ the institution must have\n capacity and a useful intervention. Higher precision\
+    \ alone is not the objective.\n Why these steps matter\n Use the difference in\
+    \ fraud discoveries to assess the added five reviews. Dividing incremental\n spending\
+    \ by all five frauds in the expanded queue would over-credit discoveries already\
+    \ made by\n the smaller queue."
+  paragraphs:
+  - Precision@K and Recall@K
+  - M12 | Interpretation
+  - What the answer means Expanding the queue lowers precision from 60% to 50% but
+    increases fraud coverage from 37.5% to 62.5%. The extra cases may be worth reviewing,
+    but the institution must have capacity and a useful intervention. Higher precision
+    alone is not the objective. Why these steps matter Use the difference in fraud
+    discoveries to assess the added five reviews. Dividing incremental spending by
+    all five frauds in the expanded queue would over-credit discoveries already made
+    by the smaller queue.
+  source:
+    pages:
+    - 302
+    verbatim: true
+source:
+  pages:
+  - 297
+  - 298
+  - 299
+  - 300
+  - 301
+  - 302
+  verbatim: true
+readAloud:
+- Fraud count divided by queue size gives queue quality; fraud count divided by all
+  frauds gives coverage. To price an expansion, divide additional review spending
+  by additional discoveries. Use the two queue sizes from the same ranked population.
+  A discovered fraud is not automatically a prevented or recovered loss.
+siteAuthored: false
+givens:
+  K5: 5
+  caught5: 3
+  K10: 10
+  caught10: 5
+  fraud: 8
+  cost: 2
+labels: &id003
+  K5: Smaller queue size
+  caught5: Frauds in the smaller queue
+  K10: Larger queue size
+  caught10: Frauds in the larger queue
+  fraud: All frauds in the population
+  cost: Cost per review ($)
+deckSolution:
+  P5: 0.6
+  R5: 0.375
+  P10: 0.5
+  R10: 0.625
+  extraReviews: 5
+  extraFrauds: 2
+  extraCost: 10
+  perExtra: 5
+latex:
+- P@K=\frac{TP_K}{K},\quad R@K=\frac{TP_K}{F}
+- \operatorname{Extra\ cost\ per\ extra\ fraud}=\frac{c(K_2-K_1)}{C_{K_2}-C_{K_1}}
+symbols:
+- symbol: K
+  meaning: Review capacity, or number of highest-ranked cases reviewed.
+  source: *id001
+- symbol: K1 , K2
+  meaning: 'Original and expanded queue sizes: 5 and 10.'
+  source: *id001
+- symbol: CK
+  meaning: 'Actual frauds among the top K transactions: 3 at K=5 and 5 at K=10.'
+  source: *id001
+- symbol: F
+  meaning: 'All actual frauds in the batch, including those never reviewed: 8.'
+  source: *id001
+- symbol: c
+  meaning: Review cost per transaction, US$2.
+  source: *id001
+- symbol: K2 − K1
+  meaning: Number of additional reviews when the queue expands.
+  source: *id001
+- symbol: CK 2 − CK 1
+  meaning: Additional frauds found, not total frauds in the expanded queue.
+  source: *id002
+- symbol: Incremental cost
+  meaning: Cost of the additional work only; here every added review is priced identically.
+  source: *id002
+steps:
+- id: P5
+  title: Precision in the smaller queue
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide its caught frauds by its queue size.
+  mistakes:
+  - pattern: recompute
+    message: Divide its caught frauds by its queue size.
+- id: R5
+  title: Recall in the smaller queue
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide its caught frauds by all actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Divide its caught frauds by all actual frauds.
+- id: P10
+  title: Precision in the larger queue
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide its caught frauds by its queue size.
+  mistakes:
+  - pattern: recompute
+    message: Divide its caught frauds by its queue size.
+- id: R10
+  title: Recall in the larger queue
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide its caught frauds by all actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Divide its caught frauds by all actual frauds.
+- id: extraReviews
+  title: Additional reviews
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Subtract smaller queue size from larger queue size.
+  mistakes:
+  - pattern: recompute
+    message: Subtract smaller queue size from larger queue size.
+- id: extraFrauds
+  title: Additional frauds found
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract smaller-queue frauds from larger-queue frauds.
+  mistakes:
+  - pattern: recompute
+    message: Subtract smaller-queue frauds from larger-queue frauds.
+- id: extraCost
+  title: Additional review cost
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Multiply additional reviews by cost per review.
+  mistakes:
+  - pattern: recompute
+    message: Multiply additional reviews by cost per review.
+- id: perExtra
+  title: Cost per additional fraud found
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Divide additional review cost by additional frauds.
+  mistakes:
+  - pattern: recompute
+    message: Divide additional review cost by additional frauds.
+learning:
+  title: Match Review Capacity
+  scenario: A fraud team can review either a smaller or a larger prefix of the same
+    ranked transaction list. Every review costs the supplied amount and produces the
+    correct investigation outcome.
+  task: Calculate precision and recall for each queue, extra reviews and frauds, then
+    added review cost per added fraud found.
+  interpretation: Discovering a fraud does not guarantee that its loss can be prevented
+    or recovered. Use incremental discoveries, not all discoveries in the larger queue,
+    when pricing the expansion.
+  summary: 'Smaller-queue precision/recall: {P5}, {R5}; larger-queue: {P10}, {R10}.
+    Extra cost per extra fraud: {perExtra}.'
+  labels: *id003
+  steps:
+    P5:
+      title: Precision in the smaller queue
+      hints: *id004
+      unit: ''
+    R5:
+      title: Recall in the smaller queue
+      hints: *id005
+      unit: ''
+    P10:
+      title: Precision in the larger queue
+      hints: *id006
+      unit: ''
+    R10:
+      title: Recall in the larger queue
+      hints: *id007
+      unit: ''
+    extraReviews:
+      title: Additional reviews
+      hints: *id008
+      unit: ''
+    extraFrauds:
+      title: Additional frauds found
+      hints: *id009
+      unit: ''
+    extraCost:
+      title: Additional review cost
+      hints: *id010
+      unit: $
+    perExtra:
+      title: Cost per additional fraud found
+      hints: *id011
+      unit: $
+  readAloud:
+  - Fraud count divided by queue size gives queue quality; fraud count divided by
+    all frauds gives coverage. To price an expansion, divide additional review spending
+    by additional discoveries. Use the two queue sizes from the same ranked population.
+    A discovered fraud is not automatically a prevented or recovered loss.
+  workedExplanation:
+  - 'Expanding the queue lowers precision from 60% to 50% but increases fraud coverage
+    from 37.5% to 62.5%. The extra cases may be worth reviewing, but the institution
+    must have capacity and a useful intervention. Higher precision alone is not the
+    objective. '
+  - Use the difference in fraud discoveries to assess the added five reviews. Dividing
+    incremental spending by all five frauds in the expanded queue would over-credit
+    discoveries already made by the smaller queue.
+  workedArithmetic:
+  - 'At K = 5: precision = 3/5 = 60%; recall = 3/8 = 37.5%.'
+  - 'At K = 10: precision = 5/10 = 50%; recall = 5/8 = 62.5%.'
+  - Additional reviews = 10 − 5 = 5; additional frauds = 5 − 3 = 2.
+  - Additional cost = 5 × $2 = $10; cost per additional fraud = $10/2 = $5.
+formulaSource:
+  pages:
+  - 297
+  verbatim: false
+  reviewed: true

@@ -1,0 +1,392 @@
+{
+  "logistic-regression": {
+    "code": "from sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import roc_auc_score, brier_score_loss\n# Generate fictional examples; the positive label is the event being estimated.\nX, y = make_classification(n_samples=5000, n_features=8,\n    weights=[0.90, 0.10], class_sep=1.1, random_state=7)\n# Hold back 30% for evaluation and preserve the outcome mix in both groups.\nXtr, Xte, ytr, yte = train_test_split(\n    X, y, test_size=.30, stratify=y, random_state=7)\n# Learn input scaling from training rows, then fit the probability model.\nmodel = make_pipeline(StandardScaler(),\n    LogisticRegression(C=1.0, max_iter=2000))\nmodel.fit(Xtr, ytr)\n# Evaluate only on held-back rows; ranking and probability error differ.\npd_hat = model.predict_proba(Xte)[:, 1]\nprint(\"ROC-AUC:\", roc_auc_score(yte, pd_hat))\nprint(\"Brier:\", brier_score_loss(yte, pd_hat))\nprint(\"Baseline Brier:\", brier_score_loss(yte, ytr.mean() * __import__('numpy').ones(len(yte))))\nprint(\"First five PDs:\", pd_hat[:5].round(3))\n",
+    "edits": [
+      {
+        "label": "Make the positive outcome rarer",
+        "find": "weights=[0.90, 0.10]",
+        "replace": "weights=[0.97, 0.03]",
+        "description": "This creates a new sample with fewer positive outcomes. Check its new share before comparing the scores."
+      },
+      {
+        "label": "Use stronger regularization",
+        "find": "C=1.0",
+        "replace": "C=0.1",
+        "description": "The smaller C applies a stronger penalty to large weights. Keep the sample and split fixed, then compare ranking and probability error."
+      },
+      {
+        "label": "Create data with 12 inputs",
+        "find": "n_features=8",
+        "replace": "n_features=12",
+        "description": "The generator makes a new sample with more input columns; this does not add one controlled signal to the old sample."
+      },
+      {
+        "label": "Remove input scaling",
+        "find": "StandardScaler(),",
+        "replace": "",
+        "description": "Compare with the scaled model on the same split. Scaling changes the units used to fit inputs, not the outcomes."
+      }
+    ],
+    "metric": "ROC-AUC",
+    "source": {
+      "pages": [
+        605
+      ],
+      "verbatim": true
+    },
+    "dataset": "The computer creates 5,000 fictional examples. Each has eight numeric inputs and an outcome label; about 10 in every 100 labels are positive. A stratified split puts 70% of examples in the training set and 30% in the test set while keeping roughly the same positive share in both. Seed 7 makes the random sample repeatable.",
+    "task": "Fit logistic regression after scaling the input measurements. Inspect five estimated probabilities, then use the held-back test examples to measure ranking with ROC-AUC and probability accuracy with Brier score. These scores answer different questions.",
+    "comparison": "Compare the model's Brier score with a simple reference that predicts the training-set default share for every test example. Both scores use the same held-back rows, so the comparison asks whether the model's probabilities improve on one constant guess.",
+    "extension": "You could compare a boosting model or test a review cutoff, but those require extra code. A cutoff also needs stated costs for missed defaults, mistaken declines, and staff review; this notebook does not supply those policy assumptions.",
+    "siteEdits": "This example uses scikit-learn for the model and NumPy through scikit-learn. The scaling rule is learned from training examples only, then reused on test examples. The constant-guess reference also uses only the training outcomes."
+  },
+  "trees-and-forests": {
+    "code": "from sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import average_precision_score\nX, y = make_classification(n_samples=2000, n_features=12,\n    n_informative=7, weights=[.97, .03], random_state=11)\nXtr, Xte, ytr, yte = train_test_split(\n    X, y, stratify=y, test_size=.30, random_state=11)\nprint(\"Random-ranking baseline AP:\", yte.mean())\nmodels = {\n \"tree\": DecisionTreeClassifier(max_depth=5, random_state=11),\n \"forest\": RandomForestClassifier(n_estimators=80,\n    max_depth=10, class_weight=\"balanced\", n_jobs=1, random_state=11)\n}\nfor name, model in models.items():\n    model.fit(Xtr, ytr)\n    p = model.predict_proba(Xte)[:, 1]\n    print(name, \"Average precision:\", average_precision_score(yte, p))\n    top = p.argsort()[::-1][:20]\n    print(name, \"Precision@20:\", yte[top].mean())\n",
+    "edits": [
+      {
+        "label": "Increase tree depth",
+        "find": "max_depth=5",
+        "replace": "max_depth=10",
+        "description": "Compare average precision and Precision@20 with the depth-5 tree."
+      },
+      {
+        "label": "Increase forest size",
+        "find": "n_estimators=80",
+        "replace": "n_estimators=150",
+        "description": "Compare average precision, top-20 yield, and run time."
+      },
+      {
+        "label": "Require 20 rows per tree leaf",
+        "find": "DecisionTreeClassifier(max_depth=5",
+        "replace": "DecisionTreeClassifier(min_samples_leaf=20, max_depth=5",
+        "description": "Compare the single tree before and after limiting small leaves."
+      },
+      {
+        "label": "Remove forest class weights",
+        "find": "class_weight=\"balanced\"",
+        "replace": "class_weight=None",
+        "description": "Check whether average precision and Precision@20 change in the same direction."
+      }
+    ],
+    "metric": "Average precision",
+    "source": {
+      "pages": [
+        611
+      ],
+      "verbatim": true
+    },
+    "dataset": "The computer creates 2,000 fictional rows. Each row has 12 numeric features (input details), and about 3 in every 100 rows have the positive label. Seven features carry information about that label. A stratified split keeps roughly the same positive share in the 70% training group and 30% test group. Seed 11 makes the generated rows repeatable.",
+    "task": "Fit a tree limited to five levels and a forest of 80 trees, then score the same held-back test rows. Average precision summarizes how well positive cases rise through the ranked list. Precision@20 asks how many of the first 20 reviewed rows are positive. Twenty cases make a small sample, so one changed outcome can move that second measure noticeably.",
+    "comparison": "Compare both models on exactly the same test rows. Use the test-set positive share as a reference: a random ranking would find positive cases at about that rate on average. The reference is not another fitted model, and the test set should not be reused to tune the models.",
+    "extension": "A hand-written transaction rule or an anomaly detector would answer a different question and is not included. Compare either separately on the same later cases before claiming that the tree or forest is more useful.",
+    "siteEdits": "This notebook uses scikit-learn. The forest evaluates trees one at a time to keep the run predictable and gives extra weight to the rare positive class while fitting. Average precision adds the precision gained at each recall step; it is not the same calculation as trapezoidal area under a precision\u2013recall curve."
+  },
+  "gradient-boosting": {
+    "code": "from sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import HistGradientBoostingClassifier\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.metrics import roc_auc_score, brier_score_loss\nX, y = make_classification(n_samples=3000, n_features=20,\n    n_informative=10, weights=[.92, .08], flip_y=.01, random_state=21)\nXtr, Xte, ytr, yte = train_test_split(\n    X, y, test_size=.30, stratify=y, random_state=21)\nmodels = {\n \"logit\": make_pipeline(StandardScaler(), LogisticRegression(max_iter=2000)),\n \"boost\": HistGradientBoostingClassifier(max_iter=100,\n    learning_rate=.05, max_leaf_nodes=15, random_state=21)\n}\nfor name, m in models.items():\n    m.fit(Xtr, ytr)\n    p = m.predict_proba(Xte)[:, 1]\n    print(name, \"AUC:\", roc_auc_score(yte,p), \"Brier:\", brier_score_loss(yte,p))\n",
+    "edits": [
+      {
+        "label": "Increase learning rate",
+        "find": "learning_rate=.05",
+        "replace": "learning_rate=.10",
+        "description": "Compare AUC and Brier while keeping 100 boosting iterations."
+      },
+      {
+        "label": "Reduce leaves per tree",
+        "find": "max_leaf_nodes=15",
+        "replace": "max_leaf_nodes=7",
+        "description": "Compare both scores against the unchanged logistic baseline."
+      },
+      {
+        "label": "Increase class imbalance",
+        "find": "weights=[.92, .08]",
+        "replace": "weights=[.97, .03]",
+        "description": "Compare both models on the regenerated dataset and state its changed prevalence."
+      }
+    ],
+    "metric": "AUC",
+    "source": {
+      "pages": [
+        618
+      ],
+      "verbatim": true
+    },
+    "dataset": "The computer creates 3,000 fictional rows with 20 numeric inputs. About 8 in every 100 outcomes are positive, and 1% of labels are deliberately noisy. A stratified split keeps roughly that outcome mix in the 70% training group and 30% test group. Seed 21 makes the examples repeatable.",
+    "task": "Fit scaled logistic regression and histogram gradient boosting on the training rows. Then use both models to estimate chances for the same held-back test rows. Compare ROC-AUC for ranking and Brier score for probability error; these measures answer different questions.",
+    "comparison": "Compare both models on the exact same held-back rows. ROC-AUC checks how often a randomly chosen positive case receives a higher score than a negative case. Brier score averages squared differences between each estimated chance and its 0-or-1 outcome; lower is better. Neither score alone chooses a lending action.",
+    "extension": "A reliability plot can check whether predicted chances match observed frequencies. A decision cutoff needs stated costs for missed defaults, mistaken declines, and manual review. This notebook does not calculate those policy choices or measure production operating time.",
+    "siteEdits": "This notebook uses scikit-learn. Boosting uses a learning rate of 0.05 and limits each tree to 15 leaves. Use the training rows to fit the models, a separate validation group to choose settings, and keep the final test rows for one last check."
+  },
+  "k-means": {
+    "code": "import numpy as np\nfrom sklearn.datasets import make_blobs\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.cluster import KMeans\nfrom sklearn.metrics import silhouette_score, adjusted_rand_score\n# Create fictional points; seed 9 controls the data, not the later rerun.\nX, _ = make_blobs(n_samples=600, centers=4, n_features=5,\n    cluster_std=[.7, 1.0, .8, 1.2], random_state=9)\n# Put each feature on a comparable scale before measuring distance.\nZ = StandardScaler().fit_transform(X)\n# Try each group count on the same points; inertia falls as groups are added.\nfor k in range(2, 7):\n    # Ten starts reduce dependence on one unlucky set of initial centers.\n    km = KMeans(n_clusters=k, n_init=10, random_state=9)\n    labels = km.fit_predict(Z)\n    print(k, \"Silhouette:\", round(silhouette_score(Z, labels),3), \"Inertia:\", round(km.inertia_,1))\n# Compare two four-group fits on the same points, changing only initialization.\nsegment = KMeans(n_clusters=4, n_init=10, random_state=9).fit_predict(Z)\nrerun = KMeans(n_clusters=4, n_init=10, random_state=19).fit_predict(Z)\nprint(\"Seed stability ARI:\", adjusted_rand_score(segment, rerun))\nprint(\"Segment counts:\", np.bincount(segment))\n",
+    "edits": [
+      {
+        "label": "Change rerun clustering seed",
+        "find": "rerun = KMeans(n_clusters=4, n_init=10, random_state=19)",
+        "replace": "rerun = KMeans(n_clusters=4, n_init=10, random_state=29)",
+        "description": "The generated data stays fixed; compare seed-stability ARI."
+      },
+      {
+        "label": "Increase blob overlap",
+        "find": "cluster_std=[.7, 1.0, .8, 1.2]",
+        "replace": "cluster_std=[1.7, 2.0, 1.8, 2.2]",
+        "description": "Compare silhouette, inertia, and seed-stability ARI with the initial run."
+      }
+    ],
+    "metric": "Silhouette",
+    "source": {
+      "pages": [
+        624
+      ],
+      "verbatim": true
+    },
+    "dataset": "The computer creates 600 fictional rows in five numeric dimensions. The example begins with four groups that have different spreads. Seed 9 controls how the rows are generated. StandardScaler then centers each column around its average and expresses values in standard-deviation units so columns with larger raw numbers do not automatically dominate distance.",
+    "task": "Try grouping the same scaled rows into 2, 3, 4, 5, and 6 clusters. Silhouette compares how close each row is to its own group versus the nearest other group; higher is better for separation in this data. Inertia adds squared distances from rows to their assigned center; lower always improves as groups are added, so it cannot choose the useful number by itself. Then fit four groups twice with different clustering seeds and compare memberships using adjusted Rand index (ARI).",
+    "comparison": "Keep the generated data and scaling fixed while comparing cluster counts. Then compare two four-cluster runs on those same rows. ARI measures whether the runs put the same pairs of rows together, while ignoring arbitrary cluster numbers such as \u201ccluster 0\u201d versus \u201ccluster 2.\u201d A stable numeric grouping still needs a meaningful interpretation and a tested use.",
+    "extension": "Compare against an existing rule such as balance bands, or check whether groups persist in later months. Those require a suitable real dataset and additional code; this notebook does not establish that any segment should receive a different financial service.",
+    "siteEdits": "This example uses NumPy and scikit-learn. Each K-means fit tries ten starting center arrangements and keeps the best fit by inertia. Seed 9 creates the data; seeds 9 and 19 initialize the two four-cluster comparisons. Changing one seed does not change the generated rows."
+  },
+  "isolation-forest": {
+    "code": "import numpy as np\nfrom sklearn.ensemble import IsolationForest\n# Use a fixed seed so both rankings use the same fictional transactions.\nrng = np.random.default_rng(12)\nnormal = np.c_[rng.lognormal(3.2,.5,1000),rng.normal(14,3,1000),\n    rng.poisson(2,1000),rng.normal(0,1,1000)]\nanomaly = np.array([[4500,3,18,8],[2800,2,22,11],[15,4,35,9],\n    [9000,13,1,0],[3200,23,16,7]])\nX = np.vstack([normal, anomaly])\n# Contamination sets a flagging cutoff; score order is checked separately.\niso = IsolationForest(n_estimators=80, contamination=.01, random_state=12)\niso.fit(X)\n# sklearn scores lower for isolated rows, so reverse the sign for ranking.\nscore = -iso.score_samples(X)\n# Compare the first ten rows selected by score with the planted examples.\ntop = np.argsort(score)[-10:][::-1]\nprint(\"Top 10 indices:\", top)\nprint(\"Synthetic anomaly yield@10:\", (top >= len(normal)).mean())\n# Use the same ten-row capacity for the simple amount-only rule.\nrule = np.argsort(X[:,0])[-10:]\nprint(\"Amount-rule yield@10:\", (rule >= len(normal)).mean())\nprint(\"Flagged by contamination cutoff:\", int((iso.predict(X) == -1).sum()))\n",
+    "edits": [
+      {
+        "label": "Flag about 5% using contamination",
+        "find": "contamination=.01",
+        "replace": "contamination=.05",
+        "description": "Compare the number flagged by predict. The raw scores and top-ten ranking stay unchanged."
+      },
+      {
+        "label": "Increase forest size",
+        "find": "n_estimators=80",
+        "replace": "n_estimators=150",
+        "description": "Compare top-ten indices and planted-anomaly yield with the 80-tree fit."
+      }
+    ],
+    "metric": "Synthetic anomaly yield",
+    "source": {
+      "pages": [
+        630
+      ],
+      "verbatim": true
+    },
+    "dataset": "The computer creates 1,000 fictional background transactions and adds five rows designed to look unusual. Each row has four numbers: amount, hour, activity count, and how much activity differs from that customer\u2019s usual level. Seed 12 makes the generated sample repeatable. The five planted rows are known only because the exercise inserted them; they are not confirmed fraud cases.",
+    "task": "Fit a forest of 80 isolation trees and sort the rows by unusualness. Count how many of the ten highest-ranked rows are among the five planted examples; this measures recovery in this synthetic exercise, not real fraud detection. Also count how many rows the contamination setting marks for review.",
+    "comparison": "Compare the ten highest anomaly scores with a simple rule that picks the ten largest amounts. Both methods select ten rows, so the comparison asks whether amount alone finds the planted examples as often as the four-feature score. This small artificial check does not predict either method\u2019s real-world fraud yield.",
+    "extension": "A fraud classifier needs transaction outcomes verified by investigators and evaluation on separate later transactions. Those labels and tests are not supplied by this exercise.",
+    "siteEdits": "This notebook uses NumPy and scikit-learn. score_samples returns smaller numbers for more isolated rows, so the code reverses the sign to rank the most unusual first. The contamination setting chooses a threshold for flagging rows; changing it alone changes how many are flagged, not the score order. Check the installed library behavior before applying this cutoff in production."
+  },
+  "time-series": {
+    "code": "import numpy as np, pandas as pd\nfrom statsmodels.tsa.statespace.sarimax import SARIMAX\nfrom sklearn.metrics import mean_absolute_error\n# Seed 4 makes this fictional trend, weekly cycle, and noise repeatable.\nrng = np.random.default_rng(4)\nt = np.arange(365)\ny = 1000 + 1.1*t + 130*np.sin(2*np.pi*t/7) + rng.normal(0,45,365)\ny = pd.Series(y,index=pd.date_range(\"2025-01-01\",periods=365))\n# Hold the final 28 dates back; fit using only earlier observations.\ntrain,test = y.iloc[:-28],y.iloc[-28:]\nmodel = SARIMAX(train,order=(1,1,1),seasonal_order=(1,0,1,7),\n    enforce_stationarity=False).fit(disp=False,maxiter=50)\nforecast = model.get_forecast(steps=28)\npred = forecast.predicted_mean\n# MAE is the average absolute miss, in the series' original units.\nprint(\"MAE:\", mean_absolute_error(test,pred))\n# A simple reference repeats the last full training week four times.\nseasonal_naive = np.tile(train.iloc[-7:].to_numpy(),4)\nprint(\"Seasonal naive MAE:\",mean_absolute_error(test,seasonal_naive))\nci = forecast.conf_int().to_numpy()\n# Coverage counts the share of test values inside their forecast intervals.\nprint(\"Interval coverage:\", ((test.to_numpy()>=ci[:,0]) & (test.to_numpy()<=ci[:,1])).mean())\nprint(forecast.conf_int().tail())\n",
+    "edits": [
+      {
+        "label": "Compare nonseasonal order (2,0,1)",
+        "find": "order=(1,1,1)",
+        "replace": "order=(2,0,1)",
+        "description": "Keep seasonal_order=(1,0,1,7) and the 28-day test period; inspect MAE, coverage, and convergence warnings."
+      },
+      {
+        "label": "Double noise standard deviation",
+        "find": "normal(0,45,365)",
+        "replace": "normal(0,90,365)",
+        "description": "Compare MAE, interval endpoints, and covered days out of 28."
+      }
+    ],
+    "metric": "MAE",
+    "source": {
+      "pages": [
+        637
+      ],
+      "verbatim": true
+    },
+    "dataset": "The notebook generates 365 fictional daily values beginning January 1, 2025. A steady trend adds about 1.1 units per day, a repeating seven-day pattern adds seasonal movement, and random noise makes days vary around that pattern. Seed 4 makes the series repeatable. The first 337 days are training history; the final 28 are held back to test a forecast made without seeing them.",
+    "task": "Fit SARIMAX(1,1,1) with a seven-day seasonal pattern, then forecast the 28 held-back dates. MAE (mean absolute error) averages the size of the forecast misses in the series\u2019 units; lower is better on the same dates. Also count how many actual days fall inside the model\u2019s nominal 95% prediction intervals. The 95% is a target across repeated forecasts, not a promise for these 28 days.",
+    "comparison": "Compare with a seasonal-naive forecast: repeat the last seven values observed during training to fill the next four weeks. Both methods predict the same 28 dates, so their MAE uses the same actual values. Reusing the last week is a simple reference, not a learned model.",
+    "extension": "Test several forecast start dates by moving forward through time: fit only on history available at each start, predict the next period, and compare with what later happened. This walk-forward check shows whether one 28-day result repeats across seasons and market conditions.",
+    "siteEdits": "The notebook uses NumPy to generate the series, pandas to attach dates, statsmodels for SARIMAX, and scikit-learn to calculate MAE. Fitting stops after 50 optimizer iterations; a convergence warning means the numerical search may not have settled, so check it before interpreting the output. Twenty-eight test days provide only a small check of 95% interval coverage."
+  },
+  "graph-methods": {
+    "code": "import networkx as nx\nG = nx.Graph()\nedges = [(\"acct_A\",\"device_7\"),(\"acct_B\",\"device_7\"),\n    (\"acct_A\",\"merchant_X\"),(\"acct_B\",\"merchant_X\"),\n    (\"acct_B\",\"address_4\"),(\"acct_C\",\"address_4\"),(\"acct_D\",\"device_99\")]\nG.add_edges_from(edges)\ncomponents = sorted(nx.connected_components(G),key=len,reverse=True)\nprint(\"Largest component:\",sorted(components[0]))\nprint(\"Degrees:\",sorted(G.degree,key=lambda x:x[1],reverse=True))\nprint(\"A/B common neighbors:\",len(list(nx.common_neighbors(G,\"acct_A\",\"acct_B\"))))\nprint(\"PageRank:\",{k:round(v,3) for k,v in nx.pagerank(G).items()})\nprint(\"Baseline: account-only graph has no edges and therefore no shared-device evidence.\")\n",
+    "edits": [
+      {
+        "label": "Remove A\u2019s merchant link",
+        "find": "(\"acct_A\",\"merchant_X\"),",
+        "replace": "",
+        "description": "Compare A/B common neighbors and connected components."
+      },
+      {
+        "label": "Add a link after the decision cutoff",
+        "find": "G.add_edges_from(edges)",
+        "replace": "G.add_edges_from(edges)\nG.add_edge(\"acct_C\",\"device_99\")",
+        "description": "Inspect the component merger and explain why a late-recorded link is unavailable to an earlier decision."
+      }
+    ],
+    "metric": "common neighbors",
+    "source": {
+      "pages": [
+        644
+      ],
+      "verbatim": true
+    },
+    "dataset": "This teaching graph is written by hand: four account points, two device points, one merchant point, one address point, and seven relationship lines. It has no transaction outcomes, dates, or fraud labels, so it can show connections but cannot measure fraud-detection performance.",
+    "task": "Find the connected groups, count how many links touch each point, and count the shared neighbors of accounts A and B. PageRank is a score that gives more weight to links with well-connected points. Explain what each result says about the recorded network and what it cannot say about wrongdoing.",
+    "comparison": "Remove the recorded line between account A and merchant X, then compare the A/B shared-neighbor count and the connected groups. Only that line changes. In a historical test, also filter every link by its recorded time: a link first recorded after the decision cutoff was not available to that decision. The exercise shows how a network summary responds to one relationship; it does not tell us whether the removed relationship was true or useful in a real investigation.",
+    "extension": "A tabular-versus-graph predictive comparison requires labelled, time-stamped examples and is not part of this graph-exploration code.",
+    "siteEdits": "NetworkX stores and measures this small graph. The graph has no timestamps, so the code cannot tell whether a relationship was already known at the time a past decision was made. In a real evaluation, filter links by their recorded time before building the graph; otherwise later information can make an earlier decision look better than it was."
+  },
+  "transformers": {
+    "code": "# Comparison model: TF-IDF weights word counts; logistic regression selects one label.\n# This is not FinBERT. The separate native/transformers.py download runs FinBERT.\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.pipeline import make_pipeline\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import f1_score, classification_report\ntrain = [\"profit increased\", \"margin expanded\", \"revenue rose\", \"growth improved\",\n \"profit fell\", \"guidance withdrawn\", \"revenue declined\", \"loss widened\",\n \"scheduled debt payment\", \"report published\", \"meeting held\", \"filing submitted\"]\nlabels = [\"positive\"]*4+[\"negative\"]*4+[\"neutral\"]*4\ntest_cases = [(\"profit rose\", \"positive\"), (\"margin improved\", \"positive\"),\n (\"guidance declined\", \"negative\"), (\"loss fell\", \"positive\"),\n (\"scheduled report published\", \"neutral\"), (\"meeting submitted\", \"neutral\")]\ntest, truth = zip(*test_cases)\n# C controls regularization: a smaller value discourages reliance on individual word patterns.\nmodel = make_pipeline(TfidfVectorizer(),LogisticRegression(C=1.0,max_iter=500))\nmodel.fit(train,labels)\npred = model.predict(test)\nprint(\"Macro-F1:\",f1_score(truth,pred,average=\"macro\"))\nprint(classification_report(truth,pred,zero_division=0))\nprint(\"Challenge:\",\"loss fell\", \"prediction:\",pred[3])\nprint(\"This tiny sample is for debugging, not evidence of finance-domain accuracy.\")\n",
+    "edits": [
+      {
+        "label": "Use stronger regularization",
+        "find": "C=1.0",
+        "replace": "C=0.1",
+        "description": "Compare macro-F1 and individual sentence errors."
+      },
+      {
+        "label": "Test negation with its label",
+        "find": "(\"profit rose\", \"positive\")",
+        "replace": "(\"profit did not rise\", \"neutral\")",
+        "description": "This exercise labels \u201cdid not rise\u201d neutral because it does not state that profit fell. Inspect the prediction and discuss that annotation choice."
+      }
+    ],
+    "metric": "Macro-F1",
+    "source": {
+      "pages": [
+        651
+      ],
+      "verbatim": true
+    },
+    "dataset": "There are 12 hand-written training sentences (4 for each label) and 6 labeled test sentences. The test set is tiny and hand-made, so its scores are practice numbers, not evidence that the model understands finance in general.",
+    "task": "Fit the word-based comparison model, compare each prediction with its supplied label, and report macro-F1 plus the per-class report. Macro-F1 averages the F1 score for positive, neutral, and negative separately, so a larger class does not drown out errors on a smaller class.",
+    "comparison": "Keep the six test sentences fixed. First inspect the errors, then strengthen regularization or correct the negation example and rerun. Regularization discourages the model from relying too heavily on individual word patterns. A score change on six sentences is a debugging clue, not proof that the change will work on future documents.",
+    "extension": "Download native/transformers.py to run ProsusAI/finbert. Comparing it with this baseline requires a shared labelled evaluation set.",
+    "siteEdits": "The browser notebook uses scikit-learn: TF-IDF turns words into weighted counts and logistic regression maps those counts to one of the three labels. It does not download or run FinBERT. The separate native example uses the pretrained FinBERT language model and needs transformers, PyTorch, and an initial model download."
+  },
+  "rag": {
+    "code": "# Offline TF-IDF retrieval baseline; no pretrained embedding model runs here.\nimport numpy as np\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.metrics.pairwise import cosine_similarity\nchunks = [\"No customer accounted for more than 10 percent of revenue.\",\n \"Interest expense increased because average debt was higher.\",\n \"A small number of distributors represent a material share of sales.\",\n \"The company maintains a revolving credit facility.\"]\nquestion = \"What customer concentration risk does the company disclose?\"\nrelevant = {0, 2}\nencoder = TfidfVectorizer(stop_words=\"english\")\nD = encoder.fit_transform(chunks)\nq = encoder.transform([question])\nscores = cosine_similarity(q,D)[0]\nK = 2\ntop = scores.argsort()[::-1][:K]\nhits = len(set(top) & relevant)\nprint(f\"Retrieval Recall@{K}:\", hits / len(relevant) if relevant else \"undefined: no required passage is present\")\nprint(f\"Context precision@{K}:\", hits / len(top))\nfor i in top: print(\"Passage\", int(i+1), \"score\", round(float(scores[i]),3), chunks[i])\nprint(\"Answerability annotation:\", \"evidence is present\" if relevant else \"no supporting evidence in this collection\")\nprint(\"This lab ranks passages. It does not generate an answer or automatically decide when to abstain.\")\n",
+    "edits": [
+      {
+        "label": "Ask a question without evidence",
+        "find": "question = \"What customer concentration risk does the company disclose?\"\nrelevant = {0, 2}",
+        "replace": "question = \"What was revenue in 2023?\"\nrelevant = set()",
+        "description": "No passage supplies that amount. Recall is undefined, context precision is zero, and returned passages do not establish answerability."
+      },
+      {
+        "label": "Retrieve three passages",
+        "find": "K = 2",
+        "replace": "K = 3",
+        "description": "Compare which passage is added and recalculate recall and context precision."
+      }
+    ],
+    "metric": "Retrieval Recall",
+    "source": {
+      "pages": [
+        658
+      ],
+      "verbatim": true
+    },
+    "dataset": "The notebook uses four hand-written passages and one question. Passages 1 and 3 are manually marked relevant to customer concentration. Those marks are teaching labels and must be updated when the question changes; they are not judgments made by the search model.",
+    "task": "Rank passages with TF-IDF cosine similarity. TF-IDF gives more weight to words that help distinguish one passage from the others; cosine similarity compares their word patterns with the question. At K=2, inspect the top two passages. Retrieval recall is relevant passages found divided by all relevant passages; context precision is relevant passages found divided by passages retrieved.",
+    "comparison": "Keep the question and relevance labels fixed while comparing the top 2 passages with the top 3. A larger K may find more relevant evidence, but it also gives the answer writer more unrelated text. Then ask for a revenue figure absent from every passage and check whether the system should answer or report that the evidence is missing.",
+    "extension": "Download native/rag.py for Sentence-Transformers retrieval with all-MiniLM-L6-v2. Neither example generates an answer or implements an automatic abstention policy.",
+    "siteEdits": "The browser uses NumPy and scikit-learn to rank word patterns; it does not generate an answer. The separate native example uses Sentence-Transformers to compare semantic text vectors and needs an initial model download. Relevance and answerability are supplied annotations, not model judgments."
+  },
+  "optimization": {
+    "code": "import numpy as np\nfrom scipy.optimize import minimize\n# These decimal rates and matrix entries are supplied teaching assumptions, not historical estimates.\nmu = np.array([.06,.08,.10,.04])\nSigma = np.array([[.040,.012,.018,.006],[.012,.055,.020,.008],\n    [.018,.020,.090,.010],[.006,.008,.010,.025]])\n# w @ Sigma @ w is modeled portfolio variance; its square root is volatility in return units.\ndef variance(w): return w @ Sigma @ w\ntarget_return = .07\nasset_cap = .50\nconstraints = [{\"type\":\"eq\",\"fun\":lambda w:w.sum()-1},\n    {\"type\":\"ineq\",\"fun\":lambda w:w @ mu-target_return}]\n# Every share must stay from 0 to 50%; first check that four caps can still fill 100%.\nbounds = [(0,asset_cap)]*4\nx0 = np.repeat(.25,4)\nif len(mu) * asset_cap < 1:\n    raise ValueError(f\"Infeasible: {len(mu)} asset caps of {100*asset_cap:g}% allow only {100*len(mu)*asset_cap:g}% total allocation; the weights must sum to 100%.\")\n# SLSQP searches for a low-variance choice while respecting these rules; check its status.\nresult = minimize(variance,x0,method=\"SLSQP\",bounds=bounds,constraints=constraints)\nprint(\"Feasible solve:\",result.success,result.message)\nif not result.success: raise ValueError(\"Solver did not find a feasible portfolio\")\nw = result.x\nprint(\"Weights:\",w.round(3))\nprint(\"Return:\",round(w @ mu,4))\nprint(\"Volatility:\",round(np.sqrt(variance(w)),4))\nprint(\"Equal-weight volatility:\",round(np.sqrt(variance(x0)),4))\nprint(\"Constraint checks:\",abs(w.sum()-1)<1e-6,w @ mu >= target_return-1e-6,w.min()>=-1e-6,w.max()<=asset_cap+1e-6)\n",
+    "edits": [
+      {
+        "label": "Raise target return to 9%",
+        "find": "target_return = .07",
+        "replace": "target_return = .09",
+        "description": "Check solver success and every constraint before comparing weights and volatility."
+      },
+      {
+        "label": "Try infeasible 20% asset caps",
+        "find": "asset_cap = .50",
+        "replace": "asset_cap = .20",
+        "description": "Four caps of 20% allow at most 80% total allocation. The diagnostic is the intended result."
+      }
+    ],
+    "metric": "Volatility",
+    "source": {
+      "pages": [
+        664
+      ],
+      "verbatim": true
+    },
+    "dataset": "The four expected returns are assumed annual rates: 6%, 8%, 10%, and 4%. The 4\u00d74 covariance matrix summarizes each asset\u2019s modeled variability and how pairs tend to move together. It is supplied directly; it was not estimated from historical returns in this notebook.",
+    "task": "Choose four weights that add to 100%, stay between 0% and 50% each, and produce at least a 7% weighted estimated return. Among those choices, minimize variance (modeled return spread); report volatility, its square root, because it is in the same units as return. Check solver success and every limit before interpreting the weights.",
+    "comparison": "Compare the optimized weights with equal weights (25% in each asset) using the same supplied return and covariance estimates. Check both volatility and whether equal weights reach 7%. A lower volatility is not a fair comparison if that portfolio misses the required return or breaks a position limit.",
+    "extension": "Add 0.01 to each diagonal entry of the covariance matrix, which raises each asset\u2019s modeled variance while leaving pairwise covariances unchanged. Compare weights, trading needed to move between them, and volatility. Keep the matrix valid; changing one correlation by itself can describe an impossible set of asset movements.",
+    "siteEdits": "NumPy stores the estimates and calculates portfolio variance; SciPy\u2019s SLSQP routine searches for weights that reduce variance while meeting the limits. The code checks whether the search succeeded and stops if it did not. Four 20% caps can add to only 80%, so they cannot satisfy the rule that weights total 100%."
+  },
+  "reinforcement-learning": {
+    "code": "import numpy as np\nrng = np.random.default_rng(5)\nT,inventory0,actions = 10,10,np.array([0,1,2])\nQ = np.zeros((T+1,inventory0+1,len(actions)))\nalpha,gamma,eps = .15,.95,.20\nimpact_coefficient = .08\nincomplete_penalty = 5.0\nprice_noise_sd = .10\nfor episode in range(2000):\n    inv = inventory0\n    for t in range(T):\n        valid = np.where(actions<=inv)[0]\n        a_idx = rng.choice(valid) if rng.random()<eps else valid[np.argmax(Q[t,inv,valid])]\n        qty = actions[a_idx]\n        impact = impact_coefficient*qty**2\n        price_risk = rng.normal(0,price_noise_sd)*inv\n        next_inv = inv-qty\n        reward = -(impact+price_risk)\n        if t==T-1: reward -= incomplete_penalty*next_inv\n        next_valid = np.where(actions<=next_inv)[0]\n        future = 0 if t==T-1 else Q[t+1,next_inv,next_valid].max()\n        Q[t,inv,a_idx] += alpha*(reward+gamma*future-Q[t,inv,a_idx])\n        inv = next_inv\npolicy,inv = [],inventory0\nfor t in range(T):\n    valid = np.where(actions<=inv)[0]\n    qty = actions[valid[np.argmax(Q[t,inv,valid])]]\n    policy.append(int(qty));inv -= qty\ncost = sum(impact_coefficient*q*q for q in policy)+incomplete_penalty*inv\nprint(\"Illustrative actions:\",policy,\"remaining:\",int(inv))\nprint(\"Deterministic evaluation cost:\",cost)\nprint(\"TWAP baseline cost:\",T*impact_coefficient)\nprint(\"Reward:\",-cost)\n",
+    "edits": [
+      {
+        "label": "Increase training price noise",
+        "find": "price_noise_sd = .10",
+        "replace": "price_noise_sd = .30",
+        "description": "Retrain and compare the schedule. Deterministic evaluation still reports impact plus incompletion cost, with no random-price term."
+      },
+      {
+        "label": "Increase incompletion penalty",
+        "find": "incomplete_penalty = 5.0",
+        "replace": "incomplete_penalty = 10.0",
+        "description": "The new penalty is used in both training and deterministic evaluation; inspect remaining inventory."
+      },
+      {
+        "label": "Increase impact coefficient",
+        "find": "impact_coefficient = .08",
+        "replace": "impact_coefficient = .20",
+        "description": "Training, deterministic evaluation, and the TWAP baseline all use the new coefficient."
+      }
+    ],
+    "metric": "Reward",
+    "source": {
+      "pages": [
+        671
+      ],
+      "verbatim": true
+    },
+    "dataset": "The computer runs 2,000 simulated practice episodes. Seed 5 fixes the random price changes so the exercise can be repeated. Each episode has ten steps, starts with ten units to buy, and charges more impact for larger orders plus a penalty for units left at the end.",
+    "task": "Q-learning stores a score for each time and remaining-inventory situation, then improves those scores from simulated costs. Follow the best-scoring action at each step and report all ten actions, units left, and the deterministic evaluation cost. The final penalty makes unfinished inventory count as a cost.",
+    "comparison": "Compare the learned schedule with TWAP (time-weighted average price), a simple rule that buys one unit in each of ten steps. Both start and finish with the same ten units. The evaluation omits random price noise and compares modeled impact plus any unfinished-inventory penalty; it does not prove which policy will trade better in a changing market.",
+    "extension": "The simulation adds zero-mean price noise during learning, but its reward does not directly penalize variation in outcomes. To study risk, evaluate both schedules over many different price paths and report bad-tail outcomes as well as the average; this notebook does not do that comparison.",
+    "siteEdits": "NumPy runs the simulator. Training uses random price changes; deterministic evaluation removes that noise so the policies can be compared on one fixed path. The same impact and unfinished-inventory penalty are applied to the learned policy and TWAP. A zero-noise evaluation is not a test of performance across real market conditions."
+  },
+  "monte-carlo": {
+    "code": "import numpy as np\nfrom scipy.stats import norm\n# Seed 17 repeats the random draws; each row below will be one possible portfolio outcome.\nrng = np.random.default_rng(17)\nn_sims,n_loans = 2500,1000\n# PD is chance of default, EAD is amount owed, and LGD is the share lost after default.\npd = np.full(n_loans,.025)\nead = np.full(n_loans,10000.0)\nlgd = np.full(n_loans,.45)\n# rho controls a shared shock: positive values make defaults tend to occur together.\nrho = .12\ncommon = rng.normal(size=(n_sims,1))\nidiosyncratic = rng.normal(size=(n_sims,n_loans))\nlatent = np.sqrt(rho)*common+np.sqrt(1-rho)*idiosyncratic\ndefaults = latent < norm.ppf(pd)\nloss = (defaults*ead*lgd).sum(axis=1)\n# Compare the simulated average with sum(PD \u00d7 amount owed \u00d7 lost share).\nprint(\"Expected loss:\",loss.mean())\nprint(\"Analytical expected-loss baseline:\",(pd*ead*lgd).sum())\nprint(\"95th percentile:\",np.quantile(loss,.95))\nprint(\"99th percentile:\",np.quantile(loss,.99))\nbreach = (loss>200000).mean()\nprint(\"P(loss > $200k):\",breach)\nprint(\"Simulation SE:\",np.sqrt(breach*(1-breach)/n_sims))\n",
+    "edits": [
+      {
+        "label": "Set latent correlation to zero",
+        "find": "rho = .12",
+        "replace": "rho = 0",
+        "description": "Compare average loss and the tail while keeping marginal PDs fixed."
+      },
+      {
+        "label": "Double default probabilities",
+        "find": "n_loans,.025",
+        "replace": "n_loans,.050",
+        "description": "Compare expected loss, tail quantiles, and reserve breaches with the initial PD assumption."
+      },
+      {
+        "label": "Double simulation paths",
+        "find": "n_sims,n_loans = 2500,1000",
+        "replace": "n_sims,n_loans = 5000,1000",
+        "description": "Compare the breach estimate and its simulation standard error under unchanged risk assumptions."
+      }
+    ],
+    "metric": "Expected loss",
+    "source": {
+      "pages": [
+        678
+      ],
+      "verbatim": true
+    },
+    "dataset": "There are 1,000 equal loans and 2,500 simulated scenarios. For each loan, the assumed default chance (PD) is 2.5%, the amount owed (EAD) is $10,000, and the lost share after default (LGD) is 45%. Seed 17 makes the random draws repeatable. The dependence setting allows borrowers\u2019 defaults to move together; it is a model assumption, not observed proof.",
+    "task": "Calculate average loss, the 95th and 99th percentiles (loss levels reached or exceeded in roughly 5% and 1% of scenarios), the fraction above a $200,000 reserve, and the standard error for that estimated fraction. Standard error describes how much the fraction may wobble because only 2,500 random scenarios were run; it does not measure whether the assumptions are right.",
+    "comparison": "For the same loans, compare the simulated average with the arithmetic benchmark: 1,000 \u00d7 2.5% \u00d7 $10,000 \u00d7 45% = $112,500. Then set the dependence input to zero while keeping the loan assumptions, path count, and seed fixed. Compare the average with the largest losses; defaults moving together can change the tail without changing the individual default chances.",
+    "extension": "Exposure and the lost share are fixed for each loan here, so the expected-loss multiplication is direct. If loan amounts or recoveries also varied, their relationship to default would need explicit assumptions; multiplying separate averages might then give the wrong answer.",
+    "siteEdits": "NumPy generates the random outcomes and SciPy provides the normal-distribution calculations. More paths generally make random sampling wiggle less, but cannot validate the 2.5% default chance, 45% loss share, or Gaussian dependence assumption. A precise answer under a wrong assumption is still misleading."
+  }
+}

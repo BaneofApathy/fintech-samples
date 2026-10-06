@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102c3d">
+  <meta name="description" content="Project 0: an instructor demonstration of six tiny processes sending a fictional card payment through authorization, capture, clearing and settlement.">
+  <title>Payment Rails Live · Project 0</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23102c3d'/%3E%3Cpath d='M9 14h22M9 22h14M9 28h8' stroke='%235ee0c0' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to demonstration</a>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/" aria-label="Payment Rails Live home"><span class="brand-symbol" aria-hidden="true">ƒ</span><span>USF <b>AI in FinTech</b><small>THE PAYMENT SYSTEMS LAB</small></span></a>
+      <div class="top-badges"><span class="badge">PROJECT 0</span><span class="badge subdued">INSTRUCTOR DEMO</span><span class="simulation"><i></i> Simulated payments</span></div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">SIX ACTORS. ONE PAYMENT. THE WHOLE JOURNEY.</p>
+        <h1 id="page-title">Payment Rails <span>Live.</span></h1>
+        <p class="lede">Follow a purchase from the checkout to the bank.<br class="desktop-break"> Watch the messages move. See when the money changes.</p>
+      </div>
+      <div class="intro-side">
+        <div class="lesson-label">TODAY'S BIG IDEA</div>
+        <p>An approval reserves funds.<br><strong>Settlement moves the money.</strong></p>
+        <div class="connection" id="connection" role="status"><span class="status-dot"></span><span id="connection-text">Connecting to six processes…</span></div>
+      </div>
+    </section>
+
+    <div id="notice" class="notice" role="alert" hidden></div>
+
+    <section class="control-panel" aria-label="Demonstration controls">
+      <div class="control-top">
+        <div class="mode-toggle" role="group" aria-label="Teaching mode">
+          <button type="button" id="guided-mode" class="mode active" aria-pressed="true"><span aria-hidden="true">◎</span> Guided</button>
+          <button type="button" id="automatic-mode" class="mode" aria-pressed="false"><span aria-hidden="true">↻</span> Automatic</button>
+        </div>
+        <p class="mode-help" id="mode-help">Advance one real message at a time.</p>
+        <div class="playback-controls">
+          <label class="speed-label" for="speed">Pace <select id="speed"><option value="1500">Slow</option><option value="650" selected>Classroom</option><option value="150">Fast</option></select></label>
+          <button class="button quiet" id="pause" type="button"><span aria-hidden="true">Ⅱ</span> Pause</button>
+          <div class="reset-controls"><label for="seed">Seed</label><input id="seed" type="number" value="42" min="0" max="2147483647" step="1" aria-label="Random scenario seed"><button class="button quiet" id="reset" type="button" title="Restart six processes and restore fictional balances">↺ Reset</button></div>
+        </div>
+      </div>
+      <div class="control-bottom">
+        <form id="purchase-form" class="purchase-controls">
+          <label for="preset">SCENARIO<select id="preset"><option value="approved">Approved purchase</option><option value="insufficient">Insufficient funds</option><option value="inactive">Inactive account</option><option value="invalid">Invalid token</option></select></label>
+          <label for="amount">PURCHASE AMOUNT<span class="amount-field"><span>$</span><input id="amount" type="number" min="1" max="10000" step="0.01" value="50.00" required aria-label="Purchase amount in US dollars"></span></label>
+          <label for="network">NETWORK<select id="network"><option value="Visa">Visa</option><option value="Mastercard">Mastercard</option></select></label>
+          <button class="button primary" id="purchase" type="submit"><span aria-hidden="true">＋</span> Send purchase</button>
+        </form>
+        <div class="step-controls" role="group" aria-label="Advance payment lifecycle">
+          <button class="button next" id="step" type="button">Next message <span aria-hidden="true">→</span><small id="pending-count">0 queued</small></button>
+          <button class="button" id="capture" type="button">Capture</button>
+          <button class="button" id="clear" type="button">Clear batch</button>
+          <button class="button" id="settle" type="button">Settle batch</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="rails-panel" aria-labelledby="rails-title">
+      <div class="section-head rails-head"><div><p class="eyebrow">THE LIVE PAYMENT PATH</p><h2 id="rails-title">Every actor is a running program.</h2></div><div class="rail-legend"><span><i class="legend-dot request"></i> Request →</span><span><i class="legend-dot response"></i> ← Response</span><span id="process-count" class="process-count">0 / 6 online</span></div></div>
+      <div class="rail-scroll"><div class="rail-stage" id="rail-stage">
+        <svg id="rail-svg" class="rail-svg" aria-hidden="true"><defs><marker id="request-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#64d8bb"/></marker></defs><g id="rail-links"></g><circle id="packet-halo" r="13" fill="#5ee0c033" hidden></circle><circle id="packet" r="5.5" fill="#78edca" hidden></circle></svg>
+        <div class="agent-grid" id="agents"></div>
+      </div></div>
+      <div class="live-message"><span class="live-label"><i></i> LIVE MESSAGE</span><span id="live-message-text">Send a purchase to begin its journey.</span><span class="mono" id="live-message-seq"></span></div>
+      <div class="lifecycle" aria-label="Payment lifecycle"><div id="life-authorize"><span>01</span><div><b>Authorize</b><small>Reserve funds</small></div><i></i></div><div id="life-capture"><span>02</span><div><b>Capture</b><small>Confirm collection</small></div><i></i></div><div id="life-clear"><span>03</span><div><b>Clear</b><small>Post the debit</small></div><i></i></div><div id="life-settle"><span>04</span><div><b>Settle</b><small>Credit the merchant</small></div></div></div>
+    </section>
+
+    <section class="balance-section" aria-labelledby="balances-title">
+      <div class="section-head"><div><p class="eyebrow">FOLLOW THE FUNDS</p><h2 id="balances-title">See when the money changes.</h2></div><p class="section-meta">Payer cards: Alex Student · demo-active · fictional USD</p></div>
+      <div class="balance-grid">
+        <article class="money-card"><div class="money-top"><span>Payer posted balance</span><span class="money-icon" aria-hidden="true">▤</span></div><strong id="posted">—</strong><p>The amount on the bank ledger.</p></article>
+        <article class="money-card"><div class="money-top"><span>Held for purchases</span><span class="money-icon" aria-hidden="true">◷</span></div><strong id="held">—</strong><p>Reserved; still part of posted balance.</p></article>
+        <article class="money-card available"><div class="money-top"><span>Payer available funds</span><span class="money-icon" aria-hidden="true">✓</span></div><strong id="available">—</strong><p>Posted balance minus active holds.</p></article>
+        <article class="money-card"><div class="money-top"><span>Awaiting settlement</span><span class="money-icon" aria-hidden="true">⇄</span></div><strong id="pending-settlement">—</strong><p>Cleared obligations still unpaid.</p></article>
+        <article class="money-card merchant"><div class="money-top"><span>Merchant proceeds</span><span class="money-icon" aria-hidden="true">↗</span></div><strong id="merchant">—</strong><p>Credited after illustrative fees.</p></article>
+      </div>
+      <div class="fees-bar"><span class="fee-caption">SETTLED FEE ALLOCATIONS</span><span>Issuer interchange <b id="interchange">—</b><small>2%</small></span><span>Network <b id="network-fee">—</b><small>0.1%</small></span><span>Processing / acquiring <b id="processing-fee">—</b><small>0.2% + $0.10</small></span><span class="fee-note">Teaching rates · rounded per transaction</span></div>
+    </section>
+
+    <div class="detail-grid">
+      <section class="transactions-panel panel" aria-labelledby="transactions-title">
+        <div class="panel-head"><div><p class="eyebrow">PURCHASES</p><h2 id="transactions-title">Transaction desk <span id="transaction-count" class="count">0</span></h2></div><a class="button quiet" id="download" href="/api/trace" download="payment-rails-trace.json">↓ Export trace</a></div>
+        <div class="table-scroll"><table><caption class="sr-only">Select a transaction to inspect its messages and lifecycle.</caption><thead><tr><th scope="col">Payment / network</th><th scope="col">Amount</th><th scope="col">State</th></tr></thead><tbody id="payments-body"></tbody></table></div>
+        <div id="empty-transactions" class="empty"><span class="empty-icon" aria-hidden="true">↗</span><h3>Your first payment starts here.</h3><p>Choose a scenario and send a purchase.<br>Each message will appear as its process receives it.</p></div>
+        <div class="selection-footer"><span id="selected-payment-label">No transaction selected</span><button id="replay" type="button" class="text-button" disabled title="Resend the same authorization operation to demonstrate idempotency">↻ Repeat authorization</button></div>
+        <div class="selected-account" id="selected-account" hidden></div>
+      </section>
+
+      <section class="inspector-panel panel" aria-labelledby="inspector-title">
+        <div class="panel-head"><div><p class="eyebrow">INSIDE THE MESSAGE</p><h2 id="inspector-title">What just happened?</h2></div><span id="event-number" class="mono event-number">—</span></div>
+        <div class="inspector-content"><div class="message-route" id="message-route"><span>Waiting for a message</span></div><span id="event-type" class="event-type">READY TO EXPLORE</span><p class="explanation" id="explanation">Six independent programs are ready. A purchase starts with the payer, travels to the issuer, and brings an approval or decline back to the checkout.</p><div class="event-facts" id="event-facts"></div><details id="json-details"><summary>Inspect the JSON envelope <span aria-hidden="true">{ }</span></summary><pre id="event-json">{}</pre></details></div>
+        <div class="teaching-note"><span aria-hidden="true">✦</span><p id="teaching-note">Authorization is a promise to pay. Follow the later stages to see the posted debit and merchant credit.</p></div>
+      </section>
+    </div>
+
+    <section class="events-panel panel" aria-labelledby="events-title">
+      <div class="panel-head"><div><p class="eyebrow">PROCESS EVENTS</p><h2 id="events-title">A trail you can inspect.</h2></div><div class="event-filter"><label for="event-filter">Show <select id="event-filter"><option value="all">All payments</option><option value="selected">Selected payment</option></select></label><span id="events-count" class="count">0</span></div></div>
+      <div id="events-list" class="events-list"><p class="event-empty">The message trail will appear here. Select any event to read its envelope.</p></div>
+    </section>
+
+    <footer><span><b>Project 0</b> · Payment Rails Live</span><span>Small programs. Visible messages. Understandable payments.</span><span class="keyboard-hint"><kbd>N</kbd> next message <kbd>Space</kbd> pause <kbd>C</kbd> capture</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

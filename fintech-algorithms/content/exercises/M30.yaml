@@ -1,0 +1,407 @@
+id: M30
+title: Three Checks, Three Denominators
+minutes: 10
+kind: measure
+parent: faithfulness-citation-correctness-numerical-accuracy
+question: "The retrieved evidence says:\n▶ A: Revenue was $100 million in 2024 and\
+  \ $120 million in 2025.\n▶ B: 2025 net profit was $12 million.\n▶ C: 2025 debt was\
+  \ $40 million.\n\nThe generated answer makes five claims:\n1. “2025 revenue was\
+  \ $120 million.” [A]\n2. “Revenue grew 20%.” [A]\n3. “2025 net profit was $12 million.”\
+  \ [C]\n4. “2025 debt was $30 million.” [C]\n5. “Debt will fall next year.” No citation.\n\
+  \ Calculate faithfulness over five claims, citation correctness over four claim–citation\
+  \ pairs, and\n numerical accuracy over the four financial figures: 120, 20%, 12,\
+  \ and 30. Faithfulness permits\n support from any retrieved passage; citation correctness\
+  \ requires the attached source to support\n that claim."
+questionPages:
+- page: 476
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Class problem | 10 minutes — Three Checks, Three\
+    \ Denominators (1/2)\n\n The retrieved evidence says:\n▶ A: Revenue was $100 million\
+    \ in 2024 and $120 million in 2025.\n▶ B: 2025 net profit was $12 million.\n▶\
+    \ C: 2025 debt was $40 million."
+  paragraphs:
+  - Answer Quality
+  - M30 | Class problem | 10 minutes — Three Checks, Three Denominators (1/2)
+  - 'The retrieved evidence says: ▶ A: Revenue was $100 million in 2024 and $120 million
+    in 2025. ▶ B: 2025 net profit was $12 million. ▶ C: 2025 debt was $40 million.'
+  source:
+    pages:
+    - 476
+    verbatim: true
+- page: 477
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Class problem — Three Checks, Three Denominators\
+    \ (2/2)\n\n The generated answer makes five claims:\n1. “2025 revenue was $120\
+    \ million.” [A]\n2. “Revenue grew 20%.” [A]\n3. “2025 net profit was $12 million.”\
+    \ [C]\n4. “2025 debt was $30 million.” [C]\n5. “Debt will fall next year.” No\
+    \ citation.\n Calculate faithfulness over five claims, citation correctness over\
+    \ four claim–citation pairs, and\n numerical accuracy over the four financial\
+    \ figures: 120, 20%, 12, and 30. Faithfulness permits\n support from any retrieved\
+    \ passage; citation correctness requires the attached source to support\n that\
+    \ claim."
+  paragraphs:
+  - Answer Quality
+  - M30 | Class problem — Three Checks, Three Denominators (2/2)
+  - 'The generated answer makes five claims: 1. “2025 revenue was $120 million.” [A]
+    2. “Revenue grew 20%.” [A] 3. “2025 net profit was $12 million.” [C] 4. “2025
+    debt was $30 million.” [C] 5. “Debt will fall next year.” No citation. Calculate
+    faithfulness over five claims, citation correctness over four claim–citation pairs,
+    and numerical accuracy over the four financial figures: 120, 20%, 12, and 30.
+    Faithfulness permits support from any retrieved passage; citation correctness
+    requires the attached source to support that claim.'
+  source:
+    pages:
+    - 477
+    verbatim: true
+formulaPages:
+- page: 472
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Formula explained (1/1)\n\n Question: Is the\
+    \ answer supported, correctly cited, and numerically accurate?\n             \
+    \                                  Supported claims\n                        \
+    \    F aithf ulness =                       ,\n                              \
+    \                 All f actual claims\n                                      \
+    \      Supported claim–citation pairs\n                 Citation correctness =\
+    \                                       ,\n                                  \
+    \         All supplied claim–citation pairs\n                                \
+    \              Correct f inancial f igures\n                  N umerical accuracy\
+    \ =                                       .\n                                \
+    \           All evaluated f inancial f igures\n Read it aloud: Count support against\
+    \ all retrieved evidence, then support from each attached\n citation, then correctness\
+    \ of the selected numeric statements. Keep the three denominators\n separate.\n\
+    \ For derived growth, use (new − old)/old. This arithmetic must be checked against\
+    \ the cited\n revenue figures."
+  paragraphs:
+  - Answer Quality
+  - M30 | Formula explained (1/1)
+  - 'Question: Is the answer supported, correctly cited, and numerically accurate?
+    Supported claims F aithf ulness = , All f actual claims Supported claim–citation
+    pairs Citation correctness = , All supplied claim–citation pairs Correct f inancial
+    f igures N umerical accuracy = . All evaluated f inancial f igures Read it aloud:
+    Count support against all retrieved evidence, then support from each attached
+    citation, then correctness of the selected numeric statements. Keep the three
+    denominators separate. For derived growth, use (new − old)/old. This arithmetic
+    must be checked against the cited revenue figures.'
+  source:
+    pages:
+    - 472
+    verbatim: true
+symbolPages:
+- page: 473
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Symbols and terms (1/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Factual claim  \
+    \                                A statement that can be checked against evidence,\
+    \ including an\n                                                  explicitly calculated\
+    \ growth statement.\n   Faithfulness                                   Fraction\
+    \ of evaluated claims supported by any supplied evidence,\n                  \
+    \                                under this classroom rubric.\n   Claim–citation\
+    \ pair                            One claim together with the source attached\
+    \ to it; four pairs are\n                                                  evaluated\
+    \ here.\n   Citation correctness                           Share of the attached\
+    \ sources that actually support their paired\n                               \
+    \                   claim, not whether a different source supports it."
+  paragraphs:
+  - Answer Quality
+  - M30 | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example Factual claim A statement that can be checked
+    against evidence, including an explicitly calculated growth statement. Faithfulness
+    Fraction of evaluated claims supported by any supplied evidence, under this classroom
+    rubric. Claim–citation pair One claim together with the source attached to it;
+    four pairs are evaluated here. Citation correctness Share of the attached sources
+    that actually support their paired claim, not whether a different source supports
+    it.
+  source: &id001
+    pages:
+    - 473
+    verbatim: true
+- page: 474
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Symbols and terms (2/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Financial figure\
+    \                               One of the four named numeric outputs: 120, 20%,\
+    \ 12, and 30; the\n                                                  years are\
+    \ not in this selected numeric denominator.\n   Numerical accuracy           \
+    \                  Fraction of those selected figures that agree with source data\
+    \ or\n                                                  verified arithmetic."
+  paragraphs:
+  - Answer Quality
+  - M30 | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example Financial figure One of the four named
+    numeric outputs: 120, 20%, 12, and 30; the years are not in this selected numeric
+    denominator. Numerical accuracy Fraction of those selected figures that agree
+    with source data or verified arithmetic.'
+  source: &id002
+    pages:
+    - 474
+    verbatim: true
+- page: 475
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Symbols and terms (3/3)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Unsupported; contradicted\
+    \                      Not established by the supplied evidence; inconsistent\
+    \ with supplied\n                                                  evidence. Both\
+    \ fail support here.\n   new, old                                       New-year\
+    \ and old-year revenue, on the same accounting and unit\n                    \
+    \                              basis, in the growth calculation.\n   Denominator\
+    \                                    The evaluated total relevant to the metric:\
+    \ five claims, four citation\n                                               \
+    \   pairs, or four figures here."
+  paragraphs:
+  - Answer Quality
+  - M30 | Symbols and terms (3/3)
+  - 'Symbol or term Meaning in this example Unsupported; contradicted Not established
+    by the supplied evidence; inconsistent with supplied evidence. Both fail support
+    here. new, old New-year and old-year revenue, on the same accounting and unit
+    basis, in the growth calculation. Denominator The evaluated total relevant to
+    the metric: five claims, four citation pairs, or four figures here.'
+  source: &id003
+    pages:
+    - 475
+    verbatim: true
+solutionPages:
+- page: 478
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Worked solution — Three Checks, Three Denominators\n\
+    \n1. Verify the derived number: revenue growth = (120 − 100)/100 = 20%.\n2. Supported\
+    \ claims: 1 and 2 are supported by A; 3 is supported by B. Claims 4 and 5 are\n\
+    \   unsupported.\n                                F aithf ulness = 3/5 = 60%.\n\
+    3. Correct attached citations: claims 1 and 2 cite supporting evidence. Claim\
+    \ 3 cites debt,\n   not profit; claim 4 contradicts its source.\n            \
+    \                    Citation correctness = 2/4 = 50%.\n4. Correct financial figures:\
+    \ 120, 20%, and 12 are correct; 30 should be 40.\n                           \
+    \   N umerical accuracy = 3/4 = 75%."
+  paragraphs:
+  - Answer Quality
+  - M30 | Worked solution — Three Checks, Three Denominators
+  - '1. Verify the derived number: revenue growth = (120 − 100)/100 = 20%. 2. Supported
+    claims: 1 and 2 are supported by A; 3 is supported by B. Claims 4 and 5 are unsupported.
+    F aithf ulness = 3/5 = 60%. 3. Correct attached citations: claims 1 and 2 cite
+    supporting evidence. Claim 3 cites debt, not profit; claim 4 contradicts its source.
+    Citation correctness = 2/4 = 50%. 4. Correct financial figures: 120, 20%, and
+    12 are correct; 30 should be 40. N umerical accuracy = 3/4 = 75%.'
+  source:
+    pages:
+    - 478
+    verbatim: true
+interpretationPages:
+- page: 479
+  title: Answer Quality
+  text: " Answer Quality\n\n   M30 | Interpretation\n\n What the answer means\n A\
+    \ true statement can carry the wrong citation, and a well-cited answer can still\
+    \ contain false\n statements. Different denominators are intentional. These scores\
+    \ should not be averaged into a\n single “accuracy” number; one material debt\
+    \ error may be sufficient to reject the answer.\n Why these steps matter\n Claim\
+    \ 3 is numerically correct and supported somewhere in the supplied corpus, but\
+    \ its own\n citation is wrong. A single answer can therefore pass one check and\
+    \ fail another. The exact\n counting rubric is part of the definition, not a formatting\
+    \ detail."
+  paragraphs:
+  - Answer Quality
+  - M30 | Interpretation
+  - What the answer means A true statement can carry the wrong citation, and a well-cited
+    answer can still contain false statements. Different denominators are intentional.
+    These scores should not be averaged into a single “accuracy” number; one material
+    debt error may be sufficient to reject the answer. Why these steps matter Claim
+    3 is numerically correct and supported somewhere in the supplied corpus, but its
+    own citation is wrong. A single answer can therefore pass one check and fail another.
+    The exact counting rubric is part of the definition, not a formatting detail.
+  source:
+    pages:
+    - 479
+    verbatim: true
+source:
+  pages:
+  - 472
+  - 473
+  - 474
+  - 475
+  - 476
+  - 477
+  - 478
+  - 479
+  verbatim: true
+readAloud:
+- Count support against all retrieved evidence, then support from each attached citation,
+  then correctness of the selected numeric statements. Keep the three denominators
+  separate. For derived growth, use (new − old)/old. This arithmetic must be checked
+  against the cited revenue figures.
+siteAuthored: false
+givens:
+  revenueOld: 100
+  revenueNew: 120
+  supported: 3
+  claims: 5
+  correctCitations: 2
+  citations: 4
+  correctFigures: 3
+  figures: 4
+labels: &id004
+  revenueOld: Old-period revenue ($ millions)
+  revenueNew: New-period revenue ($ millions)
+  supported: Claims supported by retrieved evidence
+  claims: All claims audited
+  correctCitations: Correct claim–citation pairs
+  citations: All claim–citation pairs
+  correctFigures: Correct numeric figures
+  figures: All numeric figures audited
+deckSolution:
+  growth: 0.2
+  faithfulness: 0.6
+  citation: 0.5
+  numerical: 0.75
+latex:
+- Faithfulness=\frac{SupportedClaims}{AllClaims},\quad CitationCorrectness=\frac{CorrectPairs}{AllPairs}
+- \operatorname{Numerical\ accuracy}=\frac{\operatorname{Correct\ financial\ figures}}{\operatorname{All\
+  evaluated\ financial\ figures}}
+symbols:
+- symbol: Factual claim
+  meaning: A statement that can be checked against evidence, including an explicitly
+    calculated growth statement.
+  source: *id001
+- symbol: Faithfulness
+  meaning: Fraction of evaluated claims supported by any supplied evidence, under
+    this classroom rubric.
+  source: *id001
+- symbol: Claim–citation pair
+  meaning: One claim together with the source attached to it; four pairs are evaluated
+    here.
+  source: *id001
+- symbol: Citation correctness
+  meaning: Share of the attached sources that actually support their paired claim,
+    not whether a different source supports it.
+  source: *id001
+- symbol: Financial figure
+  meaning: 'One of the four named numeric outputs: 120, 20%, 12, and 30; the years
+    are not in this selected numeric denominator.'
+  source: *id002
+- symbol: Numerical accuracy
+  meaning: Fraction of those selected figures that agree with source data or verified
+    arithmetic.
+  source: *id002
+- symbol: Unsupported; contradicted
+  meaning: Not established by the supplied evidence; inconsistent with supplied evidence.
+    Both fail support here.
+  source: *id003
+- symbol: new, old
+  meaning: New-year and old-year revenue, on the same accounting and unit basis, in
+    the growth calculation.
+  source: *id003
+- symbol: Denominator
+  meaning: 'The evaluated total relevant to the metric: five claims, four citation
+    pairs, or four figures here.'
+  source: *id003
+steps:
+- id: growth
+  title: Revenue growth
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Subtract old revenue from new revenue and divide by old revenue.
+  mistakes:
+  - pattern: recompute
+    message: Subtract old revenue from new revenue and divide by old revenue.
+- id: faithfulness
+  title: Claim faithfulness
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide supported claims by all claims.
+  mistakes:
+  - pattern: recompute
+    message: Divide supported claims by all claims.
+- id: citation
+  title: Citation correctness
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide correctly supported claim–citation pairs by all cited pairs.
+  mistakes:
+  - pattern: recompute
+    message: Divide correctly supported claim–citation pairs by all cited pairs.
+- id: numerical
+  title: Numeric accuracy
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Divide correct financial figures by all evaluated figures.
+  mistakes:
+  - pattern: recompute
+    message: Divide correct financial figures by all evaluated figures.
+learning:
+  title: Three Checks, Three Denominators
+  scenario: 'A financial answer is audited for three separate properties: support
+    anywhere in retrieved evidence, correctness of its attached citations, and correctness
+    of numeric figures. Revenue figures use the same units and period basis.'
+  task: Calculate revenue growth and the three audit rates from their separate counts.
+    A true statement can still have the wrong attached citation.
+  interpretation: 'Use the denominator belonging to each check: all claims, claim–citation
+    pairs, or financial figures. Averaging these rates into one accuracy number would
+    hide the type of failure.'
+  summary: 'Revenue growth: {growth}. Faithfulness: {faithfulness}; citation correctness:
+    {citation}; numeric accuracy: {numerical}.'
+  labels: *id004
+  steps:
+    growth:
+      title: Revenue growth
+      hints: *id005
+      unit: proportion
+    faithfulness:
+      title: Claim faithfulness
+      hints: *id006
+      unit: proportion
+    citation:
+      title: Citation correctness
+      hints: *id007
+      unit: proportion
+    numerical:
+      title: Numeric accuracy
+      hints: *id008
+      unit: proportion
+  readAloud:
+  - Count support against all retrieved evidence, then support from each attached
+    citation, then correctness of the selected numeric statements. Keep the three
+    denominators separate. For derived growth, use (new − old)/old. This arithmetic
+    must be checked against the cited revenue figures.
+  workedExplanation:
+  - 'A true statement can carry the wrong citation, and a well-cited answer can still
+    contain false statements. Different denominators are intentional. These scores
+    should not be averaged into a single “accuracy” number; one material debt error
+    may be sufficient to reject the answer. '
+  - Claim 3 is numerically correct and supported somewhere in the supplied corpus,
+    but its own citation is wrong. A single answer can therefore pass one check and
+    fail another. The exact counting rubric is part of the definition, not a formatting
+    detail.
+  workedDetails:
+  - Evidence A gives 2024 revenue of $100 million and 2025 revenue of $120 million.
+    Evidence B gives 2025 net profit of $12 million. Evidence C gives 2025 debt of
+    $40 million.
+  - 'The answer claims: revenue was $120 million [A]; revenue grew 20% [A]; net profit
+    was $12 million [C]; debt was $30 million [C]; and debt will fall next year [no
+    citation].'
+  - The net-profit claim is true but cites the wrong evidence. The debt amount is
+    false; the future-debt claim is unsupported.
+  workedArithmetic:
+  - Revenue growth = (120 − 100) / 100 = 20%.
+  - 'Claims 1 and 2 are supported by A, and claim 3 by B: faithfulness = 3/5 = 60%.'
+  - 'Only claims 1 and 2 have correct attached citations: citation correctness = 2/4
+    = 50%.'
+  - Figures 120, 20% and 12 are correct; the debt figure 30 should be 40. Numeric
+    accuracy = 3/4 = 75%.
+formulaSource:
+  pages:
+  - 472
+  verbatim: false
+  reviewed: true

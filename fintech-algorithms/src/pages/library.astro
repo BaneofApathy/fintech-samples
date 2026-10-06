@@ -1,0 +1,154 @@
+---
+import Shell from '../components/layout/Shell.astro';
+import { algorithms, shortTitles, measures, href } from '../data';
+import { widgets } from '../components/widgets/catalog';
+import labs from '../data/labs.json';
+import { financialCases, financialCaseHref } from '../data/financial-cases';
+const resources = [
+  {kind:'guide',title:'Financial problem diagrams',description:'Compare inputs and outcomes in 96 financial problems.',path:'/financial-problems/'},
+  {
+    kind: 'guide',
+    title: 'Choose a measure',
+    description: 'Find one primary measure and supporting checks for your financial decision.',
+    path: '/measure-picker/',
+  },
+  {
+    kind: 'guide',
+    title: 'Measures catalog',
+    description: 'Understand what each evaluation measure tells you and where it can mislead.',
+    path: '/measures/',
+  },
+  {
+    kind: 'guide',
+    title: 'Interactive explorers',
+    description: 'Change an assumption and see how the result and decision respond.',
+    path: '/explorers/',
+  },
+  {
+    kind: 'guide',
+    title: 'Python notebooks',
+    description: 'Run a baseline, change one setting, and compare the results.',
+    path: '/labs/',
+  },
+  {
+    kind: 'glossary',
+    title: 'Concepts, terminology & symbols',
+    description: 'Find definitions, examples, and links to related lessons or exercises.',
+    path: '/glossary/',
+  },
+  {
+    kind: 'guide',
+    title: 'Foundations',
+    description:
+      'Learn notation, probability, logs, vectors, covariance, gradients, data splits, leakage, regularization, and algorithm tracing.',
+    path: '/foundations/',
+  },
+  ...measures.map((m) => ({
+    kind: 'measure',
+    title: m.title,
+    description: m.financialInterpretation,
+    path: `/measures/${m.slug}/`,
+  })),
+  ...financialCases.map(item=>({kind:'financial',title:item.title,description:item.question,path:financialCaseHref(item,'/')})),
+  ...[19,37,38,39].map(number=>{const m=measures.find(x=>x.number===number)!;return {kind:'financial',title:m.title,description:m.financialInterpretation,path:`/measures/${m.slug}/#measure-visual`};}),
+  ...widgets.map((w) => ({
+    kind: 'explorer',
+    title: w.title,
+    description: w.notice,
+    path: `/explorers/${w.id}/`,
+  })),
+  ...algorithms.map((a, i) => ({
+    kind: 'notebook',
+    title: shortTitles[i],
+    description: labs[a.slug as keyof typeof labs].task,
+    path: `/algorithms/${a.slug}/defend/`,
+  })),
+];
+const labels: Record<string, string> = {
+  guide: 'Collection',
+  measure: 'Measure',
+  explorer: 'Explorer',
+  notebook: 'Python lab',
+  glossary: 'Glossary',
+  financial: 'Financial problem',
+};
+---
+
+<Shell
+  title="Library"
+  description="Find measures, interactive explorers, glossary definitions, and Python labs for financial decisions."
+>
+  <p class="page-subtitle">Find an explanation, try an experiment, or open a lab.</p>
+  <div class="library-filters">
+    <label for="library-search">
+      Search resources
+      <input
+        id="library-search"
+        type="search"
+        placeholder="Try recall, default, forecast, or portfolio"
+      />
+    </label>
+    <label for="library-type">
+      Resource type
+      <select id="library-type">
+        <option value="all">All resources</option>
+        <option value="measure">Measures</option>
+        <option value="financial">Financial problems</option>
+        <option value="explorer">Explorers</option>
+        <option value="notebook">Python labs</option>
+        <option value="glossary">Glossary</option>
+      </select>
+    </label>
+  </div>
+  <p id="library-count" class="small muted" role="status">
+    Browse a collection or search across the library.
+  </p>
+  <div class="library-resources">
+    {resources.map((resource) => (
+      <a
+        class="library-resource"
+        href={href(resource.path)}
+        data-resource
+        data-kind={resource.kind}
+        data-search={`${resource.title} ${resource.description}`.toLowerCase()}
+        hidden={!['guide', 'glossary'].includes(resource.kind)}
+      >
+        <span class="resource-kind">{labels[resource.kind]}</span>
+        <strong>
+          {resource.title}
+          <span aria-hidden="true"> →</span>
+        </strong>
+        <span>{resource.description}</span>
+      </a>
+    ))}
+  </div>
+  <p id="library-empty" hidden>
+    No resources match. Try a shorter phrase or choose another resource type.
+  </p>
+</Shell>
+<script>
+  const search = document.querySelector<HTMLInputElement>('#library-search')!;
+  const type = document.querySelector<HTMLSelectElement>('#library-type')!;
+  function filterLibrary() {
+    const terms = search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    let count = 0;
+    document.querySelectorAll<HTMLElement>('[data-resource]').forEach((resource) => {
+      const matchesType = type.value === 'all' || resource.dataset.kind === type.value;
+      const matchesText = terms.every((term) => resource.dataset.search!.includes(term));
+      const initial = !terms.length && type.value === 'all';
+      const show =
+        matchesType &&
+        matchesText &&
+        (!initial || ['guide', 'glossary'].includes(resource.dataset.kind!));
+      resource.hidden = !show;
+      if (show) count++;
+    });
+    document.querySelector('#library-count')!.textContent =
+      !terms.length && type.value === 'all'
+        ? 'Browse a collection or search across the library.'
+        : `${count} ${count === 1 ? 'resource' : 'resources'} found`;
+    document.querySelector<HTMLElement>('#library-empty')!.hidden = count !== 0;
+  }
+  search.addEventListener('input', filterLibrary);
+  type.addEventListener('change', filterLibrary);
+</script>

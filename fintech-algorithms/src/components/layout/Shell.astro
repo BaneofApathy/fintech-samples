@@ -1,0 +1,246 @@
+---
+import OfflineControls from './OfflineControls.astro';
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import 'katex/dist/katex.min.css';
+import '../../styles/visuals.css';
+import '../../styles/teaching.css';
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'A problem-first course in financial decisions, AI algorithms, and evaluation.',
+} = Astro.props;
+---
+
+<StarlightPage frontmatter={{ title, description, tableOfContents: false }}>
+  <div class="course-body" data-pagefind-body>
+    <slot />
+  </div>
+  <div class="storage-error" role="status" hidden>
+    Progress could not be saved. Export your work before leaving this page.
+  </div>
+  <OfflineControls />
+  <footer class="course-footer">
+    <span>
+      Prepared by Adnan Masood, PhD. as companion material for USF AI in Fintech lectures.
+      <br />
+      Licensed under Creative Commons{' '}
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>.
+      <br />
+      <small>Instructor-created reference material; not an official USF repository.</small>
+    </span>
+  </footer>
+</StarlightPage>
+<script>
+  import { read, exportProgress, visit } from '../../engine/progress';
+  const context = (document as any).modelContext;
+  if (context?.registerTool) {
+    const lifecycle = new AbortController();
+    window.addEventListener('pagehide', () => lifecycle.abort(), { once: true });
+    const report = (e: unknown) => console.warn('Course agent tool unavailable', e);
+    for (const tool of [
+      {
+        name: 'read_learning_progress',
+        description: 'Read the same local section and checkpoint progress shown in the course.',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        annotations: { readOnlyHint: true, untrustedContentHint: false },
+        execute(input: unknown) {
+          if (!input || typeof input !== 'object' || Object.keys(input).length)
+            throw new Error('Provide an empty object.');
+          const p = read();
+          return {
+            completedSections: Object.entries(p.sections)
+              .filter(([, done]) => done)
+              .map(([key]) => key),
+            checkpoints: p.checkpoints,
+            attempts: p.attempts.length,
+          };
+        },
+      },
+      {
+        name: 'complete_current_section',
+        description:
+          'Mark the current visible course section complete using its completion button.',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        annotations: { readOnlyHint: false, untrustedContentHint: false },
+        async execute(input: unknown) {
+          if (!input || typeof input !== 'object' || Object.keys(input).length)
+            throw new Error('Provide an empty object.');
+          const row = document.querySelector<HTMLElement>('.completion-row');
+          const section = row?.dataset.section;
+          if (!row || !section) throw new Error('This page has no course section to complete.');
+          if (!read().sections[section]) row.querySelector<HTMLButtonElement>('button')?.click();
+          await new Promise(requestAnimationFrame);
+          return { section, complete: !!read().sections[section] };
+        },
+      },
+    ]) {
+      try {
+        Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(report);
+      } catch (e) {
+        report(e);
+      }
+    }
+  }
+  const setTheme = (dark: boolean) => {
+    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    const themeButton = document.querySelector('#theme-toggle');
+    if (themeButton) {
+      themeButton.textContent = dark ? 'Switch to light theme' : 'Switch to dark theme';
+      themeButton.setAttribute('aria-label', themeButton.textContent);
+    }
+    try {
+      localStorage.setItem('course-theme', dark ? 'dark' : 'light');
+    } catch {}
+  };
+  let saved = '';
+  try {
+    saved = localStorage.getItem('course-theme') || '';
+  } catch {}
+  setTheme(saved === 'dark');
+  document
+    .querySelector('#theme-toggle')
+    ?.addEventListener('click', () => setTheme(document.documentElement.dataset.theme !== 'dark'));
+  const query = new URLSearchParams(location.search);
+  let instructor = false;
+  try {
+    instructor = query.has('instructor')
+      ? query.get('instructor') === '1'
+      : localStorage.getItem('course-instructor') === '1';
+  } catch {}
+  function mode() {
+    document.documentElement.dataset.instructor = instructor ? 'true' : 'false';
+    document.querySelector('#instructor-toggle')?.setAttribute('aria-pressed', String(instructor));
+    window.dispatchEvent(new CustomEvent('course-mode', { detail: instructor }));
+    try {
+      localStorage.setItem('course-instructor', instructor ? '1' : '0');
+    } catch {}
+  }
+  mode();
+  document.querySelector('#instructor-toggle')?.addEventListener('click', () => {
+    instructor = !instructor;
+    mode();
+  });
+  const navToggle = document.querySelector<HTMLElement>('#nav-toggle');
+  const drawer = document.querySelector<HTMLElement>('#course-navigation');
+  const mainPane = document.querySelector<HTMLElement>('.main-pane');
+  function closeCourseNavigation() {
+    const wasOpen = document.documentElement.dataset.nav === 'open';
+    document.documentElement.dataset.nav = 'closed';
+    navToggle?.setAttribute('aria-expanded', 'false');
+    if (mainPane) mainPane.inert = false;
+    if (wasOpen) navToggle?.focus();
+  }
+  navToggle?.addEventListener('click', (e) => {
+    const open = document.documentElement.dataset.nav !== 'open';
+    document.documentElement.dataset.nav = open ? 'open' : 'closed';
+    (e.currentTarget as HTMLElement).setAttribute('aria-expanded', String(open));
+    if (mainPane) mainPane.inert = open && window.matchMedia('(max-width:799px)').matches;
+    if (open) drawer?.querySelector<HTMLElement>('a,button,select')?.focus();
+    else navToggle?.focus();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && document.documentElement.dataset.nav === 'open' && window.matchMedia('(max-width:799px)').matches && drawer) {
+      const focusable = [navToggle, ...drawer.querySelectorAll<HTMLElement>('a[href],button,select,input')].filter((el): el is HTMLElement => !!el && el.getClientRects().length > 0);
+      const first = focusable[0], last = focusable.at(-1);
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus(); }
+    }
+    if (e.key === 'Escape') {
+      closeCourseNavigation();
+      document.querySelectorAll<HTMLDetailsElement>('.utility-menu[open]').forEach((menu) => {
+        menu.open = false;
+      });
+    }
+  });
+  window.matchMedia('(max-width:799px)').addEventListener('change', (event) => { if (!event.matches) closeCourseNavigation(); });
+  const localPath = location.pathname.slice(import.meta.env.BASE_URL.replace(/\/$/, '').length);
+  const lesson = localPath.match(/^\/algorithms\/([a-z0-9-]+)\/(?:([a-z-]+)\/)?$/);
+  if (lesson) visit(lesson[1], lesson[2] || 'problem');
+  function progress() {
+    const p = read();
+    document.querySelectorAll<HTMLElement>('[data-unit]').forEach((el) => {
+      const slug = el.dataset.unit;
+      const total = Object.keys(p.sections).filter(
+        (k) => k.startsWith(slug + ':') && p.sections[k],
+      ).length;
+      el.textContent = total === 7 ? '✓' : '';
+    });
+  }
+  progress();
+  window.addEventListener('course-progress', progress);
+  window.addEventListener('course-storage-error', () =>
+    document.querySelector('.storage-error')?.removeAttribute('hidden'),
+  );
+  const dialog = document.querySelector<HTMLDialogElement>('#course-search')!;
+  let loaded = false;
+  async function search() {
+    dialog.showModal();
+    if (!loaded) {
+      loaded = true;
+      try {
+        const path = `${import.meta.env.BASE_URL}pagefind/`.replace('//', '/');
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = path + 'pagefind-ui.css';
+        document.head.append(css);
+        await new Promise<void>((resolve, reject) => {
+          const s = document.createElement('script');
+          s.src = path + 'pagefind-ui.js';
+          s.onload = () => resolve();
+          s.onerror = reject;
+          document.head.append(s);
+        });
+        new (window as any).PagefindUI({
+          element: '#pagefind-search',
+          showSubResults: true,
+          baseUrl: import.meta.env.BASE_URL,
+        });
+      } catch {
+        document.querySelector('#pagefind-search')!.textContent =
+          'Search could not load. Use the course navigation or try again.';
+      }
+    }
+  }
+  document.querySelector('#search-open')?.addEventListener('click', search);
+  document.querySelector('#search-close')?.addEventListener('click', () => dialog.close());
+  document.addEventListener('keydown', (e) => {
+    if (
+      e.key === '/' &&
+      !(e.target instanceof HTMLInputElement) &&
+      !(e.target instanceof HTMLTextAreaElement)
+    ) {
+      e.preventDefault();
+      search();
+    }
+    if (e.key === 'Escape') {
+      document.querySelectorAll<HTMLElement>('.symbol-tip.is-open').forEach((el) => {
+        el.classList.remove('is-open');
+        el.querySelector('.symbol-toggle')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+  document.querySelectorAll<HTMLButtonElement>('.symbol-toggle').forEach((el) => {
+    el.addEventListener('click', () => {
+      const open = el.getAttribute('aria-expanded') !== 'true';
+      el.setAttribute('aria-expanded', String(open));
+      el.parentElement?.classList.toggle('is-open', open);
+      if (open) window.dispatchEvent(new CustomEvent('course-formula-focus', {detail:{symbol:el.dataset.formulaSymbol || el.textContent?.trim()}}));
+    });
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        el.setAttribute('aria-expanded', 'false');
+        el.parentElement?.classList.remove('is-open');
+      }
+    });
+  });
+  document.querySelectorAll<HTMLAnchorElement>('[data-export-progress]').forEach((el) =>
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      exportProgress();
+    }),
+  );
+
+</script>

@@ -1,0 +1,330 @@
+id: M09
+title: Count Correct Rankings
+minutes: 7
+kind: measure
+parent: roc-auc-and-gini
+question: "Three frauds have scores 0.90, 0.70, and 0.30. Three legitimate transactions\
+  \ have scores\n 0.80, 0.40, and 0.10.\n There are 3 × 3 = 9 fraud–legitimate pairs.\
+  \ Give one point when the fraud has the higher score,\n zero when it has the lower\
+  \ score, and half a point for a tie.\n                               Pair-ranking\
+  \ points\n                      AU C =                       ,     Gini = 2AU C\
+  \ − 1.\n                                 Number of pairs\n Calculate AUC and Gini.\
+  \ Does the AUC value tell you what fraction of transactions will be\n classified\
+  \ correctly at a 0.50 threshold?"
+questionPages:
+- page: 268
+  title: ROC-AUC and Gini
+  text: " ROC-AUC and Gini\n\n   M09 | Class problem | 7 minutes — Count Correct Rankings\n\
+    \n Three frauds have scores 0.90, 0.70, and 0.30. Three legitimate transactions\
+    \ have scores\n 0.80, 0.40, and 0.10.\n There are 3 × 3 = 9 fraud–legitimate pairs.\
+    \ Give one point when the fraud has the higher score,\n zero when it has the lower\
+    \ score, and half a point for a tie.\n                               Pair-ranking\
+    \ points\n                      AU C =                       ,     Gini = 2AU\
+    \ C − 1.\n                                 Number of pairs\n Calculate AUC and\
+    \ Gini. Does the AUC value tell you what fraction of transactions will be\n classified\
+    \ correctly at a 0.50 threshold?"
+  paragraphs:
+  - ROC-AUC and Gini
+  - M09 | Class problem | 7 minutes — Count Correct Rankings
+  - Three frauds have scores 0.90, 0.70, and 0.30. Three legitimate transactions have
+    scores 0.80, 0.40, and 0.10. There are 3 × 3 = 9 fraud–legitimate pairs. Give
+    one point when the fraud has the higher score, zero when it has the lower score,
+    and half a point for a tie. Pair-ranking points AU C = , Gini = 2AU C − 1. Number
+    of pairs Calculate AUC and Gini. Does the AUC value tell you what fraction of
+    transactions will be classified correctly at a 0.50 threshold?
+  source:
+    pages:
+    - 268
+    verbatim: true
+formulaPages:
+- page: 265
+  title: ROC-AUC and Gini
+  text: " ROC-AUC and Gini\n\n   M09 | Formula explained (1/1)\n\n Question: How often\
+    \ is a fraud ranked above a legitimate case?\n                               \
+    \                            W + 12 T\n                                      \
+    \            AU C =            ,   Gini = 2AU C − 1.\n                       \
+    \                                    N+ N−\n Read it aloud: Count fraud–legitimate\
+    \ pairs ordered correctly, give half credit to tied scores,\n then divide by all\
+    \ such pairs. Double AUC and subtract one for the AUC-derived Gini coefficient.\n\
+    \ The denominator is the number of pairs, not the number of transactions. No classification\n\
+    \ threshold is needed for this calculation.\n AUC stands for area under the ROC\
+    \ curve; pair-counting gives its ranking interpretation."
+  paragraphs:
+  - ROC-AUC and Gini
+  - M09 | Formula explained (1/1)
+  - 'Question: How often is a fraud ranked above a legitimate case? W + 12 T AU C
+    = , Gini = 2AU C − 1. N+ N− Read it aloud: Count fraud–legitimate pairs ordered
+    correctly, give half credit to tied scores, then divide by all such pairs. Double
+    AUC and subtract one for the AUC-derived Gini coefficient. The denominator is
+    the number of pairs, not the number of transactions. No classification threshold
+    is needed for this calculation. AUC stands for area under the ROC curve; pair-counting
+    gives its ranking interpretation.'
+  source:
+    pages:
+    - 265
+    verbatim: true
+symbolPages:
+- page: 266
+  title: ROC-AUC and Gini
+  text: " ROC-AUC and Gini\n\n   M09 | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   W              \
+    \                                Number of fraud–legitimate pairs in which fraud\
+    \ has the higher\n                                                  score.\n \
+    \  T                                              Number of tied-score pairs;\
+    \ this is not time or a tree count here.\n   N+ , N−                         \
+    \               Number of actual positive and negative cases: 3 frauds and 3\n\
+    \                                                  legitimate transactions.\n\
+    \   N+ N−                                          Total pair count: every fraud\
+    \ is compared with every legitimate\n                                        \
+    \          transaction.\n   1\n   2T                                         \
+    \    Half a ranking point per tie; no ties occur in this example.\n   ROC-AUC\
+    \                                        Threshold-independent pairwise ranking\
+    \ score; 1 means every\n                                                  positive\
+    \ outranks every negative in the evaluated sample."
+  paragraphs:
+  - ROC-AUC and Gini
+  - M09 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example W Number of fraud–legitimate pairs in
+    which fraud has the higher score. T Number of tied-score pairs; this is not time
+    or a tree count here. N+ , N− Number of actual positive and negative cases: 3
+    frauds and 3 legitimate transactions. N+ N− Total pair count: every fraud is compared
+    with every legitimate transaction. 1 2T Half a ranking point per tie; no ties
+    occur in this example. ROC-AUC Threshold-independent pairwise ranking score; 1
+    means every positive outranks every negative in the evaluated sample.'
+  source: &id001
+    pages: &id002
+    - 266
+    verbatim: true
+- page: 267
+  title: ROC-AUC and Gini
+  text: " ROC-AUC and Gini\n\n   M09 | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   Gini           \
+    \                                Ranking coefficient calculated as 2AU C − 1;\
+    \ it is not the\n                                                  node-impurity\
+    \ measure used to split trees.\n   Discrimination                            \
+    \     Ability to order different outcome classes by score, rather than to\n  \
+    \                                                report calibrated event probabilities."
+  paragraphs:
+  - ROC-AUC and Gini
+  - M09 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Gini Ranking coefficient calculated as
+    2AU C − 1; it is not the node-impurity measure used to split trees. Discrimination
+    Ability to order different outcome classes by score, rather than to report calibrated
+    event probabilities.
+  source: &id003
+    pages:
+    - 267
+    verbatim: true
+solutionPages:
+- page: 269
+  title: ROC-AUC and Gini
+  text: " ROC-AUC and Gini\n\n   M09 | Worked solution — Count Correct Rankings\n\n\
+    1. Compare every fraud score with every legitimate score.\n   Fraud score    \
+    \                       Beats 0.80?   Beats 0.40?   Beats 0.10?              \
+    \  Points\n   0.90                                  Yes           Yes        \
+    \   Yes                             3\n   0.70                               \
+    \   No            Yes           Yes                             2\n   0.30   \
+    \                               No            No            Yes              \
+    \               1\n\n2. Add ranking points: 3 + 2 + 1 = 6; there are no ties.\n\
+    3. AUC: 6/9 = 0.6667.\n4. Gini: 2(0.6667) − 1 = 0.3333."
+  paragraphs:
+  - ROC-AUC and Gini
+  - M09 | Worked solution — Count Correct Rankings
+  - 1. Compare every fraud score with every legitimate score. Fraud score Beats 0.80?
+    Beats 0.40? Beats 0.10? Points 0.90 Yes Yes Yes 3 0.70 No Yes Yes 2 0.30 No No
+    Yes 1
+  - '2. Add ranking points: 3 + 2 + 1 = 6; there are no ties. 3. AUC: 6/9 = 0.6667.
+    4. Gini: 2(0.6667) − 1 = 0.3333.'
+  source:
+    pages:
+    - 269
+    verbatim: true
+interpretationPages:
+- page: 270
+  title: ROC-AUC and Gini
+  text: " ROC-AUC and Gini\n\n   M09 | Interpretation\n\n What the answer means\n\
+    \ The model ranks a fraud above a legitimate transaction in two-thirds of these\
+    \ pairs. AUC is\n not threshold-specific accuracy, a fraud probability, or a profit\
+    \ estimate. This Gini is a rescaling\n of ranking AUC, not tree-node impurity.\n\
+    \ Why these steps matter\n AUC uses all nine fraud–legitimate comparisons. Accuracy\
+    \ at a particular cutoff would use six\n yes/no decisions instead. The two fractions\
+    \ summarize different questions even when calculated\n from the same records."
+  paragraphs:
+  - ROC-AUC and Gini
+  - M09 | Interpretation
+  - What the answer means The model ranks a fraud above a legitimate transaction in
+    two-thirds of these pairs. AUC is not threshold-specific accuracy, a fraud probability,
+    or a profit estimate. This Gini is a rescaling of ranking AUC, not tree-node impurity.
+    Why these steps matter AUC uses all nine fraud–legitimate comparisons. Accuracy
+    at a particular cutoff would use six yes/no decisions instead. The two fractions
+    summarize different questions even when calculated from the same records.
+  source:
+    pages:
+    - 270
+    verbatim: true
+source:
+  pages:
+  - 265
+  - 266
+  - 267
+  - 268
+  - 269
+  - 270
+  verbatim: true
+readAloud:
+- Count fraud–legitimate pairs ordered correctly, give half credit to tied scores,
+  then divide by all such pairs. Double AUC and subtract one for the AUC-derived Gini
+  coefficient. The denominator is the number of pairs, not the number of transactions.
+  No classification threshold is needed for this calculation. AUC stands for area
+  under the ROC curve; pair-counting gives its ranking interpretation.
+siteAuthored: false
+givens:
+  positive:
+  - 0.9
+  - 0.7
+  - 0.3
+  negative:
+  - 0.8
+  - 0.4
+  - 0.1
+labels: &id004
+  positive: Scores of actual frauds
+  negative: Scores of legitimate transactions
+deckSolution:
+  wins: 6
+  pairs: 9
+  AUC: 0.6666667
+  gini: 0.3333333
+latex:
+- AUC=\frac{Wins+\tfrac12Ties}{N_+N_-},\quad Gini=2AUC-1
+symbols:
+- symbol: W
+  meaning: Number of fraud–legitimate pairs in which fraud has the higher score.
+  source: *id001
+- symbol: T
+  meaning: Number of tied-score pairs; this is not time or a tree count here.
+  source: *id001
+- symbol: N+ , N−
+  meaning: 'Number of actual positive and negative cases: 3 frauds and 3 legitimate
+    transactions.'
+  source: *id001
+- symbol: N+ N−
+  meaning: 'Total pair count: every fraud is compared with every legitimate transaction.'
+  source: *id001
+- symbol: ½T
+  meaning: Half a ranking point per tie; no ties occur in this example.
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: ROC-AUC
+  meaning: Threshold-independent pairwise ranking score; 1 means every positive outranks
+    every negative in the evaluated sample.
+  source: *id001
+- symbol: Gini
+  meaning: Ranking coefficient calculated as 2AU C − 1; it is not the node-impurity
+    measure used to split trees.
+  source: *id003
+- symbol: Discrimination
+  meaning: Ability to order different outcome classes by score, rather than to report
+    calibrated event probabilities.
+  source: *id003
+steps:
+- id: wins
+  title: Pair-ranking points
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Compare each fraud score with every legitimate score; count ties as 0.5.
+  mistakes:
+  - pattern: recompute
+    message: Compare each fraud score with every legitimate score; count ties as 0.5.
+- id: pairs
+  title: Number of fraud–legitimate pairs
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Multiply the number of frauds by the number of legitimate transactions.
+  mistakes:
+  - pattern: recompute
+    message: Multiply the number of frauds by the number of legitimate transactions.
+- id: AUC
+  title: ROC-AUC
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide ranking points by total pair count.
+  mistakes:
+  - pattern: recompute
+    message: Divide ranking points by total pair count.
+- id: gini
+  title: AUC-derived Gini coefficient
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Double AUC and subtract 1.
+  mistakes:
+  - pattern: recompute
+    message: Double AUC and subtract 1.
+learning:
+  title: Count Correct Rankings
+  scenario: Compare every fraud score with every legitimate-transaction score. Award
+    1 ranking point if fraud scores higher, 0 if lower and half a point for a tie.
+  task: Calculate total ranking points, pair count, AUC and the ranking Gini coefficient
+    2 × AUC − 1.
+  interpretation: AUC summarizes fraud–legitimate pair rankings without choosing a
+    threshold. It is not classification accuracy, a fraud probability or profit. Ranking
+    Gini is different from tree-node Gini impurity.
+  summary: 'AUC: {AUC}; ranking Gini: {gini}.'
+  labels: *id004
+  steps:
+    wins:
+      title: Pair-ranking points
+      hints: *id005
+      unit: ''
+    pairs:
+      title: Number of fraud–legitimate pairs
+      hints: *id006
+      unit: ''
+    AUC:
+      title: ROC-AUC
+      hints: *id007
+      unit: ''
+    gini:
+      title: AUC-derived Gini coefficient
+      hints: *id008
+      unit: ''
+  readAloud:
+  - Count fraud–legitimate pairs ordered correctly, give half credit to tied scores,
+    then divide by all such pairs. Double AUC and subtract one for the AUC-derived
+    Gini coefficient. The denominator is the number of pairs, not the number of transactions.
+    No classification threshold is needed for this calculation. AUC stands for area
+    under the ROC curve; pair-counting gives its ranking interpretation.
+  workedExplanation:
+  - 'The model ranks a fraud above a legitimate transaction in two-thirds of these
+    pairs. AUC is not threshold-specific accuracy, a fraud probability, or a profit
+    estimate. This Gini is a rescaling of ranking AUC, not tree-node impurity. '
+  - AUC uses all nine fraud–legitimate comparisons. Accuracy at a particular cutoff
+    would use six yes/no decisions instead. The two fractions summarize different
+    questions even when calculated from the same records.
+  workedArithmetic:
+  - The fraud at 0.90 outranks all three legitimate scores; 0.70 outranks two; 0.30
+    outranks one. There are no ties.
+  - Pair-ranking points = 3 + 2 + 1 = 6. Total pairs = 3 × 3 = 9.
+  - AUC = 6/9 ≈ 0.6667. Gini = 2 × (6/9) − 1 ≈ 0.3333.
+formulaSource:
+  pages:
+  - 265
+  verbatim: false
+  reviewed: true

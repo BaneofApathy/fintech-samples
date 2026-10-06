@@ -1,0 +1,5 @@
+{
+  "demo-active": {"name": "Alex Student", "active": true, "posted_cents": 50000},
+  "demo-inactive": {"name": "Inactive classroom account", "active": false, "posted_cents": 50000},
+  "demo-low": {"name": "Low-balance classroom account", "active": true, "posted_cents": 1000}
+}

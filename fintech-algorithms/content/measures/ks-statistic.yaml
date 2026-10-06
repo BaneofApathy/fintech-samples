@@ -1,0 +1,223 @@
+slug: ks-statistic
+number: 10
+title: KS Statistic
+question: rank
+financialInterpretation: The Kolmogorov-Smirnov statistic summarizes the maximum separation
+  between the cumulative score distributions of risky and non-risky cases. It is widely
+  used in scorecard validation.
+workingExample: 'At one score cutoff, suppose the model has captured 72% of all defaults
+  and 18% of non-defaults: KS = 72% − 18% = 54% That cutoff is where the two cumulative
+  distributions are farthest apart.'
+whatItMisses: KS is a ranking diagnostic, not a business threshold. It does not include
+  approval economics, loss severity, calibration, or fairness.
+exercises:
+- M10
+widget: threshold-explorer
+usedBy: []
+slides:
+- page: 271
+  title: EVALUATION MEASURE 10 OF 39
+  text: "    EVALUATION MEASURE 10 OF 39\n\n\n\n\n                      KS Statistic\n\
+    \     Finds the score cutoff where risky and safe populations are\n          \
+    \                 most separated."
+  paragraphs:
+  - EVALUATION MEASURE 10 OF 39
+  - KS Statistic Finds the score cutoff where risky and safe populations are most
+    separated.
+  source:
+    pages:
+    - 271
+    verbatim: true
+- page: 272
+  title: KS statistic – where are good and bad score distributions farthest apart?
+  text: " KS statistic – where are good and bad score distributions farthest apart?\n\
+    \n\n Financial interpretation\n The Kolmogorov-Smirnov statistic summarizes the\
+    \ maximum separation between the cumulative score\n distributions of risky and\
+    \ non-risky cases. It is widely used in scorecard validation.\n\n Working example\n\
+    \ At one score cutoff, suppose the model has captured 72% of all defaults and\
+    \ 18% of non-defaults:\n\n                                                  KS\
+    \ = 72% − 18% = 54%\n\n That cutoff is where the two cumulative distributions\
+    \ are farthest apart.\n\n What it misses\n KS is a ranking diagnostic, not a business\
+    \ threshold. It does not include approval economics, loss severity,\n calibration,\
+    \ or fairness."
+  paragraphs:
+  - KS statistic – where are good and bad score distributions farthest apart?
+  - Financial interpretation The Kolmogorov-Smirnov statistic summarizes the maximum
+    separation between the cumulative score distributions of risky and non-risky cases.
+    It is widely used in scorecard validation.
+  - 'Working example At one score cutoff, suppose the model has captured 72% of all
+    defaults and 18% of non-defaults:'
+  - KS = 72% − 18% = 54%
+  - That cutoff is where the two cumulative distributions are farthest apart.
+  - What it misses KS is a ranking diagnostic, not a business threshold. It does not
+    include approval economics, loss severity, calibration, or fairness.
+  source:
+    pages:
+    - 272
+    verbatim: true
+- page: 273
+  title: KS
+  text: " KS\n\n   M10 | Formula explained (1/1)\n\n Question: At which evaluated\
+    \ cutoff are the two actual classes most separated?\n                        \
+    \                                   T P (t)              F P (t)\n           \
+    \                                       D(t) =           ,   L(t) =          \
+    \ ,\n                                                            N+          \
+    \         N−\n                                                      KS = max |D(t)\
+    \ − L(t)|.\n                                                                 t\n\
+    \n Read it aloud: At each cutoff, compare the fraction of defaults flagged with\
+    \ the fraction of\n non-defaults flagged. Keep the largest absolute difference.\n\
+    \ This is the Kolmogorov–Smirnov statistic applied to the class score distributions.\
+    \ The exercise\n calculates the maximum over the supplied cutoffs, not over additional\
+    \ unobserved thresholds."
+  paragraphs:
+  - KS
+  - M10 | Formula explained (1/1)
+  - 'Question: At which evaluated cutoff are the two actual classes most separated?
+    T P (t) F P (t) D(t) = , L(t) = , N+ N− KS = max |D(t) − L(t)|. t'
+  - 'Read it aloud: At each cutoff, compare the fraction of defaults flagged with
+    the fraction of non-defaults flagged. Keep the largest absolute difference. This
+    is the Kolmogorov–Smirnov statistic applied to the class score distributions.
+    The exercise calculates the maximum over the supplied cutoffs, not over additional
+    unobserved thresholds.'
+  source:
+    pages:
+    - 273
+    verbatim: true
+- page: 274
+  title: KS
+  text: " KS\n\n   M10 | Symbols and terms (1/2)\n\n\n   Symbol or term          \
+    \                       Meaning in this example\n   t                        \
+    \                      An evaluated score cutoff; A, B, C, or D labels a cutoff\
+    \ in the table.\n   T P (t)                                        Defaults flagged\
+    \ at cutoff t.\n   F P (t)                                        Non-defaults\
+    \ flagged at cutoff t.\n   N+ , N−                                        Total\
+    \ actual defaults and non-defaults: 20 and 80, respectively.\n   D(t), L(t)  \
+    \                                   Default capture rate and non-default capture\
+    \ rate at the same\n                                                  cutoff.\n\
+    \   |D(t) − L(t)|                                  Absolute class-rate gap; remove\
+    \ the sign before finding the\n                                              \
+    \    maximum."
+  paragraphs:
+  - KS
+  - M10 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example t An evaluated score cutoff; A, B, C,
+    or D labels a cutoff in the table. T P (t) Defaults flagged at cutoff t. F P (t)
+    Non-defaults flagged at cutoff t. N+ , N− Total actual defaults and non-defaults:
+    20 and 80, respectively. D(t), L(t) Default capture rate and non-default capture
+    rate at the same cutoff. |D(t) − L(t)| Absolute class-rate gap; remove the sign
+    before finding the maximum.'
+  source:
+    pages:
+    - 274
+    verbatim: true
+- page: 275
+  title: KS
+  text: " KS\n\n   M10 | Symbols and terms (2/2)\n\n\n   Symbol or term          \
+    \                       Meaning in this example\n   maxt                     \
+    \                      Select the largest value across all evaluated cutoffs.\n\
+    \   KS                                             Largest separation between\
+    \ the two cumulative score distributions;\n                                  \
+    \                unitless, often expressed in percentage points.\n   Percentage\
+    \ points; pp                          Direct difference between two percentages,\
+    \ not a percentage change\n                                                  relative\
+    \ to one of them."
+  paragraphs:
+  - KS
+  - M10 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example maxt Select the largest value across all
+    evaluated cutoffs. KS Largest separation between the two cumulative score distributions;
+    unitless, often expressed in percentage points. Percentage points; pp Direct difference
+    between two percentages, not a percentage change relative to one of them.
+  source:
+    pages:
+    - 275
+    verbatim: true
+- page: 276
+  title: KS
+  text: " KS\n\n   M10 | Class problem | 6 minutes — Find the Largest Separation\n\
+    \n A validation sample contains 20 defaults and 80 non-defaults. Flagging everyone\
+    \ at or above\n each available cutoff gives:\n                               \
+    \    KS = max |Default capture rate − Non-default capture rate| .\n\n        \
+    \                                                                At each cutoff,\
+    \ calculate the fraction of\n   Cutoff                                     Defaults\
+    \   Non-defaults\n                                               flagged     \
+    \   flagged\n                                                                \
+    \        defaults flagged and the fraction of\n                              \
+    \                                          non-defaults flagged.\n   A       \
+    \                                         5              2    Find KS across these\
+    \ cutoffs. Is the\n   B                                               12     \
+    \        12    cutoff with the largest gap automatically\n   C               \
+    \                                18             40    the best lending threshold?\n\
+    \   D                                               20             80"
+  paragraphs:
+  - KS
+  - M10 | Class problem | 6 minutes — Find the Largest Separation
+  - 'A validation sample contains 20 defaults and 80 non-defaults. Flagging everyone
+    at or above each available cutoff gives: KS = max |Default capture rate − Non-default
+    capture rate| .'
+  - At each cutoff, calculate the fraction of Cutoff Defaults Non-defaults flagged
+    flagged defaults flagged and the fraction of non-defaults flagged. A 5 2 Find
+    KS across these cutoffs. Is the B 12 12 cutoff with the largest gap automatically
+    C 18 40 the best lending threshold? D 20 80
+  source:
+    pages:
+    - 276
+    verbatim: true
+- page: 277
+  title: KS
+  text: " KS\n\n   M10 | Worked solution — Find the Largest Separation\n\n1. Divide\
+    \ each class count by its own total.\n   Cutoff                              \
+    \           Default capture   Non-default capture         Absolute gap\n   A \
+    \                                               5/20 = 25%           2/80 = 2.5%\
+    \                 22.5 pp\n   B                                              \
+    \ 12/20 = 60%           12/80 = 15%                  45 pp\n   C             \
+    \                                  18/20 = 90%           40/80 = 50%         \
+    \          40 pp\n   D                                              20/20 = 100%\
+    \          80/80 = 100%                    0 pp\n\n2. Select the largest separation:\
+    \ KS = 0.45, or 45 percentage points, at cutoff B among\n   those evaluated."
+  paragraphs:
+  - KS
+  - M10 | Worked solution — Find the Largest Separation
+  - 1. Divide each class count by its own total. Cutoff Default capture Non-default
+    capture Absolute gap A 5/20 = 25% 2/80 = 2.5% 22.5 pp B 12/20 = 60% 12/80 = 15%
+    45 pp C 18/20 = 90% 40/80 = 50% 40 pp D 20/20 = 100% 80/80 = 100% 0 pp
+  - '2. Select the largest separation: KS = 0.45, or 45 percentage points, at cutoff
+    B among those evaluated.'
+  source:
+    pages:
+    - 277
+    verbatim: true
+- page: 278
+  title: KS
+  text: " KS\n\n   M10 | Interpretation\n\n What the answer means\n At B, the model\
+    \ has captured 60% of defaults but only 15% of non-defaults. That separation is\n\
+    \ a ranking diagnostic. Choosing a lending action still requires loss severity,\
+    \ approval value,\n capacity, and policy constraints.\n Why these steps matter\n\
+    \ Dividing both counts by all 100 applicants would answer a different question.\
+    \ KS compares\n within-class capture rates, so each class needs its own denominator.\
+    \ The biggest statistical\n gap does not include lending margins or loss severity."
+  paragraphs:
+  - KS
+  - M10 | Interpretation
+  - What the answer means At B, the model has captured 60% of defaults but only 15%
+    of non-defaults. That separation is a ranking diagnostic. Choosing a lending action
+    still requires loss severity, approval value, capacity, and policy constraints.
+    Why these steps matter Dividing both counts by all 100 applicants would answer
+    a different question. KS compares within-class capture rates, so each class needs
+    its own denominator. The biggest statistical gap does not include lending margins
+    or loss severity.
+  source:
+    pages:
+    - 278
+    verbatim: true
+source:
+  pages:
+  - 271
+  - 272
+  - 273
+  - 274
+  - 275
+  - 276
+  - 277
+  - 278
+  verbatim: true

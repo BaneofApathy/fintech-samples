@@ -1,0 +1,3324 @@
+z:
+- meaning: Combined model score, measured in log-odds rather than dollars or percentage
+    points.
+  exercise: A01
+  source: &id001
+    pages:
+    - 22
+    verbatim: true
+p or P D:
+- meaning: Estimated probability of default within one year; enter it as a decimal.
+  exercise: A01
+  source: *id001
+DTI:
+- meaning: 'Debt-to-income ratio: debt-payment burden relative to income on a consistent
+    time basis. The supplied 35% is entered as 35, not 0.35.'
+  exercise: A01
+  source: *id001
+D:
+- meaning: 'Delinquency indicator: 1 means the specified prior late-payment condition
+    occurred; 0 means it did not.'
+  exercise: A01
+  source: *id001
+- meaning: Number of days over which the alert backlog accumulates; three here.
+  exercise: M39b
+  source: &id170
+    pages:
+    - 579
+    verbatim: true
+- meaning: Minutes when the service is completely unavailable, 90; D is downtime here,
+    not a loan delinquency indicator.
+  exercise: M39d
+  source: &id043
+    pages:
+    - 592
+    verbatim: true
+I:
+- meaning: Annual income in thousands of dollars; I = 60 means US$60,000, not US$60.
+  exercise: A01
+  source: &id002
+    pages:
+    - 23
+    verbatim: true
+−3:
+- meaning: 'Intercept: the starting score before feature contributions are added.'
+  exercise: A01
+  source: *id002
+0.04, 1.2, −0.03:
+- meaning: 'Fitted coefficients: score change for a one-unit increase in the corresponding
+    input, holding others fixed.'
+  exercise: A01
+  source: &id003
+    pages:
+    - 24
+    verbatim: true
+e, e−z:
+- meaning: Euler’s number, about 2.71828, raised to the negative score. Here e is
+    not a forecast error.
+  exercise: A01
+  source: *id003
+Odds; log-odds:
+- meaning: Odds are p/(1 − p); log-odds are the natural logarithm of the odds. The
+    score z is on this scale.
+  exercise: A01
+  source: *id003
+EAD:
+- meaning: 'Exposure at default: dollars outstanding when default occurs. Assume the
+    full US$10,000 is exposed.'
+  exercise: A01
+  source: *id003
+LGD:
+- meaning: 'Loss given default: the fraction of exposure not recovered; 40% becomes
+    0.40.'
+  exercise: A01
+  source: &id004
+    pages:
+    - 25
+    verbatim: true
+EL:
+- meaning: 'Expected loss: the model’s average loss across comparable loans, in dollars
+    over the stated horizon.'
+  exercise: A01
+  source: *id004
+- meaning: Analytical expected portfolio loss under the supplied default and loss
+    assumptions.
+  exercise: A12
+  source: &id051
+    pages:
+    - 188
+    verbatim: true
+≥; review threshold:
+- meaning: Greater than or equal to; the minimum estimated risk that triggers human
+    review here.
+  exercise: A01
+  source: &id005
+    pages:
+    - 26
+    verbatim: true
+Calibration:
+- meaning: Agreement between predicted probabilities and observed event rates across
+    comparable cases.
+  exercise: A01
+  source: *id005
+Default:
+- meaning: Failure to meet the repayment condition specified by the lender; the model
+    predicts whether that event occurs within one year.
+  exercise: A01
+  source: *id005
+Feature; fitted coefficient:
+- meaning: A supplied input describing an applicant; a numeric weight learned earlier
+    from training examples and held fixed during this prediction.
+  exercise: A01
+  source: *id005
+G:
+- meaning: 'Gini impurity: how mixed a node is; for two classes it ranges from 0 to
+    0.5.'
+  exercise: A02
+  source: &id006
+    pages:
+    - 37
+    verbatim: true
+- meaning: Cumulative undiscounted reward across this execution episode; not a return
+    percentage or probability.
+  exercise: M36
+  source: &id161
+    pages:
+    - 544
+    verbatim: true
+pf , pl:
+- meaning: Fractions of fraud and legitimate records within the particular node; they
+    sum to 1.
+  exercise: A02
+  source: *id006
+p2f , p2l:
+- meaning: Each class fraction multiplied by itself; the square is not a percentage
+    conversion.
+  exercise: A02
+  source: *id006
+N:
+- meaning: 'Number of records in the parent node: 10.'
+  exercise: A02
+  source: *id006
+- meaning: Number of completed orders, ten.
+  exercise: S04
+  source: &id010
+    pages:
+    - 175
+    verbatim: true
+- meaning: Total evaluated transactions, here 1,000.
+  exercise: M01
+  source: &id053
+    pages:
+    - 201
+    verbatim: true
+- meaning: 'Total number of evaluated transactions: 1,000.'
+  exercise: M02
+  source: &id054
+    pages:
+    - 209
+    verbatim: true
+- meaning: 'Total transactions in the population: 1,000.'
+  exercise: M13
+  source: &id079
+    pages:
+    - 306
+    verbatim: true
+- meaning: Number of equally weighted scenarios; 10 here.
+  exercise: M33
+  source: &id155
+    pages:
+    - 518
+    verbatim: true
+- meaning: Number of independent simulation runs; 2,500 initially and 10,000 in the
+    comparison.
+  exercise: M34
+  source: &id157
+    pages:
+    - 526
+    verbatim: true
+- meaning: Number of backtest days; 250 here.
+  exercise: M35
+  source: &id071
+    pages:
+    - 535
+    verbatim: true
+- meaning: Total number of requests, 100.
+  exercise: M39a
+  source: &id011
+    pages:
+    - 570
+    verbatim: true
+- meaning: Incoming request count, 1,000; includes automatic answers and abstentions.
+  exercise: M39c
+  source: &id171
+    pages:
+    - 585
+    verbatim: true
+n1 , n2:
+- meaning: 'Child record counts: 4 for new devices and 6 for trusted devices.'
+  exercise: A02
+  source: *id006
+G 1 , G2:
+- meaning: Impurities of the new-device and trusted-device child nodes.
+  exercise: A02
+  source: *id006
+Gparent , Gsplit:
+- meaning: Original impurity and record-weighted impurity after the split.
+  exercise: A02
+  source: &id007
+    pages: &id008
+    - 38
+    verbatim: true
+∆G:
+- meaning: Reduction in impurity; a positive value means the proposed split makes
+    the training groups less mixed.
+  exercise: A02
+  source: *id007
+B, b:
+- meaning: Number of trees, here 3, and an index selecting one tree.
+  exercise: A02
+  source: *id007
+- meaning: Number of trees, here 3, and the index of an individual tree.
+  exercise: A05
+  source: &id015
+    pages:
+    - 70
+    verbatim: true
+pb , pforest:
+- meaning: One tree’s supplied fraud score and the mean score across trees.
+  exercise: A02
+  source: *id007
+Σ (b = 1 … B):
+- meaning: Add the contribution from each of the B trees.
+  exercise: A02
+  source:
+    pages: *id008
+    verbatim: false
+Challenge:
+- meaning: An extra identity or transaction check; it is not necessarily a decline.
+  exercise: A02
+  source: *id007
+F0:
+- meaning: Initial combined score, −2.0, before the two supplied trees contribute.
+  exercise: A03
+  source: &id009
+    pages:
+    - 48
+    verbatim: true
+m:
+- meaning: Tree or boosting-step number; m = 1 for the first tree and m = 2 for the
+    second.
+  exercise: A03
+  source: *id009
+- meaning: Number of scenarios in the selected tail, (1 − α)N = 2 here.
+  exercise: M33
+  source: &id156
+    pages:
+    - 519
+    verbatim: true
+Fm−1 , Fm:
+- meaning: Combined log-odds scores before and after adding tree m.
+  exercise: A03
+  source: *id009
+hm:
+- meaning: Correction supplied by tree m for this applicant; the values are 0.8 and
+    0.4.
+  exercise: A03
+  source: *id009
+η (eta):
+- meaning: 'Learning rate: fraction of each tree’s correction applied; compare 0.5
+    with 0.25.'
+  exercise: A03
+  source: *id009
+p:
+- meaning: Predicted default probability after the final tree, on a 0–1 scale.
+  exercise: A03
+  source: *id009
+- meaning: Percentile fraction, 0.90 for p90 or 0.95 for p95.
+  exercise: S04
+  source: *id010
+- meaning: Calibrated probability that the transaction is fraud, entered as a decimal.
+  exercise: M17b
+  source: &id065
+    pages: &id099
+    - 345
+    verbatim: true
+- meaning: 'Percentile fraction: 0.95 for p95 and 0.99 for p99.'
+  exercise: M39a
+  source: *id011
+e−Fm:
+- meaning: Exponential of the negative final score; e ≈ 2.71828.
+  exercise: A03
+  source: &id012
+    pages:
+    - 49
+    verbatim: true
+Log-odds:
+- meaning: Natural logarithm of probability divided by one minus probability; not
+    the probability itself.
+  exercise: A03
+  source: *id012
+Boosting:
+- meaning: Adding models sequentially to improve the current prediction under a specified
+    loss function.
+  exercise: A03
+  source: *id012
+K-means; K:
+- meaning: A clustering method using a chosen number of centers; here K = 2.
+  exercise: A04
+  source: &id013
+    pages:
+    - 59
+    verbatim: true
+xi , i:
+- meaning: Savings rate of customer i; i identifies a customer, not an exponent.
+  exercise: A04
+  source: *id013
+µj (mu), j:
+- meaning: Center, or centroid, of group j; j identifies one of the two groups.
+  exercise: A04
+  source: *id013
+dij:
+- meaning: Distance from customer i to center j.
+  exercise: A04
+  source: *id013
+'|xi − µj |':
+- meaning: 'Absolute difference: remove the minus sign so distance cannot be negative.'
+  exercise: A04
+  source: *id013
+nj:
+- meaning: Number of customers currently assigned to group j.
+  exercise: A04
+  source: *id013
+Cluster; centroid:
+- meaning: A group of similar observations; its center is the arithmetic average of
+    the assigned values here.
+  exercise: A04
+  source: &id014
+    pages:
+    - 60
+    verbatim: true
+Assignment; update:
+- meaning: Choose a customer’s group; then recalculate each group’s center.
+  exercise: A04
+  source: *id014
+Unsupervised:
+- meaning: The grouping uses input behavior without a supplied outcome label such
+    as default.
+  exercise: A04
+  source: *id014
+Isolation path:
+- meaning: The sequence of splits followed for an observation; its length counts the
+    steps used to isolate it.
+  exercise: A05
+  source: *id015
+hb:
+- meaning: Path length for this transaction in tree b.
+  exercise: A05
+  source: *id015
+h̄:
+- meaning: Mean path length; the bar means average, not a new type of tree.
+  exercise: A05
+  source: *id015
+c:
+- meaning: Positive normalization constant supplied as 4; scales path length for comparison.
+  exercise: A05
+  source: *id015
+- meaning: Cost per reviewed alert, US$4.
+  exercise: M04
+  source: &id055
+    pages:
+    - 225
+    verbatim: true
+- meaning: Review cost per transaction, US$2.
+  exercise: M12
+  source: &id078
+    pages:
+    - 298
+    verbatim: true
+- meaning: Fixed loss per actual default, US$4,000.
+  exercise: M14
+  source: &id090
+    pages: &id089
+    - 314
+    verbatim: true
+- meaning: Fee rate per dollar traded; 10 basis points equals 0.001.
+  exercise: M32b
+  source: &id151
+    pages:
+    - 504
+    verbatim: true
+s:
+- meaning: Anomaly score with higher meaning more unusual; it is not fraud probability.
+  exercise: A05
+  source: *id015
+2u:
+- meaning: Two raised to exponent u; a negative exponent produces a reciprocal, such
+    as 2−1 = 1/2.
+  exercise: A05
+  source: &id016
+    pages:
+    - 71
+    verbatim: true
+Rank:
+- meaning: Position after sorting scores. Rank 1 is the transaction reviewed first
+    here.
+  exercise: A05
+  source: *id016
+Anomaly:
+- meaning: An observation that differs from the reference pattern; it can be legitimate.
+  exercise: A05
+  source: *id016
+ARIMA:
+- meaning: 'Autoregressive Integrated Moving Average: combines past-value dependence,
+    differencing, and possibly past-error dependence.'
+  exercise: A06
+  source: &id017
+    pages:
+    - 81
+    verbatim: true
+(1, 1, 0):
+- meaning: 'The three model orders: one lag of the differenced series; difference
+    once; no lagged-error term.'
+  exercise: A06
+  source: *id017
+yt , yt−1:
+- meaning: Today’s and yesterday’s actual settlement outflows, in millions of dollars.
+  exercise: A06
+  source: *id017
+t + 1, t + 2:
+- meaning: One and two days beyond the last observed day; these are forecast horizons.
+  exercise: A06
+  source: *id017
+∆ (delta):
+- meaning: 'Change operator: subtract the preceding value.'
+  exercise: A06
+  source: *id017
+∆yt:
+- meaning: Latest observed daily change, not the outflow level.
+  exercise: A06
+  source: *id017
+Δŷₜ₊₁:
+- meaning: Predicted next change; the hat indicates a forecast.
+  exercise: A06
+  source:
+    pages: &id018
+    - 82
+    verbatim: false
+ŷt+1 , ŷt+2:
+- meaning: Predicted future outflow levels; obtain them by adding forecast changes.
+  exercise: A06
+  source: &id019
+    pages: *id018
+    verbatim: true
+'0.5':
+- meaning: 'Fitted autoregressive coefficient: this model carries half the latest
+    change into the next prediction.'
+  exercise: A06
+  source: *id019
+Drift; future error:
+- meaning: A constant average-change term; an unpredictable future shock. No drift
+    is added and future shocks have forecast mean zero here.
+  exercise: A06
+  source: *id019
+Buffer:
+- meaning: Extra liquidity above the point forecast; the fixed US$10 million is an
+    assumption, not a prediction interval.
+  exercise: A06
+  source: &id020
+    pages:
+    - 83
+    verbatim: true
+Absolute error:
+- meaning: Magnitude of actual minus forecast, written |y − ŷ|; the sign is removed.
+  exercise: A06
+  source: *id020
+Naive forecast:
+- meaning: A simple reference prediction; the last-value version sets tomorrow equal
+    to today’s level.
+  exercise: A06
+  source:
+    pages:
+    - 84
+    verbatim: true
+Node; u, v:
+- meaning: One entity in the network, such as an account, device, or merchant; u and
+    v denote selected nodes.
+  exercise: A07
+  source: &id021
+    pages:
+    - 94
+    verbatim: true
+Edge:
+- meaning: One link between two entities; the supplied list defines all links available
+    at the cutoff.
+  exercise: A07
+  source: *id021
+N (v):
+- meaning: Set of nodes directly linked to node v; read as “neighbors of v.”
+  exercise: A07
+  source: *id021
+'|N (v)|':
+- meaning: Number of elements in that set; vertical bars around a set mean its size,
+    not absolute value.
+  exercise: A07
+  source: *id021
+deg(v):
+- meaning: 'Degree: number of direct links to node v in this simple graph.'
+  exercise: A07
+  source: *id021
+Path:
+- meaning: A route that follows one linked pair after another.
+  exercise: A07
+  source: *id021
+d(u, v):
+- meaning: Shortest-path length between nodes u and v, counted in edges.
+  exercise: A07
+  source: &id022
+    pages:
+    - 95
+    verbatim: true
+min:
+- meaning: Choose the smallest value among the candidate path lengths.
+  exercise: A07
+  source: *id022
+Connected component:
+- meaning: A maximal set of mutually reachable nodes; adding another reachable node
+    would mean the set was incomplete.
+  exercise: A07
+  source: *id022
+Cutoff:
+- meaning: Latest time at which a link is allowed into this historical decision; later
+    links cannot be used.
+  exercise: A07
+  source: *id022
+Token:
+- meaning: An input text unit. In this toy example each of the two words is treated
+    as one token.
+  exercise: A08
+  source: &id023
+    pages:
+    - 106
+    verbatim: true
+si:
+- meaning: Already-scaled attention logit for token i; a raw score before normalization.
+  exercise: A08
+  source: *id023
+- meaning: Customer-level silhouette score, normally between −1 and 1 for valid distances.
+  exercise: M26
+  source: &id024
+    pages:
+    - 423
+    verbatim: true
+i, j:
+- meaning: Token indices; j runs over all tokens in the softmax denominator.
+  exercise: A08
+  source: *id023
+e; ln:
+- meaning: Exponential base, about 2.71828; its inverse, the natural logarithm. Thus
+    eln(3) = 3.
+  exercise: A08
+  source: *id023
+ai:
+- meaning: Nonnegative attention weight for token i; all attention weights sum to
+    1.
+  exercise: A08
+  source: &id025
+    pages:
+    - 107
+    verbatim: true
+- meaning: Mean distance from customer i to other customers in its assigned cluster;
+    exclude the customer itself.
+  exercise: M26
+  source: *id024
+vi:
+- meaning: 'Supplied scalar value associated with token i: −1 for “loss” and +1 for
+    “narrowed.”'
+  exercise: A08
+  source: *id025
+P:
+- meaning: 'Add the indicated terms: token exponentials in the denominator or weighted
+    token values in the representation.'
+  exercise: A08
+  source: &id026
+    pages:
+    - 108
+    verbatim: true
+- meaning: 'Precision: the fraction of alerts that are genuine fraud; use 0.30 here.'
+  exercise: M07
+  source: &id069
+    pages:
+    - 250
+    verbatim: true
+h:
+- meaning: Combined scalar representation after attention; a learned vector is simplified
+    to one number here.
+  exercise: A08
+  source: *id026
+z + , z0 , z−:
+- meaning: Classification logits for positive, neutral, and negative sentiment; +,
+    0, and − name labels here.
+  exercise: A08
+  source: *id026
+c, pc:
+- meaning: A selected class and its softmax probability; the three class probabilities
+    sum to 1.
+  exercise: A08
+  source: *id026
+Logit; softmax:
+- meaning: An unnormalized score; the exponential normalization that converts a group
+    of scores into nonnegative shares summing to 1.
+  exercise: A08
+  source: &id027
+    pages:
+    - 109
+    verbatim: true
+Routing threshold:
+- meaning: Minimum top-class probability required by this classroom workflow before
+    an automatic label is accepted.
+  exercise: A08
+  source: *id027
+FinBERT:
+- meaning: A BERT-based language model adapted to financial text; this hand calculation
+    illustrates attention and classification, not its actual internal parameters.
+  exercise: A08
+  source: &id028
+    pages:
+    - 110
+    verbatim: true
+BERT; transformer:
+- meaning: Bidirectional Encoder Representations from Transformers; a model architecture
+    that builds context-dependent representations using attention and other learned
+    transformations.
+  exercise: A08
+  source: *id028
+Embedding:
+- meaning: A numerical vector representing text for a similarity comparison; the vectors
+    here are supplied toy values.
+  exercise: A09
+  source: &id029
+    pages:
+    - 121
+    verbatim: true
+q, d:
+- meaning: Query vector and a document-chunk vector, respectively.
+  exercise: A09
+  source: *id029
+q1 , q2 , d1 , d2:
+- meaning: First and second coordinates of the corresponding vectors; subscripts label
+    dimensions.
+  exercise: A09
+  source: *id029
+q·d:
+- meaning: 'Dot product: sum of products of corresponding coordinates.'
+  exercise: A09
+  source: *id029
+∥q∥, ∥d∥:
+- meaning: Euclidean vector lengths, or norms; double bars indicate length, not a
+    confidence score.
+  exercise: A09
+  source: *id029
+sim(q, d):
+- meaning: Cosine similarity; a unitless directional similarity score, not an answer-correctness
+    probability.
+  exercise: A09
+  source: *id029
+Chunk; top two:
+- meaning: A separately indexed passage; the two passages with the highest similarity
+    scores.
+  exercise: A09
+  source: &id030
+    pages:
+    - 122
+    verbatim: true
+RAG:
+- meaning: 'Retrieval-augmented generation: retrieve source material, then use it
+    to support an answer.'
+  exercise: A09
+  source: *id030
+R2024 , R2025:
+- meaning: Revenue in the two named years, both in millions of dollars here; R does
+    not mean recall in this exercise.
+  exercise: A09
+  source: *id030
+g, g%:
+- meaning: Fractional growth and its percentage-number form; report g% with a percent
+    sign.
+  exercise: A09
+  source: *id030
+Grounded answer:
+- meaning: An answer whose factual claims can be traced to the supplied evidence or
+    a checked calculation from it.
+  exercise: A09
+  source: *id030
+Parser:
+- meaning: Software that converts a filing into machine-readable text, tables, and
+    structure.
+  exercise: S01
+  source: &id031
+    pages:
+    - 127
+    verbatim: true
+Ntables , Nintact:
+- meaning: Number of audited tables and tables retaining every required header, row,
+    and unit label; eight and seven.
+  exercise: S01
+  source: *id031
+Nrequired , Npresent:
+- meaning: Number of required sections and those appearing in the parsed output; ten
+    and nine.
+  exercise: S01
+  source: *id031
+Ncells , Nwrong:
+- meaning: Audited numeric cells and cells with an incorrect number or unit; 200 and
+    six.
+  exercise: S01
+  source: *id031
+Cell:
+- meaning: One location at the intersection of a table row and column.
+  exercise: S01
+  source: &id032
+    pages:
+    - 128
+    verbatim: true
+Header:
+- meaning: A label explaining what a row or column represents, such as revenue, 2025,
+    or USD millions.
+  exercise: S01
+  source: *id032
+Unit label:
+- meaning: Information specifying the figure’s measurement scale, currency, or other
+    unit; losing it can change the meaning of a correct-looking numeral.
+  exercise: S01
+  source: &id033
+    pages:
+    - 129
+    verbatim: true
+Integrity:
+- meaning: Complete preservation of the specified table elements under this audit
+    rubric, not a general security certification.
+  exercise: S01
+  source: *id033
+Coverage:
+- meaning: Presence of required sections here; a different meaning from automatic-answer
+    coverage or interval coverage.
+  exercise: S01
+  source: *id033
+- meaning: Observed fraction of evaluated outcomes inside their intervals.
+  exercise: M24
+  source: &id082
+    pages:
+    - 406
+    verbatim: true
+Q, q:
+- meaning: Total question count and one question’s index; four questions are evaluated.
+  exercise: S02
+  source: &id034
+    pages:
+    - 134
+    verbatim: true
+- meaning: Total number of evaluated questions, here 4, and a question index.
+  exercise: M29a
+  source: &id134
+    pages:
+    - 456
+    verbatim: true
+mq:
+- meaning: Number of components required to answer question q fully.
+  exercise: S02
+  source: *id034
+kq:
+- meaning: Number of required components correctly supplied for that question.
+  exercise: S02
+  source: *id034
+1[kq = mq ]:
+- meaning: Equals 1 if all required components are supplied correctly; otherwise 0.
+  exercise: S02
+  source: *id034
+Component:
+- meaning: One required fact, calculation, or explanation specified in the answer
+    key.
+  exercise: S02
+  source: &id035
+    pages:
+    - 135
+    verbatim: true
+Rubric:
+- meaning: The explicit criteria used to determine whether an answer contains the
+    required correct content.
+  exercise: S02
+  source: *id035
+Exactness:
+- meaning: Whole-question success rate under this rubric; not exact character matching.
+  exercise: S02
+  source: &id036
+    pages:
+    - 136
+    verbatim: true
+Component completeness:
+- meaning: Correctly supplied required content as a share of all required content,
+    pooled across questions.
+  exercise: S02
+  source: *id036
+Pooled:
+- meaning: Counts are added before division; a question requiring four components
+    contributes four to the component denominator.
+  exercise: S02
+  source: *id036
+w, 1 − w:
+- meaning: Stock and bond weights as fractions of the whole portfolio; together they
+    equal 1.
+  exercise: A10
+  source: &id037
+    pages:
+    - 147
+    verbatim: true
+µs , µb , µp:
+- meaning: Expected annual arithmetic returns for stocks, bonds, and the portfolio;
+    mu denotes a mean here.
+  exercise: A10
+  source: *id037
+σs , σb , σp:
+- meaning: Annual return standard deviations, or volatilities; sigma measures variability,
+    not expected loss.
+  exercise: A10
+  source: *id037
+σp2:
+- meaning: 'Portfolio variance: squared volatility, in squared decimal-return units.'
+  exercise: A10
+  source: *id037
+ρ (rho):
+- meaning: 'Correlation: how the two assets co-move; assumed to be zero, not estimated
+    in this exercise.'
+  exercise: A10
+  source: &id038
+    pages:
+    - 148
+    verbatim: true
+2w(1 − w)ρσs σb:
+- meaning: Covariance contribution to variance; it vanishes under the given zero-correlation
+    assumption.
+  exercise: A10
+  source: *id038
+√:
+- meaning: Square root; converts variance back into the same return units as volatility.
+  exercise: A10
+  source: &id039
+    pages:
+    - 149
+    verbatim: true
+∈, {. . .}:
+- meaning: “Belongs to” and a set of allowed values; the stock weight must be one
+    of the three listed.
+  exercise: A10
+  source: *id039
+V:
+- meaning: Total portfolio value, US$100,000.
+  exercise: A10
+  source: *id039
+- meaning: 'Number of alerts requiring review under a threshold: caught fraud plus
+    false alerts.'
+  exercise: M17a
+  source: &id087
+    pages:
+    - 340
+    verbatim: true
+- meaning: Portfolio value, $1 million, before transaction costs in the calculation.
+  exercise: M32b
+  source: &id150
+    pages:
+    - 503
+    verbatim: true
+- meaning: Original order value or notional; $1 million here.
+  exercise: M36
+  source: &id049
+    pages:
+    - 545
+    verbatim: true
+Objective:
+- meaning: Quantity to make as small or large as possible; minimize modeled variance
+    here.
+  exercise: A10
+  source: *id039
+Constraint; feasible:
+- meaning: A requirement that must be met; a candidate satisfying every stated requirement.
+  exercise: A10
+  source: &id040
+    pages:
+    - 150
+    verbatim: true
+Optimal candidate:
+- meaning: The best feasible member of the supplied candidate set under these estimates;
+    not a guaranteed outcome.
+  exercise: A10
+  source: *id040
+s, s′:
+- meaning: Current state and next state; the prime marks the state after the action,
+    not a derivative.
+  exercise: A11
+  source: &id041
+    pages:
+    - 160
+    verbatim: true
+a:
+- meaning: An available action, such as buying now or waiting.
+  exercise: A11
+  source: *id041
+Q(s, a):
+- meaning: Estimated discounted cumulative reward from taking action a in state s
+    and continuing thereafter.
+  exercise: A11
+  source: *id041
+Qold , Qnew:
+- meaning: Stored value before and after this learning update.
+  exercise: A11
+  source: *id041
+r:
+- meaning: Immediate reward from the observed action; here negative cost in simulator
+    reward units.
+  exercise: A11
+  source: *id041
+γ (gamma):
+- meaning: 'Discount factor, 0.9: weight placed on reward one step further into the
+    future.'
+  exercise: A11
+  source: *id041
+maxa Q(s′ , a):
+- meaning: Largest estimated value among valid actions in the next state.
+  exercise: A11
+  source: &id042
+    pages:
+    - 161
+    verbatim: true
+T:
+- meaning: Update target; a newly introduced label for immediate plus discounted future
+    reward.
+  exercise: A11
+  source: *id042
+- meaning: Number of tied-score pairs; this is not time or a tree count here.
+  exercise: M09
+  source: &id073
+    pages: &id075
+    - 266
+    verbatim: true
+- meaning: 'Total possible unordered pairs among all six customers: 6 choose 2.'
+  exercise: M27b
+  source:
+    pages: &id098
+    - 441
+    verbatim: false
+- meaning: Elapsed queue-building time in seconds; ten minutes equals 600 seconds.
+  exercise: M39b
+  source: &id169
+    pages:
+    - 578
+    verbatim: true
+- meaning: Total scheduled operating minutes in the month; the service is expected
+    to operate 24 hours per day.
+  exercise: M39d
+  source: *id043
+δ (delta):
+- meaning: 'Temporal-difference error: target minus the old action value.'
+  exercise: A11
+  source: *id042
+α (alpha):
+- meaning: 'Learning rate, 0.5: how much of the error is applied to the old estimate.'
+  exercise: A11
+  source: *id042
+Greedy policy:
+- meaning: Chooses the action with highest current estimated value; it does not deliberately
+    explore alternatives.
+  exercise: A11
+  source: *id042
+Episode; terminal:
+- meaning: One complete simulated execution task; terminal means that task has ended
+    and no future reward remains.
+  exercise: A11
+  source: *id042
+Q:
+- meaning: Original intended buy quantity, 1,000 shares; not a reinforcement-learning
+    Q-value.
+  exercise: S03
+  source: &id044
+    pages:
+    - 167
+    verbatim: true
+i, qi:
+- meaning: Fill index and quantity bought in that fill; 400 shares in each of two
+    fills.
+  exercise: S03
+  source: *id044
+Pi:
+- meaning: Price paid per share in fill i; $50.10 and $50.20.
+  exercise: S03
+  source: *id044
+P0:
+- meaning: Arrival-price benchmark, $50.00 per share, used for the intended trade’s
+    reference value.
+  exercise: S03
+  source: *id044
+qu:
+- meaning: Shares unfilled by the evaluation endpoint; target quantity minus filled
+    quantities.
+  exercise: S03
+  source: &id045
+    pages:
+    - 168
+    verbatim: true
+Pclose:
+- meaning: Closing price used to value the unfilled-share opportunity cost, $50.30.
+  exercise: S03
+  source: *id045
+F ees:
+- meaning: Total additional execution fees, $20, counted once.
+  exercise: S03
+  source: &id046
+    pages:
+    - 169
+    verbatim: true
+IS:
+- meaning: Implementation shortfall in dollars under the supplied buy-order convention.
+  exercise: S03
+  source: *id046
+V0:
+- meaning: 'Original target notional: all intended shares valued at the arrival price.'
+  exercise: S03
+  source: *id046
+ISbps:
+- meaning: Implementation shortfall as basis points of original target notional; 10,000
+    basis points equal the whole notional.
+  exercise: S03
+  source: *id046
+Fill; slippage:
+- meaning: An executed portion of the order; its price difference from the stated
+    benchmark.
+  exercise: S03
+  source: &id047
+    pages:
+    - 170
+    verbatim: true
+Opportunity cost:
+- meaning: Benchmark-based cost of the missed trade as the market moved, not an actual
+    cash fee on unfilled shares.
+  exercise: S03
+  source: *id047
+ci:
+- meaning: Execution cost of completed order i, expressed in basis points of that
+    order’s notional.
+  exercise: S04
+  source: *id010
+c̄:
+- meaning: Arithmetic mean cost across orders; lower cost is better under the stated
+    comparison.
+  exercise: S04
+  source: *id010
+c(j):
+- meaning: The jth lowest cost after sorting orders from cheapest to most expensive.
+  exercise: S04
+  source: *id010
+⌈pN ⌉:
+- meaning: 'Nearest-rank position: round upward to the next integer.'
+  exercise: S04
+  source: *id010
+- meaning: 'Nearest-rank position: round the product upward to an integer.'
+  exercise: M39a
+  source: &id167
+    pages:
+    - 571
+    verbatim: true
+f, m:
+- meaning: Tail fraction and corresponding number of worst orders; 20% and two in
+    this exercise.
+  exercise: S04
+  source: &id048
+    pages:
+    - 176
+    verbatim: true
+Tail:
+- meaning: The high-cost end of the observed distribution, not the last orders in
+    chronological time.
+  exercise: S04
+  source: *id048
+Basis point (bp):
+- meaning: One ten-thousandth of order value. A cost of 20 bps is 0.20% of that order’s
+    notional.
+  exercise: S04
+  source: *id048
+- meaning: One ten-thousandth of notional, equal to 0.01 percentage point.
+  exercise: M36
+  source: *id049
+Baseline:
+- meaning: Comparator that costs 12 bps on every one of the same ten orders.
+  exercise: S04
+  source: *id048
+- meaning: A comparison method simple enough to interpret; here it always predicts
+    legitimate.
+  exercise: M02
+  source: &id062
+    pages:
+    - 210
+    verbatim: true
+i, j, N:
+- meaning: Loan index; simulation-run index; number of runs, here 5.
+  exercise: A12
+  source: &id050
+    pages:
+    - 187
+    verbatim: true
+uij:
+- meaning: Uniform draw between 0 and 1 for loan i in run j; equal-length intervals
+    have equal probability.
+  exercise: A12
+  source: *id050
+P Di:
+- meaning: Loan i’s assumed probability of default over the exercise horizon, 0.20.
+  exercise: A12
+  source: *id050
+Dij ; 1(·):
+- meaning: Default indicator; the indicator function gives 1 when the bracketed statement
+    is true and 0 otherwise.
+  exercise: A12
+  source: *id050
+EADi:
+- meaning: Exposure at default, US$10,000 for each loan.
+  exercise: A12
+  source: *id050
+LGDi:
+- meaning: 'Loss given default, the unrecovered fraction of exposure: 0.50 for each
+    loan.'
+  exercise: A12
+  source: *id050
+Lj , L̄:
+- meaning: Portfolio loss in run j and average loss across runs, both in dollars.
+  exercise: A12
+  source: *id051
+B:
+- meaning: 'Reserve buffer: US$5,000. Breach requires loss greater than, not equal
+    to, this amount.'
+  exercise: A12
+  source: *id051
+- meaning: Count of days with losses above their forecasts; 10 here.
+  exercise: M35
+  source: &id160
+    pages:
+    - 536
+    verbatim: true
+p̂breach:
+- meaning: Estimated reserve-breach probability; the hat marks an estimate from a
+    finite simulation sample.
+  exercise: A12
+  source: *id051
+Independence:
+- meaning: One loan’s default does not change the other loan’s probability of default
+    under this toy model.
+  exercise: A12
+  source: &id052
+    pages:
+    - 189
+    verbatim: true
+Simulation noise:
+- meaning: Variation in the estimate caused by using finitely many random draws, even
+    when the model assumptions are fixed.
+  exercise: A12
+  source: *id052
+TP:
+- meaning: 'True positives: actual frauds correctly flagged. “True” means the prediction
+    matches the outcome.'
+  exercise: M01
+  source: *id053
+- meaning: 'True positives: actual frauds correctly flagged. “True” means the prediction
+    matches the outcome.'
+  exercise: M02
+  source: *id054
+- meaning: 'True positives: actual frauds correctly flagged. “True” means the prediction
+    matches the outcome.'
+  exercise: M03
+  source: &id056
+    pages:
+    - 217
+    verbatim: true
+- meaning: 'Confirmed frauds in the reviewed queue: 15 in A or 8 in B.'
+  exercise: M04
+  source: *id055
+- meaning: Number of actual frauds caught by the detector.
+  exercise: M05
+  source: &id059
+    pages:
+    - 233
+    verbatim: true
+- meaning: 'True positives: actual frauds correctly flagged. “True” means the prediction
+    matches the outcome.'
+  exercise: M08
+  source: &id057
+    pages:
+    - 258
+    verbatim: true
+- meaning: Fraud correctly flagged and sent to review.
+  exercise: M17a
+  source: &id058
+    pages:
+    - 339
+    verbatim: true
+FP:
+- meaning: 'False positives: legitimate transactions incorrectly flagged.'
+  exercise: M01
+  source: *id053
+- meaning: 'False positives: legitimate transactions incorrectly flagged.'
+  exercise: M02
+  source: *id054
+- meaning: 'False positives: legitimate transactions incorrectly flagged.'
+  exercise: M03
+  source: *id056
+- meaning: Reviewed alerts found to be legitimate; subtract confirmed frauds from
+    queue size.
+  exercise: M04
+  source: *id055
+- meaning: 'Legitimate transactions wrongly flagged: 35 in the validation sample.'
+  exercise: M06
+  source: &id060
+    pages:
+    - 241
+    verbatim: true
+- meaning: 'False positives: legitimate transactions incorrectly flagged.'
+  exercise: M08
+  source: *id057
+- meaning: Legitimate transactions incorrectly flagged.
+  exercise: M17a
+  source: *id058
+FN:
+- meaning: 'False negatives: actual frauds incorrectly passed or left unflagged.'
+  exercise: M01
+  source: *id053
+- meaning: 'False negatives: actual frauds incorrectly passed or left unflagged.'
+  exercise: M02
+  source: *id054
+- meaning: 'False negatives: actual frauds incorrectly passed or left unflagged.'
+  exercise: M03
+  source: *id056
+- meaning: Number of actual frauds missed by the detector.
+  exercise: M05
+  source: *id059
+- meaning: 'False negatives: actual frauds incorrectly passed or left unflagged.'
+  exercise: M08
+  source: *id057
+- meaning: Actual frauds not flagged.
+  exercise: M17a
+  source: *id058
+TN:
+- meaning: 'True negatives: legitimate transactions correctly passed.'
+  exercise: M01
+  source: *id053
+- meaning: 'True negatives: legitimate transactions correctly passed.'
+  exercise: M02
+  source: *id054
+- meaning: 'True negatives: legitimate transactions correctly passed.'
+  exercise: M03
+  source: *id056
+- meaning: 'Legitimate transactions correctly passed: 945 in the validation sample.'
+  exercise: M06
+  source: *id060
+- meaning: 'True negatives: legitimate transactions correctly passed.'
+  exercise: M08
+  source: *id057
+Positive class:
+- meaning: The event being detected; fraud in this exercise, not a judgment that fraud
+    is desirable.
+  exercise: M01
+  source: *id053
+Negative class:
+- meaning: The other outcome; legitimate activity here.
+  exercise: M01
+  source: &id061
+    pages:
+    - 202
+    verbatim: true
+Positive prediction; flag:
+- meaning: The detector’s decision to mark a transaction for intervention or review.
+  exercise: M01
+  source: *id061
+Actual outcome; label:
+- meaning: Confirmed fraud or legitimate status, available later for evaluation.
+  exercise: M01
+  source: *id061
+Confusion matrix:
+- meaning: A table crossing predicted decisions with actual labels to count correct
+    and incorrect outcomes.
+  exercise: M01
+  source: *id061
+Numerator T P + T N:
+- meaning: All correct decisions, combining both actual classes.
+  exercise: M02
+  source: *id054
+Denominator N:
+- meaning: All transactions, not just alerts or frauds.
+  exercise: M02
+  source: *id062
+Class imbalance:
+- meaning: One outcome is much more common; here 980 legitimate cases greatly outnumber
+    20 frauds.
+  exercise: M02
+  source: *id062
+Recall; sensitivity:
+- meaning: Fraction of actual frauds correctly flagged; also called the true-positive
+    rate.
+  exercise: M03
+  source: *id056
+Specificity:
+- meaning: Fraction of actual legitimate cases correctly passed; also called the true-negative
+    rate.
+  exercise: M03
+  source: *id056
+Balanced accuracy:
+- meaning: Arithmetic mean of those two class-specific success rates in this binary
+    example.
+  exercise: M03
+  source: &id063
+    pages:
+    - 218
+    verbatim: true
+TP + FN; TN + FP:
+- meaning: Total actual frauds; total actual legitimate transactions.
+  exercise: M03
+  source: *id063
+Equal class weight:
+- meaning: Each class contributes half the final score even when one contains many
+    more records.
+  exercise: M03
+  source: *id063
+TP + FP:
+- meaning: 'All reviewed alerts: 50 in A or 10 in B.'
+  exercise: M04
+  source: *id055
+Creview:
+- meaning: Total spending on reviewing that queue, in dollars.
+  exercise: M04
+  source: *id055
+Precision:
+- meaning: Fraction of the reviewed alerts that are fraud, not the fraction of all
+    frauds found.
+  exercise: M04
+  source: *id055
+Stricter threshold:
+- meaning: Higher risk-score requirement for entry into this queue; it selects fewer
+    transactions here.
+  exercise: M04
+  source: &id064
+    pages:
+    - 226
+    verbatim: true
+Efficiency per discovery:
+- meaning: Review cost divided by confirmed fraud count; undefined if no fraud is
+    discovered.
+  exercise: M04
+  source: *id064
+F = TP + FN:
+- meaning: Total fraud events in the batch, here 20; F is a count, not an F-score.
+  exercise: M05
+  source: *id059
+cF N:
+- meaning: Unrecovered loss for each missed fraud, assumed to be US$2,000.
+  exercise: M05
+  source: *id059
+- meaning: Assumed cost per missed fraud, US$500.
+  exercise: M17a
+  source: *id058
+- meaning: Loss from passing a fraud, US$500.
+  exercise: M17b
+  source: *id065
+Lmiss:
+- meaning: Residual loss attributable to missed frauds under the stated assumption,
+    in dollars.
+  exercise: M05
+  source: *id059
+Recall:
+- meaning: Share of all actual frauds that were identified, also called sensitivity
+    or TPR.
+  exercise: M05
+  source: *id059
+Residual:
+- meaning: What remains after detection or control; here it refers only to loss from
+    missed events.
+  exercise: M05
+  source: &id066
+    pages:
+    - 234
+    verbatim: true
+Value capture:
+- meaning: Share of fraud dollars identified; generally different from event recall
+    when fraud amounts differ.
+  exercise: M05
+  source: *id066
+TN + FP:
+- meaning: 'All actual legitimate transactions: 980 in the sample.'
+  exercise: M06
+  source: *id060
+Specificity; TNR:
+- meaning: 'True-negative rate: fraction of legitimate activity correctly passed.'
+  exercise: M06
+  source: *id060
+FPR:
+- meaning: 'False-positive rate: fraction of legitimate activity incorrectly flagged.'
+  exercise: M06
+  source: &id067
+    pages:
+    - 242
+    verbatim: true
+- meaning: False-positive rate among actual legitimate transactions.
+  exercise: M08
+  source: &id072
+    pages:
+    - 259
+    verbatim: true
+Nlegit:
+- meaning: Future legitimate transaction count, set to 1,000,000 for the volume calculation.
+  exercise: M06
+  source: *id067
+1 in Specif icity+F P R = 1 The whole legitimat:
+- meaning: e population; the equivalent percentage is 100%.
+  exercise: M06
+  source: &id068
+    pages:
+    - 243
+    verbatim: true
+Interruption:
+- meaning: A flag, review, or additional check imposed on an otherwise legitimate
+    transaction in this classroom scenario.
+  exercise: M06
+  source: *id068
+R:
+- meaning: 'Recall: the fraction of actual frauds caught; use 0.75 here.'
+  exercise: M07
+  source: *id069
+- meaning: Sum of pair counts from original-cluster row totals; this R is not recall.
+  exercise: M27b
+  source: &id130
+    pages:
+    - 440
+    verbatim: true
+PR:
+- meaning: Product P × R, not a separate variable and not the PR curve.
+  exercise: M07
+  source: *id069
+F1:
+- meaning: Harmonic-mean score using equal precision–recall weighting.
+  exercise: M07
+  source: *id069
+β (beta):
+- meaning: Positive weighting parameter; above 1 emphasizes recall, below 1 emphasizes
+    precision.
+  exercise: M07
+  source: *id069
+β2:
+- meaning: Beta multiplied by itself; for beta 2 this is 4, not 2.
+  exercise: M07
+  source: *id069
+F2:
+- meaning: F-beta evaluated with beta 2; the model has not changed, only the summary
+    weighting.
+  exercise: M07
+  source: &id070
+    pages:
+    - 251
+    verbatim: true
+Harmonic mean:
+- meaning: For two positive values, twice their product divided by their sum; it is
+    pulled toward the smaller value.
+  exercise: M07
+  source: *id070
+Arithmetic mean:
+- meaning: Add values and divide by how many there are; here add precision and recall,
+    then divide by 2.
+  exercise: M07
+  source: *id070
+si , i:
+- meaning: Fraud-risk score for transaction i; higher scores indicate higher modeled
+    risk.
+  exercise: M08
+  source: *id057
+t:
+- meaning: Decision threshold, not a time index in this exercise.
+  exercise: M08
+  source: *id057
+- meaning: An evaluated score cutoff; A, B, C, or D labels a cutoff in the table.
+  exercise: M10
+  source: &id074
+    pages:
+    - 274
+    verbatim: true
+- meaning: Current observation in the time-ordered account-value series.
+  exercise: M32a
+  source: &id147
+    pages:
+    - 495
+    verbatim: true
+- meaning: Trading day being evaluated.
+  exercise: M35
+  source: *id071
+ŷi:
+- meaning: 'Predicted label: 1 means flagged and 0 means unflagged.'
+  exercise: M08
+  source: *id072
+- meaning: Forecast made for day i; the hat means predicted rather than observed.
+  exercise: M20
+  source: &id081
+    pages: &id108
+    - 371
+    verbatim: true
+1(si ≥ t):
+- meaning: 'Indicator: 1 if the score is at least the threshold, otherwise 0.'
+  exercise: M08
+  source: *id072
+TPR:
+- meaning: True-positive rate, identical to recall for the defined positive class.
+  exercise: M08
+  source: *id072
+ROC operating point:
+- meaning: Ordered pair (F P R, T P R) for a single threshold; the first coordinate
+    is horizontal.
+  exercise: M08
+  source: *id072
+Threshold sweep:
+- meaning: Repeating the decision and counting process at several cutoffs to trace
+    the curve.
+  exercise: M08
+  source: *id072
+W:
+- meaning: Number of fraud–legitimate pairs in which fraud has the higher score.
+  exercise: M09
+  source: *id073
+N+ , N−:
+- meaning: 'Number of actual positive and negative cases: 3 frauds and 3 legitimate
+    transactions.'
+  exercise: M09
+  source: *id073
+- meaning: 'Total actual defaults and non-defaults: 20 and 80, respectively.'
+  exercise: M10
+  source: *id074
+N+ N−:
+- meaning: 'Total pair count: every fraud is compared with every legitimate transaction.'
+  exercise: M09
+  source: *id073
+½T:
+- meaning: Half a ranking point per tie; no ties occur in this example.
+  exercise: M09
+  source:
+    pages: *id075
+    verbatim: false
+ROC-AUC:
+- meaning: Threshold-independent pairwise ranking score; 1 means every positive outranks
+    every negative in the evaluated sample.
+  exercise: M09
+  source: *id073
+Gini:
+- meaning: Ranking coefficient calculated as 2AU C − 1; it is not the node-impurity
+    measure used to split trees.
+  exercise: M09
+  source: &id076
+    pages:
+    - 267
+    verbatim: true
+Discrimination:
+- meaning: Ability to order different outcome classes by score, rather than to report
+    calibrated event probabilities.
+  exercise: M09
+  source: *id076
+T P (t):
+- meaning: Defaults flagged at cutoff t.
+  exercise: M10
+  source: *id074
+F P (t):
+- meaning: Non-defaults flagged at cutoff t.
+  exercise: M10
+  source: *id074
+D(t), L(t):
+- meaning: Default capture rate and non-default capture rate at the same cutoff.
+  exercise: M10
+  source: *id074
+'|D(t) − L(t)|':
+- meaning: Absolute class-rate gap; remove the sign before finding the maximum.
+  exercise: M10
+  source: *id074
+maxt:
+- meaning: Select the largest value across all evaluated cutoffs.
+  exercise: M10
+  source: &id077
+    pages:
+    - 275
+    verbatim: true
+KS:
+- meaning: Largest separation between the two cumulative score distributions; unitless,
+    often expressed in percentage points.
+  exercise: M10
+  source: *id077
+Percentage points; pp:
+- meaning: Direct difference between two percentages, not a percentage change relative
+    to one of them.
+  exercise: M10
+  source: *id077
+K:
+- meaning: Number of top-ranked transactions admitted to the review queue, from 1
+    through 6 here.
+  exercise: M11a
+  source: &id080
+    pages:
+    - 282
+    verbatim: true
+- meaning: Review capacity, or number of highest-ranked cases reviewed.
+  exercise: M12
+  source: *id078
+- meaning: 'Selected queue size: 50.'
+  exercise: M13
+  source: *id079
+- meaning: Number of retrieved chunks per question, fixed at 3.
+  exercise: M28
+  source: &id132
+    pages:
+    - 448
+    verbatim: true
+i:
+- meaning: Ranking position, beginning at the highest-scored transaction.
+  exercise: M11a
+  source: *id080
+- meaning: 'Asset index: A, B, or C in this portfolio.'
+  exercise: M32b
+  source: &id149
+    pages:
+    - 502
+    verbatim: true
+yi:
+- meaning: 'Actual outcome at rank i: 1 for fraud and 0 for legitimate.'
+  exercise: M11a
+  source: *id080
+- meaning: 'Actual default label: 1 if default occurred and 0 otherwise.'
+  exercise: M15
+  source: &id093
+    pages: &id095
+    - 322
+    verbatim: true
+- meaning: 'Actual fraud label: 1 for fraud and 0 for legitimate.'
+  exercise: M16
+  source: &id094
+    pages:
+    - 331
+    verbatim: true
+- meaning: Actual settlement outflow for day i, in thousands of dollars.
+  exercise: M20
+  source: *id081
+- meaning: Actual outflow on that day.
+  exercise: M24
+  source: *id082
+CK:
+- meaning: Cumulative count of frauds within the first K positions.
+  exercise: M11a
+  source: *id080
+- meaning: 'Actual frauds among the top K transactions: 3 at K=5 and 5 at K=10.'
+  exercise: M12
+  source: *id078
+- meaning: 'Frauds in the selected top K: 15.'
+  exercise: M13
+  source: *id079
+F:
+- meaning: 'Number of actual frauds in the entire evaluated population: 3, including
+    frauds outside a smaller queue.'
+  exercise: M11a
+  source: *id080
+- meaning: 'All actual frauds in the batch, including those never reviewed: 8.'
+  exercise: M12
+  source: *id078
+- meaning: 'Total actual frauds: 20.'
+  exercise: M13
+  source: *id079
+P @K:
+- meaning: 'Precision at K: fraud share within the reviewed queue.'
+  exercise: M11a
+  source: *id080
+R@K:
+- meaning: 'Recall at K: fraction of all frauds captured by that queue.'
+  exercise: M11a
+  source: &id083
+    pages:
+    - 283
+    verbatim: true
+PR curve:
+- meaning: 'Precision–recall curve: a set of (recall, precision) points from changing
+    the selection cutoff.'
+  exercise: M11a
+  source: *id083
+Empirical:
+- meaning: Calculated from the supplied finite observations rather than from an assumed
+    smooth distribution.
+  exercise: M11a
+  source: *id083
+AP:
+- meaning: Average precision, calculated by recall-increment weighting in this exercise.
+  exercise: M11b
+  source: &id084
+    pages:
+    - 289
+    verbatim: true
+PR-AUC:
+- meaning: Area under a precision–recall curve; its numerical value requires an integration
+    or interpolation convention.
+  exercise: M11b
+  source: *id084
+j:
+- meaning: Index of a recall-increase interval in the sum.
+  exercise: M11b
+  source: *id084
+- meaning: Cluster index; j = 1 refers to the first proposed group.
+  exercise: M27a
+  source: &id125
+    pages:
+    - 432
+    verbatim: true
+Rj , Rj−1:
+- meaning: Recall after and before interval j; their difference is the added fraud
+    coverage.
+  exercise: M11b
+  source: *id084
+∆Rj:
+- meaning: Recall increment, one-third for each newly found fraud here.
+  exercise: M11b
+  source: *id084
+Pj:
+- meaning: Precision after the additional fraud is included; these are 1, 2/3, and
+    1/2.
+  exercise: M11b
+  source: *id084
+Pstart,j , Pend,j:
+- meaning: Precision values at the two ends of the supplied trapezoid interval.
+  exercise: M11b
+  source: &id085
+    pages:
+    - 290
+    verbatim: true
+Aj , A:
+- meaning: Area of one trapezoid and total trapezoidal PR area; both are unitless.
+  exercise: M11b
+  source: *id085
+Interpolation:
+- meaning: A rule for filling between observed points; AP and the trapezoidal method
+    use different conventions.
+  exercise: M11b
+  source: *id085
+R, P in a plotted pair:
+- meaning: Horizontal recall coordinate and vertical precision coordinate, respectively.
+  exercise: M11b
+  source: *id085
+K1 , K2:
+- meaning: 'Original and expanded queue sizes: 5 and 10.'
+  exercise: M12
+  source: *id078
+K2 − K1:
+- meaning: Number of additional reviews when the queue expands.
+  exercise: M12
+  source: *id078
+CK 2 − CK 1:
+- meaning: Additional frauds found, not total frauds in the expanded queue.
+  exercise: M12
+  source: &id086
+    pages:
+    - 299
+    verbatim: true
+Incremental cost:
+- meaning: Cost of the additional work only; here every added review is priced identically.
+  exercise: M12
+  source: *id086
+- meaning: Extra expense or loss attributed to an outcome in the stated model; zero
+    for the other outcomes here.
+  exercise: M17a
+  source: *id087
+π (pi):
+- meaning: Fraud prevalence, or population fraction that is fraud. This pi is not
+    the circle constant.
+  exercise: M13
+  source: *id079
+Lift@K:
+- meaning: Ratio of selected-queue fraud prevalence to population prevalence; report
+    it as a multiple such as “times.”
+  exercise: M13
+  source: *id079
+Gain@K:
+- meaning: Cumulative share of fraud captured up to K; equal to recall at that K in
+    this event-count setting.
+  exercise: M13
+  source: &id088
+    pages:
+    - 307
+    verbatim: true
+E[Crandom ]:
+- meaning: Expected number of frauds in a random K-record sample; E means mathematical
+    expectation, not an observed guarantee.
+  exercise: M13
+  source: *id088
+Reviewed share:
+- meaning: Fraction of the full transaction population that enters the selected queue.
+  exercise: M13
+  source: *id088
+Σ over bands:
+- meaning: 'Index of a score band: low, medium, or high.'
+  exercise: M14
+  source:
+    pages: *id089
+    verbatim: false
+- meaning: Add the quantity across the three bands.
+  exercise: M14
+  source:
+    pages: &id091
+    - 315
+    verbatim: false
+nb:
+- meaning: Number of loans in band b, 100 in each band here.
+  exercise: M14
+  source: *id090
+p̄b:
+- meaning: Mean predicted default probability in the band; the bar means average across
+    its loans.
+  exercise: M14
+  source: *id090
+Eb:
+- meaning: Expected default count in band b, not its observed count.
+  exercise: M14
+  source: *id090
+db , Ob:
+- meaning: Observed default count and observed default rate in band b.
+  exercise: M14
+  source: *id090
+EL, Lactual:
+- meaning: Probability-based expected loss and realized sample loss, in dollars.
+  exercise: M14
+  source: &id092
+    pages: *id091
+    verbatim: true
+Calibration curve:
+- meaning: Plot comparing predicted probabilities with observed event frequencies
+    for defined groups of predictions.
+  exercise: M14
+  source: *id092
+Calibration gap:
+- meaning: Observed rate minus predicted probability in a band, usually expressed
+    in percentage points.
+  exercise: M14
+  source: *id092
+BS:
+- meaning: 'Binary Brier score: mean squared probability error, not the default frequency.'
+  exercise: M15
+  source: *id093
+N, i:
+- meaning: Number of loans, here 4, and the index selecting a loan.
+  exercise: M15
+  source: *id093
+- meaning: Number of transactions, here 3, and one transaction’s index.
+  exercise: M16
+  source: *id094
+pi:
+- meaning: Model probability of default for loan i, between 0 and 1.
+  exercise: M15
+  source: *id093
+(pᵢ − yᵢ)²:
+- meaning: One loan’s squared probability error; dimensionless.
+  exercise: M15
+  source:
+    pages: *id095
+    verbatim: false
+Σ (i = 1 … N):
+- meaning: Add the error term once for each loan.
+  exercise: M15
+  source:
+    pages: *id095
+    verbatim: false
+Constant baseline:
+- meaning: Supplied reference model predicting 0.25 for every loan regardless of its
+    features.
+  exercise: M15
+  source: &id096
+    pages:
+    - 323
+    verbatim: true
+Calibration vs. score:
+- meaning: Calibration concerns event frequencies across probability groups; Brier
+    averages individual probability-error terms.
+  exercise: M15
+  source: *id096
+pi , 1 − pi:
+- meaning: Model probabilities of fraud and legitimacy for transaction i.
+  exercise: M16
+  source: *id094
+ln:
+- meaning: Natural logarithm, using base e ≈ 2.71828; it maps a probability between
+    0 and 1 to a nonpositive number.
+  exercise: M16
+  source: *id094
+- meaning: Natural logarithm, whose base is e ≈ 2.71828.
+  exercise: M38
+  source: &id166
+    pages:
+    - 562
+    verbatim: true
+ℓi (ell):
+- meaning: One transaction’s negative-log penalty; lowercase ell is not the digit
+    1.
+  exercise: M16
+  source: *id094
+LL:
+- meaning: Average log loss over all evaluated transactions.
+  exercise: M16
+  source: *id094
+yi , 1 − yi as multipliers:
+- meaning: Switches selecting the fraud term or the legitimate term; exactly one is
+    1.
+  exercise: M16
+  source: &id097
+    pages:
+    - 332
+    verbatim: true
+Nat:
+- meaning: Unit of logarithmic information when natural logs are used; not a currency
+    or percentage.
+  exercise: M16
+  source: *id097
+Threshold classification:
+- meaning: A separate conversion of probability to a yes/no label using the supplied
+    0.50 cutoff.
+  exercise: M16
+  source: *id097
+cF P:
+- meaning: Assumed cost per false alert, US$4.
+  exercise: M17a
+  source: *id058
+- meaning: Cost from flagging a legitimate case, US$4.
+  exercise: M17b
+  source: *id065
+C:
+- meaning: Total modeled error cost for the sample, in dollars.
+  exercise: M17a
+  source: *id058
+- meaning: Sum of pair counts from rerun-cluster column totals; this C is not a cost.
+  exercise: M27b
+  source: &id131
+    pages: *id098
+    verbatim: true
+H:
+- meaning: Human review capacity, 75 alerts per day.
+  exercise: M17a
+  source: *id087
+V ≤H:
+- meaning: 'Feasibility condition: alert volume cannot exceed available capacity.'
+  exercise: M17a
+  source: *id087
+1−p:
+- meaning: Probability that it is legitimate; the complementary binary outcome.
+  exercise: M17b
+  source: *id065
+Cpass , Cf lag:
+- meaning: Expected dollar costs per transaction of the two possible actions.
+  exercise: M17b
+  source: *id065
+p*:
+- meaning: Break-even probability where expected costs match; the star marks a solution,
+    not multiplication.
+  exercise: M17b
+  source:
+    pages: *id099
+    verbatim: false
+Calibrated probability:
+- meaning: A probability estimate whose stated event rates agree with observed rates
+    in relevant groups.
+  exercise: M17b
+  source: &id101
+    pages: &id100
+    - 346
+    verbatim: true
+Perfect intervention assumption:
+- meaning: Flagging avoids the fraud loss completely in this toy cost model; no separate
+    true-alert fee is charged.
+  exercise: M17b
+  source:
+    pages: *id100
+    verbatim: false
+Break-even threshold:
+- meaning: Cost crossing for these two actions only; additional costs or capacity
+    limits can move the appropriate policy cutoff.
+  exercise: M17b
+  source: *id101
+c, C:
+- meaning: 'One sentiment class and the number of classes: neutral, positive, negative;
+    C = 3.'
+  exercise: M18
+  source: &id102
+    pages: &id103
+    - 354
+    verbatim: true
+T Pc:
+- meaning: Records truly in class c and predicted as class c.
+  exercise: M18
+  source: *id102
+F Pc:
+- meaning: Records from other classes incorrectly predicted as class c.
+  exercise: M18
+  source: *id102
+F Nc:
+- meaning: Records truly in class c but predicted as another class.
+  exercise: M18
+  source: *id102
+nc ; support:
+- meaning: Number of actual records in class c, equal to its confusion-matrix row
+    total.
+  exercise: M18
+  source: *id102
+N = Σ₍c₎ n꜀:
+- meaning: All evaluated records, 16 in this example.
+  exercise: M18
+  source:
+    pages: *id103
+    verbatim: false
+F 1c:
+- meaning: The F1 score for one class when compared with all other classes.
+  exercise: M18
+  source: &id105
+    pages: &id104
+    - 355
+    verbatim: true
+Σ over classes:
+- meaning: Add one quantity from each of the three classes.
+  exercise: M18
+  source:
+    pages: *id104
+    verbatim: false
+Macro; weighted; micro:
+- meaning: Average class scores equally; average class scores by support; pool counts
+    before scoring.
+  exercise: M18
+  source: *id105
+One-versus-rest:
+- meaning: Treat the selected class as positive and combine every other class as negative
+    for its per-class calculation.
+  exercise: M18
+  source: *id105
+g:
+- meaning: Group index, either A or B; the letters are anonymous group labels.
+  exercise: M19
+  source: &id106
+    pages:
+    - 363
+    verbatim: true
+Ng:
+- meaning: Total applicants in group g.
+  exercise: M19
+  source: *id106
+Ag:
+- meaning: Number receiving a simulated approval in that group; this A is an approval
+    count, not the group label by itself.
+  exercise: M19
+  source: *id106
+Rg:
+- meaning: Actual repayers in the group; Rg is a count, not recall.
+  exercise: M19
+  source: *id106
+T Pg:
+- meaning: 'Actual repayers who receive simulated approval: positive decisions on
+    positive outcomes.'
+  exercise: M19
+  source: *id106
+Ag − T Pg:
+- meaning: Approved applicants who are non-repayers; the false-positive count for
+    this label definition.
+  exercise: M19
+  source: *id106
+Ng − Rg:
+- meaning: All actual non-repayers, the FPR denominator.
+  exercise: M19
+  source: &id107
+    pages:
+    - 364
+    verbatim: true
+Selectiong:
+- meaning: Approval fraction among all applicants in the group.
+  exercise: M19
+  source: *id107
+RatioB/A:
+- meaning: Group B’s selection rate divided by group A’s; unitless.
+  exercise: M19
+  source: *id107
+T P Rg , F P Rg:
+- meaning: Approval rate among repayers; approval rate among non-repayers.
+  exercise: M19
+  source: *id107
+∆T P R:
+- meaning: Repayer-approval gap between the groups, corresponding to an equal-opportunity
+    diagnostic under this label definition.
+  exercise: M19
+  source: *id107
+Retrospective benchmark:
+- meaning: Evaluation using already-known outcomes for all records, rather than unknowable
+    repayment outcomes for real rejected applicants.
+  exercise: M19
+  source: *id107
+MAE:
+- meaning: 'Mean absolute error: arithmetic average of the magnitudes of the forecast
+    errors.'
+  exercise: M20
+  source: *id081
+- meaning: Mean absolute error, included to show how a different penalty changes the
+    comparison.
+  exercise: M21
+  source: &id112
+    pages:
+    - 380
+    verbatim: true
+n, i:
+- meaning: Number of evaluated days, here 4, and a day index.
+  exercise: M20
+  source: *id081
+- meaning: Number of errors, here 4, and an individual day index.
+  exercise: M21
+  source: &id110
+    pages:
+    - 379
+    verbatim: true
+- meaning: Number of evaluated observations, here 4, and an observation index.
+  exercise: M23
+  source: &id111
+    pages:
+    - 397
+    verbatim: true
+- meaning: Number of evaluated days, here 5, and one day index.
+  exercise: M24
+  source: *id082
+'|yi − ŷi |':
+- meaning: 'Absolute error: the distance between actual and forecast with its sign
+    removed.'
+  exercise: M20
+  source: *id081
+Σ (i = 1 … n):
+- meaning: Add the absolute-error term for every evaluated day.
+  exercise: M20
+  source:
+    pages: *id108
+    verbatim: false
+M AEbaseline , M AEmodel:
+- meaning: Mean errors from the simple comparison forecast and the proposed model
+    on the same days.
+  exercise: M20
+  source: &id109
+    pages:
+    - 372
+    verbatim: true
+Reduction:
+- meaning: Relative decrease in error using the baseline as denominator, not a direct
+    estimate of funding-cost savings.
+  exercise: M20
+  source: *id109
+Baseline forecast:
+- meaning: The supplied constant 100-thousand-dollar prediction, not the test-set
+    mean.
+  exercise: M20
+  source: *id109
+yi , ŷi:
+- meaning: Actual and forecast outflow for day i.
+  exercise: M21
+  source: *id110
+- meaning: Actual and forecast settlement outflow for observation i, in thousands
+    of dollars.
+  exercise: M23
+  source: *id111
+ei:
+- meaning: Signed forecast error, defined here as forecast minus actual, in thousands
+    of dollars.
+  exercise: M21
+  source: *id110
+'|ei |':
+- meaning: Error magnitude; its minus sign, if any, is removed.
+  exercise: M21
+  source: *id110
+e2i:
+- meaning: Squared error; a 30-unit miss contributes 900 squared units, rather than
+    30.
+  exercise: M21
+  source: *id110
+MSE:
+- meaning: Mean squared error, the quantity inside the square root in RMSE.
+  exercise: M21
+  source: *id110
+RMSE:
+- meaning: Root mean squared error; taking the square root restores the original dollar
+    unit.
+  exercise: M21
+  source: *id112
+Underforecast; overforecast:
+- meaning: Predicted demand below actual demand; predicted demand above actual demand.
+  exercise: M21
+  source: *id112
+MAPE:
+- meaning: 'Mean absolute percentage error: mean of per-observation absolute proportional
+    errors.'
+  exercise: M22
+  source: &id113
+    pages:
+    - 388
+    verbatim: true
+WAPE:
+- meaning: 'Weighted absolute percentage error: total absolute error divided by total
+    absolute actual volume.'
+  exercise: M22
+  source: *id113
+MASE:
+- meaning: 'Mean absolute scaled error: test MAE divided by a separately defined training
+    naive-error scale.'
+  exercise: M22
+  source: *id113
+yi , ŷi , n:
+- meaning: Actuals, predictions, and record count in the test period; there are four
+    test observations.
+  exercise: M22
+  source: *id113
+xt , T:
+- meaning: Training-series value at training time t and number of training observations;
+    here T = 4.
+  exercise: M22
+  source: &id114
+    pages:
+    - 389
+    verbatim: true
+t = 2, . . . , T:
+- meaning: Consecutive training changes begin at observation 2 because each needs
+    a previous value.
+  exercise: M22
+  source: *id114
+T −1:
+- meaning: Number of one-step differences in the training series; four values give
+    three changes.
+  exercise: M22
+  source: &id115
+    pages: &id116
+    - 390
+    verbatim: true
+dtrain:
+- meaning: Training mean absolute one-step change; same dollar unit as test MAE.
+  exercise: M22
+  source: *id115
+'|·| and Σ':
+- meaning: Absolute value; add all indicated error or change magnitudes.
+  exercise: M22
+  source:
+    pages: *id116
+    verbatim: false
+Scaled; unitless:
+- meaning: Dividing two quantities with the same units cancels those units; MASE is
+    not dollars or a probability.
+  exercise: M22
+  source: *id115
+Naive:
+- meaning: A simple forecasting rule; here predict the next value using the preceding
+    value.
+  exercise: M22
+  source: *id115
+ȳ:
+- meaning: Arithmetic mean of the actual evaluated values; the bar indicates an average.
+  exercise: M23
+  source: *id111
+SSE:
+- meaning: Sum of squared errors from the model’s predictions.
+  exercise: M23
+  source: *id111
+SST:
+- meaning: 'Total sum of squares: squared deviations of actuals from their sample
+    mean.'
+  exercise: M23
+  source: &id117
+    pages:
+    - 398
+    verbatim: true
+R2:
+- meaning: R-squared, also called coefficient of determination, under this stated
+    squared-error definition.
+  exercise: M23
+  source: *id117
+1 − SSE/SST:
+- meaning: Fraction of reference squared error removed; the ratio cancels squared
+    dollar units.
+  exercise: M23
+  source: &id118
+    pages:
+    - 399
+    verbatim: true
+Negative R-squared:
+- meaning: Model squared error exceeds the sample-mean reference’s squared error.
+  exercise: M23
+  source: *id118
+Constant actuals:
+- meaning: A case in which all actual values match and SST = 0; the displayed ratio
+    then requires a separate convention.
+  exercise: M23
+  source: *id118
+Li , Ui:
+- meaning: Lower and upper bounds of the prediction interval for day i, in millions
+    of dollars.
+  exercise: M24
+  source: *id082
+1(·):
+- meaning: Indicator returning 1 when its condition is true and 0 otherwise.
+  exercise: M24
+  source: *id082
+Coveredi:
+- meaning: One if the day’s actual is between the inclusive bounds, otherwise zero.
+  exercise: M24
+  source: *id082
+Width:
+- meaning: Distance between the upper and lower bounds, in the same dollar unit as
+    the forecast.
+  exercise: M24
+  source: &id119
+    pages:
+    - 407
+    verbatim: true
+Nominal 90%:
+- meaning: Intended coverage level under the model; not a promise that exactly 90%
+    of any small sample must fall inside.
+  exercise: M24
+  source: *id119
+Prediction interval:
+- meaning: Range for a future observation, not a confidence interval for an estimated
+    mean.
+  exercise: M24
+  source: *id119
+τ (tau):
+- meaning: Quantile level; 0.95 means the intended 95th percentile of the predicted
+    distribution.
+  exercise: M25
+  source: &id120
+    pages:
+    - 414
+    verbatim: true
+q̂:
+- meaning: 'Predicted quantile value: US$130 million for each day here, not a predicted
+    mean.'
+  exercise: M25
+  source: *id120
+y:
+- meaning: Actual liquidity requirement for the day, in millions of dollars.
+  exercise: M25
+  source: *id120
+Lτ:
+- meaning: Pinball loss at quantile tau; a nonnegative, asymmetrically weighted error
+    score.
+  exercise: M25
+  source: *id120
+y − q̂:
+- meaning: Shortage when actual demand exceeds the forecast; use the top branch.
+  exercise: M25
+  source: &id121
+    pages:
+    - 415
+    verbatim: true
+q̂ − y:
+- meaning: Excess forecast when the prediction is above actual demand; use the bottom
+    branch.
+  exercise: M25
+  source: *id121
+1−τ:
+- meaning: Complementary weight, 0.05 for the 95th-percentile exercise.
+  exercise: M25
+  source: &id122
+    pages:
+    - 416
+    verbatim: true
+Piecewise formula:
+- meaning: A formula with different calculations chosen by stated conditions; apply
+    only one branch per observation.
+  exercise: M25
+  source: *id122
+Quantile; percentile:
+- meaning: A cutoff in a distribution; the 0.95 quantile is the 95th percentile.
+  exercise: M25
+  source: *id122
+i, n:
+- meaning: Selected customer and number of customers whose scores are averaged, here
+    3.
+  exercise: M26
+  source: *id024
+bi:
+- meaning: Smallest mean distance from customer i to the members of any other cluster.
+  exercise: M26
+  source: *id024
+max(ai , bi ):
+- meaning: The larger of the two distances, used to scale the difference.
+  exercise: M26
+  source: &id123
+    pages:
+    - 424
+    verbatim: true
+s̄:
+- meaning: Arithmetic mean of the three supplied customer scores, not necessarily
+    the full population silhouette score.
+  exercise: M26
+  source: *id123
+Scaled feature space:
+- meaning: Input variables have been transformed to comparable numerical scales before
+    distance is measured.
+  exercise: M26
+  source: &id124
+    pages:
+    - 425
+    verbatim: true
+Boundary; negative score:
+- meaning: Similar closeness to the two clusters; closer on average to another cluster
+    than to the assigned one.
+  exercise: M26
+  source: *id124
+K or k:
+- meaning: Number of clusters in the evaluated partition, here 1, 2, or 3.
+  exercise: M27a
+  source: *id125
+Cj:
+- meaning: Set of customer indices assigned to cluster j.
+  exercise: M27a
+  source: *id125
+'|Cj |':
+- meaning: Number of customers in that cluster; bars around a set denote its size.
+  exercise: M27a
+  source: *id125
+xi:
+- meaning: Customer i’s monthly savings, measured in hundreds of dollars.
+  exercise: M27a
+  source: *id125
+µj:
+- meaning: Centroid of cluster j, the mean savings of its members.
+  exercise: M27a
+  source: *id125
+IK:
+- meaning: 'Inertia for K clusters: total within-cluster squared distance.'
+  exercise: M27a
+  source: &id127
+    pages: &id126
+    - 433
+    verbatim: true
+Σ over i ∈ Cⱼ:
+- meaning: Add the term for every customer belonging to cluster j.
+  exercise: M27a
+  source:
+    pages: *id126
+    verbatim: false
+Squared feature units:
+- meaning: Squaring hundreds-of-dollars values gives squared hundreds-of-dollars,
+    not a spend or profit total.
+  exercise: M27a
+  source: *id127
+Elbow:
+- meaning: Informal point of diminishing compactness improvement; not a proof of the
+    correct business segmentation.
+  exercise: M27a
+  source: *id127
+ARI:
+- meaning: 'Adjusted Rand index: a chance-adjusted comparison of two groupings of
+    the same observations.'
+  exercise: M27b
+  source: &id129
+    pages: &id128
+    - 439
+    verbatim: true
+n in a pair count:
+- meaning: Number of customers in whichever cell, row, column, or full sample is being
+    counted.
+  exercise: M27b
+  source:
+    pages: *id128
+    verbatim: false
+n choose 2:
+- meaning: '“n choose two”: distinct customer-pair count; fewer than two customers
+    produce zero pairs.'
+  exercise: M27b
+  source:
+    pages: *id128
+    verbatim: false
+Overlap cell:
+- meaning: Count of customers sharing both an original cluster and a rerun cluster.
+  exercise: M27b
+  source: *id129
+S:
+- meaning: Sum of pair counts within overlap cells; pairs grouped together in both
+    runs.
+  exercise: M27b
+  source: *id130
+RC/T:
+- meaning: Expected shared-pair count under the fixed-size chance reference; juxtaposition
+    RC means multiplication.
+  exercise: M27b
+  source: *id131
+(R + C)/2:
+- meaning: Normalizing reference built from the two within-cluster pair totals.
+  exercise: M27b
+  source: *id131
+Membership agreement:
+- meaning: Agreement about who is grouped with whom, independent of whether the labels
+    are A/B or X/Y.
+  exercise: M27b
+  source: *id131
+q:
+- meaning: A question index, Q1 or Q2; this q is not an embedding vector here.
+  exercise: M28
+  source: *id132
+Relq:
+- meaning: Set of all relevant chunks in the corpus for question q.
+  exercise: M28
+  source: *id132
+Retq:
+- meaning: Set of the top K chunks actually retrieved for question q.
+  exercise: M28
+  source: *id132
+∩:
+- meaning: 'Set intersection: chunks occurring in both sets.'
+  exercise: M28
+  source: *id132
+'| · | around a set':
+- meaning: Number of distinct items in the set; not absolute value of a number.
+  exercise: M28
+  source: *id132
+Recall@K:
+- meaning: Relevant-chunk coverage; finding one useful passage is insufficient when
+    several are required.
+  exercise: M28
+  source: &id133
+    pages:
+    - 449
+    verbatim: true
+Context precision@K:
+- meaning: Share of the K retrieved chunks judged relevant, using this explicit classroom
+    definition.
+  exercise: M28
+  source: *id133
+Corpus; chunk:
+- meaning: Complete searchable document collection; one separately retrievable passage.
+  exercise: M28
+  source: *id133
+Question-level hit rate:
+- meaning: Share of questions receiving at least one relevant chunk, a different measure
+    from relevant-chunk recall.
+  exercise: M28
+  source: *id133
+Unweighted mean:
+- meaning: Each question receives the same weight, even if its number of relevant
+    passages differs.
+  exercise: M28
+  source: *id133
+rankq:
+- meaning: Position of the first relevant passage for question q in the evaluated
+    result list.
+  exercise: M29a
+  source: *id134
+RRq:
+- meaning: Reciprocal rank for one query; 1 means the first result is relevant.
+  exercise: M29a
+  source: *id134
+MRR:
+- meaning: 'Mean reciprocal rank: average of all question-level reciprocal ranks.'
+  exercise: M29a
+  source: *id134
+Reciprocal:
+- meaning: One divided by a value; a smaller positive rank produces a larger reciprocal.
+  exercise: M29a
+  source: &id135
+    pages:
+    - 457
+    verbatim: true
+Not found:
+- meaning: No relevant item within the evaluated results; assign zero without attempting
+    division by an undefined rank.
+  exercise: M29a
+  source: *id135
+Σ (q = 1 … Q):
+- meaning: Include every evaluated query, even those with no relevant result.
+  exercise: M29a
+  source:
+    pages: &id136
+    - 458
+    verbatim: false
+Score-unit improvement:
+- meaning: New MRR minus old MRR; not automatically a percentage-point change in answer
+    accuracy.
+  exercise: M29a
+  source:
+    pages: *id136
+    verbatim: true
+i, K:
+- meaning: Rank position, starting at 1, and evaluated ranking length, here 3.
+  exercise: M29b
+  source: &id137
+    pages:
+    - 464
+    verbatim: true
+reli:
+- meaning: 'Relevance grade of the passage at rank i: 3 highly relevant, 1 partly
+    relevant, 0 irrelevant.'
+  exercise: M29b
+  source: *id137
+gaini:
+- meaning: Numeric reward from relevance, explicitly 2reli − 1 in this exercise.
+  exercise: M29b
+  source: *id137
+log2:
+- meaning: 'Base-2 logarithm: the exponent to which 2 must be raised to obtain its
+    argument.'
+  exercise: M29b
+  source: *id137
+log2 (i + 1):
+- meaning: Rank discount divisor; adding 1 makes the rank-1 divisor equal to 1 rather
+    than 0.
+  exercise: M29b
+  source: &id138
+    pages:
+    - 465
+    verbatim: true
+DCG:
+- meaning: 'Discounted cumulative gain: sum of rank-discounted relevance gains.'
+  exercise: M29b
+  source: *id138
+IDCG:
+- meaning: 'Ideal DCG: the same calculation after sorting candidate passages from
+    highest to lowest relevance.'
+  exercise: M29b
+  source: &id139
+    pages:
+    - 466
+    verbatim: true
+nDCG:
+- meaning: 'Normalized DCG: observed gain divided by ideal gain; lower-case n means
+    normalized.'
+  exercise: M29b
+  source: *id139
+Discount:
+- meaning: Reduced credit for evidence appearing later in the result list; not a financial
+    present-value discount rate.
+  exercise: M29b
+  source: *id139
+Gain convention:
+- meaning: This exercise uses exponential gains; software defaults must not be assumed
+    to use the identical transformation.
+  exercise: M29b
+  source: *id139
+Factual claim:
+- meaning: A statement that can be checked against evidence, including an explicitly
+    calculated growth statement.
+  exercise: M30
+  source: &id140
+    pages:
+    - 473
+    verbatim: true
+Faithfulness:
+- meaning: Fraction of evaluated claims supported by any supplied evidence, under
+    this classroom rubric.
+  exercise: M30
+  source: *id140
+Claim–citation pair:
+- meaning: One claim together with the source attached to it; four pairs are evaluated
+    here.
+  exercise: M30
+  source: *id140
+Citation correctness:
+- meaning: Share of the attached sources that actually support their paired claim,
+    not whether a different source supports it.
+  exercise: M30
+  source: *id140
+Financial figure:
+- meaning: 'One of the four named numeric outputs: 120, 20%, 12, and 30; the years
+    are not in this selected numeric denominator.'
+  exercise: M30
+  source: &id141
+    pages:
+    - 474
+    verbatim: true
+Numerical accuracy:
+- meaning: Fraction of those selected figures that agree with source data or verified
+    arithmetic.
+  exercise: M30
+  source: *id141
+Unsupported; contradicted:
+- meaning: Not established by the supplied evidence; inconsistent with supplied evidence.
+    Both fail support here.
+  exercise: M30
+  source: &id142
+    pages:
+    - 475
+    verbatim: true
+new, old:
+- meaning: New-year and old-year revenue, on the same accounting and unit basis, in
+    the growth calculation.
+  exercise: M30
+  source: *id142
+Denominator:
+- meaning: 'The evaluated total relevant to the metric: five claims, four citation
+    pairs, or four figures here.'
+  exercise: M30
+  source: *id142
+r̄:
+- meaning: 'Arithmetic mean return: add same-period returns and divide by their number;
+    not a compounded growth rate.'
+  exercise: M31
+  source: &id143
+    pages:
+    - 485
+    verbatim: true
+rf:
+- meaning: Reference risk-free rate used for Sharpe; 3% annually in this hypothetical
+    example.
+  exercise: M31
+  source: *id143
+rtarget:
+- meaning: Minimum acceptable return used for Sortino; also 3% here, but not necessarily
+    equal to the risk-free rate in other exercises.
+  exercise: M31
+  source: *id143
+σ:
+- meaning: 'Supplied annualized total volatility: a standard-deviation measure of
+    return variability.'
+  exercise: M31
+  source: *id143
+σdown:
+- meaning: Supplied annualized downside deviation relative to the 3% target.
+  exercise: M31
+  source: &id144
+    pages:
+    - 486
+    verbatim: true
+t, n, rt:
+- meaning: Period index, number of observed periods, and return during period t in
+    the explanatory sample equations.
+  exercise: M31
+  source: *id144
+sr:
+- meaning: Sample standard deviation of the unannualized same-period returns; the
+    denominator n − 1 reflects estimation of their mean.
+  exercise: M31
+  source: &id145
+    pages:
+    - 487
+    verbatim: true
+dr:
+- meaning: Same-period downside deviation using every period in its denominator, including
+    periods with a zero downside term.
+  exercise: M31
+  source: *id145
+min(x, 0):
+- meaning: Keep x when it is negative; otherwise use zero. Squaring then makes each
+    shortfall contribution nonnegative.
+  exercise: M31
+  source: *id145
+Excess return:
+- meaning: Mean return minus the relevant reference rate, not the fund’s total return.
+  exercise: M31
+  source: *id145
+Annualized:
+- meaning: Expressed on a yearly scale; mean and risk inputs must use a compatible
+    convention.
+  exercise: M31
+  source: &id146
+    pages:
+    - 488
+    verbatim: true
+Unitless ratio:
+- meaning: Return units cancel in the division; a result of 0.50 is not a 50% investment
+    return.
+  exercise: M31
+  source: *id146
+u≤t:
+- meaning: An observation no later than the current one; future observations are excluded
+    from the running peak.
+  exercise: M32a
+  source: *id147
+Vt:
+- meaning: Account value at observation t, in thousands of dollars in this exercise.
+  exercise: M32a
+  source: *id147
+Ht:
+- meaning: 'Running peak, or high-water mark: the greatest account value observed
+    up through time t.'
+  exercise: M32a
+  source: *id147
+max:
+- meaning: Select the largest value from the stated set of observations.
+  exercise: M32a
+  source: *id147
+DDt:
+- meaning: 'Drawdown at one observation: fraction below the running peak.'
+  exercise: M32a
+  source: *id147
+M DD:
+- meaning: 'Maximum drawdown: the greatest peak-relative decline in the observed series.'
+  exercise: M32a
+  source: &id148
+    pages:
+    - 496
+    verbatim: true
+Vinitial , Vf inal:
+- meaning: First and last observed account values; these determine the full-period
+    return, not the worst intermediate decline.
+  exercise: M32a
+  source: *id148
+Trough:
+- meaning: A low point following a peak; the relevant observed trough here is 80 after
+    a peak of 120.
+  exercise: M32a
+  source: *id148
+Cash-flow-adjusted:
+- meaning: Adjusted so deposits or withdrawals are not mistakenly treated as investment
+    gains or losses.
+  exercise: M32a
+  source: *id148
+wiold , winew:
+- meaning: Current and proposed portfolio weights as fractions of total value; superscripts
+    are labels, not powers.
+  exercise: M32b
+  source: *id149
+∆wi:
+- meaning: Change in weight; positive means buy, negative means sell under the fixed-value
+    assumptions.
+  exercise: M32b
+  source: *id149
+'|∆wi |':
+- meaning: Absolute weight change; counts buying and selling activity without canceling
+    one against the other.
+  exercise: M32b
+  source: *id149
+TO:
+- meaning: 'One-way turnover: half the sum of absolute weight changes in this fully
+    invested rebalance.'
+  exercise: M32b
+  source: *id150
+Gross traded dollars:
+- meaning: Total purchase value plus total sale value; not just the value on one side.
+  exercise: M32b
+  source: *id151
+ui:
+- meaning: Maximum permitted weight for asset i; 0.50 for each asset here.
+  exercise: M32b
+  source: *id151
+Excessi:
+- meaning: Amount above the cap as a weight fraction; zero when the proposal complies.
+  exercise: M32b
+  source: *id151
+Basis point; percentage:
+- meaning: One basis point is 0.01 percentage point. A rise from 50% to 55% is
+  exercise: M32b
+  source: *id151
+point:
+- meaning: five percentage points.
+  exercise: M32b
+  source: *id151
+Feasible:
+- meaning: Satisfies every mandatory constraint under the stated assumptions.
+  exercise: M32b
+  source: *id151
+t, n:
+- meaning: Month index and number of observed months; n = 4 here.
+  exercise: M32c
+  source: &id152
+    pages:
+    - 509
+    verbatim: true
+rt , bt:
+- meaning: Fund return and benchmark return in month t, measured on the same basis.
+  exercise: M32c
+  source: *id152
+Benchmark:
+- meaning: Reference investment return against which the fund is compared.
+  exercise: M32c
+  source: *id152
+at:
+- meaning: 'Active return: fund return minus benchmark return, which can be positive
+    or negative.'
+  exercise: M32c
+  source: *id152
+ā:
+- meaning: Arithmetic average of the active returns.
+  exercise: M32c
+  source: *id152
+at − ā:
+- meaning: One month’s deviation from average active return.
+  exercise: M32c
+  source: *id152
+TE:
+- meaning: 'Tracking error: standard deviation of active returns, not an average forecast
+    error.'
+  exercise: M32c
+  source: &id153
+    pages: &id154
+    - 510
+    verbatim: true
+n−1:
+- meaning: Sample-variance denominator; one degree of freedom is used in estimating
+    the mean.
+  exercise: M32c
+  source: *id153
+√12:
+- meaning: Annualization multiplier under the stated monthly assumptions; not a universal
+    rule when returns are serially correlated.
+  exercise: M32c
+  source:
+    pages: *id154
+    verbatim: false
+Percentage-point return difference:
+- meaning: A fund return of 3% minus a benchmark return of 2% is 1 percentage point,
+    or 0.01 in decimal return units.
+  exercise: M32c
+  source:
+    pages: *id154
+    verbatim: false
+Li:
+- meaning: Loss in scenario i, with positive values meaning losses; the supplied numbers
+    are in thousands of dollars.
+  exercise: M33
+  source: *id155
+L(j):
+- meaning: The jth smallest loss after sorting. Parentheses mark sorted position,
+    not the original scenario number.
+  exercise: M33
+  source: *id155
+α:
+- meaning: Confidence level as a fraction; 0.80 here. It is not a training learning
+    rate.
+  exercise: M33
+  source: *id155
+- meaning: Stated VaR confidence level; 0.99 for the one-day forecast here.
+  exercise: M35
+  source: *id071
+⌈x⌉:
+- meaning: 'Ceiling: round x upward to the nearest integer position.'
+  exercise: M33
+  source: *id155
+VaR:
+- meaning: 'Value at Risk: the specified loss quantile for the stated horizon; not
+    maximum possible loss.'
+  exercise: M33
+  source: *id155
+ES:
+- meaning: 'Expected Shortfall: average loss over the specified worst-tail fraction
+    under this empirical convention.'
+  exercise: M33
+  source: *id156
+1[condition]:
+- meaning: 'Indicator: 1 when the condition is true and 0 otherwise.'
+  exercise: M33
+  source: *id156
+'>':
+- meaning: Strictly greater than; a loss equal to VaR is not counted as an exceedance
+    here.
+  exercise: M33
+  source: *id156
+Horizon:
+- meaning: Length of the loss period; every scenario describes one day, not one month
+    or one year.
+  exercise: M33
+  source: *id156
+k:
+- meaning: Number of runs with a loss strictly above the reserve; 250 in the initial
+    sample. Lower-case k here is not retrieval cutoff K.
+  exercise: M34
+  source: *id157
+p̂:
+- meaning: Estimated breach probability; the hat marks an estimate rather than an
+    exactly known model probability.
+  exercise: M34
+  source: *id157
+1 − p̂:
+- meaning: Estimated fraction of runs that do not breach the reserve.
+  exercise: M34
+  source: *id157
+SE(p̂):
+- meaning: 'Monte Carlo standard error: estimated variability of the probability estimate
+    across repeated batches of runs.'
+  exercise: M34
+  source:
+    pages: &id158
+    - 527
+    verbatim: true
+√·:
+- meaning: Square root; converts the estimated variance of the probability estimate
+    into standard-error units.
+  exercise: M34
+  source:
+    pages: *id158
+    verbatim: false
+'1.96':
+- meaning: Normal-approximation multiplier for a central interval with approximately
+    95% coverage under the stated conditions.
+  exercise: M34
+  source: &id159
+    pages:
+    - 528
+    verbatim: true
+±:
+- meaning: Calculate both subtraction and addition to obtain lower and upper endpoints.
+  exercise: M34
+  source: *id159
+Percentage point:
+- meaning: A probability standard error of 0.006 equals 0.6 percentage point, not
+    0.006 percentage point.
+  exercise: M34
+  source: *id159
+Conditional on the model:
+- meaning: Assumed default rates and dependencies are held fixed; their uncertainty
+    is not included in this simulation-error interval.
+  exercise: M34
+  source: *id159
+Lt:
+- meaning: Actual loss on day t, measured on the same loss basis and horizon as the
+    VaR forecast.
+  exercise: M35
+  source: *id071
+V aRα,t:
+- meaning: The model’s loss threshold at confidence level α for day t; it may vary
+    by day.
+  exercise: M35
+  source: *id071
+1[·]:
+- meaning: Indicator that contributes 1 for a strict breach and 0 otherwise.
+  exercise: M35
+  source: *id071
+Exception; breach:
+- meaning: A realized loss exceeding the matching forecasted threshold.
+  exercise: M35
+  source: *id160
+Backtest:
+- meaning: Compare forecasts made without future knowledge with outcomes observed
+    later.
+  exercise: M35
+  source: *id160
+Clustering of exceptions:
+- meaning: Breaches concentrated in nearby periods rather than spread through the
+    evaluation window.
+  exercise: M35
+  source: *id160
+t, T:
+- meaning: Execution interval and total number of intervals; three in this example.
+  exercise: M36
+  source: *id161
+ct , rt:
+- meaning: Dollar execution cost and its negative reward in interval t.
+  exercise: M36
+  source: *id161
+Cpolicy:
+- meaning: Total cost incurred by the learned execution schedule.
+  exercise: M36
+  source: *id161
+TWAP:
+- meaning: Time-weighted average price; the baseline here is a schedule that spreads
+    equal quantities over equal time intervals.
+  exercise: M36
+  source: *id161
+CT W AP:
+- meaning: Supplied total cost of the baseline schedule, $1,200.
+  exercise: M36
+  source: *id161
+Chindsight:
+- meaning: Supplied cost of the best feasible schedule selected using information
+    available afterward, $700.
+  exercise: M36
+  source: *id049
+Regret:
+- meaning: Extra cost relative to that specified hindsight comparator; not automatically
+    relative to a live attainable policy.
+  exercise: M36
+  source: *id049
+Undiscounted:
+- meaning: Each interval’s reward receives full weight, rather than reduced weight
+    for later rewards.
+  exercise: M36
+  source: *id049
+Ntasks:
+- meaning: Total assigned invoice tasks, including failures and incomplete tasks;
+    100 here.
+  exercise: M37
+  source: &id162
+    pages:
+    - 552
+    verbatim: true
+Nsuccess:
+- meaning: Tasks that complete correctly and pass every required verification check;
+    90 here.
+  exercise: M37
+  source: *id162
+Ncheck:
+- meaning: Tasks passing the specified field checks; 95 here, including five that
+    do not finish the workflow.
+  exercise: M37
+  source: *id162
+Nattempt:
+- meaning: Tasks containing at least one attempted action outside the agent’s permitted
+    authority; four here.
+  exercise: M37
+  source: *id162
+Nunsaf e:
+- meaning: Tasks containing an actually executed unauthorized action; zero because
+    every attempt is blocked here.
+  exercise: M37
+  source: &id163
+    pages:
+    - 553
+    verbatim: true
+Ncalls , Nerror:
+- meaning: Total tool calls and calls returning an error; 200 and 10 respectively.
+  exercise: M37
+  source: *id163
+Tool call:
+- meaning: A request the agent sends to an external function or service; a single
+    task may contain several calls.
+  exercise: M37
+  source: &id164
+    pages:
+    - 554
+    verbatim: true
+Verification check:
+- meaning: An explicitly defined test of required data or actions; passing field checks
+    alone is not full workflow completion.
+  exercise: M37
+  source: *id164
+Authority:
+- meaning: The set of actions and resources the agent is permitted to use for this
+    task.
+  exercise: M37
+  source: *id164
+Trace:
+- meaning: Recorded sequence of the agent’s decisions, tool calls, outputs, and interventions
+    used to investigate behavior.
+  exercise: M37
+  source: *id164
+PSI:
+- meaning: 'Population Stability Index: a comparison of two distributions represented
+    using matching bins or bands.'
+  exercise: M38
+  source: &id165
+    pages:
+    - 561
+    verbatim: true
+i, B:
+- meaning: Score-band index and number of bands; two here.
+  exercise: M38
+  source: *id165
+Ei:
+- meaning: Reference-period share in band i. E labels the reference distribution;
+    it is not the expectation operator in this formula.
+  exercise: M38
+  source: *id165
+Ai:
+- meaning: Current-period share in the same band; A labels current share, not a group
+    of applicants from the fairness exercise.
+  exercise: M38
+  source: *id165
+Ai − Ei:
+- meaning: Absolute change in share as a fraction, not the relative percentage increase.
+  exercise: M38
+  source: *id165
+Ai /Ei:
+- meaning: Current share divided by reference share for that band.
+  exercise: M38
+  source: *id165
+Band; bin:
+- meaning: A fixed interval of model scores used to count population shares.
+  exercise: M38
+  source: *id166
+Higher risk score:
+- meaning: 'The supplied direction of this model: a higher score means higher predicted
+    default risk.'
+  exercise: M38
+  source: *id166
+Zero share:
+- meaning: Would make a logarithm or ratio undefined; a disclosed smoothing or binning
+    convention would be needed in a different example.
+  exercise: M38
+  source: *id166
+Latency:
+- meaning: Elapsed time between sending a request and receiving its response; not
+    the number of requests processed per second.
+  exercise: M39a
+  source: *id011
+ms:
+- meaning: Milliseconds; 1,000 ms equals one second.
+  exercise: M39a
+  source: *id011
+g, ng , ℓg:
+- meaning: Latency group, number of requests in that group, and their common response
+    time.
+  exercise: M39a
+  source: *id011
+ℓ̄:
+- meaning: Mean latency, weighted by request count rather than giving each latency
+    group equal weight.
+  exercise: M39a
+  source: *id011
+ℓ(j):
+- meaning: The jth smallest observed latency after sorting.
+  exercise: M39a
+  source: *id167
+Nlate:
+- meaning: Number of requests with eventual responses after the 100 ms deadline.
+  exercise: M39a
+  source: *id167
+Service objective:
+- meaning: Specified performance target; here at least 99% of requests must arrive
+    within the deadline.
+  exercise: M39a
+  source: *id167
+API:
+- meaning: 'Application programming interface: the service endpoint through which
+    callers request fraud scores.'
+  exercise: M39b
+  source: &id168
+    pages:
+    - 577
+    verbatim: true
+Throughput:
+- meaning: Completed requests per unit time. The load-test figure here supplies maximum
+    sustained service capacity.
+  exercise: M39b
+  source: *id168
+λ:
+- meaning: Arrival rate, 250 requests per second; Greek lambda is a label for incoming
+    traffic.
+  exercise: M39b
+  source: *id168
+µ:
+- meaning: Processing capacity in requests per second; Greek mu is not a portfolio
+    expected return in this exercise.
+  exercise: M39b
+  source: *id168
+max(x, 0):
+- meaning: Use the excess if positive; otherwise zero, given the empty-queue and constant-rate
+    assumptions.
+  exercise: M39b
+  source: *id169
+Backlog:
+- meaning: Requests or cases waiting to be completed, not a percentage error or a
+    latency value.
+  exercise: M39b
+  source: *id170
+na , ca:
+- meaning: Number of analysts and each analyst’s daily case-completion capacity; 15
+    and 20.
+  exercise: M39b
+  source: *id170
+A:
+- meaning: Incoming investigation alerts per day; 500 here.
+  exercise: M39b
+  source: *id170
+Nabstain , Nauto:
+- meaning: Requests deferred to manual review and requests answered automatically;
+    100 and 900.
+  exercise: M39c
+  source: *id171
+Nauto,correct:
+- meaning: Correct automatic answers, 800; the other 100 automatic answers are wrong.
+  exercise: M39c
+  source: *id171
+Nhuman,correct:
+- meaning: Correct manual resolutions, 100 under the stipulated perfect-review assumption.
+  exercise: M39c
+  source: *id171
+Cmodel:
+- meaning: All model and retrieval spending, $500, including calls that lead to abstention.
+  exercise: M39c
+  source: &id172
+    pages:
+    - 586
+    verbatim: true
+chuman:
+- meaning: Manual review cost per abstained request, $3.
+  exercise: M39c
+  source: *id172
+Ctotal:
+- meaning: Total operating spending included in this exercise; excludes financial
+    harm from wrong answers.
+  exercise: M39c
+  source: &id173
+    pages:
+    - 587
+    verbatim: true
+Abstention:
+- meaning: The system declines to supply an automatic answer and takes the specified
+    escalation route.
+  exercise: M39c
+  source: *id173
+Automatic coverage:
+- meaning: Share of incoming requests receiving an automatic answer; not prediction-interval
+    coverage or evidence recall.
+  exercise: M39c
+  source: *id173
+Conditional accuracy:
+- meaning: Accuracy within a specified subset, here the automatically answered requests
+    rather than all incoming requests.
+  exercise: M39c
+  source: *id173
+T −D:
+- meaning: Available minutes during the scheduled window.
+  exercise: M39d
+  source: *id043
+a∗:
+- meaning: Target availability as a fraction, 0.999; the star marks a specified target
+    rather than multiplication.
+  exercise: M39d
+  source: *id043
+Availability; uptime:
+- meaning: Fraction of scheduled time the service is available under the problem’s
+    binary up/down definition.
+  exercise: M39d
+  source: &id174
+    pages:
+    - 593
+    verbatim: true
+Allowed downtime:
+- meaning: Minutes of unavailability consistent with meeting the stated availability
+    target.
+  exercise: M39d
+  source: *id174
+Excess downtime:
+- meaning: Actual unavailable minutes beyond that allowance, with zero when the target
+    is met.
+  exercise: M39d
+  source: &id175
+    pages:
+    - 594
+    verbatim: true
+Time-based:
+- meaning: Every scheduled minute receives equal weight, even when request volumes
+    differ.
+  exercise: M39d
+  source: *id175

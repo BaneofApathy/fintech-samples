@@ -1,0 +1,217 @@
+slug: accuracy
+number: 2
+title: Accuracy
+question: rare
+financialInterpretation: 'Accuracy answers: Across every transaction, how often did
+  the model make the correct yes/no classification at this threshold?'
+workingExample: TP + TN 60 + 9,760 Accuracy = = = 98.2% N 10,000 A model that predicts
+  no fraud for every transaction is 99.0% accurate because 9,900 of 10,000 transactions
+  are legitimate – but it catches zero fraud. Use it when Do not rely on it when Classes
+  are reasonably balanced and the costs of Fraud, defaults, AML events, and failures
+  are rare. the two error types are similar. High accuracy can hide a useless model.
+whatItMisses: ''
+exercises:
+- M02
+widget: confusion-builder
+usedBy:
+- logistic-regression
+slides:
+- page: 206
+  title: EVALUATION MEASURE 2 OF 39
+  text: "    EVALUATION MEASURE 2 OF 39\n\n\n\n\n                          Accuracy\n\
+    \      The percentage of all decisions the model got right at one\n          \
+    \                chosen threshold."
+  paragraphs:
+  - EVALUATION MEASURE 2 OF 39
+  - Accuracy The percentage of all decisions the model got right at one chosen threshold.
+  source:
+    pages:
+    - 206
+    verbatim: true
+- page: 207
+  title: Accuracy – what fraction of all decisions were correct?
+  text: " Accuracy – what fraction of all decisions were correct?\n\n\n Financial\
+    \ interpretation\n Accuracy answers: Across every transaction, how often did the\
+    \ model make the correct yes/no classification\n at this threshold?\n\n Working\
+    \ example\n                                                               TP +\
+    \ TN   60 + 9,760\n                                                  Accuracy\
+    \ =           =            = 98.2%\n                                         \
+    \                         N        10,000\n A model that predicts no fraud for\
+    \ every transaction is 99.0% accurate because 9,900 of 10,000\n transactions are\
+    \ legitimate – but it catches zero fraud.\n\n\n Use it when                  \
+    \                                          Do not rely on it when\n Classes are\
+    \ reasonably balanced and the costs of                       Fraud, defaults,\
+    \ AML events, and failures are rare.\n the two error types are similar.      \
+    \                                 High accuracy can hide a useless model."
+  paragraphs:
+  - Accuracy – what fraction of all decisions were correct?
+  - 'Financial interpretation Accuracy answers: Across every transaction, how often
+    did the model make the correct yes/no classification at this threshold?'
+  - Working example TP + TN 60 + 9,760 Accuracy = = = 98.2% N 10,000 A model that
+    predicts no fraud for every transaction is 99.0% accurate because 9,900 of 10,000
+    transactions are legitimate – but it catches zero fraud.
+  - Use it when Do not rely on it when Classes are reasonably balanced and the costs
+    of Fraud, defaults, AML events, and failures are rare. the two error types are
+    similar. High accuracy can hide a useless model.
+  source:
+    pages:
+    - 207
+    verbatim: true
+- page: 208
+  title: Accuracy
+  text: " Accuracy\n\n   M02 | Formula explained (1/1)\n\n Question: What fraction\
+    \ of all decisions was correct?\n                                  TP + TN\n \
+    \                  Accuracy =                ,     M istakes = F P + F N.\n  \
+    \                                     N\n Read it aloud: Add caught frauds and\
+    \ correctly passed legitimate transactions, then divide by\n all transactions.\n\
+    \ The always-legitimate baseline passes every transaction. Its correct predictions\
+    \ are all legitimate\n cases; its mistakes are all frauds.\n The accuracy fraction\
+    \ is between 0 and 1. Multiply by 100 to express it as a percentage. It\n counts\
+    \ each mistake once, regardless of financial severity."
+  paragraphs:
+  - Accuracy
+  - M02 | Formula explained (1/1)
+  - 'Question: What fraction of all decisions was correct? TP + TN Accuracy = , M
+    istakes = F P + F N. N Read it aloud: Add caught frauds and correctly passed legitimate
+    transactions, then divide by all transactions. The always-legitimate baseline
+    passes every transaction. Its correct predictions are all legitimate cases; its
+    mistakes are all frauds. The accuracy fraction is between 0 and 1. Multiply by
+    100 to express it as a percentage. It counts each mistake once, regardless of
+    financial severity.'
+  source:
+    pages:
+    - 208
+    verbatim: true
+- page: 209
+  title: Accuracy
+  text: " Accuracy\n\n   M02 | Symbols and terms (1/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   TP                 \
+    \                            True positives: actual frauds correctly flagged.\
+    \ “True” means the\n                                                  prediction\
+    \ matches the outcome.\n   FP                                             False\
+    \ positives: legitimate transactions incorrectly flagged.\n   FN             \
+    \                                False negatives: actual frauds incorrectly passed\
+    \ or left unflagged.\n   TN                                             True negatives:\
+    \ legitimate transactions correctly passed.\n   N                            \
+    \                  Total number of evaluated transactions: 1,000.\n   Numerator\
+    \ T P + T N                            All correct decisions, combining both actual\
+    \ classes."
+  paragraphs:
+  - Accuracy
+  - M02 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example TP True positives: actual frauds correctly
+    flagged. “True” means the prediction matches the outcome. FP False positives:
+    legitimate transactions incorrectly flagged. FN False negatives: actual frauds
+    incorrectly passed or left unflagged. TN True negatives: legitimate transactions
+    correctly passed. N Total number of evaluated transactions: 1,000. Numerator T
+    P + T N All correct decisions, combining both actual classes.'
+  source:
+    pages:
+    - 209
+    verbatim: true
+- page: 210
+  title: Accuracy
+  text: " Accuracy\n\n   M02 | Symbols and terms (2/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   Denominator N      \
+    \                            All transactions, not just alerts or frauds.\n  \
+    \ Baseline                                       A comparison method simple enough\
+    \ to interpret; here it always\n                                             \
+    \     predicts legitimate.\n   Class imbalance                               \
+    \ One outcome is much more common; here 980 legitimate cases\n               \
+    \                                   greatly outnumber 20 frauds."
+  paragraphs:
+  - Accuracy
+  - M02 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Denominator N All transactions, not just
+    alerts or frauds. Baseline A comparison method simple enough to interpret; here
+    it always predicts legitimate. Class imbalance One outcome is much more common;
+    here 980 legitimate cases greatly outnumber 20 frauds.
+  source:
+    pages:
+    - 210
+    verbatim: true
+- page: 211
+  title: Accuracy
+  text: " Accuracy\n\n   M02 | Class problem | 5 minutes — Compare Against Doing Nothing\n\
+    \n A detector has T P = 15, F P = 35, F N = 5, and T N = 945 on 1,000 transactions.\
+    \ Fraud is\n the positive class.\n Compare it with a baseline that labels every\
+    \ transaction legitimate. There are 20 actual\n frauds in the sample.\n      \
+    \                                           TP + TN\n                        \
+    \            Accuracy =             .\n                                      \
+    \              N\n1. Calculate the detector’s accuracy and total number of mistakes.\n\
+    2. Calculate the baseline’s accuracy and number of frauds caught.\n3. A manager\
+    \ chooses the baseline because its accuracy is higher. What important fact is\n\
+    \   missing from that decision?"
+  paragraphs:
+  - Accuracy
+  - M02 | Class problem | 5 minutes — Compare Against Doing Nothing
+  - A detector has T P = 15, F P = 35, F N = 5, and T N = 945 on 1,000 transactions.
+    Fraud is the positive class. Compare it with a baseline that labels every transaction
+    legitimate. There are 20 actual frauds in the sample. TP + TN Accuracy = . N 1.
+    Calculate the detector’s accuracy and total number of mistakes. 2. Calculate the
+    baseline’s accuracy and number of frauds caught. 3. A manager chooses the baseline
+    because its accuracy is higher. What important fact is missing from that decision?
+  source:
+    pages:
+    - 211
+    verbatim: true
+- page: 212
+  title: Accuracy
+  text: " Accuracy\n\n   M02 | Worked solution — Compare Against Doing Nothing\n\n\
+    1. Detector accuracy:\n                                                  15 +\
+    \ 945    960\n                                                           =   \
+    \    = 96%.\n                                                   1,000     1,000\n\
+    \      Mistakes = 35 + 5 = 40.\n2. Baseline accuracy: It correctly passes all\
+    \ 980 legitimate transactions and misses all 20\n   frauds.\n                \
+    \                           980\n                                            \
+    \     = 98%.\n                                          1,000\n   Frauds caught\
+    \ = 0; mistakes = 20.\n3. Compare the business outcomes: The detector catches\
+    \ 15 frauds; the higher-accuracy\n   baseline catches none."
+  paragraphs:
+  - Accuracy
+  - M02 | Worked solution — Compare Against Doing Nothing
+  - '1. Detector accuracy: 15 + 945 960 = = 96%. 1,000 1,000 Mistakes = 35 + 5 = 40.
+    2. Baseline accuracy: It correctly passes all 980 legitimate transactions and
+    misses all 20 frauds. 980 = 98%. 1,000 Frauds caught = 0; mistakes = 20. 3. Compare
+    the business outcomes: The detector catches 15 frauds; the higher-accuracy baseline
+    catches none.'
+  source:
+    pages:
+    - 212
+    verbatim: true
+- page: 213
+  title: Accuracy
+  text: " Accuracy\n\n   M02 | Interpretation\n\n What the answer means\n 98% accuracy\
+    \ can describe a system that provides no fraud detection. Accuracy counts\n every\
+    \ mistake equally, although a missed fraud and a false alert may have very different\
+    \ costs.\n More information is needed to decide whether the detector’s additional\
+    \ interruptions are\n worthwhile.\n Why these steps matter\n The 96% result refers\
+    \ to all transactions, including the many legitimate cases. The loss of two\n\
+    \ percentage points versus the baseline does not tell you whether catching 15\
+    \ frauds compensates\n for the 35 false alerts. That requires a cost model."
+  paragraphs:
+  - Accuracy
+  - M02 | Interpretation
+  - What the answer means 98% accuracy can describe a system that provides no fraud
+    detection. Accuracy counts every mistake equally, although a missed fraud and
+    a false alert may have very different costs. More information is needed to decide
+    whether the detector’s additional interruptions are worthwhile. Why these steps
+    matter The 96% result refers to all transactions, including the many legitimate
+    cases. The loss of two percentage points versus the baseline does not tell you
+    whether catching 15 frauds compensates for the 35 false alerts. That requires
+    a cost model.
+  source:
+    pages:
+    - 213
+    verbatim: true
+source:
+  pages:
+  - 206
+  - 207
+  - 208
+  - 209
+  - 210
+  - 211
+  - 212
+  - 213
+  verbatim: true

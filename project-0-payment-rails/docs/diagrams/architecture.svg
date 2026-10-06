@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+<title id="title">Six participants, one observable payment</title><desc id="desc">Six independent Python child processes communicate through supervisor-delivered queues. Authorization moves forward and the issuer decision returns. Merchant captures locally; issuer owns funds; acquirer records illustrative payouts.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#007D82"/></marker><marker id="return" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#926300"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#15384A}.label{font-size:20px;font-weight:700}.body{font-size:17px}.small{font-size:15px;fill:#536773}.title{font-size:32px;font-weight:700}.eyebrow{font-size:15px;font-weight:700;fill:#007D82;letter-spacing:1px}</style>
+<text class="eyebrow" x="35" y="35">USF • AI IN FINTECH • PROJECT 0</text>
+<text class="title" x="35" y="83">Six participants, one observable payment</text>
+<rect x="30" y="155" width="165" height="115" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="112.5" y="189" text-anchor="middle">Payer</text>
+<text class="body" x="112.5" y="220" text-anchor="middle">Python process</text>
+<line x1="195" y1="211" x2="222" y2="211" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="225" y="155" width="165" height="115" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="307.5" y="189" text-anchor="middle">Merchant</text>
+<text class="label" x="307.5" y="216" text-anchor="middle">POS</text>
+<text class="body" x="307.5" y="247" text-anchor="middle">Python process</text>
+<line x1="390" y1="211" x2="417" y2="211" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="420" y="155" width="165" height="115" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="502.5" y="189" text-anchor="middle">Gateway</text>
+<text class="label" x="502.5" y="216" text-anchor="middle">Processor</text>
+<text class="body" x="502.5" y="247" text-anchor="middle">Python process</text>
+<line x1="585" y1="211" x2="612" y2="211" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="615" y="155" width="165" height="115" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="697.5" y="189" text-anchor="middle">Acquirer</text>
+<text class="body" x="697.5" y="220" text-anchor="middle">Python process</text>
+<line x1="780" y1="211" x2="807" y2="211" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="810" y="155" width="165" height="115" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="892.5" y="189" text-anchor="middle">Simulated</text>
+<text class="label" x="892.5" y="216" text-anchor="middle">Visa/Mastercard</text>
+<text class="body" x="892.5" y="247" text-anchor="middle">Python process</text>
+<line x1="975" y1="211" x2="1002" y2="211" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1005" y="155" width="165" height="115" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="1087.5" y="189" text-anchor="middle">Issuer</text>
+<text class="body" x="1087.5" y="220" text-anchor="middle">Python process</text>
+<path d="M 1087.5 270 V 310 H 112.5 V 277" fill="none" stroke="#926300" stroke-width="2.5" marker-end="url(#return)"/>
+<rect x="390" y="288" width="420" height="40" fill="white"/>
+<text class="body" x="600" y="315" text-anchor="middle" style="fill:#926300">Issuer decision returns through every participant</text>
+<rect x="250" y="375" width="700" height="100" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="600.0" y="409" text-anchor="middle">Supervisor</text>
+<text class="body" x="600.0" y="440" text-anchor="middle">Inbox queues • stepping • process health • observed events</text>
+<line x1="600" y1="375" x2="600" y2="335" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)" stroke-dasharray="6 5"/>
+<rect x="325" y="535" width="550" height="83" rx="12" fill="#EDF5F5" stroke="#007D82" stroke-width="2"/>
+<text class="label" x="600.0" y="569" text-anchor="middle">Browser dashboard</text>
+<text class="body" x="600.0" y="600" text-anchor="middle">Live diagram • balances • JSON trace</text>
+<line x1="600" y1="530" x2="600" y2="479" stroke="#007D82" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text class="small" x="30" y="645" text-anchor="start">Capture is local to merchant; clearing and settlement run merchant ↔ issuer.</text>
+</svg>

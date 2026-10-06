@@ -1,0 +1,379 @@
+slug: trees-and-forests
+number: 2
+title: Decision Trees and Random Forests
+group: Predict an outcome
+oneLine: Choose which card transactions need intervention.
+baseline: A fixed fraud rule set maintained by analysts.
+primerSlides:
+- page: 31
+  title: 'Primer 2A: Trees and random forests – definition and intuition'
+  text: " Primer 2A: Trees and random forests – definition and intuition\n\n\n   Financial\
+    \ problem: Which card transactions should be approved, challenged, or sent to\
+    \ an investigator when\n   risk depends on interacting conditions?\n\n\n\n Definition\
+    \                                                                            \
+    \                 Plain-English intuition\n A decision tree recursively splits\
+    \ the feature space into                                              A tree asks\
+    \ a sequence of questions. A forest asks\n if/then regions. A random forest averages\
+    \ many trees trained                                           many different\
+    \ trees and combines their votes,\n on resampled rows and randomized feature subsets\
+    \ to reduce                                             trading compact rules\
+    \ for greater robustness.\n the instability of one tree.\n                   \
+    \                                                                            \
+    \         Anchor idea\n Input → output                                       \
+    \                                                     One split: xj ≤ t goes left;\
+    \ otherwise it goes\n Input: Numeric and encoded categorical features; scaling\
+    \ is usually                                       right. A forest averages B\
+    \ tree predictions.\n not required.\n Output: A class, probability-like score,\
+    \ or numeric prediction from\n one tree or an ensemble average.\n What it learns:\
+    \ Nonlinear thresholds and interactions without requiring the instructor to specify\
+    \ them in advance."
+  paragraphs:
+  - 'Primer 2A: Trees and random forests – definition and intuition'
+  - 'Financial problem: Which card transactions should be approved, challenged, or
+    sent to an investigator when risk depends on interacting conditions?'
+  - 'Definition Plain-English intuition A decision tree recursively splits the feature
+    space into A tree asks a sequence of questions. A forest asks if/then regions.
+    A random forest averages many trees trained many different trees and combines
+    their votes, on resampled rows and randomized feature subsets to reduce trading
+    compact rules for greater robustness. the instability of one tree. Anchor idea
+    Input → output One split: xj ≤ t goes left; otherwise it goes Input: Numeric and
+    encoded categorical features; scaling is usually right. A forest averages B tree
+    predictions. not required. Output: A class, probability-like score, or numeric
+    prediction from one tree or an ensemble average. What it learns: Nonlinear thresholds
+    and interactions without requiring the instructor to specify them in advance.'
+  source:
+    pages:
+    - 31
+    verbatim: true
+- page: 32
+  title: 'Primer 2B: Trees and random forests – worked fintech example'
+  text: " Primer 2B: Trees and random forests – worked fintech example\n\n\n Real-time\
+    \ card intervention\n A transaction is for $860, comes from a new device, crosses\
+    \ a country boundary, and uses a merchant\n account opened last week.\n\n\n From\
+    \ data to action                                                        Comparison\
+    \ point\n1. A shallow tree may split first on new device, then amount, then  \
+    \        Baseline: A fixed rule list such as new\n                           \
+    \                                                 device AND amount above $500.\n\
+    \   merchant age.\n2. A random forest may return a risk score of 0.71 after hundreds\
+    \ of\n                                                                       \
+    \     Control to teach\n   diverse trees vote.\n                             \
+    \                                               Watch for: Uncalibrated probabilities,\n\
+    3. At the selected operating point, scores above 0.65 trigger step-up       leakage\
+    \ from post-transaction fields, and\n   authentication.                      \
+    \                                    explanations that confuse association with\n\
+    \                                                                            causation.\n\
+    4. The action adds friction but avoids an automatic decline when\n   identity\
+    \ can still be verified."
+  paragraphs:
+  - 'Primer 2B: Trees and random forests – worked fintech example'
+  - Real-time card intervention A transaction is for $860, comes from a new device,
+    crosses a country boundary, and uses a merchant account opened last week.
+  - 'From data to action Comparison point 1. A shallow tree may split first on new
+    device, then amount, then Baseline: A fixed rule list such as new device AND amount
+    above $500. merchant age. 2. A random forest may return a risk score of 0.71 after
+    hundreds of Control to teach diverse trees vote. Watch for: Uncalibrated probabilities,
+    3. At the selected operating point, scores above 0.65 trigger step-up leakage
+    from post-transaction fields, and authentication. explanations that confuse association
+    with causation. 4. The action adds friction but avoids an automatic decline when
+    identity can still be verified.'
+  source:
+    pages:
+    - 32
+    verbatim: true
+- page: 33
+  title: 'Primer 2C: Trees and random forests – when to use it, and when not to'
+  text: " Primer 2C: Trees and random forests – when to use it, and when not to\n\n\
+    \n Use it when                                                         Do not\
+    \ use it when\n▶ Nonlinear thresholds and feature interactions are           \
+    \       ▶ A single, stable reason code is mandatory and a\n  expected.       \
+    \                                                     forest is too diffuse.\n\
+    ▶ The data are structured and contain mixed scales. ▶ The model must extrapolate\
+    \ beyond the observed\n▶ You want a reliable benchmark with little feature   feature\
+    \ range.\n      scaling.                                                     \
+    \  ▶ The important signal lives in temporal order or\n▶ Robust ranking matters\
+    \ more than a compact                           entity relationships.\n  coefficient\
+    \ table.                                                 ▶ The dataset is tiny\
+    \ relative to the number of\n▶ You need model behavior that can be inspected \
+    \                       candidate splits.\n  through paths or feature effects.\
+    \                                  ▶ Raw high-dimensional text is the main input.\n\
+    \n Better fit in those cases\n Use logistic regression for compact explanations,\
+    \ gradient boosting for stronger tabular accuracy, or graph models when relationships\n\
+    \ carry the signal."
+  paragraphs:
+  - 'Primer 2C: Trees and random forests – when to use it, and when not to'
+  - Use it when Do not use it when ▶ Nonlinear thresholds and feature interactions
+    are ▶ A single, stable reason code is mandatory and a expected. forest is too
+    diffuse. ▶ The data are structured and contain mixed scales. ▶ The model must
+    extrapolate beyond the observed ▶ You want a reliable benchmark with little feature
+    feature range. scaling. ▶ The important signal lives in temporal order or ▶ Robust
+    ranking matters more than a compact entity relationships. coefficient table. ▶
+    The dataset is tiny relative to the number of ▶ You need model behavior that can
+    be inspected candidate splits. through paths or feature effects. ▶ Raw high-dimensional
+    text is the main input.
+  - Better fit in those cases Use logistic regression for compact explanations, gradient
+    boosting for stronger tabular accuracy, or graph models when relationships carry
+    the signal.
+  source:
+    pages:
+    - 33
+    verbatim: true
+- page: 34
+  title: 'Primer 2D: Trees and random forests – fintech problem map'
+  text: " Primer 2D: Trees and random forests – fintech problem map\n\n\n\n Common\
+    \ fintech problems                                                    Operational\
+    \ profile\n▶ Card and payment fraud                    ▶ Customer churn      \
+    \          ▶ Latency: low\n▶ Credit underwriting                       ▶ Collections\
+    \ prioritization    ▶ Explainability: medium\n▶ Chargeback prediction        \
+    \             ▶ Claims fraud                  ▶ Data need: medium\n▶ Merchant\
+    \ risk scoring                     ▶ AML alert ranking             ▶ Monitor:\
+    \ calibration, feature drift,\n                                              \
+    \                                score distribution\n\n\n\n   Student defense\
+    \ question: Can the student explain why the forest improves stability and why\n\
+    \   its vote is not automatically a calibrated probability?"
+  paragraphs:
+  - 'Primer 2D: Trees and random forests – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Card and payment fraud ▶ Customer
+    churn ▶ Latency: low ▶ Credit underwriting ▶ Collections prioritization ▶ Explainability:
+    medium ▶ Chargeback prediction ▶ Claims fraud ▶ Data need: medium ▶ Merchant risk
+    scoring ▶ AML alert ranking ▶ Monitor: calibration, feature drift, score distribution'
+  - 'Student defense question: Can the student explain why the forest improves stability
+    and why its vote is not automatically a calibrated probability?'
+  source:
+    pages:
+    - 34
+    verbatim: true
+definition: A decision tree recursively splits the feature space into if/then regions.
+  A random forest averages many trees trained on resampled rows and randomized feature
+  subsets to reduce the instability of one tree.
+intuition: A tree asks a sequence of questions. A forest asks many different trees
+  and combines their votes, trading compact rules for greater robustness.  Anchor
+  idea
+useWhen:
+- Nonlinear thresholds and feature interactions are expected.
+- The data are structured and contain mixed scales.
+- The model must
+- You want a reliable benchmark with little feature feature range. scaling.
+- Robust ranking matters more than a compact coefficient table.
+- You need model behavior that can be inspected through paths or feature effects.
+avoidWhen:
+- A single, stable reason code is mandatory and a forest is too diffuse. extrapolate
+  beyond the observed
+- The important signal lives in temporal order or entity relationships.
+- The dataset is tiny relative to the number of candidate splits.
+- Raw high-dimensional text is the main input.
+deepDive:
+  problem:
+  - page: 609
+    title: 'Financial problem: which card transactions need intervention?'
+    text: " Financial problem: which card transactions need intervention?\n\n\n  \
+      \  Financial problem\n    A card issuer must identify risky transactions using\
+      \ amount, merchant category, device history,\n    geography, customer tenure,\
+      \ and recent behavior. The relationships are nonlinear and full of\n    interactions.\n\
+      \n\n Example interaction                                  Operational constraint\n\
+      \ A $900 purchase may be normal for one                The model must score\
+      \ quickly and keep false\n customer, suspicious for another, and low-risk  \
+      \     declines low enough that legitimate customers are\n at a known merchant\
+      \ on a trusted device.             not routinely blocked.\n\n   Decision to\
+      \ make: Learn conditional rules from data, then aggregate many trees to reduce\n\
+      \   variance."
+    paragraphs:
+    - 'Financial problem: which card transactions need intervention?'
+    - Financial problem A card issuer must identify risky transactions using amount,
+      merchant category, device history, geography, customer tenure, and recent behavior.
+      The relationships are nonlinear and full of interactions.
+    - Example interaction Operational constraint A $900 purchase may be normal for
+      one The model must score quickly and keep false customer, suspicious for another,
+      and low-risk declines low enough that legitimate customers are at a known merchant
+      on a trusted device. not routinely blocked.
+    - 'Decision to make: Learn conditional rules from data, then aggregate many trees
+      to reduce variance.'
+    source:
+      pages:
+      - 609
+      verbatim: true
+  method:
+  - page: 610
+    title: 'Method: a tree partitions the feature space'
+    text: " Method: a tree partitions the feature space\n\n\n                    \
+      \                                                    Trusted device?\n\n\n\n\
+      \                                                 Amount > $500?           \
+      \                         Merchant new?\n\n\n\n                            \
+      \        Challenge                 Approve                     Review      \
+      \             Approve\n\n\n\n\n Decision tree                              \
+      \                                    Random forest\n Chooses splits that make\
+      \ child nodes purer. Easy Fits many trees on bootstrapped samples and\n to explain,\
+      \ but a deep tree memorizes noise.      random feature subsets, then averages\
+      \ their\n                                                   predictions.\n Baseline:\
+      \ A fixed fraud rule set maintained by analysts."
+    paragraphs:
+    - 'Method: a tree partitions the feature space'
+    - Trusted device?
+    - Amount > $500? Merchant new?
+    - Challenge Approve Review Approve
+    - 'Decision tree Random forest Chooses splits that make child nodes purer. Easy
+      Fits many trees on bootstrapped samples and to explain, but a deep tree memorizes
+      noise. random feature subsets, then averages their predictions. Baseline: A
+      fixed fraud rule set maintained by analysts.'
+    source:
+      pages:
+      - 610
+      verbatim: true
+  code:
+  - page: 611
+    title: 'Working example: tree versus random forest'
+    text: " Working example: tree versus random forest\n\n\n\n  from sklearn.datasets\
+      \ import make_classification\n  from sklearn.model_selection import train_test_split\n\
+      \  from sklearn.tree import DecisionTreeClassifier\n                       \
+      \                                                         Change one thing\n\
+      \  from sklearn.ensemble import RandomForestClassifier\n  from sklearn.metrics\
+      \ import average_precision_score                          ▶ Tree depth\n  X,\
+      \ y = make_classification(n_samples=8000, n_features=12,\n      n_informative=7,\
+      \ weights=[.97, .03], random_state=11)\n                                   \
+      \                                            ▶ Number of trees\n  Xtr, Xte,\
+      \ ytr, yte = train_test_split(\n      X, y, stratify=y, test_size=.30, random_state=11)\
+      \                        ▶ Minimum leaf size\n  models = {\n    \"tree\": DecisionTreeClassifier(max_depth=5,\
+      \ random_state=11),\n                                                      \
+      \                         ▶ Class weights\n    \"forest\": RandomForestClassifier(n_estimators=300,\n\
+      \        max_depth=10, class_weight=\"balanced\", n_jobs=-1,\n        random_state=11)\
+      \                                                        Primary metric: PR-AUC\
+      \ and\n  }\n  for name, model in models.items():                           \
+      \                 precision@review-capacity.\n      model.fit(Xtr, ytr)\n  \
+      \    p = model.predict_proba(Xte)[:, 1]\n      print(name, average_precision_score(yte,\
+      \ p))"
+    paragraphs:
+    - 'Working example: tree versus random forest'
+    - 'from sklearn.datasets import make_classification from sklearn.model_selection
+      import train_test_split from sklearn.tree import DecisionTreeClassifier Change
+      one thing from sklearn.ensemble import RandomForestClassifier from sklearn.metrics
+      import average_precision_score ▶ Tree depth X, y = make_classification(n_samples=8000,
+      n_features=12, n_informative=7, weights=[.97, .03], random_state=11) ▶ Number
+      of trees Xtr, Xte, ytr, yte = train_test_split( X, y, stratify=y, test_size=.30,
+      random_state=11) ▶ Minimum leaf size models = { "tree": DecisionTreeClassifier(max_depth=5,
+      random_state=11), ▶ Class weights "forest": RandomForestClassifier(n_estimators=300,
+      max_depth=10, class_weight="balanced", n_jobs=-1, random_state=11) Primary metric:
+      PR-AUC and } for name, model in models.items(): precision@review-capacity. model.fit(Xtr,
+      ytr) p = model.predict_proba(Xte)[:, 1] print(name, average_precision_score(yte,
+      p))'
+    source:
+      pages:
+      - 611
+      verbatim: true
+  economics:
+  - page: 612
+    title: How to evaluate tree models honestly
+    text: " How to evaluate tree models honestly\n\n\n1. Compare against the rule\
+      \ baseline and logistic regression.\n2. Tune depth and minimum leaf size on\
+      \ validation data.\n3. Measure performance at the actual review capacity: precision@500,\
+      \ not only global AUC.\n4. Check probability calibration; tree ensembles can\
+      \ rank well while overstating confidence.\n5. Test slices: new customers, high-value\
+      \ transactions, device changes, and rare merchants.\n\n Feature importance is\
+      \ not causality\n Impurity-based importance can favor continuous or high-cardinality\
+      \ features. Use permutation tests,\n stability checks, and domain review before\
+      \ drawing conclusions.\n\n\n   Student defense question: A device identifier\
+      \ dominates feature importance. Is that useful\n   signal, leakage, or a fragile\
+      \ proxy? What evidence would distinguish the three?"
+    paragraphs:
+    - How to evaluate tree models honestly
+    - '1. Compare against the rule baseline and logistic regression. 2. Tune depth
+      and minimum leaf size on validation data. 3. Measure performance at the actual
+      review capacity: precision@500, not only global AUC. 4. Check probability calibration;
+      tree ensembles can rank well while overstating confidence. 5. Test slices: new
+      customers, high-value transactions, device changes, and rare merchants.'
+    - Feature importance is not causality Impurity-based importance can favor continuous
+      or high-cardinality features. Use permutation tests, stability checks, and domain
+      review before drawing conclusions.
+    - 'Student defense question: A device identifier dominates feature importance.
+      Is that useful signal, leakage, or a fragile proxy? What evidence would distinguish
+      the three?'
+    source:
+      pages:
+      - 612
+      verbatim: true
+  choice:
+  - page: 613
+    title: When trees and random forests fit
+    text: " When trees and random forests fit\n\n\n\n\n Use them when            \
+      \                            Avoid or reconsider when\n▶ Data is tabular with\
+      \ nonlinear interactions.        ▶ Extrapolation beyond observed ranges\n▶ Minimal\
+      \ preprocessing is desirable.                   matters.\n▶ A robust benchmark\
+      \ is needed quickly.               ▶ Millisecond latency or tiny memory is critical.\n\
+      ▶ Mixed feature scales and thresholds are           ▶ A single global explanation\
+      \ is mandatory.\n   natural.                                         ▶ Temporal\
+      \ leakage hides inside aggregates.\nRequired artifact: Depth/leaf-size sensitivity,\
+      \ slice metrics, calibration plot, and feature-stability\nreport."
+    paragraphs:
+    - When trees and random forests fit
+    - 'Use them when Avoid or reconsider when ▶ Data is tabular with nonlinear interactions.
+      ▶ Extrapolation beyond observed ranges ▶ Minimal preprocessing is desirable.
+      matters. ▶ A robust benchmark is needed quickly. ▶ Millisecond latency or tiny
+      memory is critical. ▶ Mixed feature scales and thresholds are ▶ A single global
+      explanation is mandatory. natural. ▶ Temporal leakage hides inside aggregates.
+      Required artifact: Depth/leaf-size sensitivity, slice metrics, calibration plot,
+      and feature-stability report.'
+    source:
+      pages:
+      - 613
+      verbatim: true
+financialProblem: 'A card issuer must identify risky transactions using amount, merchant
+  category, device history, geography, customer tenure, and recent behavior. The relationships
+  are nonlinear and full of interactions. Example interaction Operational constraint
+  A $900 purchase may be normal for one The model must score quickly and keep false
+  customer, suspicious for another, and low-risk declines low enough that legitimate
+  customers are at a known merchant on a trusted device. not routinely blocked. Decision
+  to make: Learn conditional rules from data, then aggregate many trees to reduce
+  variance.'
+defenseQuestions:
+- text: Can the student explain why the forest improves stability and why its vote
+    is not automatically a calibrated probability?
+  source:
+    pages:
+    - 34
+    verbatim: true
+- text: A device identifier dominates feature importance. Is that useful signal, leakage,
+    or a fragile proxy? What evidence would distinguish the three?
+  source:
+    pages:
+    - 612
+    verbatim: true
+exercises:
+- A02
+measures:
+- confusion-matrix
+- precision
+- recall
+- precision-recall-curve-and-pr-auc
+- precision-k-and-recall-k
+- lift-and-cumulative-gain
+- expected-cost
+- fairness-measures
+widgets:
+- gini-split
+lab:
+  dataset: Frozen synthetic card transactions
+  task: Rank cases under review capacity
+  requiredComparison: Rules vs supervised vs anomaly
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 30
+  - 31
+  - 32
+  - 33
+  - 34
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  - 41
+  - 608
+  - 609
+  - 610
+  - 611
+  - 612
+  - 613
+  verbatim: true

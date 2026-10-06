@@ -1,0 +1,18 @@
+sequenceDiagram
+  participant P as Payer
+  participant M as Merchant / POS
+  participant G as Gateway / Processor
+  participant A as Acquirer
+  participant N as Simulated Network
+  participant I as Issuer
+  P->>M: AUTHORIZE (payment ID, operation ID, amount)
+  M->>G: AUTHORIZE
+  G->>A: AUTHORIZE
+  A->>N: AUTHORIZE (Visa or Mastercard)
+  N->>I: AUTHORIZE
+  Note over I: Check token, active account, available funds\nIf approved, reserve hold; posted unchanged
+  I-->>N: AUTH_RESULT (approved or declined, reason)
+  N-->>A: AUTH_RESULT
+  A-->>G: AUTH_RESULT
+  G-->>M: AUTH_RESULT
+  M-->>P: AUTH_RESULT / receipt

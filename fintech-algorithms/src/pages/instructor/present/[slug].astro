@@ -1,0 +1,280 @@
+---
+import { algorithms, exercise, href } from '../../../data';
+import type { LessonSection } from '../../../data/lesson-types';
+import { solve } from '../../../engine/solve/core';
+import { format } from '../../../engine/check';
+import { exerciseSummary } from '../../../engine/exercise-copy';
+import { resolveExplanation } from '../../../engine/explanation-templates';
+import LessonContent from '../../../components/content/LessonContent.astro';
+import 'reveal.js/reveal.css';
+import 'katex/dist/katex.min.css';
+export function getStaticPaths() {
+  return algorithms.map((a) => ({ params: { slug: a.slug }, props: { algorithm: a } }));
+}
+const { algorithm: a } = Astro.props;
+const lessons: LessonSection[] = [
+  {
+    title: 'The financial decision',
+    blocks: [
+      { kind: 'paragraph', text: a.financialProblem },
+      { kind: 'paragraph', text: a.lesson.decision },
+      { kind: 'paragraph', text: `Baseline: ${a.baseline}` },
+    ],
+  },
+  {
+    title: 'Inputs and consequences',
+    blocks: [
+      { kind: 'paragraph', text: a.lesson.available },
+      { kind: 'paragraph', text: a.lesson.costs },
+    ],
+  },
+  {
+    title: 'How the method works',
+    blocks: [
+      { kind: 'paragraph', text: a.definition },
+      { kind: 'paragraph', text: a.intuition },
+    ],
+  },
+  ...a.lesson.method,
+  ...a.exercises.flatMap((id) => {
+    const e = exercise(id);
+    const answers = solve(e.id, e.givens);
+    return [
+      { title: `${e.id}: ${e.title}`, blocks: [{ kind: 'paragraph', text: e.question }] },
+      {
+        title: `${e.id}: example inputs`,
+        blocks: [{
+          kind: 'table',
+          headers: ['Input', 'Value'],
+          rows: Object.entries(e.givens).map(([key, value]) => [
+            e.labels[key] ?? key,
+            Array.isArray(value) ? value.join(', ') : String(value),
+          ]),
+        }],
+      },
+      ...e.latex.map((latex, i) => ({
+        title: `${e.id}: read the formula`,
+        blocks: [
+          { kind: 'math', latex, symbols: e.formulaSymbols?.[i] ?? e.symbols },
+          { kind: 'paragraph', text: e.readAloud[i] ?? '' },
+        ],
+      })),
+      {
+        title: `${e.id}: symbols and units`,
+        blocks: [
+          {
+            kind: 'table',
+            headers: ['Symbol', 'Meaning'],
+            rows: (e.formulaSymbols?.[e.latex.length - 1] ?? e.symbols).map((s) => [s.symbol, s.meaning]),
+          },
+        ],
+      },
+      {
+        title: `${e.id}: worked steps`,
+        blocks: [
+          {
+            kind: 'table',
+            headers: ['Quantity', 'Calculation', 'Result'],
+            rows: e.steps.map((s) => [
+              s.title,
+              s.explanation
+                ? resolveExplanation(s.explanation, `${e.id}:${s.id}`, e.labels, e.givens, answers, e.steps)
+                : `Calculation hint: ${s.hints[0] ?? ''}`,
+              format(answers[s.id], s.unit),
+            ]),
+          },
+        ],
+      },
+      {
+        title: `${e.id}: substitute the inputs`,
+        blocks: [{ kind: 'list', items: e.learning!.workedArithmetic }],
+      },
+      {
+        title: `${e.id}: interpretation`,
+        blocks: [
+          { kind: 'paragraph', text: exerciseSummary(e, answers) },
+          ...((e as any).learning?.workedExplanation ?? []).map((text: string) => ({
+            kind: 'paragraph',
+            text,
+          })),
+        ],
+      },
+    ] as LessonSection[];
+  }),
+  ...a.lesson.worked,
+  ...a.lesson.evaluation,
+  { title: 'When to choose this method', blocks: [{ kind: 'list', items: a.useWhen }] },
+  { title: 'When to choose another approach', blocks: [{ kind: 'list', items: a.avoidWhen }] },
+  {
+    title: 'Python lab',
+    blocks: [
+      { kind: 'paragraph', text: a.lab.dataset },
+      { kind: 'paragraph', text: a.lab.task },
+      { kind: 'paragraph', text: `Comparison: ${a.lab.requiredComparison}` },
+    ],
+  },
+  {
+    title: 'Discuss the evidence',
+    blocks: [{ kind: 'list', items: a.defenseQuestions.map((q) => q.text) }],
+  },
+];
+// Keep large symbol tables and explanations readable on individual slides.
+const run = lessons.flatMap((s) => {
+  const expanded = s.blocks.flatMap((b) =>
+    b.kind === 'table' && b.rows.length > 6
+      ? Array.from({ length: Math.ceil(b.rows.length / 6) }, (_, i) => ({
+          ...b,
+          rows: b.rows.slice(i * 6, i * 6 + 6),
+        }))
+      : [b],
+  );
+  return Array.from({ length: Math.ceil(expanded.length / 2) }, (_, i) => ({
+    title: s.title,
+    blocks: expanded.slice(i * 2, i * 2 + 2),
+  }));
+});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{a.title} · instructor presentation</title>
+    <link rel="icon" href={href('/favicon.svg')} />
+    <style>
+      body {
+        margin: 0;
+        background: #f5f7f4;
+        color: #173d2c;
+        font-family: system-ui, sans-serif;
+      }
+      .reveal {
+        font-size: 22px;
+      }
+      .reveal h1,
+      .reveal :global(h2) {
+        font-family: Georgia, serif;
+        font-weight: 400;
+      }
+      .reveal h1 {
+        font-size: 2.5em;
+      }
+      .reveal :global(h2) {
+        font-size: 1.5em;
+        margin: 0 0 0.6em;
+      }
+      .reveal :global(p),
+      .reveal :global(li) {
+        line-height: 1.5;
+      }
+      .reveal :global(table) {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 0.85em;
+      }
+      .reveal :global(th),
+      .reveal :global(td) {
+        text-align: left;
+        border-bottom: 1px solid #b7c7bd;
+        padding: 0.45em;
+        vertical-align: top;
+      }
+      .reveal :global(.table-scroll),
+      .reveal :global(.formula-math) {
+        overflow-x: auto;
+      }
+      .reveal :global(.formula-block) {
+        padding: 0.5em 0;
+      }
+      .reveal :global(.symbol-key) {
+        display: none;
+      }
+      .reveal .slide-content {
+        text-align: left;
+        max-height: 565px;
+        overflow: auto;
+        padding: 0 12px;
+      }
+      .reveal small {
+        display: block;
+        text-align: right;
+        font-size: 0.55em;
+        margin-top: 1em;
+        color: #53675e;
+      }
+      .exit {
+        position: fixed;
+        top: 10px;
+        left: 12px;
+        z-index: 99;
+        font-size: 13px;
+        color: #064d3b;
+        text-decoration: none;
+        background: #fff;
+        padding: 7px 10px;
+        border-radius: 5px;
+      }
+      .reveal .progress,
+      .reveal .controls {
+        color: #064d3b;
+      }
+      .help {
+        position: fixed;
+        bottom: 12px;
+        left: 15px;
+        color: #53675e;
+        font-size: 12px;
+        z-index: 99;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="exit" href={href('/instructor/')}>
+      Exit presentation
+    </a>
+    <div class="help">Arrow keys: slides · F: full screen · Esc: overview</div>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>{a.title}</h1>
+          <p>{a.oneLine}</p>
+          <small>
+            Prepared by Adnan Masood, PhD. as companion material for USF AI in Fintech lectures.
+            <br />
+            Licensed under Creative Commons{' '}
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>.
+            <br />
+            Instructor-created reference material; not an official USF repository.
+          </small>
+        </section>
+        {run.map((s) => (
+          <section>
+            <div class="slide-content">
+              <LessonContent sections={[s]} />
+            </div>
+            <small>
+              Prepared by Adnan Masood, PhD. as companion material for USF AI in Fintech lectures.
+              <br />
+              Licensed under Creative Commons{' '}
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">CC BY-NC-SA 4.0</a>.
+              <br />
+              Instructor-created reference material; not an official USF repository.
+            </small>
+          </section>
+        ))}
+      </div>
+    </div>
+    <script>
+      import Reveal from 'reveal.js';
+      new Reveal({
+        hash: true,
+        transition: 'none',
+        width: 1150,
+        height: 700,
+        margin: 0.08,
+        center: false,
+      }).initialize();
+    </script>
+  </body>
+</html>

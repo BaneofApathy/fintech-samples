@@ -1,0 +1,47 @@
+{
+  "logistic-regression": {
+    "caption": "First 3 generated rows; showing 3 of 8 numerical features and the target.",
+    "columns": ["Feature 1", "Feature 2", "Feature 3", "Target"],
+    "rows": [
+      ["1.285", "-1.91", "-0.5848", "0"],
+      ["1.885", "-0.8027", "-1.254", "0"],
+      ["0.8217", "-0.06559", "0.1412", "0"]
+    ]
+  },
+  "trees-and-forests": {
+    "caption": "First 3 generated rows; showing 3 of 12 features and the target.",
+    "columns": ["Feature 1", "Feature 2", "Feature 3", "Target"],
+    "rows": [
+      ["0.5979", "-1.026", "-1.067", "0"],
+      ["1.343", "-0.5824", "1.278", "0"],
+      ["-0.4869", "-0.01296", "0.779", "1"]
+    ]
+  },
+  "gradient-boosting": {
+    "caption": "First 3 generated rows; showing 3 of 20 features and the target.",
+    "columns": ["Feature 1", "Feature 2", "Feature 3", "Target"],
+    "rows": [
+      ["3.872", "0.3985", "1.071", "0"],
+      ["0.04526", "0.4649", "3.755", "0"],
+      ["3.908", "1.042", "-0.5183", "0"]
+    ]
+  },
+  "k-means": {
+    "caption": "First 3 generated rows before standardization; showing 3 of 5 dimensions.",
+    "columns": ["Feature 1", "Feature 2", "Feature 3"],
+    "rows": [
+      ["-4.576", "-1.268", "-5.407"],
+      ["-3.961", "-2.956", "-4.69"],
+      ["1.74", "8.104", "1.164"]
+    ]
+  },
+  "time-series": {
+    "caption": "First 3 generated daily observations.",
+    "columns": ["Date", "Observed value"],
+    "rows": [
+      ["2025-01-01", "970.67"],
+      ["2025-01-02", "1094.9"],
+      ["2025-01-03", "1203.8"]
+    ]
+  }
+}

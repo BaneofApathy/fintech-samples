@@ -1,0 +1,383 @@
+slug: time-series
+number: 6
+title: Time-Series Forecasting / ARIMA, SARIMA
+group: Model time and relations
+oneLine: Forecast settlement outflows and decide how much liquidity to hold.
+baseline: ''
+primerSlides:
+- page: 76
+  title: 'Primer 6A: Time-series forecasting – definition and intuition'
+  text: " Primer 6A: Time-series forecasting – definition and intuition\n\n\n   Financial\
+    \ problem: How much cash, payment volume, staffing, or liquidity will be needed\
+    \ over the next day,\n   week, or quarter?\n\n\n\n Definition                \
+    \                                                                            \
+    \  Plain-English intuition\n ARIMA models a time series through autoregressive\
+    \ lags,                                                 Recent values, recurring\
+    \ seasonal patterns, and\n differencing, and lagged forecast errors. SARIMA adds\
+    \                                                   recent forecast errors contain\
+    \ information about the\n seasonal structure; GARCH models changing volatility\
+    \ rather                                             next value – until the process\
+    \ changes.\n than the level itself.\n                                        \
+    \                                                                 Anchor idea\n\
+    \ Input → output\n                                                           \
+    \                                                   ARMA(1,1): yt = c + ϕyt−1\
+    \ + ϵt + θϵt−1 .\n Input: Ordered observations with a clear time index, frequency,\
+    \ and\n forecast horizon; optional external drivers require extended models.\n\
+    \ Output: A point forecast and, critically, an interval that widens with\n uncertainty\
+    \ and horizon.\n What it learns: Serial dependence in the historical process.\
+    \ It does not learn why a policy or external event caused the change."
+  paragraphs:
+  - 'Primer 6A: Time-series forecasting – definition and intuition'
+  - 'Financial problem: How much cash, payment volume, staffing, or liquidity will
+    be needed over the next day, week, or quarter?'
+  - 'Definition Plain-English intuition ARIMA models a time series through autoregressive
+    lags, Recent values, recurring seasonal patterns, and differencing, and lagged
+    forecast errors. SARIMA adds recent forecast errors contain information about
+    the seasonal structure; GARCH models changing volatility rather next value – until
+    the process changes. than the level itself. Anchor idea Input → output ARMA(1,1):
+    yt = c + ϕyt−1 + ϵt + θϵt−1 . Input: Ordered observations with a clear time index,
+    frequency, and forecast horizon; optional external drivers require extended models.
+    Output: A point forecast and, critically, an interval that widens with uncertainty
+    and horizon. What it learns: Serial dependence in the historical process. It does
+    not learn why a policy or external event caused the change.'
+  source:
+    pages:
+    - 76
+    verbatim: true
+- page: 77
+  title: 'Primer 6B: Time-series forecasting – worked fintech example'
+  text: " Primer 6B: Time-series forecasting – worked fintech example\n\n\n Daily\
+    \ ACH volume and liquidity planning\n Treasury needs a 14-day forecast of settlement\
+    \ volume to position liquidity and operations needs to schedule\n staff.\n\n\n\
+    \ From data to action                                                        \
+    \ Comparison point\n1. Split chronologically; never shuffle a forecasting dataset.\
+    \               Baseline: Last value, seasonal-naive value,\n                \
+    \                                                             and a simple moving\
+    \ average.\n2. Compare seasonal-naive, moving-average, and SARIMA forecasts\n\
+    \   at each horizon.\n                                                       \
+    \                      Control to teach\n3. Produce 80% and 95% prediction intervals,\
+    \ not a single precise            Watch for: Random train/test splits,\n   line.\
+    \                                                                     omitted\
+    \ holidays, regime shifts, horizon\n                                         \
+    \                                    mismatch, and evaluating only average\n4.\
+    \ Review forecast errors around holidays and structural breaks              error.\n\
+    \   before using the plan."
+  paragraphs:
+  - 'Primer 6B: Time-series forecasting – worked fintech example'
+  - Daily ACH volume and liquidity planning Treasury needs a 14-day forecast of settlement
+    volume to position liquidity and operations needs to schedule staff.
+  - 'From data to action Comparison point 1. Split chronologically; never shuffle
+    a forecasting dataset. Baseline: Last value, seasonal-naive value, and a simple
+    moving average. 2. Compare seasonal-naive, moving-average, and SARIMA forecasts
+    at each horizon. Control to teach 3. Produce 80% and 95% prediction intervals,
+    not a single precise Watch for: Random train/test splits, line. omitted holidays,
+    regime shifts, horizon mismatch, and evaluating only average 4. Review forecast
+    errors around holidays and structural breaks error. before using the plan.'
+  source:
+    pages:
+    - 77
+    verbatim: true
+- page: 78
+  title: 'Primer 6C: Time-series forecasting – when to use it, and when not to'
+  text: " Primer 6C: Time-series forecasting – when to use it, and when not to\n\n\
+    \n Use it when                                                       Do not use\
+    \ it when\n▶ The series has enough history at a consistent                   \
+    \ ▶ A structural break makes the historical regime\n  frequency.             \
+    \                                            irrelevant.\n▶ Lag and seasonal patterns\
+    \ are plausible and                      ▶ Demand is highly intermittent or mostly\
+    \ zeros.\n  inspectable.                                                     ▶\
+    \ External drivers dominate but are not included.\n▶ An explainable statistical\
+    \ benchmark is valuable.                ▶ The question is causal or policy counterfactual.\n\
+    ▶ The forecast horizon is explicit and operationally               ▶ A long-range\
+    \ scenario is presented as a precise\n  meaningful.                          \
+    \                              forecast.\n▶ Intervals and backtesting can be maintained.\n\
+    \n Better fit in those cases\n Use gradient boosting with lagged and external\
+    \ features, intermittent-demand methods, scenario analysis, or Monte Carlo when\n\
+    \ uncertainty propagation is the main question."
+  paragraphs:
+  - 'Primer 6C: Time-series forecasting – when to use it, and when not to'
+  - Use it when Do not use it when ▶ The series has enough history at a consistent
+    ▶ A structural break makes the historical regime frequency. irrelevant. ▶ Lag
+    and seasonal patterns are plausible and ▶ Demand is highly intermittent or mostly
+    zeros. inspectable. ▶ External drivers dominate but are not included. ▶ An explainable
+    statistical benchmark is valuable. ▶ The question is causal or policy counterfactual.
+    ▶ The forecast horizon is explicit and operationally ▶ A long-range scenario is
+    presented as a precise meaningful. forecast. ▶ Intervals and backtesting can be
+    maintained.
+  - Better fit in those cases Use gradient boosting with lagged and external features,
+    intermittent-demand methods, scenario analysis, or Monte Carlo when uncertainty
+    propagation is the main question.
+  source:
+    pages:
+    - 78
+    verbatim: true
+- page: 79
+  title: 'Primer 6D: Time-series forecasting – fintech problem map'
+  text: " Primer 6D: Time-series forecasting – fintech problem map\n\n\n\n Common\
+    \ fintech problems                                                     Operational\
+    \ profile\n▶ Cash-flow and liquidity                   ▶ Collections workload\
+    \           ▶ Latency: batch\n  forecasting                               ▶ Revenue\
+    \ and fee forecasting    ▶ Explainability: high\n▶ Payment / transaction     \
+    \                ▶ ATM cash demand                ▶ Data need: long clean history\n\
+    \  volume\n                                            ▶ Market volatility with\
+    \         ▶ Monitor: rolling error, bias, interval\n▶ Deposit and withdrawal \
+    \                     GARCH                            coverage\n  demand\n▶ Delinquency\
+    \ roll rates\n\n\n   Student defense question: Can the student beat a seasonal-naive\
+    \ baseline on a walk-forward\n   test and explain the uncertainty interval?"
+  paragraphs:
+  - 'Primer 6D: Time-series forecasting – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Cash-flow and liquidity ▶ Collections
+    workload ▶ Latency: batch forecasting ▶ Revenue and fee forecasting ▶ Explainability:
+    high ▶ Payment / transaction ▶ ATM cash demand ▶ Data need: long clean history
+    volume ▶ Market volatility with ▶ Monitor: rolling error, bias, interval ▶ Deposit
+    and withdrawal GARCH coverage demand ▶ Delinquency roll rates'
+  - 'Student defense question: Can the student beat a seasonal-naive baseline on a
+    walk-forward test and explain the uncertainty interval?'
+  source:
+    pages:
+    - 79
+    verbatim: true
+definition: ARIMA models a time series through autoregressive lags, differencing,
+  and lagged forecast errors. SARIMA adds seasonal structure; GARCH models changing
+  volatility rather than the level itself.
+intuition: Recent values, recurring seasonal patterns, and recent forecast errors
+  contain information about the next value – until the process changes.  Anchor idea
+useWhen:
+- The series has enough history at a consistent frequency.
+- Lag and seasonal patterns are plausible and inspectable.
+- An explainable statistical benchmark is valuable.
+- The forecast horizon is explicit and operationally meaningful.
+- Intervals and backtesting can be maintained.
+avoidWhen:
+- A structural break makes the historical regime irrelevant.
+- Demand is highly intermittent or mostly zeros.
+- External drivers dominate but are not included.
+- The question is causal or policy counterfactual.
+- A long-range scenario is presented as a precise forecast.
+deepDive:
+  problem:
+  - page: 634
+    title: 'Financial problem: how much liquidity will we need next week?'
+    text: " Financial problem: how much liquidity will we need next week?\n\n\n\n\
+      \    Financial problem\n    A payments company must forecast daily settlement\
+      \ outflows so treasury can hold enough\n    liquidity without leaving excessive\
+      \ cash idle. Demand has trend, weekly seasonality, holidays, and\n    shocks.\n\
+      \n\n Decision consequences\n Underforecasting can create funding stress or emergency\
+      \ borrowing. Overforecasting increases idle\n cash and opportunity cost.\n\n\
+      \   Decision to make: Produce a point forecast and an honest interval for the\
+      \ decision horizon."
+    paragraphs:
+    - 'Financial problem: how much liquidity will we need next week?'
+    - Financial problem A payments company must forecast daily settlement outflows
+      so treasury can hold enough liquidity without leaving excessive cash idle. Demand
+      has trend, weekly seasonality, holidays, and shocks.
+    - Decision consequences Underforecasting can create funding stress or emergency
+      borrowing. Overforecasting increases idle cash and opportunity cost.
+    - 'Decision to make: Produce a point forecast and an honest interval for the decision
+      horizon.'
+    source:
+      pages:
+      - 634
+      verbatim: true
+  economics:
+  - page: 635
+    title: Start with the baseline before ARIMA
+    text: " Start with the baseline before ARIMA\n\n\n\n\n Naive baseline        \
+      \                              Why this matters\n                          \
+      \             ŷt+h = yt    A sophisticated model that cannot beat seasonal\n\
+      \                                                     naive out of sample has\
+      \ not earned production\n Tomorrow equals today.                           \
+      \   complexity.\n\n Seasonal naive baseline                             Watch\
+      \ for: Never use a random train/test split\n                               \
+      \                      for a forecast. Preserve time order.\n              \
+      \                     ŷt+h = yt+h−s\n Next Monday equals the previous Monday\
+      \ when\n s = 7."
+    paragraphs:
+    - Start with the baseline before ARIMA
+    - Naive baseline Why this matters ŷt+h = yt A sophisticated model that cannot
+      beat seasonal naive out of sample has not earned production Tomorrow equals
+      today. complexity.
+    - 'Seasonal naive baseline Watch for: Never use a random train/test split for
+      a forecast. Preserve time order. ŷt+h = yt+h−s Next Monday equals the previous
+      Monday when s = 7.'
+    source:
+      pages:
+      - 635
+      verbatim: true
+  - page: 638
+    title: 'Evaluation: walk forward as production will'
+    text: " Evaluation: walk forward as production will\n\n\n\n                  \
+      \                                   train                   validate\n\n\n \
+      \                                                            train         \
+      \               validate\n\n\n                                             \
+      \                        train                              validate\n\n\n▶\
+      \ Evaluate each horizon separately: day 1, day 7, day 28.\n▶ Check interval\
+      \ coverage, not only point error.\n▶ Report performance during holidays, shocks,\
+      \ and regime changes.\n▶ Retrain only using information available at that time.\n\
+      \ Required artifact: Rolling backtest, baseline comparison, residual diagnostics,\
+      \ and forecast interval."
+    paragraphs:
+    - 'Evaluation: walk forward as production will'
+    - train validate
+    - train validate
+    - train validate
+    - '▶ Evaluate each horizon separately: day 1, day 7, day 28. ▶ Check interval
+      coverage, not only point error. ▶ Report performance during holidays, shocks,
+      and regime changes. ▶ Retrain only using information available at that time.
+      Required artifact: Rolling backtest, baseline comparison, residual diagnostics,
+      and forecast interval.'
+    source:
+      pages:
+      - 638
+      verbatim: true
+  method:
+  - page: 636
+    title: 'Method: ARIMA models dependence through time'
+    text: " Method: ARIMA models dependence through time\n\n\n\n ARIMA(p, d, q) combines:\n\
+      ▶ AR(p): dependence on prior values.\n▶ I(d): differencing to remove nonstationary\
+      \ level or trend.\n▶ MA(q): dependence on prior forecast errors.\n         \
+      \                                            ϕ(B)(1 − B)d yt = c + θ(B)εt\n\
+      \ SARIMA adds seasonal terms such as weekly or monthly cycles.\n\n Separate\
+      \ question: GARCH\n ARIMA forecasts the conditional mean. GARCH models changing\
+      \ conditional variance and is useful when\n volatility itself clusters over\
+      \ time."
+    paragraphs:
+    - 'Method: ARIMA models dependence through time'
+    - 'ARIMA(p, d, q) combines: ▶ AR(p): dependence on prior values. ▶ I(d): differencing
+      to remove nonstationary level or trend. ▶ MA(q): dependence on prior forecast
+      errors. ϕ(B)(1 − B)d yt = c + θ(B)εt SARIMA adds seasonal terms such as weekly
+      or monthly cycles.'
+    - 'Separate question: GARCH ARIMA forecasts the conditional mean. GARCH models
+      changing conditional variance and is useful when volatility itself clusters
+      over time.'
+    source:
+      pages:
+      - 636
+      verbatim: true
+  code:
+  - page: 637
+    title: 'Working example: a weekly seasonal forecast'
+    text: " Working example: a weekly seasonal forecast\n\n\n\n  import numpy as np,\
+      \ pandas as pd\n  from statsmodels.tsa.statespace.sarimax import SARIMAX\n \
+      \ from sklearn.metrics import mean_absolute_error\n                        \
+      \                                                             Compare with\n\
+      \  rng = np.random.default_rng(4)                                          \
+      \          ▶ Last value\n  t = np.arange(365)\n  y = 1000 + 1.1*t + 130*np.sin(2*np.pi*t/7)\
+      \ + rng.normal(0,45,365)\n  y = pd.Series(y, index=pd.date_range(\"2025-01-01\"\
+      , periods=365))\n                                                          \
+      \                          ▶ Last week\n  train, test = y.iloc[:-28], y.iloc[-28:]\
+      \                                          ▶ 7-day moving average\n  model =\
+      \ SARIMAX(train, order=(1,1,1),\n                  seasonal_order=(1,0,1,7),\n\
+      \                  enforce_stationarity=False).fit(disp=False)\n           \
+      \                                                                         ▶\
+      \ Forecast with a holiday\n  forecast = model.get_forecast(steps=28)\n  pred\
+      \ = forecast.predicted_mean\n                                              \
+      \                                        feature\n  print(\"MAE:\", mean_absolute_error(test,\
+      \ pred))\n  print(forecast.conf_int().tail())                              \
+      \                    Primary metric: MAE and\n                             \
+      \                                                        interval coverage at\
+      \ the\n                                                                    \
+      \                 actual horizon."
+    paragraphs:
+    - 'Working example: a weekly seasonal forecast'
+    - 'import numpy as np, pandas as pd from statsmodels.tsa.statespace.sarimax import
+      SARIMAX from sklearn.metrics import mean_absolute_error Compare with rng = np.random.default_rng(4)
+      ▶ Last value t = np.arange(365) y = 1000 + 1.1*t + 130*np.sin(2*np.pi*t/7) +
+      rng.normal(0,45,365) y = pd.Series(y, index=pd.date_range("2025-01-01", periods=365))
+      ▶ Last week train, test = y.iloc[:-28], y.iloc[-28:] ▶ 7-day moving average
+      model = SARIMAX(train, order=(1,1,1), seasonal_order=(1,0,1,7), enforce_stationarity=False).fit(disp=False)
+      ▶ Forecast with a holiday forecast = model.get_forecast(steps=28) pred = forecast.predicted_mean
+      feature print("MAE:", mean_absolute_error(test, pred)) print(forecast.conf_int().tail())
+      Primary metric: MAE and interval coverage at the actual horizon.'
+    source:
+      pages:
+      - 637
+      verbatim: true
+  choice:
+  - page: 639
+    title: When ARIMA/SARIMA fits
+    text: " When ARIMA/SARIMA fits\n\n\n\n Use it when                           \
+      \              Avoid or extend it when\n▶ One series has meaningful autocorrelation.\
+      \         ▶ Exogenous drivers dominate the series.\n▶ Trend and seasonality\
+      \ are reasonably stable.       ▶ Structural breaks are frequent.\n▶ Interpretability\
+      \ and intervals matter.             ▶ Thousands of related series must be pooled.\n\
+      ▶ Data volume is modest.                             ▶ The real objective is\
+      \ volatility rather than\n                                                 \
+      \      level.\n\n\n\n   Student defense question: A model has lower average\
+      \ MAE but badly underestimates holiday\n   peaks. Which model should treasury\
+      \ use, and what loss function reflects that choice?"
+    paragraphs:
+    - When ARIMA/SARIMA fits
+    - Use it when Avoid or extend it when ▶ One series has meaningful autocorrelation.
+      ▶ Exogenous drivers dominate the series. ▶ Trend and seasonality are reasonably
+      stable. ▶ Structural breaks are frequent. ▶ Interpretability and intervals matter.
+      ▶ Thousands of related series must be pooled. ▶ Data volume is modest. ▶ The
+      real objective is volatility rather than level.
+    - 'Student defense question: A model has lower average MAE but badly underestimates
+      holiday peaks. Which model should treasury use, and what loss function reflects
+      that choice?'
+    source:
+      pages:
+      - 639
+      verbatim: true
+financialProblem: 'A payments company must forecast daily settlement outflows so treasury
+  can hold enough liquidity without leaving excessive cash idle. Demand has trend,
+  weekly seasonality, holidays, and shocks. Decision consequences Underforecasting
+  can create funding stress or emergency borrowing. Overforecasting increases idle
+  cash and opportunity cost. Decision to make: Produce a point forecast and an honest
+  interval for the decision horizon.'
+defenseQuestions:
+- text: Can the student beat a seasonal-naive baseline on a walk-forward test and
+    explain the uncertainty interval?
+  source:
+    pages:
+    - 79
+    verbatim: true
+- text: A model has lower average MAE but badly underestimates holiday peaks. Which
+    model should treasury use, and what loss function reflects that choice?
+  source:
+    pages:
+    - 639
+    verbatim: true
+exercises:
+- A06
+measures:
+- mean-absolute-error
+- root-mean-squared-error
+- mape-wape-mase
+- r
+- prediction-interval-coverage-and-width
+- pinball-loss
+widgets:
+- forecast-eval
+lab:
+  dataset: Frozen synthetic payment-volume series
+  task: 7- and 28-day forecast
+  requiredComparison: Seasonal naive
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 75
+  - 76
+  - 77
+  - 78
+  - 79
+  - 80
+  - 81
+  - 82
+  - 83
+  - 84
+  - 85
+  - 86
+  - 87
+  - 633
+  - 634
+  - 635
+  - 636
+  - 637
+  - 638
+  - 639
+  verbatim: true

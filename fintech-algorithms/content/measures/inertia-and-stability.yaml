@@ -1,0 +1,440 @@
+slug: inertia-and-stability
+number: 27
+title: Inertia and Stability
+question: act
+financialInterpretation: Inertia measures compactness; stability measures whether
+  similar clusters reappear when the data or seed changes.
+workingExample: Clusters k 3 4 5 The large improvement from 3 to 4 and smaller improvement
+  from 4 to Inertia 1,200 800 700 5 suggests an elbow near 4. Across bootstrap samples,
+  adjusted Rand index of 0.92 indicates very similar assignments; 0.35 would indicate
+  instability.
+whatItMisses: Inertia always falls as k increases. Do not pick the largest k merely
+  because the number is lower.
+exercises:
+- M27a
+- M27b
+widget: kmeans-anim
+usedBy:
+- k-means
+slides:
+- page: 429
+  title: EVALUATION MEASURE 27 OF 39
+  text: "    EVALUATION MEASURE 27 OF 39\n\n\n\n\n                     Inertia and\
+    \ Stability\n         Tests whether clusters are compact and whether the\n   \
+    \    segmentation survives different samples or initializations."
+  paragraphs:
+  - EVALUATION MEASURE 27 OF 39
+  - Inertia and Stability Tests whether clusters are compact and whether the segmentation
+    survives different samples or initializations.
+  source:
+    pages:
+    - 429
+    verbatim: true
+- page: 430
+  title: Inertia and stability – does the segmentation improve and survive resampling?
+  text: " Inertia and stability – does the segmentation improve and survive\n resampling?\n\
+    \n Financial interpretation\n Inertia measures compactness; stability measures\
+    \ whether similar clusters reappear when the data or seed\n changes.\n\n Working\
+    \ example\n    Clusters k                    3           4    5\n            \
+    \                                            The large improvement from 3 to 4\
+    \ and smaller improvement from 4 to\n    Inertia                1,200        \
+    \  800     700\n 5 suggests an elbow near 4. Across bootstrap samples, adjusted\
+    \ Rand index of 0.92 indicates very similar\n assignments; 0.35 would indicate\
+    \ instability.\n\n What it misses\n Inertia always falls as k increases. Do not\
+    \ pick the largest k merely because the number is lower."
+  paragraphs:
+  - Inertia and stability – does the segmentation improve and survive resampling?
+  - Financial interpretation Inertia measures compactness; stability measures whether
+    similar clusters reappear when the data or seed changes.
+  - Working example Clusters k 3 4 5 The large improvement from 3 to 4 and smaller
+    improvement from 4 to Inertia 1,200 800 700 5 suggests an elbow near 4. Across
+    bootstrap samples, adjusted Rand index of 0.92 indicates very similar assignments;
+    0.35 would indicate instability.
+  - What it misses Inertia always falls as k increases. Do not pick the largest k
+    merely because the number is lower.
+  source:
+    pages:
+    - 430
+    verbatim: true
+- page: 431
+  title: Inertia
+  text: " Inertia\n\n   M27a | Formula explained (1/1)\n\n Question: How tightly do\
+    \ the proposed groups fit their own centers?\n                               \
+    \                     K X\n                              P\n                 \
+    \               i∈Cj xi            X\n                        µj =           \
+    \ ,   IK =           (xi − µj )2 .\n                                |Cj |    \
+    \          j=1 i∈C   j\n\n\n Read it aloud: Calculate each group’s mean. For every\
+    \ customer, square the distance from\n that group’s mean. Add all squared distances.\n\
+    \ Compare the reduction in inertia when adding a cluster. An elbow is a point\
+    \ where further\n additions deliver much smaller reductions.\n Use the supplied\
+    \ partitions; students are not asked to search every possible clustering."
+  paragraphs:
+  - Inertia
+  - M27a | Formula explained (1/1)
+  - 'Question: How tightly do the proposed groups fit their own centers? K X P i∈Cj
+    xi X µj = , IK = (xi − µj )2 . |Cj | j=1 i∈C j'
+  - 'Read it aloud: Calculate each group’s mean. For every customer, square the distance
+    from that group’s mean. Add all squared distances. Compare the reduction in inertia
+    when adding a cluster. An elbow is a point where further additions deliver much
+    smaller reductions. Use the supplied partitions; students are not asked to search
+    every possible clustering.'
+  source:
+    pages:
+    - 431
+    verbatim: true
+- page: 432
+  title: Inertia
+  text: " Inertia\n\n   M27a | Symbols and terms (1/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   K or k             \
+    \                            Number of clusters in the evaluated partition, here\
+    \ 1, 2, or 3.\n   j                                              Cluster index;\
+    \ j = 1 refers to the first proposed group.\n   Cj                           \
+    \                  Set of customer indices assigned to cluster j.\n   |Cj |  \
+    \                                        Number of customers in that cluster;\
+    \ bars around a set denote its\n                                             \
+    \     size.\n   xi                                             Customer i’s monthly\
+    \ savings, measured in hundreds of dollars.\n   µj                           \
+    \                  Centroid of cluster j, the mean savings of its members."
+  paragraphs:
+  - Inertia
+  - M27a | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example K or k Number of clusters in the evaluated
+    partition, here 1, 2, or 3. j Cluster index; j = 1 refers to the first proposed
+    group. Cj Set of customer indices assigned to cluster j. |Cj | Number of customers
+    in that cluster; bars around a set denote its size. xi Customer i’s monthly savings,
+    measured in hundreds of dollars. µj Centroid of cluster j, the mean savings of
+    its members.
+  source:
+    pages:
+    - 432
+    verbatim: true
+- page: 433
+  title: Inertia
+  text: " Inertia\n\n   M27a | Symbols and terms (2/2)\n\n\n   Symbol or term    \
+    \                             Meaning in this example\n   IK                 \
+    \                            Inertia for K clusters: total within-cluster squared\
+    \ distance.\n   P\n       i∈Cj                                       Add the term\
+    \ for every customer belonging to cluster j.\n   Squared feature units       \
+    \                   Squaring hundreds-of-dollars values gives squared\n      \
+    \                                            hundreds-of-dollars, not a spend\
+    \ or profit total.\n   Elbow                                          Informal\
+    \ point of diminishing compactness improvement; not a proof\n                \
+    \                                  of the correct business segmentation."
+  paragraphs:
+  - Inertia
+  - M27a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example IK Inertia for K clusters: total within-cluster
+    squared distance. P i∈Cj Add the term for every customer belonging to cluster
+    j. Squared feature units Squaring hundreds-of-dollars values gives squared hundreds-of-dollars,
+    not a spend or profit total. Elbow Informal point of diminishing compactness improvement;
+    not a proof of the correct business segmentation.'
+  source:
+    pages:
+    - 433
+    verbatim: true
+- page: 434
+  title: Inertia
+  text: " Inertia\n\n   M27a | Class problem | 8 minutes — When Does Another Segment\
+    \ Stop Helping?\n\n Four customers have monthly savings of 1, 2, 8, and 9, in\
+    \ $ hundreds. Use this single feature\n without additional scaling.\n        \
+    \                               X\n                             Inertia =   (xi\
+    \ − assigned centroid)2 .\n                                                  \
+    \          i\n\n Evaluate these candidate partitions:\n   k                  \
+    \                            Groups\n   1                                    \
+    \          {1, 2, 8, 9}\n   2                                              {1,\
+    \ 2} and {8, 9}\n   3                                              {1, 2}, {8},\
+    \ and {9}\n Calculate centroids, inertia, and the reduction from adding each extra\
+    \ cluster. Where is the\n apparent elbow? Would selecting the smallest inertia\
+    \ alone be sensible?"
+  paragraphs:
+  - Inertia
+  - M27a | Class problem | 8 minutes — When Does Another Segment Stop Helping?
+  - Four customers have monthly savings of 1, 2, 8, and 9, in $ hundreds. Use this
+    single feature without additional scaling. X Inertia = (xi − assigned centroid)2
+    . i
+  - 'Evaluate these candidate partitions: k Groups 1 {1, 2, 8, 9} 2 {1, 2} and {8,
+    9} 3 {1, 2}, {8}, and {9} Calculate centroids, inertia, and the reduction from
+    adding each extra cluster. Where is the apparent elbow? Would selecting the smallest
+    inertia alone be sensible?'
+  source:
+    pages:
+    - 434
+    verbatim: true
+- page: 435
+  title: Inertia
+  text: " Inertia\n\n   M27a | Worked solution — When Does Another Segment Stop Helping?\n\
+    \n1. One cluster: centroid = (1 + 2 + 8 + 9)/4 = 5.\n            I1 = (1 − 5)2\
+    \ + (2 − 5)2 + (8 − 5)2 + (9 − 5)2 = 16 + 9 + 9 + 16 = 50.\n2. Two clusters: centroids\
+    \ 1.5 and 8.5.\n                               I2 = 0.25 + 0.25 + 0.25 + 0.25\
+    \ = 1.\n3. Three clusters: centroids 1.5, 8, 9.\n                            \
+    \     I3 = 0.25 + 0.25 + 0 + 0 = 0.5.\n4. Reductions: 50 − 1 = 49, then 1 − 0.5\
+    \ = 0.5. The apparent elbow is k = 2."
+  paragraphs:
+  - Inertia
+  - M27a | Worked solution — When Does Another Segment Stop Helping?
+  - '1. One cluster: centroid = (1 + 2 + 8 + 9)/4 = 5. I1 = (1 − 5)2 + (2 − 5)2 +
+    (8 − 5)2 + (9 − 5)2 = 16 + 9 + 9 + 16 = 50. 2. Two clusters: centroids 1.5 and
+    8.5. I2 = 0.25 + 0.25 + 0.25 + 0.25 = 1. 3. Three clusters: centroids 1.5, 8,
+    9. I3 = 0.25 + 0.25 + 0 + 0 = 0.5. 4. Reductions: 50 − 1 = 49, then 1 − 0.5 =
+    0.5. The apparent elbow is k = 2.'
+  source:
+    pages:
+    - 435
+    verbatim: true
+- page: 436
+  title: Inertia
+  text: " Inertia\n\n   M27a | Interpretation\n\n What the answer means\n Two groups\
+    \ explain most of the variation here: lower and higher savings. A third adds little\n\
+    \ compactness. Inertia uses squared feature units, not dollars of business value;\
+    \ it also cannot\n establish stability or usefulness. Giving every customer a\
+    \ separate cluster would produce zero\n inertia but no meaningful segmentation.\n\
+    \ Why these steps matter\n The squared distances quantify compactness on the chosen\
+    \ scale. Dividing a group into smaller\n groups can reduce the total even if no\
+    \ useful business distinction is added, so the minimum\n inertia alone is not\
+    \ a defensible stopping rule."
+  paragraphs:
+  - Inertia
+  - M27a | Interpretation
+  - 'What the answer means Two groups explain most of the variation here: lower and
+    higher savings. A third adds little compactness. Inertia uses squared feature
+    units, not dollars of business value; it also cannot establish stability or usefulness.
+    Giving every customer a separate cluster would produce zero inertia but no meaningful
+    segmentation. Why these steps matter The squared distances quantify compactness
+    on the chosen scale. Dividing a group into smaller groups can reduce the total
+    even if no useful business distinction is added, so the minimum inertia alone
+    is not a defensible stopping rule.'
+  source:
+    pages:
+    - 436
+    verbatim: true
+- page: 437
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Formula explained (1/2)\n\n Question: Do\
+    \ two clustering runs keep the same customer pairs together?\n               \
+    \                           !\n                                        n     n(n\
+    \ − 1)\n                                            =          .\n           \
+    \                             2        2\n Read it aloud: Count the number of\
+    \ distinct unordered pairs among n customers. Choosing\n customers 1 and 2 is\
+    \ the same pair as choosing 2 and 1, so divide by two.\n Build an overlap table:\
+    \ each cell counts customers belonging to one original cluster and one\n rerun\
+    \ cluster. Its row and column totals recover the group sizes in the two runs.\n\
+    \ Clusters are compared by membership, not by their arbitrary names."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Formula explained (1/2)
+  - 'Question: Do two clustering runs keep the same customer pairs together? ! n n(n
+    − 1) = . 2 2 Read it aloud: Count the number of distinct unordered pairs among
+    n customers. Choosing customers 1 and 2 is the same pair as choosing 2 and 1,
+    so divide by two. Build an overlap table: each cell counts customers belonging
+    to one original cluster and one rerun cluster. Its row and column totals recover
+    the group sizes in the two runs. Clusters are compared by membership, not by their
+    arbitrary names.'
+  source:
+    pages:
+    - 437
+    verbatim: true
+- page: 438
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Formula explained (2/2)\n\n Question: How\
+    \ much membership agreement remains after adjusting for chance?\n            \
+    \                                                  S − RC/T\n                \
+    \                                  ARI =                    .\n              \
+    \                                            (R + C)/2 − RC/T\n Read it aloud:\
+    \ Subtract the chance-reference count from observed common-group pair count;\n\
+    \ divide by the corresponding maximum-reference gap.\n Calculate S from overlap-cell\
+    \ pair counts; R and C from row-total and column-total pair\n counts; T from all\
+    \ possible customer pairs.\n The chance reference holds the two sets of cluster\
+    \ sizes fixed. A negative result is below that\n reference, not a negative fraction\
+    \ of correctly classified customers."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Formula explained (2/2)
+  - 'Question: How much membership agreement remains after adjusting for chance? S
+    − RC/T ARI = . (R + C)/2 − RC/T Read it aloud: Subtract the chance-reference count
+    from observed common-group pair count; divide by the corresponding maximum-reference
+    gap. Calculate S from overlap-cell pair counts; R and C from row-total and column-total
+    pair counts; T from all possible customer pairs. The chance reference holds the
+    two sets of cluster sizes fixed. A negative result is below that reference, not
+    a negative fraction of correctly classified customers.'
+  source:
+    pages:
+    - 438
+    verbatim: true
+- page: 439
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Symbols and terms (1/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   ARI    \
+    \                                        Adjusted Rand index: a chance-adjusted\
+    \ comparison of two\n                                                  groupings\
+    \ of the same observations.\n                     n\n                        \
+    \ \x01\n   n inside          2                            Number of customers\
+    \ in whichever cell, row, column, or full sample\n                           \
+    \                       is being counted.\n     n\n         \x01\n     2     \
+    \                                       “n choose two”: distinct customer-pair\
+    \ count; fewer than two\n                                                  customers\
+    \ produce zero pairs.\n   Overlap cell                                   Count\
+    \ of customers sharing both an original cluster and a rerun\n                \
+    \                                  cluster."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Symbols and terms (1/3)
+  - "Symbol or term Meaning in this example ARI Adjusted Rand index: a chance-adjusted\
+    \ comparison of two groupings of the same observations. n \x01 n inside 2 Number\
+    \ of customers in whichever cell, row, column, or full sample is being counted.\
+    \ n \x01 2 “n choose two”: distinct customer-pair count; fewer than two customers\
+    \ produce zero pairs. Overlap cell Count of customers sharing both an original\
+    \ cluster and a rerun cluster."
+  source:
+    pages:
+    - 439
+    verbatim: true
+- page: 440
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Symbols and terms (2/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   S      \
+    \                                        Sum of pair counts within overlap cells;\
+    \ pairs grouped together in\n                                                \
+    \  both runs.\n   R                                              Sum of pair counts\
+    \ from original-cluster row totals; this R is not\n                          \
+    \                        recall."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Symbols and terms (2/3)
+  - Symbol or term Meaning in this example S Sum of pair counts within overlap cells;
+    pairs grouped together in both runs. R Sum of pair counts from original-cluster
+    row totals; this R is not recall.
+  source:
+    pages:
+    - 440
+    verbatim: true
+- page: 441
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Symbols and terms (3/3)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   C      \
+    \                                        Sum of pair counts from rerun-cluster\
+    \ column totals; this C is not a\n                                           \
+    \       cost.\n                                                  Total possible\
+    \ unordered pairs among all six customers, 62 .\n                            \
+    \                                                                            \
+    \    \x01\n   T\n   RC/T                                           Expected shared-pair\
+    \ count under the fixed-size chance reference;\n                             \
+    \                     juxtaposition RC means multiplication.\n   (R + C)/2   \
+    \                                   Normalizing reference built from the two within-cluster\
+    \ pair totals.\n   Membership agreement                           Agreement about\
+    \ who is grouped with whom, independent of\n                                 \
+    \                 whether the labels are A/B or X/Y."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Symbols and terms (3/3)
+  - "Symbol or term Meaning in this example C Sum of pair counts from rerun-cluster\
+    \ column totals; this C is not a cost. Total possible unordered pairs among all\
+    \ six customers, 62 . \x01 T RC/T Expected shared-pair count under the fixed-size\
+    \ chance reference; juxtaposition RC means multiplication. (R + C)/2 Normalizing\
+    \ reference built from the two within-cluster pair totals. Membership agreement\
+    \ Agreement about who is grouped with whom, independent of whether the labels\
+    \ are A/B or X/Y."
+  source:
+    pages:
+    - 441
+    verbatim: true
+- page: 442
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Class problem | 10 minutes — Did the Same\
+    \ Segments Reappear?\n\n Two clustering runs assign the same six customers to\
+    \ these groups:\n   Customer                   1                   2         \
+    \  3           4                    5         6\n   Original                 \
+    \  A                   A           A           B                    B        \
+    \ B\n   Rerun                      X                   X           Y         \
+    \  X                    Y         Y\n Use the overlap table to calculate adjusted\
+    \ Rand index:\n                                                              \
+    \    S − RC/T\n                                                      ARI =   \
+    \                 .\n                                                        \
+    \      (R + C)/2 − RC/T\n S is the sum of n2 over overlap cells; R and C are the\
+    \ corresponding sums over row and\n                   \x01\n\n column totals;\
+    \ T = 62 = 15.\n                      \x01\n\n Calculation aids: 12 = 0, 22 =\
+    \ 1, 32 = 3. Why should renaming clusters not affect this\n                  \
+    \   \x01        \x01         \x01\n\n measure?"
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Class problem | 10 minutes — Did the Same Segments Reappear?
+  - "Two clustering runs assign the same six customers to these groups: Customer 1\
+    \ 2 3 4 5 6 Original A A A B B B Rerun X X Y X Y Y Use the overlap table to calculate\
+    \ adjusted Rand index: S − RC/T ARI = . (R + C)/2 − RC/T S is the sum of n2 over\
+    \ overlap cells; R and C are the corresponding sums over row and \x01"
+  - "column totals; T = 62 = 15. \x01"
+  - "Calculation aids: 12 = 0, 22 = 1, 32 = 3. Why should renaming clusters not affect\
+    \ this \x01 \x01 \x01"
+  - measure?
+  source:
+    pages:
+    - 442
+    verbatim: true
+- page: 443
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Worked solution — Did the Same Segments\
+    \ Reappear?\n\n1. Build the overlap table.\n   Original / rerun              \
+    \                 X                            Y             Total\n   A     \
+    \                                         2                                1 \
+    \            3\n   B                                              1          \
+    \                      2             3\n   Total                             \
+    \             3                                3             6\n\n2. Within-cell\
+    \ pairs: S = 1 + 0 + 0 + 1 = 2.\n3. Row and column pairs: R = 3 + 3 = 6; C = 3\
+    \ + 3 = 6.\n4. Chance adjustment: RC/T = 36/15 = 2.4.\n5. ARI: (2 − 2.4)/(6 −\
+    \ 2.4) = −0.4/3.6 = −0.1111."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Worked solution — Did the Same Segments Reappear?
+  - 1. Build the overlap table. Original / rerun X Y Total A 2 1 3 B 1 2 3 Total 3
+    3 6
+  - '2. Within-cell pairs: S = 1 + 0 + 0 + 1 = 2. 3. Row and column pairs: R = 3 +
+    3 = 6; C = 3 + 3 = 6. 4. Chance adjustment: RC/T = 36/15 = 2.4. 5. ARI: (2 − 2.4)/(6
+    − 2.4) = −0.4/3.6 = −0.1111.'
+  source:
+    pages:
+    - 443
+    verbatim: true
+- page: 444
+  title: Adjusted Rand Index
+  text: " Adjusted Rand Index\n\n   M27b | Interpretation\n\n What the answer means\n\
+    \ These two runs disagree substantially on who belongs together; agreement is\
+    \ below the\n chance-adjusted reference for these cluster sizes. The value is\
+    \ not “negative accuracy.” Cluster\n names are arbitrary: exchanging X and Y would\
+    \ leave ARI unchanged. This small exercise does\n not establish stability for\
+    \ the bank’s full customer population.\n Why these steps matter\n Compute pair\
+    \ counts, not percentages of matching letters. A relabeling can change every\n\
+    \ displayed group name without moving any customer. ARI therefore ignores names\
+    \ and compares\n the underlying grouping structure."
+  paragraphs:
+  - Adjusted Rand Index
+  - M27b | Interpretation
+  - 'What the answer means These two runs disagree substantially on who belongs together;
+    agreement is below the chance-adjusted reference for these cluster sizes. The
+    value is not “negative accuracy.” Cluster names are arbitrary: exchanging X and
+    Y would leave ARI unchanged. This small exercise does not establish stability
+    for the bank’s full customer population. Why these steps matter Compute pair counts,
+    not percentages of matching letters. A relabeling can change every displayed group
+    name without moving any customer. ARI therefore ignores names and compares the
+    underlying grouping structure.'
+  source:
+    pages:
+    - 444
+    verbatim: true
+source:
+  pages:
+  - 429
+  - 430
+  - 431
+  - 432
+  - 433
+  - 434
+  - 435
+  - 436
+  - 437
+  - 438
+  - 439
+  - 440
+  - 441
+  - 442
+  - 443
+  - 444
+  verbatim: true

@@ -1,0 +1,366 @@
+id: M04
+title: How Productive Is the Review Queue?
+minutes: 6
+kind: measure
+parent: precision
+question: "A fraud team compares two queues from the same transaction population:\n\
+  \   Queue                                               Alerts reviewed        \
+  \       Confirmed frauds\n   A                                                 \
+  \                 50                          15\n   B, stricter threshold     \
+  \                                         10                            8\n\n Each\
+  \ review costs $4, including reviews of genuine fraud.\n                       \
+  \                Confirmed frauds in the queue\n                           Precision\
+  \ =                               .\n                                          \
+  \  All alerts in the queue\n Calculate each queue’s precision, total review cost,\
+  \ and review cost per confirmed fraud. Which\n queue is more efficient per investigation?\
+  \ Does that automatically make it the better\n fraud-control policy?"
+questionPages:
+- page: 227
+  title: Precision
+  text: " Precision\n\n   M04 | Class problem | 6 minutes — How Productive Is the\
+    \ Review Queue?\n\n A fraud team compares two queues from the same transaction\
+    \ population:\n   Queue                                               Alerts reviewed\
+    \               Confirmed frauds\n   A                                       \
+    \                           50                          15\n   B, stricter threshold\
+    \                                              10                            8\n\
+    \n Each review costs $4, including reviews of genuine fraud.\n               \
+    \                        Confirmed frauds in the queue\n                     \
+    \      Precision =                               .\n                         \
+    \                   All alerts in the queue\n Calculate each queue’s precision,\
+    \ total review cost, and review cost per confirmed fraud. Which\n queue is more\
+    \ efficient per investigation? Does that automatically make it the better\n fraud-control\
+    \ policy?"
+  paragraphs:
+  - Precision
+  - M04 | Class problem | 6 minutes — How Productive Is the Review Queue?
+  - 'A fraud team compares two queues from the same transaction population: Queue
+    Alerts reviewed Confirmed frauds A 50 15 B, stricter threshold 10 8'
+  - Each review costs $4, including reviews of genuine fraud. Confirmed frauds in
+    the queue Precision = . All alerts in the queue Calculate each queue’s precision,
+    total review cost, and review cost per confirmed fraud. Which queue is more efficient
+    per investigation? Does that automatically make it the better fraud-control policy?
+  source:
+    pages:
+    - 227
+    verbatim: true
+formulaPages:
+- page: 224
+  title: Precision
+  text: " Precision\n\n   M04 | Formula explained (1/1)\n\n Question: What share of\
+    \ the review queue is genuine fraud, and what does finding each fraud\n cost?\n\
+    \                                       TP\n                      P recision =\
+    \             ,    Creview = c(T P + F P ),\n                                \
+    \    TP + FP\n                                                             Creview\n\
+    \                              Cost per conf irmed f raud =           .\n    \
+    \                                                           TP\n Read it aloud:\
+    \ Fraud found divided by alerts reviewed gives precision. Reviews multiplied by\n\
+    \ cost per review gives total expense. Divide expense by fraud found for review\
+    \ cost per discovery.\n Every review costs US$4, including reviews that confirm\
+    \ fraud. A queue can be efficient per\n discovery and still miss many frauds outside\
+    \ the queue."
+  paragraphs:
+  - Precision
+  - M04 | Formula explained (1/1)
+  - 'Question: What share of the review queue is genuine fraud, and what does finding
+    each fraud cost? TP P recision = , Creview = c(T P + F P ), TP + FP Creview Cost
+    per conf irmed f raud = . TP Read it aloud: Fraud found divided by alerts reviewed
+    gives precision. Reviews multiplied by cost per review gives total expense. Divide
+    expense by fraud found for review cost per discovery. Every review costs US$4,
+    including reviews that confirm fraud. A queue can be efficient per discovery and
+    still miss many frauds outside the queue.'
+  source:
+    pages:
+    - 224
+    verbatim: true
+symbolPages:
+- page: 225
+  title: Precision
+  text: " Precision\n\n   M04 | Symbols and terms (1/2)\n\n\n   Symbol or term   \
+    \                              Meaning in this example\n   TP                \
+    \                             Confirmed frauds in the reviewed queue: 15 in A\
+    \ or 8 in B.\n   FP                                             Reviewed alerts\
+    \ found to be legitimate; subtract confirmed frauds\n                        \
+    \                          from queue size.\n   TP + FP                      \
+    \                  All reviewed alerts: 50 in A or 10 in B.\n   c            \
+    \                                  Cost per reviewed alert, US$4.\n   Creview\
+    \                                        Total spending on reviewing that queue,\
+    \ in dollars.\n   Precision                                      Fraction of the\
+    \ reviewed alerts that are fraud, not the fraction of all\n                  \
+    \                                frauds found."
+  paragraphs:
+  - Precision
+  - M04 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example TP Confirmed frauds in the reviewed queue:
+    15 in A or 8 in B. FP Reviewed alerts found to be legitimate; subtract confirmed
+    frauds from queue size. TP + FP All reviewed alerts: 50 in A or 10 in B. c Cost
+    per reviewed alert, US$4. Creview Total spending on reviewing that queue, in dollars.
+    Precision Fraction of the reviewed alerts that are fraud, not the fraction of
+    all frauds found.'
+  source: &id001
+    pages:
+    - 225
+    verbatim: true
+- page: 226
+  title: Precision
+  text: " Precision\n\n   M04 | Symbols and terms (2/2)\n\n\n   Symbol or term   \
+    \                              Meaning in this example\n   Stricter threshold\
+    \                             Higher risk-score requirement for entry into this\
+    \ queue; it selects\n                                                  fewer transactions\
+    \ here.\n   Efficiency per discovery                       Review cost divided\
+    \ by confirmed fraud count; undefined if no fraud\n                          \
+    \                        is discovered."
+  paragraphs:
+  - Precision
+  - M04 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Stricter threshold Higher risk-score requirement
+    for entry into this queue; it selects fewer transactions here. Efficiency per
+    discovery Review cost divided by confirmed fraud count; undefined if no fraud
+    is discovered.
+  source: &id002
+    pages:
+    - 226
+    verbatim: true
+solutionPages:
+- page: 228
+  title: Precision
+  text: " Precision\n\n   M04 | Worked solution — How Productive Is the Review Queue?\n\
+    \n1. Precision: Queue A = 15/50 = 30%; Queue B = 8/10 = 80%.\n2. Total review\
+    \ cost: A = 50(4) = $200; B = 10(4) = $40.\n3. Review cost per confirmed fraud:\n\
+    \                        A = 200/15 = $13.33,              B = 40/8 = $5.00.\n\
+    4. Compare capture: A finds 15 frauds; B finds only 8, despite its higher precision."
+  paragraphs:
+  - Precision
+  - M04 | Worked solution — How Productive Is the Review Queue?
+  - '1. Precision: Queue A = 15/50 = 30%; Queue B = 8/10 = 80%. 2. Total review cost:
+    A = 50(4) = $200; B = 10(4) = $40. 3. Review cost per confirmed fraud: A = 200/15
+    = $13.33, B = 40/8 = $5.00. 4. Compare capture: A finds 15 frauds; B finds only
+    8, despite its higher precision.'
+  source:
+    pages:
+    - 228
+    verbatim: true
+interpretationPages:
+- page: 229
+  title: Precision
+  text: " Precision\n\n   M04 | Interpretation\n\n What the answer means\n B uses\
+    \ investigator time more efficiently: 80% of its alerts are genuine fraud, versus\
+    \ 30%\n for A. But A finds 7 additional frauds. Their loss amounts and the remaining\
+    \ review capacity\n matter before selecting a policy. Precision measures queue\
+    \ quality, not total fraud coverage.\n Why these steps matter\n The numerator\
+    \ of precision is a count of useful discoveries, while the numerator of cost per\n\
+    \ fraud is dollars. Keeping the units visible prevents treating an 80% precision\
+    \ result as an 80%\n reduction in fraud losses."
+  paragraphs:
+  - Precision
+  - M04 | Interpretation
+  - 'What the answer means B uses investigator time more efficiently: 80% of its alerts
+    are genuine fraud, versus 30% for A. But A finds 7 additional frauds. Their loss
+    amounts and the remaining review capacity matter before selecting a policy. Precision
+    measures queue quality, not total fraud coverage. Why these steps matter The numerator
+    of precision is a count of useful discoveries, while the numerator of cost per
+    fraud is dollars. Keeping the units visible prevents treating an 80% precision
+    result as an 80% reduction in fraud losses.'
+  source:
+    pages:
+    - 229
+    verbatim: true
+source:
+  pages:
+  - 224
+  - 225
+  - 226
+  - 227
+  - 228
+  - 229
+  verbatim: true
+readAloud:
+- Fraud found divided by alerts reviewed gives precision. Reviews multiplied by cost
+  per review gives total expense. Divide expense by fraud found for review cost per
+  discovery. Every review costs US$4, including reviews that confirm fraud. A queue
+  can be efficient per discovery and still miss many frauds outside the queue.
+siteAuthored: false
+givens:
+  alertsA: 50
+  caughtA: 15
+  alertsB: 10
+  caughtB: 8
+  reviewCost: 4
+labels: &id003
+  alertsA: Alerts reviewed in queue A
+  caughtA: Confirmed frauds in A
+  alertsB: Alerts reviewed in queue B
+  caughtB: Confirmed frauds in B
+  reviewCost: Cost per review ($)
+deckSolution:
+  precisionA: 0.3
+  precisionB: 0.8
+  costA: 200
+  costB: 40
+  perA: 13.333333
+  perB: 5
+latex:
+- Precision=\frac{TP}{TP+FP},\quad CostPerCaught=\frac{CostPerReview\times N_{reviews}}{TP}
+- C_{review}=c(TP+FP)
+symbols:
+- symbol: TP
+  meaning: 'Confirmed frauds in the reviewed queue: 15 in A or 8 in B.'
+  source: *id001
+- symbol: FP
+  meaning: Reviewed alerts found to be legitimate; subtract confirmed frauds from
+    queue size.
+  source: *id001
+- symbol: TP + FP
+  meaning: 'All reviewed alerts: 50 in A or 10 in B.'
+  source: *id001
+- symbol: c
+  meaning: Cost per reviewed alert, US$4.
+  source: *id001
+- symbol: Creview
+  meaning: Total spending on reviewing that queue, in dollars.
+  source: *id001
+- symbol: Precision
+  meaning: Fraction of the reviewed alerts that are fraud, not the fraction of all
+    frauds found.
+  source: *id001
+- symbol: Stricter threshold
+  meaning: Higher risk-score requirement for entry into this queue; it selects fewer
+    transactions here.
+  source: *id002
+- symbol: Efficiency per discovery
+  meaning: Review cost divided by confirmed fraud count; undefined if no fraud is
+    discovered.
+  source: *id002
+steps:
+- id: precisionA
+  title: Queue A precision
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide confirmed frauds in A by all alerts reviewed in A.
+  mistakes:
+  - pattern: recompute
+    message: Divide confirmed frauds in A by all alerts reviewed in A.
+- id: precisionB
+  title: Queue B precision
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide confirmed frauds in B by all alerts reviewed in B.
+  mistakes:
+  - pattern: recompute
+    message: Divide confirmed frauds in B by all alerts reviewed in B.
+- id: costA
+  title: Queue A review cost
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Multiply alerts reviewed in A by cost per review.
+  mistakes:
+  - pattern: recompute
+    message: Multiply alerts reviewed in A by cost per review.
+- id: costB
+  title: Queue B review cost
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Multiply alerts reviewed in B by cost per review.
+  mistakes:
+  - pattern: recompute
+    message: Multiply alerts reviewed in B by cost per review.
+- id: perA
+  title: Review cost per fraud found in A
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Divide queue A review cost by frauds found in A.
+  mistakes:
+  - pattern: recompute
+    message: Divide queue A review cost by frauds found in A.
+- id: perB
+  title: Review cost per fraud found in B
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Divide queue B review cost by frauds found in B.
+  mistakes:
+  - pattern: recompute
+    message: Divide queue B review cost by frauds found in B.
+learning:
+  title: How Productive Is the Review Queue?
+  scenario: Two queues come from the same transaction population. Every reviewed alert
+    costs the supplied amount, including alerts that confirm genuine fraud.
+  task: Calculate each queue’s precision, total review cost and cost per confirmed
+    fraud.
+  interpretation: A precise queue uses investigator time efficiently, but may leave
+    more fraud outside the queue. Compare remaining capacity and loss amounts before
+    choosing a policy.
+  summary: 'Queue A precision: {precisionA}; queue B: {precisionB}. Cost per confirmed
+    fraud: A {perA}, B {perB}.'
+  labels: *id003
+  steps:
+    precisionA:
+      title: Queue A precision
+      hints: *id004
+      unit: proportion
+    precisionB:
+      title: Queue B precision
+      hints: *id005
+      unit: proportion
+    costA:
+      title: Queue A review cost
+      hints: *id006
+      unit: $
+    costB:
+      title: Queue B review cost
+      hints: *id007
+      unit: $
+    perA:
+      title: Review cost per fraud found in A
+      hints: *id008
+      unit: $
+    perB:
+      title: Review cost per fraud found in B
+      hints: *id009
+      unit: $
+  readAloud:
+  - Fraud found divided by alerts reviewed gives precision. Reviews multiplied by
+    cost per review gives total expense. Divide expense by fraud found for review
+    cost per discovery. Every review costs US$4, including reviews that confirm fraud.
+    A queue can be efficient per discovery and still miss many frauds outside the
+    queue.
+  workedExplanation:
+  - 'B uses investigator time more efficiently: 80% of its alerts are genuine fraud,
+    versus 30% for A. But A finds 7 additional frauds. Their loss amounts and the
+    remaining review capacity matter before selecting a policy. Precision measures
+    queue quality, not total fraud coverage. '
+  - The numerator of precision is a count of useful discoveries, while the numerator
+    of cost per fraud is dollars. Keeping the units visible prevents treating an 80%
+    precision result as an 80% reduction in fraud losses.
+  workedArithmetic:
+  - 'Queue precision: A = 15/50 = 30%; B = 8/10 = 80%.'
+  - 'Review spending: A = 50 × $4 = $200; B = 10 × $4 = $40.'
+  - 'Cost per confirmed fraud: A = $200/15 ≈ $13.33; B = $40/8 = $5. A nevertheless
+    finds 15 − 8 = 7 more frauds.'
+formulaSource:
+  pages:
+  - 224
+  verbatim: false
+  reviewed: true

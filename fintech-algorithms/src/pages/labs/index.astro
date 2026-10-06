@@ -1,0 +1,66 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import { algorithms, href } from '../../data';
+import labs from '../../data/labs.json';
+---
+
+<Shell title="Prepared Python labs">
+  <script is:inline id="jupyter-config-data" type="application/json" data-jupyter-lite-root=".">
+    {}
+  </script>
+  <p class="page-subtitle">
+    Run the examples, compare their results, and try the experiments in each notebook. Keep the
+    dataset, split, and random seed fixed when comparing model settings.
+  </p>
+  <div class="button-row">
+    <a class="button" href={href('/labs/lab/index.html')}>
+      Open notebook workspace
+    </a>
+    <a class="button secondary" href={href('/notebooks/DATASET_NOTES.md')}>
+      Read dataset and runtime notes
+    </a>
+  </div>
+  <div class="lab-grid">
+    {algorithms.map((a) => (
+      <section class="lab-card">
+        <div class="eyebrow">Lab {String(a.number).padStart(2, '0')}</div>
+        <h3>{a.title}</h3>
+        <p>
+          <b>Dataset:</b> {labs[a.slug as keyof typeof labs].dataset}
+        </p>
+        <p>
+          <b>Task:</b> {labs[a.slug as keyof typeof labs].task}
+        </p>
+        <p>
+          <b>Compare:</b> {labs[a.slug as keyof typeof labs].comparison}
+        </p>
+        <p class="small">
+          <b>Experiment:</b> {labs[a.slug as keyof typeof labs].siteEdits}
+        </p>
+        {['transformers', 'rag'].includes(a.slug) && (
+          <p class="small">
+            This notebook runs a TF-IDF baseline in the browser. The native Python download uses
+            {a.slug === 'transformers' ? 'FinBERT' : 'Sentence-Transformers'} and needs an initial
+            model download.
+          </p>
+        )}
+        <div class="button-row">
+          <a class="button secondary" href={href(`/labs/lab/index.html?path=${a.slug}.ipynb`)}>
+            Open lab
+          </a>
+          <a class="button quiet" href={href(`/algorithms/${a.slug}/defend/`)}>
+            Run in unit
+          </a>
+          <a class="button quiet" href={href(`/notebooks/${a.slug}.ipynb`)} download>
+            .ipynb
+          </a>
+          {['transformers', 'rag'].includes(a.slug) && (
+            <a class="button quiet" href={href(`/notebooks/native/${a.slug}.py`)} download>
+              Native Python .py
+            </a>
+          )}
+        </div>
+      </section>
+    ))}
+  </div>
+</Shell>

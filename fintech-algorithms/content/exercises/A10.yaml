@@ -1,0 +1,499 @@
+id: A10
+title: Choose a Feasible Portfolio
+minutes: 10
+kind: algorithm
+parent: optimization
+question: "A hypothetical $100,000 portfolio can use stocks and bonds with these annual\
+  \ estimates:\n   Asset                                                     Expected\
+  \ return                          Volatility\n   Stocks                        \
+  \                                         10%                              20%\n\
+  \   Bonds                                                                   4% \
+  \                              5%\n\n Assume zero correlation. Policy permits only\
+  \ three stock/bond allocations: 40/60, 50/50,\n and 60/40. Expected return must\
+  \ be at least 7%.\n For stock weight w:\n                                µp = 0.10w\
+  \ + 0.04(1 − w),   σp2 = w2 (0.20)2 + (1 − w)2 (0.05)2 .\n Calculate return and\
+  \ volatility for each allocation. Choose the lowest-variance feasible\n candidate,\
+  \ then calculate its dollar allocations."
+questionPages:
+- page: 151
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Class problem | 10 minutes — Choose\
+    \ a Feasible Portfolio\n\n A hypothetical $100,000 portfolio can use stocks and\
+    \ bonds with these annual estimates:\n   Asset                               \
+    \                      Expected return                          Volatility\n \
+    \  Stocks                                                                 10%\
+    \                              20%\n   Bonds                                 \
+    \                                  4%                               5%\n\n Assume\
+    \ zero correlation. Policy permits only three stock/bond allocations: 40/60, 50/50,\n\
+    \ and 60/40. Expected return must be at least 7%.\n For stock weight w:\n    \
+    \                            µp = 0.10w + 0.04(1 − w),   σp2 = w2 (0.20)2 + (1\
+    \ − w)2 (0.05)2 .\n Calculate return and volatility for each allocation. Choose\
+    \ the lowest-variance feasible\n candidate, then calculate its dollar allocations."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Class problem | 10 minutes — Choose a Feasible Portfolio
+  - 'A hypothetical $100,000 portfolio can use stocks and bonds with these annual
+    estimates: Asset Expected return Volatility Stocks 10% 20% Bonds 4% 5%'
+  - 'Assume zero correlation. Policy permits only three stock/bond allocations: 40/60,
+    50/50, and 60/40. Expected return must be at least 7%. For stock weight w: µp
+    = 0.10w + 0.04(1 − w), σp2 = w2 (0.20)2 + (1 − w)2 (0.05)2 . Calculate return
+    and volatility for each allocation. Choose the lowest-variance feasible candidate,
+    then calculate its dollar allocations.'
+  source:
+    pages:
+    - 151
+    verbatim: true
+formulaPages:
+- page: 145
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Formula explained (1/2)\n\n Question:\
+    \ Which permitted allocation meets the return requirement with the lowest modeled\n\
+    \ variance?\n                                                       µp = wµs +\
+    \ (1 − w)µb ,\n                                            σp2 = w2 σs2 + (1 −\
+    \ w)2 σb2 + 2w(1 − w)ρσs σb ,\n                                              \
+    \                      q\n                                                   \
+    \           σp = σp2 .\n Read it aloud: Expected return is a weighted average.\
+    \ Variance combines each asset’s\n weighted risk and a co-movement term. Take\
+    \ its square root for volatility.\n Here correlation is zero, so the last term\
+    \ is zero. Enter 20% volatility as 0.20 before squaring."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Formula explained (1/2)
+  - 'Question: Which permitted allocation meets the return requirement with the lowest
+    modeled variance? µp = wµs + (1 − w)µb , σp2 = w2 σs2 + (1 − w)2 σb2 + 2w(1 −
+    w)ρσs σb , q σp = σp2 . Read it aloud: Expected return is a weighted average.
+    Variance combines each asset’s weighted risk and a co-movement term. Take its
+    square root for volatility. Here correlation is zero, so the last term is zero.
+    Enter 20% volatility as 0.20 before squaring.'
+  source:
+    pages:
+    - 145
+    verbatim: true
+- page: 146
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Formula explained (2/2)\n\n Question:\
+    \ How do the constraints change the selection?\n                             \
+    \                     w ∈ {0.40, 0.50, 0.60},    µp ≥ 0.07.\n Read it aloud: Only\
+    \ the three supplied stock weights are allowed, and expected return must\n reach\
+    \ 7%. Discard candidates that fail; choose the remaining one with smallest variance.\n\
+    \                                            Stock dollars = V w,     Bond dollars\
+    \ = V (1 − w).\n Read it aloud: Multiply total portfolio value by each allocation\
+    \ weight to turn fractions into\n dollars.\n This is a finite candidate comparison,\
+    \ not a claim that the best choice over every possible\n investment has been found."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Formula explained (2/2)
+  - 'Question: How do the constraints change the selection? w ∈ {0.40, 0.50, 0.60},
+    µp ≥ 0.07. Read it aloud: Only the three supplied stock weights are allowed, and
+    expected return must reach 7%. Discard candidates that fail; choose the remaining
+    one with smallest variance. Stock dollars = V w, Bond dollars = V (1 − w). Read
+    it aloud: Multiply total portfolio value by each allocation weight to turn fractions
+    into dollars. This is a finite candidate comparison, not a claim that the best
+    choice over every possible investment has been found.'
+  source:
+    pages:
+    - 146
+    verbatim: true
+symbolPages:
+- page: 147
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Symbols and terms (1/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   w, 1 − w     \
+    \                            Stock and bond weights as fractions of the whole\
+    \ portfolio; together\n                                            they equal\
+    \ 1.\n   µs , µb , µp                             Expected annual arithmetic returns\
+    \ for stocks, bonds, and the\n                                            portfolio;\
+    \ mu denotes a mean here.\n   σs , σb , σp                             Annual\
+    \ return standard deviations, or volatilities; sigma measures\n              \
+    \                              variability, not expected loss.\n   σp2       \
+    \                               Portfolio variance: squared volatility, in squared\
+    \ decimal-return units."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Symbols and terms (1/4)
+  - 'Symbol or term Meaning in this example w, 1 − w Stock and bond weights as fractions
+    of the whole portfolio; together they equal 1. µs , µb , µp Expected annual arithmetic
+    returns for stocks, bonds, and the portfolio; mu denotes a mean here. σs , σb
+    , σp Annual return standard deviations, or volatilities; sigma measures variability,
+    not expected loss. σp2 Portfolio variance: squared volatility, in squared decimal-return
+    units.'
+  source: &id001
+    pages:
+    - 147
+    verbatim: true
+- page: 148
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Symbols and terms (2/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   ρ (rho)      \
+    \                            Correlation: how the two assets co-move; assumed\
+    \ to be zero, not\n                                            estimated in this\
+    \ exercise.\n   2w(1 − w)ρσs σb                          Covariance contribution\
+    \ to variance; it vanishes under the given\n                                 \
+    \           zero-correlation assumption."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Symbols and terms (2/4)
+  - 'Symbol or term Meaning in this example ρ (rho) Correlation: how the two assets
+    co-move; assumed to be zero, not estimated in this exercise. 2w(1 − w)ρσs σb Covariance
+    contribution to variance; it vanishes under the given zero-correlation assumption.'
+  source: &id002
+    pages:
+    - 148
+    verbatim: true
+- page: 149
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Symbols and terms (3/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   √\n          \
+    \                                  Square root; converts variance back into the\
+    \ same return units as\n                                            volatility.\n\
+    \   ∈, {. . .}                               “Belongs to” and a set of allowed\
+    \ values; the stock weight must be\n                                         \
+    \   one of the three listed.\n   V                                        Total\
+    \ portfolio value, US$100,000.\n   Objective                                Quantity\
+    \ to make as small or large as possible; minimize modeled\n                  \
+    \                          variance here."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Symbols and terms (3/4)
+  - Symbol or term Meaning in this example √ Square root; converts variance back into
+    the same return units as volatility. ∈, {. . .} “Belongs to” and a set of allowed
+    values; the stock weight must be one of the three listed. V Total portfolio value,
+    US$100,000. Objective Quantity to make as small or large as possible; minimize
+    modeled variance here.
+  source: &id003
+    pages:
+    - 149
+    verbatim: true
+- page: 150
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Symbols and terms (4/4)\n\n\n   Symbol\
+    \ or term                           Meaning in this example\n   Constraint; feasible\
+    \                     A requirement that must be met; a candidate satisfying every\
+    \ stated\n                                            requirement.\n   Optimal\
+    \ candidate                        The best feasible member of the supplied candidate\
+    \ set under these\n                                            estimates; not\
+    \ a guaranteed outcome."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Symbols and terms (4/4)
+  - Symbol or term Meaning in this example Constraint; feasible A requirement that
+    must be met; a candidate satisfying every stated requirement. Optimal candidate
+    The best feasible member of the supplied candidate set under these estimates;
+    not a guaranteed outcome.
+  source: &id004
+    pages:
+    - 150
+    verbatim: true
+solutionPages:
+- page: 152
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Worked solution — Choose a Feasible\
+    \ Portfolio\n\n1. Calculate return and variance for each allowed candidate.\n\
+    \   Stock weight                             Expected return Variance calculation\
+    \                Volatility Feasible?\n   40%                                \
+    \            0.4(10) +   0.0064 + 0.0009 =                      8.54% No\n   \
+    \                                          0.6(4) = 6.4%    0.0073\n   50%   \
+    \                                         0.5(10) +   0.0100 + 0.000625 =    \
+    \                10.31% Yes\n                                             0.5(4)\
+    \ = 7.0%    0.010625\n   60%                                            0.6(10)\
+    \ +   0.0144 + 0.0004 =                      12.17% Yes\n                    \
+    \                         0.4(4) = 7.6%    0.0148\n\n2. Take the square root of\
+    \ each variance to obtain the reported volatility.\n3. Compare feasible candidates:\
+    \ 50/50 has lower variance than 60/40.\n4. Allocate dollars: 100,000(0.50) = $50,000\
+    \ to each asset."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Worked solution — Choose a Feasible Portfolio
+  - 1. Calculate return and variance for each allowed candidate. Stock weight Expected
+    return Variance calculation Volatility Feasible? 40% 0.4(10) + 0.0064 + 0.0009
+    = 8.54% No 0.6(4) = 6.4% 0.0073 50% 0.5(10) + 0.0100 + 0.000625 = 10.31% Yes 0.5(4)
+    = 7.0% 0.010625 60% 0.6(10) + 0.0144 + 0.0004 = 12.17% Yes 0.4(4) = 7.6% 0.0148
+  - '2. Take the square root of each variance to obtain the reported volatility. 3.
+    Compare feasible candidates: 50/50 has lower variance than 60/40. 4. Allocate
+    dollars: 100,000(0.50) = $50,000 to each asset.'
+  source:
+    pages:
+    - 152
+    verbatim: true
+interpretationPages:
+- page: 153
+  title: Constrained Optimization
+  text: " Constrained Optimization\n\n   A10 | Interpretation\n\n What the answer\
+    \ means\n The lowest-risk candidate overall fails the return constraint. 50/50\
+    \ is optimal only among\n these three permitted candidates under the supplied\
+    \ estimates. Neither the 7% expected\n return nor the volatility is guaranteed.\n\
+    \ Why these steps matter\n Compare variance only after checking feasibility. A\
+    \ low-risk allocation can fail a mandatory\n return requirement. The covariance\
+    \ term is shown so students can see exactly what the\n zero-correlation assumption\
+    \ removes; it does not change any original exercise input."
+  paragraphs:
+  - Constrained Optimization
+  - A10 | Interpretation
+  - What the answer means The lowest-risk candidate overall fails the return constraint.
+    50/50 is optimal only among these three permitted candidates under the supplied
+    estimates. Neither the 7% expected return nor the volatility is guaranteed. Why
+    these steps matter Compare variance only after checking feasibility. A low-risk
+    allocation can fail a mandatory return requirement. The covariance term is shown
+    so students can see exactly what the zero-correlation assumption removes; it does
+    not change any original exercise input.
+  source:
+    pages:
+    - 153
+    verbatim: true
+source:
+  pages:
+  - 145
+  - 146
+  - 147
+  - 148
+  - 149
+  - 150
+  - 151
+  - 152
+  - 153
+  verbatim: true
+readAloud:
+- Expected return is a weighted average. Variance combines each asset’s weighted risk
+  and a co-movement term. Take its square root for volatility. Here correlation is
+  zero, so the last term is zero. Enter 20% volatility as 0.20 before squaring.
+- 'Only the three supplied stock weights are allowed, and expected return must reach
+  7%. Discard candidates that fail; choose the remaining one with smallest variance.
+  Stock dollars = V w, Bond dollars = V (1 − w). Read it aloud: Multiply total portfolio
+  value by each allocation weight to turn fractions into dollars. This is a finite
+  candidate comparison, not a claim that the best choice over every possible investment
+  has been found.'
+siteAuthored: false
+givens:
+  weights:
+  - 0.4
+  - 0.5
+  - 0.6
+  stockReturn: 0.1
+  bondReturn: 0.04
+  stockVol: 0.2
+  bondVol: 0.05
+  minimum: 0.07
+  portfolio: 100000
+labels: &id005
+  weights: Permitted stock weights (proportions)
+  stockReturn: Expected annual stock return
+  bondReturn: Expected annual bond return
+  stockVol: Annual stock volatility
+  bondVol: Annual bond volatility
+  minimum: Minimum expected annual return
+  portfolio: Portfolio value ($)
+deckSolution:
+  returns:
+  - 0.064
+  - 0.07
+  - 0.076
+  variances:
+  - 0.0073
+  - 0.010625
+  - 0.0148
+  volatilities:
+  - 0.08544
+  - 0.10308
+  - 0.12166
+  weight: 0.5
+  stockDollars: 50000
+  bondDollars: 50000
+latex:
+- \mu_p=0.10w+0.04(1-w),\quad \sigma_p^2=w^2(0.20)^2+(1-w)^2(0.05)^2
+- \sigma_p^2=w^2\sigma_s^2+(1-w)^2\sigma_b^2+2w(1-w)\rho\sigma_s\sigma_b,\quad \sigma_p=\sqrt{\sigma_p^2}
+- w\in\{0.40,0.50,0.60\},\quad \mu_p\ge0.07
+- \operatorname{Stock\ dollars}=Vw,\quad\operatorname{Bond\ dollars}=V(1-w)
+symbols:
+- symbol: w, 1 − w
+  meaning: Stock and bond weights as fractions of the whole portfolio; together they
+    equal 1.
+  source: *id001
+- symbol: µs , µb , µp
+  meaning: Expected annual arithmetic returns for stocks, bonds, and the portfolio;
+    mu denotes a mean here.
+  source: *id001
+- symbol: σs , σb , σp
+  meaning: Annual return standard deviations, or volatilities; sigma measures variability,
+    not expected loss.
+  source: *id001
+- symbol: σp2
+  meaning: 'Portfolio variance: squared volatility, in squared decimal-return units.'
+  source: *id001
+- symbol: ρ (rho)
+  meaning: 'Correlation: how the two assets co-move; assumed to be zero, not estimated
+    in this exercise.'
+  source: *id002
+- symbol: 2w(1 − w)ρσs σb
+  meaning: Covariance contribution to variance; it vanishes under the given zero-correlation
+    assumption.
+  source: *id002
+- symbol: √
+  meaning: Square root; converts variance back into the same return units as volatility.
+  source: *id003
+- symbol: ∈, {. . .}
+  meaning: “Belongs to” and a set of allowed values; the stock weight must be one
+    of the three listed.
+  source: *id003
+- symbol: V
+  meaning: Total portfolio value, US$100,000.
+  source: *id003
+- symbol: Objective
+  meaning: Quantity to make as small or large as possible; minimize modeled variance
+    here.
+  source: *id003
+- symbol: Constraint; feasible
+  meaning: A requirement that must be met; a candidate satisfying every stated requirement.
+  source: *id004
+- symbol: Optimal candidate
+  meaning: The best feasible member of the supplied candidate set under these estimates;
+    not a guaranteed outcome.
+  source: *id004
+steps:
+- id: returns
+  title: Expected return of each candidate
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Calculate stock weight × stock return + bond weight × bond return.
+  mistakes:
+  - pattern: recompute
+    message: Calculate stock weight × stock return + bond weight × bond return.
+- id: variances
+  title: Variance of each candidate
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - With zero correlation, add squared stock weight × stock variance and squared bond
+    weight × bond variance.
+  mistakes:
+  - pattern: recompute
+    message: With zero correlation, add squared stock weight × stock variance and
+      squared bond weight × bond variance.
+- id: volatilities
+  title: Volatility of each candidate
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Take the square root of each candidate variance.
+  mistakes:
+  - pattern: recompute
+    message: Take the square root of each candidate variance.
+- id: weight
+  title: Stock weight of the chosen candidate
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Discard candidates below the minimum return, then choose the remaining candidate
+    with the smallest variance.
+  mistakes:
+  - pattern: recompute
+    message: Discard candidates below the minimum return, then choose the remaining
+      candidate with the smallest variance.
+- id: stockDollars
+  title: Dollar allocation to stocks
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Multiply portfolio value by the chosen stock weight.
+  mistakes:
+  - pattern: recompute
+    message: Multiply portfolio value by the chosen stock weight.
+- id: bondDollars
+  title: Dollar allocation to bonds
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Multiply portfolio value by one minus the chosen stock weight.
+  mistakes:
+  - pattern: recompute
+    message: Multiply portfolio value by one minus the chosen stock weight.
+learning:
+  title: Choose a Feasible Portfolio
+  scenario: A portfolio may use only the listed stock weights; the remaining weight
+    goes to bonds. Stocks and bonds have zero correlation. Expected return must meet
+    the supplied minimum.
+  task: Calculate return and volatility for each candidate. Among feasible candidates,
+    choose the lowest variance and calculate dollar allocations.
+  interpretation: Check feasibility before comparing risk. This is an optimum among
+    the listed candidates under estimated inputs; expected return and volatility are
+    not guarantees.
+  summary: 'Chosen stock weight: {weight}. Stock allocation: {stockDollars}; bond
+    allocation: {bondDollars}.'
+  labels: *id005
+  steps:
+    returns:
+      title: Expected return of each candidate
+      hints: *id006
+      unit: proportion
+    variances:
+      title: Variance of each candidate
+      hints: *id007
+      unit: ''
+    volatilities:
+      title: Volatility of each candidate
+      hints: *id008
+      unit: proportion
+    weight:
+      title: Stock weight of the chosen candidate
+      hints: *id009
+      unit: proportion
+    stockDollars:
+      title: Dollar allocation to stocks
+      hints: *id010
+      unit: $
+    bondDollars:
+      title: Dollar allocation to bonds
+      hints: *id011
+      unit: $
+  readAloud:
+  - Expected return is a weighted average. Variance combines each asset’s weighted
+    risk and a co-movement term. Take its square root for volatility. Here correlation
+    is zero, so the last term is zero. Enter 20% volatility as 0.20 before squaring.
+  - Only the three supplied stock weights are allowed, and expected return must reach
+    7%. Discard candidates that fail; choose the remaining one with smallest variance.
+    Stock dollars = V w, Bond dollars = V (1 − w). Multiply total portfolio value
+    by each allocation weight to turn fractions into dollars. This is a finite candidate
+    comparison, not a claim that the best choice over every possible investment has
+    been found.
+  workedExplanation:
+  - 'The lowest-risk candidate overall fails the return constraint. 50/50 is optimal
+    only among these three permitted candidates under the supplied estimates. Neither
+    the 7% expected return nor the volatility is guaranteed. '
+  - Compare variance only after checking feasibility. A low-risk allocation can fail
+    a mandatory return requirement. The covariance term is shown so students can see
+    exactly what the zero-correlation assumption removes; the example assumes zero
+    correlation.
+  workedArithmetic:
+  - 'At 40% stocks: return = 0.4 × 10% + 0.6 × 4% = 6.4%; variance = 0.4² × 0.20²
+    + 0.6² × 0.05² = 0.0073; volatility = √0.0073 ≈ 8.54%. This fails the 7% return
+    minimum.'
+  - 'At 50% stocks: return = 0.5 × 10% + 0.5 × 4% = 7%; variance = 0.010625; volatility
+    ≈ 10.31%.'
+  - 'At 60% stocks: return = 0.6 × 10% + 0.4 × 4% = 7.6%; variance = 0.0148; volatility
+    ≈ 12.17%.'
+  - The 50/50 candidate has the lower feasible variance. Stock and bond allocations
+    are each $100,000 × 0.50 = $50,000.
+formulaSource:
+  pages:
+  - 145
+  - 146
+  verbatim: false
+  reviewed: true

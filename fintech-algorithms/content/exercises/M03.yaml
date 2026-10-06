@@ -1,0 +1,330 @@
+id: M03
+title: Give Both Classes a Voice
+minutes: 6
+kind: measure
+parent: balanced-accuracy
+question: "A detector has T P = 15, F N = 5, T N = 945, and F P = 35. Fraud is positive.\n\
+  \                                                     Recall + Specificity\n   \
+  \                          Balanced accuracy =                          .\n    \
+  \                                                          2\n Recall is the share\
+  \ of frauds caught. Specificity is the share of legitimate transactions passed\n\
+  \ correctly.\n1. Calculate recall, specificity, and balanced accuracy.\n2. Calculate\
+  \ balanced accuracy for a baseline that always predicts “legitimate.”\n3. Explain\
+  \ why the detector can have lower ordinary accuracy but higher balanced accuracy\
+  \ than\n   that baseline."
+questionPages:
+- page: 219
+  title: Balanced Accuracy
+  text: " Balanced Accuracy\n\n   M03 | Class problem | 6 minutes — Give Both Classes\
+    \ a Voice\n\n A detector has T P = 15, F N = 5, T N = 945, and F P = 35. Fraud\
+    \ is positive.\n                                                     Recall +\
+    \ Specificity\n                             Balanced accuracy =              \
+    \            .\n                                                             \
+    \ 2\n Recall is the share of frauds caught. Specificity is the share of legitimate\
+    \ transactions passed\n correctly.\n1. Calculate recall, specificity, and balanced\
+    \ accuracy.\n2. Calculate balanced accuracy for a baseline that always predicts\
+    \ “legitimate.”\n3. Explain why the detector can have lower ordinary accuracy\
+    \ but higher balanced accuracy than\n   that baseline."
+  paragraphs:
+  - Balanced Accuracy
+  - M03 | Class problem | 6 minutes — Give Both Classes a Voice
+  - A detector has T P = 15, F N = 5, T N = 945, and F P = 35. Fraud is positive.
+    Recall + Specificity Balanced accuracy = . 2 Recall is the share of frauds caught.
+    Specificity is the share of legitimate transactions passed correctly. 1. Calculate
+    recall, specificity, and balanced accuracy. 2. Calculate balanced accuracy for
+    a baseline that always predicts “legitimate.” 3. Explain why the detector can
+    have lower ordinary accuracy but higher balanced accuracy than that baseline.
+  source:
+    pages:
+    - 219
+    verbatim: true
+formulaPages:
+- page: 216
+  title: Balanced Accuracy
+  text: " Balanced Accuracy\n\n   M03 | Formula explained (1/1)\n\n Question: How\
+    \ well did the model handle each actual class when both receive equal weight?\n\
+    \                                   TP                              TN\n     \
+    \                Recall =              ,    Specif icity =             ,\n   \
+    \                             TP + FN                        TN + FP\n       \
+    \                                          Recall + Specif icity\n           \
+    \              Balanced accuracy =                           .\n             \
+    \                                              2\n Read it aloud: Calculate the\
+    \ fraction of frauds caught and the fraction of legitimate cases\n passed. Average\
+    \ the two fractions with equal weights.\n The denominator 2 represents two classes,\
+    \ not two transactions. Use decimals consistently\n until the final percentage\
+    \ conversion."
+  paragraphs:
+  - Balanced Accuracy
+  - M03 | Formula explained (1/1)
+  - 'Question: How well did the model handle each actual class when both receive equal
+    weight? TP TN Recall = , Specif icity = , TP + FN TN + FP Recall + Specif icity
+    Balanced accuracy = . 2 Read it aloud: Calculate the fraction of frauds caught
+    and the fraction of legitimate cases passed. Average the two fractions with equal
+    weights. The denominator 2 represents two classes, not two transactions. Use decimals
+    consistently until the final percentage conversion.'
+  source:
+    pages:
+    - 216
+    verbatim: true
+symbolPages:
+- page: 217
+  title: Balanced Accuracy
+  text: " Balanced Accuracy\n\n   M03 | Symbols and terms (1/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   TP        \
+    \                                     True positives: actual frauds correctly\
+    \ flagged. “True” means the\n                                                \
+    \  prediction matches the outcome.\n   FP                                    \
+    \         False positives: legitimate transactions incorrectly flagged.\n   FN\
+    \                                             False negatives: actual frauds incorrectly\
+    \ passed or left unflagged.\n   TN                                           \
+    \  True negatives: legitimate transactions correctly passed.\n   Recall; sensitivity\
+    \                            Fraction of actual frauds correctly flagged; also\
+    \ called the\n                                                  true-positive\
+    \ rate.\n   Specificity                                    Fraction of actual\
+    \ legitimate cases correctly passed; also called the\n                       \
+    \                           true-negative rate."
+  paragraphs:
+  - Balanced Accuracy
+  - M03 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example TP True positives: actual frauds correctly
+    flagged. “True” means the prediction matches the outcome. FP False positives:
+    legitimate transactions incorrectly flagged. FN False negatives: actual frauds
+    incorrectly passed or left unflagged. TN True negatives: legitimate transactions
+    correctly passed. Recall; sensitivity Fraction of actual frauds correctly flagged;
+    also called the true-positive rate. Specificity Fraction of actual legitimate
+    cases correctly passed; also called the true-negative rate.'
+  source: &id001
+    pages:
+    - 217
+    verbatim: true
+- page: 218
+  title: Balanced Accuracy
+  text: " Balanced Accuracy\n\n   M03 | Symbols and terms (2/2)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   Balanced accuracy\
+    \                              Arithmetic mean of those two class-specific success\
+    \ rates in this\n                                                  binary example.\n\
+    \   TP + FN; TN + FP                               Total actual frauds; total\
+    \ actual legitimate transactions.\n   Equal class weight                     \
+    \        Each class contributes half the final score even when one contains\n\
+    \                                                  many more records."
+  paragraphs:
+  - Balanced Accuracy
+  - M03 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Balanced accuracy Arithmetic mean of those
+    two class-specific success rates in this binary example. TP + FN; TN + FP Total
+    actual frauds; total actual legitimate transactions. Equal class weight Each class
+    contributes half the final score even when one contains many more records.
+  source: &id002
+    pages:
+    - 218
+    verbatim: true
+solutionPages:
+- page: 220
+  title: Balanced Accuracy
+  text: " Balanced Accuracy\n\n   M03 | Worked solution — Give Both Classes a Voice\n\
+    \n1. Recall: 15/(15 + 5) = 15/20 = 75%.\n2. Specificity: 945/(945 + 35) = 945/980\
+    \ = 96.43%.\n3. Balanced accuracy:\n                                  75% + 96.43%\n\
+    \                                                   = 85.71%.\n              \
+    \                            2\n4. Always-legitimate baseline: Recall is 0%; specificity\
+    \ is 100%.\n                                                0% + 100%\n      \
+    \                    Balanced accuracy =                  = 50%.\n           \
+    \                                            2"
+  paragraphs:
+  - Balanced Accuracy
+  - M03 | Worked solution — Give Both Classes a Voice
+  - '1. Recall: 15/(15 + 5) = 15/20 = 75%. 2. Specificity: 945/(945 + 35) = 945/980
+    = 96.43%. 3. Balanced accuracy: 75% + 96.43% = 85.71%. 2 4. Always-legitimate
+    baseline: Recall is 0%; specificity is 100%. 0% + 100% Balanced accuracy = = 50%.
+    2'
+  source:
+    pages:
+    - 220
+    verbatim: true
+interpretationPages:
+- page: 221
+  title: Balanced Accuracy
+  text: " Balanced Accuracy\n\n   M03 | Interpretation\n\n What the answer means\n\
+    \ The detector performs substantially better when fraud and legitimate transactions\
+    \ receive equal\n class-level weight: 85.71% versus 50%. This still does not price\
+    \ errors in dollars. Balanced\n accuracy is not a claim that 85.71% of all individual\
+    \ transactions were classified correctly.\n Why these steps matter\n Balanced\
+    \ accuracy first normalizes within each class. The rare fraud class therefore\
+    \ contributes\n as much as the much larger legitimate class. It is still a statistical\
+    \ weighting convention, not a\n financial cost weighting."
+  paragraphs:
+  - Balanced Accuracy
+  - M03 | Interpretation
+  - 'What the answer means The detector performs substantially better when fraud and
+    legitimate transactions receive equal class-level weight: 85.71% versus 50%. This
+    still does not price errors in dollars. Balanced accuracy is not a claim that
+    85.71% of all individual transactions were classified correctly. Why these steps
+    matter Balanced accuracy first normalizes within each class. The rare fraud class
+    therefore contributes as much as the much larger legitimate class. It is still
+    a statistical weighting convention, not a financial cost weighting.'
+  source:
+    pages:
+    - 221
+    verbatim: true
+source:
+  pages:
+  - 216
+  - 217
+  - 218
+  - 219
+  - 220
+  - 221
+  verbatim: true
+readAloud:
+- Calculate the fraction of frauds caught and the fraction of legitimate cases passed.
+  Average the two fractions with equal weights. The denominator 2 represents two classes,
+  not two transactions. Use decimals consistently until the final percentage conversion.
+siteAuthored: false
+givens:
+  TP: 15
+  FP: 35
+  FN: 5
+  TN: 945
+labels: &id003
+  TP: Frauds flagged
+  FP: Legitimate transactions flagged
+  FN: Frauds missed
+  TN: Legitimate transactions passed
+deckSolution:
+  recall: 0.75
+  specificity: 0.9642857
+  balanced: 0.8571429
+  baseline: 0.5
+latex:
+- BalancedAccuracy=\frac12\left(\frac{TP}{TP+FN}+\frac{TN}{TN+FP}\right)
+- \operatorname{Recall}=\frac{TP}{TP+FN},\quad\operatorname{Specificity}=\frac{TN}{TN+FP}
+symbols:
+- symbol: TP
+  meaning: 'True positives: actual frauds correctly flagged. “True” means the prediction
+    matches the outcome.'
+  source: *id001
+- symbol: FP
+  meaning: 'False positives: legitimate transactions incorrectly flagged.'
+  source: *id001
+- symbol: FN
+  meaning: 'False negatives: actual frauds incorrectly passed or left unflagged.'
+  source: *id001
+- symbol: TN
+  meaning: 'True negatives: legitimate transactions correctly passed.'
+  source: *id001
+- symbol: Recall; sensitivity
+  meaning: Fraction of actual frauds correctly flagged; also called the true-positive
+    rate.
+  source: *id001
+- symbol: Specificity
+  meaning: Fraction of actual legitimate cases correctly passed; also called the true-negative
+    rate.
+  source: *id001
+- symbol: Balanced accuracy
+  meaning: Arithmetic mean of those two class-specific success rates in this binary
+    example.
+  source: *id002
+- symbol: TP + FN; TN + FP
+  meaning: Total actual frauds; total actual legitimate transactions.
+  source: *id002
+- symbol: Equal class weight
+  meaning: Each class contributes half the final score even when one contains many
+    more records.
+  source: *id002
+steps:
+- id: recall
+  title: Fraud recall
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Divide TP by TP + FN.
+  mistakes:
+  - pattern: recompute
+    message: Divide TP by TP + FN.
+- id: specificity
+  title: Legitimate-transaction specificity
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide TN by TN + FP.
+  mistakes:
+  - pattern: recompute
+    message: Divide TN by TN + FP.
+- id: balanced
+  title: Balanced accuracy
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average recall and specificity with equal weights.
+  mistakes:
+  - pattern: recompute
+    message: Average recall and specificity with equal weights.
+- id: baseline
+  title: Always-legitimate balanced accuracy
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - The baseline has zero recall and perfect specificity. Average those rates.
+  mistakes:
+  - pattern: recompute
+    message: The baseline has zero recall and perfect specificity. Average those rates.
+learning:
+  title: Give Both Classes a Voice
+  scenario: A fraud detector is compared with a baseline that always predicts legitimate.
+    Balanced accuracy gives fraud and legitimate transactions equal class-level weight.
+  task: Calculate recall, specificity, their average and the baseline’s balanced accuracy.
+  interpretation: Balanced accuracy first normalizes within each class. It is not
+    ordinary accuracy and does not price either kind of error in dollars.
+  summary: 'Detector balanced accuracy: {balanced}; baseline balanced accuracy: {baseline}.'
+  labels: *id003
+  steps:
+    recall:
+      title: Fraud recall
+      hints: *id004
+      unit: proportion
+    specificity:
+      title: Legitimate-transaction specificity
+      hints: *id005
+      unit: proportion
+    balanced:
+      title: Balanced accuracy
+      hints: *id006
+      unit: proportion
+    baseline:
+      title: Always-legitimate balanced accuracy
+      hints: *id007
+      unit: proportion
+  readAloud:
+  - Calculate the fraction of frauds caught and the fraction of legitimate cases passed.
+    Average the two fractions with equal weights. The denominator 2 represents two
+    classes, not two transactions. Use decimals consistently until the final percentage
+    conversion.
+  workedExplanation:
+  - 'The detector performs substantially better when fraud and legitimate transactions
+    receive equal class-level weight: 85.71% versus 50%. This still does not price
+    errors in dollars. Balanced accuracy is not a claim that 85.71% of all individual
+    transactions were classified correctly. '
+  - Balanced accuracy first normalizes within each class. The rare fraud class therefore
+    contributes as much as the much larger legitimate class. It is still a statistical
+    weighting convention, not a financial cost weighting.
+  workedArithmetic:
+  - Recall = 15 / (15 + 5) = 75%. Specificity = 945 / (945 + 35) ≈ 96.43%.
+  - Balanced accuracy = (0.75 + 945/980) / 2 ≈ 85.71%.
+  - The always-legitimate baseline has 0% recall and 100% specificity, so balanced
+    accuracy = (0 + 1) / 2 = 50%.
+formulaSource:
+  pages:
+  - 216
+  verbatim: false
+  reviewed: true

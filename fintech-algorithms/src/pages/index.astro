@@ -1,0 +1,109 @@
+---
+import Shell from '../components/layout/Shell.astro';
+import ContinueLearning from '../components/learning/ContinueLearning.svelte';
+import { algorithms, shortTitles, href } from '../data';
+import { learningFamilies } from '../data/learning-path';
+import { teachingTopics } from '../data/teaching-manifest';
+import { toPracticeTopic } from '../engine/assessment';
+const units = algorithms.map((a, i) => ({
+  slug: a.slug,
+  title: shortTitles[i],
+  description: a.oneLine,
+}));
+---
+
+<Shell
+  title="Learn fintech algorithms"
+  description="Understand a financial decision, explore what changes, and put the algorithm into practice."
+>
+  <p class="page-subtitle">Study algorithms for credit, fraud, forecasting, document analysis, and portfolio decisions.</p>
+  <ContinueLearning
+    {units}
+    topics={teachingTopics.map(toPracticeTopic)}
+    base={import.meta.env.BASE_URL}
+    client:load
+  />
+  <p class="foundations-invitation">
+    New to machine learning?{' '}
+    <a href={href('/foundations/')}>Build your mathematical foundations →</a>
+  </p>
+  <section class="course-outline" aria-labelledby="course-outline-title">
+    <div class="section-heading">
+      <h2 id="course-outline-title">Choose a financial task</h2>
+      <span class="small muted">Follow the order or explore freely</span>
+    </div>
+    {learningFamilies.map((family) => (
+      <section class="learning-family">
+        <div class="learning-family-intro">
+          <h3>{family.title}</h3>
+          <p>{family.description}</p>
+        </div>
+        <ol class="learning-unit-list">
+          {algorithms
+            .filter((a) => a.group === family.title)
+            .map((a) => (
+              <li>
+                <a href={href(`/algorithms/${a.slug}/`)}>
+                  <span class="learning-unit-number">{String(a.number).padStart(2, '0')}</span>
+                  <span>
+                    <strong>{shortTitles[a.number - 1]}</strong>
+                    <small>{a.oneLine}</small>
+                  </span>
+                  <span class="learning-unit-time">
+                    7 lessons <span aria-hidden="true">→</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+        </ol>
+      </section>
+    ))}
+  </section>
+  <details class="course-information" id="course-information">
+    <summary>Course information</summary>
+    <p>
+      Created independently by Adnan Masood, PhD., as reference material for USF AI in Fintech
+      lectures. This is not an official University of South Florida repository. Each unit
+      follows seven sections with definitions, mathematical explanations, small worked examples,
+      interactive checks, independent calculations, and financial applications. Study over several
+      sessions and revisit any topic freely.
+    </p>
+    <div class="course-stats">
+      <span>
+        <strong>12</strong> algorithm units
+      </span>
+      <span>
+        <strong>39</strong> evaluation measures
+      </span>
+      <span>
+        <strong>64</strong> exercises
+      </span>
+      <span>
+        <strong>{teachingTopics.reduce((n, t) => n + t.lessons.length, 0)}</strong> lessons
+      </span>
+      <span>
+        <strong>{teachingTopics.reduce((n, t) => n + t.questions.length, 0)}</strong> explained
+        choice questions
+      </span>
+      <span>
+        <strong>12</strong> Python labs
+      </span>
+    </div>
+    <h3>What you will learn</h3>
+    <ol>
+      <li>
+        Turn a financial question into a prediction, ranking, forecast, retrieval, allocation, or
+        control task.
+      </li>
+      <li>Use inputs available at decision time and exclude future information.</li>
+      <li>Explain each method and compare it with a simpler baseline.</li>
+      <li>Choose measures that reflect error costs, event frequency, and operating capacity.</li>
+      <li>Convert outputs into thresholds, queues, forecasts, allocations, or actions.</li>
+      <li>Test failure cases and uncertainty, and specify review and stopping conditions.</li>
+    </ol>
+    <p>
+      For each lab, report the baseline, the result of one controlled change, and a failure case you
+      can explain. <a href={href('/synthesis/')}>Bring the methods together in the capstone.</a>
+    </p>
+  </details>
+</Shell>

@@ -1,0 +1,39 @@
+---
+import AlgorithmVisual from './algorithms/AlgorithmVisual.svelte';
+import MeasureVisual from './measures/MeasureVisual.svelte';
+import FoundationVisual from './FoundationVisual.svelte';
+import SupplementVisual from './SupplementVisual.svelte';
+import type { FoundationId } from '../../data/foundation-visuals';
+import { exercise } from '../../data';
+interface Props {
+  category: 'algorithm' | 'measure' | 'foundation' | 'supplement';
+  visualId: string;
+  exampleId?: string;
+  focus?: string;
+}
+const { category, visualId, exampleId, focus } = Astro.props;
+const givens = exampleId ? exercise(exampleId).givens : undefined;
+---
+
+{category === 'algorithm' && (
+  <AlgorithmVisual
+    slug={visualId}
+    {givens}
+    exerciseId={exampleId}
+    focusStep={focus}
+    client:visible
+  />
+)}
+{category === 'measure' && (
+  <MeasureVisual
+    number={Number(visualId.replace('measure-', ''))}
+    {givens}
+    exerciseId={exampleId}
+    focusStep={focus}
+    client:visible
+  />
+)}
+{category === 'foundation' && <FoundationVisual id={visualId as FoundationId} client:visible />}
+{category === 'supplement' && (
+  <SupplementVisual id={visualId} {givens} focusStep={focus} client:visible />
+)}

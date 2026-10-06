@@ -1,0 +1,399 @@
+id: M34
+title: How Much of the Estimate Is Simulation Noise?
+minutes: 9
+kind: measure
+parent: probability-of-shortfall-and-monte-carlo-error
+question: "In 2,500 independent simulation runs, a loan portfolio loses more than\
+  \ its reserve in 250 runs.\n Calculate the estimated shortfall probability and its\
+  \ Monte Carlo standard error:\n                                                \
+  \        r\n                                                           p̂(1 − p̂)\n\
+  \                               p̂ = k/N,       SE(p̂) =               .\n     \
+  \                                                          N\n Construct the approximate\
+  \ 95% simulation interval p̂ ± 1.96SE. Then suppose the model runs\n 10,000 simulations,\
+  \ with the same estimated probability. What happens to standard error?\n Does the\
+  \ interval include uncertainty about the model’s default assumptions?"
+questionPages:
+- page: 529
+  title: Monte Carlo Error
+  text: " Monte Carlo Error\n\n   M34 | Class problem | 9 minutes — How Much of the\
+    \ Estimate Is Simulation Noise?\n\n In 2,500 independent simulation runs, a loan\
+    \ portfolio loses more than its reserve in 250 runs.\n Calculate the estimated\
+    \ shortfall probability and its Monte Carlo standard error:\n                \
+    \                                        r\n                                 \
+    \                          p̂(1 − p̂)\n                               p̂ = k/N,\
+    \       SE(p̂) =               .\n                                           \
+    \                    N\n Construct the approximate 95% simulation interval p̂\
+    \ ± 1.96SE. Then suppose the model runs\n 10,000 simulations, with the same estimated\
+    \ probability. What happens to standard error?\n Does the interval include uncertainty\
+    \ about the model’s default assumptions?"
+  paragraphs:
+  - Monte Carlo Error
+  - M34 | Class problem | 9 minutes — How Much of the Estimate Is Simulation Noise?
+  - 'In 2,500 independent simulation runs, a loan portfolio loses more than its reserve
+    in 250 runs. Calculate the estimated shortfall probability and its Monte Carlo
+    standard error: r p̂(1 − p̂) p̂ = k/N, SE(p̂) = . N Construct the approximate
+    95% simulation interval p̂ ± 1.96SE. Then suppose the model runs 10,000 simulations,
+    with the same estimated probability. What happens to standard error? Does the
+    interval include uncertainty about the model’s default assumptions?'
+  source:
+    pages:
+    - 529
+    verbatim: true
+formulaPages:
+- page: 525
+  title: Monte Carlo Error
+  text: " Monte Carlo Error\n\n   M34 | Formula explained (1/1)\n\n Question: What\
+    \ fraction of simulations breaches the reserve, and how much uncertainty comes\n\
+    \ only from the finite run count?\n                                          \
+    \          r\n                                    k                  p̂(1 − p̂)\n\
+    \                                p̂ = ,     SE(p̂) =               ,\n       \
+    \                             N                      N\n                     \
+    \     Approximate 95% interval = p̂ ± 1.96 SE(p̂).\n Read it aloud: Divide breach\
+    \ runs by total runs. Multiply that estimated fraction by its\n complement, divide\
+    \ by run count, and take the square root. Add and subtract 1.96 standard\n errors\
+    \ for the stated normal approximation.\n Runs are independent, equally weighted,\
+    \ and generated under one fixed simulation model. This\n approximation is not\
+    \ suitable for every very small or near-zero/near-one breach sample."
+  paragraphs:
+  - Monte Carlo Error
+  - M34 | Formula explained (1/1)
+  - 'Question: What fraction of simulations breaches the reserve, and how much uncertainty
+    comes only from the finite run count? r k p̂(1 − p̂) p̂ = , SE(p̂) = , N N Approximate
+    95% interval = p̂ ± 1.96 SE(p̂). Read it aloud: Divide breach runs by total runs.
+    Multiply that estimated fraction by its complement, divide by run count, and take
+    the square root. Add and subtract 1.96 standard errors for the stated normal approximation.
+    Runs are independent, equally weighted, and generated under one fixed simulation
+    model. This approximation is not suitable for every very small or near-zero/near-one
+    breach sample.'
+  source:
+    pages:
+    - 525
+    verbatim: true
+symbolPages:
+- page: 526
+  title: Monte Carlo Error
+  text: " Monte Carlo Error\n\n   M34 | Symbols and terms (1/3)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   N         \
+    \                                     Number of independent simulation runs; 2,500\
+    \ initially and 10,000 in\n                                                  the\
+    \ comparison.\n   k                                              Number of runs\
+    \ with a loss strictly above the reserve; 250 in the\n                       \
+    \                           initial sample. Lower-case k here is not retrieval\
+    \ cutoff K.\n   p̂                                             Estimated breach\
+    \ probability; the hat marks an estimate rather than\n                       \
+    \                           an exactly known model probability.\n   1 − p̂   \
+    \                                      Estimated fraction of runs that do not\
+    \ breach the reserve."
+  paragraphs:
+  - Monte Carlo Error
+  - M34 | Symbols and terms (1/3)
+  - Symbol or term Meaning in this example N Number of independent simulation runs;
+    2,500 initially and 10,000 in the comparison. k Number of runs with a loss strictly
+    above the reserve; 250 in the initial sample. Lower-case k here is not retrieval
+    cutoff K. p̂ Estimated breach probability; the hat marks an estimate rather than
+    an exactly known model probability. 1 − p̂ Estimated fraction of runs that do
+    not breach the reserve.
+  source: &id001
+    pages:
+    - 526
+    verbatim: true
+- page: 527
+  title: Monte Carlo Error
+  text: " Monte Carlo Error\n\n   M34 | Symbols and terms (2/3)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   SE(p̂)    \
+    \                                     Monte Carlo standard error: estimated variability\
+    \ of the probability\n                                                  estimate\
+    \ across repeated batches of runs.\n   √\n       ·                           \
+    \               Square root; converts the estimated variance of the probability\n\
+    \                                                  estimate into standard-error\
+    \ units."
+  paragraphs:
+  - Monte Carlo Error
+  - M34 | Symbols and terms (2/3)
+  - 'Symbol or term Meaning in this example SE(p̂) Monte Carlo standard error: estimated
+    variability of the probability estimate across repeated batches of runs. √ · Square
+    root; converts the estimated variance of the probability estimate into standard-error
+    units.'
+  source: &id002
+    pages: &id003
+    - 527
+    verbatim: true
+- page: 528
+  title: Monte Carlo Error
+  text: " Monte Carlo Error\n\n   M34 | Symbols and terms (3/3)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   1.96      \
+    \                                     Normal-approximation multiplier for a central\
+    \ interval with\n                                                  approximately\
+    \ 95% coverage under the stated conditions.\n   ±                            \
+    \                  Calculate both subtraction and addition to obtain lower and\
+    \ upper\n                                                  endpoints.\n   Percentage\
+    \ point                               A probability standard error of 0.006 equals\
+    \ 0.6 percentage point,\n                                                  not\
+    \ 0.006 percentage point.\n   Conditional on the model                       Assumed\
+    \ default rates and dependencies are held fixed; their\n                     \
+    \                             uncertainty is not included in this simulation-error\
+    \ interval."
+  paragraphs:
+  - Monte Carlo Error
+  - M34 | Symbols and terms (3/3)
+  - Symbol or term Meaning in this example 1.96 Normal-approximation multiplier for
+    a central interval with approximately 95% coverage under the stated conditions.
+    ± Calculate both subtraction and addition to obtain lower and upper endpoints.
+    Percentage point A probability standard error of 0.006 equals 0.6 percentage point,
+    not 0.006 percentage point. Conditional on the model Assumed default rates and
+    dependencies are held fixed; their uncertainty is not included in this simulation-error
+    interval.
+  source: &id004
+    pages:
+    - 528
+    verbatim: true
+solutionPages:
+- page: 530
+  title: Monte Carlo Error
+  text: " Monte Carlo Error\n\n   M34 | Worked solution — How Much of the Estimate\
+    \ Is Simulation Noise?\n\n1. Shortfall estimate: p̂ = 250/2,500 = 0.10 = 10%.\n\
+    2. Standard error:                                       q                  √\n\
+    \                                                  SE =    0.10(0.90)/2,500 =\
+    \ 0.000036 = 0.006.\n      This is 0.6 percentage points, not 0.006 percentage\
+    \ points.\n3. Approximate interval: 0.10 ± 1.96(0.006) = 0.10 ± 0.01176. Result:\
+    \ 8.824%–11.176%.\n                         p\n4. At 10,000 runs: SE =     0.09/10,000\
+    \ = 0.003, or 0.3 percentage points."
+  paragraphs:
+  - Monte Carlo Error
+  - M34 | Worked solution — How Much of the Estimate Is Simulation Noise?
+  - '1. Shortfall estimate: p̂ = 250/2,500 = 0.10 = 10%. 2. Standard error: q √ SE
+    = 0.10(0.90)/2,500 = 0.000036 = 0.006. This is 0.6 percentage points, not 0.006
+    percentage points. 3. Approximate interval: 0.10 ± 1.96(0.006) = 0.10 ± 0.01176.
+    Result: 8.824%–11.176%. p 4. At 10,000 runs: SE = 0.09/10,000 = 0.003, or 0.3
+    percentage points.'
+  source:
+    pages:
+    - 530
+    verbatim: true
+interpretationPages:
+- page: 531
+  title: Monte Carlo Error
+  text: " Monte Carlo Error\n\n   M34 | Interpretation\n\n What the answer means\n\
+    \ Quadrupling independent runs halves simulation noise. It does not validate assumed\
+    \ default\n probabilities, recoveries, or correlations. This interval describes\
+    \ uncertainty in the estimated\n probability conditional on the specified simulation\
+    \ model, not uncertainty about whether\n that model is realistic.\n Why these\
+    \ steps matter\n A single run says breach or no breach. More runs make the average\
+    \ of those binary outcomes\n more stable. With the probability held fixed, multiplying\
+    \ run count by four divides its standard\n error by two because the denominator\
+    \ enters under a square root. It does not halve uncertainty\n about whether the\
+    \ financial assumptions are correct."
+  paragraphs:
+  - Monte Carlo Error
+  - M34 | Interpretation
+  - What the answer means Quadrupling independent runs halves simulation noise. It
+    does not validate assumed default probabilities, recoveries, or correlations.
+    This interval describes uncertainty in the estimated probability conditional on
+    the specified simulation model, not uncertainty about whether that model is realistic.
+    Why these steps matter A single run says breach or no breach. More runs make the
+    average of those binary outcomes more stable. With the probability held fixed,
+    multiplying run count by four divides its standard error by two because the denominator
+    enters under a square root. It does not halve uncertainty about whether the financial
+    assumptions are correct.
+  source:
+    pages:
+    - 531
+    verbatim: true
+source:
+  pages:
+  - 525
+  - 526
+  - 527
+  - 528
+  - 529
+  - 530
+  - 531
+  verbatim: true
+readAloud:
+- Divide breach runs by total runs. Multiply that estimated fraction by its complement,
+  divide by run count, and take the square root. Add and subtract 1.96 standard errors
+  for the stated normal approximation. Runs are independent, equally weighted, and
+  generated under one fixed simulation model. This approximation is not suitable for
+  every very small or near-zero/near-one breach sample.
+siteAuthored: false
+givens:
+  N: 2500
+  breaches: 250
+  newN: 10000
+labels: &id005
+  N: Independent simulation runs
+  breaches: Runs exceeding the reserve
+  newN: New simulation run count
+deckSolution:
+  p: 0.1
+  SE: 0.006
+  lower: 0.08824
+  upper: 0.11176
+  newSE: 0.003
+latex:
+- \hat p=\frac{k}{N},\quad SE=\sqrt{\frac{\hat p(1-\hat p)}{N}},\quad CI=\hat p\pm1.96SE
+symbols:
+- symbol: N
+  meaning: Number of independent simulation runs; 2,500 initially and 10,000 in the
+    comparison.
+  source: *id001
+- symbol: k
+  meaning: Number of runs with a loss strictly above the reserve; 250 in the initial
+    sample. Lower-case k here is not retrieval cutoff K.
+  source: *id001
+- symbol: p̂
+  meaning: Estimated breach probability; the hat marks an estimate rather than an
+    exactly known model probability.
+  source: *id001
+- symbol: 1 − p̂
+  meaning: Estimated fraction of runs that do not breach the reserve.
+  source: *id001
+- symbol: SE(p̂)
+  meaning: 'Monte Carlo standard error: estimated variability of the probability estimate
+    across repeated batches of runs.'
+  source: *id002
+- symbol: √·
+  meaning: Square root; converts the estimated variance of the probability estimate
+    into standard-error units.
+  source:
+    pages: *id003
+    verbatim: false
+- symbol: '1.96'
+  meaning: Normal-approximation multiplier for a central interval with approximately
+    95% coverage under the stated conditions.
+  source: *id004
+- symbol: ±
+  meaning: Calculate both subtraction and addition to obtain lower and upper endpoints.
+  source: *id004
+- symbol: Percentage point
+  meaning: A probability standard error of 0.006 equals 0.6 percentage point, not
+    0.006 percentage point.
+  source: *id004
+- symbol: Conditional on the model
+  meaning: Assumed default rates and dependencies are held fixed; their uncertainty
+    is not included in this simulation-error interval.
+  source: *id004
+steps:
+- id: p
+  title: Estimated reserve-breach probability
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide the number of breach runs by the total number of runs.
+  mistakes:
+  - pattern: recompute
+    message: Divide the number of breach runs by the total number of runs.
+- id: SE
+  title: Monte Carlo standard error
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Calculate the square root of p × (1 − p) / N.
+  mistakes:
+  - pattern: recompute
+    message: Calculate the square root of p × (1 − p) / N.
+- id: lower
+  title: Approximate 95% lower bound
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Subtract 1.96 × standard error from the estimated probability.
+  mistakes:
+  - pattern: recompute
+    message: Subtract 1.96 × standard error from the estimated probability.
+- id: upper
+  title: Approximate 95% upper bound
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Add 1.96 × standard error to the estimated probability.
+  mistakes:
+  - pattern: recompute
+    message: Add 1.96 × standard error to the estimated probability.
+- id: newSE
+  title: Standard error with the new run count
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Keep p unchanged and replace N by the new run count in the standard-error formula.
+  mistakes:
+  - pattern: recompute
+    message: Keep p unchanged and replace N by the new run count in the standard-error
+      formula.
+learning:
+  title: How Much of the Estimate Is Simulation Noise?
+  scenario: Independent, equally weighted simulation runs estimate the probability
+    of losses exceeding a reserve under one fixed model.
+  task: Divide breaches by runs, calculate SE = sqrt(p × (1 − p) / N), and form the
+    approximate 95% interval p ± 1.96 × SE. Recalculate SE for the new run count with
+    p held fixed.
+  interpretation: More independent runs reduce Monte Carlo error. The interval is
+    conditional on the simulation model; it does not include uncertainty about default
+    probabilities, recoveries or correlations. The normal approximation is unsuitable
+    for some small or extreme-probability samples.
+  summary: 'Breach estimate: {p}. Approximate interval: {lower} to {upper}. Standard
+    error changes from {SE} to {newSE}.'
+  labels: *id005
+  steps:
+    p:
+      title: Estimated reserve-breach probability
+      hints: *id006
+      unit: proportion
+    SE:
+      title: Monte Carlo standard error
+      hints: *id007
+      unit: proportion
+    lower:
+      title: Approximate 95% lower bound
+      hints: *id008
+      unit: proportion
+    upper:
+      title: Approximate 95% upper bound
+      hints: *id009
+      unit: proportion
+    newSE:
+      title: Standard error with the new run count
+      hints: *id010
+      unit: proportion
+  readAloud:
+  - Divide breach runs by total runs. Multiply that estimated fraction by its complement,
+    divide by run count, and take the square root. Add and subtract 1.96 standard
+    errors for the stated normal approximation. Runs are independent, equally weighted,
+    and generated under one fixed simulation model. This approximation is not suitable
+    for every very small or near-zero/near-one breach sample.
+  workedExplanation:
+  - 'Quadrupling independent runs halves simulation noise. It does not validate assumed
+    default probabilities, recoveries, or correlations. This interval describes uncertainty
+    in the estimated probability conditional on the specified simulation model, not
+    uncertainty about whether that model is realistic. '
+  - A single run says breach or no breach. More runs make the average of those binary
+    outcomes more stable. With the probability held fixed, multiplying run count by
+    four divides its standard error by two because the denominator enters under a
+    square root. It does not halve uncertainty about whether the financial assumptions
+    are correct.
+  workedArithmetic:
+  - Estimated breach probability = 250/2,500 = 0.10 = 10%.
+  - SE = √(0.10 × 0.90 / 2,500) = √0.000036 = 0.006, or 0.6 percentage points.
+  - Approximate 95% bounds = 0.10 ± 1.96 × 0.006 = 0.10 ± 0.01176, giving [8.824%,
+    11.176%].
+  - At 10,000 runs, SE = √(0.09/10,000) = 0.003, or 0.3 percentage points.
+formulaSource:
+  pages:
+  - 525
+  verbatim: false
+  reviewed: true

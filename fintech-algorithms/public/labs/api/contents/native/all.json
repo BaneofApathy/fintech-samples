@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-10-01T03:21:56.433500Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-01T03:20:28.963392Z",
+      "mimetype": "text/x-python",
+      "name": "transformers.py",
+      "path": "native/transformers.py",
+      "size": 550,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2026-10-01T03:21:56.433277Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-10-01T03:20:28.963445Z",
+      "mimetype": "text/x-python",
+      "name": "rag.py",
+      "path": "native/rag.py",
+      "size": 842,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-10-01T03:21:56.433500Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-10-01T03:21:56.433500Z",
+  "mimetype": null,
+  "name": "native",
+  "path": "native",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

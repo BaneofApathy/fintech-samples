@@ -1,0 +1,271 @@
+slug: fairness-measures
+number: 19
+title: Fairness Measures
+question: act
+financialInterpretation: Fairness diagnostics identify where access, approvals, false
+  declines, or missed risk differ across relevant groups. They are prompts for investigation,
+  not standalone legal conclusions.
+workingExample: 'Group A: 600 approvals from 1,000 applicants = 60%. Group B: 420
+  approvals from 1,000 applicants = 42%. 42% Selection-rate ratio = = 0.70 60% Among
+  applicants later observed to repay, suppose approval recall is 80% for Group A and
+  72% for Group B. The equal-opportunity gap is 8 percentage points.'
+whatItMisses: Group labels, outcome quality, sample size, product mix, and legitimate
+  risk differences require careful analysis. Also compare calibration and error costs
+  by slice.
+exercises:
+- M19
+widget: fairness-rates
+usedBy:
+- logistic-regression
+- trees-and-forests
+- gradient-boosting
+- graph-methods
+slides:
+- page: 359
+  title: EVALUATION MEASURE 19 OF 39
+  text: "    EVALUATION MEASURE 19 OF 39\n\n\n\n\n                     Fairness Measures\n\
+    \     Compares approvals and error rates across groups to detect\n           \
+    \        materially uneven outcomes."
+  paragraphs:
+  - EVALUATION MEASURE 19 OF 39
+  - Fairness Measures Compares approvals and error rates across groups to detect materially
+    uneven outcomes.
+  source:
+    pages:
+    - 359
+    verbatim: true
+- page: 360
+  title: Fairness measures – are outcomes or error rates materially different across
+    groups?
+  text: " Fairness measures – are outcomes or error rates materially different\n across\
+    \ groups?\n\n Financial interpretation\n Fairness diagnostics identify where access,\
+    \ approvals, false declines, or missed risk differ across relevant\n groups. They\
+    \ are prompts for investigation, not standalone legal conclusions.\n\n Working\
+    \ example\n Group A: 600 approvals from 1,000 applicants = 60%. Group B: 420 approvals\
+    \ from 1,000 applicants =\n 42%.\n                                           \
+    \                 42%\n                                     Selection-rate ratio\
+    \ =     = 0.70\n                                                            60%\n\
+    \ Among applicants later observed to repay, suppose approval recall is 80% for\
+    \ Group A and 72% for Group\n B. The equal-opportunity gap is 8 percentage points.\n\
+    \n What it misses\n Group labels, outcome quality, sample size, product mix, and\
+    \ legitimate risk differences require careful\n analysis. Also compare calibration\
+    \ and error costs by slice."
+  paragraphs:
+  - Fairness measures – are outcomes or error rates materially different across groups?
+  - Financial interpretation Fairness diagnostics identify where access, approvals,
+    false declines, or missed risk differ across relevant groups. They are prompts
+    for investigation, not standalone legal conclusions.
+  - 'Working example Group A: 600 approvals from 1,000 applicants = 60%. Group B:
+    420 approvals from 1,000 applicants = 42%. 42% Selection-rate ratio = = 0.70 60%
+    Among applicants later observed to repay, suppose approval recall is 80% for Group
+    A and 72% for Group B. The equal-opportunity gap is 8 percentage points.'
+  - What it misses Group labels, outcome quality, sample size, product mix, and legitimate
+    risk differences require careful analysis. Also compare calibration and error
+    costs by slice.
+  source:
+    pages:
+    - 360
+    verbatim: true
+- page: 361
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Formula explained (1/2)\n\n Question: Are\
+    \ approval rates and classification error rates the same across the two groups?\n\
+    \                                     Ag                       SelectionB\n  \
+    \                    Selectiong =       ,      RatioB/A =               ,\n  \
+    \                                   Ng                       SelectionA\n    \
+    \                                                         T Pg               \
+    \ Ag − T Pg\n                                                  T P Rg =      \
+    \  ,   F P Rg =             .\n                                              \
+    \                Rg                 Ng − Rg\n Read it aloud: Calculate approvals\
+    \ among all applicants, approved repayers among all repayers,\n and approved non-repayers\
+    \ among all non-repayers.\n Here the positive decision is approval and the positive\
+    \ actual outcome is repayment. That\n differs from the fraud-positive convention\
+    \ used in most earlier exercises."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Formula explained (1/2)
+  - 'Question: Are approval rates and classification error rates the same across the
+    two groups? Ag SelectionB Selectiong = , RatioB/A = , Ng SelectionA T Pg Ag −
+    T Pg T P Rg = , F P Rg = . Rg Ng − Rg Read it aloud: Calculate approvals among
+    all applicants, approved repayers among all repayers, and approved non-repayers
+    among all non-repayers. Here the positive decision is approval and the positive
+    actual outcome is repayment. That differs from the fraud-positive convention used
+    in most earlier exercises.'
+  source:
+    pages:
+    - 361
+    verbatim: true
+- page: 362
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Formula explained (2/2)\n\n Question: How\
+    \ should the difference between the groups be expressed?\n                   \
+    \                               ∆T P R = T P RA − T P RB .\n Read it aloud: Subtract\
+    \ the repayer approval rates. This is a rate gap; multiply the decimal\n difference\
+    \ by 100 to state it in percentage points.\n The selection-rate ratio is a quotient,\
+    \ not a difference. It uses A as the reference group because\n the problem specifies\
+    \ B/A.\n The exercise is retrospective with known outcomes for every case. These\
+    \ diagnostics describe\n differences; no standalone legal or causal conclusion\
+    \ follows from the arithmetic."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Formula explained (2/2)
+  - 'Question: How should the difference between the groups be expressed? ∆T P R =
+    T P RA − T P RB . Read it aloud: Subtract the repayer approval rates. This is
+    a rate gap; multiply the decimal difference by 100 to state it in percentage points.
+    The selection-rate ratio is a quotient, not a difference. It uses A as the reference
+    group because the problem specifies B/A. The exercise is retrospective with known
+    outcomes for every case. These diagnostics describe differences; no standalone
+    legal or causal conclusion follows from the arithmetic.'
+  source:
+    pages:
+    - 362
+    verbatim: true
+- page: 363
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   g      \
+    \                                        Group index, either A or B; the letters\
+    \ are anonymous group labels.\n   Ng                                         \
+    \    Total applicants in group g.\n   Ag                                     \
+    \        Number receiving a simulated approval in that group; this A is an\n \
+    \                                                 approval count, not the group\
+    \ label by itself.\n   Rg                                             Actual repayers\
+    \ in the group; Rg is a count, not recall.\n   T Pg                          \
+    \                 Actual repayers who receive simulated approval: positive decisions\
+    \ on\n                                                  positive outcomes.\n \
+    \  Ag − T Pg                                      Approved applicants who are\
+    \ non-repayers; the false-positive count\n                                   \
+    \               for this label definition."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example g Group index, either A or B; the letters
+    are anonymous group labels. Ng Total applicants in group g. Ag Number receiving
+    a simulated approval in that group; this A is an approval count, not the group
+    label by itself. Rg Actual repayers in the group; Rg is a count, not recall. T
+    Pg Actual repayers who receive simulated approval: positive decisions on positive
+    outcomes. Ag − T Pg Approved applicants who are non-repayers; the false-positive
+    count for this label definition.'
+  source:
+    pages:
+    - 363
+    verbatim: true
+- page: 364
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   Ng − Rg\
+    \                                        All actual non-repayers, the FPR denominator.\n\
+    \   Selectiong                                     Approval fraction among all\
+    \ applicants in the group.\n   RatioB/A                                      \
+    \ Group B’s selection rate divided by group A’s; unitless.\n   T P Rg , F P Rg\
+    \                                Approval rate among repayers; approval rate among\
+    \ non-repayers.\n   ∆T P R                                         Repayer-approval\
+    \ gap between the groups, corresponding to an\n                              \
+    \                    equal-opportunity diagnostic under this label definition.\n\
+    \   Retrospective benchmark                        Evaluation using already-known\
+    \ outcomes for all records, rather than\n                                    \
+    \              unknowable repayment outcomes for real rejected applicants."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Ng − Rg All actual non-repayers, the FPR
+    denominator. Selectiong Approval fraction among all applicants in the group. RatioB/A
+    Group B’s selection rate divided by group A’s; unitless. T P Rg , F P Rg Approval
+    rate among repayers; approval rate among non-repayers. ∆T P R Repayer-approval
+    gap between the groups, corresponding to an equal-opportunity diagnostic under
+    this label definition. Retrospective benchmark Evaluation using already-known
+    outcomes for all records, rather than unknowable repayment outcomes for real rejected
+    applicants.
+  source:
+    pages:
+    - 364
+    verbatim: true
+- page: 365
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Class problem | 10 minutes — Compare Rates,\
+    \ Not Just Counts\n\n Use a retrospective benchmark with repayment outcomes known\
+    \ for every case. These\n are simulated approval decisions, so rejected-applicant\
+    \ outcome gaps are not part of this\n exercise.\n Here, approval is the positive\
+    \ prediction and repayment is the positive outcome.\n   Group                \
+    \                          Applicants   Approvals    Actual repayers         \
+    \        Repayers\n                                                          \
+    \                                                  approved\n   A            \
+    \                                       1,000        600                     \
+    \    800              560\n   B                                              \
+    \     1,000        400                         500              300\n\n Calculate\
+    \ each group’s approval rate, the B/A selection-rate ratio, repayment true-positive\n\
+    \ rate, and false-positive rate among non-repayers. Find the TPR gap. Do equal\
+    \ false-positive\n rates settle the fairness question?"
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Class problem | 10 minutes — Compare Rates, Not Just Counts
+  - Use a retrospective benchmark with repayment outcomes known for every case. These
+    are simulated approval decisions, so rejected-applicant outcome gaps are not part
+    of this exercise. Here, approval is the positive prediction and repayment is the
+    positive outcome. Group Applicants Approvals Actual repayers Repayers approved
+    A 1,000 600 800 560 B 1,000 400 500 300
+  - Calculate each group’s approval rate, the B/A selection-rate ratio, repayment
+    true-positive rate, and false-positive rate among non-repayers. Find the TPR gap.
+    Do equal false-positive rates settle the fairness question?
+  source:
+    pages:
+    - 365
+    verbatim: true
+- page: 366
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Worked solution — Compare Rates, Not Just\
+    \ Counts\n\n1. Approval rates: A = 600/1,000 = 60%; B = 400/1,000 = 40%. B/A ratio\n\
+    \   = 40/60 = 0.667.\n2. Repayment TPRs: A = 560/800 = 70%; B = 300/500 = 60%.\
+    \ Gap = 10 percentage\n   points.\n3. Non-repayers: A = 1,000 − 800 = 200; B =\
+    \ 1,000 − 500 = 500.\n4. Non-repayers approved: A = 600 − 560 = 40; B = 400 −\
+    \ 300 = 100.\n5. False-positive rates: A = 40/200 = 20%; B = 100/500 = 20%."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Worked solution — Compare Rates, Not Just Counts
+  - '1. Approval rates: A = 600/1,000 = 60%; B = 400/1,000 = 40%. B/A ratio = 40/60
+    = 0.667. 2. Repayment TPRs: A = 560/800 = 70%; B = 300/500 = 60%. Gap = 10 percentage
+    points. 3. Non-repayers: A = 1,000 − 800 = 200; B = 1,000 − 500 = 500. 4. Non-repayers
+    approved: A = 600 − 560 = 40; B = 400 − 300 = 100. 5. False-positive rates: A
+    = 40/200 = 20%; B = 100/500 = 20%.'
+  source:
+    pages:
+    - 366
+    verbatim: true
+- page: 367
+  title: Fairness Diagnostics
+  text: " Fairness Diagnostics\n\n   M19 | Interpretation\n\n What the answer means\n\
+    \ Approval rates and repayer capture differ even though both groups have the same\
+    \ FPR. These\n diagnostics identify differences that need investigation; they\
+    \ do not independently establish\n fairness, unfairness, or a legal conclusion.\
+    \ Outcome definitions, population differences, and\n uncertainty remain important.\n\
+    \ Why these steps matter\n The two groups have different repayment prevalences\
+    \ in the supplied benchmark. Equal FPR\n alone therefore does not imply equal\
+    \ approval rates or equal TPR. The arithmetic describes the\n pattern, not its\
+    \ cause or whether any decision is legally justified."
+  paragraphs:
+  - Fairness Diagnostics
+  - M19 | Interpretation
+  - What the answer means Approval rates and repayer capture differ even though both
+    groups have the same FPR. These diagnostics identify differences that need investigation;
+    they do not independently establish fairness, unfairness, or a legal conclusion.
+    Outcome definitions, population differences, and uncertainty remain important.
+    Why these steps matter The two groups have different repayment prevalences in
+    the supplied benchmark. Equal FPR alone therefore does not imply equal approval
+    rates or equal TPR. The arithmetic describes the pattern, not its cause or whether
+    any decision is legally justified.
+  source:
+    pages:
+    - 367
+    verbatim: true
+source:
+  pages:
+  - 359
+  - 360
+  - 361
+  - 362
+  - 363
+  - 364
+  - 365
+  - 366
+  - 367
+  verbatim: true

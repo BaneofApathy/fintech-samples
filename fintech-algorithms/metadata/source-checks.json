@@ -1,0 +1,33 @@
+{
+  "defenseQuestions": [
+    "Can the student separate the model probability from the business action and defend the threshold in dollars?",
+    "Can the student explain why the forest improves stability and why its vote is not automatically a calibrated probability?",
+    "Can the student show that added complexity produces measurable economic value over the logistic baseline?",
+    "Can the student prove the segments are stable and useful without claiming they are natural truths?",
+    "Can the student evaluate the ranked queue against investigator capacity without calling the score a fraud probability?",
+    "Can the student beat a seasonal-naive baseline on a walk-forward test and explain the uncertainty interval?",
+    "Can the student show which relationship added signal and avoid treating connectedness as guilt?",
+    "Can the student distinguish classification, extraction, and generation \u2013 and evaluate each with the right gold standard?",
+    "Can the student separately prove that the right evidence was retrieved and that the answer faithfully used it?",
+    "Can the student state the objective and every material constraint, then show how sensitive the answer is to uncertain inputs?",
+    "Can the student show that the reward, simulator, and offline evaluation represent the real business objective \u2013 not a convenient proxy?",
+    "Can the student distinguish sampling error from model risk and show how correlation changes the tail?",
+    "What information would be unavailable at application time and therefore constitute leakage?",
+    "Would a 10% PD be acceptable for a secured loan, an unsecured loan, and a credit-card line? Why might the threshold differ?",
+    "If gradient boosting improves AUC slightly but produces worse calibration and weaker explanations, which model would you deploy? Defend the tradeoff.",
+    "A device identifier dominates feature importance. Is that useful signal, leakage, or a fragile proxy? What evidence would distinguish the three?",
+    "What minimum improvement would justify the added complexity in your institution?",
+    "Would you accept a 0.7-point AUC gain if calibration worsened and review teams could not explain individual decisions?",
+    "If a segment is mathematically distinct but no product, service, or risk action should differ, is it useful?",
+    "Name three legitimate transactions that could look anomalous.",
+    "Should the anomaly score trigger a decline, a step-up challenge, or only a review queue? What evidence supports the action?",
+    "A model has lower average MAE but badly underestimates holiday peaks. Which model should treasury use, and what loss function reflects that choice?",
+    "How would you explain a high risk score caused mainly by shared neighbors without claiming that association proves wrongdoing?",
+    "A model labels \u201closs narrowed from $20M to $5M\u201d as negative because it sees \u201closs.\u201d How would you expose and correct this failure?",
+    "If the correct passage is retrieved but the answer still invents a number, which layer failed and how should the test isolate it?",
+    "If the \u201coptimal\u201d portfolio changes completely after a 0.5% return revision, what does that say about the decision?",
+    "Could the agent reduce average slippage by taking unacceptable tail risk? Which metric would reveal it?",
+    "Does one million simulations make the answer trustworthy if the correlation assumption is wrong? Explain.",
+    "For your project, which simpler method must your chosen algorithm beat before it earns deployment?"
+  ]
+}

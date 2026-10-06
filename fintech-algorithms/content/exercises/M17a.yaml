@@ -1,0 +1,382 @@
+id: M17a
+title: Check Economics and Capacity
+minutes: 8
+kind: measure
+parent: expected-cost
+question: "Two thresholds are evaluated on the same 20 frauds:\n   Threshold     \
+  \                                             TP                            FP \
+  \         FN\n   A                                                           15\
+  \                            35           5\n   B                              \
+  \                             18                            82           2\n\n Each\
+  \ missed fraud costs $500. Each false alert costs $4. For this simplified cost model,\
+  \ other\n outcomes have zero incremental cost.\n                               \
+  \                   Error cost = 500(F N ) + 4(F P ).\n The team can review 75 alerts\
+  \ per day; every flag requires review.\n Calculate each threshold’s cost and review\
+  \ volume. Which has the lower modeled cost? Which\n is feasible with the existing\
+  \ team? State what must change before selecting the other operating\n point."
+questionPages:
+- page: 341
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Class problem | 8 minutes — Check Economics and\
+    \ Capacity\n\n Two thresholds are evaluated on the same 20 frauds:\n   Threshold\
+    \                                                  TP                        \
+    \    FP          FN\n   A                                                    \
+    \       15                            35           5\n   B                   \
+    \                                        18                            82    \
+    \       2\n\n Each missed fraud costs $500. Each false alert costs $4. For this\
+    \ simplified cost model, other\n outcomes have zero incremental cost.\n      \
+    \                                            Error cost = 500(F N ) + 4(F P ).\n\
+    \ The team can review 75 alerts per day; every flag requires review.\n Calculate\
+    \ each threshold’s cost and review volume. Which has the lower modeled cost? Which\n\
+    \ is feasible with the existing team? State what must change before selecting\
+    \ the other operating\n point."
+  paragraphs:
+  - Expected Cost
+  - M17a | Class problem | 8 minutes — Check Economics and Capacity
+  - 'Two thresholds are evaluated on the same 20 frauds: Threshold TP FP FN A 15 35
+    5 B 18 82 2'
+  - Each missed fraud costs $500. Each false alert costs $4. For this simplified cost
+    model, other outcomes have zero incremental cost. Error cost = 500(F N ) + 4(F
+    P ). The team can review 75 alerts per day; every flag requires review. Calculate
+    each threshold’s cost and review volume. Which has the lower modeled cost? Which
+    is feasible with the existing team? State what must change before selecting the
+    other operating point.
+  source:
+    pages:
+    - 341
+    verbatim: true
+formulaPages:
+- page: 338
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Formula explained (1/1)\n\n Question: Which threshold\
+    \ has lower modeled error cost and can actually be operated?\n               \
+    \                       C = cF N F N + cF P F P,   V = T P + F P,            V\
+    \ ≤ H.\n Read it aloud: Add the dollar cost of missed frauds and false alerts.\
+    \ Separately count all alerts\n and require that count to fit daily review capacity.\n\
+    \ The example prices only false-negative and false-positive errors. Correct decisions\
+    \ have zero\n incremental cost in this particular loss table.\n This is distinct\
+    \ from pricing every review. Preserve the stated cost convention when comparing\n\
+    \ the two thresholds."
+  paragraphs:
+  - Expected Cost
+  - M17a | Formula explained (1/1)
+  - 'Question: Which threshold has lower modeled error cost and can actually be operated?
+    C = cF N F N + cF P F P, V = T P + F P, V ≤ H. Read it aloud: Add the dollar cost
+    of missed frauds and false alerts. Separately count all alerts and require that
+    count to fit daily review capacity. The example prices only false-negative and
+    false-positive errors. Correct decisions have zero incremental cost in this particular
+    loss table. This is distinct from pricing every review. Preserve the stated cost
+    convention when comparing the two thresholds.'
+  source:
+    pages:
+    - 338
+    verbatim: true
+symbolPages:
+- page: 339
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   TP             \
+    \                                Fraud correctly flagged and sent to review.\n\
+    \   FP                                             Legitimate transactions incorrectly\
+    \ flagged.\n   FN                                             Actual frauds not\
+    \ flagged.\n   cF N                                           Assumed cost per\
+    \ missed fraud, US$500.\n   cF P                                           Assumed\
+    \ cost per false alert, US$4.\n   C                                          \
+    \    Total modeled error cost for the sample, in dollars."
+  paragraphs:
+  - Expected Cost
+  - M17a | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example TP Fraud correctly flagged and sent to
+    review. FP Legitimate transactions incorrectly flagged. FN Actual frauds not flagged.
+    cF N Assumed cost per missed fraud, US$500. cF P Assumed cost per false alert,
+    US$4. C Total modeled error cost for the sample, in dollars.
+  source: &id001
+    pages:
+    - 339
+    verbatim: true
+- page: 340
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   V              \
+    \                                Number of alerts requiring review under a threshold:\
+    \ caught fraud\n                                                  plus false alerts.\n\
+    \   H                                              Human review capacity, 75 alerts\
+    \ per day.\n   V ≤H                                           Feasibility condition:\
+    \ alert volume cannot exceed available capacity.\n   Incremental cost        \
+    \                       Extra expense or loss attributed to an outcome in the\
+    \ stated model;\n                                                  zero for the\
+    \ other outcomes here."
+  paragraphs:
+  - Expected Cost
+  - M17a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example V Number of alerts requiring review under
+    a threshold: caught fraud plus false alerts. H Human review capacity, 75 alerts
+    per day. V ≤H Feasibility condition: alert volume cannot exceed available capacity.
+    Incremental cost Extra expense or loss attributed to an outcome in the stated
+    model; zero for the other outcomes here.'
+  source: &id002
+    pages:
+    - 340
+    verbatim: true
+solutionPages:
+- page: 342
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Worked solution — Check Economics and Capacity\n\
+    \n1. Threshold A:\n                                                  5(500) +\
+    \ 35(4) = 2,500 + 140 = $2,640.\n2. Threshold B:\n                           \
+    \                       2(500) + 82(4) = 1,000 + 328 = $1,328.\n3. Modeled savings\
+    \ from B: 2,640 − 1,328 = $1,312.\n4. Review volumes: A produces 15 + 35 = 50\
+    \ alerts; B produces 18 + 82 = 100.\n5. Apply the capacity limit: A fits within\
+    \ 75; B exceeds capacity by 25 alerts."
+  paragraphs:
+  - Expected Cost
+  - M17a | Worked solution — Check Economics and Capacity
+  - '1. Threshold A: 5(500) + 35(4) = 2,500 + 140 = $2,640. 2. Threshold B: 2(500)
+    + 82(4) = 1,000 + 328 = $1,328. 3. Modeled savings from B: 2,640 − 1,328 = $1,312.
+    4. Review volumes: A produces 15 + 35 = 50 alerts; B produces 18 + 82 = 100. 5.
+    Apply the capacity limit: A fits within 75; B exceeds capacity by 25 alerts.'
+  source:
+    pages:
+    - 342
+    verbatim: true
+interpretationPages:
+- page: 343
+  title: Expected Cost
+  text: " Expected Cost\n\n   M17a | Interpretation\n\n What the answer means\n B\
+    \ has lower modeled error cost but is not feasible under the stated review policy.\
+    \ A is the\n feasible choice among these two today. B requires additional capacity\
+    \ or a separately tested\n workflow—not an assumption that unreviewed alerts still\
+    \ prevent fraud.\n Why these steps matter\n A lower computed cost assumes the\
+    \ required interventions can be delivered. Once the review\n queue exceeds capacity,\
+    \ the loss calculation is no longer enough to justify that operating point.\n\
+    \ Unreviewed alerts must not be credited as prevented fraud."
+  paragraphs:
+  - Expected Cost
+  - M17a | Interpretation
+  - What the answer means B has lower modeled error cost but is not feasible under
+    the stated review policy. A is the feasible choice among these two today. B requires
+    additional capacity or a separately tested workflow—not an assumption that unreviewed
+    alerts still prevent fraud. Why these steps matter A lower computed cost assumes
+    the required interventions can be delivered. Once the review queue exceeds capacity,
+    the loss calculation is no longer enough to justify that operating point. Unreviewed
+    alerts must not be credited as prevented fraud.
+  source:
+    pages:
+    - 343
+    verbatim: true
+source:
+  pages:
+  - 338
+  - 339
+  - 340
+  - 341
+  - 342
+  - 343
+  verbatim: true
+readAloud:
+- Add the dollar cost of missed frauds and false alerts. Separately count all alerts
+  and require that count to fit daily review capacity. The example prices only false-negative
+  and false-positive errors. Correct decisions have zero incremental cost in this
+  particular loss table. This is distinct from pricing every review. Preserve the
+  stated cost convention when comparing the two thresholds.
+siteAuthored: false
+givens:
+  TPA: 15
+  FPA: 35
+  FNA: 5
+  TPB: 18
+  FPB: 82
+  FNB: 2
+  cFN: 500
+  cFP: 4
+  capacity: 75
+labels: &id003
+  TPA: Threshold A true positives
+  FPA: Threshold A false positives
+  FNA: Threshold A false negatives
+  TPB: Threshold B true positives
+  FPB: Threshold B false positives
+  FNB: Threshold B false negatives
+  cFN: Cost per missed fraud ($)
+  cFP: Cost per false alert ($)
+  capacity: Daily review capacity (alerts)
+deckSolution:
+  costA: 2640
+  costB: 1328
+  savings: 1312
+  volumeA: 50
+  volumeB: 100
+  excess: 25
+latex:
+- C=c_{FN}FN+c_{FP}FP,\quad V=TP+FP\le H
+symbols:
+- symbol: TP
+  meaning: Fraud correctly flagged and sent to review.
+  source: *id001
+- symbol: FP
+  meaning: Legitimate transactions incorrectly flagged.
+  source: *id001
+- symbol: FN
+  meaning: Actual frauds not flagged.
+  source: *id001
+- symbol: cF N
+  meaning: Assumed cost per missed fraud, US$500.
+  source: *id001
+- symbol: cF P
+  meaning: Assumed cost per false alert, US$4.
+  source: *id001
+- symbol: C
+  meaning: Total modeled error cost for the sample, in dollars.
+  source: *id001
+- symbol: V
+  meaning: 'Number of alerts requiring review under a threshold: caught fraud plus
+    false alerts.'
+  source: *id002
+- symbol: H
+  meaning: Human review capacity, 75 alerts per day.
+  source: *id002
+- symbol: V ≤H
+  meaning: 'Feasibility condition: alert volume cannot exceed available capacity.'
+  source: *id002
+- symbol: Incremental cost
+  meaning: Extra expense or loss attributed to an outcome in the stated model; zero
+    for the other outcomes here.
+  source: *id002
+steps:
+- id: costA
+  title: Threshold A error cost
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Multiply A’s missed frauds by their cost and false alerts by their cost; add.
+  mistakes:
+  - pattern: recompute
+    message: Multiply A’s missed frauds by their cost and false alerts by their cost;
+      add.
+- id: costB
+  title: Threshold B error cost
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Apply the same loss table to B’s FN and FP counts.
+  mistakes:
+  - pattern: recompute
+    message: Apply the same loss table to B’s FN and FP counts.
+- id: savings
+  title: Modeled saving from A to B
+  expects: number
+  unit: $
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Subtract B’s error cost from A’s.
+  mistakes:
+  - pattern: recompute
+    message: Subtract B’s error cost from A’s.
+- id: volumeA
+  title: Reviews required by A
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Add A’s true and false positives.
+  mistakes:
+  - pattern: recompute
+    message: Add A’s true and false positives.
+- id: volumeB
+  title: Reviews required by B
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Add B’s true and false positives.
+  mistakes:
+  - pattern: recompute
+    message: Add B’s true and false positives.
+- id: excess
+  title: B’s reviews beyond capacity
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Subtract capacity from B’s review count; use zero if the difference is negative.
+  mistakes:
+  - pattern: recompute
+    message: Subtract capacity from B’s review count; use zero if the difference is
+      negative.
+learning:
+  title: Check Economics and Capacity
+  scenario: Two fraud thresholds are evaluated on the same population. Each missed
+    fraud and false alert has a stated cost. Other outcomes have zero incremental
+    cost in this simplified loss table. Every flag requires review.
+  task: Calculate modeled cost and review volume for both thresholds. Compare the
+    lower-cost choice with daily review capacity, including any excess for B.
+  interpretation: A lower computed loss is useful only if the required reviews can
+    actually be delivered. This example prices false alerts, not every review. Preserve
+    that convention when comparing costs.
+  summary: 'Modeled costs: A {costA}, B {costB}. Review volumes: A {volumeA}, B {volumeB}.
+    B’s excess over capacity: {excess}.'
+  labels: *id003
+  steps:
+    costA:
+      title: Threshold A error cost
+      hints: *id004
+      unit: $
+    costB:
+      title: Threshold B error cost
+      hints: *id005
+      unit: $
+    savings:
+      title: Modeled saving from A to B
+      hints: *id006
+      unit: $
+    volumeA:
+      title: Reviews required by A
+      hints: *id007
+      unit: ''
+    volumeB:
+      title: Reviews required by B
+      hints: *id008
+      unit: ''
+    excess:
+      title: B’s reviews beyond capacity
+      hints: *id009
+      unit: ''
+  readAloud:
+  - Add the dollar cost of missed frauds and false alerts. Separately count all alerts
+    and require that count to fit daily review capacity. The example prices only false-negative
+    and false-positive errors. Correct decisions have zero incremental cost in this
+    particular loss table. This is distinct from pricing every review. Preserve the
+    stated cost convention when comparing the two thresholds.
+  workedExplanation:
+  - 'B has lower modeled error cost but is not feasible under the stated review policy.
+    A is the feasible choice among these two today. B requires additional capacity
+    or a separately tested workflow—not an assumption that unreviewed alerts still
+    prevent fraud. '
+  - A lower computed cost assumes the required interventions can be delivered. Once
+    the review queue exceeds capacity, the loss calculation is no longer enough to
+    justify that operating point. Unreviewed alerts must not be credited as prevented
+    fraud.
+  workedArithmetic:
+  - A’s cost = 5 × $500 + 35 × $4 = $2,640. B’s cost = 2 × $500 + 82 × $4 = $1,328.
+  - Modeled saving from B = $2,640 − $1,328 = $1,312.
+  - A requires 15 + 35 = 50 reviews; B requires 18 + 82 = 100. With capacity 75, A
+    fits and B exceeds capacity by 100 − 75 = 25.
+formulaSource:
+  pages:
+  - 338
+  verbatim: false
+  reviewed: true

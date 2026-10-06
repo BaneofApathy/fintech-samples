@@ -1,0 +1,373 @@
+id: A04
+title: Group Savings Behavior
+minutes: 6
+kind: algorithm
+parent: k-means
+question: "A bank groups customers using one feature: the percentage of monthly income\
+  \ saved.\n Four customers save 10%, 20%, 60%, and 70%. Start K-means with two centers:\
+  \ 10% and\n 60%.\n Use absolute distance for assignment; with one feature, it produces\
+  \ the same nearest-center\n assignment as squared distance.\n1. Assign each customer\
+  \ to the nearest starting center.\n2. Update each center to the average of its assigned\
+  \ customers.\n3. Assign a new customer who saves 35% using the updated centers.\n\
+  4. Describe the two groups without claiming that one is more creditworthy."
+questionPages:
+- page: 61
+  title: K-Means
+  text: " K-Means\n\n   A04 | Class problem | 6 minutes — Group Savings Behavior\n\
+    \n A bank groups customers using one feature: the percentage of monthly income\
+    \ saved.\n Four customers save 10%, 20%, 60%, and 70%. Start K-means with two\
+    \ centers: 10% and\n 60%.\n Use absolute distance for assignment; with one feature,\
+    \ it produces the same nearest-center\n assignment as squared distance.\n1. Assign\
+    \ each customer to the nearest starting center.\n2. Update each center to the\
+    \ average of its assigned customers.\n3. Assign a new customer who saves 35% using\
+    \ the updated centers.\n4. Describe the two groups without claiming that one is\
+    \ more creditworthy."
+  paragraphs:
+  - K-Means
+  - A04 | Class problem | 6 minutes — Group Savings Behavior
+  - 'A bank groups customers using one feature: the percentage of monthly income saved.
+    Four customers save 10%, 20%, 60%, and 70%. Start K-means with two centers: 10%
+    and 60%. Use absolute distance for assignment; with one feature, it produces the
+    same nearest-center assignment as squared distance. 1. Assign each customer to
+    the nearest starting center. 2. Update each center to the average of its assigned
+    customers. 3. Assign a new customer who saves 35% using the updated centers. 4.
+    Describe the two groups without claiming that one is more creditworthy.'
+  source:
+    pages:
+    - 61
+    verbatim: true
+formulaPages:
+- page: 58
+  title: K-Means
+  text: " K-Means\n\n   A04 | Formula explained (1/1)\n\n Question: Which center is\
+    \ closest, and where should that center move?\n                              \
+    \          sum of savings rates assigned to group j\n            dij = |xi − µj\
+    \ |,     µj =                                           .\n                  \
+    \                                         nj\n Read it aloud: Find each customer’s\
+    \ distance from each center; assign the customer to the\n closer one; replace\
+    \ each center by its group’s average.\n This is one K-means assignment-and-update\
+    \ cycle. In this one-dimensional exercise, absolute\n distance and squared distance\
+    \ select the same nearest center.\n Use percentage-point numbers: enter a 20%\
+    \ savings rate as 20. Distances between savings rates\n are in percentage points."
+  paragraphs:
+  - K-Means
+  - A04 | Formula explained (1/1)
+  - 'Question: Which center is closest, and where should that center move? sum of
+    savings rates assigned to group j dij = |xi − µj |, µj = . nj Read it aloud: Find
+    each customer’s distance from each center; assign the customer to the closer one;
+    replace each center by its group’s average. This is one K-means assignment-and-update
+    cycle. In this one-dimensional exercise, absolute distance and squared distance
+    select the same nearest center. Use percentage-point numbers: enter a 20% savings
+    rate as 20. Distances between savings rates are in percentage points.'
+  source:
+    pages:
+    - 58
+    verbatim: true
+symbolPages:
+- page: 59
+  title: K-Means
+  text: " K-Means\n\n   A04 | Symbols and terms (1/2)\n\n\n   Symbol or term     \
+    \                      Meaning in this example\n   K-means; K                \
+    \               A clustering method using a chosen number of centers; here K =\
+    \ 2.\n   xi , i                                   Savings rate of customer i;\
+    \ i identifies a customer, not an exponent.\n   µj (mu), j                   \
+    \            Center, or centroid, of group j; j identifies one of the two groups.\n\
+    \   dij                                      Distance from customer i to center\
+    \ j.\n   |xi − µj |                               Absolute difference: remove\
+    \ the minus sign so distance cannot be\n                                     \
+    \       negative.\n   nj                                       Number of customers\
+    \ currently assigned to group j."
+  paragraphs:
+  - K-Means
+  - A04 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example K-means; K A clustering method using a
+    chosen number of centers; here K = 2. xi , i Savings rate of customer i; i identifies
+    a customer, not an exponent. µj (mu), j Center, or centroid, of group j; j identifies
+    one of the two groups. dij Distance from customer i to center j. |xi − µj | Absolute
+    difference: remove the minus sign so distance cannot be negative. nj Number of
+    customers currently assigned to group j.'
+  source: &id001
+    pages:
+    - 59
+    verbatim: true
+- page: 60
+  title: K-Means
+  text: " K-Means\n\n   A04 | Symbols and terms (2/2)\n\n\n   Symbol or term     \
+    \                      Meaning in this example\n   Cluster; centroid         \
+    \               A group of similar observations; its center is the arithmetic\
+    \ average\n                                            of the assigned values\
+    \ here.\n   Assignment; update                       Choose a customer’s group;\
+    \ then recalculate each group’s center.\n   Unsupervised                     \
+    \        The grouping uses input behavior without a supplied outcome label\n \
+    \                                           such as default."
+  paragraphs:
+  - K-Means
+  - A04 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Cluster; centroid A group of similar observations;
+    its center is the arithmetic average of the assigned values here. Assignment;
+    update Choose a customer’s group; then recalculate each group’s center. Unsupervised
+    The grouping uses input behavior without a supplied outcome label such as default.
+  source: &id002
+    pages:
+    - 60
+    verbatim: true
+solutionPages:
+- page: 62
+  title: K-Means
+  text: " K-Means\n\n   A04 | Worked solution — Group Savings Behavior\n\n1. Assign\
+    \ customers using the original centers.\n   Savings rate                     \
+    \        Distance to 10%   Distance to 60% Assignment\n   10%                \
+    \                                    0                       50 Group 1\n   20%\
+    \                                                   10                       40\
+    \ Group 1\n   60%                                                   50       \
+    \                     0 Group 2\n   70%                                      \
+    \             60                       10 Group 2\n\n2. Update the centers: µ1\
+    \ = (10 + 20)/2 = 15%; µ2 = (60 + 70)/2 = 65%.\n3. Assign the new customer: Distances\
+    \ from 35% are |35 − 15| = 20 and |35 − 65| = 30\n   percentage points. Assign\
+    \ the customer to Group 1."
+  paragraphs:
+  - K-Means
+  - A04 | Worked solution — Group Savings Behavior
+  - 1. Assign customers using the original centers. Savings rate Distance to 10% Distance
+    to 60% Assignment 10% 0 50 Group 1 20% 10 40 Group 1 60% 50 0 Group 2 70% 60 10
+    Group 2
+  - '2. Update the centers: µ1 = (10 + 20)/2 = 15%; µ2 = (60 + 70)/2 = 65%. 3. Assign
+    the new customer: Distances from 35% are |35 − 15| = 20 and |35 − 65| = 30 percentage
+    points. Assign the customer to Group 1.'
+  source:
+    pages:
+    - 62
+    verbatim: true
+interpretationPages:
+- page: 63
+  title: K-Means
+  text: " K-Means\n\n   A04 | Interpretation\n\n What the answer means\n The groups\
+    \ represent lower and higher observed savings rates. A 15% center is a group average,\n\
+    \ not a required savings target or a default probability. The groups alone do\
+    \ not justify credit\n decisions.\n Why these steps matter\n A cluster center\
+    \ describes the customers currently assigned to it. It is not a rule about how\n\
+    \ much customers should save. This exercise groups one behavior; creditworthiness\
+    \ would require\n a different target and supporting evidence."
+  paragraphs:
+  - K-Means
+  - A04 | Interpretation
+  - What the answer means The groups represent lower and higher observed savings rates.
+    A 15% center is a group average, not a required savings target or a default probability.
+    The groups alone do not justify credit decisions. Why these steps matter A cluster
+    center describes the customers currently assigned to it. It is not a rule about
+    how much customers should save. This exercise groups one behavior; creditworthiness
+    would require a different target and supporting evidence.
+  source:
+    pages:
+    - 63
+    verbatim: true
+source:
+  pages:
+  - 58
+  - 59
+  - 60
+  - 61
+  - 62
+  - 63
+  verbatim: true
+readAloud:
+- 'Find each customer’s distance from each center; assign the customer to the closer
+  one; replace each center by its group’s average. This is one K-means assignment-and-update
+  cycle. In this one-dimensional exercise, absolute distance and squared distance
+  select the same nearest center. Use percentage-point numbers: enter a 20% savings
+  rate as 20. Distances between savings rates are in percentage points.'
+siteAuthored: false
+givens:
+  points:
+  - 10
+  - 20
+  - 60
+  - 70
+  centers:
+  - 10
+  - 60
+  newPoint: 35
+labels: &id003
+  points: Customer savings rates (percentage points)
+  centers: Starting centers 1 and 2 (percentage points)
+  newPoint: New customer savings rate (percentage points)
+deckSolution:
+  groups:
+  - 1
+  - 1
+  - 2
+  - 2
+  c1: 15
+  c2: 65
+  d1: 20
+  d2: 30
+  group: 1
+latex:
+- \mu_j=\frac{1}{|C_j|}\sum_{i\in C_j}x_i
+- d_{ij}=|x_i-\mu_j|
+symbols:
+- symbol: K-means; K
+  meaning: A clustering method using a chosen number of centers; here K = 2.
+  source: *id001
+- symbol: xi , i
+  meaning: Savings rate of customer i; i identifies a customer, not an exponent.
+  source: *id001
+- symbol: µj (mu), j
+  meaning: Center, or centroid, of group j; j identifies one of the two groups.
+  source: *id001
+- symbol: dij
+  meaning: Distance from customer i to center j.
+  source: *id001
+- symbol: '|xi − µj |'
+  meaning: 'Absolute difference: remove the minus sign so distance cannot be negative.'
+  source: *id001
+- symbol: nj
+  meaning: Number of customers currently assigned to group j.
+  source: *id001
+- symbol: Cluster; centroid
+  meaning: A group of similar observations; its center is the arithmetic average of
+    the assigned values here.
+  source: *id002
+- symbol: Assignment; update
+  meaning: Choose a customer’s group; then recalculate each group’s center.
+  source: *id002
+- symbol: Unsupervised
+  meaning: The grouping uses input behavior without a supplied outcome label such
+    as default.
+  source: *id002
+steps:
+- id: groups
+  title: Group for each customer
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Compare each rate with both starting centers. Enter 1 or 2 in customer order.
+  mistakes:
+  - pattern: recompute
+    message: Compare each rate with both starting centers. Enter 1 or 2 in customer
+      order.
+- id: c1
+  title: Updated center 1
+  expects: number
+  unit: percentage points
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Average the rates assigned to group 1.
+  mistakes:
+  - pattern: recompute
+    message: Average the rates assigned to group 1.
+- id: c2
+  title: Updated center 2
+  expects: number
+  unit: percentage points
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average the rates assigned to group 2.
+  mistakes:
+  - pattern: recompute
+    message: Average the rates assigned to group 2.
+- id: d1
+  title: New customer distance to center 1
+  expects: number
+  unit: percentage points
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Take the absolute difference between the new rate and updated center 1.
+  mistakes:
+  - pattern: recompute
+    message: Take the absolute difference between the new rate and updated center
+      1.
+- id: d2
+  title: New customer distance to center 2
+  expects: number
+  unit: percentage points
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Take the absolute difference between the new rate and updated center 2.
+  mistakes:
+  - pattern: recompute
+    message: Take the absolute difference between the new rate and updated center
+      2.
+- id: group
+  title: Group for the new customer
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Choose the updated center with the smaller distance. Enter 1 or 2.
+  mistakes:
+  - pattern: recompute
+    message: Choose the updated center with the smaller distance. Enter 1 or 2.
+learning:
+  title: Group Savings Behavior
+  scenario: A bank groups customers by the percentage of income they save. The two
+    supplied centers are numbered 1 and 2.
+  task: Assign each customer to the nearest starting center, update both centers to
+    their group means, then assign the new customer. If distances tie, use group 1.
+  interpretation: The centers describe observed savings behavior. They are not required
+    savings targets or estimates of creditworthiness. In one dimension, absolute and
+    squared distances give the same nearest-center assignment.
+  summary: 'Updated centers: {c1}, {c2}. The new customer belongs to group {group}.'
+  labels: *id003
+  steps:
+    groups:
+      title: Group for each customer
+      hints: *id004
+      unit: ''
+    c1:
+      title: Updated center 1
+      hints: *id005
+      unit: percentage points
+    c2:
+      title: Updated center 2
+      hints: *id006
+      unit: percentage points
+    d1:
+      title: New customer distance to center 1
+      hints: *id007
+      unit: percentage points
+    d2:
+      title: New customer distance to center 2
+      hints: *id008
+      unit: percentage points
+    group:
+      title: Group for the new customer
+      hints: *id009
+      unit: ''
+  readAloud:
+  - 'Find each customer’s distance from each center; assign the customer to the closer
+    one; replace each center by its group’s average. This is one K-means assignment-and-update
+    cycle. In this one-dimensional exercise, absolute distance and squared distance
+    select the same nearest center. Use percentage-point numbers: enter a 20% savings
+    rate as 20. Distances between savings rates are in percentage points.'
+  workedExplanation:
+  - 'The groups represent lower and higher observed savings rates. A 15% center is
+    a group average, not a required savings target or a default probability. The groups
+    alone do not justify credit decisions. '
+  - A cluster center describes the customers currently assigned to it. It is not a
+    rule about how much customers should save. This exercise groups one behavior;
+    creditworthiness would require a different target and supporting evidence.
+  workedArithmetic:
+  - 'Distances to starting centers 10 and 60: customer 10 → (0, 50); 20 → (10, 40);
+    60 → (50, 0); 70 → (60, 10). Assignments are [1, 1, 2, 2].'
+  - 'Updated centers: (10 + 20) / 2 = 15% and (60 + 70) / 2 = 65%.'
+  - 'For the new customer: |35 − 15| = 20 and |35 − 65| = 30 percentage points. The
+    smaller distance selects group 1.'
+formulaSource:
+  pages:
+  - 58
+  verbatim: false
+  reviewed: true

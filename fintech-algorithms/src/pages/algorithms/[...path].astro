@@ -1,0 +1,18 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import Unit from '../../components/content/Unit.astro';
+import { algorithms, sections } from '../../data';
+export function getStaticPaths() {
+  return algorithms.flatMap((algorithm) =>
+    sections.map(([section]) => ({
+      params: { path: algorithm.slug + (section === 'problem' ? '' : '/' + section) },
+      props: { algorithm, section },
+    })),
+  );
+}
+const { algorithm, section } = Astro.props;
+---
+
+<Shell title={algorithm.title} description={algorithm.oneLine}>
+  <Unit algorithm={algorithm} section={section} />
+</Shell>

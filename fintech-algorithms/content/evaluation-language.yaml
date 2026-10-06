@@ -1,0 +1,98 @@
+- id: rank
+  title: Can it rank risk?
+  interpretation: Are the riskiest cases near the top?
+  measures:
+  - roc-curve
+  - roc-auc-and-gini
+  - ks-statistic
+  - precision-recall-curve-and-pr-auc
+  - lift-and-cumulative-gain
+  source:
+    pages:
+    - 196
+    verbatim: true
+- id: probability
+  title: Do predicted probabilities match what happens?
+  interpretation: Among applicants assigned 10% default risk, do about 10% default?
+    This is calibration.
+  measures:
+  - calibration-curve
+  - brier-score
+  - log-loss
+  source:
+    pages:
+    - 196
+    verbatim: true
+- id: rare
+  title: Can it find rare events?
+  interpretation: How much fraud is detected, and how many legitimate transactions
+    are flagged for review?
+  measures:
+  - confusion-matrix
+  - accuracy
+  - balanced-accuracy
+  - precision
+  - recall
+  - specificity-and-false-positive-rate
+  - f1-and-f-beta
+  - precision-k-and-recall-k
+  - macro-f1-micro-f1-weighted-f1
+  source:
+    pages:
+    - 196
+    verbatim: true
+- id: forecast
+  title: Can it forecast?
+  interpretation: How far off is the forecast, and how often does the interval contain
+    reality?
+  measures:
+  - mean-absolute-error
+  - root-mean-squared-error
+  - mape-wape-mase
+  - r
+  - prediction-interval-coverage-and-width
+  - pinball-loss
+  source:
+    pages:
+    - 196
+    verbatim: true
+- id: retrieve
+  title: Can it retrieve evidence?
+  interpretation: Did the right document or passage enter the model context?
+  measures:
+  - retrieval-recall-k-and-context-precision
+  - mrr-and-ndcg
+  - faithfulness-citation-correctness-numerical-accuracy
+  source:
+    pages:
+    - 196
+    verbatim: true
+- id: act
+  title: Can it support action?
+  interpretation: Does the operating policy create value within limits?
+  measures:
+  - expected-cost
+  - fairness-measures
+  - silhouette-score
+  - inertia-and-stability
+  - sharpe-and-sortino-ratios
+  - maximum-drawdown-turnover-tracking-error
+  - value-at-risk-and-expected-shortfall
+  - probability-of-shortfall-and-monte-carlo-error
+  - var-exception-rate
+  - cumulative-reward-and-regret
+  source:
+    pages:
+    - 196
+    verbatim: true
+- id: operate
+  title: Can it operate?
+  interpretation: Check speed, review capacity, cost, and reliability.
+  measures:
+  - task-success-verification-unsafe-actions
+  - population-stability-index
+  - latency-throughput-review-load-cost
+  source:
+    pages:
+    - 567
+    verbatim: false

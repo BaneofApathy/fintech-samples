@@ -1,0 +1,45 @@
+---
+import Shell from '../../components/layout/Shell.astro';
+import TopicIntroduction from '../../components/learning/TopicIntroduction.astro';
+import TeachingSequence from '../../components/learning/TeachingSequence.astro';
+import ConceptPractice from '../../components/exercise/ConceptPractice.svelte';
+import Completion from '../../components/layout/Completion.svelte';
+import { foundationTopics } from '../../data/foundation-course';
+import { toPracticeTopic } from '../../engine/assessment';
+import { href } from '../../data';
+export function getStaticPaths() {
+  return foundationTopics.map((topic) => ({ params: { slug: topic.slug }, props: { topic } }));
+}
+const { topic } = Astro.props;
+const index = foundationTopics.findIndex((t) => t.slug === topic.slug);
+const next = foundationTopics[index + 1];
+---
+
+<Shell title={topic.title} description={topic.definition}>
+  <p class="eyebrow">
+    Foundation {index + 1} of {foundationTopics.length}
+  </p>
+  <p>
+    <a href={href('/foundations/')}>← All foundations</a> · 4 lessons
+  </p>
+  <TopicIntroduction {topic} />
+  <TeachingSequence {topic} />
+  <div id="concept-practice">
+    <h2>Try it independently</h2>
+    <ConceptPractice
+      topic={toPracticeTopic(topic)}
+      questions={topic.questions.filter((q) => q.role !== 'guided')}
+      sessionId={`${topic.id}:practice`}
+      base={import.meta.env.BASE_URL}
+      client:load
+    />
+  </div>
+  <Completion
+    section={topic.id}
+    previousUrl={href('/foundations/')}
+    previousLabel="Foundations"
+    nextUrl={next ? href(`/foundations/${next.slug}/`) : href('/algorithms/logistic-regression/')}
+    nextLabel={next?.title ?? 'Logistic regression'}
+    client:load
+  />
+</Shell>

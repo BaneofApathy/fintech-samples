@@ -1,0 +1,220 @@
+slug: root-mean-squared-error
+number: 21
+title: Root Mean Squared Error
+question: forecast
+financialInterpretation: Root mean squared error gives extra weight to large misses.
+  It remains in the original unit, making it interpretable to treasury or risk teams.
+workingExample: 'Using errors [−10, 10, 20, −10] in $ millions: r 102 + 102 + 202
+  + 102 √ RM SE = = 175 = $13.2 million 4 RMSE exceeds MAE because the $20 million
+  miss receives a larger penalty.'
+whatItMisses: A single shock can dominate RMSE. Report MAE beside it and show performance
+  during holidays, crises, and structural breaks.
+exercises:
+- M21
+widget: forecast-eval
+usedBy:
+- time-series
+slides:
+- page: 376
+  title: EVALUATION MEASURE 21 OF 39
+  text: "    EVALUATION MEASURE 21 OF 39\n\n\n\n\n            Root Mean Squared Error\n\
+    \                   (RMSE)\n       Measures forecast error while giving extra\
+    \ weight to large\n                               mistakes."
+  paragraphs:
+  - EVALUATION MEASURE 21 OF 39
+  - Root Mean Squared Error (RMSE) Measures forecast error while giving extra weight
+    to large mistakes.
+  source:
+    pages:
+    - 376
+    verbatim: true
+- page: 377
+  title: RMSE – how large are the errors when big misses matter more?
+  text: " RMSE – how large are the errors when big misses matter more?\n\n\n Financial\
+    \ interpretation\n Root mean squared error gives extra weight to large misses.\
+    \ It remains in the original unit, making it\n interpretable to treasury or risk\
+    \ teams.\n\n Working example\n Using errors [−10, 10, 20, −10] in $ millions:\n\
+    \                                                    r\n                     \
+    \                                   102 + 102 + 202 + 102  √\n               \
+    \                           RM SE =                             = 175 = $13.2\
+    \ million\n                                                                  4\n\
+    \n RMSE exceeds MAE because the $20 million miss receives a larger penalty.\n\n\
+    \ What it misses\n A single shock can dominate RMSE. Report MAE beside it and\
+    \ show performance during holidays, crises,\n and structural breaks."
+  paragraphs:
+  - RMSE – how large are the errors when big misses matter more?
+  - Financial interpretation Root mean squared error gives extra weight to large misses.
+    It remains in the original unit, making it interpretable to treasury or risk teams.
+  - 'Working example Using errors [−10, 10, 20, −10] in $ millions: r 102 + 102 +
+    202 + 102 √ RM SE = = 175 = $13.2 million 4'
+  - RMSE exceeds MAE because the $20 million miss receives a larger penalty.
+  - What it misses A single shock can dominate RMSE. Report MAE beside it and show
+    performance during holidays, crises, and structural breaks.
+  source:
+    pages:
+    - 377
+    verbatim: true
+- page: 378
+  title: RMSE
+  text: " RMSE\n\n   M21 | Formula explained (1/1)\n\n Question: Which forecast has\
+    \ larger occasional misses even if its average absolute error is\n smaller?\n\
+    \                                                         1X\n               \
+    \             ei = ŷi − yi ,   M AE =           |ei |,\n                    \
+    \                                     n i\n                                  \
+    \             s\n                                                 1X 2\n     \
+    \                                RM SE =            e .\n                    \
+    \                             n i i\n Read it aloud: For MAE, average error magnitudes.\
+    \ For RMSE, square each error, average the\n squares, and take the square root.\n\
+    \ Use n, not n − 1, for this mean forecast-error calculation. This is not a\n\
+    \ sample-standard-deviation estimate around an estimated error mean.\n A negative\
+    \ error means underforecasting under the source’s forecast minus actual convention."
+  paragraphs:
+  - RMSE
+  - M21 | Formula explained (1/1)
+  - 'Question: Which forecast has larger occasional misses even if its average absolute
+    error is smaller? 1X ei = ŷi − yi , M AE = |ei |, n i s 1X 2 RM SE = e . n i
+    i Read it aloud: For MAE, average error magnitudes. For RMSE, square each error,
+    average the squares, and take the square root. Use n, not n − 1, for this mean
+    forecast-error calculation. This is not a sample-standard-deviation estimate around
+    an estimated error mean. A negative error means underforecasting under the source’s
+    forecast minus actual convention.'
+  source:
+    pages:
+    - 378
+    verbatim: true
+- page: 379
+  title: RMSE
+  text: " RMSE\n\n   M21 | Symbols and terms (1/2)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   yi , ŷi               \
+    \                        Actual and forecast outflow for day i.\n   ei       \
+    \                                      Signed forecast error, defined here as\
+    \ forecast minus actual, in\n                                                \
+    \  thousands of dollars.\n   n, i                                           Number\
+    \ of errors, here 4, and an individual day index.\n   |ei |                  \
+    \                        Error magnitude; its minus sign, if any, is removed.\n\
+    \   e2i                                            Squared error; a 30-unit miss\
+    \ contributes 900 squared units, rather\n                                    \
+    \              than 30.\n   MSE                                            Mean\
+    \ squared error, the quantity inside the square root in RMSE."
+  paragraphs:
+  - RMSE
+  - M21 | Symbols and terms (1/2)
+  - Symbol or term Meaning in this example yi , ŷi Actual and forecast outflow for
+    day i. ei Signed forecast error, defined here as forecast minus actual, in thousands
+    of dollars. n, i Number of errors, here 4, and an individual day index. |ei |
+    Error magnitude; its minus sign, if any, is removed. e2i Squared error; a 30-unit
+    miss contributes 900 squared units, rather than 30. MSE Mean squared error, the
+    quantity inside the square root in RMSE.
+  source:
+    pages:
+    - 379
+    verbatim: true
+- page: 380
+  title: RMSE
+  text: " RMSE\n\n   M21 | Symbols and terms (2/2)\n\n\n   Symbol or term        \
+    \                         Meaning in this example\n   RMSE                   \
+    \                        Root mean squared error; taking the square root restores\
+    \ the original\n                                                  dollar unit.\n\
+    \   MAE                                            Mean absolute error, included\
+    \ to show how a different penalty\n                                          \
+    \        changes the comparison.\n   Underforecast; overforecast             \
+    \       Predicted demand below actual demand; predicted demand above\n       \
+    \                                           actual demand."
+  paragraphs:
+  - RMSE
+  - M21 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example RMSE Root mean squared error; taking the
+    square root restores the original dollar unit. MAE Mean absolute error, included
+    to show how a different penalty changes the comparison. Underforecast; overforecast
+    Predicted demand below actual demand; predicted demand above actual demand.
+  source:
+    pages:
+    - 380
+    verbatim: true
+- page: 381
+  title: RMSE
+  text: " RMSE\n\n   M21 | Class problem | 6 minutes — Which Forecast Has the More\
+    \ Dangerous Miss?\n\n Two settlement forecasts have these signed errors, measured\
+    \ as forecast minus actual, in $\n thousands.\n   Day                        \
+    \                                       Forecast A error                Forecast\
+    \ B error\n   1                                                              \
+    \                 10                               0\n   2                   \
+    \                                                            10              \
+    \                 0\n   3                                                    \
+    \                           10                               0\n   4         \
+    \                                                                  10        \
+    \                         -30\n                                              \
+    \                                 s\n                                        \
+    \                   P                     P 2\n                              \
+    \                             |ei |                   ei\n                   \
+    \                               M AE =         ,     RM SE =        .\n      \
+    \                                                     n                      n\n\
+    \ Calculate both measures for each forecast. Which forecast wins on each measure?\
+    \ Explain why\n treasury might not choose the model with lower MAE."
+  paragraphs:
+  - RMSE
+  - M21 | Class problem | 6 minutes — Which Forecast Has the More Dangerous Miss?
+  - Two settlement forecasts have these signed errors, measured as forecast minus
+    actual, in $ thousands. Day Forecast A error Forecast B error 1 10 0 2 10 0 3
+    10 0 4 10 -30 s P P 2 |ei | ei M AE = , RM SE = . n n Calculate both measures
+    for each forecast. Which forecast wins on each measure? Explain why treasury might
+    not choose the model with lower MAE.
+  source:
+    pages:
+    - 381
+    verbatim: true
+- page: 382
+  title: RMSE
+  text: " RMSE\n\n   M21 | Worked solution — Which Forecast Has the More Dangerous\
+    \ Miss?\n\n1. Forecast A MAE: (10 + 10 + 10 + 10)/4 = 10.\n2. Forecast B MAE:\
+    \ (0 + 0 + 0 + 30)/4 = 7.5.\n3. Forecast A RMSE:                             \
+    \  q                                     √\n                                 \
+    \                     (100 + 100 + 100 + 100)/4 =           100 = 10.\n4. Forecast\
+    \ B RMSE:                                    q                           √\n \
+    \                                                          (0 + 0 + 0 + 900)/4\
+    \ =       225 = 15."
+  paragraphs:
+  - RMSE
+  - M21 | Worked solution — Which Forecast Has the More Dangerous Miss?
+  - '1. Forecast A MAE: (10 + 10 + 10 + 10)/4 = 10. 2. Forecast B MAE: (0 + 0 + 0
+    + 30)/4 = 7.5. 3. Forecast A RMSE: q √ (100 + 100 + 100 + 100)/4 = 100 = 10. 4.
+    Forecast B RMSE: q √ (0 + 0 + 0 + 900)/4 = 225 = 15.'
+  source:
+    pages:
+    - 382
+    verbatim: true
+- page: 383
+  title: RMSE
+  text: " RMSE\n\n   M21 | Interpretation\n\n What the answer means\n B has the smaller\
+    \ average absolute miss—$7,500 versus $10,000—but a $30,000\n underforecast on\
+    \ one day. RMSE ranks A better because it gives large misses more weight.\n RMSE\
+    \ itself does not distinguish shortages from excess cash; the sign and funding\
+    \ consequences\n require separate attention.\n Why these steps matter\n The root\
+    \ does not undo the greater weight given to large errors; averaging occurs after\
+    \ squaring\n and before taking the root. A US$30,000 underforecast contributes\
+    \ nine times the squared\n penalty of a US$10,000 miss."
+  paragraphs:
+  - RMSE
+  - M21 | Interpretation
+  - What the answer means B has the smaller average absolute miss—$7,500 versus $10,000—but
+    a $30,000 underforecast on one day. RMSE ranks A better because it gives large
+    misses more weight. RMSE itself does not distinguish shortages from excess cash;
+    the sign and funding consequences require separate attention. Why these steps
+    matter The root does not undo the greater weight given to large errors; averaging
+    occurs after squaring and before taking the root. A US$30,000 underforecast contributes
+    nine times the squared penalty of a US$10,000 miss.
+  source:
+    pages:
+    - 383
+    verbatim: true
+source:
+  pages:
+  - 376
+  - 377
+  - 378
+  - 379
+  - 380
+  - 381
+  - 382
+  - 383
+  verbatim: true

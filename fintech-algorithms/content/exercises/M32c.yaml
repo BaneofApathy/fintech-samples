@@ -1,0 +1,401 @@
+id: M32c
+title: How Far Does the Fund Wander from Its Benchmark?
+minutes: 9
+kind: measure
+parent: maximum-drawdown-turnover-tracking-error
+question: "A fund and its benchmark have these monthly returns:\n                \
+  \                                              Active return is fund minus benchmark.\
+  \ Use sample\n   Month                  Fund                    Benchmark\n    \
+  \                                                          standard deviation:\n\
+  \   1                           3%                       2%\n                  \
+  \                                                                        sP\n  \
+  \                                                                              \
+  \              (at − ā)2\n   2                           1%                   \
+  \    2%                  T Emonthly =                 .\n                      \
+  \                                                                         n−1\n\
+  \   3                           4%                       3%\n                  \
+  \                                            Calculate monthly tracking error. For\
+  \ this exercise,\n   4                           0%                       1%   \
+  \ assume stable, uncorrelated monthly active\n                                 \
+  \                                                                     √ returns\
+  \ and\n                                                              annualize using\
+  \ T Eannual = T Emonthly 12. Does\n                                            \
+  \                  tracking error say whether the fund outperformed?"
+questionPages:
+- page: 511
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Class problem | 9 minutes — How Far Does the\
+    \ Fund Wander from Its Benchmark?\n\n A fund and its benchmark have these monthly\
+    \ returns:\n                                                              Active\
+    \ return is fund minus benchmark. Use sample\n   Month                  Fund \
+    \                   Benchmark\n                                              \
+    \                standard deviation:\n   1                           3%      \
+    \                 2%\n                                                       \
+    \                                   sP\n                                     \
+    \                                                         (at − ā)2\n   2   \
+    \                        1%                       2%                  T Emonthly\
+    \ =                 .\n                                                      \
+    \                                         n−1\n   3                          \
+    \ 4%                       3%\n                                              \
+    \                Calculate monthly tracking error. For this exercise,\n   4  \
+    \                         0%                       1%    assume stable, uncorrelated\
+    \ monthly active\n                                                           \
+    \                                           √ returns and\n                  \
+    \                                            annualize using T Eannual = T Emonthly\
+    \ 12. Does\n                                                              tracking\
+    \ error say whether the fund outperformed?"
+  paragraphs:
+  - Tracking Error
+  - M32c | Class problem | 9 minutes — How Far Does the Fund Wander from Its Benchmark?
+  - 'A fund and its benchmark have these monthly returns: Active return is fund minus
+    benchmark. Use sample Month Fund Benchmark standard deviation: 1 3% 2% sP (at
+    − ā)2 2 1% 2% T Emonthly = . n−1 3 4% 3% Calculate monthly tracking error. For
+    this exercise, 4 0% 1% assume stable, uncorrelated monthly active √ returns and
+    annualize using T Eannual = T Emonthly 12. Does tracking error say whether the
+    fund outperformed?'
+  source:
+    pages:
+    - 511
+    verbatim: true
+formulaPages:
+- page: 508
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Formula explained (1/1)\n\n Question: How variable\
+    \ are the fund’s returns relative to its benchmark?\n                        \
+    \                                    n\n                                     \
+    \                    1X\n                                a t = r t − bt ,   ā\
+    \ =        at ,\n                                                         n t=1\n\
+    \                                                 sP\n                       \
+    \                             n             2\n                              \
+    \                      t=1 (at − ā)\n                               T Emonthly\
+    \ =                         ,\n                                              \
+    \        n−1\n                                                            √\n\
+    \                                 T Eannual = T Emonthly 12.\n Read it aloud:\
+    \ Subtract the benchmark return from the fund return each month. Calculate the\n\
+    \ sample standard deviation of those differences. Under this exercise’s stable,\
+    \ uncorrelated-month\n assumption, multiply by the square root of 12 to annualize.\n\
+    \ Tracking error measures variability around mean active return, not the average\
+    \ shortfall below\n the benchmark."
+  paragraphs:
+  - Tracking Error
+  - M32c | Formula explained (1/1)
+  - 'Question: How variable are the fund’s returns relative to its benchmark? n 1X
+    a t = r t − bt , ā = at , n t=1 sP n 2 t=1 (at − ā) T Emonthly = , n−1 √ T Eannual
+    = T Emonthly 12. Read it aloud: Subtract the benchmark return from the fund return
+    each month. Calculate the sample standard deviation of those differences. Under
+    this exercise’s stable, uncorrelated-month assumption, multiply by the square
+    root of 12 to annualize. Tracking error measures variability around mean active
+    return, not the average shortfall below the benchmark.'
+  source:
+    pages:
+    - 508
+    verbatim: true
+symbolPages:
+- page: 509
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Symbols and terms (1/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   t, n           \
+    \                                Month index and number of observed months; n\
+    \ = 4 here.\n   rt , bt                                        Fund return and\
+    \ benchmark return in month t, measured on the\n                             \
+    \                     same basis.\n   Benchmark                              \
+    \        Reference investment return against which the fund is compared.\n   at\
+    \                                             Active return: fund return minus\
+    \ benchmark return, which can be\n                                           \
+    \       positive or negative.\n   ā                                         \
+    \    Arithmetic average of the active returns.\n   at − ā                   \
+    \                     One month’s deviation from average active return."
+  paragraphs:
+  - Tracking Error
+  - M32c | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example t, n Month index and number of observed
+    months; n = 4 here. rt , bt Fund return and benchmark return in month t, measured
+    on the same basis. Benchmark Reference investment return against which the fund
+    is compared. at Active return: fund return minus benchmark return, which can be
+    positive or negative. ā Arithmetic average of the active returns. at − ā One
+    month’s deviation from average active return.'
+  source: &id001
+    pages:
+    - 509
+    verbatim: true
+- page: 510
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Symbols and terms (2/2)\n\n\n   Symbol or term\
+    \                                 Meaning in this example\n   TE             \
+    \                                Tracking error: standard deviation of active\
+    \ returns, not an average\n                                                  forecast\
+    \ error.\n   n−1                                            Sample-variance denominator;\
+    \ one degree of freedom is used in\n                                         \
+    \         estimating the mean.\n   √\n       12                              \
+    \           Annualization multiplier under the stated monthly assumptions; not\n\
+    \                                                  a universal rule when returns\
+    \ are serially correlated.\n   Percentage-point return                       \
+    \ A fund return of 3% minus a benchmark return of 2% is 1\n   difference     \
+    \                                percentage point, or 0.01 in decimal return units."
+  paragraphs:
+  - Tracking Error
+  - M32c | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example TE Tracking error: standard deviation
+    of active returns, not an average forecast error. n−1 Sample-variance denominator;
+    one degree of freedom is used in estimating the mean. √ 12 Annualization multiplier
+    under the stated monthly assumptions; not a universal rule when returns are serially
+    correlated. Percentage-point return A fund return of 3% minus a benchmark return
+    of 2% is 1 difference percentage point, or 0.01 in decimal return units.'
+  source: &id002
+    pages: &id003
+    - 510
+    verbatim: true
+solutionPages:
+- page: 512
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Worked solution — How Far Does the Fund Wander\
+    \ from Its Benchmark?\n\n1. Active returns: [1, −1, 1, −1] percentage points.\n\
+    2. Mean active return: (1 − 1 + 1 − 1)/4 = 0.\n3. Squared deviations: 1, 1, 1,\
+    \ 1; sum = 4 squared percentage points.\n4. Monthly sample tracking error:\n \
+    \                           q             q\n                               4/(4\
+    \ − 1) = 4/3 = 1.1547%.\n5. Annualized estimate under the stated assumptions:\n\
+    \                                           √\n                              \
+    \  1.1547% × 12 = 4.00%."
+  paragraphs:
+  - Tracking Error
+  - M32c | Worked solution — How Far Does the Fund Wander from Its Benchmark?
+  - '1. Active returns: [1, −1, 1, −1] percentage points. 2. Mean active return: (1
+    − 1 + 1 − 1)/4 = 0. 3. Squared deviations: 1, 1, 1, 1; sum = 4 squared percentage
+    points. 4. Monthly sample tracking error: q q 4/(4 − 1) = 4/3 = 1.1547%. 5. Annualized
+    estimate under the stated assumptions: √ 1.1547% × 12 = 4.00%.'
+  source:
+    pages:
+    - 512
+    verbatim: true
+interpretationPages:
+- page: 513
+  title: Tracking Error
+  text: " Tracking Error\n\n   M32c | Interpretation\n\n What the answer means\n Tracking\
+    \ error describes the variability of benchmark-relative returns—not a 4% loss\
+    \ or 4%\n underperformance. Mean monthly active return is zero here, yet active\
+    \ risk is positive.\n Annualization and this four-observation estimate should\
+    \ not be treated as reliable without more\n data.\n Why these steps matter\n Active\
+    \ returns of +1 and −1 percentage point average to zero but still fluctuate. Tracking\
+    \ error\n measures that fluctuation. Computing the standard deviation of the fund’s\
+    \ returns alone would\n answer a different question about total risk rather than\
+    \ benchmark-relative risk."
+  paragraphs:
+  - Tracking Error
+  - M32c | Interpretation
+  - What the answer means Tracking error describes the variability of benchmark-relative
+    returns—not a 4% loss or 4% underperformance. Mean monthly active return is zero
+    here, yet active risk is positive. Annualization and this four-observation estimate
+    should not be treated as reliable without more data. Why these steps matter Active
+    returns of +1 and −1 percentage point average to zero but still fluctuate. Tracking
+    error measures that fluctuation. Computing the standard deviation of the fund’s
+    returns alone would answer a different question about total risk rather than benchmark-relative
+    risk.
+  source:
+    pages:
+    - 513
+    verbatim: true
+source:
+  pages:
+  - 508
+  - 509
+  - 510
+  - 511
+  - 512
+  - 513
+  verbatim: true
+readAloud:
+- Subtract the benchmark return from the fund return each month. Calculate the sample
+  standard deviation of those differences. Under this exercise’s stable, uncorrelated-month
+  assumption, multiply by the square root of 12 to annualize. Tracking error measures
+  variability around mean active return, not the average shortfall below the benchmark.
+siteAuthored: false
+givens:
+  fund:
+  - 0.03
+  - 0.01
+  - 0.04
+  - 0
+  benchmark:
+  - 0.02
+  - 0.02
+  - 0.03
+  - 0.01
+  periods: 12
+labels: &id004
+  fund: Fund returns by period
+  benchmark: Benchmark returns by period
+  periods: Periods per year
+deckSolution:
+  active:
+  - 0.01
+  - -0.01
+  - 0.01
+  - -0.01
+  mean: 0
+  squares: 0.0004
+  monthly: 0.011547
+  annual: 0.04
+latex:
+- TE=\sqrt{\frac{\sum_t(a_t-\bar a)^2}{n-1}},\quad TE_{annual}=TE_{monthly}\sqrt{12}
+symbols:
+- symbol: t, n
+  meaning: Month index and number of observed months; n = 4 here.
+  source: *id001
+- symbol: rt , bt
+  meaning: Fund return and benchmark return in month t, measured on the same basis.
+  source: *id001
+- symbol: Benchmark
+  meaning: Reference investment return against which the fund is compared.
+  source: *id001
+- symbol: at
+  meaning: 'Active return: fund return minus benchmark return, which can be positive
+    or negative.'
+  source: *id001
+- symbol: ā
+  meaning: Arithmetic average of the active returns.
+  source: *id001
+- symbol: at − ā
+  meaning: One month’s deviation from average active return.
+  source: *id001
+- symbol: TE
+  meaning: 'Tracking error: standard deviation of active returns, not an average forecast
+    error.'
+  source: *id002
+- symbol: n−1
+  meaning: Sample-variance denominator; one degree of freedom is used in estimating
+    the mean.
+  source: *id002
+- symbol: √12
+  meaning: Annualization multiplier under the stated monthly assumptions; not a universal
+    rule when returns are serially correlated.
+  source:
+    pages: *id003
+    verbatim: false
+- symbol: Percentage-point return difference
+  meaning: A fund return of 3% minus a benchmark return of 2% is 1 percentage point,
+    or 0.01 in decimal return units.
+  source:
+    pages: *id003
+    verbatim: false
+steps:
+- id: active
+  title: Active returns
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Subtract benchmark return from fund return in each period.
+  mistakes:
+  - pattern: recompute
+    message: Subtract benchmark return from fund return in each period.
+- id: mean
+  title: Mean active return
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average the active returns.
+  mistakes:
+  - pattern: recompute
+    message: Average the active returns.
+- id: squares
+  title: Sum of squared active-return deviations
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Subtract mean active return from each active return, square and add.
+  mistakes:
+  - pattern: recompute
+    message: Subtract mean active return from each active return, square and add.
+- id: monthly
+  title: Periodic tracking error
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Divide squared deviations by n − 1, then take the square root.
+  mistakes:
+  - pattern: recompute
+    message: Divide squared deviations by n − 1, then take the square root.
+- id: annual
+  title: Annualized tracking error
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Multiply periodic tracking error by the square root of periods per year.
+  mistakes:
+  - pattern: recompute
+    message: Multiply periodic tracking error by the square root of periods per year.
+learning:
+  title: How Far Does the Fund Wander from Its Benchmark?
+  scenario: A fund and benchmark have matching periodic returns. Active return is
+    fund return minus benchmark return. Use sample standard deviation with denominator
+    n − 1.
+  task: Calculate active returns, their mean, squared deviations, periodic tracking
+    error and annualized tracking error. Assume stable, uncorrelated periods for square-root-of-periods
+    annualization.
+  interpretation: Tracking error measures variability around mean active return. It
+    does not tell whether the fund outperformed. A short sample and the annualization
+    assumptions limit its use as a risk estimate.
+  summary: 'Periodic tracking error: {monthly}; annualized tracking error: {annual}.
+    Mean active return: {mean}.'
+  labels: *id004
+  steps:
+    active:
+      title: Active returns
+      hints: *id005
+      unit: proportion
+    mean:
+      title: Mean active return
+      hints: *id006
+      unit: proportion
+    squares:
+      title: Sum of squared active-return deviations
+      hints: *id007
+      unit: ''
+    monthly:
+      title: Periodic tracking error
+      hints: *id008
+      unit: proportion
+    annual:
+      title: Annualized tracking error
+      hints: *id009
+      unit: proportion
+  readAloud:
+  - Subtract the benchmark return from the fund return each month. Calculate the sample
+    standard deviation of those differences. Under this exercise’s stable, uncorrelated-month
+    assumption, multiply by the square root of 12 to annualize. Tracking error measures
+    variability around mean active return, not the average shortfall below the benchmark.
+  workedExplanation:
+  - 'Tracking error describes the variability of benchmark-relative returns—not a
+    4% loss or 4% underperformance. Mean monthly active return is zero here, yet active
+    risk is positive. Annualization and this four-observation estimate should not
+    be treated as reliable without more data. '
+  - Active returns of +1 and −1 percentage point average to zero but still fluctuate.
+    Tracking error measures that fluctuation. Computing the standard deviation of
+    the fund’s returns alone would answer a different question about total risk rather
+    than benchmark-relative risk.
+  workedArithmetic:
+  - Active returns = [0.03 − 0.02, 0.01 − 0.02, 0.04 − 0.03, 0 − 0.01] = [0.01, −0.01,
+    0.01, −0.01]. Mean = 0.
+  - Squared-deviation sum = 0.01² + (−0.01)² + 0.01² + (−0.01)² = 0.0004.
+  - Monthly tracking error = √(0.0004 / (4 − 1)) ≈ 0.011547 = 1.1547%.
+  - Annualized tracking error = 0.011547 × √12 ≈ 0.04 = 4%, under the stated uncorrelated-period
+    assumption.
+formulaSource:
+  pages:
+  - 508
+  verbatim: false
+  reviewed: true

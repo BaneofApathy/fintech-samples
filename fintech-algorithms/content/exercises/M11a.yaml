@@ -1,0 +1,357 @@
+id: M11a
+title: Build It From a Ranked List
+minutes: 8
+kind: measure
+parent: precision-recall-curve-and-pr-auc
+question: "There are 20 transactions, including 3 frauds. Their model ranking places\
+  \ the frauds at\n positions 1, 3, and 6. All other positions are legitimate.\n \
+  \                                                 For each queue size K = 1, 2,\
+  \ 3, 4, 5, 6, calculate:\n   Rank                Actual label: fraud\n         \
+  \              =1                                                   Frauds in top\
+  \ K\n                                                                   P @K =\n\
+  \                                                                              \
+  \      K\n   1                   1\n                                           \
+  \                                 Frauds in top K\n   2                   0    \
+  \                                       R@K =                       .\n        \
+  \                                                                            3\n\
+  \   3                   1                          Plot recall horizontally and\
+  \ precision vertically. Explain\n   4                   0                      \
+  \    what happens when rank 2 enters the queue, and then when\n   5            \
+  \       0                          rank 3 enters.\n   6                   1"
+questionPages:
+- page: 284
+  title: Precision–Recall Curve
+  text: " Precision–Recall Curve\n\n   M11a | Class problem | 8 minutes — Build It\
+    \ From a Ranked List\n\n There are 20 transactions, including 3 frauds. Their\
+    \ model ranking places the frauds at\n positions 1, 3, and 6. All other positions\
+    \ are legitimate.\n                                                  For each\
+    \ queue size K = 1, 2, 3, 4, 5, 6, calculate:\n   Rank                Actual label:\
+    \ fraud\n                       =1                                           \
+    \        Frauds in top K\n                                                   \
+    \                P @K =\n                                                    \
+    \                                K\n   1                   1\n               \
+    \                                                             Frauds in top K\n\
+    \   2                   0                                           R@K =    \
+    \                   .\n                                                      \
+    \                              3\n   3                   1                   \
+    \       Plot recall horizontally and precision vertically. Explain\n   4     \
+    \              0                          what happens when rank 2 enters the\
+    \ queue, and then when\n   5                   0                          rank\
+    \ 3 enters.\n   6                   1"
+  paragraphs:
+  - Precision–Recall Curve
+  - M11a | Class problem | 8 minutes — Build It From a Ranked List
+  - 'There are 20 transactions, including 3 frauds. Their model ranking places the
+    frauds at positions 1, 3, and 6. All other positions are legitimate. For each
+    queue size K = 1, 2, 3, 4, 5, 6, calculate: Rank Actual label: fraud =1 Frauds
+    in top K P @K = K 1 1 Frauds in top K 2 0 R@K = . 3 3 1 Plot recall horizontally
+    and precision vertically. Explain 4 0 what happens when rank 2 enters the queue,
+    and then when 5 0 rank 3 enters. 6 1'
+  source:
+    pages:
+    - 284
+    verbatim: true
+formulaPages:
+- page: 281
+  title: Precision–Recall Curve
+  text: " Precision–Recall Curve\n\n   M11a | Formula explained (1/1)\n\n Question:\
+    \ How does alert quality change as the review queue grows?\n                 \
+    \                                    K\n                                     \
+    \                X                     CK                     CK\n           \
+    \                                   CK =         yi ,   P @K =      ,    R@K =\
+    \             .\n                                                     i=1\n  \
+    \                                                                         K  \
+    \                    F\n Read it aloud: Count frauds in the first K ranked cases.\
+    \ Divide that count by K for precision\n and by all frauds for recall.\n For a\
+    \ precision–recall curve, plot recall horizontally and precision vertically. Repeat\
+    \ as K grows.\n Adding a legitimate case changes the queue denominator without\
+    \ increasing captured fraud.\n Adding a fraud increases the captured count and\
+    \ can increase both precision and recall."
+  paragraphs:
+  - Precision–Recall Curve
+  - M11a | Formula explained (1/1)
+  - 'Question: How does alert quality change as the review queue grows? K X CK CK
+    CK = yi , P @K = , R@K = . i=1 K F Read it aloud: Count frauds in the first K
+    ranked cases. Divide that count by K for precision and by all frauds for recall.
+    For a precision–recall curve, plot recall horizontally and precision vertically.
+    Repeat as K grows. Adding a legitimate case changes the queue denominator without
+    increasing captured fraud. Adding a fraud increases the captured count and can
+    increase both precision and recall.'
+  source:
+    pages:
+    - 281
+    verbatim: true
+symbolPages:
+- page: 282
+  title: Precision–Recall Curve
+  text: " Precision–Recall Curve\n\n   M11a | Symbols and terms (1/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   K      \
+    \                                        Number of top-ranked transactions admitted\
+    \ to the review queue,\n                                                  from\
+    \ 1 through 6 here.\n   i                                              Ranking\
+    \ position, beginning at the highest-scored transaction.\n   yi              \
+    \                               Actual outcome at rank i: 1 for fraud and 0 for\
+    \ legitimate.\n   CK                                             Cumulative count\
+    \ of frauds within the first K positions.\n   F                              \
+    \                Number of actual frauds in the entire evaluated population: 3,\n\
+    \                                                  including frauds outside a\
+    \ smaller queue.\n   P @K                                           Precision\
+    \ at K: fraud share within the reviewed queue."
+  paragraphs:
+  - Precision–Recall Curve
+  - M11a | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example K Number of top-ranked transactions admitted
+    to the review queue, from 1 through 6 here. i Ranking position, beginning at the
+    highest-scored transaction. yi Actual outcome at rank i: 1 for fraud and 0 for
+    legitimate. CK Cumulative count of frauds within the first K positions. F Number
+    of actual frauds in the entire evaluated population: 3, including frauds outside
+    a smaller queue. P @K Precision at K: fraud share within the reviewed queue.'
+  source: &id001
+    pages:
+    - 282
+    verbatim: true
+- page: 283
+  title: Precision–Recall Curve
+  text: " Precision–Recall Curve\n\n   M11a | Symbols and terms (2/2)\n\n\n   Symbol\
+    \ or term                                 Meaning in this example\n   R@K    \
+    \                                        Recall at K: fraction of all frauds captured\
+    \ by that queue.\n   PR curve                                       Precision–recall\
+    \ curve: a set of (recall, precision) points from\n                          \
+    \                        changing the selection cutoff.\n   Empirical        \
+    \                              Calculated from the supplied finite observations\
+    \ rather than from an\n                                                  assumed\
+    \ smooth distribution."
+  paragraphs:
+  - Precision–Recall Curve
+  - M11a | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example R@K Recall at K: fraction of all frauds
+    captured by that queue. PR curve Precision–recall curve: a set of (recall, precision)
+    points from changing the selection cutoff. Empirical Calculated from the supplied
+    finite observations rather than from an assumed smooth distribution.'
+  source: &id002
+    pages:
+    - 283
+    verbatim: true
+solutionPages:
+- page: 285
+  title: Precision–Recall Curve
+  text: " Precision–Recall Curve\n\n   M11a | Worked solution — Build It From a Ranked\
+    \ List\n\n1. Count cumulative frauds: [1, 1, 2, 2, 2, 3].\n2. Calculate each operating\
+    \ point.\n   K                                              Frauds found     \
+    \   Precision             Recall\n   1                                       \
+    \                 1               100%            33.33%\n   2               \
+    \                                         1                 50%           33.33%\n\
+    \   3                                                        2             66.67%\
+    \            66.67%\n   4                                                    \
+    \    2                 50%           66.67%\n   5                            \
+    \                            2                 40%           66.67%\n   6    \
+    \                                                    3                 50%   \
+    \         100%\n\n3. Interpret the changes: Rank 2 adds a false alert: precision\
+    \ drops while recall stays fixed.\n   Rank 3 adds a fraud: both precision and\
+    \ recall increase."
+  paragraphs:
+  - Precision–Recall Curve
+  - M11a | Worked solution — Build It From a Ranked List
+  - '1. Count cumulative frauds: [1, 1, 2, 2, 2, 3]. 2. Calculate each operating point.
+    K Frauds found Precision Recall 1 1 100% 33.33% 2 1 50% 33.33% 3 2 66.67% 66.67%
+    4 2 50% 66.67% 5 2 40% 66.67% 6 3 50% 100%'
+  - '3. Interpret the changes: Rank 2 adds a false alert: precision drops while recall
+    stays fixed. Rank 3 adds a fraud: both precision and recall increase.'
+  source:
+    pages:
+    - 285
+    verbatim: true
+interpretationPages:
+- page: 286
+  title: Precision–Recall Curve
+  text: " Precision–Recall Curve\n\n   M11a | Interpretation\n\n What the answer means\n\
+    \ Reviewing six cases captures every fraud in this sample, but half the queue\
+    \ is legitimate. An\n empirical precision–recall curve can rise locally; precision\
+    \ does not necessarily fall at every\n additional rank.\n Why these steps matter\n\
+    \ Recall cannot decrease when the queue only expands, because caught frauds are\
+    \ not removed.\n Precision can rise or fall: its numerator and denominator change\
+    \ differently depending on\n whether the next case is fraud."
+  paragraphs:
+  - Precision–Recall Curve
+  - M11a | Interpretation
+  - 'What the answer means Reviewing six cases captures every fraud in this sample,
+    but half the queue is legitimate. An empirical precision–recall curve can rise
+    locally; precision does not necessarily fall at every additional rank. Why these
+    steps matter Recall cannot decrease when the queue only expands, because caught
+    frauds are not removed. Precision can rise or fall: its numerator and denominator
+    change differently depending on whether the next case is fraud.'
+  source:
+    pages:
+    - 286
+    verbatim: true
+source:
+  pages:
+  - 281
+  - 282
+  - 283
+  - 284
+  - 285
+  - 286
+  verbatim: true
+readAloud:
+- Count frauds in the first K ranked cases. Divide that count by K for precision and
+  by all frauds for recall. For a precision–recall curve, plot recall horizontally
+  and precision vertically. Repeat as K grows. Adding a legitimate case changes the
+  queue denominator without increasing captured fraud. Adding a fraud increases the
+  captured count and can increase both precision and recall.
+siteAuthored: false
+givens:
+  labels:
+  - 1
+  - 0
+  - 1
+  - 0
+  - 0
+  - 1
+  fraud: 3
+labels: &id003
+  labels: Ranked transaction labels (1 fraud, 0 legitimate)
+  fraud: All actual frauds in the population
+deckSolution:
+  captured:
+  - 1
+  - 1
+  - 2
+  - 2
+  - 2
+  - 3
+  precision:
+  - 1
+  - 0.5
+  - 0.6666666666666666
+  - 0.5
+  - 0.4
+  - 0.5
+  recall:
+  - 0.3333333333333333
+  - 0.3333333333333333
+  - 0.6666666666666666
+  - 0.6666666666666666
+  - 0.6666666666666666
+  - 1
+latex:
+- C_K=\sum_{i=1}^Ky_i,\quad P@K=\frac{C_K}{K},\quad R@K=\frac{C_K}{F}
+symbols:
+- symbol: K
+  meaning: Number of top-ranked transactions admitted to the review queue, from 1
+    through 6 here.
+  source: *id001
+- symbol: i
+  meaning: Ranking position, beginning at the highest-scored transaction.
+  source: *id001
+- symbol: yi
+  meaning: 'Actual outcome at rank i: 1 for fraud and 0 for legitimate.'
+  source: *id001
+- symbol: CK
+  meaning: Cumulative count of frauds within the first K positions.
+  source: *id001
+- symbol: F
+  meaning: 'Number of actual frauds in the entire evaluated population: 3, including
+    frauds outside a smaller queue.'
+  source: *id001
+- symbol: P @K
+  meaning: 'Precision at K: fraud share within the reviewed queue.'
+  source: *id001
+- symbol: R@K
+  meaning: 'Recall at K: fraction of all frauds captured by that queue.'
+  source: *id002
+- symbol: PR curve
+  meaning: 'Precision–recall curve: a set of (recall, precision) points from changing
+    the selection cutoff.'
+  source: *id002
+- symbol: Empirical
+  meaning: Calculated from the supplied finite observations rather than from an assumed
+    smooth distribution.
+  source: *id002
+steps:
+- id: captured
+  title: Frauds captured as the queue grows
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - Calculate the cumulative sum of the ranked labels.
+  mistakes:
+  - pattern: recompute
+    message: Calculate the cumulative sum of the ranked labels.
+- id: precision
+  title: Precision at each queue size
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - Divide captured frauds by the current queue size.
+  mistakes:
+  - pattern: recompute
+    message: Divide captured frauds by the current queue size.
+- id: recall
+  title: Recall at each queue size
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide captured frauds by all actual frauds.
+  mistakes:
+  - pattern: recompute
+    message: Divide captured frauds by all actual frauds.
+learning:
+  title: Build It From a Ranked List
+  scenario: Transactions are ordered from highest to lowest model score. The listed
+    labels are 1 for fraud and 0 for legitimate.
+  task: For every queue size from 1 through the length of the list, count captured
+    frauds and calculate precision and recall. Plot recall horizontally and precision
+    vertically.
+  interpretation: Adding a legitimate case increases the queue size without adding
+    fraud. Adding a fraud can raise precision. Recall cannot decrease when a queue
+    only expands.
+  summary: 'Captured frauds by queue size: {captured}. Precision: {precision}. Recall:
+    {recall}.'
+  labels: *id003
+  steps:
+    captured:
+      title: Frauds captured as the queue grows
+      hints: *id004
+      unit: ''
+    precision:
+      title: Precision at each queue size
+      hints: *id005
+      unit: proportion
+    recall:
+      title: Recall at each queue size
+      hints: *id006
+      unit: proportion
+  readAloud:
+  - Count frauds in the first K ranked cases. Divide that count by K for precision
+    and by all frauds for recall. For a precision–recall curve, plot recall horizontally
+    and precision vertically. Repeat as K grows. Adding a legitimate case changes
+    the queue denominator without increasing captured fraud. Adding a fraud increases
+    the captured count and can increase both precision and recall.
+  workedExplanation:
+  - 'Reviewing six cases captures every fraud in this sample, but half the queue is
+    legitimate. An empirical precision–recall curve can rise locally; precision does
+    not necessarily fall at every additional rank. '
+  - 'Recall cannot decrease when the queue only expands, because caught frauds are
+    not removed. Precision can rise or fall: its numerator and denominator change
+    differently depending on whether the next case is fraud.'
+  workedArithmetic:
+  - Cumulative frauds at K = 1 through 6 are [1, 1, 2, 2, 2, 3].
+  - Precisions are [1/1, 1/2, 2/3, 2/4, 2/5, 3/6] = [100%, 50%, 66.67%, 50%, 40%,
+    50%].
+  - Recalls are [1/3, 1/3, 2/3, 2/3, 2/3, 3/3]. Adding rank 2 lowers precision only;
+    adding rank 3 raises both precision and recall.
+formulaSource:
+  pages:
+  - 281
+  verbatim: false
+  reviewed: true

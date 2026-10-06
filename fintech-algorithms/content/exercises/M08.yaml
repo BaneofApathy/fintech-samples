@@ -1,0 +1,390 @@
+id: M08
+title: Move the Threshold
+minutes: 8
+kind: measure
+parent: roc-curve
+question: "A model assigns these fraud-risk scores:\n                            \
+  \                                    Flag a transaction when its score is at least\
+  \ the\n   Transaction                             Score Actual\n               \
+  \                                  outcome\n                                   \
+  \                             threshold.\n                                     \
+  \                           For thresholds 0.85, 0.65, and 0.25, calculate\n   A\
+  \                                          0.90 Fraud        T P , F P , true-positive\
+  \ rate, and false-positive rate.\n   B                                         \
+  \ 0.80 Legitimate   Plot the three operating points with FPR on the\n   C      \
+  \                                    0.70 Fraud        horizontal axis and TPR on\
+  \ the vertical axis.\n   D                                          0.40 Legitimate\
+  \   What changes when the threshold falls from 0.65\n                          \
+  \                                      to 0.25?\n   E                          \
+  \                0.30 Fraud\n   F                                          0.10\
+  \ Legitimate"
+questionPages:
+- page: 260
+  title: ROC
+  text: " ROC\n\n   M08 | Class problem | 8 minutes — Move the Threshold\n\n A model\
+    \ assigns these fraud-risk scores:\n                                         \
+    \                       Flag a transaction when its score is at least the\n  \
+    \ Transaction                             Score Actual\n                     \
+    \                            outcome\n                                       \
+    \                         threshold.\n                                       \
+    \                         For thresholds 0.85, 0.65, and 0.25, calculate\n   A\
+    \                                          0.90 Fraud        T P , F P , true-positive\
+    \ rate, and false-positive rate.\n   B                                       \
+    \   0.80 Legitimate   Plot the three operating points with FPR on the\n   C  \
+    \                                        0.70 Fraud        horizontal axis and\
+    \ TPR on the vertical axis.\n   D                                          0.40\
+    \ Legitimate   What changes when the threshold falls from 0.65\n             \
+    \                                                   to 0.25?\n   E           \
+    \                               0.30 Fraud\n   F                             \
+    \             0.10 Legitimate"
+  paragraphs:
+  - ROC
+  - M08 | Class problem | 8 minutes — Move the Threshold
+  - 'A model assigns these fraud-risk scores: Flag a transaction when its score is
+    at least the Transaction Score Actual outcome threshold. For thresholds 0.85,
+    0.65, and 0.25, calculate A 0.90 Fraud T P , F P , true-positive rate, and false-positive
+    rate. B 0.80 Legitimate Plot the three operating points with FPR on the C 0.70
+    Fraud horizontal axis and TPR on the vertical axis. D 0.40 Legitimate What changes
+    when the threshold falls from 0.65 to 0.25? E 0.30 Fraud F 0.10 Legitimate'
+  source:
+    pages:
+    - 260
+    verbatim: true
+formulaPages:
+- page: 257
+  title: ROC
+  text: " ROC\n\n   M08 | Formula explained (1/1)\n\n Question: What changes when\
+    \ the fraud-score cutoff moves?\n                                            \
+    \      TP                      FP\n                  ŷi = 1(si ≥ t),    TPR =\
+    \               ,      FPR =            .\n                                  \
+    \             TP + FN                 FP + TN\n Read it aloud: Flag a transaction\
+    \ if its score reaches the cutoff. Count the resulting true and\n false positives,\
+    \ then divide each by its own actual-class total.\n A receiver operating characteristic\
+    \ (ROC) curve places FPR on the horizontal axis and TPR\n on the vertical axis.\
+    \ Each threshold supplies one operating point.\n The denominator remains three\
+    \ frauds or three legitimate cases while the cutoff changes."
+  paragraphs:
+  - ROC
+  - M08 | Formula explained (1/1)
+  - 'Question: What changes when the fraud-score cutoff moves? TP FP ŷi = 1(si ≥
+    t), TPR = , FPR = . TP + FN FP + TN Read it aloud: Flag a transaction if its score
+    reaches the cutoff. Count the resulting true and false positives, then divide
+    each by its own actual-class total. A receiver operating characteristic (ROC)
+    curve places FPR on the horizontal axis and TPR on the vertical axis. Each threshold
+    supplies one operating point. The denominator remains three frauds or three legitimate
+    cases while the cutoff changes.'
+  source:
+    pages:
+    - 257
+    verbatim: true
+symbolPages:
+- page: 258
+  title: ROC
+  text: " ROC\n\n   M08 | Symbols and terms (1/2)\n\n\n   Symbol or term         \
+    \                        Meaning in this example\n   TP                      \
+    \                       True positives: actual frauds correctly flagged. “True”\
+    \ means the\n                                                  prediction matches\
+    \ the outcome.\n   FP                                             False positives:\
+    \ legitimate transactions incorrectly flagged.\n   FN                        \
+    \                     False negatives: actual frauds incorrectly passed or left\
+    \ unflagged.\n   TN                                             True negatives:\
+    \ legitimate transactions correctly passed.\n   si , i                       \
+    \                  Fraud-risk score for transaction i; higher scores indicate\
+    \ higher\n                                                  modeled risk.\n  \
+    \ t                                              Decision threshold, not a time\
+    \ index in this exercise."
+  paragraphs:
+  - ROC
+  - M08 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example TP True positives: actual frauds correctly
+    flagged. “True” means the prediction matches the outcome. FP False positives:
+    legitimate transactions incorrectly flagged. FN False negatives: actual frauds
+    incorrectly passed or left unflagged. TN True negatives: legitimate transactions
+    correctly passed. si , i Fraud-risk score for transaction i; higher scores indicate
+    higher modeled risk. t Decision threshold, not a time index in this exercise.'
+  source: &id001
+    pages:
+    - 258
+    verbatim: true
+- page: 259
+  title: ROC
+  text: " ROC\n\n   M08 | Symbols and terms (2/2)\n\n\n   Symbol or term         \
+    \                        Meaning in this example\n   ŷi                     \
+    \                       Predicted label: 1 means flagged and 0 means unflagged.\n\
+    \   1(si ≥ t)                                      Indicator: 1 if the score is\
+    \ at least the threshold, otherwise 0.\n   TPR                               \
+    \             True-positive rate, identical to recall for the defined positive\
+    \ class.\n   FPR                                            False-positive rate\
+    \ among actual legitimate transactions.\n   ROC operating point              \
+    \              Ordered pair (F P R, T P R) for a single threshold; the first coordinate\n\
+    \                                                  is horizontal.\n   Threshold\
+    \ sweep                                Repeating the decision and counting process\
+    \ at several cutoffs to\n                                                  trace\
+    \ the curve."
+  paragraphs:
+  - ROC
+  - M08 | Symbols and terms (2/2)
+  - 'Symbol or term Meaning in this example ŷi Predicted label: 1 means flagged and
+    0 means unflagged. 1(si ≥ t) Indicator: 1 if the score is at least the threshold,
+    otherwise 0. TPR True-positive rate, identical to recall for the defined positive
+    class. FPR False-positive rate among actual legitimate transactions. ROC operating
+    point Ordered pair (F P R, T P R) for a single threshold; the first coordinate
+    is horizontal. Threshold sweep Repeating the decision and counting process at
+    several cutoffs to trace the curve.'
+  source: &id002
+    pages:
+    - 259
+    verbatim: true
+solutionPages:
+- page: 261
+  title: ROC
+  text: " ROC\n\n   M08 | Worked solution — Move the Threshold\n\n1. Count actual\
+    \ classes: There are 3 frauds and 3 legitimate transactions.\n2. Count flags and\
+    \ calculate rates.\n   Threshold                       Flagged        TP     \
+    \       FP       FPR = F P/3         TPR = T P/3\n   0.85                    \
+    \        A               1               0                  0%          33.33%\n\
+    \   0.65                            A, B, C         2               1        \
+    \       33.33%         66.67%\n   0.25                            A–E        \
+    \     3               2               66.67%          100%\n\n3. Plot (F P R,\
+    \ T P R): (0, 1/3), (1/3, 2/3), and (2/3, 1).\n4. Compare the lower two cutoffs:\
+    \ Lowering 0.65 to 0.25 catches one more fraud and flags\n   one more legitimate\
+    \ transaction."
+  paragraphs:
+  - ROC
+  - M08 | Worked solution — Move the Threshold
+  - '1. Count actual classes: There are 3 frauds and 3 legitimate transactions. 2.
+    Count flags and calculate rates. Threshold Flagged TP FP FPR = F P/3 TPR = T P/3
+    0.85 A 1 0 0% 33.33% 0.65 A, B, C 2 1 33.33% 66.67% 0.25 A–E 3 2 66.67% 100%'
+  - '3. Plot (F P R, T P R): (0, 1/3), (1/3, 2/3), and (2/3, 1). 4. Compare the lower
+    two cutoffs: Lowering 0.65 to 0.25 catches one more fraud and flags one more legitimate
+    transaction.'
+  source:
+    pages:
+    - 261
+    verbatim: true
+interpretationPages:
+- page: 262
+  title: ROC
+  text: " ROC\n\n   M08 | Interpretation\n\n What the answer means\n Each ROC point\
+    \ represents a different capture-versus-interruption tradeoff. These are selected\n\
+    \ points, not the full curve. The ROC curve itself does not choose the economically\
+    \ appropriate\n threshold.\n Why these steps matter\n The curve shows possible\
+    \ operating choices, not one mandatory threshold. Moving toward\n higher capture\
+    \ may also interrupt more legitimate activity. In this small set, the denominators\n\
+    \ stay fixed, so changes in rates come entirely from changes in the flagged cases."
+  paragraphs:
+  - ROC
+  - M08 | Interpretation
+  - What the answer means Each ROC point represents a different capture-versus-interruption
+    tradeoff. These are selected points, not the full curve. The ROC curve itself
+    does not choose the economically appropriate threshold. Why these steps matter
+    The curve shows possible operating choices, not one mandatory threshold. Moving
+    toward higher capture may also interrupt more legitimate activity. In this small
+    set, the denominators stay fixed, so changes in rates come entirely from changes
+    in the flagged cases.
+  source:
+    pages:
+    - 262
+    verbatim: true
+source:
+  pages:
+  - 257
+  - 258
+  - 259
+  - 260
+  - 261
+  - 262
+  verbatim: true
+readAloud:
+- Flag a transaction if its score reaches the cutoff. Count the resulting true and
+  false positives, then divide each by its own actual-class total. A receiver operating
+  characteristic (ROC) curve places FPR on the horizontal axis and TPR on the vertical
+  axis. Each threshold supplies one operating point. The denominator remains three
+  frauds or three legitimate cases while the cutoff changes.
+siteAuthored: false
+givens:
+  scores:
+  - 0.9
+  - 0.8
+  - 0.7
+  - 0.4
+  - 0.3
+  - 0.1
+  labels:
+  - 1
+  - 0
+  - 1
+  - 0
+  - 1
+  - 0
+  thresholds:
+  - 0.85
+  - 0.65
+  - 0.25
+labels: &id003
+  scores: Fraud-risk scores in transaction order
+  labels: Actual outcomes (1 fraud, 0 legitimate)
+  thresholds: Flagging thresholds in evaluation order
+deckSolution:
+  TP:
+  - 1
+  - 2
+  - 3
+  FP:
+  - 0
+  - 1
+  - 2
+  FPR:
+  - 0
+  - 0.3333333333333333
+  - 0.6666666666666666
+  TPR:
+  - 0.3333333333333333
+  - 0.6666666666666666
+  - 1
+latex:
+- TPR=\frac{TP}{TP+FN},\quad FPR=\frac{FP}{FP+TN}
+- \hat y_i=\mathbf1[s_i\ge t]
+symbols:
+- symbol: TP
+  meaning: 'True positives: actual frauds correctly flagged. “True” means the prediction
+    matches the outcome.'
+  source: *id001
+- symbol: FP
+  meaning: 'False positives: legitimate transactions incorrectly flagged.'
+  source: *id001
+- symbol: FN
+  meaning: 'False negatives: actual frauds incorrectly passed or left unflagged.'
+  source: *id001
+- symbol: TN
+  meaning: 'True negatives: legitimate transactions correctly passed.'
+  source: *id001
+- symbol: si , i
+  meaning: Fraud-risk score for transaction i; higher scores indicate higher modeled
+    risk.
+  source: *id001
+- symbol: t
+  meaning: Decision threshold, not a time index in this exercise.
+  source: *id001
+- symbol: ŷi
+  meaning: 'Predicted label: 1 means flagged and 0 means unflagged.'
+  source: *id002
+- symbol: 1(si ≥ t)
+  meaning: 'Indicator: 1 if the score is at least the threshold, otherwise 0.'
+  source: *id002
+- symbol: TPR
+  meaning: True-positive rate, identical to recall for the defined positive class.
+  source: *id002
+- symbol: FPR
+  meaning: False-positive rate among actual legitimate transactions.
+  source: *id002
+- symbol: ROC operating point
+  meaning: Ordered pair (F P R, T P R) for a single threshold; the first coordinate
+    is horizontal.
+  source: *id002
+- symbol: Threshold sweep
+  meaning: Repeating the decision and counting process at several cutoffs to trace
+    the curve.
+  source: *id002
+steps:
+- id: TP
+  title: True positives at each threshold
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id004
+  - For each threshold, count flagged transactions whose label is 1.
+  mistakes:
+  - pattern: recompute
+    message: For each threshold, count flagged transactions whose label is 1.
+- id: FP
+  title: False positives at each threshold
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - For each threshold, count flagged transactions whose label is 0.
+  mistakes:
+  - pattern: recompute
+    message: For each threshold, count flagged transactions whose label is 0.
+- id: FPR
+  title: False-positive rates at each threshold
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Divide each FP count by the total number of label-0 transactions.
+  mistakes:
+  - pattern: recompute
+    message: Divide each FP count by the total number of label-0 transactions.
+- id: TPR
+  title: True-positive rates at each threshold
+  expects: cells
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Divide each TP count by the total number of label-1 transactions.
+  mistakes:
+  - pattern: recompute
+    message: Divide each TP count by the total number of label-1 transactions.
+learning:
+  title: Move the Threshold
+  scenario: Fraud scores and actual labels are listed in matching transaction order.
+    Label 1 means fraud and 0 means legitimate. Flag scores at or above each threshold.
+  task: For each threshold, count TP and FP, then calculate TPR and FPR. Enter results
+    in threshold order. Plot FPR horizontally and TPR vertically to locate the ROC
+    operating points.
+  interpretation: Changing a threshold changes who is flagged. Actual fraud and legitimate
+    population counts stay fixed. An ROC curve shows possible tradeoffs but does not
+    choose a cost-effective policy for you.
+  summary: 'True-positive rates: {TPR}. False-positive rates: {FPR}.'
+  labels: *id003
+  steps:
+    TP:
+      title: True positives at each threshold
+      hints: *id004
+      unit: ''
+    FP:
+      title: False positives at each threshold
+      hints: *id005
+      unit: ''
+    FPR:
+      title: False-positive rates at each threshold
+      hints: *id006
+      unit: proportion
+    TPR:
+      title: True-positive rates at each threshold
+      hints: *id007
+      unit: proportion
+  readAloud:
+  - Flag a transaction if its score reaches the cutoff. Count the resulting true and
+    false positives, then divide each by its own actual-class total. A receiver operating
+    characteristic (ROC) curve places FPR on the horizontal axis and TPR on the vertical
+    axis. Each threshold supplies one operating point. The denominator remains three
+    frauds or three legitimate cases while the cutoff changes.
+  workedExplanation:
+  - 'Each ROC point represents a different capture-versus-interruption tradeoff. These
+    are selected points, not the full curve. The ROC curve itself does not choose
+    the economically appropriate threshold. '
+  - The curve shows possible operating choices, not one mandatory threshold. Moving
+    toward higher capture may also interrupt more legitimate activity. In this small
+    set, the denominators stay fixed, so changes in rates come entirely from changes
+    in the flagged cases.
+  workedArithmetic:
+  - There are three actual frauds and three legitimate transactions.
+  - 'At 0.85, only A is flagged: TP = 1, FP = 0, so (FPR, TPR) = (0/3, 1/3).'
+  - 'At 0.65, A, B and C are flagged: TP = 2, FP = 1, so (FPR, TPR) = (1/3, 2/3).'
+  - 'At 0.25, A through E are flagged: TP = 3, FP = 2, so (FPR, TPR) = (2/3, 1).'
+formulaSource:
+  pages:
+  - 257
+  verbatim: false
+  reviewed: true

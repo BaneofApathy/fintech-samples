@@ -1,0 +1,420 @@
+slug: reinforcement-learning
+number: 11
+title: Reinforcement Learning / Q-Learning
+group: Choose an action
+oneLine: Compare execution policies on cost, completion, and tail risk.
+baseline: 'TWAP: execute an equal quantity in each interval.'
+primerSlides:
+- page: 155
+  title: 'Primer 11A: Reinforcement learning – definition and intuition'
+  text: " Primer 11A: Reinforcement learning – definition and intuition\n\n\n   Financial\
+    \ problem: What sequence of actions should a financial system take when each action\
+    \ changes the\n   next state and the eventual reward?\n\n\n\n Definition     \
+    \                                                                            \
+    \             Plain-English intuition\n Reinforcement learning trains an agent\
+    \ to choose actions                                                The agent learns\
+    \ from consequences over time. The\n from states in order to maximize cumulative\
+    \ reward.                                                     hard part is defining\
+    \ a reward and evaluation\n Q-learning estimates action values; deep RL uses neural\
+    \                                                 environment that match the real\
+    \ objective without\n networks for larger state spaces.                      \
+    \                                                 enabling unsafe exploration.\n\
+    \n Input → output                                                            \
+    \                              Anchor idea\n Input: States, allowed actions, transitions\
+    \ or logged trajectories, a                                                  \
+    \                  PT\n reward function, and a simulator or safe offline evaluation\
+    \ method.\n                                                                  \
+    \                                                          Maximize E[    t=0\n\
+    \                                                                            \
+    \                                                                     γ t rt ].\n\
+    \ Output: A policy that maps a state to an action, not merely a\n one-time prediction.\n\
+    \ What it learns: A policy for the environment represented in training. It may\
+    \ exploit flaws in the simulator or reward."
+  paragraphs:
+  - 'Primer 11A: Reinforcement learning – definition and intuition'
+  - 'Financial problem: What sequence of actions should a financial system take when
+    each action changes the next state and the eventual reward?'
+  - Definition Plain-English intuition Reinforcement learning trains an agent to choose
+    actions The agent learns from consequences over time. The from states in order
+    to maximize cumulative reward. hard part is defining a reward and evaluation Q-learning
+    estimates action values; deep RL uses neural environment that match the real objective
+    without networks for larger state spaces. enabling unsafe exploration.
+  - 'Input → output Anchor idea Input: States, allowed actions, transitions or logged
+    trajectories, a PT reward function, and a simulator or safe offline evaluation
+    method. Maximize E[ t=0 γ t rt ]. Output: A policy that maps a state to an action,
+    not merely a one-time prediction. What it learns: A policy for the environment
+    represented in training. It may exploit flaws in the simulator or reward.'
+  source:
+    pages:
+    - 155
+    verbatim: true
+- page: 156
+  title: 'Primer 11B: Reinforcement learning – worked fintech example'
+  text: " Primer 11B: Reinforcement learning – worked fintech example\n\n\n Trade\
+    \ execution over ten intervals\n A trader must buy 1,000 shares by the end of\
+    \ ten intervals while balancing market impact, price movement,\n and completion\
+    \ risk.\n\n\n From data to action                                            \
+    \               Comparison point\n1. State: remaining shares, time, spread, volatility,\
+    \ and recent               Baseline: TWAP, VWAP, or a fixed rule\n           \
+    \                                                                    policy.\n\
+    \   volume.\n2. Actions: choose how many shares to execute now; reward\n   penalizes\
+    \ cost, impact, and incomplete orders.\n                                     \
+    \                                          Control to teach\n                \
+    \                                                               Watch for: Reward\
+    \ hacking, unsafe\n3. Compare the learned policy against TWAP / equal-slice execution\
+    \             exploration, simulator mismatch,\n   in unseen simulations.    \
+    \                                                  nonstationarity, hidden transaction\
+    \ costs,\n                                                                   \
+    \            and irreproducible results.\n4. Run stress tests for thin liquidity\
+    \ and volatility spikes; enforce hard\n   completion and risk limits."
+  paragraphs:
+  - 'Primer 11B: Reinforcement learning – worked fintech example'
+  - Trade execution over ten intervals A trader must buy 1,000 shares by the end of
+    ten intervals while balancing market impact, price movement, and completion risk.
+  - 'From data to action Comparison point 1. State: remaining shares, time, spread,
+    volatility, and recent Baseline: TWAP, VWAP, or a fixed rule policy. volume. 2.
+    Actions: choose how many shares to execute now; reward penalizes cost, impact,
+    and incomplete orders. Control to teach Watch for: Reward hacking, unsafe 3. Compare
+    the learned policy against TWAP / equal-slice execution exploration, simulator
+    mismatch, in unseen simulations. nonstationarity, hidden transaction costs, and
+    irreproducible results. 4. Run stress tests for thin liquidity and volatility
+    spikes; enforce hard completion and risk limits.'
+  source:
+    pages:
+    - 156
+    verbatim: true
+- page: 157
+  title: 'Primer 11C: Reinforcement learning – when to use it, and when not to'
+  text: " Primer 11C: Reinforcement learning – when to use it, and when not to\n\n\
+    \n Use it when                                                           Do not\
+    \ use it when\n▶ Decisions are sequential and affect future options. ▶ The decision\
+    \ is one-shot and supervised learning\n▶ Feedback is delayed and cumulative. \
+    \                  suffices.\n\n▶ A credible simulator or rich logged policy data\
+    \                      ▶ There is no defensible reward function.\n  exist.   \
+    \                                                            ▶ Exploration can\
+    \ harm customers or markets.\n▶ Safe offline evaluation and hard constraints are\
+    \                     ▶ The environment changes faster than the policy\n  possible.\
+    \                                                              can be validated.\n\
+    ▶ The value over a simple policy is material and                       ▶ Logged\
+    \ data do not support off-policy evaluation.\n  testable.\n\n Better fit in those\
+    \ cases\n Use supervised prediction plus explicit optimization, contextual bandits\
+    \ for simpler repeated choices, or deterministic control policies\n when safety\
+    \ dominates."
+  paragraphs:
+  - 'Primer 11C: Reinforcement learning – when to use it, and when not to'
+  - Use it when Do not use it when ▶ Decisions are sequential and affect future options.
+    ▶ The decision is one-shot and supervised learning ▶ Feedback is delayed and cumulative.
+    suffices.
+  - ▶ A credible simulator or rich logged policy data ▶ There is no defensible reward
+    function. exist. ▶ Exploration can harm customers or markets. ▶ Safe offline evaluation
+    and hard constraints are ▶ The environment changes faster than the policy possible.
+    can be validated. ▶ The value over a simple policy is material and ▶ Logged data
+    do not support off-policy evaluation. testable.
+  - Better fit in those cases Use supervised prediction plus explicit optimization,
+    contextual bandits for simpler repeated choices, or deterministic control policies
+    when safety dominates.
+  source:
+    pages:
+    - 157
+    verbatim: true
+- page: 158
+  title: 'Primer 11D: Reinforcement learning – fintech problem map'
+  text: " Primer 11D: Reinforcement learning – fintech problem map\n\n\n\n Common\
+    \ fintech problems                                                     Operational\
+    \ profile\n▶ Algorithmic trade execution ▶ Fraud intervention strategy       \
+    \           ▶ Latency: depends on policy\n▶ Dynamic liquidity                \
+    \         ▶ Dynamic credit-limit           ▶ Explainability: low\n  management\
+    \                                  experiments                    ▶ Data need:\
+    \ high / sequential\n▶ Adaptive collections                      ▶ Market making\
+    \ in simulation    ▶ Monitor: reward, constraints, policy\n  sequencing      \
+    \                          ▶ Cash-management policy           drift, tail outcomes\n\
+    ▶ Personalized offer timing                   learning\n\n\n\n   Student defense\
+    \ question: Can the student show that the reward, simulator, and offline\n   evaluation\
+    \ represent the real business objective – not a convenient proxy?"
+  paragraphs:
+  - 'Primer 11D: Reinforcement learning – fintech problem map'
+  - 'Common fintech problems Operational profile ▶ Algorithmic trade execution ▶ Fraud
+    intervention strategy ▶ Latency: depends on policy ▶ Dynamic liquidity ▶ Dynamic
+    credit-limit ▶ Explainability: low management experiments ▶ Data need: high /
+    sequential ▶ Adaptive collections ▶ Market making in simulation ▶ Monitor: reward,
+    constraints, policy sequencing ▶ Cash-management policy drift, tail outcomes ▶
+    Personalized offer timing learning'
+  - 'Student defense question: Can the student show that the reward, simulator, and
+    offline evaluation represent the real business objective – not a convenient proxy?'
+  source:
+    pages:
+    - 158
+    verbatim: true
+definition: Reinforcement learning trains an agent to choose actions from states in
+  order to maximize cumulative reward. Q-learning estimates action values; deep RL
+  uses neural networks for larger state spaces.
+intuition: The agent learns from consequences over time. The hard part is defining
+  a reward and evaluation environment that match the real objective without enabling
+  unsafe exploration.
+useWhen:
+- Decisions are sequential and affect future options.
+- The decision is
+- Feedback is delayed and cumulative. suffices.
+- A credible simulator or rich logged policy data exist.
+- Safe offline evaluation and hard constraints are possible.
+- The value over a simple policy is material and testable.
+avoidWhen:
+- There is no defensible reward function.
+- Exploration can harm customers or markets.
+- The environment changes faster than the policy can be validated.
+- Logged data do not support off-policy evaluation.
+deepDive:
+  problem:
+  - page: 668
+    title: 'Financial problem: how should a large order be executed over time?'
+    text: " Financial problem: how should a large order be executed over time?\n\n\
+      \n\n    Financial problem\n    A trading desk must buy 10,000 shares over ten\
+      \ intervals. Trading too quickly can move the\n    market; trading too slowly\
+      \ risks adverse price movement and an incomplete order.\n\n\n Sequential decision\n\
+      \ The best action now depends on time remaining, inventory remaining, current\
+      \ liquidity, price\n movement, and prior actions.\n\n   Decision to make: Learn\
+      \ a policy for a sequence of actions, then compare it against\n   deterministic\
+      \ execution baselines."
+    paragraphs:
+    - 'Financial problem: how should a large order be executed over time?'
+    - Financial problem A trading desk must buy 10,000 shares over ten intervals.
+      Trading too quickly can move the market; trading too slowly risks adverse price
+      movement and an incomplete order.
+    - Sequential decision The best action now depends on time remaining, inventory
+      remaining, current liquidity, price movement, and prior actions.
+    - 'Decision to make: Learn a policy for a sequence of actions, then compare it
+      against deterministic execution baselines.'
+    source:
+      pages:
+      - 668
+      verbatim: true
+  method:
+  - page: 669
+    title: 'Method: define the MDP before training'
+    text: " Method: define the MDP before training\n\n\n    Element              \
+      \                   Execution example\n    State st                        \
+      \        Time remaining, inventory, spread, volume, volatility, recent price\
+      \ move\n    Action at                               Number of shares to buy\
+      \ now or aggressiveness level\n    Reward rt                               Negative\
+      \ slippage, market impact, risk, and incomplete-order penalty\n    Policy π(a\
+      \ | s)                         Rule mapping current state to an action\n   \
+      \ Environment                             Historical replay or market simulator\n\
+      \n\n Most failures begin here\n A poorly designed reward can produce a high-scoring\
+      \ agent that delays trades, exploits the\n simulator, or violates the actual\
+      \ business objective.\n Baseline: TWAP: execute an equal quantity in each interval."
+    paragraphs:
+    - 'Method: define the MDP before training'
+    - Element Execution example State st Time remaining, inventory, spread, volume,
+      volatility, recent price move Action at Number of shares to buy now or aggressiveness
+      level Reward rt Negative slippage, market impact, risk, and incomplete-order
+      penalty Policy π(a | s) Rule mapping current state to an action Environment
+      Historical replay or market simulator
+    - 'Most failures begin here A poorly designed reward can produce a high-scoring
+      agent that delays trades, exploits the simulator, or violates the actual business
+      objective. Baseline: TWAP: execute an equal quantity in each interval.'
+    source:
+      pages:
+      - 669
+      verbatim: true
+  economics:
+  - page: 670
+    title: 'Q-learning: the core update'
+    text: " Q-learning: the core update\n\n\n\n                                  \
+      \                                h                                    i\n  \
+      \                                   Q(st , at ) ← Q(st , at ) + α rt + γ max\
+      \ Q(st+1 , a) − Q(st , at )\n                                              \
+      \                             a\n\n\n\n\n Exploration                      \
+      \                                     Exploitation\n Try actions that may be\
+      \ better than the current                       Choose the action with the largest\
+      \ estimated\n policy, often with an ϵ-greedy strategy.                     \
+      \         long-run value.\n Watch for: Financial markets are nonstationary.\
+      \ A policy learned in one regime may fail under\n different liquidity, volatility,\
+      \ or participant behavior."
+    paragraphs:
+    - 'Q-learning: the core update'
+    - h i Q(st , at ) ← Q(st , at ) + α rt + γ max Q(st+1 , a) − Q(st , at ) a
+    - 'Exploration Exploitation Try actions that may be better than the current Choose
+      the action with the largest estimated policy, often with an ϵ-greedy strategy.
+      long-run value. Watch for: Financial markets are nonstationary. A policy learned
+      in one regime may fail under different liquidity, volatility, or participant
+      behavior.'
+    source:
+      pages:
+      - 670
+      verbatim: true
+  - page: 672
+    title: How to evaluate reinforcement learning
+    text: " How to evaluate reinforcement learning\n\n\n\n1. Compare against TWAP,\
+      \ VWAP, and simple adaptive policies.\n2. Run many random seeds; report distributions,\
+      \ not one lucky trajectory.\n3. Evaluate out of sample across volatility and\
+      \ liquidity regimes.\n4. Check constraint violations and incomplete orders explicitly.\n\
+      5. Stress the simulator and test for reward hacking.\n6. Use shadow mode before\
+      \ any live action.\n Primary metric: Implementation shortfall, tail slippage,\
+      \ completion rate, and constraint violations.\n Required artifact: Baseline\
+      \ comparison, reward specification, stress scenarios, and trace of\n decisions."
+    paragraphs:
+    - How to evaluate reinforcement learning
+    - '1. Compare against TWAP, VWAP, and simple adaptive policies. 2. Run many random
+      seeds; report distributions, not one lucky trajectory. 3. Evaluate out of sample
+      across volatility and liquidity regimes. 4. Check constraint violations and
+      incomplete orders explicitly. 5. Stress the simulator and test for reward hacking.
+      6. Use shadow mode before any live action. Primary metric: Implementation shortfall,
+      tail slippage, completion rate, and constraint violations. Required artifact:
+      Baseline comparison, reward specification, stress scenarios, and trace of decisions.'
+    source:
+      pages:
+      - 672
+      verbatim: true
+  code:
+  - page: 671
+    title: 'Working example: a tiny execution agent'
+    text: " Working example: a tiny execution agent\n\n\n  import numpy as np\n  rng\
+      \ = np.random.default_rng(5)\n  T, inventory0, actions = 10, 10, np.array([0,1,2])\n\
+      \                                                                          \
+      \                                             Important\n  Q = np.zeros((T+1,\
+      \ inventory0+1, len(actions)))\n  alpha, gamma, eps = .15, .95, .20        \
+      \                                                                          \
+      \  This is a teaching\n  for episode in range(8000):                       \
+      \                                                                   environment,\
+      \ not a\n      inv = inventory0\n      for t in range(T):                  \
+      \                                                                          \
+      \   market model. Students\n          valid = np.where(actions <= inv)[0]\n\
+      \          a_idx = rng.choice(valid) if rng.random() < eps else valid[np.argmax(Q[t,inv,valid])]\
+      \                        should inspect how the\n          qty = actions[a_idx]\n\
+      \          impact = .08 * qty**2                                           \
+      \                                             policy changes when:\n       \
+      \   price_risk = rng.normal(0, .10) * inv\n          next_inv = inv - qty\n\
+      \          reward = -(impact + price_risk)\n                               \
+      \                                                                          \
+      \              ▶ impact rises,\n          if t == T-1: reward -= 5.0 * next_inv\
+      \ # incomplete penalty\n          next_valid = np.where(actions <= next_inv)[0]\
+      \                                                                ▶ penalty rises,\n\
+      \          future = 0 if t == T-1 else Q[t+1,next_inv,next_valid].max()\n  \
+      \        Q[t,inv,a_idx] += alpha * (reward + gamma*future - Q[t,inv,a_idx])\n\
+      \          inv = next_inv\n                                                \
+      \                                                                       ▶ volatility\
+      \ rises.\n  policy, inv = [], inventory0\n  for t in range(T):\n      valid\
+      \ = np.where(actions <= inv)[0]\n      qty = actions[valid[np.argmax(Q[t,inv,valid])]]\n\
+      \      policy.append(qty); inv -= qty\n  print(\"illustrative actions:\", policy,\
+      \ \"remaining:\", inv)"
+    paragraphs:
+    - 'Working example: a tiny execution agent'
+    - 'import numpy as np rng = np.random.default_rng(5) T, inventory0, actions =
+      10, 10, np.array([0,1,2]) Important Q = np.zeros((T+1, inventory0+1, len(actions)))
+      alpha, gamma, eps = .15, .95, .20 This is a teaching for episode in range(8000):
+      environment, not a inv = inventory0 for t in range(T): market model. Students
+      valid = np.where(actions <= inv)[0] a_idx = rng.choice(valid) if rng.random()
+      < eps else valid[np.argmax(Q[t,inv,valid])] should inspect how the qty = actions[a_idx]
+      impact = .08 * qty**2 policy changes when: price_risk = rng.normal(0, .10) *
+      inv next_inv = inv - qty reward = -(impact + price_risk) ▶ impact rises, if
+      t == T-1: reward -= 5.0 * next_inv # incomplete penalty next_valid = np.where(actions
+      <= next_inv)[0] ▶ penalty rises, future = 0 if t == T-1 else Q[t+1,next_inv,next_valid].max()
+      Q[t,inv,a_idx] += alpha * (reward + gamma*future - Q[t,inv,a_idx]) inv = next_inv
+      ▶ volatility rises. policy, inv = [], inventory0 for t in range(T): valid =
+      np.where(actions <= inv)[0] qty = actions[valid[np.argmax(Q[t,inv,valid])]]
+      policy.append(qty); inv -= qty print("illustrative actions:", policy, "remaining:",
+      inv)'
+    source:
+      pages:
+      - 671
+      verbatim: true
+  choice:
+  - page: 673
+    title: When reinforcement learning fits
+    text: " When reinforcement learning fits\n\n\n\n Use it when                 \
+      \                        Avoid or constrain it when\n▶ Decisions are sequential\
+      \ and affect future         ▶ A one-step prediction or optimizer solves the\n\
+      \  states.                                              task.\n▶ A credible\
+      \ simulator or safe interaction loop      ▶ Exploration can cause real harm.\n\
+      \  exists.                                            ▶ The simulator is unrealistic.\n\
+      ▶ Rewards and constraints can be specified.          ▶ Reward design omits important\
+      \ obligations.\n▶ Strong baselines and monitoring are available.\n\n\n   Student\
+      \ defense question: Could the agent reduce average slippage by taking unacceptable\
+      \ tail\n   risk? Which metric would reveal it?"
+    paragraphs:
+    - When reinforcement learning fits
+    - Use it when Avoid or constrain it when ▶ Decisions are sequential and affect
+      future ▶ A one-step prediction or optimizer solves the states. task. ▶ A credible
+      simulator or safe interaction loop ▶ Exploration can cause real harm. exists.
+      ▶ The simulator is unrealistic. ▶ Rewards and constraints can be specified.
+      ▶ Reward design omits important obligations. ▶ Strong baselines and monitoring
+      are available.
+    - 'Student defense question: Could the agent reduce average slippage by taking
+      unacceptable tail risk? Which metric would reveal it?'
+    source:
+      pages:
+      - 673
+      verbatim: true
+financialProblem: 'A trading desk must buy 10,000 shares over ten intervals. Trading
+  too quickly can move the market; trading too slowly risks adverse price movement
+  and an incomplete order. Sequential decision The best action now depends on time
+  remaining, inventory remaining, current liquidity, price movement, and prior actions.
+  Decision to make: Learn a policy for a sequence of actions, then compare it against
+  deterministic execution baselines.'
+defenseQuestions:
+- text: Can the student show that the reward, simulator, and offline evaluation represent
+    the real business objective – not a convenient proxy?
+  source:
+    pages:
+    - 158
+    verbatim: true
+- text: Could the agent reduce average slippage by taking unacceptable tail risk?
+    Which metric would reveal it?
+  source:
+    pages:
+    - 673
+    verbatim: true
+exercises:
+- A11
+- S03
+- S04
+measures:
+- maximum-drawdown-turnover-tracking-error
+- cumulative-reward-and-regret
+- latency-throughput-review-load-cost
+widgets:
+- execution-update
+lab:
+  dataset: Instructor market simulator
+  task: Execution policy
+  requiredComparison: TWAP / VWAP
+  source:
+    pages:
+    - 684
+    verbatim: false
+source:
+  pages:
+  - 154
+  - 155
+  - 156
+  - 157
+  - 158
+  - 159
+  - 160
+  - 161
+  - 162
+  - 163
+  - 164
+  - 165
+  - 166
+  - 167
+  - 168
+  - 169
+  - 170
+  - 171
+  - 172
+  - 173
+  - 174
+  - 175
+  - 176
+  - 177
+  - 178
+  - 179
+  - 667
+  - 668
+  - 669
+  - 670
+  - 671
+  - 672
+  - 673
+  verbatim: true

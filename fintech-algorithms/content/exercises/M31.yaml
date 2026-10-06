@@ -1,0 +1,503 @@
+id: M31
+title: Return Relative to Which Risk?
+minutes: 7
+kind: measure
+parent: sharpe-and-sortino-ratios
+question: "Two hypothetical funds have these annualized arithmetic mean returns and\
+  \ risk estimates,\n calculated consistently for the same period.\n   Fund      \
+  \                                     Mean return   Total volatility        Downside\
+  \ deviation\n   A                                                      9%      \
+  \            12%                      6%\n   B                                 \
+  \                    11%                  20%                      8%\n\n The risk-free\
+  \ rate and minimum acceptable return are both 3%. Downside deviation has already\n\
+  \ been calculated relative to that target.\n                                 r̄\
+  \ − rf                    r̄ − target\n                     Sharpe =           \
+  \ , Sortino =                        .\n                                    σ  \
+  \                downside deviation\n Calculate both ratios. Does Fund B’s higher\
+  \ return make it better on either measure?"
+questionPages:
+- page: 489
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Class problem | 7 minutes — Return Relative\
+    \ to Which Risk?\n\n Two hypothetical funds have these annualized arithmetic mean\
+    \ returns and risk estimates,\n calculated consistently for the same period.\n\
+    \   Fund                                           Mean return   Total volatility\
+    \        Downside deviation\n   A                                            \
+    \          9%                  12%                      6%\n   B             \
+    \                                        11%                  20%            \
+    \          8%\n\n The risk-free rate and minimum acceptable return are both 3%.\
+    \ Downside deviation has already\n been calculated relative to that target.\n\
+    \                                 r̄ − rf                    r̄ − target\n   \
+    \                  Sharpe =            , Sortino =                        .\n\
+    \                                    σ                  downside deviation\n Calculate\
+    \ both ratios. Does Fund B’s higher return make it better on either measure?"
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Class problem | 7 minutes — Return Relative to Which Risk?
+  - Two hypothetical funds have these annualized arithmetic mean returns and risk
+    estimates, calculated consistently for the same period. Fund Mean return Total
+    volatility Downside deviation A 9% 12% 6% B 11% 20% 8%
+  - The risk-free rate and minimum acceptable return are both 3%. Downside deviation
+    has already been calculated relative to that target. r̄ − rf r̄ − target Sharpe
+    = , Sortino = . σ downside deviation Calculate both ratios. Does Fund B’s higher
+    return make it better on either measure?
+  source:
+    pages:
+    - 489
+    verbatim: true
+formulaPages:
+- page: 482
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Formula explained (1/3)\n\n Question: How\
+    \ much average return did the fund earn above its reference rate for each unit\
+    \ of\n measured risk?\n                                 r̄ − rf              \
+    \  r̄ − rtarget\n                     Sharpe =            ,   Sortino =      \
+    \         .\n                                    σ                      σdown\n\
+    \ Read it aloud: Subtract the reference return from the fund’s average return,\
+    \ then divide by the\n relevant risk measure. Sharpe uses total variability; Sortino\
+    \ uses shortfalls below a specified\n target.\n All inputs in this example are\
+    \ already annualized on a consistent basis. Do not annualize the\n ratios a second\
+    \ time. Use either decimals throughout or percentages throughout a ratio."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Formula explained (1/3)
+  - 'Question: How much average return did the fund earn above its reference rate
+    for each unit of measured risk? r̄ − rf r̄ − rtarget Sharpe = , Sortino = . σ
+    σdown Read it aloud: Subtract the reference return from the fund’s average return,
+    then divide by the relevant risk measure. Sharpe uses total variability; Sortino
+    uses shortfalls below a specified target. All inputs in this example are already
+    annualized on a consistent basis. Do not annualize the ratios a second time. Use
+    either decimals throughout or percentages throughout a ratio.'
+  source:
+    pages:
+    - 482
+    verbatim: true
+- page: 483
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Formula explained (2/3)\n\n What do the risk\
+    \ denominators mean?\n For a sequence of same-period returns, common sample definitions\
+    \ are:\n                                                  sP\n               \
+    \                    n                    n             2\n                  \
+    \              1X                      t=1 (rt − r̄)\n                       \
+    \    r̄ =       rt ,   sr =                       ,\n                        \
+    \        n t=1                     n−1\n                                    v\n\
+    \                                    u      n\n                              \
+    \      u1 X\n                               dr = t        min(rt − rtarget , 0)2\
+    \ .\n                                       n t=1"
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Formula explained (2/3)
+  - 'What do the risk denominators mean? For a sequence of same-period returns, common
+    sample definitions are: sP n n 2 1X t=1 (rt − r̄) r̄ = rt , sr = , n t=1 n−1 v
+    u n u1 X dr = t min(rt − rtarget , 0)2 . n t=1'
+  source:
+    pages:
+    - 483
+    verbatim: true
+- page: 484
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Formula explained (3/3)\n\n Read it aloud:\
+    \ Total standard deviation measures departures from the average. Downside\n deviation,\
+    \ under the stated convention, counts only departures below the target but divides\
+    \ by\n all periods, including those above target.\n These equations explain the\
+    \ denominators; the original problem supplies the annualized\n estimates. Its\
+    \ raw return history is not provided, so those estimates cannot be independently\n\
+    \ reconstructed here."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Formula explained (3/3)
+  - 'Read it aloud: Total standard deviation measures departures from the average.
+    Downside deviation, under the stated convention, counts only departures below
+    the target but divides by all periods, including those above target. These equations
+    explain the denominators; the original problem supplies the annualized estimates.
+    Its raw return history is not provided, so those estimates cannot be independently
+    reconstructed here.'
+  source:
+    pages:
+    - 484
+    verbatim: true
+symbolPages:
+- page: 485
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Symbols and terms (1/4)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   r̄        \
+    \                                     Arithmetic mean return: add same-period\
+    \ returns and divide by their\n                                              \
+    \    number; not a compounded growth rate.\n   rf                            \
+    \                 Reference risk-free rate used for Sharpe; 3% annually in this\n\
+    \                                                  hypothetical example.\n   rtarget\
+    \                                        Minimum acceptable return used for Sortino;\
+    \ also 3% here, but not\n                                                  necessarily\
+    \ equal to the risk-free rate in other exercises.\n   σ                      \
+    \                        Supplied annualized total volatility: a standard-deviation\
+    \ measure of\n                                                  return variability."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Symbols and terms (1/4)
+  - 'Symbol or term Meaning in this example r̄ Arithmetic mean return: add same-period
+    returns and divide by their number; not a compounded growth rate. rf Reference
+    risk-free rate used for Sharpe; 3% annually in this hypothetical example. rtarget
+    Minimum acceptable return used for Sortino; also 3% here, but not necessarily
+    equal to the risk-free rate in other exercises. σ Supplied annualized total volatility:
+    a standard-deviation measure of return variability.'
+  source: &id001
+    pages:
+    - 485
+    verbatim: true
+- page: 486
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Symbols and terms (2/4)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   σdown     \
+    \                                     Supplied annualized downside deviation relative\
+    \ to the 3% target.\n   t, n, rt                                       Period\
+    \ index, number of observed periods, and return during period t\n            \
+    \                                      in the explanatory sample equations."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Symbols and terms (2/4)
+  - Symbol or term Meaning in this example σdown Supplied annualized downside deviation
+    relative to the 3% target. t, n, rt Period index, number of observed periods,
+    and return during period t in the explanatory sample equations.
+  source: &id002
+    pages:
+    - 486
+    verbatim: true
+- page: 487
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Symbols and terms (3/4)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   sr        \
+    \                                     Sample standard deviation of the unannualized\
+    \ same-period returns;\n                                                  the\
+    \ denominator n − 1 reflects estimation of their mean.\n   dr                \
+    \                             Same-period downside deviation using every period\
+    \ in its\n                                                  denominator, including\
+    \ periods with a zero downside term.\n   min(x, 0)                           \
+    \           Keep x when it is negative; otherwise use zero. Squaring then makes\n\
+    \                                                  each shortfall contribution\
+    \ nonnegative.\n   Excess return                                  Mean return\
+    \ minus the relevant reference rate, not the fund’s total\n                  \
+    \                                return."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Symbols and terms (3/4)
+  - Symbol or term Meaning in this example sr Sample standard deviation of the unannualized
+    same-period returns; the denominator n − 1 reflects estimation of their mean.
+    dr Same-period downside deviation using every period in its denominator, including
+    periods with a zero downside term. min(x, 0) Keep x when it is negative; otherwise
+    use zero. Squaring then makes each shortfall contribution nonnegative. Excess
+    return Mean return minus the relevant reference rate, not the fund’s total return.
+  source: &id003
+    pages:
+    - 487
+    verbatim: true
+- page: 488
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Symbols and terms (4/4)\n\n\n   Symbol or\
+    \ term                                 Meaning in this example\n   Annualized\
+    \                                     Expressed on a yearly scale; mean and risk\
+    \ inputs must use a\n                                                  compatible\
+    \ convention.\n   Unitless ratio                                 Return units\
+    \ cancel in the division; a result of 0.50 is not a 50%\n                    \
+    \                              investment return."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Symbols and terms (4/4)
+  - Symbol or term Meaning in this example Annualized Expressed on a yearly scale;
+    mean and risk inputs must use a compatible convention. Unitless ratio Return units
+    cancel in the division; a result of 0.50 is not a 50% investment return.
+  source: &id004
+    pages:
+    - 488
+    verbatim: true
+solutionPages:
+- page: 490
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Worked solution — Return Relative to Which\
+    \ Risk?\n\n1. Excess returns: A = 9% − 3% = 6%; B = 11% − 3% = 8%.\n2. Sharpe\
+    \ ratios:\n                                          SharpeA = 6/12 = 0.50,  \
+    \   SharpeB = 8/20 = 0.40.\n3. Sortino ratios:\n                             \
+    \               SortinoA = 6/6 = 1.00,   SortinoB = 8/8 = 1.00.\n4. Comparison:\
+    \ A has more excess return per unit of total volatility. Both have the same\n\
+    \   excess return per unit of downside deviation."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Worked solution — Return Relative to Which Risk?
+  - '1. Excess returns: A = 9% − 3% = 6%; B = 11% − 3% = 8%. 2. Sharpe ratios: SharpeA
+    = 6/12 = 0.50, SharpeB = 8/20 = 0.40. 3. Sortino ratios: SortinoA = 6/6 = 1.00,
+    SortinoB = 8/8 = 1.00. 4. Comparison: A has more excess return per unit of total
+    volatility. Both have the same excess return per unit of downside deviation.'
+  source:
+    pages:
+    - 490
+    verbatim: true
+interpretationPages:
+- page: 491
+  title: Sharpe and Sortino
+  text: " Sharpe and Sortino\n\n   M31 | Interpretation\n\n What the answer means\n\
+    \ B’s higher return came with more risk. It does not win on either risk-adjusted\
+    \ ratio here. A\n Sharpe ratio of 0.50 means half a unit of excess return per\
+    \ unit of measured volatility—not a\n 50% return or a 50% chance of profit. These\
+    \ estimates do not establish future performance or\n tail safety.\n Why these\
+    \ steps matter\n The numerator rewards performance above the specified reference.\
+    \ The denominator identifies\n the kind of variability being charged against that\
+    \ performance. B’s extra return is not enough to\n overcome its larger total volatility\
+    \ on Sharpe, while both funds have the same return per unit of\n supplied downside\
+    \ deviation."
+  paragraphs:
+  - Sharpe and Sortino
+  - M31 | Interpretation
+  - What the answer means B’s higher return came with more risk. It does not win on
+    either risk-adjusted ratio here. A Sharpe ratio of 0.50 means half a unit of excess
+    return per unit of measured volatility—not a 50% return or a 50% chance of profit.
+    These estimates do not establish future performance or tail safety. Why these
+    steps matter The numerator rewards performance above the specified reference.
+    The denominator identifies the kind of variability being charged against that
+    performance. B’s extra return is not enough to overcome its larger total volatility
+    on Sharpe, while both funds have the same return per unit of supplied downside
+    deviation.
+  source:
+    pages:
+    - 491
+    verbatim: true
+source:
+  pages:
+  - 482
+  - 483
+  - 484
+  - 485
+  - 486
+  - 487
+  - 488
+  - 489
+  - 490
+  - 491
+  verbatim: true
+readAloud:
+- Subtract the reference return from the fund’s average return, then divide by the
+  relevant risk measure. Sharpe uses total variability; Sortino uses shortfalls below
+  a specified target. All inputs in this example are already annualized on a consistent
+  basis. Do not annualize the ratios a second time. Use either decimals throughout
+  or percentages throughout a ratio.
+- Total standard deviation measures departures from the average. Downside deviation,
+  under the stated convention, counts only departures below the target but divides
+  by all periods, including those above target. These equations explain the denominators;
+  the original problem supplies the annualized estimates. Its raw return history is
+  not provided, so those estimates cannot be independently reconstructed here.
+siteAuthored: false
+givens:
+  returnA: 0.09
+  returnB: 0.11
+  rf: 0.03
+  volA: 0.12
+  volB: 0.2
+  downA: 0.06
+  downB: 0.08
+labels: &id005
+  returnA: Fund A annual mean return
+  returnB: Fund B annual mean return
+  rf: Risk-free rate and minimum acceptable return
+  volA: Fund A annual volatility
+  volB: Fund B annual volatility
+  downA: Fund A annual downside deviation
+  downB: Fund B annual downside deviation
+deckSolution:
+  excessA: 0.06
+  excessB: 0.08
+  sharpeA: 0.5
+  sharpeB: 0.4
+  sortinoA: 1
+  sortinoB: 1
+latex:
+- Sharpe=\frac{\bar r-r_f}{\sigma},\quad Sortino=\frac{\bar r-target}{\sigma_{downside}}
+- \bar r=\frac1n\sum_tr_t,\quad s_r=\sqrt{\frac{\sum_t(r_t-\bar r)^2}{n-1}}
+- d_r=\sqrt{\frac1n\sum_t\min(r_t-r_{target},0)^2}
+symbols:
+- symbol: r̄
+  meaning: 'Arithmetic mean return: add same-period returns and divide by their number;
+    not a compounded growth rate.'
+  source: *id001
+- symbol: rf
+  meaning: Reference risk-free rate used for Sharpe; 3% annually in this hypothetical
+    example.
+  source: *id001
+- symbol: rtarget
+  meaning: Minimum acceptable return used for Sortino; also 3% here, but not necessarily
+    equal to the risk-free rate in other exercises.
+  source: *id001
+- symbol: σ
+  meaning: 'Supplied annualized total volatility: a standard-deviation measure of
+    return variability.'
+  source: *id001
+- symbol: σdown
+  meaning: Supplied annualized downside deviation relative to the 3% target.
+  source: *id002
+- symbol: t, n, rt
+  meaning: Period index, number of observed periods, and return during period t in
+    the explanatory sample equations.
+  source: *id002
+- symbol: sr
+  meaning: Sample standard deviation of the unannualized same-period returns; the
+    denominator n − 1 reflects estimation of their mean.
+  source: *id003
+- symbol: dr
+  meaning: Same-period downside deviation using every period in its denominator, including
+    periods with a zero downside term.
+  source: *id003
+- symbol: min(x, 0)
+  meaning: Keep x when it is negative; otherwise use zero. Squaring then makes each
+    shortfall contribution nonnegative.
+  source: *id003
+- symbol: Excess return
+  meaning: Mean return minus the relevant reference rate, not the fund’s total return.
+  source: *id003
+- symbol: Annualized
+  meaning: Expressed on a yearly scale; mean and risk inputs must use a compatible
+    convention.
+  source: *id004
+- symbol: Unitless ratio
+  meaning: Return units cancel in the division; a result of 0.50 is not a 50% investment
+    return.
+  source: *id004
+steps:
+- id: excessA
+  title: Fund A excess return
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Subtract the reference return from A’s mean return.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the reference return from A’s mean return.
+- id: excessB
+  title: Fund B excess return
+  expects: number
+  unit: proportion
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Subtract the reference return from B’s mean return.
+  mistakes:
+  - pattern: recompute
+    message: Subtract the reference return from B’s mean return.
+- id: sharpeA
+  title: Fund A Sharpe ratio
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Divide A’s excess return by A’s total volatility.
+  mistakes:
+  - pattern: recompute
+    message: Divide A’s excess return by A’s total volatility.
+- id: sharpeB
+  title: Fund B Sharpe ratio
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id009
+  - Divide B’s excess return by B’s total volatility.
+  mistakes:
+  - pattern: recompute
+    message: Divide B’s excess return by B’s total volatility.
+- id: sortinoA
+  title: Fund A Sortino ratio
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id010
+  - Divide A’s excess return by A’s downside deviation.
+  mistakes:
+  - pattern: recompute
+    message: Divide A’s excess return by A’s downside deviation.
+- id: sortinoB
+  title: Fund B Sortino ratio
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id011
+  - Divide B’s excess return by B’s downside deviation.
+  mistakes:
+  - pattern: recompute
+    message: Divide B’s excess return by B’s downside deviation.
+learning:
+  title: Return Relative to Which Risk?
+  scenario: Two funds have annualized arithmetic returns, total volatility and downside
+    deviation measured consistently over the same period. The risk-free rate also
+    serves as the minimum acceptable return.
+  task: Calculate each fund’s excess return, Sharpe ratio and Sortino ratio. Inputs
+    are already annualized; do not annualize again.
+  interpretation: Sharpe charges for total volatility; Sortino charges for downside
+    deviation from the stated target. Ratios describe the evaluated return and risk
+    estimates, not guaranteed future performance or tail safety.
+  summary: 'Sharpe ratios: A {sharpeA}, B {sharpeB}. Sortino ratios: A {sortinoA},
+    B {sortinoB}.'
+  labels: *id005
+  steps:
+    excessA:
+      title: Fund A excess return
+      hints: *id006
+      unit: proportion
+    excessB:
+      title: Fund B excess return
+      hints: *id007
+      unit: proportion
+    sharpeA:
+      title: Fund A Sharpe ratio
+      hints: *id008
+      unit: ''
+    sharpeB:
+      title: Fund B Sharpe ratio
+      hints: *id009
+      unit: ''
+    sortinoA:
+      title: Fund A Sortino ratio
+      hints: *id010
+      unit: ''
+    sortinoB:
+      title: Fund B Sortino ratio
+      hints: *id011
+      unit: ''
+  readAloud:
+  - Subtract the reference return from the fund’s average return, then divide by the
+    relevant risk measure. Sharpe uses total variability; Sortino uses shortfalls
+    below a specified target. All inputs in this example are already annualized on
+    a consistent basis. Do not annualize the ratios a second time. Use either decimals
+    throughout or percentages throughout a ratio.
+  - Total standard deviation measures departures from the average. Downside deviation,
+    under the stated convention, counts only departures below the target but divides
+    by all periods, including those above target. These equations explain the denominators;
+    the problem supplies the annualized estimates. Its raw return history is not provided,
+    so those estimates cannot be independently reconstructed here.
+  workedExplanation:
+  - 'B’s higher return came with more risk. It does not win on either risk-adjusted
+    ratio here. A Sharpe ratio of 0.50 means half a unit of excess return per unit
+    of measured volatility—not a 50% return or a 50% chance of profit. These estimates
+    do not establish future performance or tail safety. '
+  - The numerator rewards performance above the specified reference. The denominator
+    identifies the kind of variability being charged against that performance. B’s
+    extra return is not enough to overcome its larger total volatility on Sharpe,
+    while both funds have the same return per unit of supplied downside deviation.
+  workedArithmetic:
+  - 'Excess returns: A = 9% − 3% = 6%; B = 11% − 3% = 8%.'
+  - 'Sharpe ratios: A = 6/12 = 0.50; B = 8/20 = 0.40.'
+  - 'Sortino ratios: A = 6/6 = 1; B = 8/8 = 1. Use consistent percentage units in
+    both numerator and denominator.'
+formulaSource:
+  pages:
+  - 482
+  - 483
+  - 484
+  verbatim: false
+  reviewed: true

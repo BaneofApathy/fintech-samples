@@ -1,0 +1,355 @@
+id: M15
+title: Check Probability Error
+minutes: 7
+kind: measure
+parent: brier-score
+question: "A default model produces:\n   Loan                                    \
+  \       Predicted default probability p                  Outcome y: default = 1\n\
+  \   A                                                                          \
+  \  0.10                                    0\n   B                             \
+  \                                               0.80                           \
+  \         1\n   C                                                              \
+  \              0.60                                    0\n   D                 \
+  \                                                           0.20               \
+  \                     0\n\n                                                    \
+  \              1 X\n                                                  Brier score\
+  \ =       (pi − yi )2 .\n                                                      \
+  \            N i\n Calculate the model’s Brier score. Then calculate the score for\
+  \ a supplied historical baseline that\n predicts 0.25 for every loan. Which is lower?\
+  \ Which loan contributes most to the model’s\n error?"
+questionPages:
+- page: 324
+  title: Brier Score
+  text: " Brier Score\n\n   M15 | Class problem | 7 minutes — Check Probability Error\n\
+    \n A default model produces:\n   Loan                                        \
+    \   Predicted default probability p                  Outcome y: default = 1\n\
+    \   A                                                                        \
+    \    0.10                                    0\n   B                         \
+    \                                                   0.80                     \
+    \               1\n   C                                                      \
+    \                      0.60                                    0\n   D       \
+    \                                                                     0.20   \
+    \                                 0\n\n                                      \
+    \                            1 X\n                                           \
+    \       Brier score =       (pi − yi )2 .\n                                  \
+    \                                N i\n Calculate the model’s Brier score. Then\
+    \ calculate the score for a supplied historical baseline that\n predicts 0.25\
+    \ for every loan. Which is lower? Which loan contributes most to the model’s\n\
+    \ error?"
+  paragraphs:
+  - Brier Score
+  - M15 | Class problem | 7 minutes — Check Probability Error
+  - 'A default model produces: Loan Predicted default probability p Outcome y: default
+    = 1 A 0.10 0 B 0.80 1 C 0.60 0 D 0.20 0'
+  - 1 X Brier score = (pi − yi )2 . N i Calculate the model’s Brier score. Then calculate
+    the score for a supplied historical baseline that predicts 0.25 for every loan.
+    Which is lower? Which loan contributes most to the model’s error?
+  source:
+    pages:
+    - 324
+    verbatim: true
+formulaPages:
+- page: 321
+  title: Brier Score
+  text: " Brier Score\n\n   M15 | Formula explained (1/1)\n\n Question: How far are\
+    \ the predicted probabilities from the actual 0/1 outcomes?\n                \
+    \                                             N\n                            \
+    \                             1 X\n                                          \
+    \        BS =         (pi − yi )2 .\n                                        \
+    \                 N i=1\n Read it aloud: For each loan, subtract its actual binary\
+    \ outcome from its predicted probability,\n square that difference, add the squared\
+    \ differences, and divide by the number of loans.\n Squaring removes the sign\
+    \ and gives larger deviations more weight. Use probabilities as\n decimals, not\
+    \ whole-number percentages.\n This is the binary Brier-score convention with range\
+    \ 0 to 1. Lower is better on the same\n evaluated sample; zero requires every\
+    \ probability to match its realized label exactly."
+  paragraphs:
+  - Brier Score
+  - M15 | Formula explained (1/1)
+  - 'Question: How far are the predicted probabilities from the actual 0/1 outcomes?
+    N 1 X BS = (pi − yi )2 . N i=1 Read it aloud: For each loan, subtract its actual
+    binary outcome from its predicted probability, square that difference, add the
+    squared differences, and divide by the number of loans. Squaring removes the sign
+    and gives larger deviations more weight. Use probabilities as decimals, not whole-number
+    percentages. This is the binary Brier-score convention with range 0 to 1. Lower
+    is better on the same evaluated sample; zero requires every probability to match
+    its realized label exactly.'
+  source:
+    pages:
+    - 321
+    verbatim: true
+symbolPages:
+- page: 322
+  title: Brier Score
+  text: " Brier Score\n\n   M15 | Symbols and terms (1/2)\n\n\n   Symbol or term \
+    \                                Meaning in this example\n   BS              \
+    \                               Binary Brier score: mean squared probability error,\
+    \ not the default\n                                                  frequency.\n\
+    \   N, i                                           Number of loans, here 4, and\
+    \ the index selecting a loan.\n   pi                                         \
+    \    Model probability of default for loan i, between 0 and 1.\n   yi        \
+    \                                     Actual default label: 1 if default occurred\
+    \ and 0 otherwise.\n                   2\n   (pi − yi )                      \
+    \               One loan’s squared probability error; dimensionless.\n   PN\n\
+    \        i=1                                       Add the error term once for\
+    \ each loan."
+  paragraphs:
+  - Brier Score
+  - M15 | Symbols and terms (1/2)
+  - 'Symbol or term Meaning in this example BS Binary Brier score: mean squared probability
+    error, not the default frequency. N, i Number of loans, here 4, and the index
+    selecting a loan. pi Model probability of default for loan i, between 0 and 1.
+    yi Actual default label: 1 if default occurred and 0 otherwise. 2 (pi − yi ) One
+    loan’s squared probability error; dimensionless. PN i=1 Add the error term once
+    for each loan.'
+  source: &id001
+    pages: &id002
+    - 322
+    verbatim: true
+- page: 323
+  title: Brier Score
+  text: " Brier Score\n\n   M15 | Symbols and terms (2/2)\n\n\n   Symbol or term \
+    \                                Meaning in this example\n   Constant baseline\
+    \                              Supplied reference model predicting 0.25 for every\
+    \ loan regardless of\n                                                  its features.\n\
+    \   Calibration vs. score                          Calibration concerns event\
+    \ frequencies across probability groups;\n                                   \
+    \               Brier averages individual probability-error terms."
+  paragraphs:
+  - Brier Score
+  - M15 | Symbols and terms (2/2)
+  - Symbol or term Meaning in this example Constant baseline Supplied reference model
+    predicting 0.25 for every loan regardless of its features. Calibration vs. score
+    Calibration concerns event frequencies across probability groups; Brier averages
+    individual probability-error terms.
+  source: &id003
+    pages:
+    - 323
+    verbatim: true
+solutionPages:
+- page: 325
+  title: Brier Score
+  text: " Brier Score\n\n   M15 | Worked solution — Check Probability Error\n\n1.\
+    \ Model squared errors:\n                      [(0.10 − 0)2 , (0.80 − 1)2 , (0.60\
+    \ − 0)2 , (0.20 − 0)2 ]\n                                                  = [0.01,\
+    \ 0.04, 0.36, 0.04].\n2. Average: (0.01 + 0.04 + 0.36 + 0.04)/4 = 0.45/4 = 0.1125.\n\
+    3. Baseline squared errors: [0.0625, 0.5625, 0.0625, 0.0625].\n4. Baseline average:\
+    \ 0.75/4 = 0.1875.\n5. Compare: The model’s Brier score is lower. Loan C contributes\
+    \ the largest individual term,\n   0.36."
+  paragraphs:
+  - Brier Score
+  - M15 | Worked solution — Check Probability Error
+  - '1. Model squared errors: [(0.10 − 0)2 , (0.80 − 1)2 , (0.60 − 0)2 , (0.20 − 0)2
+    ] = [0.01, 0.04, 0.36, 0.04]. 2. Average: (0.01 + 0.04 + 0.36 + 0.04)/4 = 0.45/4
+    = 0.1125. 3. Baseline squared errors: [0.0625, 0.5625, 0.0625, 0.0625]. 4. Baseline
+    average: 0.75/4 = 0.1875. 5. Compare: The model’s Brier score is lower. Loan C
+    contributes the largest individual term, 0.36.'
+  source:
+    pages:
+    - 325
+    verbatim: true
+interpretationPages:
+- page: 326
+  title: Brier Score
+  text: " Brier Score\n\n   M15 | Interpretation\n\n What the answer means\n The model\
+    \ has better average probability accuracy on these four loans than the constant\n\
+    \ baseline. 0.1125 is not an 11.25% default rate or dollar loss. One non-default\
+    \ on a 60%\n prediction does not, by itself, establish miscalibration; probability\
+    \ quality is assessed across cases.\n Why these steps matter\n For a non-default,\
+    \ the error is the probability assigned to default. For a default, it is one minus\n\
+    \ that probability in magnitude. Squaring and averaging produces a unitless scoring\
+    \ penalty, not\n money lost on the loans."
+  paragraphs:
+  - Brier Score
+  - M15 | Interpretation
+  - What the answer means The model has better average probability accuracy on these
+    four loans than the constant baseline. 0.1125 is not an 11.25% default rate or
+    dollar loss. One non-default on a 60% prediction does not, by itself, establish
+    miscalibration; probability quality is assessed across cases. Why these steps
+    matter For a non-default, the error is the probability assigned to default. For
+    a default, it is one minus that probability in magnitude. Squaring and averaging
+    produces a unitless scoring penalty, not money lost on the loans.
+  source:
+    pages:
+    - 326
+    verbatim: true
+source:
+  pages:
+  - 321
+  - 322
+  - 323
+  - 324
+  - 325
+  - 326
+  verbatim: true
+readAloud:
+- For each loan, subtract its actual binary outcome from its predicted probability,
+  square that difference, add the squared differences, and divide by the number of
+  loans. Squaring removes the sign and gives larger deviations more weight. Use probabilities
+  as decimals, not whole-number percentages. This is the binary Brier-score convention
+  with range 0 to 1. Lower is better on the same evaluated sample; zero requires every
+  probability to match its realized label exactly.
+siteAuthored: false
+givens:
+  predicted:
+  - 0.1
+  - 0.8
+  - 0.6
+  - 0.2
+  outcomes:
+  - 0
+  - 1
+  - 0
+  - 0
+  baseline: 0.25
+labels: &id004
+  predicted: Predicted default probabilities
+  outcomes: Actual outcomes (1 default, 0 no default)
+  baseline: Constant baseline probability
+deckSolution:
+  terms:
+  - 0.01
+  - 0.04
+  - 0.36
+  - 0.04
+  brier: 0.1125
+  baseline: 0.1875
+  largest: 0.36
+latex:
+- Brier=\frac1N\sum_i(p_i-y_i)^2
+symbols:
+- symbol: BS
+  meaning: 'Binary Brier score: mean squared probability error, not the default frequency.'
+  source: *id001
+- symbol: N, i
+  meaning: Number of loans, here 4, and the index selecting a loan.
+  source: *id001
+- symbol: pi
+  meaning: Model probability of default for loan i, between 0 and 1.
+  source: *id001
+- symbol: yi
+  meaning: 'Actual default label: 1 if default occurred and 0 otherwise.'
+  source: *id001
+- symbol: (pᵢ − yᵢ)²
+  meaning: One loan’s squared probability error; dimensionless.
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: Σ (i = 1 … N)
+  meaning: Add the error term once for each loan.
+  source:
+    pages: *id002
+    verbatim: false
+- symbol: Constant baseline
+  meaning: Supplied reference model predicting 0.25 for every loan regardless of its
+    features.
+  source: *id003
+- symbol: Calibration vs. score
+  meaning: Calibration concerns event frequencies across probability groups; Brier
+    averages individual probability-error terms.
+  source: *id003
+steps:
+- id: terms
+  title: Squared probability errors
+  expects: cells
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id005
+  - For each loan, square predicted probability minus its 0/1 outcome.
+  mistakes:
+  - pattern: recompute
+    message: For each loan, square predicted probability minus its 0/1 outcome.
+- id: brier
+  title: Model Brier score
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id006
+  - Average the individual squared probability errors.
+  mistakes:
+  - pattern: recompute
+    message: Average the individual squared probability errors.
+- id: baseline
+  title: Constant-baseline Brier score
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id007
+  - Use the baseline probability for every outcome, square each error and average.
+  mistakes:
+  - pattern: recompute
+    message: Use the baseline probability for every outcome, square each error and
+      average.
+- id: largest
+  title: Largest individual squared error
+  expects: number
+  unit: ''
+  tolerance:
+    rel: 0.005
+    abs: 5.0e-05
+  hints: &id008
+  - Select the largest of the model’s squared-error terms.
+  mistakes:
+  - pattern: recompute
+    message: Select the largest of the model’s squared-error terms.
+learning:
+  title: Check Probability Error
+  scenario: A model predicts default probabilities for loans whose outcomes are now
+    known. A historical baseline assigns the same supplied probability to every loan.
+  task: Calculate each squared probability error and the mean Brier score. Compare
+    with the baseline and identify the largest contribution.
+  interpretation: A lower Brier score means better probability accuracy on this evaluated
+    sample. One non-default with a high predicted probability does not by itself establish
+    miscalibration.
+  summary: 'Model Brier score: {brier}; constant baseline: {baseline}. Largest individual
+    squared error: {largest}.'
+  labels: *id004
+  steps:
+    terms:
+      title: Squared probability errors
+      hints: *id005
+      unit: ''
+    brier:
+      title: Model Brier score
+      hints: *id006
+      unit: ''
+    baseline:
+      title: Constant-baseline Brier score
+      hints: *id007
+      unit: ''
+    largest:
+      title: Largest individual squared error
+      hints: *id008
+      unit: ''
+  readAloud:
+  - For each loan, subtract its actual binary outcome from its predicted probability,
+    square that difference, add the squared differences, and divide by the number
+    of loans. Squaring removes the sign and gives larger deviations more weight. Use
+    probabilities as decimals, not whole-number percentages. This is the binary Brier-score
+    convention with range 0 to 1. Lower is better on the same evaluated sample; zero
+    requires every probability to match its realized label exactly.
+  workedExplanation:
+  - 'The model has better average probability accuracy on these four loans than the
+    constant baseline. 0.1125 is not an 11.25% default rate or dollar loss. One non-default
+    on a 60% prediction does not, by itself, establish miscalibration; probability
+    quality is assessed across cases. '
+  - For a non-default, the error is the probability assigned to default. For a default,
+    it is one minus that probability in magnitude. Squaring and averaging produces
+    a unitless scoring penalty, not money lost on the loans.
+  workedArithmetic:
+  - Model squared errors are [(0.10 − 0)², (0.80 − 1)², (0.60 − 0)², (0.20 − 0)²]
+    = [0.01, 0.04, 0.36, 0.04].
+  - Model Brier score = (0.01 + 0.04 + 0.36 + 0.04) / 4 = 0.1125.
+  - The constant 0.25 baseline gives squared errors [0.0625, 0.5625, 0.0625, 0.0625],
+    so Brier = 0.75/4 = 0.1875. Loan C contributes the largest model error, 0.36.
+formulaSource:
+  pages:
+  - 321
+  verbatim: false
+  reviewed: true
