@@ -1,6 +1,6 @@
 # Publication verification
 
-Prepared on **6 October 2026** from the instructor's course applications. Only the two selected reference projects and public contribution documentation were imported into the existing repository. Production publication is pending Vercel authentication and the final release checks.
+Prepared on **6 October 2026** from the instructor's course applications. Only the two selected reference projects and public contribution documentation were imported into the existing repository. This release publishes the source and documentation to GitHub. Further Vercel release work was deferred at the instructor's request.
 
 ## Fintech Algorithms
 
@@ -38,4 +38,4 @@ The illustrative $50 purchase shows a $50 authorization hold, a $450 posted paye
 - Source and deployment inventories passed the publication check. Required Python archives and component license notices are retained.
 - Instructor authorship and the repository's existing license history are preserved. Public GitHub identities and commit metadata remain visible.
 
-[Repository CI](https://github.com/adnanmasood/fintech-samples/actions/workflows/verify.yml) repeats content validation, type checks, unit tests, the full browser suite, notebook execution, Payment Rails tests, and publication checks. Production URLs, public access, and deployed browser flows must be verified before completing the release.
+[Repository CI](https://github.com/adnanmasood/fintech-samples/actions/workflows/verify.yml) repeats content validation, type checks, unit tests, the full browser suite, notebook execution, Payment Rails tests, and publication checks. The full application verification suite passed in [GitHub CI](https://github.com/adnanmasood/fintech-samples/actions/runs/37541189906). Hosting verification is outside this GitHub release.

@@ -2,11 +2,19 @@
 
 A complete instructor reference demonstration for Adnan Masood, PhD.'s USF AI in FinTech course. Six small Python processes show a fictional card payment traveling from payer to issuer and back, followed by capture, clearing, and settlement.
 
-## Online project guide
+## Static project guide
 
-Open **https://usf-payment-rails.vercel.app** for the participant roles, payment lifecycle, guided exploration, PDFs, and a complete source download. This site is the teaching guide. Run the Python simulator locally using the commands below.
+The included [static guide](site/) explains the participant roles, payment lifecycle, and unscored exploration checklist. The [PDF guides and diagrams](docs/) are also available in this repository. Run the Python simulator locally using the commands below.
 
-To build the static guide: `npm run build` (Node 24 and Python 3). Vercel uses root directory `project-0-payment-rails`, framework Other, build command `npm run build`, and output directory `site-dist`. No runtime server or paid integration is needed.
+To build and preview the guide locally, use Node 24 and Python 3:
+
+```sh
+cd project-0-payment-rails
+npm run build
+python3 -m http.server 8000 --bind 127.0.0.1 --directory site-dist
+```
+
+Open **http://127.0.0.1:8000** for the guide, PDFs, images, and complete simulator source download. For a future Vercel release, use root directory `project-0-payment-rails`, framework Other, build command `npm run build`, and output directory `site-dist`. The hosted guide is static; the simulator runs locally.
 
 ## Open the demonstration
 

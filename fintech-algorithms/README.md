@@ -80,9 +80,9 @@ pnpm test:e2e
 
 `pnpm build:offline` builds and packages `artifacts/USF_Fintech_Algorithms_App.zip`. The ZIP deduplicates shared static assets: launchers serve generated pages from `dist/` and shared assets from `public/`. Do not move either folder away from the application root.
 
-## Publish to Vercel
+## Optional Vercel deployment
 
-The live app is **https://usf-fintech-algorithms.vercel.app**. Configure the Vercel project root as `fintech-algorithms`, Node 24, install command `pnpm install --frozen-lockfile`, build command `pnpm build`, and output directory `dist`. Deployment is static; no API key, database, or learner-data backend is required.
+For a future hosting release, configure the Vercel project root as `fintech-algorithms`, Node 24, install command `pnpm install --frozen-lockfile`, build command `pnpm build`, and output directory `dist`. Deployment is static; no API key, database, or learner-data backend is required.
 
 For a different domain, set `SITE_URL` to the production URL and keep `BASE_PATH=/`. Run validation, tests, checks, and the production build before publishing. Repository-level CI runs these checks from the application directory.
 
