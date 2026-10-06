@@ -185,9 +185,27 @@ for (const path of [
       await keyboardAnswer(page, card, false);
       await card.locator('.practice-feedback summary').click();
       // Formulas/tables may scroll inside their dedicated wrappers; the page and question text may not.
-      expect(
-        await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1),
-      ).toBe(true);
+      const pageLayout = await page.evaluate(() => ({
+        viewport: innerWidth,
+        width: document.documentElement.scrollWidth,
+        overflowing: [...document.querySelectorAll<HTMLElement>('body *')]
+          .filter((el) => {
+            const box = el.getBoundingClientRect();
+            return box.width > 0 && (box.right > innerWidth + 1 || box.left < -1);
+          })
+          .slice(0, 30)
+          .map((el) => ({
+            tag: el.tagName,
+            class: el.className,
+            text: el.textContent?.slice(0, 80),
+            width: el.getBoundingClientRect().width,
+            right: el.getBoundingClientRect().right,
+            overflow: getComputedStyle(el).overflowX,
+          })),
+      }));
+      expect(pageLayout.width, JSON.stringify(pageLayout)).toBeLessThanOrEqual(
+        pageLayout.viewport + 1,
+      );
       const clipped = await page
         .locator('.practice-choice span, .practice-feedback, .teaching-definition')
         .evaluateAll((elements) =>
