@@ -39,6 +39,9 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
       - name: Verify real browser Python
         run: pnpm exec playwright test tests/browser/guided-labs.spec.ts --grep "real Python"
+      - run: pnpm test:notebooks
+        env:
+          CHROMIUM_EXECUTABLE: ''
       - run: pnpm test:e2e
       - name: Browser failure diagnostics
         if: failure()
@@ -48,9 +51,6 @@ jobs:
           for report in Path('test-results').rglob('error-context.md'):
               print(report, report.read_text(), sep='\n')
           PYDIAG
-      - run: pnpm test:notebooks
-        env:
-          CHROMIUM_EXECUTABLE: ''
       - run: python3 ../scripts/check-publication.py --dist
   payment-rails:
     runs-on: ubuntu-latest

@@ -86,6 +86,8 @@ test('A01 checks, hints, reveal and refresh persistence', async ({ page }) => {
   }
   await expect(exercise.locator('.exercise-complete')).toContainText('Calculation complete');
   await page.reload();
+  await exercise.scrollIntoViewIfNeeded();
+  await expect(page.locator('astro-island[component-url*="Exercise"][ssr]')).toHaveCount(0);
   await exercise.getByRole('button', { name: 'Try this example', exact: true }).click();
   await expect(exercise.locator('.exercise-complete')).toContainText('Calculation complete');
   await expect(exercise.locator('.revealed').first()).toContainText('With help');
